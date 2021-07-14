@@ -2,6 +2,7 @@
 
 \usepackage{hyperref}
 \usepackage{tikz}
+\usepackage{environ}
 
 % tikz config
 \usetikzlibrary{shapes,fit,calc}
@@ -19,6 +20,19 @@
 \setlength{\parindent}{0mm}
 
 \newcommand{\langsection}[1]{\section{#1}}
+
+\newenvironment{inspiration}[1]
+{
+    \begin{center}
+    \newcommand{\temp}{#1}
+    \begin{minipage}{0.9\textwidth}
+}
+{
+    \\
+    \raggedright{-- \temp}
+    \end{minipage}
+    \end{center}
+}
 
 \begin{document}
 
