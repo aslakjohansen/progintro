@@ -64,3 +64,24 @@
 “Should array indices start at 0 or 1?  My compromise of 0.5 was rejected without, I thought, proper consideration.”
 -- Stan Kelly-Bootle
 
+“The competent programmer is fully aware of the limited size of his own skull. He therefore approaches his task with full humility, and avoids clever tricks like the plague.”
+-- Djikstra
+
+“In order to understand recursion, one must first understand recursion.”
+-- Anonymous
+
+“The best performance improvement is the transition from the nonworking state to the working state.”
+-- J. Osterhout
+
+“Walking on water and developing software from a specification are easy if both are frozen.”
+-- Edward V Berard
+
+“Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live.”
+-- Martin Golding
+
+“A good programmer is someone who always looks both ways before crossing a one-way street.”
+-- Doug Linder
+
+“If builders built buildings the way programmers wrote programs, then the first woodpecker that came along would destroy civilization.”
+-- Gerald Weinberg
+
