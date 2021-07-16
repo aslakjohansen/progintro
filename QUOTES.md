@@ -7,7 +7,7 @@
 “A computer lets you make more mistakes faster than any invention in human history–with the possible exceptions of handguns and tequila.”
 -- Mitch Radcliffe
    
-“It would appear that we have reached the limits of what it is possible to achieve with computer technology, although one should be careful with such statements, as they tend to sound pretty silly in 5 years.” 
+“It would appear that we have reached the limits of what it is possible to achieve with computer technology, although one should be careful with such statements, as they tend to sound pretty silly in 5 years.”
 -- John Von Neumann, circa 1949
 
 “If the automobile had followed the same development cycle as the computer, a Rolls-Royce would today cost $100, get a million miles per gallon, and explode once a year, killing everyone inside.”
