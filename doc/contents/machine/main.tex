@@ -3,6 +3,55 @@
 
 DECISION: MIPS or RISCV32I
 
+\section{History}
+
+% inspiration: http://andreasmhallberg.github.io/timeline-of-arab-grammarians/
+{
+\usetikzlibrary{calc, backgrounds}
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+% vertical position of beginning of name
+\newlength\nameh
+  \setlength\nameh{6.1cm}                                                                                        
+\def\startce{-200}
+\def\fince{2020}
+
+\newcommand\event[4][0]{
+  % hame and yod on top
+  \begin{pgfonlayer}{foreground}
+    \path [draw] (#3,\nameh) ++ (#1,0) node [rotate=-90, anchor=west] (name) [fill=white, inner sep=0pt] {\makebox[2.5em][l]{#3}#2~\strut};
+  \end{pgfonlayer}
+    \draw [thin] (name.east) |- (#3,2) -- (#3,0) ;
+    % Work below
+    \node [font=\itshape, rotate=-90, anchor=west, yshift=#1] (work) at (#3,-2\baselineskip) {#4};
+}
+
+\begin{tikzpicture}[x=\textwidth/(\fince-\startce)]
+        % events
+        \event{Antikythera mechanism}{-87}{} % https://en.wikipedia.org/wiki/Antikythera_mechanism
+        % tally stick
+        \event{Jacquard machine}{1804}{} % https://en.wikipedia.org/wiki/Jacquard_machine
+        % pascal/liebness
+        \event{Difference Engine}{1822}{} % https://en.wikipedia.org/wiki/Difference_engine
+        \event{Mutual Exclusion}{1965}{} % https://en.wikipedia.org/wiki/Mutual_exclusion
+        \event{Programmeringssproget C}{1973}{} % https://en.wikipedia.org/wiki/C_(programming_language)
+        
+        \event{Programmeringssproget Java}{1995}{} % https://en.wikipedia.org/wiki/Java_(programming_language)
+        
+        % Alpacaen tæmmes
+        
+        % axis
+        \draw [->, very thick] (\startce,0) -- (\fince,0);
+
+        % axis ticks
+        \foreach \x in {-200,0,...,\fince}
+            {\draw (\x, 0) -- (\x,-.2) node [anchor=north, font=\bfseries,inner sep=0pt] {\x\strut};}
+
+\end{tikzpicture}
+}
+
 \section{Registre}
 
 \section{Hukommelsesmodel}
