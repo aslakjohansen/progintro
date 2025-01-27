@@ -26,3 +26,21 @@ Computer language design is just like a stroll in the park. Jurassic Park, that 
 
 \section{Parsing}
 
+% file content
+Indholdet af en fil er en sekvens af bytes, altså værdier der hver især har én af 256 mulige værdier. Når vi skriver tekst fortolkes disse bytes som tegn og de programmer vi bruger til at åbne sådanne filer vælger at tegne hvert tegn til højre for det forrige. Ved linjebrud -- der repræsenteres ved en bestemt sekvens af tegn -- flyttes den horisontale position helt til venstre og der rykkes en linjehøjde nedaf. Nogle programmer bryder linjer der er for brede til ens skærm. Men det er sådan set det. En sådan tekstfil indeholder ikke nogen information om font eller tekststørrelse. Ønsker man at gemme sådanne informationer er man nødt til at introducere et \textsl{filformat}, der \textsl{koder} sådanne informationer ved sårlige opmærkninger. Men det er ikke relevant for filer der indeholder kode.
+
+% human interpretation
+Filer der indeholder kode er rå tekstfiler: En sekvens af tegn med linjebrud. Som programmører manipulerer vi disse filer igennem en teksteditor, der oftest -- ud over selve visningen af disse tegn -- vælger at farvekode udvalgte delsekvenser for at gøre teksten mere overskuelig for mennesker. Disse farver repræsenterer dog en \textsl{fortolkning} som værktøjet bruger til at berige koden. På samme måde er der nogen sådanne editorer der nummererer linjerne, fremhæver en aktuelle linje og markerer matchende parenteser.
+
+% machine interpretation
+Den tekst disse filer indeholder kaldes for \textsl{programkode} (eller blot \textsl{kode}), og vi ændrer i den på nogenlunde samme måde som vi ændrede i en dansk stil. Men når vi beder computeren om at køre noget med vores programkode så ser den filen på en anden måde. Indholdet er naturligvis det samme, men \textsl{fortolkningen} er anderledes: På baggrund af nogle regler opbygger computeren en træstruktur af programmet.
+
+% TODO: træstruktur
+
+\subsection{Regler}
+
+% https://homepage.ruhr-uni-bochum.de/jan.holthuis/posts/using-the-latex-rail-package
+
+\subsection{Parsetræer}
+
+% https://tex.stackexchange.com/questions/111564/create-a-syntax-tree-with-latex
