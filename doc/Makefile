@@ -12,6 +12,6 @@ mrproper: clean
 	rm    *~
 
 document.pdf: document.tex contents/*/*.tex
-	pdflatex document.tex
-	pdflatex document.tex
+	lualatex document.tex
+	lualatex document.tex
 
