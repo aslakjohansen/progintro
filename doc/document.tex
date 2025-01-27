@@ -1,8 +1,9 @@
-\documentclass[10pt]{book}
+\documentclass[a4paper, oneside]{memoir}
 
 \usepackage{hyperref}
 \usepackage{tikz}
 \usepackage{environ}
+\usepackage{minipage-marginpar} % for the minipagewithmarginpars environment that allows marginpar commands in a minipage
 \usepackage{amsfonts} % \mathbb
 
 % tikz config
@@ -25,17 +26,17 @@
 \newcommand{\descitem}[1]{\item \textdesc{#1}}
 \newcommand{\term}[1]{\textsl{#1}}
 
-\newenvironment{inspiration}[1]
+\newenvironment{inspiration}[2][0.9]
 {
-    \begin{center}
-    \newcommand{\temp}{#1}
-    \begin{minipage}{0.9\textwidth}
+  \begin{center}
+  \newcommand{\saveme}{#2}
+  \begin{minipagewithmarginpars}{#1\textwidth}
 }
 {
-    \\
-    \raggedright{-- \temp}
-    \end{minipage}
-    \end{center}
+  
+  \raggedleft{--- \textsl{\saveme}}
+  \end{minipagewithmarginpars}
+  \end{center}
 }
 
 \begin{document}
