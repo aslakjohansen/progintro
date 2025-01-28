@@ -11,7 +11,7 @@ mrproper: clean
 	touch d~
 	rm    *~
 
-document.pdf: document.tex contents/*/*.tex
+document.pdf: *.tex
 	lualatex document.tex
 	lualatex document.tex
 
