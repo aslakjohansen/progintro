@@ -23,6 +23,7 @@ Computer language design is just like a stroll in the park. Jurassic Park, that 
 \end{tikzpicture}
 
 \subsection{Parsing}
+\idx{Parsing}
 
 % file content
 The contents of a file is a sequence of bytes, i.e., units that each have one of 256 possible values. When we write text, these bytes are interpreted as characters and the programs we use to open such files choose to draw each character to the right of the previous one. At line breaks -- represented by a specific sequence of characters -- the horizontal position is moved all the way to the left and the vertical position is moved one line height down. Some programs break lines that are too wide for your screen. But that's about it. Such a text file does not contain any information about font or text size. If you want to store such information, you have to introduce a \textsl{file format} that \textsl{encodes} such information by special markup. But this is not relevant for files that contain code.

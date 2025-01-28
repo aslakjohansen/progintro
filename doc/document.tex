@@ -2,8 +2,14 @@
 
 \usepackage[colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref} % for \href
 \usepackage{tikz}
+\usepackage{marginnote} % for margin notes
 \usepackage{minipage-marginpar} % for the minipagewithmarginpars environment that allows marginpar commands in a minipage
 \usepackage{amsfonts} % \mathbb
+
+% configure index: https://en.wikibooks.org/wiki/LaTeX/Indexing
+\usepackage{imakeidx}
+\indexsetup{othercode=\small}
+\makeindex[program=makeindex,columns=2,intoc=true,options={-s index_style.ist}]
 
 % tikz config
 \usetikzlibrary{shapes,fit,calc}
@@ -37,6 +43,11 @@
   \end{minipagewithmarginpars}
   \end{center}
 }
+
+
+% https://en.wikibooks.org/wiki/LaTeX/Indexing
+\newcommand{\idx}[1]{\index{#1}\marginpar{\raggedright \tiny #1}}
+\newcommand{\idxx}[2]{\index{#1}\marginpar{\raggedright \tiny #2}}
 
 \begin{document}
 
@@ -73,6 +84,9 @@
 \input{test.tex}
 \input{swarch.tex}
 \input{paradigms.tex}
+
+% back end
+\printindex
 
 \end{document}
 
