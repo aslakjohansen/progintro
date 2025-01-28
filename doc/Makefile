@@ -8,8 +8,8 @@ clean:
 	rm    ${TARGETS}
 
 mrproper: clean
-	touch d~
-	rm    *~
+	touch d~ d.aux d.log d.out d.toc
+	rm    *~ *.aux *.log *.out *.toc
 
 document.pdf: *.tex
 	lualatex document.tex
