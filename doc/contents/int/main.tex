@@ -1,16 +1,16 @@
 \chapter{Integers}
 \label{sec:int}
 
-% alt er tal, ikke altid lige åbenlyst, klasser af tal, den simpleste klasse er heltal
-Alle værdier som vi ønsker at arbejde med i en computer er på en eller anden måde tal. Det er ikke altid lige åbentlyst at dette er tilfældet, men der er lang tid til at vi kommer til at støde på sådanne eksempler. Fra folkeskolen og gymnasiet kender vi til klasser af tal:
+% everything is a number, not always obvious, classes of numbers, the simples calls is integers
+All values that we may want to work with in a computer are, one way or the other, numbers. This fact may not always be obvious, but it will be quite a while before you encounter such examples. From public school and highschool, we know these classes of numbers:
 \begin{itemize}
-  \descitem{De naturlige tal} ($\mathbb{N}$) Dette er de ikke-negative heltal\footnote{Der er to definitioner af de naturlige tal. Den anden definition er at det er de positive heltal; altså uden nul. Da denne definition er mindre anvendelig i computere bruger vi den fra brødteksten.}.
-  \descitem{De hele tal} ($\mathbb{Z}$) Dette er alle positive og negative heltal samt nul.
-  \descitem{De reelle tal} ($\mathbb{R}$) Dette er alle tal der kan placeres på en linje mellem $-\infty$ og $\infty$. Vi kalder dem ofte for kommatal.
-  \descitem{De rationelle tal} ($\mathbb{Q}$) Dette er alle tal der kan skrives som en brøk $m/n$ hvor $m \in \mathbb{Z}$ og $m \in \mathbb{N}$.
-  \descitem{De irrationelle tal} ($\mathbb{P}$) Dette er de tal som hører til $\mathbb{R}$ men ikke $\mathbb{Q}$. Det er her at $\pi$ og $e$ hører til.
+  \descitem{The natural numbers} ($\mathbb{N}$) These are the non-negative numbers that can be written without a decimal point\footnote{There are two definitions of natural numbers. The other definition is that they are the positive numbers that can be written without a decimal point. That is to say, without zero. As this definition is generally less applicable in computers, we stick to the first definition.}.
+  \descitem{The integers} ($\mathbb{Z}$) These are all the natural numbers (according to the first definition) along with the negative versions of the natural numbers (according to the second definition). That definition juggling is to make sure that we don't have a negative zero.
+  \descitem{The real numbers} ($\mathbb{R}$) These are all the numbers that can be placed on a line between $-\infty$ and $\infty$. We often refer to these as floating point numbers.
+  \descitem{The rational numbers} ($\mathbb{Q}$) These are then numbers that can be written as the fraction $m/n$ where $m \in \mathbb{Z}$ and $m \in \mathbb{N}$.
+  \descitem{The irrational numbers} ($\mathbb{P}$) These are numbers that belong to $\mathbb{R}$ but not $\mathbb{Q}$. This is where $\pi$ and $e$ belong.
 \end{itemize}
-Computere arbejder (typisk) med andre klasser af tal. I de følgende afsnit kommer vi til at se nærmere på de mest anvendte. Hvad der er fælles for dem er at de repræsenteres binært, altså ved hjælp af totalsystemet. Vi er vant til at arbejde med titalsystemet hvor et tal består af cifre mellem nul og ni. I totalsystemet består tal af cifre mellem nul og et (dvs. \texttt{0} eller \texttt{1}). Et sådant ciffer kaldes en \term{bit}, og en sekvens af 8 bits kaldes for en \term{byte}. Entalsformene er bit og byte, og flertalsformene er bits og bytes. Bits er for øvrigt SI enheden for information, må samme måde som at meter er SI enheden for distance. Vi måler med andre ord informationsmængde i bits.
+Computers typically works with other classes of numbers. In the following sections, we will explore the most commonly used ones. Common to these is that they are all represented in binary numbers. That is, using the base-2 digits. We are used to working with base-10 where numbers are digits between zero and nine. In base-2, the numbers are made up of digits between zero and one (i.e., \texttt{0} or \texttt{1}). Such a digit is called a \term{bit}, and a sequence of eight bits is referred to as a \term{byte}. The plural forms of the singular bit and byte is bits and bytes. Bits are, by the way, the SI unit of information, in the same way as meter is the SI unit of distance. Accordingly, we measure information in bits.
 
 \section{Integers}
 
