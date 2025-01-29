@@ -12,6 +12,9 @@
 \indexsetup{othercode=\small}
 \makeindex[program=makeindex,columns=2,intoc=true,options={-s index_style.ist}]
 
+\usepackage{fontspec}
+\newfontface\lserif{Liberation Serif}
+
 % biblatex setup
 \usepackage[
   backend=biber,
@@ -39,6 +42,9 @@
 \newcommand{\quoted}[1]{\textsl{\say{#1}}}
 \newcommand{\term}[1]{\textsl{#1}}
 
+\newcommand{\csharp}{C{\lserif\#}}
+
+
 \newenvironment{inspiration}[2][0.9]
 {
   \begin{center}
@@ -56,7 +62,7 @@
 \newcommand{\idx}[1]{\index{#1}\marginpar{\raggedright \tiny #1}}
 \newcommand{\idxx}[2]{\index{#1}\marginpar{\raggedright \tiny #2}}
 
-\title{Introduction to Programming \ldots\ in C\#}
+\title{Introduction to Programming \ldots\ in \csharp}
 \author{Aslak Johansen \href{mailto:asjo@mmmi.sdu.dk}{asjo@mmmi.sdu.dk}}
 
 \begin{document}
