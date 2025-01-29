@@ -2,6 +2,7 @@
 
 \usepackage[colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref} % for \href
 \usepackage{tikz}
+\usepackage{dirtytalk} % for \say quotation
 \usepackage{marginnote} % for margin notes
 \usepackage{minipage-marginpar} % for the minipagewithmarginpars environment that allows marginpar commands in a minipage
 \usepackage{amsfonts} % \mathbb
@@ -10,6 +11,12 @@
 \usepackage{imakeidx}
 \indexsetup{othercode=\small}
 \makeindex[program=makeindex,columns=2,intoc=true,options={-s index_style.ist}]
+
+% biblatex setup
+\usepackage[
+  backend=biber,
+]{biblatex}
+\addbibresource{references.bib}
 
 % tikz config
 \usetikzlibrary{shapes,fit,calc}
@@ -29,6 +36,7 @@
 \newcommand{\langsection}[1]{\section{#1}}
 \newcommand{\textdesc}[1]{\textit{\textbf{#1}}}
 \newcommand{\descitem}[1]{\item \textdesc{#1}}
+\newcommand{\quoted}[1]{\textsl{\say{#1}}}
 \newcommand{\term}[1]{\textsl{#1}}
 
 \newenvironment{inspiration}[2][0.9]
@@ -86,6 +94,7 @@
 \input{paradigms.tex}
 
 % back end
+\printbibliography
 \printindex
 
 \end{document}

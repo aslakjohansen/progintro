@@ -11,9 +11,10 @@ mrproper: clean
 	touch d~ d.aux d.log d.out d.toc
 	rm    *~ *.aux *.log *.out *.toc
 
-document.pdf: Makefile *.tex
+document.pdf: Makefile *.tex references.bib
 	lualatex document.tex
 	makeindex document.idx
+	biber document.bcf
 	lualatex document.tex
 	lualatex document.tex
 
