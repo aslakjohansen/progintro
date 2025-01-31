@@ -20,7 +20,7 @@ hlsections.tex: ../bin/generate-hl-sections.exs
 	../bin/generate-hl-sections.exs > hlsections.tex
 
 
-document.pdf: Makefile ${AUTOGEN_DEPS} *.tex references.bib
+document.pdf: Makefile ${AUTOGEN_DEPS} *.tex */*.tex references.bib
 	lualatex document.tex
 	makeindex document.idx
 	biber document.bcf
