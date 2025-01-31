@@ -1,0 +1,78 @@
+\begin{center}
+  \begin{tikzpicture}[remember picture]
+    \newcommand{\weight}[1]{node[midway,sloped,above] {\scalebox{0.7}{\textsl{\textcolor{purple}{#1}}}}}
+    
+    \tikzstyle{edge}  = [thick,>=stealth,draw=black]
+    \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
+    \tikzstyle{snode}=[
+      overlay,
+      circle,
+      draw=purple,
+      anchor=center,
+      thick,
+      minimum size=0.2,
+    ]
+    \tikzstyle{snoded}=[
+      snode,
+      rectangle,
+      minimum width=0.3cm,
+      minimum height=0.3cm,
+    ]
+    \tikzstyle{leaf}=[
+      snode,
+      draw=green!60!black,
+    ]
+    
+    {
+      \node[snode] (n1) at (0,0) {};
+      
+      \node[snode] (n11) at (-2.0,-1) {};
+      \node[snode] (n12) at (0,-1) {};
+      \node[snode] (n13) at (2.0,-1) {};
+      
+      \node[snode] (n111) at (-2.8,-2) {};
+      \node[snode] (n112) at (-2.0,-2) {};
+      \node[snode] (n113) at (-1.2,-2) {};
+      \node[snode] (n121) at (-0.4,-2) {};
+      \node[snode] (n122) at (0.4,-2) {};
+      \node[snode] (n131) at (1.6,-2) {};
+      \node[snode] (n132) at (2.4,-2) {};
+      
+      \node[snode] (n1121) at (-2.4,-3) {};
+      \node[snode] (n1122) at (-1.6,-3) {};
+      \node[snode] (n1221) at (0.4,-3) {};
+      \node[snode] (n1311) at (1.2,-3) {};
+      \node[snode] (n1312) at (2.0,-3) {};
+      
+      \node[snode] (n11221) at (-2.0,-4) {};
+      \node[snode] (n11222) at (-1.2,-4) {};
+      \node[snode] (n13121) at (1.6,-4) {};
+      \node[snode] (n13122) at (2.4,-4) {};
+    }
+    
+    {
+      \draw[dedge] (n1)--(n11);
+      \draw[dedge] (n1)--(n12);
+      \draw[dedge] (n1)--(n13);
+      
+      \draw[dedge] (n11)--(n111);
+      \draw[dedge] (n11)--(n112);
+      \draw[dedge] (n11)--(n113);
+      \draw[dedge] (n12)--(n121);
+      \draw[dedge] (n12)--(n122);
+      \draw[dedge] (n13)--(n131);
+      \draw[dedge] (n13)--(n132);
+      
+      \draw[dedge] (n112)--(n1121);
+      \draw[dedge] (n112)--(n1122);
+      \draw[dedge] (n122)--(n1221);
+      \draw[dedge] (n131)--(n1311);
+      \draw[dedge] (n131)--(n1312);
+      
+      \draw[dedge] (n1122)--(n11221);
+      \draw[dedge] (n1122)--(n11222);
+      \draw[dedge] (n1312)--(n13121);
+      \draw[dedge] (n1312)--(n13122);
+    }
+  \end{tikzpicture}
+\end{center}
