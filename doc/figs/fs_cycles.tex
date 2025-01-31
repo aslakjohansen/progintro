@@ -1,0 +1,144 @@
+\begin{center}
+  \begin{tikzpicture}[remember picture]
+    \newcommand{\weight}[1]{node[midway,sloped,above] {\scalebox{0.7}{\textsl{\textcolor{purple}{#1}}}}}
+    \tikzstyle{edge}  = [thick,>=stealth,draw=black]
+    \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
+    \tikzstyle{node}=[
+      overlay,
+      circle,
+      draw=purple,
+      anchor=center,
+      thick,
+      minimum size=0.2,
+    ]
+    \tikzstyle{dir}=[
+      node,
+      rectangle,
+      minimum width=0.3cm,
+      minimum height=0.3cm,
+    ]
+    \tikzstyle{file}=[
+      node,
+      draw=green!60!black,
+    ]
+    \tikzstyle{dirhighlight}=[
+      dir,
+      very thick,
+      pattern=north east lines,
+      pattern color=purple!60,
+      even odd rule,
+    ]
+    \tikzstyle{filehighlight}=[
+      file,
+      very thick,
+      pattern=north east lines,
+      pattern color=green!60!black,
+      even odd rule,
+    ]
+    
+    \coordinate (rootAnchor) at (-5,-2);
+    \coordinate (guestAnchor) at ([xshift=7cm, yshift=-1.2cm] rootAnchor);
+    
+    % root filesystem
+    {
+      \node[dir, very thick,fill=purple!20] (root1) at ([xshift=0cm, yshift=0cm] rootAnchor) {};
+      
+      \node[dir] (root11) at ([xshift=1cm, yshift=2.0cm] rootAnchor) {};
+      \node[dir] (root12) at ([xshift=1cm, yshift=0.8cm] rootAnchor) {};
+      \node[dir] (root13) at ([xshift=1cm, yshift=0.0cm] rootAnchor) {};
+      \node[file] (root14) at ([xshift=1cm, yshift=-0.8cm] rootAnchor) {};
+      \node[dir] (root15) at ([xshift=1cm, yshift=-1.6cm] rootAnchor) {};
+      
+      \node[file] (root111) at ([xshift=2cm, yshift=2.4cm] rootAnchor) {};
+      \node[file] (root112) at ([xshift=2cm, yshift=1.6cm] rootAnchor) {};
+      \node[dir] (root121) at ([xshift=2cm, yshift=0.8cm] rootAnchor) {};
+      \node[file] (root131) at ([xshift=2cm, yshift=0.0cm] rootAnchor) {};
+      \node[dir] (root151) at ([xshift=2cm, yshift=-1.2cm] rootAnchor) {};
+      \node[dir] (root152) at ([xshift=2cm, yshift=-2.0cm] rootAnchor) {};
+      
+      \node[dir] (root1211) at ([xshift=3cm, yshift=1.6cm] rootAnchor) {};
+      \node[file] (root1212) at ([xshift=3cm, yshift=0.8cm] rootAnchor) {};
+      \node[dir] (root1213) at ([xshift=3cm, yshift=0.0cm] rootAnchor) {};
+      
+      \node[dir] (root12111) at ([xshift=4cm, yshift=1.6cm] rootAnchor) {};
+      \node[file] (root12131) at ([xshift=4cm, yshift=0.4cm] rootAnchor) {};
+      \node[file] (root12132) at ([xshift=4cm, yshift=-0.4cm] rootAnchor) {};
+      
+      \node[dir] (root121111) at ([xshift=5cm, yshift=2.0cm] rootAnchor) {};
+      \node[file] (root121112) at ([xshift=5cm, yshift=1.2cm] rootAnchor) {};
+      
+      \draw[dedge] (root1)--(root11);
+      \draw[dedge] (root1)--(root12);
+      \draw[dedge] (root1)--(root13);
+      \draw[dedge] (root1)--(root14);
+      \draw[dedge] (root1)--(root15);
+      
+      \draw[dedge] (root11)--(root111);
+      \draw[dedge] (root11)--(root112);
+      \draw[dedge] (root12)--(root121);
+      \draw[dedge] (root13)--(root131);
+      \draw[dedge] (root15)--(root151);
+      \draw[dedge] (root15)--(root152);
+      
+      \draw[dedge] (root121)--(root1211);
+      \draw[dedge] (root121)--(root1212);
+      \draw[dedge] (root121)--(root1213);
+      
+      \draw[dedge] (root1211)--(root12111);
+      \draw[dedge] (root1213)--(root12131);
+      \draw[dedge] (root1213)--(root12132);
+      
+      \draw[dedge] (root12111)--(root121111);
+      \draw[dedge] (root12111)--(root121112);
+    }
+    
+    % guest filesystem
+    {
+      \node[dir, very thick, fill=purple!20] (guest1) at ([xshift=0cm, yshift=0cm] guestAnchor) {};
+      
+      \node[dir] (guest11) at ([xshift=1cm, yshift=0.4cm] guestAnchor) {};
+      \node[file] (guest12) at ([xshift=1cm, yshift=-0.4cm] guestAnchor) {};
+      
+      \node[dir] (guest111) at ([xshift=2cm, yshift=1.2cm] guestAnchor) {};
+      \node[file] (guest112) at ([xshift=2cm, yshift=0.4cm] guestAnchor) {};
+      \node[dir] (guest113) at ([xshift=2cm, yshift=-0.4cm] guestAnchor) {};
+      
+      \node[file] (guest1111) at ([xshift=3cm, yshift=1.6cm] guestAnchor) {};
+      \node[file] (guest1112) at ([xshift=3cm, yshift=0.8cm] guestAnchor) {};
+      \node[file] (guest1131) at ([xshift=3cm, yshift=0.0cm] guestAnchor) {};
+      \node[file] (guest1132) at ([xshift=3cm, yshift=-0.8cm] guestAnchor) {};
+      
+      \draw[dedge] (guest1)--(guest11);
+      \draw[dedge] (guest1)--(guest12);
+      
+      \draw[dedge] (guest11)--(guest111);
+      \draw[dedge] (guest11)--(guest112);
+      \draw[dedge] (guest11)--(guest113);
+      
+      \draw[dedge] (guest111)--(guest1111);
+      \draw[dedge] (guest111)--(guest1112);
+      \draw[dedge] (guest113)--(guest1131);
+      \draw[dedge] (guest113)--(guest1132);
+    }
+    
+    % mount
+    {
+      \draw[dedge, dashed, draw=blue] (root151)--(guest1) node[midway,sloped,below] {\scalebox{0.7}{\textsl{\textcolor{blue}{mounted}}}};
+    }
+    
+    % link
+    {
+      \draw[dedge, dashed, draw=orange] (root12132) to [out=0,in=160] (guest1111);
+    }
+    
+    % cycle link
+    {
+      \draw[dedge, dashed, draw=orange, very thick] (root121111) to [out=150,in=45] (root1211);
+      \draw[dedge, very thick] (root1211)--(root12111);
+      \draw[dedge, very thick] (root12111)--(root121111);
+      \node[dirhighlight] (root1211) at ([xshift=3cm, yshift=1.6cm] rootAnchor) {};
+      \node[dirhighlight] (root12111) at ([xshift=4cm, yshift=1.6cm] rootAnchor) {};
+      \node[dirhighlight] (root121111) at ([xshift=5cm, yshift=2.0cm] rootAnchor) {};
+    }
+  \end{tikzpicture}
+\end{center}
