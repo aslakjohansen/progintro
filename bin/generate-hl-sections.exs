@@ -3,6 +3,8 @@
 colormap = %{
   "elixir" => "violet",
   "csharp" => "blue",
+  "python" => "orange",
+  "example" => "teal",
 }
 
 sections = [
