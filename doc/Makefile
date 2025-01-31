@@ -1,6 +1,10 @@
 TARGETS = \
 	document.pdf \
 
+AUTOGEN_DEPS = \
+	hlsections.tex
+
+
 all: ${TARGETS}
 
 clean:
@@ -8,10 +12,15 @@ clean:
 	rm    ${TARGETS}
 
 mrproper: clean
-	touch d~ d.aux d.log d.out d.toc
-	rm    *~ *.aux *.log *.out *.toc
+	touch ${AUTOGEN_DEPS} d~ d.aux d.log d.out d.toc
+	rm    ${AUTOGEN_DEPS} *~ *.aux *.log *.out *.toc
 
-document.pdf: Makefile *.tex references.bib
+
+hlsections.tex: ../bin/generate-hl-sections.exs
+	../bin/generate-hl-sections.exs > hlsections.tex
+
+
+document.pdf: Makefile ${AUTOGEN_DEPS} *.tex references.bib
 	lualatex document.tex
 	makeindex document.idx
 	biber document.bcf
