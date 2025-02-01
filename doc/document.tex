@@ -40,6 +40,14 @@
 \setlength{\parskip}{2mm} % vertical space between paragraphs
 \setlength{\parindent}{0mm} % horizontal indent for first line of paragraph
 
+\newcommand{\varname}[1]{\texttt{\textcolor{teal}{#1}}}
+\newcommand{\typename}[1]{\texttt{\textcolor{purple}{#1}}}
+\newcommand{\methodname}[1]{\texttt{\textcolor{blue}{#1}}}
+\newcommand{\funcname}[1]{\methodname{#1}}
+\newcommand{\packagename}[1]{\texttt{#1}}
+\newcommand{\filename}[1]{\texttt{#1}}
+\newcommand{\keywordname}[1]{\texttt{#1}}
+
 \newcommand{\langsection}[1]{\section{#1}}
 \newcommand{\textdesc}[1]{\textit{\textbf{#1}}}
 \newcommand{\descitem}[1]{\item \textdesc{#1}}
