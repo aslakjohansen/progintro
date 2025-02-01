@@ -1,0 +1,105 @@
+\begin{center}
+  \begin{tikzpicture}[remember picture]
+    \tikzstyle{app} = [
+      anchor=east,
+      align=right,
+    ]
+    \tikzstyle{type} = [
+      anchor=center,
+      align=center,
+    ]
+    \tikzstyle{use} = [
+      anchor=west,
+      align=left,
+    ]
+    \tikzstyle{arrow} = [
+%        thick,
+      ->,
+      >=stealth,
+      draw=black,
+    ]
+    
+    \newcommand{\xapp}[0]{-3cm}
+    \newcommand{\xtype}[0]{1cm}
+    \newcommand{\xuse}[0]{5cm}
+    \newcommand{\yappunit}[0]{-1cm}
+    \newcommand{\yappoffset}[0]{0cm}
+    \newcommand{\ytypeunit}[0]{-1cm}
+    \newcommand{\ytypeoffset}[0]{\ytypeunit/2}
+    \newcommand{\yuseunit}[0]{-2cm}
+    \newcommand{\yuseoffset}[0]{-1cm}
+    \newcommand{\yoffII}[0]{1mm}
+    \newcommand{\yoffIII}[0]{1mm}
+    \newcommand{\yoffIV}[0]{1mm}
+    \newcommand{\yoffVI}[0]{0.8mm}
+    
+    % app
+    \node[app] (word) at (\xapp, 0*\yappunit+\yappoffset) {Microsoft Word};
+    \node[app] (oword) at (\xapp, 1*\yappunit+\yappoffset) {Microsoft Word 365};
+    \node[app] (librewriter) at (\xapp, 2*\yappunit+\yappoffset) {LibreWriter};
+    \node[app] (gdoc) at (\xapp, 3*\yappunit+\yappoffset) {Google Docs};
+    \node[app] (latex) at (\xapp, 4*\yappunit+\yappoffset) {\LaTeX};
+    \node[app] (powerpoint) at (\xapp, 5*\yappunit+\yappoffset) {Microsoft PowerPoint};
+    \node[app] (opowerpoint) at (\xapp, 6*\yappunit+\yappoffset) {Microsoft PowerPoint 365};
+    
+    % type
+    \node[type] (docx) at (\xtype, 0*\ytypeunit+\ytypeoffset) {XML-baseret Word (\filename{.docx})};
+    \node[type] (doc) at (\xtype, 1*\ytypeunit+\ytypeoffset) {Traditionel Word (\filename{.doc})};
+    \node[type] (odt) at (\xtype, 2*\ytypeunit+\ytypeoffset) {Open Document Format (\filename{.odt})};
+    \node[type] (pdf) at (\xtype, 3*\ytypeunit+\ytypeoffset) {Portable Document Format (\filename{.pdf})};
+    \node[type] (pptx) at (\xtype, 4*\ytypeunit+\ytypeoffset) {XML-baseret PowerPoint (\filename{.pptx})};
+    \node[type] (ppt) at (\xtype, 5*\ytypeunit+\ytypeoffset) {Traditionel PowerPoint (\filename{.ppt})};
+    
+    % app ↦ type
+    {
+      \draw[arrow] ([yshift= \yoffIII]word.east) to[out=0, in=180, looseness=0.7] ([yshift= 1.5*\yoffIII]docx.west);
+      \draw[arrow] (word.east)                   to[out=0, in=180, looseness=0.7] ([yshift= \yoffII]doc.west);
+      \draw[arrow] ([yshift=-\yoffIII]word.east) to[out=0, in=180, looseness=0.7] ([yshift= 2.5*\yoffVI,xshift=-2*\yoffVI]pdf.west);
+      
+      \draw[arrow] ([yshift= \yoffIII]oword.east) to[out=0, in=180, looseness=0.7] (docx.west);
+      \draw[arrow] (oword.east)                   to[out=0, in=180, looseness=0.7] ([yshift=-\yoffII]doc.west);
+      \draw[arrow] ([yshift=-\yoffIII]oword.east) to[out=0, in=180, looseness=0.7] ([yshift= 1.5*\yoffVI,xshift=-1*\yoffVI]pdf.west);
+      
+      \draw[arrow] ([yshift= \yoffII]librewriter.east) to[out=0, in=180, looseness=0.7] (odt.west);
+      \draw[arrow] ([yshift=-\yoffII]librewriter.east) to[out=0, in=180, looseness=0.7] ([yshift= 0.5*\yoffVI,xshift=0*\yoffVI]pdf.west);
+      
+      \draw[arrow] ([yshift= \yoffII]gdoc.east) to[out=0, in=180, looseness=0.7] ([yshift=-1.5*\yoffIII]docx.west);
+      \draw[arrow] ([yshift=-\yoffII]gdoc.east) to[out=0, in=180, looseness=0.7] ([yshift=0*\yoffVI,xshift=1*\yoffVI]pdf.west);
+      
+      \draw[arrow] (latex.east) to[out=0, in=180, looseness=0.7] ([yshift=-0.5*\yoffVI,xshift=0*\yoffVI]pdf.west);
+      
+      \draw[arrow] ([yshift= \yoffIII]powerpoint.east) to[out=0, in=180, looseness=0.7] ([yshift=-1.5*\yoffVI,xshift=-1*\yoffVI]pdf.west);
+      \draw[arrow] (powerpoint.east)                   to[out=0, in=180, looseness=0.7] ([yshift= \yoffII]pptx.west);
+      \draw[arrow] ([yshift=-\yoffIII]powerpoint.east) to[out=0, in=180, looseness=0.7] ([yshift= \yoffII]ppt.west);
+      
+      \draw[arrow] ([yshift= \yoffIII]opowerpoint.east) to[out=0, in=180, looseness=0.7] ([yshift=-2.5*\yoffVI,xshift=-2*\yoffVI]pdf.west);
+      \draw[arrow] (opowerpoint.east)                   to[out=0, in=180, looseness=0.7] ([yshift=-\yoffII]pptx.west);
+      \draw[arrow] ([yshift=-\yoffIII]opowerpoint.east) to[out=0, in=180, looseness=0.7] ([yshift=-\yoffII]ppt.west);
+    }
+    
+    % use
+    \node[use] (report) at (\xuse, 0*\yuseunit+\yuseoffset) {Rapport};
+    \node[use] (stil) at (\xuse, 1*\yuseunit+\yuseoffset) {Stil};
+    \node[use] (presentation) at (\xuse, 2*\yuseunit+\yuseoffset) {Præsentation};
+    
+    % type ↦ use
+    {
+      \draw[arrow] ([yshift= \yoffII]docx.east) to[out=0, in=180, looseness=0.7] ([yshift= 1.5*\yoffIV]report.west);
+      \draw[arrow] ([yshift=-\yoffII]docx.east) to[out=0, in=180, looseness=0.7] ([yshift= 1.5*\yoffIV]stil.west);
+      
+      \draw[arrow] ([yshift= \yoffII]doc.east) to[out=0, in=180, looseness=0.7] ([yshift= 0.5*\yoffIV]report.west);
+      \draw[arrow] ([yshift=-\yoffII]doc.east) to[out=0, in=180, looseness=0.7] ([yshift= 0.5*\yoffIV]stil.west);
+      
+      \draw[arrow] ([yshift= \yoffII]odt.east) to[out=0, in=180, looseness=0.7] ([yshift= -0.5*\yoffIV]report.west);
+      \draw[arrow] ([yshift=-\yoffII]odt.east) to[out=0, in=180, looseness=0.7] ([yshift= -0.5*\yoffIV]stil.west);
+      
+      \draw[arrow] ([yshift= \yoffIII]pdf.east) to[out=0, in=180, looseness=0.7] ([yshift= -1.5*\yoffIV]report.west);
+      \draw[arrow] (                  pdf.east) to[out=0, in=180, looseness=0.7] ([yshift= -1.5*\yoffIV]stil.west);
+      \draw[arrow] ([yshift=-\yoffIII]pdf.east) to[out=0, in=180, looseness=0.7] ([yshift= 1.5*\yoffIII]presentation.west);
+      
+      \draw[arrow] (pptx.east) to[out=0, in=180, looseness=0.7] (presentation.west);
+      
+      \draw[arrow] (ppt.east) to[out=0, in=180, looseness=0.7] ([yshift=-1.5*\yoffIII]presentation.west);
+    }
+  \end{tikzpicture}
+\end{center}
