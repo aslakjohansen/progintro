@@ -1,0 +1,32 @@
+\begin{center}
+  \begin{tikzpicture}[remember picture]
+    \tikzstyle{dir} = [
+      rectangle,
+      draw,
+      anchor=north,
+      align=center,
+    ]
+    \tikzstyle{arrow} = [
+      thick,
+      ->,
+      >=stealth,
+      draw=black,
+    ]
+    
+    \newcommand{\padding}[0]{1cm}
+    \newcommand{\concretecommand}[2]{node[midway,#1] {\scalebox{0.7}{\texttt{\textcolor{purple}{#2}}}}}
+    
+    \coordinate (origo) at (0,0);
+    
+    \node[dir,fill=black,text=white] (wd) at (origo) {current directory};
+    \node[dir,anchor=south] (parent) at ([yshift=\padding] wd.north) {\textsl{parent}};
+    \node[dir] (childII) at ([yshift=-\padding] wd.south) {\textsl{child2}};
+    \node[dir,anchor=east] (childI) at ([xshift=-\padding] childII.west) {\textsl{child1}};
+    \node[dir,anchor=west] (childIII) at ([xshift=\padding] childII.east) {\textsl{child3}};
+    
+    \draw[arrow] (wd)--(parent) node[midway,right] {\scalebox{0.7}{\texttt{\textcolor{purple}{cd ..}}}};
+    \draw[arrow] (wd)--(childI)  node[midway,left] {\scalebox{0.7}{\texttt{\textcolor{purple}{cd child1}}}};
+    \draw[arrow] (wd)--(childII)  node[midway,right] {\scalebox{0.7}{\texttt{\textcolor{purple}{?}}}};
+    \draw[arrow] (wd)--(childIII)  node[midway,right] {\scalebox{0.7}{\texttt{\textcolor{purple}{cd child3}}}};
+  \end{tikzpicture}
+\end{center}
