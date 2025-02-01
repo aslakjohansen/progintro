@@ -1,0 +1,121 @@
+\begin{center}
+  \begin{tikzpicture}[remember picture]
+    \tikzstyle{title} = [
+      anchor=south,
+      align=center,
+    ]
+    \tikzstyle{arrow} = [
+      thick,
+      ->,
+      >=stealth,
+      draw=black,
+    ]
+    \tikzstyle{fileline}=[
+      arrow,
+      ultra thick,
+      draw=black!20,
+    ]
+    \tikzstyle{fd} = [
+      anchor=center,
+      align=center,
+      fill=black!20,
+      minimum width=2cm,
+      minimum height=0.6cm,
+    ]
+    \tikzstyle{data} = [
+      anchor=center,
+      fill=black,
+      minimum width=1.5mm,
+      minimum height=1.5mm,
+    ]
+    
+    \newcommand{\shiftdistance}[0]{5cm}
+    \newcommand{\moddistance}[0]{6mm}
+    \newcommand{\figheight}[0]{5.2cm}
+    
+    \coordinate (memAnchor) at (0,-1cm);
+    \coordinate (userAnchor) at ([xshift=-\shiftdistance, yshift=0] memAnchor);
+    \coordinate (fileAnchor) at ([xshift= \shiftdistance, yshift=0] memAnchor);
+    
+    % user line
+    {
+      \node[title] (userTitle) at ([yshift=2mm] userAnchor) {User\\Interface};
+      \draw[fileline] (userAnchor) -- ([yshift=-\figheight] userAnchor);
+    }
+    
+    % file line
+    {
+      \node[title] (fileTitle) at ([yshift=2mm] fileAnchor) {File of\\Interest};
+      \draw[fileline] (fileAnchor) -- ([yshift=-\figheight] fileAnchor);
+    }
+    
+    % mem line
+    {
+      \node[title] (memTitle) at ([yshift=2mm] memAnchor) {Program\\Memory};
+      \draw[fileline] (memAnchor) -- ([yshift=-\figheight] memAnchor);
+    }
+    
+    % open(file)
+    {
+      \node[fd] (fileOpen) at ([yshift=-4mm] fileAnchor) {\small{open file}};
+    }
+    
+    % buffer
+    {
+      \node[fd, minimum width=0.6cm, minimum height=2.8cm] (buffer) at ([yshift=-25mm] memAnchor) {\rotatebox{90}{\small{buffer}}};
+    }
+    
+    % read
+    {
+      \node[data, anchor=north] (dataI)   at ([yshift=-2mm] fileOpen.south) {};
+      \node[data] (dataII)  at ([yshift=-3.2mm] dataI) {};
+      \node[data] (dataIII) at ([yshift=-3.2mm] dataII) {};
+      
+      \draw[arrow, dashed, draw=blue]
+        ([xshift=-4mm] dataII.center)--([xshift=-\shiftdistance+0.3cm] dataII.center)
+        node[midway,sloped,above]
+        {\scalebox{0.7}{\textsl{\textcolor{blue}{read}}}};
+    }
+    
+    % modify 1
+    {
+      \draw[arrow, dashed, draw=blue]
+        ([xshift=-\shiftdistance, yshift=\moddistance] buffer.center)--([xshift=-0.3cm, yshift=\moddistance] buffer.center)
+        node[midway,sloped,above]
+        {\scalebox{0.7}{\textsl{\textcolor{blue}{modify}}}};
+    }
+    
+    % modify 2
+    {
+      \draw[arrow, dashed, draw=blue]
+        ([xshift=-\shiftdistance, yshift=0mm] buffer.center)--([xshift=-0.3cm, yshift=0mm] buffer.center)
+        node[midway,sloped,above]
+        {\scalebox{0.7}{\textsl{\textcolor{blue}{modify}}}};
+    }
+    
+    % modify 3
+    {
+      \draw[arrow, dashed, draw=blue]
+        ([xshift=-\shiftdistance, yshift=-\moddistance] buffer.center)--([xshift=-0.3cm, yshift=-\moddistance] buffer.center)
+        node[midway,sloped,above]
+        {\scalebox{0.7}{\textsl{\textcolor{blue}{modify}}}};
+    }
+    
+    % write
+    {
+      \node[data] (dstDataIII) at ([yshift=-40mm] fileAnchor) {};
+      \node[data] (dstDataII)  at ([yshift=3.2mm] dstDataIII) {};
+      \node[data] (dstDataI)   at ([yshift=3.2mm] dstDataII) {};
+      
+      \draw[arrow, dashed, draw=blue]
+        ([xshift=-\shiftdistance+0.3cm] dstDataII.center)--([xshift=-4mm] dstDataII.center)
+        node[midway,sloped,above]
+        {\scalebox{0.7}{\textsl{\textcolor{blue}{write}}}};
+    }
+    
+    % close(file)
+    {
+      \node[fd] (fileClose) at ([yshift=-46mm] fileAnchor) {\small{close file}};
+    }
+  \end{tikzpicture}
+\end{center}
