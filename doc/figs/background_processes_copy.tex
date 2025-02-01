@@ -1,0 +1,112 @@
+\begin{center}
+  \begin{tikzpicture}[remember picture]
+    \tikzstyle{title} = [
+      anchor=south,
+      align=center,
+    ]
+    \tikzstyle{arrow} = [
+      thick,
+      ->,
+      >=stealth,
+      draw=black,
+    ]
+    \tikzstyle{fileline}=[
+      arrow,
+      ultra thick,
+      draw=black!20,
+    ]
+    \tikzstyle{fd} = [
+      anchor=center,
+      align=center,
+      fill=black!20,
+      minimum width=2cm,
+      minimum height=0.6cm,
+    ]
+    \tikzstyle{data} = [
+      anchor=center,
+      fill=black,
+      minimum width=1.5mm,
+      minimum height=1.5mm,
+    ]
+    
+    \newcommand{\shiftdistance}[0]{5cm}
+    \newcommand{\figheight}[0]{5.2cm}
+    
+    \coordinate (memAnchor) at (0,-1cm);
+    \coordinate (srcAnchor) at ([xshift=-\shiftdistance, yshift=0] memAnchor);
+    \coordinate (dstAnchor) at ([xshift= \shiftdistance, yshift=0] memAnchor);
+    
+    % src line
+    {
+      \node[title] (srcTitle) at ([yshift=2mm] srcAnchor) {Source\\File};
+      \draw[fileline] (srcAnchor) -- ([yshift=-\figheight] srcAnchor);
+    }
+    
+    % dst line
+    {
+      \node[title] (dstTitle) at ([yshift=2mm] dstAnchor) {Destinations\\File};
+      \draw[fileline] (dstAnchor) -- ([yshift=-\figheight] dstAnchor);
+    }
+    
+    % mem line
+    {
+      \node[title] (memTitle) at ([yshift=2mm] memAnchor) {Program\\Memory};
+      \draw[fileline] (memAnchor) -- ([yshift=-\figheight] memAnchor);
+    }
+    
+    % open(src)
+    {
+      \node[fd] (srcOpen) at ([yshift=-4mm] srcAnchor) {\small{open file}};
+    }
+    
+    % open(dst)
+    {
+      \node[fd] (dstOpen) at ([yshift=-11mm] dstAnchor) {\small{open file}};
+    }
+    
+    % buffer
+    {
+      \node[fd, minimum width=0.6cm, minimum height=1.4cm] (buffer) at ([yshift=-25mm] memAnchor) {\rotatebox{90}{\small{buffer}}};
+    }
+    
+    % read
+    {
+      \node[data] (srcDataI)   at ([yshift=-19mm] srcAnchor) {};
+      \node[data] (srcDataII)  at ([yshift=-3.2mm] srcDataI) {};
+      \node[data] (srcDataIII) at ([yshift=-3.2mm] srcDataII) {};
+      
+      \draw[arrow, dashed, draw=blue]
+        ([xshift=4mm] srcDataII.center)--([xshift=\shiftdistance-0.3cm] srcDataII.center)
+        node[midway,sloped,above]
+        {\scalebox{0.7}{\textsl{\textcolor{blue}{read}}}};
+    }
+    
+    % write
+    {
+      \node[data] (dstDataIII) at ([yshift=-31mm] dstAnchor) {};
+      \node[data] (dstDataII)  at ([yshift=3.2mm] dstDataIII) {};
+      \node[data] (dstDataI)   at ([yshift=3.2mm] dstDataII) {};
+      
+      \draw[arrow, dashed, draw=blue]
+        ([xshift=-\shiftdistance+0.3cm] dstDataII.center)--([xshift=-4mm] dstDataII.center)
+        node[midway,sloped,above]
+        {\scalebox{0.7}{\textsl{\textcolor{blue}{write}}}};
+    }
+    
+    % repetition
+    {
+      \node[rectangle, thick, dashed, draw=purple, anchor=center, minimum width=2*\shiftdistance+10mm, minimum height=1.8cm] (repetition) at ([yshift=-25mm] memAnchor) {};
+      \node[] (repetitionLabel) at ([xshift=-2mm] repetition.west) {\rotatebox{90}{\scalebox{0.60}{\textsl{\textcolor{purple}{repeat as needed}}}}};
+    }
+    
+    % close(src)
+    {
+      \node[fd] (srcOpen) at ([yshift=-39mm] srcAnchor) {\small{close file}};
+    }
+    
+    % close(dst)
+    {
+      \node[fd] (dstOpen) at ([yshift=-46mm] dstAnchor) {\small{close file}};
+    }
+  \end{tikzpicture}
+\end{center}
