@@ -1,6 +1,7 @@
 \section{Graphs}
+\idx{Graph}
 
-A graph is the combination of a set of nodes and a set of edges between these nodes. You could see the nodes as \textsl{things} and the edges as \textsl{relationships between things}. But lets take a look at the concrete example of figure \ref{fig:bs:graphs:graph}. Here, we have nine nodes -- $n_1$ through $n_9$ -- and eleven edges. The layout of where the individual nodes a placed doesn't mater. So, we could flip the positions of $n_4$ and $n_7$ whichout changing the graph itself. Although, the representation of the graph would obviously change.
+A graph is the combination of a set of nodes and a set of edges between these nodes. You could see the nodes\idx{Node} as \textsl{things} and the edges\idx{Edge} as \textsl{relationships between things}. But lets take a look at the concrete example of figure \ref{fig:bs:graphs:graph}. Here, we have nine nodes -- $n_1$ through $n_9$ -- and eleven edges. The layout of where the individual nodes a placed doesn't mater. So, we could flip the positions of $n_4$ and $n_7$ whichout changing the graph itself. Although, the representation of the graph would obviously change.
 
 \begin{figure}[tbp]
   \input{figs/graph.tex}
@@ -8,7 +9,7 @@ A graph is the combination of a set of nodes and a set of edges between these no
   \label{fig:bs:graphs:graph}
 \end{figure}
 
-Edges may be \textsl{directional} as in figure \ref{fig:bs:graphs:directed}. This means that there is an edge from $n_1$ to $n_2$ but not the other way around. We say that the \textsl{source node} of this edge is $n_1$ and the \textsl{destination} node is $n_2$. Another way to look at it is that this edge belong to the set of \textsl{outgoing edges} of $n_1$ as well as the set of \textsl{incoming edges} of $n_2$. Most graphs in computer science consists of directed edges.
+Edges may be \textsl{directional}\idxx{Edge!Directed}{Directed edge} as in figure \ref{fig:bs:graphs:directed}. This means that there is an edge from $n_1$ to $n_2$ but not the other way around. We say that the \textsl{source node}\idxx{Node!Source}{Source node} of this edge is $n_1$ and the \textsl{destination node}\idxx{Node!Destination}{Destination node}  is $n_2$. Another way to look at it is that this edge belong to the set of \textsl{outgoing edges}\idxx{Edge!Outgoing}{Outgoing edge} of $n_1$ as well as the set of \textsl{incoming edges}\idxx{Edge!Incoming}{Incoming edge} of $n_2$. Most graphs in computer science consists of directed edges. If all edges in a graph are directed, then we say that the graph is directed\idxx{Graph!Directed}{Directed graph} or simply that it is a \textsl{digraph}.
 
 \begin{figure}[tbp]
   \input{figs/graph_directed.tex}
@@ -16,7 +17,7 @@ Edges may be \textsl{directional} as in figure \ref{fig:bs:graphs:directed}. Thi
   \label{fig:bs:graphs:directed}
 \end{figure}
 
-Both nodes and edges can be associated with data. Edges, for instance, are often associated with \textsl{weights}. Such a graph is called a \textsl{weighted graph}. Figure \ref{fig:bs:graphs:weighted} illustrates such an example. Directed graphs can be used to model road networks. Each node is then a point of interest (e.g., a city or a crossing), and edges represents roads. The weight of an edge is the distance of that road. So, we might say that there is a distance of $1.1~\mathrm{km}$ from $n_9$ to $n_8$.
+Both nodes and edges can be associated with data. Edges, for instance, are often associated with \textsl{weights}\idxx{Edge!Weighted}{Weighted edge}. Such a graph is called a \textsl{weighted graph}\idxx{Graph!Weighted}{Weighted graph}. Figure \ref{fig:bs:graphs:weighted} illustrates such an example. Directed graphs can be used to model road networks. Each node is then a point of interest (e.g., a city or a crossing), and edges represents roads. The weight of an edge is the distance of that road. So, we might say that there is a distance of $1.1~\mathrm{km}$ from $n_9$ to $n_8$.
 
 \begin{figure}[tbp]
   \input{figs/graph_weighted.tex}
@@ -24,7 +25,7 @@ Both nodes and edges can be associated with data. Edges, for instance, are often
   \label{fig:bs:graphs:weighted}
 \end{figure}
 
-A routefinding application -- like Google Maps -- has access to a a weighted graph of some area. When you ask it for a route from $n_1$ to $n_6$ it will try to find a sequence of edges where the source node of one edge is the same as the destination node of the previous edge. Such a sequence is called a \textsl{path}, and the resulting path is illustrated in figure \ref{fig:bs:graphs:path}.
+A routefinding application -- like Google Maps -- has access to a a weighted graph of some area. When you ask it for a route from $n_1$ to $n_6$ it will try to find a sequence of edges where the source node of one edge is the same as the destination node of the previous edge. Such a sequence is called a \textsl{path}\idx{Path}, and the resulting path is illustrated in figure \ref{fig:bs:graphs:path}.
 
 \begin{figure}[tbp]
   \input{figs/graph_path.tex}
@@ -32,7 +33,7 @@ A routefinding application -- like Google Maps -- has access to a a weighted gra
   \label{fig:bs:graphs:path}
 \end{figure}
 
-Figure \ref{fig:bs:graphs:cycle} illustrates a special kin of path called a cycle. This is a path where the destination node of the last edge is the same as the source node of the first edge. While they are often necessesary, their potential existence complicates the code of the programs that have to deal with them. For this reason we often see software designed to handle the class of graphs that have no cycles. These are called \textsl{Directed Acyclic Graphs}, or \textsl{DAGs} for short.
+Figure \ref{fig:bs:graphs:cycle} illustrates a special kind of path called a cycle\idx{Cyce}. This is a path where the destination node of the last edge is the same as the source node of the first edge. While they are often necessesary, their potential existence complicates the code of the programs that have to deal with them. For this reason we often see software designed to handle the class of graphs that have no cycles. These are called \textsl{Directed Acyclic Graphs}, or \textsl{DAGs}\idx{DAG} for short.
 
 \begin{figure}[tbp]
   \input{figs/graph_cycle.tex}
@@ -43,6 +44,7 @@ Figure \ref{fig:bs:graphs:cycle} illustrates a special kin of path called a cycl
 % reachability, connected graph
 
 \subsection{Trees}
+\idx{Tree}
 
 A connected graph with $n$ nodes has at least $n-1$ edges. If it has exactly $n-1$ edges then it belongs to the class of graphs called \textsl{trees}. Trees are traditionally drawn upside down, like in figure \ref{fig:bs:graphs:trees}. Just as with other graphs, we have some liberty in how to draw the nodes and edges. Here, we have left out the identities of the individual nodes.
 
@@ -52,7 +54,7 @@ A connected graph with $n$ nodes has at least $n-1$ edges. If it has exactly $n-
   \label{fig:bs:graphs:trees}
 \end{figure}
 
-A special node of the tree is called the \textsl{root node}. It is drawn at the top of the illustration, and it has exactly one path the each of the other nodes of the graph. As illustrated in figure \ref{fig:bs:graphs:trees:nodetypes}, each of the nodes in a tree are often categorized as either \textsl{leaf nodes} (with no outgoing edges) or \textsl{branch nodes} (typically with outgoing edges).
+A special node of the tree is called the \textsl{root node}\idxx{Node!Root}{Root node}. It is drawn at the top of the illustration, and it has exactly one path the each of the other nodes of the graph. As illustrated in figure \ref{fig:bs:graphs:trees:nodetypes}, each of the nodes in a tree are often categorized as either \textsl{leaf nodes}\idxx{Node!Leaf}{Leaf node} (with no outgoing edges) or \textsl{branch nodes}\idxx{Node!Branch}{Branch node} (typically with outgoing edges).
 
 \begin{figure}[tbp]
   \input{figs/graph_tree_nodetypes.tex}
