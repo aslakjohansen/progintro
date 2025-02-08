@@ -8,11 +8,15 @@ A graph is the combination of a set of nodes and a set of edges between these no
   \label{fig:bs:graphs:graph}
 \end{figure}
 
+Edges may be \textsl{directional} as in figure \ref{fig:bs:graphs:directed}. This means that there is an edge from $n_1$ to $n_2$ but not the other way around. We say that the \textsl{source node} of this edge is $n_1$ and the \textsl{destination} node is $n_2$. Most graphs in computer science consists of directed edges.
+
 \begin{figure}[tbp]
   \input{figs/graph_directed.tex}
   \caption{Example of a directed graph.}
   \label{fig:bs:graphs:directed}
 \end{figure}
+
+Both nodes and edges can be associated with data. Edges, for instance, are often associated with \textsl{weights}. Such a graph is called a \textsl{weighted graph}. Figure \ref{fig:bs:graphs:weighted} illustrates such an example. Directed graphs can be used to model road networks. Each node is then a point of interest (e.g., a city or a crossing), and edges represents roads. The weight of an edge is the distance of that road. So, we might say that there is a distance of $1.1~\mathrm{km}$ from $n_9$ to $n_8$.
 
 \begin{figure}[tbp]
   \input{figs/graph_weighted.tex}
@@ -20,11 +24,15 @@ A graph is the combination of a set of nodes and a set of edges between these no
   \label{fig:bs:graphs:weighted}
 \end{figure}
 
+A routefinding application -- like Google Maps -- has access to a a weighted graph of some area. When you ask it for a route from $n_1$ to $n_6$ it will try to find a sequence of edges where the source node of one edge is the same as the destination node of the previous edge. Such a sequence is called a \textsl{path}, and the resulting path is illustrated in figure \ref{fig:bs:graphs:path}.
+
 \begin{figure}[tbp]
   \input{figs/graph_path.tex}
   \caption{Example of a path in a graph.}
   \label{fig:bs:graphs:path}
 \end{figure}
+
+Figure \ref{fig:bs:graphs:cycle} illustrates a special kin of path called a cycle. This is a path where the destination node of the last edge is the same as the source node of the first edge. While they are often necessesary, their potential existence complicates the code of the programs that have to deal with them. For this reason we often see software designed to handle the class of graphs that have no cycles. These are called \textsl{Directed Acyclic Graphs}, or \textsl{DAGs} for short.
 
 \begin{figure}[tbp]
   \input{figs/graph_cycle.tex}
