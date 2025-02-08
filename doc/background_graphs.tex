@@ -8,7 +8,7 @@ A graph is the combination of a set of nodes and a set of edges between these no
   \label{fig:bs:graphs:graph}
 \end{figure}
 
-Edges may be \textsl{directional} as in figure \ref{fig:bs:graphs:directed}. This means that there is an edge from $n_1$ to $n_2$ but not the other way around. We say that the \textsl{source node} of this edge is $n_1$ and the \textsl{destination} node is $n_2$. Most graphs in computer science consists of directed edges.
+Edges may be \textsl{directional} as in figure \ref{fig:bs:graphs:directed}. This means that there is an edge from $n_1$ to $n_2$ but not the other way around. We say that the \textsl{source node} of this edge is $n_1$ and the \textsl{destination} node is $n_2$. Another way to look at it is that this edge belong to the set of \textsl{outgoing edges} of $n_1$ as well as the set of \textsl{incoming edges} of $n_2$. Most graphs in computer science consists of directed edges.
 
 \begin{figure}[tbp]
   \input{figs/graph_directed.tex}
@@ -40,7 +40,11 @@ Figure \ref{fig:bs:graphs:cycle} illustrates a special kin of path called a cycl
   \label{fig:bs:graphs:cycle}
 \end{figure}
 
+% reachability, connected graph
+
 \subsection{Trees}
+
+A connected graph with $n$ nodes has at least $n-1$ edges. If it has exactly $n-1$ edges then it belongs to the class of graphs called \textsl{trees}. Trees are traditionally drawn upside down, like in figure \ref{fig:bs:graphs:trees}. Just as with other graphs, we have some liberty in how to draw the nodes and edges. Here, we have left out the identities of the individual nodes.
 
 \begin{figure}[tbp]
   \input{figs/graph_tree.tex}
@@ -48,9 +52,13 @@ Figure \ref{fig:bs:graphs:cycle} illustrates a special kin of path called a cycl
   \label{fig:bs:graphs:trees}
 \end{figure}
 
+A special node of the tree is called the \textsl{root node}. It is drawn at the top of the illustration, and it has exactly one path the each of the other nodes of the graph. As illustrated in figure \ref{fig:bs:graphs:trees:nodetypes}, each of the nodes in a tree are often categorized as either \textsl{leaf nodes} (with no outgoing edges) or \textsl{branch nodes} (typically with outgoing edges).
+
 \begin{figure}[tbp]
   \input{figs/graph_tree_nodetypes.tex}
   \caption{Node types of a tree.}
   \label{fig:bs:graphs:trees:nodetypes}
 \end{figure}
+
+Trees are typically used for searching or representing hierarchical data. This could be a taxonomy tree, or the \textsl{nesting} of elements in a graphical user interface.
 
