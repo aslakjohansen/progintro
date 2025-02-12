@@ -75,6 +75,9 @@
 \newcommand{\idx}[1]{\index{#1}\marginpar{\raggedright \tiny #1}}
 \newcommand{\idxx}[2]{\index{#1}\marginpar{\raggedright \tiny #2}}
 
+% https://tex.stackexchange.com/questions/210435/adding-space-in-toc-between-the-part-number-and-part-title
+\renewcommand\partnumberlinebox[2]{#2\hspace{1em}}
+
 \title{Introduction to Programming \ldots\ in \csharp}
 \author{Aslak Johansen \href{mailto:asjo@mmmi.sdu.dk}{asjo@mmmi.sdu.dk}}
 
