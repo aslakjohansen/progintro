@@ -2,10 +2,10 @@
 \idx{Filesystem}
 
 % what(for a computer)
-Most computers organize persisted data in files. That the data are persisted\idx{Persistence} means that the data will survive a power cycle\idx{Power cycle} of the computer (i.e., that it is turned off and on again).
+Most computers organize persisted data in files. That the data are persisted\idx{Persistence} means that the data will survive a power cycle\idx{Power cycle} of the computer (i.e., that it is turned off and on again). All data available to the operating system (includin programs and configuration) is stored in files.
 
 % what: tree
-Filesystems are \textsl{mostly} tree structures.
+Filesystems are \textsl{mostly} tree structures, organizing files in directories. A directory is a special form of file that can group other files. In tree terminology, they are branch nodes whereas ordinary files are leaf nodes. The visual metaphore that graphical user interfaces use to refer to directories is the folder. But at the filesystem level -- which is what we care about as programmers -- it is a directory. Figure \ref{fig:bs:fs} shows what a typical filesystem could look like.
 
 \begin{figure}[tbp]
   \input{figs/fs.tex}
