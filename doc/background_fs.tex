@@ -13,6 +13,8 @@ Filesystems are \textsl{mostly} tree structures, organizing files in directories
   \label{fig:bs:fs}
 \end{figure}
 
+\subsection{Mounting}
+
 Removable media, like a USB drive, are usually formatted to contain a filesystem. That is why we can place images and documents on it. In order to access that filesystem on your computer it must be mounted once attached. A mount\idx{Mounting} operation essentially makes a specific directory -- the mountpoint\idx{Mount point} -- a shorthand of the root of the mounted filesystem, thereby practically grafting the mounted filesystem to the root\idxx{Filesystem!Root}{Root filesystem} filesystem. The result of the mount operation is illustrated in figure \ref{fig:bs:fs:mounting}. On DOS\idx{DOS}-based systems (such as the Windows\idx{Windows} family of operating systems),
 each known filesystem is assigned a letter, and a (hidden) root directory refers
 to each of these.
@@ -46,6 +48,8 @@ While modern versions of the Windows family of operating systems does have some 
   \caption{Example of an absolute path in a filesystem.}
   \label{fig:bs:fs:path:abs}
 \end{figure}
+
+\subsection{Paths}
 
 \begin{figure}[tbp]
   \input{figs/fs_path_rel.tex}
