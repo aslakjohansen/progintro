@@ -23,6 +23,12 @@ to each of these.
   \label{fig:bs:fs:mounting}
 \end{figure}
 
+\subsection{Links}
+
+Modern filesystems support links though, and that is a feature that makes them break their adherence to the tree definition. A link is a special kind of file that refers to an other file (regular or directory). Figure \ref{fig:bs:fs:links} shows a scenario where a link refers to a regular file. That means that we have two paths from the root node to this regular file; one that goes through the link and one that doesn't. That means that the filesystem is no longer a tree structure. As illustrated in figure \ref{fig:bs:fs:cycles}, a link can also go backward. By pointing to a directory earlier in the path from the root node to the link node a cycle is created. This will complicate things if we need to scan the entire filesystem. Because of this, you often see commandline tools have options for following or not following links.
+
+While modern versions of the Windows family of operating systems does have some support for links, it can be sketchy. Instead they support \textsl{shortcuts} through a special \filename{LNK} file format. The content of a file following this format is a path to a file that the link points to. While this solution is a bit more flexible, it has to be interpreted by each application instead of the filesystem and is thus harder to work with and less performant.
+
 \begin{figure}[tbp]
   \input{figs/fs_links.tex}
   \caption{Example of a link in a filesystem.}
