@@ -1,13 +1,13 @@
 \section{Processes}
 
-Seen from the perspective of the operating system, the stuff that runs on your computer is split into processes. Sometimes an application will consist of multiple processes, but most of the time there will be one process per application. But there are other processes. Some perform services under the hood, and others handle the interaction between the user and the operating system.
+Seen from the perspective of the operating system, the stuff that runs on your computer is split into processes\idx{Process}. Sometimes an application will consist of multiple processes, but most of the time there will be one process per application. But there are other processes. Some perform services under the hood, and others handle the interaction between the user and the operating system.
 
 \subsection{Kernel}
 
-Any general-purpose operating system will have a \textsl{kernel} at its core. The kernel is a gatekeeper of pretty much every central operation. It is involved whenever the computer receives input and whenever a process want to create an output. It is where processes are created, stopped and given time.
+Any general-purpose operating system will have a \textsl{kernel}\idx{Kernel} at its core. The kernel is a gatekeeper of pretty much every central operation. It is involved whenever the computer receives input and whenever a process want to create an output. It is where processes are created, stopped and given time.
 
 % time
-Processes are typically written as if nothing else is running on the machine. But in reality, lots of processes are running at any given time. In fact, while I am writing this text, I have 643 processes running on my laptop. Some of them are active, and others are waiting for some kind of input. The kernel is making sure that each of the active ones get time (on the processor) on a regular basis. As other processes need time as well, this also means that there are interruptions in the time given to each process. This in term means that the processes essentially experience gaps in time where they are frozen.
+Processes are typically written as if nothing else is running on the machine. But in reality, lots of processes are running at any given time. In fact, while I am writing this text, I have 643 processes running on my laptop. Some of them are active\idxx{Process!Active}{Active process}, and others are waiting\idxx{Process!Waiting}{Waiting process} for some kind of input. The kernel is making sure that each of the active ones get time (on the processor) on a regular basis. As other processes need time\idx{Time} as well, this also means that there are interruptions in the time given to each process. This in term means that the processes essentially experience gaps in time where they are frozen.
 
 \subsection{Desktop Environment}
 
