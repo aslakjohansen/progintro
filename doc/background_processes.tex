@@ -4,6 +4,11 @@ Seen from the perspective of the operating system, the stuff that runs on your c
 
 \subsection{Kernel}
 
+Any general-purpose operating system will have a \textsl{kernel} at its core. The kernel is a gatekeeper of pretty much every central operation. It is involved whenever the computer receives input and whenever a process want to create an output. It is where processes are created, stopped and given time.
+
+% time
+Processes are typically written as if nothing else is running on the machine. But in reality, lots of processes are running at any given time. In fact, while I am writing this text, I have 643 processes running on my laptop. Some of them are active, and others are waiting for some kind of input. The kernel is making sure that each of the active ones get time (on the processor) on a regular basis. As other processes need time as well, this also means that there are interruptions in the time given to each process. This in term means that the processes essentially experience gaps in time where they are frozen.
+
 \subsection{Desktop Environment}
 
 % what: one or more processes, drawing on screen, arranging windows, starting applications, services for common configuration and communication
