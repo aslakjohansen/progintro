@@ -16,11 +16,26 @@ All values that we may want to work with in a computer are, one way or the other
 Computers typically works with other classes of numbers. In the following sections, we will explore the most commonly used ones. Common to these is that they are all represented in binary numbers. That is, using the base-2 digits. We are used to working with base-10 where numbers are digits between zero and nine. In base-2, the numbers are made up of digits between zero and one (i.e., \texttt{0} or \texttt{1}). Such a digit is called a \term{bit}, and a sequence of eight bits is referred to as a \term{byte}. The plural forms of the singular bit and byte is bits and bytes. Bits are, by the way, the SI unit of information, in the same way as meter is the SI unit of distance. Accordingly, we measure information in bits.
 
 \subsection{Operations}
+
+% basic operations
+All general purpose languages support the four basic arithmetic operators for addition, substraction, multiplication and division of integers. The tree first of these will guarantee an integral result. For instance, if you add two integers, you will get an integer. The \textsl{size} of this integer may be affected though. But more on that in section \ref{primitives:int:representation}.
+
+% that division thing
+That rule, about the result of an operation resuling in an integral value does not hold for the division operation though. Mathematically, the result \textsl{may} be integral, but generally speaking there is no guarantee, and more often than not it is simply not the case. Most programming languages supports two types of division; namely \textsl{integer division} and \textsl{floating-point division}. The result of a floating-point division is a floating-point number as introduced in section \ref{primitives:float}. The result of an integer division is an integer.
+
+% remainder vs modulo
+This operation is tightly coupled to both the remainder and the modulo operations. The difference between these is how they handle negative numbers.
+
+% TODO: Figure of remainder vs modulo
+
 \subsection{Representation}
+\label{primitives:int:representation}
+
 \csharpsubsection{\csharp}
 \elixirsubsection{Elixir}
 
 \section{Floating Point Numbers}
+\label{primitives:float}
 
 \subsection{Operations}
 \subsection{Representation}
