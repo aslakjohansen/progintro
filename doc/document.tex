@@ -6,6 +6,7 @@
 \usepackage{marginnote} % for margin notes
 \usepackage{minipage-marginpar} % for the minipagewithmarginpars environment that allows marginpar commands in a minipage
 \usepackage{amsfonts} % \mathbb
+\usepackage[table]{xcolor} % coloring cells in tabular environments
 
 % tikz
 \usepackage{tikz}
@@ -67,6 +68,22 @@
   
   \raggedleft{--- \textsl{\saveme}}
   \end{minipagewithmarginpars}
+  \end{center}
+}
+
+\newenvironment{syntaxsegment}[1][0.9]
+{
+  \begin{center}
+    \begin{tabular}{|p{#1\textwidth}|}
+      \hline
+      \cellcolor[gray]{0.9}
+      \textbf{Syntax} \\
+      \hline
+      \cellcolor[gray]{0.95}
+}{
+      \\
+      \hline
+    \end{tabular}
   \end{center}
 }
 
