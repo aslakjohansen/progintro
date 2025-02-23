@@ -32,7 +32,11 @@
 
 \subsection{Colors}
 
-In a computer, colors are typically represented using three values; one for red intensity, one for green intensity, and one for blue intensity. We say that these are the \textsl{components} of the color. There is a number of ways to express such an intensity. It seem natural to use a number between 0 and 100, or perhaps a number between 0.0 and 1.0. However, due to the way processors work on integers, these boundaries are not particularly special. Typically, a byte is use to represent each component of the color. That means that we have the ability to express $2^8=256$ different intensities of each component, or a total of $256^3=16777216$ different colors. The value zero is used to represent complete darkness. Full intensity is then the value 255.
+% light as a spectrum
+Light is made up of photons, and each photon has a wavelength. The wavelength of the photons determines which color our eyes will observe. A wavelength of 380nm is violet and one of 740nm is red. In between these you have all the colors of the rainbow, in the order of the rainbow. Coincidence? Just outside of the visual spectrum, you will find infra-red and ultra-violet. Our eyes are, however, constantly bombarded by photons, so in reality we always observe a distribution across this spectrum. Our eyes, though only has three (or four) tunings of receptors. These, roughly corresponds to red, green and blue. So, your eyes (and brains) need to do a lot of interpretation.
+
+% computer representation
+In a computer, colors are typically represented using three values; one for red intensity, one for green intensity, and one for blue intensity. That somehow matches the model of our eyes \ldots We say that these are the \textsl{components} of the color. There is a number of ways to express such an intensity. It seem natural to use a number between 0 and 100, or perhaps a number between 0.0 and 1.0. However, due to the way processors work on integers, these boundaries are not particularly special. Typically, a byte is use to represent each component of the color. That means that we have the ability to express $2^8=256$ different intensities of each component, or a total of $256^3=16777216$ different colors. The value zero is used to represent complete darkness. Full intensity is then the value 255.
 
 % figure: color cube
 \begin{figure}[tbp]
@@ -42,9 +46,7 @@ In a computer, colors are typically represented using three values; one for red 
 \end{figure}
 
 % color spaces
-This constitutes a \textsl{color space} whereby all colors fit within a color cube spanned by the red, green and blue color vectors. Hence, it is named the RGB color space. Figure \ref{fig:primdata:struct:color} depicts this space. It is a direct fit for how GPUs represent images. Other color spaces exist though, and there are good reasons for their existence. Other popular color spaces include HSV (which is shaped like a cylinder) and XYZ (which is shaped like an tongue). Formulas exists for converting between these.
-
-% light
+This constitutes a \textsl{color space} whereby all colors fit within a color cube spanned by the red, green and blue color vectors. Hence, it is named the RGB color space. Figure \ref{fig:primdata:struct:color} depicts this space. It is a direct fit for how GPUs represent images. Other color spaces exist though, and there are good reasons for their existence. Other popular color spaces include HSV (which is shaped like a cylinder) and XYZ (which is shaped like an tongue). Formulas exists for converting between these. Each of these color spaces represents practical simplifications of what light really is.
 
 \subsection{Points}
 
