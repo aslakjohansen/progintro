@@ -1,11 +1,10 @@
 \section{Filesystems}
-\idx{Filesystem}
 
 % what(for a computer)
-Most computers organize persisted data in files. That the data are persisted\idx{Persistence} means that the data will survive a power cycle\idx{Power cycle} of the computer (i.e., that it is turned off and on again). All data available to the operating system (includin programs and configuration) is stored in files.
+Most computers organize persisted data in files. That the data are \defi{persisted}{Persistence} means that the data will survive a \idx{Power cycle}{Power cycle} of the computer (i.e., that it is turned off and on again). All data available to the operating system (includin programs and configuration) is stored in files in a \idx{filesystem}{Filesystem}.
 
 % what: tree
-Filesystems are \textsl{mostly} tree structures, organizing files in directories. A directory\idx{Directory} is a special form of file that can group other files. In tree terminology, they are branch nodes whereas ordinary files are leaf nodes. The visual metaphore that graphical user interfaces use to refer to directories is the folder. But at the filesystem level -- which is what we care about as programmers -- it is a directory. Figure \ref{fig:bs:fs} shows what a typical filesystem could look like.
+Filesystems are \textsl{mostly} tree structures, organizing files in directories. A \defi{directory}{Directory} is a special form of file that can group other files. In tree terminology, they are branch nodes whereas ordinary files are leaf nodes. The visual metaphore that graphical user interfaces use to refer to directories is the folder. But at the filesystem level -- which is what we care about as programmers -- it is a directory. Figure \ref{fig:bs:fs} shows what a typical filesystem could look like.
 
 \begin{figure}[tbp]
   \input{figs/fs.tex}
@@ -15,7 +14,7 @@ Filesystems are \textsl{mostly} tree structures, organizing files in directories
 
 \subsection{Mounting}
 
-Removable media, like a USB drive, are usually formatted to contain a filesystem. That is why we can place images and documents on it. In order to access that filesystem on your computer it must be mounted once attached. A mount\idx{Mounting} operation essentially makes a specific directory -- the mountpoint\idx{Mount point} -- a shorthand of the root of the mounted filesystem, thereby practically grafting the mounted filesystem to the root\idxx{Filesystem!Root}{Root filesystem} filesystem. The result of the mount operation is illustrated in figure \ref{fig:bs:fs:mounting}. On DOS\idx{DOS}-based systems (such as the Windows\idx{Windows} family of operating systems),
+Removable media, like a USB drive, are usually formatted to contain a filesystem. That is why we can place images and documents on it. In order to access that filesystem on your computer it must be mounted once attached. A \idx{mount}{Mounting} operation essentially makes a specific directory -- the \idx{mount point}{Mount point} -- a shorthand of the root of the mounted filesystem, thereby practically grafting the mounted filesystem to the \idx{root filesystem}{Filesystem!Root}. The result of the mount operation is illustrated in figure \ref{fig:bs:fs:mounting}. On \idxx{DOS}-based systems (such as the \idxx{Windows} family of operating systems),
 each known filesystem is assigned a letter, and a (hidden) root directory refers
 to each of these.
 
@@ -27,9 +26,9 @@ to each of these.
 
 \subsection{Links}
 
-Modern filesystems support links though, and that is a feature that makes them break their adherence to the tree definition. A link\idx{Link} is a special kind of file that refers to an other file (regular or directory). Figure \ref{fig:bs:fs:links} shows a scenario where a link refers to a regular file. That means that we have two paths from the root node to this regular file; one that goes through the link and one that doesn't. That means that the filesystem is no longer a tree structure. As illustrated in figure \ref{fig:bs:fs:cycles}, a link can also go backward. By pointing to a directory earlier in the path from the root node to the link node a cycle\idx{Cycle} is created. This will complicate things if we need to scan the entire filesystem. Because of this, you often see commandline tools have options for following or not following links.
+Modern filesystems support links though, and that is a feature that makes them break their adherence to the tree definition. A \idx{link}{Link} is a special kind of file that refers to an other file (regular or directory). Figure \ref{fig:bs:fs:links} shows a scenario where a link refers to a regular file. That means that we have two paths from the root node to this regular file; one that goes through the link and one that doesn't. That means that the filesystem is no longer a tree structure. As illustrated in figure \ref{fig:bs:fs:cycles}, a link can also go backward. By pointing to a directory earlier in the path from the root node to the link node a \idx{cycle}{Cycle} is created. This will complicate things if we need to scan the entire filesystem. Because of this, you often see commandline tools have options for following or not following links.
 
-While modern versions of the Windows\idx{Windows} family of operating systems does have some support for links, it can be sketchy. Instead they support \textsl{shortcuts}\idx{Shortcut} through a special \filename{LNK}\idxx{LNK file format@\filename{LNK} file format}{\filename{LNK} file format} file format. The content of a file following this format is a path to a file that the link points to. While this solution is a bit more flexible, it has to be interpreted by each application instead of the filesystem and is thus harder to work with and less performant.
+While modern versions of the \idxx{Windows} family of operating systems does have some support for links, it can be sketchy. Instead they support \idx{shortcuts}{Shortcut} through a special \idx{\filename{LNK}}{LNK file format@\filename{LNK} file format} file format. The content of a file following this format is a path to a file that the link points to. While this solution is a bit more flexible, it has to be interpreted by each application instead of the filesystem and is thus harder to work with and less performant.
 
 \begin{figure}[tbp]
   \input{figs/fs_links.tex}
@@ -47,13 +46,13 @@ While modern versions of the Windows\idx{Windows} family of operating systems do
 
 When we want to work with a file, we need to be able to refer to it. That happens through a name, and that name can take two forms; either it is an \textsl{absolute} path or it is a \textsl{relative} path:
 \begin{itemize}
-  \descitem{Absolute Path:}\idxx{Path!Absolute}{Absolute path} An absolute path (like the one from figure \ref{fig:bs:fs:path:abs}) is a path that starts in the filesystem root and goes to the node representing the file of interest. That is, it is the sequence of steps needed to be taken in order to step through the graph of the filesystem in order to go from the root to the file.
-  \descitem{Relative Path:}\idxx{Path!Relative}{Relative path} A relative path (like the one from figure \ref{fig:bs:fs:path:rel}) is essentially the same as an absolute path except that the starting point is not the root of the filesystem, but the current working directory.
+  \descitem{\idx{Absolute Path}{Path!Absolute}:} An absolute path (like the one from figure \ref{fig:bs:fs:path:abs}) is a path that starts in the filesystem root and goes to the node representing the file of interest. That is, it is the sequence of steps needed to be taken in order to step through the graph of the filesystem in order to go from the root to the file.
+  \descitem{\idx{Relative Path}{Path!Relative}:} A relative path (like the one from figure \ref{fig:bs:fs:path:rel}) is essentially the same as an absolute path except that the starting point is not the root of the filesystem, but the current working directory.
   
-  Every process is -- so to say -- standing in a directory, and this is called the current working directory\idxx{Directory!Current working}{Current working directory}. Current, because you can change it by transitioning either towards the root of the filesystem, or by following one of the outgoing edges of the node representing the current working directory.
+  Every process is -- so to say -- standing in a directory, and this is called the \idx{current working directory}{Directory!Current working}. Current, because you can change it by transitioning either towards the root of the filesystem, or by following one of the outgoing edges of the node representing the current working directory.
 \end{itemize}
 
-So, a path is a sequence of names of steps (typically directories) in a filesystem. In practice, this is written in different ways depending on which operating system that needs to interpret it. On UNIX\idx{UNIX} systems, a forward slash \say{/} is typically used as path\idxx{Path!Separator}{Path separator} separator. DOS\idx{DOS}-based systems -- like the Windows\idx{Windows} family of operating systems -- uses a backslash \say{\textbackslash} instead.
+So, a path is a sequence of names of steps (typically directories) in a filesystem. In practice, this is written in different ways depending on which operating system that needs to interpret it. On \idxx{UNIX} systems, a forward slash \say{/} is typically used as \idx{path separator}{Path!Separator}. \idxx{DOS}-based systems -- like the \idxx{Windows} family of operating systems -- uses a backslash \say{\textbackslash} instead.
 
 \begin{figure}[tbp]
   \input{figs/fs_path_abs.tex}
