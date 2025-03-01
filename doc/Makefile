@@ -12,8 +12,8 @@ clean:
 	rm    ${TARGETS}
 
 mrproper: clean
-	touch ${AUTOGEN_DEPS} d~ d.aux d.log d.out d.toc
-	rm    ${AUTOGEN_DEPS} *~ *.aux *.log *.out *.toc
+	touch ${AUTOGEN_DEPS} d~ d.aux d.bbl d.bcf d.blg d.idx d.ilg d.ind d.lof d.log d.out d.run.xml d.toc
+	rm    ${AUTOGEN_DEPS} *~ *.aux *.bbl *.bcf *.blg *.idx *.ilg *.ind *.lof *.log *.out *.run.xml *.toc
 
 
 hlsections.tex: ../bin/generate-hl-sections.exs
