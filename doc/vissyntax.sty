@@ -8,6 +8,7 @@
 % inspiration:
 % - https://github.com/tofgarion/my-latex-packages/blob/master/my-tikz.sty
 % - https://tex.stackexchange.com/questions/200187/how-to-define-a-special-tikz-node
+% - https://www.tug.org/pracjourn/2006-1/schmidt/schmidt.pdf
 
 \newenvironment{syntax}[1][]{
   \begin{tikzpicture}[#1]
@@ -29,16 +30,22 @@
 }}
 \tikzset{terminal/.style={
   rectangle,
-  draw,
+  draw=teal,
+  text=teal,
+  fill=teal!10,
   thick,
   font=\ttfamily,
   textalign,
 }}
 \tikzset{nonterminal/.style={
   rectangle,
-  draw,
+  draw=purple,
+  text=purple,
+  fill=purple!10,
   thick,
+  font=\slshape,
   textalign,
+  rounded corners=1mm,
 }}
 
 \tikzset{path/.style={
