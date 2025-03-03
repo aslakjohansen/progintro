@@ -41,6 +41,22 @@ This operation is tightly coupled to both the remainder and the modulo operation
   Test
 \end{syntaxsegment}
 
+\begin{syntax}
+  \node[nonterminal] (symbol) at (0,0) {expr};
+  \node[empty]       (root)   at (2cm,0) {};
+  \node[nonterminal] (ruleIa) at (4cm,0) {expr};
+  \node[terminal]    (ruleIb) at (6cm,0) {+};
+  \node[nonterminal] (ruleIc) at (8cm,0) {expr};
+  \node[nonterminal] (ruleIIa) at (4cm,-2cm) {expr};
+  \node[terminal]    (ruleIIb) at (6cm,-2cm) {-};
+  \node[nonterminal] (ruleIIc) at (8cm,-2cm) {expr};
+  
+  \draw[path] (root)--(ruleIa)--(ruleIb)--(ruleIc);
+  \draw[path] (root)--($(root)!0.5!(ruleIa)$)|-(ruleIIa)--(ruleIIb)--(ruleIIc);
+  
+%  \node[special node, name label=Label 2, label=Label 2, fill=red] (node name) at (0,0) {Some Node};
+\end{syntax}
+
 % integer types available
 
 % what is the result of int32+int32? what is an overflow?

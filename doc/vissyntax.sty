@@ -5,4 +5,45 @@
 % packages and TikZ librairies
 \RequirePackage{tikz}
 
+% inspiration:
+% - https://github.com/tofgarion/my-latex-packages/blob/master/my-tikz.sty
+% - https://tex.stackexchange.com/questions/200187/how-to-define-a-special-tikz-node
+
+\newenvironment{syntax}[1][]{
+  \begin{tikzpicture}[#1]
+}{
+  \end{tikzpicture}
+}
+
+
+\tikzset{symbol/.style={
+  draw,
+  thick,
+}}
+\tikzset{empty/.style={
+}}
+\tikzset{terminal/.style={
+  rectangle,
+  draw,
+  thick,
+  font=\ttfamily,
+}}
+\tikzset{nonterminal/.style={
+  rectangle,
+  draw,
+  thick,
+}}
+
+\tikzset{path/.style={
+  thick,
+  >=stealth,
+  draw=black,
+  rounded corners=3mm,
+}}
+
+\tikzset{special node/.style={circle, draw, very thick}}
+\tikzset{name label/.style={
+    special node, label={[fill=green]left:#1}
+}}
+
 
