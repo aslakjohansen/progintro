@@ -43,17 +43,18 @@ This operation is tightly coupled to both the remainder and the modulo operation
 
 \begin{syntaxfloat}
   \begin{syntax}
-    \node[nonterminal] (symbol) at (0,0) {expr};
-    \node[empty]       (root)   at (2cm,0) {};
-    \node[nonterminal] (ruleIa) at (4cm,0) {expr};
-    \node[terminal]    (ruleIb) at (6cm,0) {+};
-    \node[nonterminal] (ruleIc) at (8cm,0) {expr};
+    \node[nonterminal] (symbol)  at (0,0) {expr};
+    \node[empty]       (begin)   at (2cm,0) {};
+    \node[nonterminal] (ruleIa)  at (4cm,0) {expr};
+    \node[terminal]    (ruleIb)  at (6cm,0) {+};
+    \node[nonterminal] (ruleIc)  at (8cm,0) {expr};
     \node[nonterminal] (ruleIIa) at (4cm,-2cm) {expr};
     \node[terminal]    (ruleIIb) at (6cm,-2cm) {-};
     \node[nonterminal] (ruleIIc) at (8cm,-2cm) {expr};
+    \node[empty]       (end)     at (10cm,0) {};
     
-    \draw[path] (root)--(ruleIa)--(ruleIb)--(ruleIc);
-    \draw[path] (root)--($(root)!0.5!(ruleIa)$)|-(ruleIIa)--(ruleIIb)--(ruleIIc);
+    \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(end);
+    \draw[path] (begin)--($(begin)!0.5!([xshift=2cm]begin)$)|-(ruleIIa)--(ruleIIb)--(ruleIIc)--($(ruleIIc)!0.5!([xshift=2cm]ruleIIc)$)|-(end);
   \end{syntax}
   \caption{Expressions of arithmetic operators}
 \end{syntaxfloat}
