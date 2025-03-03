@@ -50,9 +50,6 @@ This operation is tightly coupled to both the remainder and the modulo operation
   \node[nonterminal] (ruleIIa) at (4cm,-2cm) {expr};
   \node[terminal]    (ruleIIb) at (6cm,-2cm) {-};
   \node[nonterminal] (ruleIIc) at (8cm,-2cm) {expr};
-  \node[nonterminal] (t) at (4.5cm,-3cm) {h};
-  \node[nonterminal] (tt) at (5cm,-3cm) {hq};
-  \node[nonterminal] (ttt) at (5.5cm,-3cm) {q};
   
   \draw[path] (root)--(ruleIa)--(ruleIb)--(ruleIc);
   \draw[path] (root)--($(root)!0.5!(ruleIa)$)|-(ruleIIa)--(ruleIIb)--(ruleIIc);
