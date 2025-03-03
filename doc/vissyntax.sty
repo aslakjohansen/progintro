@@ -15,6 +15,11 @@
   \end{tikzpicture}
 }
 
+\tikzset{textalign/.style={
+  minimum height=5.5mm,
+  text depth=0.7mm,
+  text height=2.5mm,
+}}
 
 \tikzset{symbol/.style={
   draw,
@@ -27,11 +32,13 @@
   draw,
   thick,
   font=\ttfamily,
+  textalign,
 }}
 \tikzset{nonterminal/.style={
   rectangle,
   draw,
   thick,
+  textalign,
 }}
 
 \tikzset{path/.style={
