@@ -4,11 +4,21 @@
 
 % packages and TikZ librairies
 \RequirePackage{tikz}
+\RequirePackage{newfloat}
 
 % inspiration:
 % - https://github.com/tofgarion/my-latex-packages/blob/master/my-tikz.sty
 % - https://tex.stackexchange.com/questions/200187/how-to-define-a-special-tikz-node
 % - https://www.tug.org/pracjourn/2006-1/schmidt/schmidt.pdf
+% - https://mirrors.dotsrc.org/ctan/macros/latex/contrib/newfloat/newfloat.pdf
+
+\DeclareFloatingEnvironment[
+    fileext=los,
+    listname={List of Syntax Defintions},
+    name=Syntax,
+    placement=tbp,
+    within=chapter,
+]{syntaxfloat}
 
 \newenvironment{syntax}[1][]{
   \begin{tikzpicture}[#1]
