@@ -95,8 +95,8 @@
 %\newcommand{\idxx}[2]{\index{#1}\marginpar{\raggedright \tiny #2}}
 \newcommand{\idx}[2]{\index{#2}\textcolor{purple}{#1}}
 \newcommand{\idxx}[1]{\idx{#1}{#1}}
-\newcommand{\defi}[2]{\index{#2}\textcolor{purple}{\underline{#1}}}
-\newcommand{\defix}[1]{\def{#1}{#1}}
+\newcommand{\defi}[2]{\index{#2|textbf}\textcolor{purple}{\underline{#1}}}
+\newcommand{\defix}[1]{\defi{#1}{#1}}
 
 % https://tex.stackexchange.com/questions/210435/adding-space-in-toc-between-the-part-number-and-part-title
 \renewcommand\partnumberlinebox[2]{#2\hspace{1em}}
@@ -120,6 +120,11 @@
   \textcolor{white}{\index{Digraph|see {Directed graph}}}
   \textcolor{white}{\index{Directed acyclic graph|see {DAG}}}
   \textcolor{white}{\index{Folder|see {Directory}}}
+  \textcolor{white}{\index{N@$\mathbb{N}$|see {Numbers, natural}}}
+  \textcolor{white}{\index{P@$\mathbb{P}$|see {Numbers, irrational}}}
+  \textcolor{white}{\index{Q@$\mathbb{Q}$|see {Numbers, rational}}}
+  \textcolor{white}{\index{R@$\mathbb{R}$|see {Numbers, real}}}
+  \textcolor{white}{\index{Z@$\mathbb{Z}$|see {Numbers, integer}}}
 }
 
 \input{introduction.tex}
