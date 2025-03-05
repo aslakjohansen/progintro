@@ -1,17 +1,19 @@
 \chapter{Primitive Types}
 
-\section{Integers}
+\section{Numbers}
 
 % everything is a number, not always obvious, classes of numbers, the simples calls is integers
-All values that we may want to work with in a computer are, one way or the other, numbers. This fact may not always be obvious, but it will be quite a while before you encounter such examples. From public school and highschool, we know these classes of numbers:
+All values that we may want to work with in a computer are, one way or the other, \idx{numbers}{Number}. This fact may not always be obvious, but it will be quite a while before you encounter such examples. From public school and highschool, we know these classes of numbers:
 \begin{itemize}
-  \descitem{The natural numbers} ($\mathbb{N}$) These are the non-negative numbers that can be written without a decimal point\footnote{There are two definitions of natural numbers. The other definition is that they are the positive numbers that can be written without a decimal point. That is to say, without zero. As this definition is generally less applicable in computers, we stick to the first definition.}.
-  \descitem{The integers} ($\mathbb{Z}$) These are all the natural numbers (according to the first definition) along with the negative versions of the natural numbers (according to the second definition). That definition juggling is to make sure that we don't have a negative zero.
-  \descitem{The real numbers} ($\mathbb{R}$) These are all the numbers that can be placed on a line between $-\infty$ and $\infty$. We often refer to these as floating point numbers.
-  \descitem{The rational numbers} ($\mathbb{Q}$) These are then numbers that can be written as the fraction $m/n$ where $m \in \mathbb{Z}$ and $m \in \mathbb{N}$.
-  \descitem{The irrational numbers} ($\mathbb{P}$) These are numbers that belong to $\mathbb{R}$ but not $\mathbb{Q}$. This is where $\pi$ and $e$ belong.
+  \descitem{The \idx{natural numbers}{Numbers!Natural}} ($\mathbb{N}$) These are the non-negative numbers that can be written without a decimal point\footnote{There are two definitions of natural numbers. The other definition is that they are the positive numbers that can be written without a decimal point. That is to say, without zero. As this definition is generally less applicable in computers, we stick to the first definition.}.
+  \descitem{The \idx{integers}{Numbers!Integer}} ($\mathbb{Z}$) These are all the natural numbers (according to the first definition) along with the negative versions of the natural numbers (according to the second definition). That definition juggling is to make sure that we don't have a negative zero.
+  \descitem{The \idx{real numbers}{Numbers!Real}} ($\mathbb{R}$) These are all the numbers that can be placed on a line between $-\infty$ and $\infty$. We often refer to these as floating point numbers.
+  \descitem{The \idx{rational numbers}{Numbers!Rational}} ($\mathbb{Q}$) These are then numbers that can be written as the fraction $m/n$ where $m \in \mathbb{Z}$ and $m \in \mathbb{N}$.
+  \descitem{The \idx{irrational numbers}{Numbers!Irrational}} ($\mathbb{P}$) These are numbers that belong to $\mathbb{R}$ but not $\mathbb{Q}$. This is where $\pi$ and $e$ belong.
 \end{itemize}
-Computers typically works with other classes of numbers. In the following sections, we will explore the most commonly used ones. Common to these is that they are all represented in binary numbers. That is, using the base-2 digits. We are used to working with base-10 where numbers are digits between zero and nine. In base-2, the numbers are made up of digits between zero and one (i.e., \texttt{0} or \texttt{1}). Such a digit is called a \term{bit}, and a sequence of eight bits is referred to as a \term{byte}. The plural forms of the singular bit and byte is bits and bytes. Bits are, by the way, the SI unit of information, in the same way as meter is the SI unit of distance. Accordingly, we measure information in bits.
+Computers typically works with other classes of numbers. In the following sections, we will explore the most commonly used ones. Common to these is that they are all \idx{represented in binary}{Representation!Binary} numbers. That is, using the \idx{base-2}{Base 2} digits. We are used to working with \idx{base-10}{Base 10} where numbers are digits between zero and nine. In base-2, the numbers are made up of digits between zero and one (i.e., \texttt{0} or \texttt{1}). Such a digit is called a \defi{bit}{Bit}, and a sequence of eight bits is referred to as a \defi{byte}{Byte}. The plural forms of the singular bit and byte is bits and bytes. Bits are, by the way, the \idx{SI unit}{SI unit} of information, in the same way as meter is the SI unit of distance. Accordingly, we measure \idx{information}{Information} in bits.
+
+\section{Integers}
 
 \subsection{Operations}
 
