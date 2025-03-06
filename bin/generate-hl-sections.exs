@@ -4,6 +4,7 @@ colormap = %{
   "elixir" => "violet",
   "csharp" => "blue",
   "python" => "orange!80!black",
+  "c" => "black",
   "example" => "teal",
 }
 
