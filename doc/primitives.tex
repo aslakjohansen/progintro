@@ -99,10 +99,10 @@ This operation is tightly coupled to both the \idx{remainder}{Remainder} and the
 \csubsection{C}
 
 % low-level language
-C is a simple low-level language. That means that it mirrors the fundamental properties of the underlying harware and adds some highly convenient abstractions. These abstractions are chosen is such a way that they essentially can be delivered without a performance overhead.
+\idxx{C} is a simple \idx{low-level language}{Language!Low-level}. That means that it mirrors the fundamental properties of the underlying harware and adds some highly convenient abstractions. These abstractions are chosen is such a way that they essentially can be delivered without a performance overhead.
 
 % consequence: a boolean is a register
-Machine code does not have a boolean type. Instead register values that are represented using all zeroes in binary are \textsl{false} and every other value is \textsl{true}. That means -- in terms of integers -- that zero is \textsl{false} and non-zero is \textsl{true}.
+\idxx{Machine code} does not have a boolean type. Instead \idx{register}{Register} values that are represented using all zeroes in binary are \textsl{false} and every other value is \textsl{true}. That means -- in terms of integers -- that zero is \textsl{false} and non-zero is \textsl{true}.
 
 % consequence: a bool is an integer and can thus be used in an integer expression
 A consequence of this is that C doesn't have a notion of a boolean. Instead, integers are used: A boolean is an interpretation of an integer, and can thus be used in an integer expression. Typically, this will make absolutely no difference. Proponents of \csharp\ will point out that booleans and integers are fundamentally different notions and should thus be treated differently. Proponents of C will point out that this allows them to write code such as this:
