@@ -66,10 +66,10 @@ This operation is tightly coupled to both the \idx{remainder}{Remainder} and the
 \elixirsubsection{Elixir}
 
 % arbitrary sizes: pros
-In Elixir, there is only one integer type and that has an arbitrary size. As long as an integral value fits in memory, an Elixir integer can hold it. The value is not in having integers that each take up 90\% of your primary memory. It is very rare that we have a need for integers beyond 128 bits or even 64 bits. But when we work with fixed size integers, we always have to be aware of that hard limit. In Elixir, we don't have to: If we somehow end up with a number needing 7000 bits, then that is what gets allocated. We don't have to worry.
+In Elixir, there is only one integer type and that has an \idx{arbitrary size}{Arbitrary size}. As long as an integral value fits in memory, an Elixir integer can hold it. The value is not in having integers that each take up 90\% of your \idx{primary memory}{Memory!Primary}. It is very rare that we have a need for integers beyond 128 bits or even 64 bits. But when we work with \idx{fixed size}{Fixed size} integers, we always have to be aware of that hard limit. In Elixir, we don't have to: If we somehow end up with a number needing 7000 bits, then that is what gets allocated. We don't have to worry.
 
 % and cons, why the tradeoff was resolved in this way
-Elixir code, still runs on the same hardware though. This hardware does not have instructions capable of operating on 7000 bit integers. So, instead of an integer operation being a single instruction, it is an algorithm in itself. This is significantly slower. Elixir is designed for network intensive tasks, and these are even slower. So, for the tasks where one would choose Elixir, it basically doesn't matter. And that is why the designers of that language has made that choice.
+Elixir code, still runs on the same hardware though. This hardware does not have instructions capable of operating on 7000 bit integers. So, instead of an integer operation being a single \idx{instruction}{Instruction}, it is an \idx{algorithm}{Algorithm} in itself. This is significantly slower. Elixir is designed for network intensive tasks, and these are even slower. So, for the tasks where one would choose Elixir, it basically doesn't matter. And that is why the designers of that language has made that choice.
 
 \section{Floating Point Numbers}
 \label{primitives:float}
