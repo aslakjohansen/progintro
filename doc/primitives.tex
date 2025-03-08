@@ -92,6 +92,8 @@ Elixir code, still runs on the same hardware though. This hardware does not have
   \label{fig:prim:bool:and}
 \end{figure}
 
+% TODO: Demorgans law
+
 \subsection{Representation}
 
 % technically a bit, but typically (mostly unless in array form) a byte or word
@@ -106,7 +108,7 @@ Elixir code, still runs on the same hardware though. This hardware does not have
 \idx{C}{Language!C} is a simple \idx{low-level language}{Language!Low-level}. That means that it mirrors the fundamental properties of the underlying harware and adds some highly convenient abstractions. These abstractions are chosen is such a way that they essentially can be delivered without a performance overhead.
 
 % consequence: a boolean is a register
-\idxx{Machine code} does not have a boolean type. Instead \idx{register}{Register} values that are represented using all zeroes in binary are \textsl{false} and every other value is \textsl{true}. That means -- in terms of integers -- that zero is \textsl{false} and non-zero is \textsl{true}. % TODO: Explain the !!42 == 1 situation
+\idxx{Machine code} does not have a boolean type. Instead \idx{register}{Register} values that are represented using all zeroes in binary are \textsl{false} and every other value is \textsl{true}. That means -- in terms of integers -- that zero is \textsl{false} and non-zero is \textsl{true}. % TODO: Explain the !!42 == 1 situation, word for reference/strong true values, implicit konvertering til bool i condition af en if
 
 % consequence: a bool is an integer and can thus be used in an integer expression
 A consequence of this is that C doesn't have a notion of a \idx{boolean}{Boolean}. Instead, integers are used: A boolean is an interpretation of an integer, and can thus be used in an integer expression. Typically, this will make absolutely no difference. Proponents of \csharp\ will point out that booleans and integers are fundamentally different notions and should thus be treated differently. Proponents of C will point out that this allows them to write code such as this:
