@@ -1,4 +1,5 @@
 \section{Filesystems}
+\label{bg:fs}
 
 % what(for a computer)
 Most computers organize persisted data in files. That the data are \defi{persisted}{Persistence} means that the data will survive a \idx{Power cycle}{Power cycle} of the computer (i.e., that it is turned off and on again). All data available to the operating system (includin programs and configuration) is stored in files in a \idx{filesystem}{Filesystem}.
@@ -7,9 +8,9 @@ Most computers organize persisted data in files. That the data are \defi{persist
 Filesystems are \textsl{mostly} tree structures, organizing files in directories. A \defi{directory}{Directory} is a special form of file that can group other files. In tree terminology, they are branch nodes whereas ordinary files are leaf nodes. The visual metaphore that graphical user interfaces use to refer to directories is the folder. But at the filesystem level -- which is what we care about as programmers -- it is a directory. Figure \ref{fig:bs:fs} shows what a typical filesystem could look like.
 
 \begin{figure}[tbp]
-  \input{figs/fs.tex}
-  \caption{Example of a filesystem.}
-  \label{fig:bs:fs}
+	\input{figs/fs.tex}
+	\caption{Example of a filesystem.}
+	\label{fig:bs:fs}
 \end{figure}
 
 \subsection{Mounting}
@@ -19,9 +20,9 @@ each known filesystem is assigned a letter, and a (hidden) root directory refers
 to each of these.
 
 \begin{figure}[tbp]
-  \input{figs/fs_mounting.tex}
-  \caption{Example of a mounting a guest filesystem.}
-  \label{fig:bs:fs:mounting}
+	\input{figs/fs_mounting.tex}
+	\caption{Example of a mounting a guest filesystem.}
+	\label{fig:bs:fs:mounting}
 \end{figure}
 
 \subsection{Links}
@@ -31,38 +32,37 @@ Modern filesystems support links though, and that is a feature that makes them b
 While modern versions of the \idxx{Windows} family of operating systems does have some support for links, it can be sketchy. Instead they support \idx{shortcuts}{Shortcut} through a special \idx{\filename{LNK}}{LNK file format@\filename{LNK} file format} file format. The content of a file following this format is a path to a file that the link points to. While this solution is a bit more flexible, it has to be interpreted by each application instead of the filesystem and is thus harder to work with and less performant.
 
 \begin{figure}[tbp]
-  \input{figs/fs_links.tex}
-  \caption{Example of a link in a filesystem.}
-  \label{fig:bs:fs:links}
+	\input{figs/fs_links.tex}
+	\caption{Example of a link in a filesystem.}
+	\label{fig:bs:fs:links}
 \end{figure}
 
 \begin{figure}[tbp]
-  \input{figs/fs_cycles.tex}
-  \caption{Example of how a link can create a cycle in a filesystem.}
-  \label{fig:bs:fs:cycles}
+	\input{figs/fs_cycles.tex}
+	\caption{Example of how a link can create a cycle in a filesystem.}
+	\label{fig:bs:fs:cycles}
 \end{figure}
 
 \subsection{Paths}
 
 When we want to work with a file, we need to be able to refer to it. That happens through a name, and that name can take two forms; either it is an \textsl{absolute} path or it is a \textsl{relative} path:
 \begin{itemize}
-  \descitem{\idx{Absolute Path}{Path!Absolute}:} An absolute path (like the one from figure \ref{fig:bs:fs:path:abs}) is a path that starts in the filesystem root and goes to the node representing the file of interest. That is, it is the sequence of steps needed to be taken in order to step through the graph of the filesystem in order to go from the root to the file.
-  \descitem{\idx{Relative Path}{Path!Relative}:} A relative path (like the one from figure \ref{fig:bs:fs:path:rel}) is essentially the same as an absolute path except that the starting point is not the root of the filesystem, but the current working directory.
-  
-  Every process is -- so to say -- standing in a directory, and this is called the \idx{current working directory}{Directory!Current working}. Current, because you can change it by transitioning either towards the root of the filesystem, or by following one of the outgoing edges of the node representing the current working directory.
+	\descitem{\idx{Absolute Path}{Path!Absolute}:} An absolute path (like the one from figure \ref{fig:bs:fs:path:abs}) is a path that starts in the filesystem root and goes to the node representing the file of interest. That is, it is the sequence of steps needed to be taken in order to step through the graph of the filesystem in order to go from the root to the file.
+	\descitem{\idx{Relative Path}{Path!Relative}:} A relative path (like the one from figure \ref{fig:bs:fs:path:rel}) is essentially the same as an absolute path except that the starting point is not the root of the filesystem, but the current working directory.
+
+	Every process is -- so to say -- standing in a directory, and this is called the \idx{current working directory}{Directory!Current working}. Current, because you can change it by transitioning either towards the root of the filesystem, or by following one of the outgoing edges of the node representing the current working directory.
 \end{itemize}
 
 So, a path is a sequence of names of steps (typically directories) in a filesystem. In practice, this is written in different ways depending on which operating system that needs to interpret it. On \idxx{UNIX} systems, a forward slash \say{/} is typically used as \idx{path separator}{Path!Separator}. \idxx{DOS}-based systems -- like the \idxx{Windows} family of operating systems -- uses a backslash \say{\textbackslash} instead.
 
 \begin{figure}[tbp]
-  \input{figs/fs_path_abs.tex}
-  \caption{Example of an absolute path in a filesystem.}
-  \label{fig:bs:fs:path:abs}
+	\input{figs/fs_path_abs.tex}
+	\caption{Example of an absolute path in a filesystem.}
+	\label{fig:bs:fs:path:abs}
 \end{figure}
 
 \begin{figure}[tbp]
-  \input{figs/fs_path_rel.tex}
-  \caption{Example of an relative path in a filesystem.}
-  \label{fig:bs:fs:path:rel}
+	\input{figs/fs_path_rel.tex}
+	\caption{Example of an relative path in a filesystem.}
+	\label{fig:bs:fs:path:rel}
 \end{figure}
-
