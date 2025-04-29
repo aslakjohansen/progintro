@@ -7,6 +7,8 @@
 \usepackage{minipage-marginpar} % for the minipagewithmarginpars environment that allows marginpar commands in a minipage
 \usepackage{amsfonts} % \mathbb
 \usepackage[table]{xcolor} % coloring cells in tabular environments
+\usepackage{minted} % for source code inclusion
+\usepackage{attachfile2} % for attaching files to the PDF
 
 \usepackage{vissyntax}
 
@@ -60,6 +62,11 @@
 \newcommand{\term}[1]{\textsl{#1}}
 
 \newcommand{\csharp}{C{\lserif\#}}
+
+\newcommand{\includeCsharpFile}[3]{
+  \marginpar{\attachfile[color={blue}]{../src/csharp/#3}}
+  \inputminted[#1]{#2}{../src/csharp/#3}
+}
 
 \newenvironment{inspiration}[2][0.9]
 {
