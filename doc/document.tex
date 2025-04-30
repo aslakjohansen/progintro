@@ -12,6 +12,9 @@
 
 \usepackage{vissyntax}
 
+%% attachfile2 symbol configuration
+%\renewcommand{\atfi@acroPaperclip@data}{download}
+
 % tikz
 \usepackage{tikz}
 \usetikzlibrary{patterns}
@@ -64,7 +67,7 @@
 \newcommand{\csharp}{C{\lserif\#}}
 
 \newcommand{\includeCsharpFile}[3]{
-  \marginpar{\attachfile[color={blue}]{../src/csharp/#3}}
+  \marginpar{[\textattachfile{../src/csharp/#3}{\textcolor{blue}{extract file}}]}
   \inputminted[#1]{#2}{../src/csharp/#3}
 }
 
