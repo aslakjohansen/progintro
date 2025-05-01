@@ -10,6 +10,24 @@
 % ahead-of-time compiled language, compilation phase results in a binary that is transferable (and portable) and can be executed without the precense of the compiler
 \csharp\ is an ahead-of-time compiled language. This means that program execution is a step separate from program compilation. Or, to skip the technical terms, there is a compilation phase whereby a special program known as a compiler produces a program binary by processing the program source code. This binary is transferable and (fairly) portable. This means that it can be moved to a different machine and executed without the presence of a compiler. But lets take a step back a take a look of all the involved steps.
 
+\subsection{Project Creation}
+
+\begin{minted}[]{shell-session}
+aslak@gaia:/tmp$ mkdir new_project
+aslak@gaia:/tmp$ cd new_project
+aslak@gaia:/tmp/new_project$ dotnet new console
+The template "Console App" was created successfully.
+
+Processing post-creation actions...
+Restoring /tmp/new_project/new_project.csproj:
+  Determining projects to restore...
+  Restored /tmp/new_project/new_project.csproj (in 146 ms).
+Restore succeeded.
+
+
+aslak@gaia:/tmp/new_project$
+\end{minted}
+
 \subsection{Writing}
 \subsection{Saving}
 \subsection{Compilation}
