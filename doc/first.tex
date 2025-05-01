@@ -12,6 +12,14 @@
 
 \subsection{Project Creation}
 
+First, lets create a directory that can host our project:
+
+\begin{minted}[]{shell-session}
+aslak@gaia:/tmp$ mkdir new_project
+\end{minted}
+
+Then, we can go to that directory and initalize a new console project:
+
 \begin{minted}[]{shell-session}
 aslak@gaia:/tmp$ mkdir new_project
 aslak@gaia:/tmp$ cd new_project
@@ -27,6 +35,20 @@ Restore succeeded.
 
 aslak@gaia:/tmp/new_project$
 \end{minted}
+
+So, what happened? Lets take a look at what happened in our newly created directory:
+
+\begin{minted}[]{shell-session}
+aslak@gaia:/tmp/new_project$ ls
+new_project.csproj  obj  Program.cs
+\end{minted}
+
+Three files were created, and one of them is a directory:
+\begin{itemize}
+  \item \filename{new\_project.csproj}: This is a \say{project} file. It holds metadata that tells the \commandname{dotnet} command how to build the project. % TODO: add an exercise for determining which version of the framework dotnet should use
+  \item \filename{obj}: For now, we don't care much about this directory.
+  \item \filename{Program.cs}: This is our program file. It is where we write our code. Later on we will add more files. From the perspective of the \commandname{dotnet} command, the name doesn't matter. However, as your project grows, humans will find is very confusing if certain standards are not met. We will cover these throughout the book.
+\end{itemize}
 
 \subsection{Writing}
 \subsection{Saving}
