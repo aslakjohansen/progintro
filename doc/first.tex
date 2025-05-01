@@ -58,6 +58,22 @@ Open the \filename{Program.cs} in your text editor and make sure the contents is
 Save the file. This persists to data that was present in your computers memory under the control of your text editor to disk. That way another program can easily acces it through a valid path to the file.
 
 \subsection{Compilation}
+
+One such program is a compiler, and that happens to be what we need to build the program binary that is needed for execution. That compiler can be called using the \commandname{dotnet} command:
+
+\begin{minted}[]{shell-session}
+aslak@gaia:/tmp/new_project$ dotnet build
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  new_project -> /tmp/new_project/bin/Debug/net8.0/new_project.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:05.36
+\end{minted}
+
 \subsection{Execution}
 
 \input{first_string.tex}
