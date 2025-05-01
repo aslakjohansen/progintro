@@ -74,7 +74,21 @@ Build succeeded.
 Time Elapsed 00:00:05.36
 \end{minted}
 
+If we list the contents of the project directory we will see that a new \filename{bin} directory has been created for storing the binary program:
+
+\begin{minted}[]{shell-session}
+aslak@gaia:/tmp/new_project$ ls
+bin  new_project.csproj  obj  Program.cs
+\end{minted}
+
 \subsection{Execution}
+
+While we say that the compiler has produced an executable binary for us, it is not a binary that our hardware is capable of running. We need a \idx{virtual machine}{Virtual machine} for that. This is essentially a special program that simulates a different architecture. The binary we have contains \idx{Intermediate Language}{Intermediate language (IL)} (IL) bytecode, and we need a \idx{Common Language Runtime}{Common Language Runtime (CLR)} (CLR) virtual machine to execute it. Luckely, once again, the \commandname{dotnet} command gives us access to such:
+
+\begin{minted}[]{shell-session}
+aslak@gaia:/tmp/new_project$ dotnet run
+Hello, World!
+\end{minted}
 
 \subsection{Big Picture}
 
