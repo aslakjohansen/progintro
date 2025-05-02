@@ -67,9 +67,21 @@
 
 \newcommand{\csharp}{C{\lserif\#}}
 
+\newcommand{\includeCFile}[2]{
+  \marginpar{[\textattachfile{../src/c/#2}{\textcolor{blue}{extract file}}]}
+  \inputminted[#1]{c}{../src/c/#2}
+}
 \newcommand{\includeCsharpFile}[2]{
   \marginpar{[\textattachfile{../src/csharp/#2}{\textcolor{blue}{extract file}}]}
   \inputminted[#1]{csharp}{../src/csharp/#2}
+}
+\newcommand{\includeElixirFile}[2]{
+  \marginpar{[\textattachfile{../src/elixir/#2}{\textcolor{blue}{extract file}}]}
+  \inputminted[#1]{elixir}{../src/elixir/#2}
+}
+\newcommand{\includePythonFile}[2]{
+  \marginpar{[\textattachfile{../src/python/#2}{\textcolor{blue}{extract file}}]}
+  \inputminted[#1]{python}{../src/python/#2}
 }
 
 \newenvironment{inspiration}[2][0.9]
