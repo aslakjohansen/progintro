@@ -67,9 +67,9 @@
 
 \newcommand{\csharp}{C{\lserif\#}}
 
-\newcommand{\includeCsharpFile}[3]{
-  \marginpar{[\textattachfile{../src/csharp/#3}{\textcolor{blue}{extract file}}]}
-  \inputminted[#1]{#2}{../src/csharp/#3}
+\newcommand{\includeCsharpFile}[2]{
+  \marginpar{[\textattachfile{../src/csharp/#2}{\textcolor{blue}{extract file}}]}
+  \inputminted[#1]{csharp}{../src/csharp/#2}
 }
 
 \newenvironment{inspiration}[2][0.9]
