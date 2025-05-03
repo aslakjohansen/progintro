@@ -139,6 +139,15 @@ Another way to write python code is though a \idx{notebook}{Notebook} environmen
 
 \includeCFile{first/hello/hello.c}
 
+One key difference, compared to \csharp, is that C compiles to a \defi{native binary}{Binary!Native}. That is a binary that follows a format that is directly compatible with the processor architecture of your computer. We notice this when executing the code. With \csharp we used \commandname{dotnet} to essentially simulate a virtual machine that was capable of interpreting the intermediate language binary. This manifested as a command that began with \commandname{dotnet}.
+
+The \commandname{dotnet} program that is then invoked is anoter example of a native binary. So, we can invoke the binary that we have built from our C code in exactly the same way. However, unlike \commandname{dotnet}, our binary is not in the \idx{path}{Path}. That means that we need an \idx{explicit path}{Path!Explicit} to it. That is accomplished by prefacing it with \filename{./}, like so:
+
+\begin{minted}[]{shell-session}
+aslak@gaia:/tmp/c_hello$ ./hello
+Hello, World!
+\end{minted}
+
 \elixirsubsection{Elixir}
 
 \includeElixirFile{first/hello/hello.exs}
