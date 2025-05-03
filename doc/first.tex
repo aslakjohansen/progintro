@@ -104,7 +104,36 @@ On top of that, developers usually work on a small portion of the intended funct
 
 \pythonsubsection{Python}
 
+In Python, the equivalent program looks like this:
+
 \includePythonFile{first/hello/hello.py}
+
+In order to execute this script, we first need to make the file \idx{executable}{File!Executable}:
+\begin{minted}[]{shell-session}
+aslak@gaia:/tmp/python_hello$ chmod u+x hello.py
+\end{minted}
+
+That first line of the Python source code is called a \idx{shebang}{Shebang} after the first two characters. When executing, this line uses the \filename{/bin/env} program to look up an appropriate interpreter for \filename{python3} and then feed the remaining lines to it. This is known as a \idx{dispatch mechanism}{Dispatch mechanism}. The development cycle is very similar to \csharp\ except that there is neither an initial project creation step or a separate compilation step. Running the program is done like so:
+
+\begin{minted}[]{shell-session}
+aslak@gaia:/tmp/python_hello$ ./hello.py
+Hello, World!
+\end{minted}
+
+The Python interpreter has an \idx{interactive mode}{Mode!Interactive} that we can \idx{invoke}{Invoke} directly:
+
+\begin{minted}[]{shell-session}
+aslak@gaia:/tmp/python_hello$ /bin/env python3
+Python 3.13.3 (main, Apr 10 2025, 21:38:51) [GCC 14.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> print("Hello, World!")
+Hello, World!
+>>> 
+\end{minted}
+
+On the first line we invoke the interpreter. Then, it -- exactly as our shell -- presents us with a prompt. This prompt allows us to \idx{issue}{Issue} python commands. The interactive mode is typically used for rapid experimentation.
+
+Another way to write python code is though a \idx{notebook}{Notebook} environment. Such an environment is usually provided through a browser by a system such as \idx{Jupyter}{Jypyter}. In such an environment, code is split up into cells and these cells are laid out in a sequence. Any cell can build on the code that is introduced in previous cells and the code in these cells have easily accessible means for producing visual outputs. The workflow is essentially the same as for \csharp\ except that notebooks are usually saved automatically.
 
 \csubsection{C}
 
