@@ -200,6 +200,8 @@
 \appendix
 \chapter{Concepts to Avoid}
 
+It is natural to supplement a book like this with material from the Internet and other sources. It might even be a good idea, and as you progress through your education it will be critical. However, it is also necessary to be critical of such information. Some of it is helpful, some is not, and some is straight up counterproductive. The online information on \csharp has a tendency to fall into the latter two categories for novice developers. This is not a matter of correctness, but about limiting your exposure to unnecessary complexity and other ways of shorting the learning process. The following is a non-exclusive list of concepts to avoid:
+
 \begin{itemize}
   \descitem{Threads} \idx{Threads}{Threads} allow parts of your code to happen \idx{concurrently}{Concurrency}. That is, they can be expressed in such way that the execution order is flexible. On a system with multiple hardware threads, this will usually result is some degree of \idx{parallelism}{Parallelism}. Concurrency is hard to reason about, and threads is one of the harder ways of achieving concurrency. If you think that any of the topics of this book are difficult, adding threads to the mix will likely make them impossible.
   \descitem{\keywordname{var} keyword} The \keywordname{var} keyword is used to instruct the compiler to automatically \idx{infer types}{Type!Inference}. While that comes with advantages for an experienced developer, it also makes it also removes the visual cues to types. For a novice programmer that is often detrimental to the understanding of the type systems role.
