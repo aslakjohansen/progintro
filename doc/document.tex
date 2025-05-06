@@ -201,8 +201,8 @@
 \chapter{Concepts to Avoid}
 
 \begin{itemize}
-  \descitem{Threads} Threads allow parts of your code to happen concurrently. That is, they can be expressed in such way that the execution order is flexible. On a system with multiple hardware threads, this will usually result is some degree of parallelism. Concurrency is hard to reason about, and threads is one of the harder ways of achieving concurrency. If you think that any of the topics of this book are difficult, adding threads to the mix will likely make them impossible.
-  \descitem{\keywordname{var} keyword} The \keywordname{var} keyword is used to instruct the compiler to automatically infer types. While that comes with advantages for an experienced developer, it also makes it also removes the visual cues to types. For a novice programmer that is often detrimental to the understanding of the type systems role.
+  \descitem{Threads} \idx{Threads}{Threads} allow parts of your code to happen \idx{concurrently}{Concurrency}. That is, they can be expressed in such way that the execution order is flexible. On a system with multiple hardware threads, this will usually result is some degree of \idx{parallelism}{Parallelism}. Concurrency is hard to reason about, and threads is one of the harder ways of achieving concurrency. If you think that any of the topics of this book are difficult, adding threads to the mix will likely make them impossible.
+  \descitem{\keywordname{var} keyword} The \keywordname{var} keyword is used to instruct the compiler to automatically \idx{infer types}{Type!Inference}. While that comes with advantages for an experienced developer, it also makes it also removes the visual cues to types. For a novice programmer that is often detrimental to the understanding of the type systems role.
 \end{itemize}
 
 \printbibliography
