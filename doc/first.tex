@@ -102,7 +102,7 @@ On top of that, developers usually work on a small portion of the intended funct
   \label{fig:first:phases:cycle}
 \end{figure}
 
-\pythonsubsection{Python}
+\pythonsection{Python}
 
 In Python, the equivalent program looks like this:
 
@@ -135,7 +135,7 @@ On the first line we invoke the interpreter. Then, it -- exactly as our shell --
 
 Another way to write python code is though a \idx{notebook}{Notebook} environment. Such an environment is usually provided through a browser by a system such as \idx{Jupyter}{Jypyter}. In such an environment, code is split up into cells and these cells are laid out in a sequence. Any cell can build on the code that is introduced in previous cells and the code in these cells have easily accessible means for producing visual outputs. The workflow is essentially the same as for \csharp\ except that notebooks are usually saved automatically.
 
-\csubsection{C}
+\csection{C}
 
 The minimal hello world program in C looks (more or less) like this:
 
@@ -143,7 +143,7 @@ The minimal hello world program in C looks (more or less) like this:
 
 This version immediately looks a lot more complicated! So, why is that? Well, lets try to disect it \ldots
 
-\subsubsection{Explanation}
+\subsection{Explanation}
 
 % first line
 Most \idx{general-purpose languages}{Language!General-purpose} (like \csharp, C, Python and Elixir) come with a sizeable \idx{library}{Library} of functionality. While all of this is available to you as a programmer there are downsides to having it all adirectly available all the time. To simplify grossly, it is a situation similar to finding a specific needle in a stack of slighty different needles. The first line tells C -- or rather the C preprocessor -- to include the definitions present in the \filename{stdio.h} file. This pulls in, amongst others, the \funcname{printf} function, that can print stuff to the screen for us.
@@ -153,7 +153,7 @@ Wrapping use of that \funcname{printf} function is the declaration of \funcname{
 
 It is important to point out that \csharp\ supports a very similar program structure. After all, this is how the kernel passes options to a program. Any language that supports such options will have something similar. It is typically in a \idx{\funcname{main} function}{Function!Main}. But sometimes it is implicit or has to be actively \idx{imported}{Importing}. That is not likely to mean much to you at this point, and that is okay.
 
-\subsubsection{Workflow}
+\subsection{Workflow}
 
 In order to compile the code to an executable binary we need to invoke a compiler. Lets use the \commandname{clang} compiler and explicitly name the file that should hold the resulting binary:
 
@@ -170,7 +170,7 @@ aslak@gaia:/tmp/c_hello$ ./hello
 Hello, World!
 \end{minted}
 
-\elixirsubsection{Elixir}
+\elixirsection{Elixir}
 
 Elixir code can be executed through an interpreter (like Python), it can be worked on through a notebook system (like Python) and it can be executed on a virtual machine (like \csharp). This virtual machine is called \idx{BEAM}{BEAM}. Unlike that for \csharp, it is a \idx{distributed}{Virtual machine!Distributed} virtual machine. The hello world program looks different depending on whether a separate compilation phase is used or the code is interpreted. For the interpreter, the code looks like this:
 
@@ -184,7 +184,7 @@ Elixir code can be executed through an interpreter (like Python), it can be work
 
 % livebook
 
-\subsection{Summary}
+\section{Summary}
 
 % ref to fig, what does that mean? Is it better to have more boxes checked? Why and why not?
 The covered languages support for \idx{execution models}{Execution model} is summarized in figure \ref{fig:first:phases:summary}. C and \csharp\ only support a single model each, while Elixir supports 5 (or 3 with variations). Does that mean that Elixir is a superior language? No, certainly not. But it does mean that you have more options as to how you execute Elixir code. Sometimes support for specific execution models matter, but often it does not.
