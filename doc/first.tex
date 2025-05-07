@@ -187,12 +187,16 @@ Elixir code can be executed through an interpreter (like Python), it can be work
 \subsection{Summary}
 
 % ref to fig, what does that mean? Is it better to have more boxes checked? Why and why not?
+The covered languages support for execution models is summarized in figure \ref{fig:first:phases:summary}. C and \csharp only support a single model each, while Elixir supports 5 (or 3 with variations). Does that mean that Elixir is a superior language? No, certainly not. But it does mean that you have more options as to how you execute Elixir code. Sometimes support for specific execution models matter, but often it doesn't.
 
 \begin{figure}[tbp]
   \input{figs/first_summary.tex}
   \caption{Summary of execution models of various programming languages.}
   \label{fig:first:phases:summary}
 \end{figure}
+
+% tradeoffs
+It is also important to point out that the design of a programming language is riddled with tradeoffs, and these are often resolved in very different ways. That results in some set of qualities, of which the supported set of execution models are found. As a developer, it will be your job to decide which combination of qualities are needed to maximize value for a given project, and based on that choose a language.
 
 \input{first_string.tex}
 
