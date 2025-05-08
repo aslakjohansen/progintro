@@ -173,6 +173,8 @@ Hello, World!
 
 \elixirsection{Elixir}
 
+\subsection{Interpretation}
+
 Elixir code can be executed through an interpreter (like Python), it can be worked on through a notebook system (like Python) and it can be executed on a virtual machine (like \csharp). This virtual machine is called \idx{BEAM}{BEAM}. Unlike that for \csharp, it is a \idx{distributed}{Virtual machine!Distributed} virtual machine. The hello world program looks slightly different depending on whether a separate compilation phase is used or the code is interpreted. For the script version, the it looks like this:
 
 \includeElixirFile{first/hello/hello.exs}
@@ -192,11 +194,17 @@ iex(2)>
 \end{minted}
 The line that makes the printout appear is still the same. Here, you see it appear after a \idx{prompt}{Prompt}. The \commandname{iex} prompt is, unlike the Python one numbered. Also, everything in Elixir evaluated to a value, and the \idx{REPL}{REPL} prints out this value after having evaluated a line. In this case \texttt{IO.puts("Hello, World!")}, after having performed its function of printing \quoted{Hello, World!} to the screen, evaluates to \texttt{:ok}.
 
+\subsection{Compilation}
+
 % mix creating new project
 
 % interpreter with access to new project
 
+\subsection{Notebook}
+
 % livebook
+
+\subsection{Clustering}
 
 % interpreter/livebook hooking into other virtual machine
 
