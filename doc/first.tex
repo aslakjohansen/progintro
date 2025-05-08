@@ -178,7 +178,7 @@ Elixir code can be executed through an interpreter (like Python), it can be work
 \includeElixirFile{first/hello/hello.exs}
 
 % transition to REPL
-As with the Pytho script (in section \ref{sec:first:python}) it uses a shebang mechanism. For that mechanism to work it needs to be \idx{executable}{Executable}. Hoever, while the interpreter for the script is called \commandname{elixir} this is not the case for the REPL. The interpreter for the REPL is called \commandname{iex}:
+As with the Python script (in section \ref{sec:first:python}) it uses a \idx{shebang}{Shebang} mechanism. For that mechanism to work it needs to be \idx{executable}{Executable}. However, while the interpreter for the script is called \commandname{elixir} this is not the case for the REPL. The interpreter for the REPL is called \commandname{iex}:
 
 \begin{minted}[breaklines]{shell-session}
 aslak@gaia:/tmp/elixir_hello$ iex
@@ -190,9 +190,7 @@ Hello, World!
 :ok
 iex(2)> 
 \end{minted}
-The line that makes the printout appear is still the same. Here, you see it appear after a prompt. The \commandname{iex} prompt is, unlike the pyton one numbered. Also, everything in Elixir evaluated to a value, and the REPL prints out this value after having evaluated a line. In this case \texttt{IO.puts("Hello, World!")}, after having performed its function of printing \quoted{Hello, World!} to the screen, evaluates to \texttt{:ok}.
-
-% explanation
+The line that makes the printout appear is still the same. Here, you see it appear after a \idx{prompt}{Prompt}. The \commandname{iex} prompt is, unlike the Python one numbered. Also, everything in Elixir evaluated to a value, and the \idx{REPL}{REPL} prints out this value after having evaluated a line. In this case \texttt{IO.puts("Hello, World!")}, after having performed its function of printing \quoted{Hello, World!} to the screen, evaluates to \texttt{:ok}.
 
 % mix creating new project
 
