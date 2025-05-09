@@ -232,7 +232,7 @@ Compiling 1 file (.ex)
 Generated hello app
 \end{minted}
 
-The BEAM virtual machine is in some ways more complex than the CLR. One such way is that it can run multiple applications at the same time. In order to do so, we need to define an application in our project and tell it to invoke our \funcname{Hello.hello} function. This, however, is not an Elixir book, and that is a detail that does not help us progress.
+The BEAM virtual machine is in some ways more complex than the \idx{CLR}{CLR}. One such way is that it can run multiple applications at the same time. In order to do so, we need to define an \idx{application}{Application} in our \idx{project}{Project} and tell it to invoke our \funcname{Hello.hello} function. This, however, is not an Elixir book, and that is a detail that does not help us progress.
 
 % interpreter with access to new project
 You should note that the project does compile. One reason for that is that we can use the compiled code through our REPL. We do this by passing the \commandname{-S mix} paramter along to our \commandname{iex} command:
