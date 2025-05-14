@@ -1,0 +1,38 @@
+\begin{center}
+  \begin{tikzpicture}[remember picture]
+    \newcommand{\nodeheight}{7mm}
+    \newcommand{\xstepsize}{6mm}
+    \tikzstyle{edge}  = [thick,>=stealth,draw=black]
+    \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
+    \tikzstyle{node}=[
+      rectangle,
+      draw=purple,
+      anchor=west,
+      thick,
+      minimum height=\nodeheight
+    ]
+    
+    \node[node] (requirements)
+      at (0,0)
+      {Requirements};
+    \node[node] (analysis)
+      at ([xshift=\xstepsize] requirements.east)
+      {Analysis};
+    \node[node] (design)
+      at ([xshift=\xstepsize] analysis.east)
+      {Design};
+    \node[node] (implementation)
+      at ([xshift=\xstepsize] design.east)
+      {Implementation};
+    \node[node] (evaluation)
+      at ([xshift=\xstepsize] implementation.east)
+      {Evaluation};
+    
+    \draw[dedge] (requirements)--(analysis);
+    \draw[dedge] (analysis)--(design);
+    \draw[dedge] (design)--(implementation);
+    \draw[dedge] (implementation)--(evaluation);
+    
+    \draw[dedge] (evaluation)--([yshift=-\nodeheight/2]evaluation.south)-|(requirements);
+  \end{tikzpicture}
+\end{center}
