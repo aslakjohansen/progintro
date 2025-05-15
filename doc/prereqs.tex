@@ -35,7 +35,7 @@ So, we are looking for a text editor that has the positive aids and none of the 
 
 Git is available in the standard Debian repository. Install the client by running the following command as a \idx{privileged user}{User!Privileged}:
 
-\begin{minted}[breaklines,fontsize=small]{shell-session}
+\begin{minted}[breaklines]{shell-session}
 apt install git
 \end{minted}
 
@@ -57,4 +57,78 @@ At this point you should be able to run the \commandname{git} command without an
 \subsubsection{Windows}
 \subsubsection{MacOS X}
 \subsubsection{Debian Linux}
+
+%First we need to install the \commandname{wget} command to download \commandname{asdf}. To do so, run the following command as a privileged used:
+
+%\begin{minted}[breaklines]{shell-session}
+%apt install wget
+%\end{minted}
+
+First, install the \commandname{asdf} version manager. To do so, go to \url{https://github.com/asdf-vm/asdf/releases} and download the latest version for your architecture. For version 0.16.7, that should be either \filename{asdf-v0.16.7-linux-amd64.tar.gz} or \filename{asdf-v0.16.7-linux-arm64.tar.gz}, depending on whether you have an Intel/AMD or an ARM processor. Lets assume that you downloaded the \filename{asdf-v0.16.7-linux-amd64.tar.gz} file to \filename{~/Downloads}. Then do
+
+\begin{minted}[breaklines]{shell-session}
+cd ~/bin
+tar -xzf ~/Downloads/asdf-v0.16.7-linux-amd64.tar.gz
+\end{minted}
+
+Now that \commandname{asdf} is installed (and in your \idx{path}{Path}), we need to add plugins for Erlang and Elixir:
+
+\begin{minted}[breaklines]{shell-session}
+asdf plugin add erlang https://github.com/asdf-vm/asdf-erlang.git
+asdf plugin add elixir https://github.com/asdf-vm/asdf-elixir.git
+\end{minted}
+
+Install Erlang using \commandname{asdf}:
+
+\begin{minted}[breaklines]{shell-session}
+apt install libssl-dev
+apt install unixodbc-dev
+apt install libwxgtk3.2-dev libwxgtk-webview3.2-dev
+asdf install erlang 27.3.2
+echo export ASDF_ERLANG_VERSION=27.3.2 >> ~/.bashrc
+source ~/.bashrc
+\end{minted}
+
+Install Elixir using \commandname{asdf}:
+
+\begin{minted}[breaklines]{shell-session}
+asdf install elixir 1.18.3-otp-27
+export ASDF_ELIXIR_VERSION=1.18.3-otp-27 >> ~/.bashrc
+source ~/.bashrc
+\end{minted}
+
+This should allow you to run the Elixir REPL called \commandname{iex}. You can exit it by pressing Ctrl-C twice.
+
+Now, lets install Livebook in your homedirectory\footnote{You probably want to place it somewhere else according to your own organizational concept, but the instructions will assume this location.}:
+
+\begin{minted}[breaklines]{shell-session}
+cd
+git clone git@github.com:livebook-dev/livebook.git
+cd livebook
+mix deps.get --only prod
+\end{minted}
+
+Finally, lets create a script that makes starting Livebook a breeze. For this you should come up with a password. In the instructions I use the password \say{\texttt{gazelle}}
+
+\begin{minted}[breaklines]{shell-session}
+cd ~/bin
+touch start-livebook
+echo \#\!/usr/bin/env bash >> start-livebook
+echo export LIVEBOOK_PASSWORD=gazelle >> start-livebook
+echo export MIX_ENV=prod >> start-livebook
+echo cd ~/livebook >> start-livebook
+echo mix phx.server >> start-livebook
+chmod u+x start-livebook
+\end{minted}
+
+You should now be able to start Livebook by running:
+
+\begin{minted}[breaklines]{shell-session}
+$ start-livebook
+...
+[Livebook] Application running at http://localhost:8080/
+\end{minted}
+
+The first time you do this, it will take a while as the application needs to be compiled. When the last line appears, you can point a browser to the URL. If it connects and asks for a password, you have successfully installed Livebook.
+
 \subsection{Verifying Success}
