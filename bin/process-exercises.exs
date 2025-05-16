@@ -1,5 +1,7 @@
 #!/usr/bin/env elixir
 
+Mix.install([:yaml_elixir])
+
 defmodule Script do
   @alines "exercises/answers.tex"
   
@@ -38,6 +40,33 @@ defmodule Script do
     end
   end
   
+  def process_exercise(topic, exercise) do
+    IO.puts(exercise)
+    
+    meta =
+      "../ex/#{topic}/#{exercise}/meta.yaml"
+      |> File.read!()
+      |> YamlElixir.read_from_string!(atoms: true)
+      |> Enum.map(fn {k,v} -> {String.to_atom(k), v} end)
+      |> Map.new()
+    
+    qfile = "../ex/#{topic}/#{exercise}/question.tex"
+    afile = "../ex/#{topic}/#{exercise}/answer.tex"
+    
+    {
+      """
+      \\subsection{#{meta.title}}
+      \\label{q:#{topic}:#{exercise}}
+      \\input{#{qfile}}
+      """,
+      """
+      \\subsection{#{meta.title}}
+      \\label{a:#{topic}:#{exercise}}
+      \\input{#{afile}}
+      """
+    }
+  end
+  
   def process(task) do
     %{
       shorthand: shorthand,
@@ -45,6 +74,12 @@ defmodule Script do
       qfilename: qfilename,
       afilename: afilename,
     } = task
+    
+    # read order
+    order =
+      "../ex/#{shorthand}/order.yaml"
+      |> File.read!()
+      |> YamlElixir.read_from_string!()
     
     qlines = """
     \\section{Exercises}
@@ -55,6 +90,13 @@ defmodule Script do
     \\section{#{title}}
     \\label{a:#{shorthand}}
     """
+    
+    {qlines, alines} =
+      order
+      |> Enum.reduce({qlines, alines}, fn exercise, {qlines, alines} ->
+        {exqlines, exalines} = process_exercise(shorthand, exercise)
+        {qlines<>exqlines, alines<>exalines}
+      end)
     
     :ok =
       qfilename
