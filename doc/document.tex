@@ -67,6 +67,11 @@
 
 \newcommand{\csharp}{C{\lserif\#}}
 
+
+\newcommand{\exercises}[2]{
+  \input{exercises/#1.tex}
+}
+
 \newcommand{\includeCFile}[2][]{
   \begin{samepage}
     \marginpar{[\textattachfile{../src/c/#2}{\textcolor{blue}{extract file}}]}
@@ -199,6 +204,10 @@
 
 \part{Back End}
 \appendix
+
+\chapter{Exercise Answers}
+\input{exercises/answers.tex}
+
 \chapter{Concepts to Avoid}
 
 It is natural to supplement a book like this with material from the Internet and other sources. It might even be a good idea, and as you progress through your education it will be critical. However, it is also necessary to be critical of such information. Some of it is helpful, some is not, and some is straight up counterproductive. The online information on \csharp has a tendency to fall into the latter two categories for novice developers. This is not a matter of correctness, but about limiting your exposure to unnecessary complexity and other ways of shorting the learning process. The following is a non-exclusive list of concepts to avoid:
