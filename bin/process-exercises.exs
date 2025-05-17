@@ -4,6 +4,7 @@ Mix.install([:yaml_elixir])
 
 defmodule Script do
   @alines "exercises/answers.tex"
+  @base_feedback_url "https://www.asjo.dk/teaching/oop/feedback?params="
   
   def expand_includes(text, basepath) do
     case Regex.run(~r/^(.*\\input{)([^}#]*)(}.*)$/sU, text) do
@@ -40,6 +41,40 @@ defmodule Script do
     end
   end
   
+  def process_difficulty(topic, creativity) do
+    params = ""
+    """
+    \\begin{tikzpicture}[remember picture,overlay]
+      \\newcommand{\\halfvspacing}[0]{1.5mm}
+      \\newcommand{\\hspacing}[0]{0.0mm}
+      \\newcommand{\\barwidth}[0]{16mm}
+      \\newcommand{\\fillcolor}[0]{teal!60}
+      \\tikzstyle{bar}=[
+        overlay,
+        rectangle,
+        draw=black,
+        anchor=west,
+        thick,
+        text width=\\barwidth,
+      ]
+      
+      \\coordinate (origin) at (102mm,10mm);
+      
+      \\node[anchor=east] () at ([xshift=-\\hspacing,yshift= \\halfvspacing]origin) {\\footnotesize Emne};
+      \\node[anchor=east] () at ([xshift=-\\hspacing,yshift=-\\halfvspacing]origin) {\\footnotesize Kreativitet};
+      
+      \\node[rectangle, fill=\\fillcolor, anchor=west, text width=#{topic}*\\barwidth] () at ([yshift= \\halfvspacing]origin) {};
+      \\node[rectangle, fill=\\fillcolor, anchor=west, text width=#{creativity}*\\barwidth] () at ([yshift=-\\halfvspacing]origin) {};
+      
+      \\node[bar] () at ([yshift= \\halfvspacing]origin) {};
+      \\node[bar] () at ([yshift=-\\halfvspacing]origin) {};
+      
+    %%  \\node[anchor=west] () at ([xshift=3mm+\\barwidth,yshift=0]origin) {\\footnotesize \href{#{@base_feedback_url}#{params}}{feedback}};
+    \\end{tikzpicture}
+    \\vspace{-3mm}
+    """
+  end
+  
   def process_exercise(topic, exercise) do
     IO.puts(exercise)
     
@@ -52,12 +87,14 @@ defmodule Script do
     
     qfile = "../ex/#{topic}/#{exercise}/question.tex"
     afile = "../ex/#{topic}/#{exercise}/answer.tex"
+    difficulty = process_difficulty(meta.difficulty_topic, meta.difficulty_creativity)
     
     {
       """
       \\subsection{#{meta.title}}
       \\label{q:#{topic}:#{exercise}}
       \\input{#{qfile}}
+      #{difficulty}
       """,
       """
       \\subsection{#{meta.title}}
