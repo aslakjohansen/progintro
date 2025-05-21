@@ -95,7 +95,7 @@ defmodule Script do
         text width=\\barwidth,
       ]
       
-      \\coordinate (origin) at (102mm,10mm);
+      \\coordinate (origin) at (102mm,16mm);
       
       \\node[anchor=east] () at ([xshift=-\\hspacing,yshift= \\halfvspacing]origin) {\\footnotesize Topic};
       \\node[anchor=east] () at ([xshift=-\\hspacing,yshift=-\\halfvspacing]origin) {\\footnotesize Creativity};
