@@ -193,6 +193,7 @@ defmodule Script do
       |> File.read!()
       |> expand_includes(basepath)
       |> extract_worklist()
+      |> Enum.reverse()
       |> Enum.map(fn task -> process(task, data) end)
     _ ->
       IO.puts("Syntax: process-exercises.exs ROOT_INPUT_FILE BASE_PATH")
