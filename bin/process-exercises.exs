@@ -79,7 +79,7 @@ defmodule Script do
       data
       |> Jason.encode!()
       |> Base.encode64()
-    ""
+    
     """
     \\begin{tikzpicture}[remember picture,overlay]
       \\newcommand{\\halfvspacing}[0]{1.5mm}
