@@ -1,1 +1,16 @@
-The answer
+The \filename{project.csproj} file contains the following lines (or very similar):
+
+\begin{minted}[highlightlines={5}]{xml}
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
+\end{minted}
+
+The highlighted line specifies that version 8.0 of the .NET framework should be used. Here, \texttt{net} is used as a shorthand for .NET.

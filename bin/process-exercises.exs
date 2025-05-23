@@ -79,7 +79,7 @@ defmodule Script do
       data
       |> Jason.encode!()
       |> Base.encode64()
-    ""
+    
     """
     \\begin{tikzpicture}[remember picture,overlay]
       \\newcommand{\\halfvspacing}[0]{1.5mm}
@@ -95,7 +95,7 @@ defmodule Script do
         text width=\\barwidth,
       ]
       
-      \\coordinate (origin) at (102mm,10mm);
+      \\coordinate (origin) at (102mm,16mm);
       
       \\node[anchor=east] () at ([xshift=-\\hspacing,yshift= \\halfvspacing]origin) {\\footnotesize Topic};
       \\node[anchor=east] () at ([xshift=-\\hspacing,yshift=-\\halfvspacing]origin) {\\footnotesize Creativity};
@@ -193,6 +193,7 @@ defmodule Script do
       |> File.read!()
       |> expand_includes(basepath)
       |> extract_worklist()
+      |> Enum.reverse()
       |> Enum.map(fn task -> process(task, data) end)
     _ ->
       IO.puts("Syntax: process-exercises.exs ROOT_INPUT_FILE BASE_PATH")
