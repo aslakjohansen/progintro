@@ -1,0 +1,14 @@
+In \csharp, there are 4 (primitive, signed and portable) integral types: \typename{sbyte}, \typename{short}, \typename{int} and \typename{long}.
+
+An \typename{sbyte} can represent any integral number from (and including) -128 until (and also including) 127. To find out what happens when we exceed the largest number it can represent, we writw the following program:
+
+\inputminted{csharp}{\context/answer/IntegerBoundary.cs}
+
+When executed, it prints:
+
+\begin{verbatim}
+127
+-128
+\end{verbatim}
+
+Accordingly, $127+1$ turns out to evaluate to $-128$. In other words; when we add one to the largest number we an represent we get the lowest number we can represent. This is not a coincidence, and holds for all the primitive integer types.

@@ -123,18 +123,21 @@ defmodule Script do
       |> Enum.map(fn {k,v} -> {String.to_atom(k), v} end)
       |> Map.new()
     
-    qfile = "../ex/#{topic}/#{exercise}/question.tex"
-    afile = "../ex/#{topic}/#{exercise}/answer.tex"
+    context = "../ex/#{topic}/#{exercise}/"
+    qfile = "#{context}/question.tex"
+    afile = "#{context}/answer.tex"
     difficulty = process_difficulty(meta.difficulty_topic, meta.difficulty_creativity, data)
     
     {
       """
+      \\renewcommand{\\context}[0]{#{context}}
       \\subsection{#{meta.title}}
       \\label{q:#{topic}:#{exercise}}
       \\input{#{qfile}}
       #{difficulty}
       """,
       """
+      \\renewcommand{\\context}[0]{#{context}}
       \\subsection{#{meta.title}}
       \\label{a:#{topic}:#{exercise}}
       \\input{#{afile}}
