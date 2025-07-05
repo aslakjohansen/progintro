@@ -64,7 +64,8 @@ This operation is tightly coupled to both the \idx{remainder}{Remainder} and the
 %      \SyntaxForwardPathTo{end}
 %    \end{syntaxrule}
     \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(end);
-    \draw[path] (begin)--($(begin)!0.5!([xshift=2cm]begin)$)|-(ruleIIa)--(ruleIIb)--(ruleIIc)--($(ruleIIc)!0.5!([xshift=2cm]ruleIIc)$)|-(end);
+    \draw[path] (begin) to[-|-] (ruleIIa)--(ruleIIb)--(ruleIIc) to[-|-] (end);
+%    \draw[path] (begin)--($(begin)!0.5!([xshift=2cm]begin)$)|-(ruleIIa)--(ruleIIb)--(ruleIIc)--($(ruleIIc)!0.5!([xshift=2cm]ruleIIc)$)|-(end);
   \end{syntax}
   \caption{Expressions of arithmetic operators}
 \end{syntaxfloat}

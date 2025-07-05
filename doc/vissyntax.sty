@@ -56,8 +56,26 @@
   thick,
   >=stealth,
   draw=black,
-  rounded corners=3mm,
+  rounded corners=2mm,
 }}
+
+% https://tex.stackexchange.com/questions/45347/vertical-and-horizontal-lines-in-pgf-tikz
+\tikzset{
+  -|-/.style={
+    to path={
+      (\tikztostart) -| ($(\tikztostart)!#1!(\tikztotarget)$) |- (\tikztotarget)
+      \tikztonodes
+    }
+  },
+  -|-/.default=0.5,
+  |-|/.style={
+    to path={
+      (\tikztostart) |- ($(\tikztostart)!#1!(\tikztotarget)$) -| (\tikztotarget)
+      \tikztonodes
+    }
+  },
+  |-|/.default=0.5,
+}
 
 \newenvironment{syntax}[2][]{
   \begin{tikzpicture}[#1]
