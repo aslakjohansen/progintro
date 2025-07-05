@@ -51,9 +51,33 @@
   textalign,
   rounded corners=1mm,
 }}
+\tikzset{nonterminal/.style={
+  rectangle,
+  draw=purple,
+  text=purple,
+  fill=purple!5,
+  thick,
+  font=\slshape,
+  textalign,
+  rounded corners=1mm,
+}}
+\tikzset{concept/.style={
+  nonterminal,
+  double,
+}}
+\tikzset{beginnode/.style={
+  empty,
+  circle,
+  draw,
+  inner sep=0pt,
+  minimum size=1.6mm,
+}}
+\tikzset{endnode/.style={
+  beginnode,
+  fill=black,
+}}
 
 \tikzset{path/.style={
-  thick,
   >=stealth,
   draw=black,
   rounded corners=2mm,
@@ -79,13 +103,18 @@
 
 \newenvironment{syntax}[2][]{
   \begin{tikzpicture}[#1]
-    \node[nonterminal, double] (symbol)  at (0,\SyntaxRow{0}) {#2};
-    \node[empty]       (begin)   at (2cm,\SyntaxRow{0}) {};
-    \node[empty]       (end)     at (10cm,\SyntaxRow{0}) {};
+    \node[concept]   (concept) at (0,\SyntaxRow{0}) {#2};
+    \node[beginnode] (begin)   at ([xshift=6mm]concept.east) {};
+    \node[endnode]   (end)     at (10cm,\SyntaxRow{0}) {};
 }{
   \end{tikzpicture}
 }
 
+
+
+\newcommand{\SyntaxSingleLineWest}[1]{
+  \coordinate (#1) at (begin);
+}
 
 \newcommand{\SyntaxRow}[1]{
   -8mm*#1
