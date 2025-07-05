@@ -20,12 +20,6 @@
     within=chapter,
 ]{syntaxfloat}
 
-\newenvironment{syntax}[1][]{
-  \begin{tikzpicture}[#1]
-}{
-  \end{tikzpicture}
-}
-
 \tikzset{textalign/.style={
   minimum height=5.5mm,
   text depth=0.7mm,
@@ -64,4 +58,46 @@
   draw=black,
   rounded corners=3mm,
 }}
+
+\newenvironment{syntax}[2][]{
+  \begin{tikzpicture}[#1]
+    \node[nonterminal] (symbol)  at (0,\SyntaxRow{0}) {#2};
+    \node[empty]       (begin)   at (2cm,\SyntaxRow{0}) {};
+    \node[empty]       (end)     at (10cm,\SyntaxRow{0}) {};
+}{
+  \end{tikzpicture}
+}
+
+
+\newcommand{\SyntaxRow}[1]{
+  -8mm*#1
+}
+
+\newcommand{\SyntaxPathForward}[2]{
+  \draw[path] (#1)--(#2);
+}
+\newcommand{\SyntaxPathForwardVertical}[2]{
+  \draw[path] (#1)--($(#1)!0.5!([xshift=2cm]#1)$)|-(#2);
+}
+
+% --
+
+\newcommand{\SyntaxPreviousNode}[0]{dummy}
+
+\newenvironment{syntaxrule}[1]
+{
+  \renewcommand{\SyntaxPreviousNode}[0]{#1}
+  \draw[path] (\SyntaxPreviousNode)
+}{
+  ;
+}
+
+\newcommand{\SyntaxForwardPathTo}[1]{
+  --(#1)
+  \renewcommand{\SyntaxPreviousNode}[0]{#1}
+}
+\newcommand{\SyntaxForwardVerticalPathTo}[1]{
+  --($(\SyntaxPreviousNode)!0.5!([xshift=2cm]\SyntaxPreviousNode)$)|-(#1)
+  \renewcommand{\SyntaxPreviousNode}[0]{#1}
+}
 
