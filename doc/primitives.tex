@@ -43,29 +43,15 @@ This operation is tightly coupled to both the \idx{remainder}{Remainder} and the
 
 \begin{syntaxfloat}
   \begin{syntax}{expr}
-%    \node[nonterminal] (symbol)  at (0,\SyntaxRow{0}) {expr};
-%    \node[empty]       (begin)   at (2cm,\SyntaxRow{0}) {};
     \node[nonterminal] (ruleIa)  at (4cm,\SyntaxRow{0}) {expr};
     \node[terminal]    (ruleIb)  at (6cm,\SyntaxRow{0}) {+};
     \node[nonterminal] (ruleIc)  at (8cm,\SyntaxRow{0}) {expr};
     \node[nonterminal] (ruleIIa) at (4cm,\SyntaxRow{1}) {expr};
     \node[terminal]    (ruleIIb) at (6cm,\SyntaxRow{1}) {-};
     \node[nonterminal] (ruleIIc) at (8cm,\SyntaxRow{1}) {expr};
-%    \node[empty]       (end)     at (10cm,\SyntaxRow{0}) {};
     
-%    \SyntaxPathForward{begin}{ruleIa}
-%    \SyntaxPathForward{ruleIa}{ruleIb}
-%    \SyntaxPathForward{ruleIb}{ruleIc}
-%    \SyntaxPathForward{ruleIc}{end}
-%    \begin{syntaxrule}{begin}
-%      \SyntaxForwardPathTo{ruleIa}
-%      \SyntaxForwardPathTo{ruleIb}
-%      \SyntaxForwardPathTo{ruleIc}
-%      \SyntaxForwardPathTo{end}
-%    \end{syntaxrule}
     \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(end);
     \draw[path] (begin) to[-|-] (ruleIIa)--(ruleIIb)--(ruleIIc) to[-|-] (end);
-%    \draw[path] (begin)--($(begin)!0.5!([xshift=2cm]begin)$)|-(ruleIIa)--(ruleIIb)--(ruleIIc)--($(ruleIIc)!0.5!([xshift=2cm]ruleIIc)$)|-(end);
   \end{syntax}
   \caption{Expressions of arithmetic operators}
 \end{syntaxfloat}
