@@ -3,6 +3,7 @@
                  LaTeX package for visual BNF syntax figures]
 
 % packages and TikZ librairies
+\RequirePackage{geometry}
 \RequirePackage{tikz}
 \RequirePackage{newfloat}
 
@@ -75,6 +76,7 @@
 \tikzset{endnode/.style={
   beginnode,
   fill=black,
+  anchor=east,
 }}
 
 \tikzset{path/.style={
@@ -102,10 +104,11 @@
 }
 
 \newenvironment{syntax}[2][]{
-  \begin{tikzpicture}[#1]
+  \begin{tikzpicture}[remember picture,#1]
     \node[concept]   (concept) at (0,\SyntaxRow{0}) {#2};
     \node[beginnode] (begin)   at ([xshift=6mm]concept.east) {};
-    \node[endnode]   (end)     at (10cm,\SyntaxRow{0}) {};
+    \coordinate (endnoteref) at ($(begin.east -| current page.north west)$);
+    \node[endnode]   (end)     at ([xshift=1in+\hoffset+\oddsidemargin+\textwidth]endnoteref) {};
 }{
   \end{tikzpicture}
 }
