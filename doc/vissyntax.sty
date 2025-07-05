@@ -79,7 +79,7 @@
 
 \newenvironment{syntax}[2][]{
   \begin{tikzpicture}[#1]
-    \node[nonterminal] (symbol)  at (0,\SyntaxRow{0}) {#2};
+    \node[nonterminal, double] (symbol)  at (0,\SyntaxRow{0}) {#2};
     \node[empty]       (begin)   at (2cm,\SyntaxRow{0}) {};
     \node[empty]       (end)     at (10cm,\SyntaxRow{0}) {};
 }{
