@@ -10,5 +10,30 @@ Hello
 
 \csharpsubsection{\csharp}
 hello
+
+\begin{syntaxfloat}
+  \begin{syntax}{stmt}
+    \SyntaxWestSplit{MainWest}
+    \SyntaxEastSplit{MainEast}
+    
+    \node[terminal]    (ruleIa)  at \SyntaxDistribute{MainWest}{MainEast}{1}{5} {if};
+    \node[terminal]    (ruleIb)  at \SyntaxDistribute{MainWest}{MainEast}{2}{5} {(};
+    \node[nonterminal] (ruleIc)  at \SyntaxDistribute{MainWest}{MainEast}{3}{5} {expr};
+    \node[terminal]    (ruleId)  at \SyntaxDistribute{MainWest}{MainEast}{4}{5} {)};
+    \node[nonterminal] (ruleIe)  at \SyntaxDistribute{MainWest}{MainEast}{5}{5} {stmt};
+    \node[terminal]    (ruleIIa) at \SyntaxDistributeLine{MainWest}{MainEast}{1}{7}{1} {if};
+    \node[terminal]    (ruleIIb) at \SyntaxDistributeLine{MainWest}{MainEast}{2}{7}{1} {(};
+    \node[nonterminal] (ruleIIc) at \SyntaxDistributeLine{MainWest}{MainEast}{3}{7}{1} {expr};
+    \node[terminal]    (ruleIId) at \SyntaxDistributeLine{MainWest}{MainEast}{4}{7}{1} {)};
+    \node[nonterminal] (ruleIIe) at \SyntaxDistributeLine{MainWest}{MainEast}{5}{7}{1} {stmt};
+    \node[terminal]    (ruleIIf) at \SyntaxDistributeLine{MainWest}{MainEast}{6}{7}{1} {else};
+    \node[nonterminal] (ruleIIg) at \SyntaxDistributeLine{MainWest}{MainEast}{7}{7}{1} {stmt};
+    
+    \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(ruleId)--(ruleIe)--(end);
+    \draw[path] (begin) to[-|-] (ruleIIa)--(ruleIIb)--(ruleIIc)--(ruleIId)--(ruleIIe)--(ruleIIf)--(ruleIIg) to[-|-] (end);
+  \end{syntax}
+  \caption{Statements for branching}
+\end{syntaxfloat}
+
 \elixirsubsection{Elixir}
 hello
