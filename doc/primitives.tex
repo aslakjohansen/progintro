@@ -43,12 +43,25 @@ This operation is tightly coupled to both the \idx{remainder}{Remainder} and the
 
 \begin{syntaxfloat}
   \begin{syntax}{expr}
-    \node[nonterminal] (ruleIa)  at (4cm,\SyntaxRow{0}) {expr};
-    \node[terminal]    (ruleIb)  at (6cm,\SyntaxRow{0}) {+};
-    \node[nonterminal] (ruleIc)  at (8cm,\SyntaxRow{0}) {expr};
-    \node[nonterminal] (ruleIIa) at (4cm,\SyntaxRow{1}) {expr};
-    \node[terminal]    (ruleIIb) at (6cm,\SyntaxRow{1}) {-};
-    \node[nonterminal] (ruleIIc) at (8cm,\SyntaxRow{1}) {expr};
+    \SyntaxWestSplit{MainWest}
+    \SyntaxEastSplit{MainEast}
+    
+%    \node[nonterminal] (ruleIa)  at ($(begin)!0.3!(end)$) {expr};
+    \node[nonterminal] (ruleIa)  at \SyntaxDistribute{MainWest}{MainEast}{1}{3} {expr};
+    \node[terminal]    (ruleIb)  at \SyntaxDistribute{MainWest}{MainEast}{2}{3} {+};
+    \node[nonterminal] (ruleIc)  at \SyntaxDistribute{MainWest}{MainEast}{3}{3} {expr};
+%    \node[nonterminal] (ruleIa)  at ($\SyntaxDistribute{MainWest}{MainEast}{1}{3}$) {expr};
+%    \node[terminal]    (ruleIb)  at (\SyntaxDistribute{MainWest}{MainEast}{2}{3}) {+};
+%    \node[nonterminal] (ruleIc)  at (\SyntaxDistribute{MainWest}{MainEast}{3}{3}) {expr};
+%    \node[nonterminal] (ruleIa)  at (4cm,\SyntaxRow{0}) {expr};
+%    \node[terminal]    (ruleIb)  at (6cm,\SyntaxRow{0}) {+};
+%    \node[nonterminal] (ruleIc)  at (8cm,\SyntaxRow{0}) {expr};
+    \node[nonterminal] (ruleIIa) at \SyntaxDistributeLine{MainWest}{MainEast}{1}{3}{1} {expr};
+    \node[terminal]    (ruleIIb) at \SyntaxDistributeLine{MainWest}{MainEast}{2}{3}{1} {-};
+    \node[nonterminal] (ruleIIc) at \SyntaxDistributeLine{MainWest}{MainEast}{3}{3}{1} {expr};
+%    \node[nonterminal] (ruleIIa) at (4cm,\SyntaxRow{1}) {expr};
+%    \node[terminal]    (ruleIIb) at (6cm,\SyntaxRow{1}) {-};
+%    \node[nonterminal] (ruleIIc) at (8cm,\SyntaxRow{1}) {expr};
     
     \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(end);
     \draw[path] (begin) to[-|-] (ruleIIa)--(ruleIIb)--(ruleIIc) to[-|-] (end);
