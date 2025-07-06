@@ -58,11 +58,15 @@ This operation is tightly coupled to both the \idx{remainder}{Remainder} and the
     \node[nonterminal] (ruleIVa) at \SyntaxDistributeLine{MainWest}{MainEast}{1}{3}{3} {expr};
     \node[terminal]    (ruleIVb) at \SyntaxDistributeLine{MainWest}{MainEast}{2}{3}{3} {/};
     \node[nonterminal] (ruleIVc) at \SyntaxDistributeLine{MainWest}{MainEast}{3}{3}{3} {expr};
+    \node[nonterminal] (ruleVa) at \SyntaxDistributeLine{MainWest}{MainEast}{1}{3}{4} {expr};
+    \node[terminal]    (ruleVb) at \SyntaxDistributeLine{MainWest}{MainEast}{2}{3}{4} {\%};
+    \node[nonterminal] (ruleVc) at \SyntaxDistributeLine{MainWest}{MainEast}{3}{3}{4} {expr};
     
     \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(end);
     \draw[path] (begin) to[-|-] (ruleIIa)--(ruleIIb)--(ruleIIc) to[-|-] (end);
     \draw[path] (begin) to[-|-] (ruleIIIa)--(ruleIIIb)--(ruleIIIc) to[-|-] (end);
     \draw[path] (begin) to[-|-] (ruleIVa)--(ruleIVb)--(ruleIVc) to[-|-] (end);
+    \draw[path] (begin) to[-|-] (ruleVa)--(ruleVb)--(ruleVc) to[-|-] (end);
   \end{syntax}
   \caption{Expressions of arithmetic operators}
 \end{syntaxfloat}
