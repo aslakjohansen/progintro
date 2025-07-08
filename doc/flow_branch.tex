@@ -21,7 +21,12 @@ hello
     \node[nonterminal] (ruleIc)  at \SyntaxDistribute{MainWest}{MainEast}{3}{5} {expr};
     \node[terminal]    (ruleId)  at \SyntaxDistribute{MainWest}{MainEast}{4}{5} {)};
     \node[nonterminal] (ruleIe)  at \SyntaxDistribute{MainWest}{MainEast}{5}{5} {stmt};
-    \node[matrix,column sep=0.8cm] (matrix) at ([yshift=-1cm]$(begin)!0.5!(end)$) {
+%    \node[matrix,column sep=0.8cm] (matrix) at ([yshift=-1cm]$(begin)!0.5!(end)$) {
+%    \node[matrix,column sep=0.8cm] (matrix) at ([yshift=-1cm]$(begin)!0.5!(end)$)
+%    {
+%    \node[sequence] (matrix) at (\syntaxcenter) {
+    \node[sequence] (matrix) at ([yshift=-1cm]$(begin)!0.5!(end)$) {
+%    \syntaxruleXLA{} {
       \node[terminal]    (ruleIIa) {if};
       &
       \node[terminal]    (ruleIIb) {(};
@@ -37,6 +42,7 @@ hello
       \node[nonterminal] (ruleIIg) {stmt};
       \\
     };
+%    }
     
     \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(ruleId)--(ruleIe)--(end);
     \draw[path] (begin) to[-|-] (ruleIIa)--(ruleIIb)--(ruleIIc)--(ruleIId)--(ruleIIe)--(ruleIIf)--(ruleIIg) to[-|-] (end);
