@@ -22,7 +22,7 @@ hello
     \node[terminal]    (ruleId)  at \SyntaxDistribute{MainWest}{MainEast}{4}{5} {)};
     \node[nonterminal] (ruleIe)  at \SyntaxDistribute{MainWest}{MainEast}{5}{5} {stmt};
     
-    \node[sequence] () at ([yshift=-1cm]$(begin)!0.5!(end)$) {
+    \node[sequence] () at ([yshift=-\syntaxruledist]$(begin)!0.5!(end)$) {
       \node[terminal]    (ruleIIa) {if};
       &
       \node[terminal]    (ruleIIb) {(};
