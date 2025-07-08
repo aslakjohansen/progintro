@@ -1,0 +1,64 @@
+A (partial) graph of the ancestry of the Simpsons could be constructed like this:
+
+\vspace{10mm}
+\begin{center}
+  \begin{tikzpicture}[remember picture]
+    \newcommand{\xspacing}[0]{2.5cm}
+    \newcommand{\yspacing}[0]{2.5cm}
+    \newcommand{\labelshift}[0]{5cm}
+    
+    \tikzstyle{edge}  = [thick,>=stealth,draw=black]
+    \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
+    \tikzstyle{node}=[
+      circle,
+      draw=purple,
+      anchor=north,
+      align=center,
+      thick,
+      minimum size=1,
+    ]
+    
+    \coordinate (origo) at (0, 0);
+    \node[node] (AbeSimpson)       at ([xshift=0.0*\xspacing,yshift=-0*\yspacing] origo) {Abe\\Simpson};
+    \node[node] (MonaSimpson)      at ([xshift=1.0*\xspacing,yshift=-0*\yspacing] origo) {Mona\\Simpson};
+    \node[node] (ClancyBouver)     at ([xshift=2.5*\xspacing,yshift=-0*\yspacing] origo) {Clancy\\Bouver};
+    \node[node] (JacquelineBouver) at ([xshift=3.5*\xspacing,yshift=-0*\yspacing] origo) {Jacqueline\\Bouver};
+    
+    \node[node] (HerbSimpson)  at ([xshift=0*\xspacing,yshift=-1*\yspacing] origo) {Herb\\Simpson};
+    \node[node] (HomerSimpson) at ([xshift=1*\xspacing,yshift=-1*\yspacing] origo) {Homer\\Simpson};
+    \node[node] (MargeBouver)  at ([xshift=2*\xspacing,yshift=-1*\yspacing] origo) {Marge\\Bouver};
+    \node[node] (PattyBouver)  at ([xshift=3*\xspacing,yshift=-1*\yspacing] origo) {Patty\\Bouver};
+    \node[node] (SelmaBouver)  at ([xshift=4*\xspacing,yshift=-1*\yspacing] origo) {Selma\\Bouver};
+    
+    \node[node] (BartSimpson)   at ([xshift=0.5*\xspacing,yshift=-2*\yspacing] origo) {Bart\\Simpson};
+    \node[node] (LisaSimpson)   at ([xshift=1.5*\xspacing,yshift=-2*\yspacing] origo) {Lisa\\Simpson};
+    \node[node] (MaggieSimpson) at ([xshift=2.5*\xspacing,yshift=-2*\yspacing] origo) {Maggie\\Simpson};
+    \node[node] (LingBouver)    at ([xshift=4.0*\xspacing,yshift=-2*\yspacing] origo) {Ling\\Bouver};
+    
+    \draw[dedge] (AbeSimpson)--(HerbSimpson);
+    \draw[dedge] (AbeSimpson)--(HomerSimpson);
+    \draw[dedge] (MonaSimpson)--(HerbSimpson);
+    \draw[dedge] (MonaSimpson)--(HomerSimpson);
+    \draw[dedge] (ClancyBouver)--(MargeBouver);
+    \draw[dedge] (ClancyBouver)--(PattyBouver);
+    \draw[dedge] (ClancyBouver)--(SelmaBouver);
+    \draw[dedge] (JacquelineBouver)--(MargeBouver);
+    \draw[dedge] (JacquelineBouver)--(PattyBouver);
+    \draw[dedge] (JacquelineBouver)--(SelmaBouver);
+    \draw[dedge] (HomerSimpson)--(BartSimpson);
+    \draw[dedge] (HomerSimpson)--(LisaSimpson);
+    \draw[dedge] (HomerSimpson)--(MaggieSimpson);
+    \draw[dedge] (MargeBouver)--(BartSimpson);
+    \draw[dedge] (MargeBouver)--(LisaSimpson);
+    \draw[dedge] (MargeBouver)--(MaggieSimpson);
+    \draw[dedge] (SelmaBouver)--(LingBouver);
+  \end{tikzpicture}
+\end{center}
+\vspace{10mm}
+
+In this example, the following graph-related terms are in use:
+\begin{itemize}
+  \item A node is used to represent a person.
+  \item An edge is used to represent an parent-child relation. That is, it goes from a parent to a child.
+\end{itemize}
+
