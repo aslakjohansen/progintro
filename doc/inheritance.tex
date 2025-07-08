@@ -1,3 +1,88 @@
 \chapter{Inheritance}
 
 Hello
+
+\begin{syntaxfloat}
+  \begin{syntax}{class}
+    \SyntaxWestSplit{MainWest}
+    \SyntaxEastSplit{MainEast}
+    
+    \node[sequence] () at ([yshift=-0*\syntaxruledist]$(begin)!0.5!(end)$) {
+      \node[nonterminal] (ruleIa) {class-annotations};
+      &
+      \node[terminal]    (ruleIb) {class};
+      &
+      \node[nonterminal] (ruleIc) {name};
+%      &
+%      \node[terminal]    (ruleId) {(};
+%      &
+%      \node[nonterminal] (ruleIe) {parameter-list};
+%      &
+%      \node[terminal]    (ruleIf) {)};
+%      &
+%      \node[rectangle, minimum width=2cm] () {};
+%      &
+%      \node[nonterminal] (ruleIg) {:};
+%      &
+%      \node[nonterminal] (ruleIh) {name};
+%      &
+%      \node[nonterminal] (ruleIi) {class-body};
+      \\
+    };
+    
+    \node[sequence] () at ([yshift=-1.5*\syntaxruledist]$(begin)!0.5!(end)$) {
+%      \node[nonterminal] (ruleIa) {class-annotations};
+%      &
+%      \node[terminal]    (ruleIb) {class};
+%      &
+%      \node[nonterminal] (ruleIc) {name};
+%      &
+      \node[terminal]    (ruleId) {(};
+      &
+      \node[nonterminal] (ruleIe) {parameter-list};
+      &
+      \node[terminal]    (ruleIf) {)};
+%      &
+%      \node[rectangle, minimum width=2cm] () {};
+%      &
+%      \node[nonterminal] (ruleIg) {:};
+%      &
+%      \node[nonterminal] (ruleIh) {name};
+%      &
+%      \node[nonterminal] (ruleIi) {class-body};
+      \\
+    };
+    
+    \node[sequence] () at ([yshift=-3*\syntaxruledist]$(begin)!0.5!(end)$) {
+%      \node[nonterminal] (ruleIa) {class-annotations};
+%      &
+%      \node[terminal]    (ruleIb) {class};
+%      &
+%      \node[nonterminal] (ruleIc) {name};
+%      &
+%      \node[terminal]    (ruleId) {(};
+%      &
+%      \node[nonterminal] (ruleIe) {parameter-list};
+%      &
+%      \node[terminal]    (ruleIf) {)};
+%      &
+      \node[nonterminal] (ruleIg) {:};
+      &
+      \node[nonterminal] (ruleIh) {name};
+      &
+      \node[terminal] (ruleIi) {\{};
+      &
+      \node[nonterminal] (ruleIj) {class-body};
+      &
+      \node[terminal] (ruleIk) {\}};
+      \\
+    };
+    
+    \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)
+      -|([xshift=1cm,yshift=-0.4cm]ruleIc.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleId.west)|-
+      (ruleId)--(ruleIe)--(ruleIf)
+      -|([xshift=1cm,yshift=-0.4cm]ruleIf.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleIg.west)|-
+      (ruleIg)--(ruleIh)--(ruleIi)--(ruleIj)--(ruleIk) to[-|-] (end);
+  \end{syntax}
+  \caption{Class definition with inherence}
+\end{syntaxfloat}
