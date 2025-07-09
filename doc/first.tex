@@ -113,6 +113,51 @@ The program from section \ref{first:writing} deserves a bit more attention. So, 
   \label{syntax:first:hello}
 \end{syntaxfloat}
 
+\begin{figure}[tbp]
+  \begin{center}
+  \begin{tikzpicture}[]
+    \newcommand{\spacing}[0]{ 8mm }
+    \tikzstyle{edge}  = [thick,>=stealth,draw=black]
+    \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
+    \tikzstyle{terminal}=[
+      anchor=north,
+    ]
+    \tikzstyle{nonterminal}=[
+      circle,
+      draw=purple!70,
+      fill=purple!10,
+      anchor=north,
+      very thick,
+      minimum size=2.0cm
+    ]
+    
+    \node[nonterminal] (pgm) at (0,0) {pgm};
+    \node[nonterminal] (stmt) at ([yshift=-\spacing]pgm.south) {stmt};
+    \node[matrix,column sep=\spacing,anchor=north,] () at ([yshift=-\spacing]stmt.south) {
+      \node[nonterminal] (context) {name};
+      &
+      \node[nonterminal] (function) {name};
+      &
+      \node[nonterminal] (params) {param-list};
+      \\
+    };
+    \node[terminal] (context value)  at ([yshift=-\spacing]context.south) {Console};
+    \node[terminal] (function value) at ([yshift=-\spacing]function.south) {WriteLine};
+    \node[terminal] (params value)   at ([yshift=-\spacing]params.south) {\texttt{"Hello, World!"}};
+    
+    \draw[edge] (pgm)--(stmt);
+    \draw[edge] (stmt)--(context);
+    \draw[edge] (stmt)--(function);
+    \draw[edge] (stmt)--(params);
+    \draw[edge] (context)--(context value);
+    \draw[edge] (function)--(function value);
+    \draw[edge] (params)--(params value);
+  \end{tikzpicture}
+\end{center}
+  \caption{Parse tree of hello-world program.}
+  \label{fig:first:hello:parsetree}
+\end{figure}
+
 % final words on the grammar so far
 As we move through this book, and broaden our understanding of the \csharp\ language, we will extend on this \idx{grammar}{Grammar}. The pgm definition will receive one extention and both stmt and expr will receive many. We settle for these definitions being \textsl{mostly} correct as the correct rules are at least an order of magnitude more complicated, and this complexity is disruptive for understanding of the language at this level.
 
