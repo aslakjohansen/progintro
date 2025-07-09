@@ -109,7 +109,24 @@ On top of that, developers usually work on a small portion of the intended funct
 The program from section \ref{first:writing} looks trivial on the surface, but there happens to be quite a bit more to it that deserves some attention. So, lets give in to it! After all, there are fundamental details at play here that is going to inform our understanding of the \csharp\ programming language.
 
 % tokens
-The first thing a compiler will do when it sees some code, is to hand it to its \idx{lexer}{Lexer} that then chop it up into a sequence of \idx{tokens}{Token}. This is the only job of the lexer. Each token reprents a small part of the code. These parts are atomic units with respect to the following phases of the compilation. By this, we mean that there is no reason for any of the following phases to deal with the code at a higher granularity than this. This may seem very abstract at this point, and that's okay. Lets just say that the output of the lexer is [Console, ., WriteLine, (, "Hello, World!", ), ;].
+The first thing a compiler will do when it sees some code, is to hand it to its \idx{lexer}{Lexer} that then chop it up into a sequence of \idx{tokens}{Token}. This is the only job of the lexer. Each token reprents a small part of the code. These parts are atomic units with respect to the following phases of the compilation. By this, we mean that there is no reason for any of the following phases to deal with the code at a higher granularity than this. This may seem very abstract at this point, and that's okay. Lets just say that the output of the lexer is:
+\begin{eqnarray*}
+  \left[
+    ~ \textcolor{teal}{\mathtt{Console}} ~
+    ,
+    ~ \textcolor{teal}{\mathtt{.}} ~
+    ,
+    ~ \textcolor{teal}{\mathtt{WriteLine}} ~
+    ,
+    ~ \textcolor{teal}{\mathtt{(}} ~
+    ,
+    ~ \textcolor{teal}{\mathtt{"Hello, World!"}} ~
+    ,
+    ~ \textcolor{teal}{\mathtt{)}} ~
+    ,
+    ~ \textcolor{teal}{\mathtt{;}} ~
+  \right]
+\end{eqnarray*}
 
 % grammar
 
