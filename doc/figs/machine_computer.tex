@@ -1,0 +1,53 @@
+\begin{center}
+  \begin{tikzpicture}[remember picture]
+    \newcommand{\spacing}[0]{ 8mm }
+    \tikzstyle{edge}  = [thick,>=stealth,draw=black]
+    \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
+    \tikzstyle{node}=[
+      overlay,
+      rectangle,
+      draw=purple,
+      anchor=center,
+      thick,
+    ]
+    
+    \node[node,minimum height=2*\spacing,minimum width=6cm,rounded corners=4mm,dashed] (processor) at (0,0) {};
+    \node[anchor=east] (processor_label) at
+      (processor.west)
+      {\rotatebox{90}{Processor}};
+    \node[node,anchor=north west,minimum height=\spacing] (registers) at
+      ([xshift=0.5*\spacing,yshift=-0.5*\spacing]processor.north west)
+      {Registers};
+    \node[node,anchor=north east,minimum height=\spacing] (alu) at
+      ([xshift=-0.5*\spacing,yshift=-0.5*\spacing]processor.north east)
+      {ALU};
+    \node[node,anchor=north,minimum width=6cm] (memory) at
+      ([yshift=-\spacing]processor.south)
+      {Memory};
+    \node[anchor=north] (input) at
+      ([xshift=-1.5cm,yshift=-\spacing]memory.south)
+      {Input};
+    \node[anchor=north] (output) at
+      ([xshift=1.5cm,yshift=-\spacing]memory.south)
+      {Output};
+    
+    % register <-> alu
+    \draw[dedge] ([yshift= 2mm]registers.east)
+               --([yshift= 2mm]alu.west);
+    \draw[dedge] ([yshift=-2mm]alu.west)
+               --([yshift=-2mm]registers.east);
+    
+    % register <-> memory
+    \draw[dedge] ([xshift=-4mm,yshift=-1.5*\spacing]registers.south)
+               --([xshift=-4mm]                     registers.south);
+    \draw[dedge] ([xshift= 4mm]                     registers.south)
+               --([xshift= 4mm,yshift=-1.5*\spacing]registers.south);
+%    \draw[dedge] ()--();
+    
+    % memory <-> i/o
+    \draw[dedge] (                 input.north)
+               --([yshift=\spacing]input.north);
+    \draw[dedge] ([yshift=\spacing]output.north)
+               --(                 output.north);
+  \end{tikzpicture}
+\end{center}
