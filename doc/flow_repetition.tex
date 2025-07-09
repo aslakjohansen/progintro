@@ -2,3 +2,64 @@
 \label{sec:flow:repetition}
 
 Hello
+
+\begin{syntaxfloat}
+  \begin{syntax}{stmt}
+    \SyntaxWestSplit{MainWest}
+    \SyntaxEastSplit{MainEast}
+    
+    \node[sequence] () at ([yshift=-0*\syntaxruledist]$(begin)!0.5!(end)$) {
+      \node[terminal]    (ruleIa) {while};
+      &
+      \node[terminal]    (ruleIb) {(};
+      &
+      \node[nonterminal] (ruleIc) {expr};
+      &
+      \node[terminal]    (ruleId) {)};
+      &
+      \node[nonterminal] (ruleIe) {stmt};
+      \\
+    };
+    
+    \node[sequence] () at ([yshift=-1*\syntaxruledist]$(begin)!0.5!(end)$) {
+      \node[terminal]    (ruleIIa) {do};
+      &
+      \node[nonterminal] (ruleIIb) {stmt};
+      &
+      \node[terminal]    (ruleIIc) {while};
+      &
+      \node[terminal]    (ruleIId) {(};
+      &
+      \node[nonterminal] (ruleIIe) {expr};
+      &
+      \node[terminal]    (ruleIIf) {)};
+      \\
+    };
+    
+    \node[sequence,column sep=0.6cm] () at ([yshift=-2*\syntaxruledist]$(begin)!0.5!(end)$) {
+      \node[terminal]    (ruleIIIa) {for};
+      &
+      \node[terminal]    (ruleIIIb) {(};
+      &
+      \node[nonterminal] (ruleIIIc) {stmt};
+      &
+      \node[terminal]    (ruleIIId) {;};
+      &
+      \node[nonterminal] (ruleIIIe) {expr};
+      &
+      \node[terminal]    (ruleIIIf) {;};
+      &
+      \node[nonterminal] (ruleIIIg) {stmt};
+      &
+      \node[terminal]    (ruleIIIh) {)};
+      &
+      \node[nonterminal] (ruleIIIi) {stmt};
+      \\
+    };
+    
+    \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(ruleId)--(ruleIe)--(end);
+    \draw[path] (begin) to[-|-] (ruleIIa)--(ruleIIb)--(ruleIIc)--(ruleIId)--(ruleIIe)--(ruleIIf) to[-|-] (end);
+    \draw[path] (begin) to[-|-] (ruleIIIa)--(ruleIIIb)--(ruleIIIc)--(ruleIIId)--(ruleIIIe)--(ruleIIIf)--(ruleIIIg)--(ruleIIIh)--(ruleIIIi) to[-|-] (end);
+  \end{syntax}
+  \caption{Statements for repetition}
+\end{syntaxfloat}
