@@ -141,7 +141,8 @@ When a written \idx{English}{English} message is used to carry information betwe
 % dumb as a feature
 The reason for this is quite simple: While one could make the compiler attempt to guess your intention, this would represent an ambiguity that can have unforeseen consequences. For instance, it could easily change the result of a computation. In section \ref{sec:flow:branch:danglingelse}, we will cover a good example of this. The kind of mess-ups that we see from \idx{generative AI}{AI!Generative} today are simply not acceptable in most production systems. As generative AI dumps the price of low-quality code (e.g., through \idx{vibe coding}{Vibe coding}), we may start to see a shift in peoples mindset and a lowering of expectations. But for now and the foreseeable future, the compiler being dumb should very much be considered a feature.
 
-% specific grammar of hello world example
+% specific grammar of hello world example: intro
+But lets get back to the hello world example. The specific grammatical rules relevant for understanding how a compiler sees the code are illustrated in syntax \ref{syntax:first:hello} as a railroad diagram. Later on, you might encounter the same information in a textual form called \idx{Backus-Naur Form}{Backus-Naur Form} (or simply BNF). While that format is more relevant for programmatic use, in this book we stick to the visually more appealing \defi{railroad diagram}{Diagram!Railroad}.
 
 \begin{syntaxfloat}
   \input{syntax/first_hello.tex}
