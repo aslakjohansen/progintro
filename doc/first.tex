@@ -108,6 +108,8 @@ On top of that, developers usually work on a small portion of the intended funct
 % intro
 The program from section \ref{first:writing} looks trivial on the surface, but there happens to be quite a bit more to it that deserves some attention. So, lets give in to it! After all, there are fundamental details at play here that is going to inform our understanding of the \csharp\ programming language.
 
+\subsection{Lexing}
+
 % tokens
 The first thing a compiler will do when it sees some code, is to hand it to its \idx{lexer}{Lexer} that then chop it up into a sequence of \idx{tokens}{Token}. This is the only job of the lexer. Each token reprents a small part of the code. These parts are atomic units with respect to the following phases of the compilation. By this, we mean that there is no reason for any of the following phases to deal with the code at a higher granularity than this. This may seem very abstract at this point, and that's okay. Lets just say that the output of the lexer is:
 \begin{eqnarray*}
@@ -128,10 +130,14 @@ The first thing a compiler will do when it sees some code, is to hand it to its 
   \right]
 \end{eqnarray*}
 
-% grammar
+\subsection{Grammars}
 
-% parse tree
-That sequence of tokens is fed into the \idx{parser}{Parser}.
+% introduction
+When you read this book, we rely on a shared understanding of the syntax and semantics of the English language. Throughout the book we extend our shared vocabulary with terminology relevant for this particular domain, just like any other textbook. Every language intended for communication between humans has such syntactic rules and a vocabulary. Likewise, every programming language has a \idx{grammar}{Grammar}. It defines what is syntactically valid code.
+
+% dealing with incorrectness
+
+% specific grammar of hello world example
 
 \begin{syntaxfloat}
   \input{syntax/first_hello.tex}
@@ -139,19 +145,28 @@ That sequence of tokens is fed into the \idx{parser}{Parser}.
   \label{syntax:first:hello}
 \end{syntaxfloat}
 
+\subsection{Parsing}
+
+% parse tree
+That sequence of tokens is fed into the \idx{parser}{Parser}.
+
 \begin{figure}[tbp]
   \input{figs/first_hello_parsetree.tex}
   \caption{Parse tree of hello-world program.}
   \label{fig:first:hello:parsetree}
 \end{figure}
 
+\subsection{Type Checker}
+
 % typechecker
+
+\subsection{Importance}
 
 % point
 While it is not critical to understand these intricacies in your day-to-day practice as a programmer, they do a great job at heling you \idx{reason}{Reason} about what you experience, and that saves you a lot of both effort and frustration. The takeaway should be that the compiler goes through a number of phases. Each of these have a distinct function and if you provide the compiler with invalid input (i.e., your source code), one of them will fail.
 
 % final words on the grammar so far
-As we move through this book, and broaden our understanding of the \csharp\ language, we will extend on this \idx{grammar}{Grammar}. The pgm definition will receive one extention and both stmt and expr will receive many. We settle for these definitions being \textsl{mostly} correct as the correct rules are at least an order of magnitude more complicated, and this complexity is disruptive for understanding of the language at this level.
+As we move through this book, and broaden our understanding of the \csharp\ language, we will extend on this grammar. The pgm definition will receive one extention and both stmt and expr will receive many. We settle for these definitions being \textsl{mostly} correct as the correct rules are at least an order of magnitude more complicated, and this complexity is disruptive for understanding of the language at this level.
 
 \pythonsection{Python}
 \label{sec:first:python}
