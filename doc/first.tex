@@ -111,7 +111,7 @@ The program from section \ref{first:writing} looks trivial on the surface, but t
 \subsection{Lexing}
 
 % tokens
-The first thing a compiler will do when it sees some code, is to hand it to its \idx{lexer}{Lexer} that then chop it up into a sequence of \idx{tokens}{Token}. This is the only job of the lexer. Each token reprents a small part of the code. These parts are atomic units with respect to the following phases of the compilation. By this, we mean that there is no reason for any of the following phases to deal with the code at a higher granularity than this. This may seem very abstract at this point, and that's okay. Lets just say that the output of the lexer is:
+The first thing a compiler will do when it sees some code, is to hand it to its \idx{lexer}{Lexer} that then chop it up into a sequence of \idx{tokens}{Token}. This is the only job of the lexer. Each token represents a small part of the code. These parts are atomic units with respect to the following phases of the compilation. By this, we mean that there is no reason for any of the following phases to deal with the code at a higher granularity than this. This may seem very abstract at this point, and that's okay. Lets just say that the output of the lexer is:
 \begin{eqnarray*}
   \left[
     ~ \textcolor{teal}{\mathtt{Console}} ~
@@ -139,6 +139,7 @@ When you read this book, we rely on a shared understanding of the syntax and sem
 When a written English message is used to carry information between humans, the receiving party has the ability to reason about flaws in the \textsl{coding} to that message. When I miss a comma, you will still get the message. A typo is not the end of the world. If I use a word you don't know, then you will look it up, or walk away with perhaps 90\% of the meaning of the offending paragraph. As humans, we are quite robust in terms interpreting text which deviates from the expected format. This is not the case for compilers. When a compiler receives code that does not fit the grammar of the programming language it expects it will outright reject it, and by doing so force you to correct it.
 
 % dumb as a feature
+The reason for this is quite simple: 
 
 % specific grammar of hello world example
 
