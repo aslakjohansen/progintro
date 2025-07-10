@@ -162,7 +162,7 @@ This grammar defines five grammatical concepts, namely \textcolor{purple}{pgm}, 
 The next rule unfolds what a statement is. A statement must consist of a name followed by a period followed by another name followed by a left parenthesis followed by a parameter list (or \textcolor{purple}{param-list}) followed by a right parenthesis followed by a semicolon. The next rule states that this \textcolor{purple}{param-list} is either empty, or a sequence of expressions (\textcolor{purple}{expr}) with commas in between. The \textcolor{purple}{expr} has to be a string literal (\textcolor{purple}{string-lit}).
 
 % terminals and nonterminals
-By now, you should have noticed the two different types of nodes in the diagram. One type, the \idx{terminals}{Terminal!Grammar context}, represents a single token like a comma or a left parenthesis. The other type, the \idx{nonterminals}{Nonterminal}, represents another concept that can be unfolded or expanded.
+By now, you should have noticed the two different types of nodes in the diagram. One type, the \idx{terminals}{Terminal!Grammar context}, represents a single token like a comma or a left parenthesis. The other type, the \idx{nonterminals}{Nonterminal}, represents another concept that can be unfolded or expanded. So, why those names in particular? This has to do with wether the node in question \textsl{terminates} the unfolding of concept nodes: While a program is a complex thing that can take many forms and needs further detailing to be fully described, a comma is simply a comma.
 
 \subsection{Parsing}
 
