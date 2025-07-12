@@ -108,6 +108,12 @@ On top of that, developers usually work on a small portion of the intended funct
 % intro
 The program from section \ref{first:writing} looks trivial on the surface, but there happens to be quite a bit more to it that deserves some attention. So, lets give in to it! After all, there are fundamental details at play here that is going to inform our understanding of the \csharp\ programming language.
 
+\begin{figure}[tbp]
+  \input{figs/first_csharp_compilation_phases.tex}
+  \caption{Compilation phases of a \csharp\ program.}
+  \label{fig:first:csharp:compilation:phases}
+\end{figure}
+
 \subsection{Lexing}
 
 % tokens
@@ -167,7 +173,7 @@ By now, you should have noticed the two different types of nodes in the diagram.
 \subsection{Parsing}
 
 % parse tree
-That sequence of tokens is fed into the \idx{parser}{Parser}. Informed by the grammar of the language, the parser finds a unique application of the rules that match the sequence of tokens. The result is a tree structure called a \idx{parse tree}{Parse tree}. Each unfolding of a rule results in child nodes being added to the tree. The hello world program results in the parse tree of figure \ref{fig:first:hello:parsetree}. The parse tree contains only those elements whose values could vary from rule application to rule application. So, each comma or parenthesis is left out. Should the parser fail to produce a parse tree from its input tokens, then it will exit with a \idx{parse error}{Error!Parse}.
+That sequence of tokens is fed into the \idx{parser}{Parser}. Informed by the grammar of the language, the parser finds a unique application of the rules that match the sequence of tokens. The result is a tree structure called a \idx{parse tree}{Parse tree}. Each unfolding of a rule results in child nodes being added to the tree. The hello world program results in the parse tree of figure \ref{fig:first:hello:parsetree}. The parse tree contains only those elements whose values could vary from rule application to rule application. So, each comma or parenthesis is left out. Should the parser fail to produce a parse tree from its input tokens, then it will \idx{exit}{Exit} with a \idx{parse error}{Error!Parse}.
 
 \begin{figure}[tbp]
   \input{figs/first_hello_parsetree.tex}
