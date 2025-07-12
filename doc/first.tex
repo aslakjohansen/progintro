@@ -180,7 +180,7 @@ That sequence of tokens is fed into the \idx{parser}{Parser}. Informed by the gr
 % statements, expressions, types
 When the final program is executing, the parts of that program that comes from an expression will \idx{evaluate}{Evaluation} to some value. The parts that comes from a statement does not. As we will see in the next chapter, any value has a type. Many of the grammatical rules that deal with expression have restrictions on the types of those expressions. For instance, you can divide a number by another number, but not by a string (such as \texttt{"Hello, World!"}).
 
-% typechecker
+% type checker
 The parse tree is fed into yet another component of the compiler called a \idx{type checker}{Type checker}. The type checker has access to a suite of type rules. It's job is to verify that none of them are violated. Any violation is a \idx{type error}{Error!Type}
 
 \subsection{Compilation}
