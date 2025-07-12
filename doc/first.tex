@@ -177,8 +177,10 @@ That sequence of tokens is fed into the \idx{parser}{Parser}. Informed by the gr
 
 \subsection{Type Checker}
 
-% statements, expressions, typechecker
+% statements, expressions, types
+When the final program is executing, the parts of that program that comes from an expression will \idx{evaluate}{Evaluation} to some value. The parts that comes from a statement does not. As we will see in the next chapter, any value has a type. Many of the grammatical rules that deal with expression have restrictions on the types of those expressions. For instance, you can divide a number by another number, but not by a string (such as \texttt{"Hello, World!"}).
 
+% typechecker
 
 \subsection{Compilation}
 
