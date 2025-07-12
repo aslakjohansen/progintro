@@ -108,6 +108,9 @@ On top of that, developers usually work on a small portion of the intended funct
 % intro
 The program from section \ref{first:writing} looks trivial on the surface, but there happens to be quite a bit more to it that deserves some attention. So, lets give in to it! After all, there are fundamental details at play here that is going to inform our understanding of the \csharp\ programming language.
 
+% compilation
+We will start by looking into how \csharp\ code is \idx{compiled}{Compilation} into an \idx{executable}{Executable} binary. This happens in four distinct steps as illustrated in figure \ref{fig:first:csharp:compilation:phases}. The following subsections will cover the role of each of these phases, and give a very short introduction to the mechanisms behind them.
+
 \begin{figure}[tbp]
   \input{figs/first_csharp_compilation_phases.tex}
   \caption{Compilation phases of a \csharp\ program.}
