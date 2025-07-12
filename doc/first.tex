@@ -167,7 +167,7 @@ By now, you should have noticed the two different types of nodes in the diagram.
 \subsection{Parsing}
 
 % parse tree
-That sequence of tokens is fed into the \idx{parser}{Parser}. Informed by the grammar of the language, the parser finds a unique application of the rules that match the sequence of tokens. The result is a tree structure called a \idx{parse tree}{Parse tree}. Each unfolding of a rule results in child nodes being added to the tree. The hello world program results in the parse tree of figure \ref{fig:first:hello:parsetree}. The parse tree contains only those elements whose values could vary from rule application to rule application. So, each comma or parenthesis is left out.
+That sequence of tokens is fed into the \idx{parser}{Parser}. Informed by the grammar of the language, the parser finds a unique application of the rules that match the sequence of tokens. The result is a tree structure called a \idx{parse tree}{Parse tree}. Each unfolding of a rule results in child nodes being added to the tree. The hello world program results in the parse tree of figure \ref{fig:first:hello:parsetree}. The parse tree contains only those elements whose values could vary from rule application to rule application. So, each comma or parenthesis is left out. Should the parser fail to produce a parse tree from its input tokens, then it will exit with a \idx{parse error}{Error!Parse}.
 
 \begin{figure}[tbp]
   \input{figs/first_hello_parsetree.tex}
