@@ -59,10 +59,10 @@
       \node[label] () at ([xshift=\spacing,yshift=-2*\filesize*1cm]lexer.east) {tokens};
       
       \draw[draw=purple] ([xshift=\spacing]parser.east) pic{file={\filesize}};
-      \node[label] () at ([xshift=\spacing,yshift=-2*\filesize*1cm]parser.east) {parse\\tree};
+      \node[label] (ptI) at ([xshift=\spacing,yshift=-2*\filesize*1cm]parser.east) {parse\\tree};
       
       \draw[draw=purple] ([xshift=\spacing]checker.east) pic{file={\filesize}};
-      \node[label] () at ([xshift=\spacing,yshift=-2*\filesize*1cm]checker.east) {parse\\tree};
+      \node[label] (ptII) at ([xshift=\spacing,yshift=-2*\filesize*1cm]checker.east) {parse\\tree};
       
       \draw[draw=purple] ([xshift=\spacing]generator.east) pic{file={\filesize}};
       \node[label] () at ([xshift=\spacing,yshift=-2*\filesize*1cm]generator.east) {binary};
@@ -80,6 +80,9 @@
       
       \draw[dedge] ([xshift=-6mm]generator.west)--(generator);
       \draw[dedge] (generator)--([xshift=6mm]generator.east);
+      
+      % same parse tree
+      \draw[dedge,<->] (ptI) to[edge node={node [below] {\textsl{same}}}] (ptII);
     \end{tikzpicture}
   }
 \end{center}
