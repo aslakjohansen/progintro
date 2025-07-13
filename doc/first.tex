@@ -120,24 +120,13 @@ We will start by looking into how \csharp\ code is \idx{compiled}{Compilation} i
 \subsection{Lexing}
 
 % tokens
-The first thing a compiler will do when it sees some code, is to hand it to its \idx{lexer}{Lexer} that then chop it up into a sequence of \idx{tokens}{Token}. This is the only job of the lexer. Each token represents a small part of the code. These parts are atomic units with respect to the following phases of the compilation. By this, we mean that there is no reason for any of the following phases to deal with the code at a higher granularity than this. This may seem very abstract at this point, and that's okay. Lets just say that the output of the lexer is:
-\begin{eqnarray*}
-  \left[
-    ~ \textcolor{teal}{\mathtt{Console}} ~
-    ,
-    ~ \textcolor{teal}{\mathtt{.}} ~
-    ,
-    ~ \textcolor{teal}{\mathtt{WriteLine}} ~
-    ,
-    ~ \textcolor{teal}{\mathtt{(}} ~
-    ,
-    ~ \textcolor{teal}{\mathtt{"Hello, World!"}} ~
-    ,
-    ~ \textcolor{teal}{\mathtt{)}} ~
-    ,
-    ~ \textcolor{teal}{\mathtt{;}} ~
-  \right]
-\end{eqnarray*}
+The first thing a compiler will do when it sees some code, is to hand it to its \idx{lexer}{Lexer} that then chop it up into a sequence of \idx{tokens}{Token}. This is the only job of the lexer. Each token represents a small part of the code. These parts are atomic units with respect to the following phases of the compilation. By this, we mean that there is no reason for any of the following phases to deal with the code at a higher granularity than this. This may seem very abstract at this point, and that's okay. Lets just say that the output of the lexer is as illustrated in figure \ref{fig:first:hello:tokens}.
+
+\begin{figure}[tbp]
+  \input{figs/first_hello_tokens.tex}
+  \caption{Token sequence of the hello-world program produced by the lexer.}
+  \label{fig:first:hello:tokens}
+\end{figure}
 
 % the literal token
 
