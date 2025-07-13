@@ -119,8 +119,8 @@ We will start by looking into how \csharp\ code is \idx{compiled}{Compilation} i
 
 \subsection{Lexing}
 
-% tokens
-The first thing a compiler will do when it sees some code, is to hand it to its \idx{lexer}{Lexer} that then chop it up into a sequence of \idx{tokens}{Token}. This is the only job of the lexer. Each token represents a small part of the code. These parts are atomic units with respect to the following phases of the compilation. By this, we mean that there is no reason for any of the following phases to deal with the code at a higher granularity than this. This may seem very abstract at this point, and that's okay. Lets just say that the output of the lexer is as illustrated in figure \ref{fig:first:hello:tokens}.
+% tokens, token type annotation
+The first thing a compiler will do when it sees some code, is to hand it to its \idx{lexer}{Lexer} that then chop it up into a sequence of \idx{tokens}{Token}. This is the only job of the lexer. Each token represents a small part of the code. These parts are atomic units with respect to the following phases of the compilation. By this, we mean that there is no reason for any of the following phases to deal with the code at a higher granularity than this. This may seem very abstract at this point, and that's okay. Lets just say that the output of the lexer is as illustrated in figure \ref{fig:first:hello:tokens}. In this figure, each token is annotated by \idx{type}{Type}. Some are simply named after the character they represent. These include \texttt{RPAR} for right parenthesis and \texttt{SCOLON} for semicolon. Others represent a sequence of characters.
 
 \begin{figure}[tbp]
   \input{figs/first_hello_tokens.tex}
@@ -128,7 +128,10 @@ The first thing a compiler will do when it sees some code, is to hand it to its 
   \label{fig:first:hello:tokens}
 \end{figure}
 
-% token type annotation, the name token, the literal token
+% the name token
+\texttt{NAME}, for instance, is our first encounter with the concept of \idx{naming}{Naming}. We will dig more into this as we progress through this book. But for now, lets just say that it is a name which can be used to reference \textsl{something}. Such names are defined by programmers and referenced by programmers having a shared \idx{context}. In \csharp\ a \texttt{NAME} has to start with either an underscore character or any alphabetic character, and the remaining characters have to be underscores, alphabetic characters or decimal digits.
+
+% the literal token
 
 \subsection{Grammars}
 
