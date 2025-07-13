@@ -70,66 +70,66 @@
   
   \draw[path] (begin)--(ruleIa)--(end);
 \end{syntax}
-\begin{syntax}{name}
-  \SyntaxWestSplit{MainWest}
-  \SyntaxEastSplit{MainEast}
-  
-  \coordinate (head) at ($(begin)!1/3!(end)$);
-  \coordinate (tail) at ($(begin)!2/3!(end)$);
-  \coordinate (center) at ($(begin)!0.5!(end)$);
-  \coordinate (tailcenter) at ($(begin)!2.5/3!(end)$);
-  
-  \node[terminal]    (ruleIa) at ([yshift= 0.5*\syntaxruledist]head) {\_};
-  \node[nonterminal] (ruleIb) at ([yshift=-0.5*\syntaxruledist]head) {azAZ};
-  \node[terminal]    (ruleIIa) at ([yshift= 1.0*\syntaxruledist]tail) {\_};
-  \node[nonterminal] (ruleIIb) at ([yshift= 0.0*\syntaxruledist]tail) {azAZ};
-  \node[nonterminal] (ruleIIc) at ([yshift=-1.0*\syntaxruledist]tail) {09};
-  
-  % head west
-  \draw[path] (begin)
-            --($([xshift=-0.5*\syntaxruledist]ruleIb.west |- begin)$)
-            |-(ruleIa.west);
-  \draw[path] (begin)
-            --($([xshift=-0.5*\syntaxruledist]ruleIb.west |- begin)$)
-            |-(ruleIb.west);
-  
-  % head east
-  \draw[path] (ruleIa.east)
-            --($([xshift=0.5*\syntaxruledist]ruleIb.east |- ruleIa)$)
-            |-(ruleIIb.west);
-  \draw[path] (ruleIb.east)
-            --([xshift=0.5*\syntaxruledist]ruleIb.east)
-            |-(ruleIIb.west);
-  
-  % tail west
-  \draw[path] (center)
-            --([xshift=-0.5*\syntaxruledist]ruleIIb.west)
-            |-(ruleIIa);
-  \draw[path] (center)
-            --([xshift=-0.5*\syntaxruledist]ruleIIb.west)
-            |-(ruleIIc);
-  
-  % tail east
-  \draw[path] (ruleIIb.east)--(end);
-  \draw[path] (ruleIIa.east)
-            --($([xshift=0.5*\syntaxruledist]ruleIIb.east |- ruleIIa)$)
-            |-(end);
-  \draw[path] (ruleIIc.east)
-            --($([xshift=0.5*\syntaxruledist]ruleIIb.east |- ruleIIc)$)
-            |-(end);
-  
-  % tail bypass
-  \draw[path] (center)
-            --([xshift=-0.5*\syntaxruledist]ruleIIb.west)
-            |-([yshift=-1.8*\syntaxruledist]ruleIIb.center)
-            -|([xshift= 0.5*\syntaxruledist]ruleIIb.east)
-            --(end);
-  
-  % tail loop
-  \draw[path] (ruleIIb.east)
-            --(tailcenter)
-            |-([yshift= 1.8*\syntaxruledist]ruleIIb.center)
-            -|(center)
-            --(ruleIIb.west);
-  
-\end{syntax}
+%\begin{syntax}{name}
+%  \SyntaxWestSplit{MainWest}
+%  \SyntaxEastSplit{MainEast}
+%  
+%  \coordinate (head) at ($(begin)!1/3!(end)$);
+%  \coordinate (tail) at ($(begin)!2/3!(end)$);
+%  \coordinate (center) at ($(begin)!0.5!(end)$);
+%  \coordinate (tailcenter) at ($(begin)!2.5/3!(end)$);
+%  
+%  \node[terminal]    (ruleIa) at ([yshift= 0.5*\syntaxruledist]head) {\_};
+%  \node[nonterminal] (ruleIb) at ([yshift=-0.5*\syntaxruledist]head) {azAZ};
+%  \node[terminal]    (ruleIIa) at ([yshift= 1.0*\syntaxruledist]tail) {\_};
+%  \node[nonterminal] (ruleIIb) at ([yshift= 0.0*\syntaxruledist]tail) {azAZ};
+%  \node[nonterminal] (ruleIIc) at ([yshift=-1.0*\syntaxruledist]tail) {09};
+%  
+%  % head west
+%  \draw[path] (begin)
+%            --($([xshift=-0.5*\syntaxruledist]ruleIb.west |- begin)$)
+%            |-(ruleIa.west);
+%  \draw[path] (begin)
+%            --($([xshift=-0.5*\syntaxruledist]ruleIb.west |- begin)$)
+%            |-(ruleIb.west);
+%  
+%  % head east
+%  \draw[path] (ruleIa.east)
+%            --($([xshift=0.5*\syntaxruledist]ruleIb.east |- ruleIa)$)
+%            |-(ruleIIb.west);
+%  \draw[path] (ruleIb.east)
+%            --([xshift=0.5*\syntaxruledist]ruleIb.east)
+%            |-(ruleIIb.west);
+%  
+%  % tail west
+%  \draw[path] (center)
+%            --([xshift=-0.5*\syntaxruledist]ruleIIb.west)
+%            |-(ruleIIa);
+%  \draw[path] (center)
+%            --([xshift=-0.5*\syntaxruledist]ruleIIb.west)
+%            |-(ruleIIc);
+%  
+%  % tail east
+%  \draw[path] (ruleIIb.east)--(end);
+%  \draw[path] (ruleIIa.east)
+%            --($([xshift=0.5*\syntaxruledist]ruleIIb.east |- ruleIIa)$)
+%            |-(end);
+%  \draw[path] (ruleIIc.east)
+%            --($([xshift=0.5*\syntaxruledist]ruleIIb.east |- ruleIIc)$)
+%            |-(end);
+%  
+%  % tail bypass
+%  \draw[path] (center)
+%            --([xshift=-0.5*\syntaxruledist]ruleIIb.west)
+%            |-([yshift=-1.8*\syntaxruledist]ruleIIb.center)
+%            -|([xshift= 0.5*\syntaxruledist]ruleIIb.east)
+%            --(end);
+%  
+%  % tail loop
+%  \draw[path] (ruleIIb.east)
+%            --(tailcenter)
+%            |-([yshift= 1.8*\syntaxruledist]ruleIIb.center)
+%            -|(center)
+%            --(ruleIIb.west);
+%  
+%\end{syntax}
