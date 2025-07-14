@@ -1,0 +1,127 @@
+Which of the following are tree structure?
+\begin{center}
+  \begin{tikzpicture}[remember picture]
+    \newcommand{\spacing}[0]{4cm}
+    \newcommand{\labelshift}[0]{5cm}
+    \newcommand{\radius}[0]{(0.4*\labelshift/2)}
+    \tikzstyle{edge}  = [thick,>=stealth,draw=black]
+    \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
+    \tikzstyle{node}=[
+      overlay,
+      circle,
+      draw=purple,
+      anchor=center,
+      thick,
+      minimum size=1,
+    ]
+    
+    \coordinate (origo) at (0, 0);
+    \coordinate (origoA) at ([xshift=0*\spacing,yshift= 0*\labelshift] origo);
+    \coordinate (origoB) at ([xshift=1*\spacing,yshift= 0*\labelshift] origo);
+    \coordinate (origoC) at ([xshift=2*\spacing,yshift= 0*\labelshift] origo);
+    \coordinate (origoD) at ([xshift=0*\spacing,yshift=-1*\labelshift] origo);
+    \coordinate (origoE) at ([xshift=1*\spacing,yshift=-1*\labelshift] origo);
+    \coordinate (origoF) at ([xshift=2*\spacing,yshift=-1*\labelshift] origo);
+    
+    % graph ring: list(map(lambda angle: (cos(angle), sin(angle)), map(lambda num: (360/5*num)/360*2*pi, range(5))))
+    \node[node] (graphA1) at ([xshift=\radius*1.0,yshift=-(\labelshift/2+\radius*0.0)] origoA) {1};
+    \node[node] (graphA2) at ([xshift=\radius*0.30901699437494745,yshift=-(\labelshift/2+\radius*0.9510565162951535)] origoA) {2};
+    \node[node] (graphA3) at ([xshift=\radius*-0.8090169943749473,yshift=-(\labelshift/2+\radius*0.5877852522924732)] origoA) {3};
+    \node[node] (graphA4) at ([xshift=\radius*-0.8090169943749476,yshift=-(\labelshift/2+\radius*-0.587785252292473)] origoA) {4};
+    \node[node] (graphA5) at ([xshift=\radius*0.30901699437494723,yshift=-(\labelshift/2+\radius*-0.9510565162951536)] origoA) {5};
+    \draw[dedge,-] (graphA1)--(graphA2);
+    \draw[dedge,-] (graphA2)--(graphA3);
+    \draw[dedge,-] (graphA3)--(graphA4);
+    \draw[dedge,-] (graphA4)--(graphA5);
+    \draw[dedge,-] (graphA5)--(graphA1);
+    
+    % graph b
+    \node[node] (graphB1) at ([xshift=-\radius/2,yshift=-\labelshift*0.2] origoB) {};
+    \node[node] (graphB11) at ([xshift=-\radius,yshift=-\radius] graphB1) {};
+    \node[node] (graphB12) at ([xshift= \radius,yshift=-\radius] graphB1) {};
+    \node[node] (graphB121) at ([xshift=-\radius,yshift=-\radius] graphB12) {};
+    \node[node] (graphB122) at ([xshift= \radius,yshift=-\radius] graphB12) {};
+    \node[node] (graphB1211) at ([xshift=-\radius,yshift=-\radius] graphB121) {};
+    \node[node] (graphB1212) at ([xshift=0       ,yshift=-\radius] graphB121) {};
+    \node[node] (graphB1213) at ([xshift= \radius,yshift=-\radius] graphB121) {};
+    \node[node] (graphB1221) at ([xshift=0       ,yshift=-\radius] graphB122) {};
+    \draw[dedge,-] (graphB1)--(graphB11);
+    \draw[dedge,-] (graphB1)--(graphB12);
+    \draw[dedge,-] (graphB12)--(graphB121);
+    \draw[dedge,-] (graphB12)--(graphB122);
+    \draw[dedge,-] (graphB121)--(graphB1211);
+    \draw[dedge,-] (graphB121)--(graphB1212);
+    \draw[dedge,-] (graphB121)--(graphB1213);
+    \draw[dedge,-] (graphB122)--(graphB1221);
+    
+    % graph c
+    \node[node] (graphC1) at ([xshift=0,yshift=-\labelshift*0.4] origoC) {};
+    \node[node] (graphC11) at ([xshift=-\radius,yshift= \radius] graphC1) {};
+    \node[node] (graphC12) at ([xshift= \radius,yshift= \radius] graphC1) {};
+    \node[node] (graphC13) at ([xshift= \radius,yshift=-\radius] graphC1) {};
+    \node[node] (graphC14) at ([xshift=-\radius,yshift=-\radius] graphC1) {};
+    \node[node] (graphC141) at ([xshift= \radius,yshift=-\radius] graphC14) {};
+    \draw[dedge,-] (graphC1)--(graphC11);
+    \draw[dedge,-] (graphC1)--(graphC12);
+    \draw[dedge,-] (graphC1)--(graphC13);
+    \draw[dedge,-] (graphC1)--(graphC14);
+    \draw[dedge,-] (graphC14)--(graphC141);
+    
+    % graph d
+    \node[node] (graphD1) at ([xshift=0,yshift=-\labelshift*0.34] origoD) {};
+    \node[node] (graphD11) at ([xshift=-\radius,yshift=-\radius] graphD1) {};
+    \node[node] (graphD12) at ([xshift= \radius,yshift=-\radius] graphD1) {};
+    \node[node] (graphD111) at ([xshift=-\radius/2,yshift=-\radius] graphD11) {};
+    \node[node] (graphD112) at ([xshift= \radius/2,yshift=-\radius] graphD11) {};
+    \node[node] (graphD121) at ([xshift=-\radius/2,yshift=-\radius] graphD12) {};
+    \node[node] (graphD122) at ([xshift= \radius/2,yshift=-\radius] graphD12) {};
+    \draw[dedge] (graphD1)--(graphD11);
+    \draw[dedge] (graphD1)--(graphD12);
+    \draw[dedge] (graphD11)--(graphD111);
+    \draw[dedge] (graphD11)--(graphD112);
+    \draw[dedge] (graphD12)--(graphD121);
+    \draw[dedge] (graphD12)--(graphD122);
+    
+    % graph e
+    \coordinate (origoEcenter) at ([xshift=0,yshift=-0.15*\labelshift] origoE);
+%    \node[node,draw=green] (graphEcenter) at ([xshift=0,yshift=-\labelshift/2] origoE) {};
+    \node[node] (graphE1) at ([xshift=-\radius*0.2,yshift=-(\labelshift/2-\radius*0.8)] origoEcenter) {};
+    \node[node] (graphE2) at ([xshift= \radius*0.8,yshift=-(\labelshift/2-\radius*0.2)] origoEcenter) {};
+    \node[node] (graphE3) at ([xshift= \radius*0.2,yshift=-(\labelshift/2+\radius*0.8)] origoEcenter) {};
+    \node[node] (graphE4) at ([xshift=-\radius*0.8,yshift=-(\labelshift/2+\radius*0.2)] origoEcenter) {};
+    \node[node] (graphE11) at ([xshift=-\radius*(0.8-+0.2),yshift=\radius*(0.8+0.2)] graphE1) {};
+    \node[node] (graphE12) at ([yshift=\radius*(0.8-+0.2),xshift=\radius*(0.8+0.2)] graphE1) {};
+    \node[node] (graphE121) at ([xshift=-\radius*(0.8-+0.2),yshift=\radius*(0.8+0.2)] graphE12) {};
+    \node[node] (graphE31) at ([xshift=\radius*(0.8-+0.2),yshift=-\radius*(0.8+0.2)] graphE3) {};
+    \node[node] (graphE41) at ([xshift=-\radius*(0.8-+0.2),yshift=-\radius*(0.8+0.2)] graphE4) {};
+    \draw[dedge,-] (graphE1)--(graphE2);
+    \draw[dedge,-] (graphE2)--(graphE3);
+    \draw[dedge,-] (graphE3)--(graphE4);
+    \draw[dedge,-] (graphE4)--(graphE1);
+    \draw[dedge,-] (graphE1)--(graphE11);
+    \draw[dedge,-] (graphE1)--(graphE12);
+    \draw[dedge,-] (graphE12)--(graphE121);
+    \draw[dedge,-] (graphE3)--(graphE31);
+    \draw[dedge,-] (graphE4)--(graphE41);
+    
+    % graph f
+    \node[node] (graphF1) at ([xshift=0,yshift=-\labelshift*0.2] origoF) {};
+    \node[node] (graphF11) at ([xshift=-\radius/2,yshift=-\radius] graphF1) {};
+    \node[node] (graphF12) at ([xshift= \radius/2,yshift=-\radius] graphF1) {};
+    \draw[dedge,-] (graphF1)--(graphF11);
+    \draw[dedge,-] (graphF1)--(graphF12);
+    \node[node] (graphF2) at ([xshift=0,yshift=-\labelshift/2] graphF1) {};
+    \node[node] (graphF21) at ([xshift=-\radius/2,yshift=-\radius] graphF2) {};
+    \node[node] (graphF22) at ([xshift= \radius/2,yshift=-\radius] graphF2) {};
+    \draw[dedge,-] (graphF2)--(graphF21);
+    \draw[dedge,-] (graphF2)--(graphF22);
+    
+    % labels
+    \node[] (labelA) at ([yshift=-\labelshift] origoA) {(a)};
+    \node[] (labelB) at ([yshift=-\labelshift] origoB) {(b)};
+    \node[] (labelC) at ([yshift=-\labelshift] origoC) {(c)};
+    \node[] (labelD) at ([yshift=-\labelshift] origoD) {(d)};
+    \node[] (labelE) at ([yshift=-\labelshift] origoE) {(e)};
+    \node[] (labelF) at ([yshift=-\labelshift] origoF) {(f)};
+  \end{tikzpicture}
+\end{center}

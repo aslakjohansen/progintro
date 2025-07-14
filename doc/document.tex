@@ -10,6 +10,7 @@
 \usepackage{minted} % for source code inclusion
 \usepackage{attachfile2} % for attaching files to the PDF
 \usepackage{pdfcomment} % for \pdftooltip command
+\usepackage{layout} % for the \layout{} command used for debugging tikz
 
 \usepackage{vissyntax}
 
@@ -19,6 +20,7 @@
 % tikz
 \usepackage{tikz}
 \usetikzlibrary{patterns}
+\usetikzlibrary{matrix}
 
 % configure index: https://en.wikibooks.org/wiki/LaTeX/Indexing
 \usepackage{imakeidx}
@@ -59,6 +61,7 @@
 \newcommand{\keywordname}[1]{\texttt{#1}}
 \newcommand{\valuename}[1]{\texttt{#1}}
 \newcommand{\commandname}[1]{\texttt{#1}}
+\newcommand{\conceptname}[1]{\syntaxconceptcolor{#1}}
 
 \newcommand{\langsection}[1]{\section{#1}}
 \newcommand{\textdesc}[1]{\textit{\textbf{#1}}}
@@ -157,6 +160,7 @@
 
 % cross-index entries
 \scalebox{0}{
+  \textcolor{white}{\index{BNF|see {Backus-Naur Form}}}
   \textcolor{white}{\index{Digraph|see {Directed graph}}}
   \textcolor{white}{\index{Directed acyclic graph|see {DAG}}}
   \textcolor{white}{\index{Folder|see {Directory}}}

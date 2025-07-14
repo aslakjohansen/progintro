@@ -48,6 +48,7 @@ Three files were created, and one of them is a directory:
 \end{itemize}
 
 \subsection{Writing}
+\label{first:writing}
 
 Open the \filename{Program.cs} in your text editor and make sure the contents is as follows:
 
@@ -101,6 +102,101 @@ On top of that, developers usually work on a small portion of the intended funct
   \caption{Typical developer cycle.}
   \label{fig:first:phases:cycle}
 \end{figure}
+
+\csharpsection{\csharp}
+
+% intro
+The program from section \ref{first:writing} looks trivial on the surface, but there happens to be quite a bit more to it that deserves some attention. So, lets give in to it! After all, there are fundamental details at play here that is going to inform our understanding of the \csharp\ programming language.
+
+% compilation
+We will start by looking into how \csharp\ code is \idx{compiled}{Compilation} into an \idx{executable}{Executable} binary. This happens in four distinct steps as illustrated in figure \ref{fig:first:csharp:compilation:phases}. The following subsections will cover the role of each of these phases, and give a very short introduction to the mechanisms behind them.
+
+\begin{figure}[tbp]
+  \input{figs/first_csharp_compilation_phases.tex}
+  \caption{Compilation phases of a \csharp\ program.}
+  \label{fig:first:csharp:compilation:phases}
+\end{figure}
+
+\subsection{Lexing}
+
+% tokens, token type annotation
+The first thing a compiler will do when it sees some code, is to hand it to its \idx{lexer}{Lexer} that then chop it up into a sequence of \idx{tokens}{Token}. This is the only job of the lexer. Each token represents a small part of the code. These parts are atomic units with respect to the following phases of the compilation. By this, we mean that there is no reason for any of the following phases to deal with the code at a higher granularity than this. This may seem very abstract at this point, and that's okay. Lets just say that the output of the lexer is as illustrated in figure \ref{fig:first:hello:tokens}. In this figure, each token is annotated by \idx{type}{Type}. Some are simply named after the character they represent. These include \texttt{RPAR} for right parenthesis and \texttt{SCOLON} for semicolon. Others represent a sequence of characters.
+
+\begin{figure}[tbp]
+  \input{figs/first_hello_tokens.tex}
+  \caption{Token sequence of the hello-world program produced by the lexer.}
+  \label{fig:first:hello:tokens}
+\end{figure}
+
+% the name token
+\texttt{NAME}, for instance, is our first encounter with the concept of \idx{naming}{Naming}. We will dig more into this as we progress through this book. But for now, lets just say that it is a name which can be used to reference \textsl{something}. Such names are defined by programmers and referenced by programmers having a shared \idx{context}. In \csharp\ a \texttt{NAME} has to start with either an underscore character or any alphabetic character, and the remaining characters have to be underscores, alphabetic characters or decimal digits.
+
+% the literal token
+Another example is \texttt{STRING} (also called a \idx{string literal}{Literal!String}). This is a sequence of arbitrary characters surrounded by quotes. This is a gross simplification. But for now, we don't have to worry about a single detail. Those remaining worries can wait until section \ref{sec:io:strings}.
+
+% escape characters
+Naturally, we would like to be able to write whatever text we like in such a string, and that include quotation marks. But if we simply place a quotation mark in there, instead of the comma between \say{\texttt{hello}} and \say{\texttt{world}}, then the lexer would see this quotation mark as the one \idx{terminating}{Termination} the string. And so, a convention has been introduced to solve this problem whereby the \idx{backslash}{Backslash character} character will \textsl{escape} the normal meaning of the following character. We say that the backslash character is an \idx{escape character}{Escape character}. And thus, \say{\texttt{"The \textbackslash " character is used to wrap strings"}} is a valid string. This, of course, puts us in a similarly awkward position when we want to have a backslash character in our string. But here the same solution applies: We simply escape the normal meaning of the backslash character by writing two backslash characters in a row.
+
+\subsection{Grammars}
+
+% introduction
+When you read this book, we rely on a shared understanding of the syntax and semantics of the English language. Throughout the book we extend our shared vocabulary with terminology relevant for this particular domain, just like any other textbook. Every language intended for communication between humans has such syntactic rules and a vocabulary. Likewise, every programming language has a \idx{grammar}{Grammar}. It defines what is syntactically valid code.
+
+% dealing with incorrectness
+When a written \idx{English}{English} message is used to carry information between humans, the receiving party has the ability to reason about flaws in the \textsl{coding} to that message. When I miss a comma, you will still get the message. A typo is not the end of the world. If I use a word you don't know, then you will look it up, or walk away with perhaps 90\% of the meaning of the offending paragraph. As humans, we are quite robust in terms interpreting text which deviates from the expected format. This is not the case for compilers. When a compiler receives code that does not fit the grammar of the programming language it expects it will outright reject it, and by doing so force you to correct it.
+
+% dumb as a feature
+The reason for this is quite simple: While one could make the compiler attempt to guess your intention, this would represent an ambiguity that can have unforeseen consequences. For instance, it could easily change the result of a computation. In section \ref{sec:flow:branch:danglingelse}, we will cover a good example of this. The kind of mess-ups that we see from \idx{generative AI}{AI!Generative} today are simply not acceptable in most production systems. As generative AI dumps the price of low-quality code (e.g., through \idx{vibe coding}{Vibe coding}), we may start to see a shift in peoples mindset and a lowering of expectations. But for now and the foreseeable future, the compiler being dumb should very much be considered a feature.
+
+% specific grammar of hello world example: intro
+But lets get back to the hello world example. The specific grammatical rules relevant for understanding how a compiler sees the code are illustrated in syntax \ref{syntax:first:hello} as a railroad diagram. Later on, you might encounter the same information in a textual form called \idx{Backus-Naur Form}{Backus-Naur Form} (or simply BNF). While that format is more relevant for programmatic use, in this book we stick to the visually more appealing \defi{railroad diagram}{Diagram!Railroad}.
+
+\begin{syntaxfloat}
+  \input{syntax/first_hello.tex}
+  \caption{Concepts involved in the basic hello-world program}
+  \label{syntax:first:hello}
+\end{syntaxfloat}
+
+% concepts, tracks, pgm example
+This grammar defines five grammatical concepts, namely \conceptname{pgm}, \conceptname{stmt}, \conceptname{param-list}, \conceptname{expr} and \conceptname{name}. Each of these definitions define the valid sequences of tokens from an empty circle on the left to a filled circle on the right. We read these by following the tracks. The program itself (or \conceptname{pgm}) thus has to contain a sequence of at least one statement (or \conceptname{stmt}). This, due to the loop around \conceptname{stmt}.
+
+% stmt concept, param-list concept
+The next rule unfolds what a statement is. A statement must consist of a name followed by a period followed by another name followed by a left parenthesis followed by a parameter list (or \conceptname{param-list}) followed by a right parenthesis followed by a semicolon. The next rule states that this \conceptname{param-list} is either empty, or a sequence of expressions (\conceptname{expr}) with commas in between. The \conceptname{expr} has to be a string literal (\conceptname{string-lit}).
+
+% terminals and nonterminals
+By now, you should have noticed the two different types of nodes in the diagram. One type, the \idx{terminals}{Terminal!Grammar context}, represents a single token like a comma or a left parenthesis. The other type, the \idx{nonterminals}{Nonterminal}, represents another concept that can be unfolded or expanded. So, why those names in particular? This has to do with wether the node in question \textsl{terminates} the unfolding of concept nodes: While a program is a complex thing that can take many forms and needs further detailing to be fully described, a comma is simply a comma.
+
+\subsection{Parsing}
+
+% parse tree
+That sequence of tokens is fed into the \idx{parser}{Parser}. Informed by the grammar of the language, the parser finds a unique application of the rules that match the sequence of tokens. The result is a tree structure called a \idx{parse tree}{Parse tree}. Each unfolding of a rule results in child nodes being added to the tree. The hello world program results in the parse tree of figure \ref{fig:first:hello:parsetree}. The parse tree contains only those elements whose values could vary from rule application to rule application. So, each comma or parenthesis is left out. Should the parser fail to produce a parse tree from its input tokens, then it will \idx{exit}{Exit} with a \idx{parse error}{Error!Parse}.
+
+\begin{figure}[tbp]
+  \input{figs/first_hello_parsetree.tex}
+  \caption{Parse tree of hello-world program.}
+  \label{fig:first:hello:parsetree}
+\end{figure}
+
+\subsection{Type Checker}
+
+% statements, expressions, types
+When the final program is executing, the parts of that program that comes from an expression will \idx{evaluate}{Evaluation} to some value. The parts that comes from a statement does not. As we will see in the next chapter, any value has a type. Many of the grammatical rules that deal with expression have restrictions on the types of those expressions. For instance, you can divide a number by another number, but not by a string (such as \texttt{"Hello, World!"}).
+
+% type checker
+The parse tree is fed into yet another component of the compiler called a \idx{type checker}{Type checker}. The type checker has access to a suite of type rules. It's job is to verify that none of them are violated. Any violation is a \idx{type error}{Error!Type}.
+
+\subsection{Compilation}
+
+% downplay importance, production of binary code that can be executed on a processor, that processor is virtual but still a processor, the virtual machine has a lot of intricacies
+The binary output of the compilation maintains much of the structure of the parse tree. In fact, the structure of the parse tree defines \textsl{how} the binary will be evaluated, when \idx{executed}{Execution} by the \idx{processor}{Processor}. This processor is, in the case of \csharp a logical one rather than a physical one; it is implemented in code as a \idx{virtual machine}{Virtual machine} and essentially runs as a program on top of your operating system. That means that the binary can be executed on any architecture as long as a matching virtual machine is available for it. Such virtual machines have lots of intricacies, but we will leave them out of this book.
+
+\subsection{Importance}
+
+% point
+While it is not critical to understand these intricacies in your day-to-day practice as a programmer, they do a great job at helping you \idx{reason}{Reason} about what you experience, and that saves you a lot of both effort and frustration. The takeaway should be that the compiler goes through a number of phases. Each of these have a distinct function and if you provide the compiler with invalid input (i.e., your source code), one of them will fail.
+
+% final words on the grammar so far
+As we move through this book, and broaden our understanding of the \csharp\ language, we will extend on this grammar. The pgm definition will receive one extension and both stmt and expr will receive many. We settle for these definitions being \textsl{mostly} correct as the correct rules are at least an order of magnitude more complicated, and this complexity is disruptive for understanding of the language at this level.
 
 \pythonsection{Python}
 \label{sec:first:python}

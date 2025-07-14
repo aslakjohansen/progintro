@@ -1,0 +1,69 @@
+\begin{center}
+  \begin{tikzpicture}[]
+    \newcommand{\spacing}[0]{ 6mm }
+    \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
+    \tikzstyle{shared}=[
+      anchor=base east,
+    ]
+    \tikzstyle{structure}=[
+      shared,
+    ]
+    \tikzstyle{token}=[
+      shared,
+      text=teal,
+      font=\ttfamily,
+    ]
+    \tikzstyle{label}=[
+      font=\ttfamily,
+    ]
+    
+    \node[matrix,column sep=0mm,anchor=north,] () at (0,0) {
+      \node[structure] () {[};
+      &
+      \node[token] (console) {Console};
+      &
+      \node[structure] () {,};
+      &
+      \node[token] (period) {.};
+      &
+      \node[structure] () {,};
+      &
+      \node[token] (writeline) {WriteLine};
+      &
+      \node[structure] () {,};
+      &
+      \node[token] (lpar) {(};
+      &
+      \node[structure] () {,};
+      &
+      \node[token] (string) {"Hello, World!"};
+      &
+      \node[structure] () {,};
+      &
+      \node[token] (rpar) {)};
+      &
+      \node[structure] () {,};
+      &
+      \node[token] (scolon) {;};
+      &
+      \node[structure] () {]};
+      \\
+    };
+    
+    \node[label] (console label) at ([yshift=\spacing]console.north) {NAME};
+    \node[label] (period label) at ([yshift=-\spacing]period.south) {PERIOD};
+    \node[label] (writeline label) at ([yshift=\spacing]writeline.north) {NAME};
+    \node[label] (lpar label) at ([yshift=-\spacing]lpar.south) {LPAR};
+    \node[label] (string label) at ([yshift=\spacing]string.north) {STRING};
+    \node[label] (rpar label) at ([yshift=-\spacing]rpar.south) {RPAR};
+    \node[label] (scolon label) at ([yshift=\spacing]scolon.north) {SCOLON};
+    
+    \draw[dedge] (console label)--(console);
+    \draw[dedge] (period label)--(period);
+    \draw[dedge] (writeline label)--(writeline);
+    \draw[dedge] (lpar label)--(lpar);
+    \draw[dedge] (string label)--(string);
+    \draw[dedge] (rpar label)--(rpar);
+    \draw[dedge] (scolon label)--(scolon);
+  \end{tikzpicture}
+\end{center}
