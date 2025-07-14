@@ -101,10 +101,20 @@
   |-|/.default=0.5,
 }
 
-\newenvironment{syntax}[2][]{
-  \begin{tikzpicture}[remember picture,#1]
+%\newenvironment{syntax}[2][]{
+%  \begin{tikzpicture}[remember picture,#1]
+%    \node[concept]   (concept) at (0,\SyntaxRow{0}) {#2};
+%    \node[beginnode] (begin)   at ([xshift=6mm]concept.east) {};
+%    \coordinate (endnoteref) at ($(begin.east -| current page.north west)$);
+%    \node[endnode]   (end)     at ([xshift=1in+\hoffset+\oddsidemargin+\textwidth]endnoteref) {};
+%}{
+%  \end{tikzpicture}
+%}
+%\newenvironment{syntax}[3][concept.east]{
+\NewDocumentEnvironment{syntax}{O{[xshift=6mm]concept.east} m}{
+  \begin{tikzpicture}[remember picture]
     \node[concept]   (concept) at (0,\SyntaxRow{0}) {#2};
-    \node[beginnode] (begin)   at ([xshift=6mm]concept.east) {};
+    \node[beginnode] (begin)   at (#1) {};
     \coordinate (endnoteref) at ($(begin.east -| current page.north west)$);
     \node[endnode]   (end)     at ([xshift=1in+\hoffset+\oddsidemargin+\textwidth]endnoteref) {};
 }{
