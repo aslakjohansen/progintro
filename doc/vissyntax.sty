@@ -21,6 +21,9 @@
     within=chapter,
 ]{syntaxfloat}
 
+\newcommand{\SyntaxTerminalColor}[0]{purple}
+\newcommand{\SyntaxNonterminalColor}[0]{teal}
+
 \tikzset{textalign/.style={
   minimum height=5.5mm,
   text depth=0.7mm,
@@ -35,28 +38,18 @@
 }}
 \tikzset{terminal/.style={
   rectangle,
-  draw=teal,
-  text=teal,
-  fill=teal!5,
+  draw=\SyntaxTerminalColor,
+  text=\SyntaxTerminalColor,
+  fill=\SyntaxTerminalColor!5,
   thick,
   font=\ttfamily,
   textalign,
 }}
 \tikzset{nonterminal/.style={
   rectangle,
-  draw=purple,
-  text=purple,
-  fill=purple!5,
-  thick,
-  font=\slshape,
-  textalign,
-  rounded corners=1mm,
-}}
-\tikzset{nonterminal/.style={
-  rectangle,
-  draw=purple,
-  text=purple,
-  fill=purple!5,
+  draw=\SyntaxNonterminalColor,
+  text=\SyntaxNonterminalColor,
+  fill=\SyntaxNonterminalColor!5,
   thick,
   font=\slshape,
   textalign,
@@ -118,7 +111,7 @@
   \end{tikzpicture}
 }
 
-\newcommand{\syntaxconceptcolor}[1]{\textcolor{teal}{#1}}
+\newcommand{\syntaxconceptcolor}[1]{\textcolor{\SyntaxNonterminalColor}{#1}}
 
 \newcommand{\syntaxruledist}[0]{ 1cm }
 
