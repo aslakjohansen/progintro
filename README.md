@@ -13,7 +13,7 @@ The goal is for this to become a coursebook introducing new BSc students to prog
 
 ### Screenshots
 
-In order to take consistent screenshorts, first find the window id by running the `xwininfo` command and then clicking on the window:
+In order to take consistent screenshots, first find the window id by running the `xwininfo` command and then clicking on the window:
 
 ```console
 $ xwininfo | grep id
