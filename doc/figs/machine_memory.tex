@@ -1,0 +1,44 @@
+\begin{center}
+  \begin{tikzpicture}[]
+    \newcommand{\cellheight}[0]{8mm}
+    \newcommand{\cellwidth}[0]{24mm}
+    
+    \tikzstyle{cell}=[
+      rectangle,
+      draw=purple,
+      anchor=south,
+      thick,
+      minimum height=\cellheight,
+      minimum width=\cellwidth,
+    ]
+    \tikzstyle{address}=[
+      anchor=east,
+    ]
+    
+    \node[cell] (cellA) at (0, 0*\cellheight) {};
+    \node[cell] (cellB) at (0, 1*\cellheight) {};
+    \node[cell] (cellC) at (0, 2*\cellheight) {};
+    \node[cell] (cellD) at (0, 3*\cellheight) {};
+    \node[cell] (cellE) at (0, 4*\cellheight) {};
+    \node[cell] (cellF) at (0, 5*\cellheight) {};
+    \node[cell] (cellG) at (0, 6*\cellheight) {};
+    \node[cell] (cellH) at (0, 7*\cellheight) {};
+    \node[cell] (cellI) at (0, 8*\cellheight) {};
+    \node[cell] (cellJ) at (0, 9*\cellheight) {};
+    \node[cell] (cellK) at (0,10*\cellheight) {};
+    \node[cell] (cellL) at (0,11*\cellheight) {};
+    
+    \node[address] () at (cellA.west) {0};
+    \node[address] () at (cellB.west) {1};
+    \node[address] () at (cellC.west) {2};
+    \node[address] () at (cellD.west) {3};
+    \node[address] () at (cellE.west) {4};
+    \node[address] () at (cellF.west) {5};
+    \node[address] () at (cellG.west) {6};
+    \node[address] () at (cellH.west) {7};
+    \node[address] () at (cellI.west) {8};
+    \node[address] () at (cellJ.west) {9};
+    \node[address] () at (cellK.west) {10};
+    \node[address] () at (cellL.west) {11};
+  \end{tikzpicture}
+\end{center}
