@@ -1,0 +1,80 @@
+\begin{syntax}[[xshift=22mm]concept.west]{vismod}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[terminal] (ruleIa) at ($(begin)!0.5!(end)$) {public};
+  
+  \draw[path] (begin)--(ruleIa)--(end);
+\end{syntax}
+
+\begin{syntax}[[xshift=22mm]concept.west]{global-var}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence,anchor=north] () at ([yshift=\syntaxrulenodeheight-0.8pt*3]$(begin.east)!0.5!(end.west)$) {
+    \node[nonterminal] (ruleIa) {vismod};
+    &
+    \node[nonterminal] (ruleIb) {type};
+    &
+    \node[terminal]    (ruleIc) {name};
+    &
+    \node[terminal]    (ruleId) {=};
+    &
+    \node[nonterminal] (ruleIe) {expr};
+    &
+    \node[terminal]    (ruleIf) {;};
+    \\
+    \node[nonterminal] (ruleIIa) {vismod};
+    &
+    \node[nonterminal] (ruleIIb) {type};
+    &
+    \node[terminal]    (ruleIIc) {name};
+    &
+    &
+    &
+    \node[terminal]    (ruleIId) {;};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(ruleId)--(ruleIe)--(ruleIf)--(end);
+  \draw[path] (begin) to[-|-] ([xshift=1cm,yshift=-1*(\syntaxruledist+0.8pt*3)]begin.east)--(ruleIIa)--(ruleIIb)--(ruleIIc)--(ruleIId)--([xshift=-1cm,yshift=-1*(\syntaxruledist+0.8pt*3)]end.west) to[-|-] (end);
+\end{syntax}
+
+\begin{syntax}[[xshift=24mm]concept.west]{global-vars}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence] () at ([yshift=\syntaxruledist-0.8pt*3]$(begin)!0.5!(end)$) {
+    \\
+    \node[nonterminal]    (ruleIa) {global-var};
+    \\
+  };
+  
+  \draw[path] (begin)--(end);
+  \draw[path] (begin) to[-|-] (ruleIa) to[-|-] (end);
+  \draw[path] (ruleIa)
+            -|([xshift= 0.5*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIa.east)
+            |-(                            [yshift=0.8*\syntaxruledist]ruleIa.center)
+            -|([xshift=-0.5*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIa.west)
+            |-(ruleIa);
+\end{syntax}
+
+\begin{syntax}[[xshift=22mm]concept.west]{class}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence,anchor=north] () at ([yshift=\syntaxrulenodeheight-0.8pt*3]$(begin.east)!0.5!(end.west)$) {
+    \node[terminal] (ruleIa) {struct};
+    &
+    \node[terminal]    (ruleIb) {name};
+    &
+    \node[terminal]    (ruleIc) {\{};
+    &
+    \node[nonterminal] (ruleId) {global-vars};
+    &
+    \node[terminal]    (ruleIe) {\}};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(ruleId)--(ruleIe)--(end);
+\end{syntax}
