@@ -16,7 +16,8 @@
     ]
     
     \node[nonterminal] (pgm) at (0,0) {pgm};
-    \node[nonterminal] (stmt) at ([yshift=-\spacing]pgm.south) {stmt};
+    \node[nonterminal] (stmts) at ([yshift=-\spacing]pgm.south) {stmts};
+    \node[nonterminal] (stmt) at ([yshift=-\spacing]stmts.south) {stmt};
     \node[matrix,column sep=\spacing,anchor=north,] () at ([yshift=-\spacing]stmt.south) {
       \node[nonterminal] (context) {name};
       &
@@ -31,7 +32,8 @@
     \node[nonterminal] (string)   at ([yshift=-\spacing]params expr.south) {string-lit};
     \node[terminal] (string value)   at ([yshift=-\spacing]string.south) {\texttt{"Hello, World!"}};
     
-    \draw[edge] (pgm)--(stmt);
+    \draw[edge] (pgm)--(stmts);
+    \draw[edge] (stmts)--(stmt);
     \draw[edge] (stmt)--(context);
     \draw[edge] (stmt)--(function);
     \draw[edge] (stmt)--(params);

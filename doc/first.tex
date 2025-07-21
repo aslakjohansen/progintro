@@ -158,7 +158,7 @@ But lets get back to the hello world example. The specific grammatical rules rel
 \end{syntaxfloat}
 
 % concepts, tracks, pgm example
-This grammar defines five grammatical concepts, namely \conceptname{pgm}, \conceptname{stmt}, \conceptname{param-list}, \conceptname{expr} and \conceptname{name}. Each of these definitions define the valid sequences of tokens from an empty circle on the left to a filled circle on the right. We read these by following the tracks. The program itself (or \conceptname{pgm}) thus has to contain a sequence of at least one statement (or \conceptname{stmt}). This, due to the loop around \conceptname{stmt}.
+This grammar defines five grammatical concepts, namely \conceptname{pgm}, \conceptname{stmt}, \conceptname{param-list}, \conceptname{expr} and \conceptname{name}. Each of these definitions define the valid sequences of tokens from an empty circle on the left to a filled circle on the right. We read these by following the tracks. The program itself (or \conceptname{pgm}) thus has to contain a sequence of at least one statement (or \conceptname{stmt}). This, due to the loop around \conceptname{stmt}, as defined in the intermediary \conceptname{stmts}.
 
 % stmt concept, param-list concept
 The next rule unfolds what a statement is. A statement must consist of a name followed by a period followed by another name followed by a left parenthesis followed by a parameter list (or \conceptname{param-list}) followed by a right parenthesis followed by a semicolon. The next rule states that this \conceptname{param-list} is either empty, or a sequence of expressions (\conceptname{expr}) with commas in between. The \conceptname{expr} has to be a string literal (\conceptname{string-lit}).
