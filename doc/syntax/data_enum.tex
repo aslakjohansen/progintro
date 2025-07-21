@@ -7,10 +7,15 @@
     \\
   };
   
+  \node[sequence] () at ([yshift=1*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal]    (ruleIIa) {,};
+    \\
+  };
+  
   \draw[path] (begin)--(ruleIa)--(end);
   \draw[path] (ruleIa)
             -|([xshift= 0.5*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIa.east)
-            |-(                            [yshift=0.8*\syntaxruledist]ruleIa.center)
+            |-(                            [yshift=0.0*\syntaxruledist]ruleIIa)
             -|([xshift=-0.5*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIa.west)
             |-(ruleIa);
 \end{syntax}
