@@ -21,6 +21,9 @@
     within=chapter,
 ]{syntaxfloat}
 
+\newcommand{\syntaxruledist}[0]{ 1cm }
+\newcommand{\syntaxrulenodeheight}[0]{ 5mm }
+
 \newcommand{\SyntaxTerminalColor}[0]{purple}
 \newcommand{\SyntaxNonterminalColor}[0]{teal}
 
@@ -42,6 +45,7 @@
   text=\SyntaxTerminalColor,
   fill=\SyntaxTerminalColor!5,
   thick,
+  minimum height=\syntaxrulenodeheight,
   font=\ttfamily,
   textalign,
 }}
@@ -51,6 +55,7 @@
   text=\SyntaxNonterminalColor,
   fill=\SyntaxNonterminalColor!5,
   thick,
+  minimum height=\syntaxrulenodeheight,
   font=\slshape,
   textalign,
   rounded corners=1mm,
@@ -62,6 +67,7 @@
 \tikzset{sequence/.style={
   matrix,
   column sep=0.8cm,
+  row sep=\syntaxruledist-\syntaxrulenodeheight,
 }}
 
 \tikzset{beginnode/.style={
@@ -113,7 +119,6 @@
 
 \newcommand{\syntaxconceptcolor}[1]{\textcolor{\SyntaxNonterminalColor}{#1}}
 
-\newcommand{\syntaxruledist}[0]{ 1cm }
 
 %\newcommand{\syntaxcenter}[0]{ [yshift=-1cm]{$(begin)!0.5!(end)$} }
 \newcommand{\syntaxcenter}[0]{ ${(begin)}!0.5!{(end)}$ }
