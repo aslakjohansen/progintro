@@ -2,6 +2,16 @@
   \SyntaxWestSplit{MainWest}
   \SyntaxEastSplit{MainEast}
   
+  \node[nonterminal] (ruleIa) at ($(begin)!0.5!(end)$) {stmts};
+  
+  \draw[path] (begin)--(ruleIa)--(end);
+\end{syntax}
+\vspace{-2mm}
+
+\begin{syntax}[[xshift=24mm]concept.west]{stmts}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
   \node[sequence] () at ([yshift=-0*\syntaxruledist]$(begin)!0.5!(end)$) {
     \node[nonterminal]    (ruleIa) {stmt};
     \\
