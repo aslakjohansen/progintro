@@ -1,0 +1,15 @@
+\begin{syntax}{stmt}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence] () at ([yshift=0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal]    (ruleIa) {\{};
+    &
+    \node[nonterminal] (ruleIb) {stmts};
+    &
+    \node[terminal]    (ruleIc) {\}};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(end);
+\end{syntax}
