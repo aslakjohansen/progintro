@@ -64,7 +64,7 @@
     &
     \node[terminal]       (ruleIf) {]};
     &
-    \node[terminal]       (ruleIf) {;};
+    \node[terminal]       (ruleIg) {;};
     \\
   };
   
@@ -73,7 +73,7 @@
     \\
   };
   
-  \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(ruleId)--(ruleIe)--(ruleIf)--(end);
+  \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(ruleId)--(ruleIe)--(ruleIf)--(ruleIg)--(end);
   \draw[path] (ruleIe)
             -|([xshift= 0.5*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIe.east)
             |-(                            [yshift=0.0*\syntaxruledist]ruleIIa)
