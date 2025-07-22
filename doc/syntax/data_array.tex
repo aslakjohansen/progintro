@@ -47,6 +47,43 @@
   \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(end);
 \end{syntax}
 
+\begin{syntax}[[xshift=24mm]concept.west]{arr-decl}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence,column sep=1.1cm] () at ([yshift=-0*\syntaxruledist]$(begin)!0.525!(end)$) {
+    \node[terminal]       (ruleIa) {[};
+    &
+    \node[nonterminal]    (ruleIb) {arr-decl};
+    &
+    \node[terminal]       (ruleIc) {]};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=1*\syntaxruledist]ruleIb) {
+    \node[terminal]    (ruleIIa) {,};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-1*\syntaxruledist]ruleIb) {
+    \node[nonterminal]    (ruleIIIa) {expr};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(end);
+  \draw[path] (ruleIb)
+            -|([xshift= 0.7*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIb.east)
+            |-(                            [yshift=0.0*\syntaxruledist]ruleIIa)
+            -|([xshift=-0.7*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIb.west)
+            |-(ruleIb);
+  \draw[path] (ruleIa)
+            -|([xshift=-0.3*\syntaxruledist,yshift=-0.5*\syntaxruledist]ruleIb.west)
+            |-(                            [yshift=0.0*\syntaxruledist]ruleIIIa)
+            -|([xshift= 0.3*\syntaxruledist,yshift=-0.5*\syntaxruledist]ruleIb.east)
+            |-(ruleIc);
+\end{syntax}
+
+
 \begin{syntax}[[xshift=24mm]concept.west]{stmt}
   \SyntaxWestSplit{MainWest}
   \SyntaxEastSplit{MainEast}
@@ -58,27 +95,28 @@
     &
     \node[terminal]       (ruleIc) {=};
     &
-    \node[terminal]       (ruleId) {[};
+    \node[nonterminal]    (ruleId) {arr-decl};
+%    \node[terminal]       (ruleId) {[};
+%    &
+%    \node[nonterminal]    (ruleIe) {expr};
+%    &
+%    \node[terminal]       (ruleIf) {]};
     &
-    \node[nonterminal]    (ruleIe) {expr};
-    &
-    \node[terminal]       (ruleIf) {]};
-    &
-    \node[terminal]       (ruleIg) {;};
+    \node[terminal]       (ruleIe) {;};
     \\
   };
   
-  \node[sequence] () at ([yshift=1*\syntaxruledist]ruleIe) {
-    \node[terminal]    (ruleIIa) {,};
-    \\
-  };
+%  \node[sequence] () at ([yshift=1*\syntaxruledist]ruleIe) {
+%    \node[terminal]    (ruleIIa) {,};
+%    \\
+%  };
   
-  \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(ruleId)--(ruleIe)--(ruleIf)--(ruleIg)--(end);
-  \draw[path] (ruleIe)
-            -|([xshift= 0.5*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIe.east)
-            |-(                            [yshift=0.0*\syntaxruledist]ruleIIa)
-            -|([xshift=-0.5*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIe.west)
-            |-(ruleIe);
+  \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(ruleId)--(ruleIe)--(end);
+%  \draw[path] (ruleIe)
+%            -|([xshift= 0.5*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIe.east)
+%            |-(                            [yshift=0.0*\syntaxruledist]ruleIIa)
+%            -|([xshift=-0.5*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIe.west)
+%            |-(ruleIe);
   \draw[path] (begin)
             -|([xshift=-0.5*\syntaxruledist,yshift=0.5*\syntaxruledist]ruleIa.west)
             |-(                            [yshift=1.0*\syntaxruledist]ruleIa.center)
