@@ -83,7 +83,6 @@
             |-(ruleIc);
 \end{syntax}
 
-
 \begin{syntax}[[xshift=24mm]concept.west]{stmt}
   \SyntaxWestSplit{MainWest}
   \SyntaxEastSplit{MainEast}
@@ -96,27 +95,12 @@
     \node[terminal]       (ruleIc) {=};
     &
     \node[nonterminal]    (ruleId) {arr-decl};
-%    \node[terminal]       (ruleId) {[};
-%    &
-%    \node[nonterminal]    (ruleIe) {expr};
-%    &
-%    \node[terminal]       (ruleIf) {]};
     &
     \node[terminal]       (ruleIe) {;};
     \\
   };
   
-%  \node[sequence] () at ([yshift=1*\syntaxruledist]ruleIe) {
-%    \node[terminal]    (ruleIIa) {,};
-%    \\
-%  };
-  
   \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(ruleId)--(ruleIe)--(end);
-%  \draw[path] (ruleIe)
-%            -|([xshift= 0.5*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIe.east)
-%            |-(                            [yshift=0.0*\syntaxruledist]ruleIIa)
-%            -|([xshift=-0.5*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIe.west)
-%            |-(ruleIe);
   \draw[path] (begin)
             -|([xshift=-0.5*\syntaxruledist,yshift=0.5*\syntaxruledist]ruleIa.west)
             |-(                            [yshift=1.0*\syntaxruledist]ruleIa.center)
