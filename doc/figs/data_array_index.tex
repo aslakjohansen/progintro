@@ -1,0 +1,61 @@
+\begin{tikzpicture}[]
+  \newcommand{\spacing}[0]{2mm}
+  \newcommand{\nodeheight}[0]{6mm}
+  \newcommand{\nodewidth}[0]{12mm}
+  
+  \tikzstyle{node}=[
+    draw,
+    rectangle,
+    minimum height=\nodeheight,
+    minimum width=\nodewidth,
+    fill=black!5,
+    anchor=west,
+    thick
+  ]
+  \tikzstyle{label}=[
+    rectangle,
+    minimum height=\nodeheight,
+    minimum width=\nodewidth,
+    anchor=north,
+  ]
+  \tikzstyle{arrow} = [thick,->,>=stealth, draw=black]
+  
+  \node[node] (jan) at ( 0*\nodewidth,1) {31};
+  \node[node] (feb) at ( 1*\nodewidth,1) {28};
+  \node[node] (mar) at ( 2*\nodewidth,1) {31};
+  \node[node] (apr) at ( 3*\nodewidth,1) {30};
+  \node[node] (may) at ( 4*\nodewidth,1) {31};
+  \node[node] (jun) at ( 5*\nodewidth,1) {30};
+  \node[node] (jul) at ( 6*\nodewidth,1) {31};
+  \node[node] (aug) at ( 7*\nodewidth,1) {31};
+  \node[node] (sep) at ( 8*\nodewidth,1) {30};
+  \node[node] (oct) at ( 9*\nodewidth,1) {31};
+  \node[node] (nov) at (10*\nodewidth,1) {30};
+  \node[node] (dec) at (11*\nodewidth,1) {31};
+  \draw[decorate,decoration={brace, amplitude=10pt, raise=5pt}] (jan.north west) to node[black,midway,above=15pt] {12 elements} (dec.north east);
+  
+  \node[label] (jani) at ([yshift=-\spacing-\nodeheight]jan) {0};
+  \node[label] (febi) at ([yshift=-\spacing-\nodeheight]feb) {1};
+  \node[label] (mari) at ([yshift=-\spacing-\nodeheight]mar) {2};
+  \node[label] (apri) at ([yshift=-\spacing-\nodeheight]apr) {3};
+  \node[label] (mayi) at ([yshift=-\spacing-\nodeheight]may) {4};
+  \node[label] (juni) at ([yshift=-\spacing-\nodeheight]jun) {5};
+  \node[label] (juli) at ([yshift=-\spacing-\nodeheight]jul) {6};
+  \node[label] (augi) at ([yshift=-\spacing-\nodeheight]aug) {7};
+  \node[label] (sepi) at ([yshift=-\spacing-\nodeheight]sep) {8};
+  \node[label] (octi) at ([yshift=-\spacing-\nodeheight]oct) {9};
+  \node[label] (novi) at ([yshift=-\spacing-\nodeheight]nov) {10};
+  \node[label] (deci) at ([yshift=-\spacing-\nodeheight]dec) {11};
+  \draw[arrow] (jani.north) -- ([yshift=-\spacing/2]jan.south);
+  \draw[arrow] (febi.north) -- ([yshift=-\spacing/2]feb.south);
+  \draw[arrow] (mari.north) -- ([yshift=-\spacing/2]mar.south);
+  \draw[arrow] (apri.north) -- ([yshift=-\spacing/2]apr.south);
+  \draw[arrow] (mayi.north) -- ([yshift=-\spacing/2]may.south);
+  \draw[arrow] (juni.north) -- ([yshift=-\spacing/2]jun.south);
+  \draw[arrow] (juli.north) -- ([yshift=-\spacing/2]jul.south);
+  \draw[arrow] (augi.north) -- ([yshift=-\spacing/2]aug.south);
+  \draw[arrow] (sepi.north) -- ([yshift=-\spacing/2]sep.south);
+  \draw[arrow] (octi.north) -- ([yshift=-\spacing/2]oct.south);
+  \draw[arrow] (novi.north) -- ([yshift=-\spacing/2]nov.south);
+  \draw[arrow] (deci.north) -- ([yshift=-\spacing/2]dec.south);
+﻿﻿\end{tikzpicture}
