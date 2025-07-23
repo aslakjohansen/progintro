@@ -79,6 +79,22 @@ This constitutes a \defi{color space}{Color!Space} whereby all colors fit within
 
 \subsubsection{Multidimensional Arrays}
 
+\begin{equation}
+  \left(
+    \begin{array}{c}
+      x \\
+      y
+    \end{array}
+  \right)
+  = 
+  \left(
+    \begin{array}{c}
+      \textcolor{teal}{i} ~\mathrm{mod}~ width \\
+      \lfloor \textcolor{teal}{i} / width \rfloor
+    \end{array}
+  \right)
+\end{equation}
+
 \csharpsubsubsection{\csharp}
 
 \begin{syntaxfloat}
