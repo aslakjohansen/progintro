@@ -1,0 +1,40 @@
+%\begin{center}
+  \begin{tikzpicture}[]
+    \newcommand{\spacing}[0]{2mm}
+    \newcommand{\nodeheight}[0]{6mm}
+    
+    \tikzstyle{node}=[
+      rectangle,
+      anchor=south,
+      draw=black,
+      fill=black!5,
+      thick,
+      minimum height=\nodeheight,
+      minimum width=2cm,
+    ]
+    \tikzstyle{label}=[
+      rectangle,
+      anchor=south,
+      minimum height=\nodeheight,
+      minimum width=2cm,
+    ]
+    \tikzstyle{arrow} = [thick,->,>=stealth, draw=black]
+    
+    \coordinate (origin) at (0mm,0mm);
+    \coordinate (west) at ($(origin-| current page.north west)$);
+    \coordinate (eastref) at ($(origin-| current page.north west)$);
+    \coordinate (east) at ([xshift=\textwidth]west);
+    
+    \node[node] (cell1) at (3cm,\spacing) {9.8};
+    \node[node] (cell2) at (5cm,\spacing) {3.14};
+    \node[node] (cell3) at (7cm,\spacing) {2.718};
+    
+    \node[label] (cell1offset) at (cell1.north) {+0B};
+    \node[label] (cell2offset) at (cell2.north) {+8B};
+    \node[label] (cell3offset) at (cell3.north) {+16B};
+    
+    \draw[arrow, ultra thick] (west) -- (east);
+    \node[label,anchor=north] (addr) at (3cm,-2mm-\nodeheight/2) {273150};
+    \draw[arrow] (addr.north) -- (3cm, -\spacing);
+  ﻿﻿\end{tikzpicture}
+%\end{center}
