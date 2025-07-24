@@ -1,8 +1,37 @@
+\begin{syntax}[[xshift=22mm]concept.west]{expr}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence,column sep=1.1cm] () at ([yshift=-0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal]    (ruleIa) {new};
+    &
+    \node[nonterminal] (ruleIb) {name};
+    &
+    \node[terminal]    (ruleIc) {(};
+    &
+    \node[nonterminal] (ruleId) {args};
+    &
+    \node[terminal]    (ruleIe) {)};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(ruleId)--(ruleIe)--(end);
+\end{syntax}
+
 \begin{syntax}[[xshift=22mm]concept.west]{stmt}
   \SyntaxWestSplit{MainWest}
   \SyntaxEastSplit{MainEast}
   
-  \draw[path] (begin)--(end);
+  \node[sequence,column sep=2.0cm] () at ([yshift=-0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal]    (ruleIa) {throw};
+    &
+    \node[nonterminal] (ruleIb) {expr};
+    &
+    \node[terminal]    (ruleIc) {;};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(end);
 \end{syntax}
 
 \begin{syntax}[[xshift=22mm]concept.west]{catch}
