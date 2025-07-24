@@ -1,0 +1,60 @@
+\begin{syntax}[[xshift=22mm]concept.west]{stmt}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence,column sep=2.0cm] () at ([yshift=-0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal]    (ruleIa) {try};
+    &
+    \node[nonterminal] (ruleIb) {catch};
+    &
+    \node[nonterminal] (ruleIc) {finally};
+    \\
+  };
+  
+  \node[sequence,column sep=2.0cm] () at ([yshift=-1*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal]    (ruleIIa) {try};
+    &
+    \node[nonterminal] (ruleIIb) {catch};
+    &
+    \node[nonterminal] (ruleIIc) {finally};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(end);
+  
+  \draw[path] (begin)
+            -|([xshift=-0.75*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIIa.west)
+            |-(ruleIIa)
+            --(ruleIIb)
+            --(ruleIIc)
+            -|([xshift= 0.75*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIIc.east)
+            |-(end);
+  
+  % loop upper catch
+  \draw[path] (ruleIb)
+            -|([xshift= 0.75*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIb.east)
+            |-([                             yshift=1.0*\syntaxruledist]ruleIb.center)
+            -|([xshift=-0.75*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIb.west)
+            |-(ruleIb);
+  
+  % bypass upper finally
+  \draw[path] (ruleIb)
+            -|([xshift=-0.75*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIc.west)
+            |-([                             yshift=1.0*\syntaxruledist]ruleIc.center)
+            -|([xshift= 0.75*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIc.east)
+            |-(end);
+  
+  % loop lower catch
+  \draw[path] (ruleIIb)
+            -|([xshift= 0.75*\syntaxruledist,yshift=-0.4*\syntaxruledist]ruleIIb.east)
+            |-([                             yshift=-1.0*\syntaxruledist]ruleIIb.center)
+            -|([xshift=-0.75*\syntaxruledist,yshift=-0.4*\syntaxruledist]ruleIIb.west)
+            |-(ruleIIb);
+  
+  % bypass lower catch
+  \draw[path] (ruleIIa)
+            -|([xshift= 0.75*\syntaxruledist,yshift=-0.4*\syntaxruledist]ruleIIa.east)
+            |-([                             yshift=-1.5*\syntaxruledist]ruleIIb.center)
+            -|([xshift=-0.75*\syntaxruledist,yshift=-0.4*\syntaxruledist]ruleIIc.west)
+            |-(ruleIIc);
+\end{syntax}
