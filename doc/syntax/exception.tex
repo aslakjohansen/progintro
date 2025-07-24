@@ -9,14 +9,43 @@
   \SyntaxWestSplit{MainWest}
   \SyntaxEastSplit{MainEast}
   
-  \draw[path] (begin)--(end);
+  \node[sequence,column sep=1.2cm] () at ([yshift=-0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal]    (ruleIa) {catch};
+    &
+    \node[terminal]    (ruleIb) {(};
+    &
+    \node[nonterminal] (ruleIc) {type};
+    &
+    \node[nonterminal] (ruleId) {name};
+    &
+    \node[terminal]    (ruleIe) {)};
+    &
+    \node[nonterminal] (ruleIf) {stmt};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(ruleId)--(ruleIe)--(ruleIf)--(end);
+  
+  % bypass name
+  \draw[path] (ruleIc)
+            -|([xshift=-0.5*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleId.west)
+            |-([                             yshift=1.0*\syntaxruledist]ruleId.center)
+            -|([xshift= 0.5*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleId.east)
+            |-(ruleIe);
 \end{syntax}
 
 \begin{syntax}[[xshift=22mm]concept.west]{finally}
   \SyntaxWestSplit{MainWest}
   \SyntaxEastSplit{MainEast}
   
-  \draw[path] (begin)--(end);
+  \node[sequence,column sep=2.0cm] () at ([yshift=-0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal]    (ruleIa) {finally};
+    &
+    \node[nonterminal] (ruleIb) {stmt};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleIa)--(ruleIb)--(end);
 \end{syntax}
 
 \begin{syntax}[[xshift=22mm]concept.west]{stmt}
