@@ -32,6 +32,24 @@
   
   % #1: prefix
   % #2: position
+  \newcommand{\buildInstructionMemoryBlock}[2]{
+    \node[
+      block,
+      anchor=west,
+      minimum width=40mm,
+      minimum height=40mm,
+    ] (#1) at (#2) {};
+    \node[anchor=south,align=center] () at (#1.south) {\textbf{Instruction}\\\textbf{Memory}};
+    
+    \coordinate (#1 addr) at ([yshift=0.0*\lineheight]#1.west);
+    \coordinate (#1 inst) at ([yshift=0.0*\lineheight]#1.east);
+    
+    \node[anchor=west] () at (#1 addr) {Address};
+    \node[anchor=east] () at (#1 inst) {Instruction};
+  }
+  
+  % #1: prefix
+  % #2: position
   \newcommand{\buildRegisterBlock}[2]{
     \node[
       block,
@@ -70,10 +88,12 @@
   
   % instruction memory
 %  \node[block] (im) at (\Xim, \Ycenter) {Instruction\\Memory};
+  \coordinate (imcoord) at (\Xreg, \Ycenter);
+  \buildInstructionMemoryBlock{im}{imcoord}
   
   % registers
 %  \node[block] (reg) at (\Xreg, \Ycenter) {Registers};
-  \buildRegisterBlock{reg}{\Xreg, \Ycenter}
+  \buildRegisterBlock{reg}{[xshift=3*\spacing]im.east}
   
   % alu
   
