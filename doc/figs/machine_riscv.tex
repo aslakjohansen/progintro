@@ -1,0 +1,37 @@
+\begin{center}
+  \begin{tikzpicture}[remember picture]
+    \newcommand{\Xpc}[0]{ 8mm }
+    \newcommand{\Ycenter}[0]{ 8mm }
+    
+    \newcommand{\spacing}[0]{ 8mm }
+    
+    \tikzstyle{edge}  = [thick,>=stealth,draw=black]
+    \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
+    \tikzstyle{block}=[
+      overlay,
+      rectangle,
+      draw=purple,
+      anchor=center,
+      thick,
+    ]
+    
+    % program counter
+    \node[block] (pc) at (\Xpc, \Ycenter) {PC};
+    
+    % instruction increment alu
+    
+    % instruction branch alu
+    
+    % branch mux
+    
+    % instruction memory
+    
+    % registers
+    
+    % load mux
+    
+    % alu
+    
+    % data memory
+  \end{tikzpicture}
+\end{center}
