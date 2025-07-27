@@ -9,6 +9,7 @@
   \newcommand{\Ycenter}[0]{ 8mm }
   
   \newcommand{\spacing}[0]{ 8mm }
+  \newcommand{\lineheight}[0]{ 8mm }
   
   \tikzstyle{edge}  = [thick,>=stealth,draw=black]
   \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
@@ -29,8 +30,37 @@
     thick,
   ]
   
+  % #1: prefix
+  % #2: position
+  \newcommand{\buildRegisterBlock}[2]{
+    \node[
+      block,
+      anchor=west,
+      minimum width=40mm,
+      minimum height=40mm,
+    ] (#1) at (#2) {};
+    \node[anchor=west] () at (#1.center) {\textbf{Registers}};
+    
+    \coordinate (#1 data)   at ([yshift= 1.5*\lineheight]#1.west);
+    \coordinate (#1 regI)   at ([yshift= 0.5*\lineheight]#1.west);
+    \coordinate (#1 regII)  at ([yshift=-0.5*\lineheight]#1.west);
+    \coordinate (#1 regIII) at ([yshift=-1.5*\lineheight]#1.west);
+    \coordinate (#1 valI)   at ([yshift= 1.0*\lineheight]#1.east);
+    \coordinate (#1 valII)  at ([yshift=-1.0*\lineheight]#1.east);
+    
+    \node[anchor=west] () at (#1 data)   {Data};
+    \node[anchor=west] () at (#1 regI)   {Register \#1};
+    \node[anchor=west] () at (#1 regII)  {Register \#2};
+    \node[anchor=west] () at (#1 regIII) {Register \#3};
+    \node[anchor=east] () at (#1 valI)   {Value \#1};
+    \node[anchor=east] () at (#1 valII)  {Value \#2};
+    
+    \node[anchor=south east] (#1 RegWrite) at (#1.south east) {RegWrite};
+    \coordinate (#1 rw) at (#1 RegWrite.south);
+  }
+  
   % program counter
-  \node[block] (pc) at (\Xpc, \Ycenter) {PC};
+%  \node[block] (pc) at (\Xpc, \Ycenter) {PC};
   
   % instruction increment alu
   
@@ -39,16 +69,17 @@
   % branch mux
   
   % instruction memory
-  \node[block] (im) at (\Xim, \Ycenter) {Instruction\\Memory};
+%  \node[block] (im) at (\Xim, \Ycenter) {Instruction\\Memory};
   
   % registers
-  \node[block] (reg) at (\Xreg, \Ycenter) {Registers};
+%  \node[block] (reg) at (\Xreg, \Ycenter) {Registers};
+  \buildRegisterBlock{reg}{\Xreg, \Ycenter}
   
   % alu
   
   % data memory
-  \node[block] (dm) at (\Xdm, \Ycenter) {Data\\Memory};
+%  \node[block] (dm) at (\Xdm, \Ycenter) {Data\\Memory};
   
   % load mux
-  \node[mux] (loadmux) at ([yshift=12mm]$(reg)!0.5!(dm)$) {\rotatebox{90}{mux}};
+%  \node[mux] (loadmux) at ([yshift=12mm]$(reg)!0.5!(dm)$) {\rotatebox{90}{mux}};
 \end{tikzpicture}
