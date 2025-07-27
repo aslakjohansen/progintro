@@ -39,16 +39,16 @@
   % branch mux
   
   % instruction memory
-  \node[block] (pc) at (\Xim, \Ycenter) {Instruction\\Memory};
+  \node[block] (im) at (\Xim, \Ycenter) {Instruction\\Memory};
   
   % registers
-  \node[block] (pc) at (\Xreg, \Ycenter) {Registers};
-  
-  % load mux
-  \node[mux] (loadmux) at (\Xloadmux, \Ycenter) {\rotatebox{90}{mux}};
+  \node[block] (reg) at (\Xreg, \Ycenter) {Registers};
   
   % alu
   
   % data memory
-  \node[block] (pc) at (\Xdm, \Ycenter) {Data\\Memory};
+  \node[block] (dm) at (\Xdm, \Ycenter) {Data\\Memory};
+  
+  % load mux
+  \node[mux] (loadmux) at ([yshift=12mm]$(reg)!0.5!(dm)$) {\rotatebox{90}{mux}};
 \end{tikzpicture}
