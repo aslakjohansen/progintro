@@ -1,7 +1,11 @@
 \centering
 
 \begin{tikzpicture}[]
-  \newcommand{\Xpc}[0]{ 8mm }
+  \newcommand{\Xpc}[0]{ 0mm }
+  \newcommand{\Xim}[0]{ 32mm }
+  \newcommand{\Xreg}[0]{ 56mm }
+  \newcommand{\Xloadmux}[0]{ 65mm }
+  \newcommand{\Xdm}[0]{ 80mm }
   \newcommand{\Ycenter}[0]{ 8mm }
   
   \newcommand{\spacing}[0]{ 8mm }
@@ -12,6 +16,16 @@
     rectangle,
     draw=purple,
     anchor=center,
+    align=center,
+    thick,
+  ]
+  \tikzstyle{mux}=[
+    rectangle,
+    draw=purple,
+    anchor=center,
+    align=center,
+    rounded corners=2mm,
+    minimum width=4mm,
     thick,
   ]
   
@@ -25,12 +39,16 @@
   % branch mux
   
   % instruction memory
+  \node[block] (pc) at (\Xim, \Ycenter) {Instruction\\Memory};
   
   % registers
+  \node[block] (pc) at (\Xreg, \Ycenter) {Registers};
   
   % load mux
+  \node[mux] (loadmux) at (\Xloadmux, \Ycenter) {\rotatebox{90}{mux}};
   
   % alu
   
   % data memory
+  \node[block] (pc) at (\Xdm, \Ycenter) {Data\\Memory};
 \end{tikzpicture}
