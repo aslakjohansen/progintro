@@ -145,7 +145,6 @@
 %  \node[block] (pc) at (\Xpc, \Ycenter) {PC};
   \buildProgramCounterBlock{pc}{0,0}
   
-  % instruction branch alu
   
   % branch mux
   
@@ -154,9 +153,14 @@
   
   % instruction increment alu
   \buildALU{alu incr}{[yshift=4*\spacing]im.north}{+}
+  \node[anchor=east] (inst size) at ([xshift=-\spacing]alu incr iI) {4};
+  \draw[dedge] (inst size) -- (alu incr iI);
   
   % registers
   \buildRegisterBlock{reg}{[xshift=3*\spacing]im.east}
+  
+  % branch alu
+  \buildALU{alu branch}{[yshift=4*\spacing]reg.north}{+}
   
   % alu
   \buildALU{alu}{[xshift=3*\spacing] reg.east}{ALU}
