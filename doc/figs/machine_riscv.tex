@@ -12,9 +12,12 @@
   \newcommand{\spacing}[0]{ 8mm }
   \newcommand{\lineheight}[0]{ 8mm }
   
-  \newcommand{\aluheight}[0]{ 32mm }
-  \newcommand{\aluwidth}[0]{ 16mm }
-  \newcommand{\aluindent}[0]{ 4mm }
+  \newcommand{\aluheight}[0]{ 24mm }
+  \newcommand{\aluwidth}[0]{ 12mm }
+  \newcommand{\aluindent}[0]{ 3mm }
+%  \newcommand{\aluheight}[0]{ 32mm }
+%  \newcommand{\aluwidth}[0]{ 16mm }
+%  \newcommand{\aluindent}[0]{ 4mm }
   
   \tikzstyle{edge}  = [thick,>=stealth,draw=black]
   \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
@@ -34,6 +37,19 @@
     minimum width=4mm,
     thick,
   ]
+  
+  % #1: prefix
+  % #2: position
+  \newcommand{\buildProgramCounterBlock}[2]{
+    \node[
+      block,
+      anchor=west,
+      minimum height=40mm,
+    ] (#1) at (#2) {\textbf{PC}};
+    
+    \coordinate (#1 in)  at (#1.west);
+    \coordinate (#1 out) at (#1.east);
+  }
   
   % #1: prefix
   % #2: position
@@ -118,7 +134,7 @@
     -- ([xshift=\aluindent]offset)
     -- ([yshift=\aluindent]offset)
     -- cycle;
-    \node[anchor=center,align=center] () at ([xshift=\aluindent+\aluwidth/2-\aluindent/2]offset) {\textbf{#3}};
+    \node[anchor=center,align=center] () at ([xshift=\aluindent+\aluwidth/2-\aluindent/2]offset) {\rotatebox{90}{\textbf{#3}}};
     
     \coordinate (#1 iI)  at ([yshift= \aluheight/4+\aluindent/2]offset);
     \coordinate (#1 iII) at ([yshift=-\aluheight/4-\aluindent/2]offset);
@@ -127,17 +143,18 @@
   
   % program counter
 %  \node[block] (pc) at (\Xpc, \Ycenter) {PC};
+  \buildProgramCounterBlock{pc}{0,0}
   
   % instruction branch alu
   
   % branch mux
   
   % instruction memory
-  \coordinate (imcoord) at (\Xreg, \Ycenter);
-  \buildInstructionMemoryBlock{im}{imcoord}
+%  \coordinate (imcoord) at (\Xreg, \Ycenter);
+  \buildInstructionMemoryBlock{im}{[xshift=2*\spacing]pc.east}
   
   % instruction increment alu
-  \buildALU{alu incr}{[yshift=3*\spacing] im.north}{+}
+  \buildALU{alu incr}{[yshift=3*\spacing]im.north}{+}
   
   % registers
   \buildRegisterBlock{reg}{[xshift=3*\spacing]im.east}
@@ -152,6 +169,8 @@
 %  \node[mux] (loadmux) at ([yshift=12mm]$(reg)!0.5!(dm)$) {\rotatebox{90}{mux}};
   
   % wiring
+  \draw[dedge] (pc out) -- (im addr);
+  \draw[dedge] ($(pc out)!0.5!(im addr)$) |- (alu incr iII);
   \draw[dedge] (reg valI) -- (alu iI);
 \end{tikzpicture}
 }
