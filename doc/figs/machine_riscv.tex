@@ -177,6 +177,10 @@
   % wiring
   \draw[dedge] (pc out) -- (im addr);
   \draw[dedge] ($(pc out)!0.5!(im addr)$) |- (alu incr iII);
+  \draw[dedge] (im inst)
+            -- ([xshift=\spacing]im inst)
+            |- ([xshift=\spacing,yshift=-\spacing]reg.south east)
+            -- ([yshift=-\spacing/2]immediatemux.west);
   \draw[dedge] (reg valI) -- (alu iI);
   \draw[dedge] (reg valII) -- (immediatemux);
   \draw[dedge] (immediatemux) -- (alu iII);
