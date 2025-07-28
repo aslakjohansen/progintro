@@ -149,5 +149,8 @@
   
   % load mux
 %  \node[mux] (loadmux) at ([yshift=12mm]$(reg)!0.5!(dm)$) {\rotatebox{90}{mux}};
+  
+  % wiring
+  \draw[dedge] (reg valI) -- (alu iI);
 \end{tikzpicture}
 }
