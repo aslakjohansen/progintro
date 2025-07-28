@@ -169,7 +169,7 @@
   \node[mux,anchor=east] (immediatemux) at ([xshift=-\spacing]alu iII) {\rotatebox{90}{mux}};
   
   % data memory
-  \buildDataMemoryBlock{dm}{[xshift=3*\spacing]alu o}
+  \buildDataMemoryBlock{dm}{[xshift=2*\spacing,yshift=-\lineheight]alu o}
   
   % load mux
 %  \node[mux] (loadmux) at ([yshift=12mm]$(reg)!0.5!(dm)$) {\rotatebox{90}{mux}};
