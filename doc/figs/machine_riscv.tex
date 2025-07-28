@@ -162,6 +162,9 @@
   % alu
   \buildALU{alu}{[xshift=3*\spacing] reg.east}{ALU}
   
+  % immediate mux
+  \node[mux,anchor=east] (immediatemux) at ([xshift=-\spacing]alu iII) {\rotatebox{90}{mux}};
+  
   % data memory
   \buildDataMemoryBlock{dm}{[xshift=3*\spacing]alu o}
   
@@ -172,5 +175,7 @@
   \draw[dedge] (pc out) -- (im addr);
   \draw[dedge] ($(pc out)!0.5!(im addr)$) |- (alu incr iII);
   \draw[dedge] (reg valI) -- (alu iI);
+  \draw[dedge] (reg valII) -- (immediatemux);
+  \draw[dedge] (immediatemux) -- (alu iII);
 \end{tikzpicture}
 }
