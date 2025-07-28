@@ -12,6 +12,10 @@
   \newcommand{\spacing}[0]{ 8mm }
   \newcommand{\lineheight}[0]{ 8mm }
   
+  \newcommand{\aluheight}[0]{ 32mm }
+  \newcommand{\aluwidth}[0]{ 16mm }
+  \newcommand{\aluindent}[0]{ 4mm }
+  
   \tikzstyle{edge}  = [thick,>=stealth,draw=black]
   \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
   \tikzstyle{block}=[
@@ -102,10 +106,6 @@
   % #1: prefix
   % #2: position
   \newcommand{\buildALU}[3]{
-    \newcommand{\aluheight}[0]{ 32mm }
-    \newcommand{\aluwidth}[0]{ 16mm }
-    \newcommand{\aluindent}[0]{ 4mm }
-    
     \coordinate (offset) at (#2);
     
     \draw[
@@ -128,8 +128,6 @@
   % program counter
 %  \node[block] (pc) at (\Xpc, \Ycenter) {PC};
   
-  % instruction increment alu
-  
   % instruction branch alu
   
   % branch mux
@@ -137,6 +135,9 @@
   % instruction memory
   \coordinate (imcoord) at (\Xreg, \Ycenter);
   \buildInstructionMemoryBlock{im}{imcoord}
+  
+  % instruction increment alu
+  \buildALU{alu incr}{[yshift=3*\spacing] im.north}{+}
   
   % registers
   \buildRegisterBlock{reg}{[xshift=3*\spacing]im.east}
