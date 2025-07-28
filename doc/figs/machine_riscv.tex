@@ -108,18 +108,15 @@
   % branch mux
   
   % instruction memory
-%  \node[block] (im) at (\Xim, \Ycenter) {Instruction\\Memory};
   \coordinate (imcoord) at (\Xreg, \Ycenter);
   \buildInstructionMemoryBlock{im}{imcoord}
   
   % registers
-%  \node[block] (reg) at (\Xreg, \Ycenter) {Registers};
   \buildRegisterBlock{reg}{[xshift=3*\spacing]im.east}
   
   % alu
   
   % data memory
-%  \node[block] (dm) at (\Xdm, \Ycenter) {Data\\Memory};
   \buildDataMemoryBlock{dm}{[xshift=3*\spacing]reg.east}
   
   % load mux
