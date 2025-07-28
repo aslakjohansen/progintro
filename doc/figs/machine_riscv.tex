@@ -78,6 +78,26 @@
     \coordinate (#1 rw) at (#1 RegWrite.south);
   }
   
+  % #1: prefix
+  % #2: position
+  \newcommand{\buildDataMemoryBlock}[2]{
+    \node[
+      block,
+      anchor=west,
+      minimum width=40mm,
+      minimum height=40mm,
+    ] (#1) at (#2) {};
+    \node[anchor=south,align=center] () at (#1.south) {\textbf{Data}\\\textbf{Memory}};
+    
+    \coordinate (#1 addr)  at ([yshift= 1.0*\lineheight]#1.west);
+    \coordinate (#1 data)  at ([yshift=-1.0*\lineheight]#1.west);
+    \coordinate (#1 value) at ([yshift= 0.0*\lineheight]#1.east);
+    
+    \node[anchor=west] () at (#1 addr) {Address};
+    \node[anchor=west] () at (#1 data) {Data};
+    \node[anchor=east] () at (#1 value) {Value};
+  }
+  
   % program counter
 %  \node[block] (pc) at (\Xpc, \Ycenter) {PC};
   
@@ -100,6 +120,7 @@
   
   % data memory
 %  \node[block] (dm) at (\Xdm, \Ycenter) {Data\\Memory};
+  \buildDataMemoryBlock{dm}{[xshift=3*\spacing]reg.east}
   
   % load mux
 %  \node[mux] (loadmux) at ([yshift=12mm]$(reg)!0.5!(dm)$) {\rotatebox{90}{mux}};
