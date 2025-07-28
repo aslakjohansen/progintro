@@ -9,7 +9,7 @@
   \newcommand{\Xdm}[0]{ 80mm }
   \newcommand{\Ycenter}[0]{ 8mm }
   
-  \newcommand{\spacing}[0]{ 8mm }
+  \newcommand{\spacing}[0]{ 4mm }
   \newcommand{\lineheight}[0]{ 8mm }
   
   \newcommand{\aluheight}[0]{ 24mm }
@@ -154,7 +154,7 @@
   \buildInstructionMemoryBlock{im}{[xshift=2*\spacing]pc.east}
   
   % instruction increment alu
-  \buildALU{alu incr}{[yshift=3*\spacing]im.north}{+}
+  \buildALU{alu incr}{[yshift=4*\spacing]im.north}{+}
   
   % registers
   \buildRegisterBlock{reg}{[xshift=3*\spacing]im.east}
