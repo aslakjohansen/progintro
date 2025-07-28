@@ -78,7 +78,7 @@
       minimum width=40mm,
       minimum height=40mm,
     ] (#1) at (#2) {};
-    \node[anchor=west] () at (#1.center) {\textbf{Registers}};
+    \node[anchor=west] () at (#1.center) {\rotatebox{90}{\textbf{Registers}}};
     
     \coordinate (#1 data)   at ([yshift= 1.5*\lineheight]#1.west);
     \coordinate (#1 regI)   at ([yshift= 0.5*\lineheight]#1.west);
@@ -88,11 +88,11 @@
     \coordinate (#1 valII)  at ([yshift=-1.0*\lineheight]#1.east);
     
     \node[anchor=west] () at (#1 data)   {Data};
-    \node[anchor=west] () at (#1 regI)   {Register \#1};
-    \node[anchor=west] () at (#1 regII)  {Register \#2};
-    \node[anchor=west] () at (#1 regIII) {Register \#3};
-    \node[anchor=east] () at (#1 valI)   {Value \#1};
-    \node[anchor=east] () at (#1 valII)  {Value \#2};
+    \node[anchor=west] () at (#1 regI)   {Register 1};
+    \node[anchor=west] () at (#1 regII)  {Register 2};
+    \node[anchor=west] () at (#1 regIII) {Register 3};
+    \node[anchor=east] () at (#1 valI)   {Value 1};
+    \node[anchor=east] () at (#1 valII)  {Value 2};
     
     \node[anchor=south east] (#1 RegWrite) at (#1.south east) {RegWrite};
     \coordinate (#1 rw) at (#1 RegWrite.south);
