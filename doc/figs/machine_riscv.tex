@@ -98,6 +98,33 @@
     \node[anchor=east] () at (#1 value) {Value};
   }
   
+  
+  % #1: prefix
+  % #2: position
+  \newcommand{\buildALU}[3]{
+    \newcommand{\aluheight}[0]{ 32mm }
+    \newcommand{\aluwidth}[0]{ 16mm }
+    \newcommand{\aluindent}[0]{ 4mm }
+    
+    \coordinate (offset) at (#2);
+    
+    \draw[
+      thick,
+    ]  ([yshift=\aluheight/2]offset)
+    -- ([xshift=\aluwidth,yshift= \aluheight/5]offset)
+    -- ([xshift=\aluwidth,yshift=-\aluheight/5]offset)
+    -- ([yshift=-\aluheight/2]offset)
+    -- ([yshift=-\aluindent]offset)
+    -- ([xshift=\aluindent]offset)
+    -- ([yshift=\aluindent]offset)
+    -- cycle;
+    \node[anchor=center,align=center] () at ([xshift=\aluwidth/2-\aluindent/2]offset) {\textbf{#3}};
+    
+    \coordinate (#1 iI)  at ([yshift= \aluheight/4+\aluindent/2]offset);
+    \coordinate (#1 iII) at ([yshift=-\aluheight/4-\aluindent/2]offset);
+    \coordinate (#1 o)   at ([xshift=\aluwidth]offset);
+  }
+  
   % program counter
 %  \node[block] (pc) at (\Xpc, \Ycenter) {PC};
   
@@ -115,9 +142,10 @@
   \buildRegisterBlock{reg}{[xshift=3*\spacing]im.east}
   
   % alu
+  \buildALU{alu}{[xshift=3*\spacing] reg.east}{ALU}
   
   % data memory
-  \buildDataMemoryBlock{dm}{[xshift=3*\spacing]reg.east}
+  \buildDataMemoryBlock{dm}{[xshift=3*\spacing]alu o}
   
   % load mux
 %  \node[mux] (loadmux) at ([yshift=12mm]$(reg)!0.5!(dm)$) {\rotatebox{90}{mux}};
