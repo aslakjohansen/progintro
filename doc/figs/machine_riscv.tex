@@ -183,19 +183,19 @@
       block,
       anchor=north west,
       minimum width=32mm,
-      minimum height=7*\lineheight,
+      minimum height=2*21mm,
       control,
     ] (#1) at (#2) {};
     \node[anchor=south west] () at ([xshift=\spacing,yshift=\spacing]#1.south west) {\rotatebox{90}{\textbf{Control}}};
     
     \coordinate (#1 Instruction) at ([xshift= 1.0*\spacing]#1.north west);
-    \coordinate (#1 RegWrite)    at ([yshift= 3.0*\lineheight]#1.east);
-    \coordinate (#1 ALUSrc)      at ([yshift= 2.0*\lineheight]#1.east);
-    \coordinate (#1 ALUOp)       at ([yshift= 1.0*\lineheight]#1.east);
+    \coordinate (#1 RegWrite)    at ([yshift= 2.1*\lineheight]#1.east);
+    \coordinate (#1 ALUSrc)      at ([yshift= 1.4*\lineheight]#1.east);
+    \coordinate (#1 ALUOp)       at ([yshift= 0.7*\lineheight]#1.east);
     \coordinate (#1 MemRead)     at ([yshift= 0.0*\lineheight]#1.east);
-    \coordinate (#1 MemWrite)    at ([yshift=-1.0*\lineheight]#1.east);
-    \coordinate (#1 MemtoReg)    at ([yshift=-2.0*\lineheight]#1.east);
-    \coordinate (#1 Branch)      at ([yshift=-3.0*\lineheight]#1.east);
+    \coordinate (#1 MemWrite)    at ([yshift=-0.7*\lineheight]#1.east);
+    \coordinate (#1 MemtoReg)    at ([yshift=-1.4*\lineheight]#1.east);
+    \coordinate (#1 Branch)      at ([yshift=-2.1*\lineheight]#1.east);
     
     \node[anchor=north] () at (#1 Instruction)   {\rotatebox{90}{Instruction}};
     \node[anchor=east] () at (#1 RegWrite) {RegWrite};
