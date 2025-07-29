@@ -196,6 +196,9 @@
             |- ([yshift=-\muxinputoffset]immediatemux.west);
   \draw[dedge] ([xshift=\spacing]im inst)
             |- (alu branch iII);
+  \draw[dedge] ([xshift=-2*\spacing]reg regI)   -- (reg regI);
+  \draw[dedge] ([xshift=-2*\spacing]reg regII)  -- (reg regII);
+  \draw[dedge] ([xshift=-2*\spacing]reg regIII) -- (reg regIII);
   \draw[dedge] (reg valI) -- (alu iI);
   \draw[dedge] (reg valII) -- ([yshift=\muxinputoffset] immediatemux.west);
   \draw[dedge] ([xshift=2*\spacing]reg valII) |- (dm data);
