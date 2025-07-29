@@ -226,6 +226,10 @@
   \draw[dedge,control] (control ALUOp) -| (alu c);
   \draw[dedge,control] (control MemRead) -| ([xshift=-3*\spacing]dm.south);
   \draw[dedge,control] (control MemWrite) -| ([xshift=3*\spacing]dm.south);
+  \draw[dedge,control] (control MemtoReg)
+                    -- ([xshift=2*\spacing] $(dm.north east)!(control MemtoReg)!(dm.south east)$)
+                    |- ([yshift=\spacing]loadmux.north)
+                    -- (loadmux.north);
   
   % wiring
   \draw[dedge] (pc out) -- (im addr);
