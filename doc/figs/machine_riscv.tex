@@ -22,6 +22,7 @@
   
   \tikzstyle{edge}  = [thick,>=stealth,draw=black]
   \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
+  \tikzstyle{control} = [draw=teal]
   \tikzstyle{block}=[
     rectangle,
     draw=purple,
@@ -151,6 +152,37 @@
     \coordinate (#1 o)   at ([xshift=\aluwidth]offset);
   }
   
+  % #1: prefix
+  % #2: position
+  \newcommand{\buildControlBlock}[2]{
+    \node[
+      block,
+      anchor=north west,
+      minimum width=32mm,
+      minimum height=7*\lineheight,
+      control,
+    ] (#1) at (#2) {};
+    \node[anchor=south west] () at ([xshift=\spacing,yshift=\spacing]#1.south west) {\rotatebox{90}{\textbf{Control}}};
+    
+    \coordinate (#1 Instruction) at ([xshift= 1.0*\spacing]#1.north west);
+    \coordinate (#1 RegWrite)    at ([yshift= 3.0*\lineheight]#1.east);
+    \coordinate (#1 ALUSrc)      at ([yshift= 2.0*\lineheight]#1.east);
+    \coordinate (#1 MemRead)     at ([yshift= 1.0*\lineheight]#1.east);
+    \coordinate (#1 MemWrite)    at ([yshift= 0.0*\lineheight]#1.east);
+    \coordinate (#1 ALUOp)       at ([yshift=-1.0*\lineheight]#1.east);
+    \coordinate (#1 MemtoReg)    at ([yshift=-2.0*\lineheight]#1.east);
+    \coordinate (#1 Branch)      at ([yshift=-3.0*\lineheight]#1.east);
+    
+    \node[anchor=north] () at (#1 Instruction)   {\rotatebox{90}{Instruction}};
+    \node[anchor=east] () at (#1 RegWrite)   {RegWrite};
+    \node[anchor=east] () at (#1 ALUSrc)  {ALUSrc};
+    \node[anchor=east] () at (#1 MemRead) {MemRead};
+    \node[anchor=east] () at (#1 MemWrite)   {MemWrite};
+    \node[anchor=east] () at (#1 ALUOp)  {ALUOp};
+    \node[anchor=east] () at (#1 MemtoReg)  {MemtoReg};
+    \node[anchor=east] () at (#1 Branch)  {Branch};
+  }
+  
   % program counter
   \buildProgramCounterBlock{pc}{0,0}
   
@@ -184,6 +216,9 @@
   \node[mux,anchor=east] (pcmux) at ([xshift=-\muxwidth,yshift=2*\spacing+\aluheight+\spacing+\muxheight/2-(\muxheight/2-\muxinputoffset)]im.north west) {\rotatebox{90}{mux}};
 %  \node[mux,anchor=east] (pcmux) at ([xshift=-\muxwidth,yshift=10*\spacing]im.north west) {\rotatebox{90}{mux}};
   
+  % control
+  \buildControlBlock{control}{[yshift=-2*\spacing]im.south east}
+  
   % wiring
   \draw[dedge] (pc out) -- (im addr);
   \draw[dedge] ($(pc out)!0.5!(im addr)$) |- (alu incr iII);
@@ -199,6 +234,7 @@
   \draw[dedge] ([xshift=-2*\spacing]reg regI)   -- (reg regI);
   \draw[dedge] ([xshift=-2*\spacing]reg regII)  -- (reg regII);
   \draw[dedge] ([xshift=-2*\spacing]reg regIII) -- (reg regIII);
+  \draw[dedge] ([yshift=1*\spacing]control Instruction) -- (control Instruction);
   \draw[dedge] (reg valI) -- (alu iI);
   \draw[dedge] (reg valII) -- ([yshift=\muxinputoffset] immediatemux.west);
   \draw[dedge] ([xshift=2*\spacing]reg valII) |- (dm data);
@@ -231,5 +267,6 @@
   \node[point] () at ([xshift=-2*\spacing]reg regIII) {};
   \node[point] () at ([xshift=2*\spacing]reg valII) {};
   \node[point] () at ([xshift= 1*\spacing]alu o) {};
+  \node[point] () at ([yshift=1*\spacing]control Instruction) {};
 \end{tikzpicture}
 }
