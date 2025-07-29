@@ -150,6 +150,7 @@
     \coordinate (#1 iI)  at ([yshift= \aluinputoffset]offset);
     \coordinate (#1 iII) at ([yshift=-1*\aluinputoffset]offset);
     \coordinate (#1 o)   at ([xshift=\aluwidth]offset);
+    \coordinate (#1 c)   at ([xshift=\aluwidth/2,yshift=-(\aluheight/5/2+\aluheight/2/2]offset);
   }
   
   % #1: prefix
@@ -167,20 +168,20 @@
     \coordinate (#1 Instruction) at ([xshift= 1.0*\spacing]#1.north west);
     \coordinate (#1 RegWrite)    at ([yshift= 3.0*\lineheight]#1.east);
     \coordinate (#1 ALUSrc)      at ([yshift= 2.0*\lineheight]#1.east);
-    \coordinate (#1 MemRead)     at ([yshift= 1.0*\lineheight]#1.east);
-    \coordinate (#1 MemWrite)    at ([yshift= 0.0*\lineheight]#1.east);
-    \coordinate (#1 ALUOp)       at ([yshift=-1.0*\lineheight]#1.east);
+    \coordinate (#1 ALUOp)       at ([yshift= 1.0*\lineheight]#1.east);
+    \coordinate (#1 MemRead)     at ([yshift= 0.0*\lineheight]#1.east);
+    \coordinate (#1 MemWrite)    at ([yshift=-1.0*\lineheight]#1.east);
     \coordinate (#1 MemtoReg)    at ([yshift=-2.0*\lineheight]#1.east);
     \coordinate (#1 Branch)      at ([yshift=-3.0*\lineheight]#1.east);
     
     \node[anchor=north] () at (#1 Instruction)   {\rotatebox{90}{Instruction}};
-    \node[anchor=east] () at (#1 RegWrite)   {RegWrite};
-    \node[anchor=east] () at (#1 ALUSrc)  {ALUSrc};
-    \node[anchor=east] () at (#1 MemRead) {MemRead};
-    \node[anchor=east] () at (#1 MemWrite)   {MemWrite};
-    \node[anchor=east] () at (#1 ALUOp)  {ALUOp};
-    \node[anchor=east] () at (#1 MemtoReg)  {MemtoReg};
-    \node[anchor=east] () at (#1 Branch)  {Branch};
+    \node[anchor=east] () at (#1 RegWrite) {RegWrite};
+    \node[anchor=east] () at (#1 ALUSrc)   {ALUSrc};
+    \node[anchor=east] () at (#1 ALUOp)    {ALUOp};
+    \node[anchor=east] () at (#1 MemRead)  {MemRead};
+    \node[anchor=east] () at (#1 MemWrite) {MemWrite};
+    \node[anchor=east] () at (#1 MemtoReg) {MemtoReg};
+    \node[anchor=east] () at (#1 Branch)   {Branch};
   }
   
   % program counter
@@ -218,6 +219,13 @@
   
   % control
   \buildControlBlock{control}{[yshift=-2*\spacing]im.south east}
+  
+  % control wiring
+  \draw[dedge,control] (control RegWrite) -| (reg rw);
+  \draw[dedge,control] (control ALUSrc) -| (immediatemux.south);
+  \draw[dedge,control] (control ALUOp) -| (alu c);
+  \draw[dedge,control] (control MemRead) -| ([xshift=-3*\spacing]dm.south);
+  \draw[dedge,control] (control MemWrite) -| ([xshift=3*\spacing]dm.south);
   
   % wiring
   \draw[dedge] (pc out) -- (im addr);
