@@ -9,6 +9,8 @@
   \newcommand{\Xdm}[0]{ 80mm }
   \newcommand{\Ycenter}[0]{ 8mm }
   
+  \newcommand{\tint}[0]{ 5 }
+  
   \newcommand{\spacing}[0]{ 4mm }
   \newcommand{\lineheight}[0]{ 8mm }
   
@@ -24,10 +26,13 @@
   
   \tikzstyle{edge}  = [thick,>=stealth,draw=black]
   \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
-  \tikzstyle{control} = [draw=teal]
+  \tikzstyle{control} = [
+    draw=teal,
+  ]
   \tikzstyle{block}=[
     rectangle,
     draw=purple,
+    fill=purple!\tint,
     anchor=center,
     align=center,
     thick,
@@ -35,6 +40,7 @@
   \tikzstyle{mux}=[
     rectangle,
     draw=purple,
+    fill=purple!\tint,
     anchor=center,
     align=center,
     rounded corners=\muxwidth/2,
@@ -139,6 +145,7 @@
     \draw[
       thick,
       draw=purple,
+      fill=purple!\tint,
     ]  ([yshift=\aluheight/2]offset)
     -- ([xshift=\aluwidth,yshift= \aluheight/5]offset)
     -- ([xshift=\aluwidth,yshift=-\aluheight/5]offset)
@@ -163,7 +170,8 @@
     
     \draw[
       thick,
-      draw=teal,
+      control,
+      fill=teal!\tint,
     ]  ([xshift=\andwidth/2,yshift= \andheight/2]offset)
     -- ([xshift=\andwidth/2,yshift=-\andheight/2]offset)
     -- ([xshift=-(\andwidth/2-\andheight/2),yshift=-\andheight/2]offset)
@@ -185,6 +193,7 @@
       minimum width=32mm,
       minimum height=2*21mm,
       control,
+      fill=teal!\tint,
     ] (#1) at (#2) {};
     \node[anchor=south west] () at ([xshift=\spacing,yshift=\spacing]#1.south west) {\rotatebox{90}{\textbf{Control}}};
     
