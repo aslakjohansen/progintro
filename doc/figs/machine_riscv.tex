@@ -12,9 +12,13 @@
   \newcommand{\spacing}[0]{ 4mm }
   \newcommand{\lineheight}[0]{ 8mm }
   
+  \newcommand{\muxwidth}[0]{ 4mm }
+  \newcommand{\muxheight}[0]{ (\spacing+2*\muxwidth) }
+  \newcommand{\muxinputoffset}[0]{ (\spacing/2) }
   \newcommand{\aluheight}[0]{ 24mm }
   \newcommand{\aluwidth}[0]{ 12mm }
   \newcommand{\aluindent}[0]{ 3mm }
+  \newcommand{\aluinputoffset}[0]{ (\aluheight/4+\aluindent/2) }
 %  \newcommand{\aluheight}[0]{ 32mm }
 %  \newcommand{\aluwidth}[0]{ 16mm }
 %  \newcommand{\aluindent}[0]{ 4mm }
@@ -33,8 +37,9 @@
     draw=purple,
     anchor=center,
     align=center,
-    rounded corners=2mm,
-    minimum width=4mm,
+    rounded corners=\muxwidth/2,
+    minimum width=\muxwidth,
+    minimum height=\muxheight,
     thick,
   ]
   
@@ -84,8 +89,8 @@
     \coordinate (#1 regI)   at ([yshift= 0.5*\lineheight]#1.west);
     \coordinate (#1 regII)  at ([yshift=-0.5*\lineheight]#1.west);
     \coordinate (#1 regIII) at ([yshift=-1.5*\lineheight]#1.west);
-    \coordinate (#1 valI)   at ([yshift= 1.0*\lineheight]#1.east);
-    \coordinate (#1 valII)  at ([yshift=-1.0*\lineheight]#1.east);
+    \coordinate (#1 valI)   at ([yshift= \aluinputoffset]#1.east);
+    \coordinate (#1 valII)  at ([yshift=-\aluinputoffset+\muxinputoffset]#1.east);
     
     \node[anchor=west] () at (#1 data)   {Data};
     \node[anchor=west] () at (#1 regI)   {Register 1};
@@ -136,8 +141,8 @@
     -- cycle;
     \node[anchor=center,align=center] () at ([xshift=\aluindent+\aluwidth/2-\aluindent/2]offset) {\rotatebox{90}{\textbf{#3}}};
     
-    \coordinate (#1 iI)  at ([yshift= \aluheight/4+\aluindent/2]offset);
-    \coordinate (#1 iII) at ([yshift=-\aluheight/4-\aluindent/2]offset);
+    \coordinate (#1 iI)  at ([yshift= \aluinputoffset]offset);
+    \coordinate (#1 iII) at ([yshift=-1*\aluinputoffset]offset);
     \coordinate (#1 o)   at ([xshift=\aluwidth]offset);
   }
   
@@ -163,7 +168,7 @@
   \buildALU{alu branch}{[yshift=4*\spacing]reg.north}{+}
   
   % alu
-  \buildALU{alu}{[xshift=3*\spacing] reg.east}{ALU}
+  \buildALU{alu}{[xshift=2*\spacing+\muxwidth+\spacing] reg.east}{ALU}
   
   % immediate mux
   \node[mux,anchor=east] (immediatemux) at ([xshift=-\spacing]alu iII) {\rotatebox{90}{mux}};
@@ -180,9 +185,9 @@
   \draw[dedge] (im inst)
             -- ([xshift=\spacing]im inst)
             |- ([xshift=\spacing,yshift=-\spacing]reg.south east)
-            -- ([yshift=-\spacing/2]immediatemux.west);
+            |- ([yshift=-\muxinputoffset]immediatemux.west);
   \draw[dedge] (reg valI) -- (alu iI);
-  \draw[dedge] (reg valII) -- (immediatemux);
+  \draw[dedge] (reg valII) -- ([yshift=\muxinputoffset] immediatemux.west);
   \draw[dedge] (immediatemux) -- (alu iII);
   \draw[dedge] (alu o) -- (dm addr);
 \end{tikzpicture}
