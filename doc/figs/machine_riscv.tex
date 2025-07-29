@@ -39,6 +39,14 @@
     minimum height=\muxheight,
     thick,
   ]
+  \tikzstyle{point}=[
+    circle,
+    fill=black,
+    anchor=center,
+    minimum size=0.9mm,
+    inner sep=0pt,
+    thick,
+  ]
   
   % #1: prefix
   % #2: position
@@ -210,5 +218,9 @@
   \draw[dedge] (pcmux.west)
             -| ([xshift=-\spacing]pc.west)
             |- (pc);
+  
+  % connection points
+  \node[point] () at ([xshift=\spacing]pc.east) {};
+  \node[point] () at ([xshift=-\spacing,yshift=\spacing]im.north west) {};
 \end{tikzpicture}
 }
