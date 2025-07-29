@@ -182,10 +182,15 @@
   % wiring
   \draw[dedge] (pc out) -- (im addr);
   \draw[dedge] ($(pc out)!0.5!(im addr)$) |- (alu incr iII);
+  \draw[dedge] ([xshift=-\spacing,yshift=\spacing]im.north west)
+            -- ([xshift=-\spacing,yshift=\spacing]im.north east)
+            |- (alu branch iI);
   \draw[dedge] (im inst)
             -- ([xshift=\spacing]im inst)
             |- ([xshift=\spacing,yshift=-\spacing]reg.south east)
             |- ([yshift=-\muxinputoffset]immediatemux.west);
+  \draw[dedge] ([xshift=\spacing]im inst)
+            |- (alu branch iII);
   \draw[dedge] (reg valI) -- (alu iI);
   \draw[dedge] (reg valII) -- ([yshift=\muxinputoffset] immediatemux.west);
   \draw[dedge] ([xshift=2*\spacing]reg valII) |- (dm data);
