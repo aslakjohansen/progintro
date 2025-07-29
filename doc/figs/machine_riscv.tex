@@ -157,7 +157,7 @@
   \buildInstructionMemoryBlock{im}{[xshift=2*\spacing]pc.east}
   
   % instruction increment alu
-  \buildALU{alu incr}{[yshift=5*\spacing]im.north}{+}
+  \buildALU{alu incr}{[xshift=-\aluwidth/2,yshift=5*\spacing]im.north}{+}
   \node[anchor=east] (inst size) at ([xshift=-\spacing]alu incr iI) {4};
   \draw[dedge] (inst size) -- (alu incr iI);
   
@@ -165,7 +165,7 @@
   \buildRegisterBlock{reg}{[xshift=3*\spacing]im.east}
   
   % branch alu
-  \buildALU{alu branch}{[yshift=5*\spacing]reg.north}{+}
+  \buildALU{alu branch}{[xshift=-\aluwidth/2,yshift=5*\spacing]reg.north}{+}
   
   % alu
   \buildALU{alu}{[xshift=3*\spacing+\muxwidth+\spacing] reg.east}{ALU}
