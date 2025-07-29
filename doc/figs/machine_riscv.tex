@@ -177,7 +177,7 @@
   \buildDataMemoryBlock{dm}{[xshift=2*\spacing,yshift=-\lineheight]alu o}
   
   % load mux
-%  \node[mux] (loadmux) at ([yshift=12mm]$(reg)!0.5!(dm)$) {\rotatebox{90}{mux}};
+  \node[mux,anchor=east] (loadmux) at ([xshift=4*\spacing,yshift=\spacing]reg.north east) {\rotatebox{90}{mux}};
   
   % wiring
   \draw[dedge] (pc out) -- (im addr);
@@ -191,5 +191,13 @@
   \draw[dedge] ([xshift=2*\spacing]reg valII) |- (dm data);
   \draw[dedge] (immediatemux) -- (alu iII);
   \draw[dedge] (alu o) -- (dm addr);
+  \draw[dedge] ([xshift=\spacing]alu o)
+            |- ([yshift=-\muxinputoffset]loadmux.east);
+  \draw[dedge] (dm value)
+            -- ([xshift=\spacing]dm value)
+            |- ([yshift=\muxinputoffset]loadmux.east);
+  \draw[dedge] (loadmux.west)
+            -- ([xshift=-\spacing,yshift=\spacing]reg.north west)
+            |- (reg data);
 \end{tikzpicture}
 }
