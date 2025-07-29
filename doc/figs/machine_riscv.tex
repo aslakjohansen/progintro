@@ -173,7 +173,8 @@
   \node[mux,anchor=east] (loadmux) at ([xshift=4*\spacing,yshift=\spacing]reg.north east) {\rotatebox{90}{mux}};
   
   % pc mux
-  \node[mux,anchor=east] (pcmux) at ([xshift=-\muxwidth,yshift=10*\spacing]im.north west) {\rotatebox{90}{mux}};
+  \node[mux,anchor=east] (pcmux) at ([xshift=-\muxwidth,yshift=2*\spacing+\aluheight+\spacing+\muxheight/2-(\muxheight/2-\muxinputoffset)]im.north west) {\rotatebox{90}{mux}};
+%  \node[mux,anchor=east] (pcmux) at ([xshift=-\muxwidth,yshift=10*\spacing]im.north west) {\rotatebox{90}{mux}};
   
   % wiring
   \draw[dedge] (pc out) -- (im addr);
