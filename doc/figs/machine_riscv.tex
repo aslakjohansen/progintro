@@ -157,7 +157,7 @@
   \buildInstructionMemoryBlock{im}{[xshift=2*\spacing]pc.east}
   
   % instruction increment alu
-  \buildALU{alu incr}{[yshift=4*\spacing]im.north}{+}
+  \buildALU{alu incr}{[yshift=5*\spacing]im.north}{+}
   \node[anchor=east] (inst size) at ([xshift=-\spacing]alu incr iI) {4};
   \draw[dedge] (inst size) -- (alu incr iI);
   
