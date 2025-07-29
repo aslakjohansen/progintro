@@ -168,7 +168,7 @@
   \buildALU{alu branch}{[yshift=4*\spacing]reg.north}{+}
   
   % alu
-  \buildALU{alu}{[xshift=2*\spacing+\muxwidth+\spacing] reg.east}{ALU}
+  \buildALU{alu}{[xshift=3*\spacing+\muxwidth+\spacing] reg.east}{ALU}
   
   % immediate mux
   \node[mux,anchor=east] (immediatemux) at ([xshift=-\spacing]alu iII) {\rotatebox{90}{mux}};
@@ -188,6 +188,7 @@
             |- ([yshift=-\muxinputoffset]immediatemux.west);
   \draw[dedge] (reg valI) -- (alu iI);
   \draw[dedge] (reg valII) -- ([yshift=\muxinputoffset] immediatemux.west);
+  \draw[dedge] ([xshift=2*\spacing]reg valII) |- (dm data);
   \draw[dedge] (immediatemux) -- (alu iII);
   \draw[dedge] (alu o) -- (dm addr);
 \end{tikzpicture}
