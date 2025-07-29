@@ -105,8 +105,6 @@
     \node[anchor=east] () at (#1 valI)   {Value 1};
     \node[anchor=east] () at (#1 valII)  {Value 2};
     
-%    \node[anchor=south east] (#1 RegWrite) at (#1.south east) {RegWrite};
-%    \coordinate (#1 rw) at (#1 RegWrite.south);
     \coordinate (#1 rw) at ([xshift=-2*\spacing]#1.south east);
   }
   
