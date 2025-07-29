@@ -146,8 +146,6 @@
   % program counter
   \buildProgramCounterBlock{pc}{0,0}
   
-  % branch mux
-  
   % instruction memory
   \buildInstructionMemoryBlock{im}{[xshift=2*\spacing]pc.east}
   
@@ -174,6 +172,9 @@
   % load mux
   \node[mux,anchor=east] (loadmux) at ([xshift=4*\spacing,yshift=\spacing]reg.north east) {\rotatebox{90}{mux}};
   
+  % pc mux
+  \node[mux,anchor=east] (pcmux) at ([xshift=-\muxwidth,yshift=10*\spacing]im.north west) {\rotatebox{90}{mux}};
+  
   % wiring
   \draw[dedge] (pc out) -- (im addr);
   \draw[dedge] ($(pc out)!0.5!(im addr)$) |- (alu incr iII);
@@ -199,5 +200,14 @@
   \draw[dedge] (loadmux.west)
             -- ([xshift=-\spacing,yshift=\spacing]reg.north west)
             |- (reg data);
+  \draw[dedge] (alu incr o)
+            -- ([xshift=\spacing]alu incr o)
+            |- ([yshift=-\muxinputoffset]pcmux.east);
+  \draw[dedge] (alu branch o)
+            -- ([xshift=\spacing]alu branch o)
+            |- ([yshift=\muxinputoffset]pcmux.east);
+  \draw[dedge] (pcmux.west)
+            -| ([xshift=-\spacing]pc.west)
+            |- (pc);
 \end{tikzpicture}
 }
