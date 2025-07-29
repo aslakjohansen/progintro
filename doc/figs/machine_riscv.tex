@@ -12,6 +12,8 @@
   \newcommand{\spacing}[0]{ 4mm }
   \newcommand{\lineheight}[0]{ 8mm }
   
+  \newcommand{\andheight}[0]{ 8mm }
+  \newcommand{\andwidth}[0]{ (1.5*\andheight) }
   \newcommand{\muxwidth}[0]{ 4mm }
   \newcommand{\muxheight}[0]{ (\spacing+2*\muxwidth) }
   \newcommand{\muxinputoffset}[0]{ (\spacing/2) }
@@ -151,6 +153,27 @@
     \coordinate (#1 iII) at ([yshift=-1*\aluinputoffset]offset);
     \coordinate (#1 o)   at ([xshift=\aluwidth]offset);
     \coordinate (#1 c)   at ([xshift=\aluwidth/2,yshift=-(\aluheight/5/2+\aluheight/2/2]offset);
+    \coordinate (#1 z)   at ([xshift=\aluwidth/2,yshift= (\aluheight/5/2+\aluheight/2/2]offset);
+  }
+  
+  % #1: prefix
+  % #2: position
+  \newcommand{\buildAND}[2]{
+    \coordinate (offset) at (#2);
+    
+    \draw[
+      thick,
+      draw=teal,
+    ]  ([xshift=\andwidth/2,yshift= \andheight/2]offset)
+    -- ([xshift=\andwidth/2,yshift=-\andheight/2]offset)
+    -- ([xshift=-(\andwidth/2-\andheight/2),yshift=-\andheight/2]offset)
+    arc [x radius=\andheight/2,y radius=\andheight/2, start angle=270,end angle=90]
+    -- cycle;
+    \node[anchor=center,align=center] () at (offset) {\rotatebox{0}{\textbf{AND}}};
+    
+    \coordinate (#1 iI)  at ([xshift=\andwidth/2,yshift= \spacing/2]offset);
+    \coordinate (#1 iII) at ([xshift=\andwidth/2,yshift=-\spacing/2]offset);
+    \coordinate (#1 o)   at ([xshift=-\andwidth/2]offset);
   }
   
   % #1: prefix
@@ -220,16 +243,24 @@
   % control
   \buildControlBlock{control}{[yshift=-2*\spacing]im.south east}
   
+  % control and
+  \buildAND{and}{[xshift=\spacing,yshift=\spacing]$(reg.north east)!(pcmux.north)!(reg.south east)$}
+  
   % control wiring
   \draw[dedge,control] (control RegWrite) -| (reg rw);
   \draw[dedge,control] (control ALUSrc) -| (immediatemux.south);
   \draw[dedge,control] (control ALUOp) -| (alu c);
+  \draw[dedge,control] (alu z) |- (and iII);
+  \draw[dedge,control] (and o) -| (pcmux.north);
   \draw[dedge,control] (control MemRead) -| ([xshift=-3*\spacing]dm.south);
   \draw[dedge,control] (control MemWrite) -| ([xshift=3*\spacing]dm.south);
   \draw[dedge,control] (control MemtoReg)
                     -- ([xshift=2*\spacing] $(dm.north east)!(control MemtoReg)!(dm.south east)$)
                     |- ([yshift=\spacing]loadmux.north)
                     -- (loadmux.north);
+  \draw[dedge,control] (control Branch)
+                    -- ([xshift=3*\spacing] $(dm.north east)!(control Branch)!(dm.south east)$)
+                    |- (and iI);
   
   % wiring
   \draw[dedge] (pc out) -- (im addr);
