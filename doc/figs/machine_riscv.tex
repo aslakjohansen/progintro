@@ -216,6 +216,38 @@
     \node[anchor=east] () at (#1 Branch)   {Branch};
   }
   
+  % #1: prefix
+  % #2: position
+  \newcommand{\buildLegend}[2]{
+    \node[
+      matrix,
+      anchor=center,
+      row sep=\spacing/2,
+      column sep=\spacing/2,
+      column 2/.style={anchor=west},
+      ampersand replacement=\&,
+    ] (#1) at (#2) {
+      \node[
+        block,
+        minimum width=\spacing,
+        minimum height=\spacing/4*3,
+      ] () {};
+      \&
+      \node[] () {Data plane};
+      \\
+      \node[
+        block,
+        minimum width=\spacing,
+        minimum height=\spacing/4*3,
+        control,
+        fill=teal!\tint,
+      ] () {};
+      \&
+      \node[] () {Control plane};
+      \\
+    };
+  }
+  
   % program counter
   \buildProgramCounterBlock{pc}{0,0}
   
@@ -320,5 +352,8 @@
   \node[point] () at ([xshift=2*\spacing]reg valII) {};
   \node[point] () at ([xshift= 1*\spacing]alu o) {};
   \node[point] () at ([yshift=1*\spacing]control Instruction) {};
+  
+  % legend
+  \buildLegend{legend}{$($(pc.north west)!0.5!(im.north east)$)!(control.west)!($(pc.south west)!0.5!(im.south east)$)$}
 \end{tikzpicture}
 }
