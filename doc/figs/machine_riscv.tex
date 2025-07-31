@@ -354,6 +354,6 @@
   \node[point] () at ([yshift=1*\spacing]control Instruction) {};
   
   % legend
-  \buildLegend{legend}{$($(pc.north west)!0.5!(im.north east)$)!(control.west)!($(pc.south west)!0.5!(im.south east)$)$}
+  \buildLegend{legend}{$($([xshift=-\spacing] pc.north west)!0.5!(im.north east)$)!(control.west)!($([xshift=-\spacing] pc.south west)!0.5!(im.south east)$)$}
 \end{tikzpicture}
 }
