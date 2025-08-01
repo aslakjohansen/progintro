@@ -55,7 +55,10 @@ The components that of the machine that we have covered can be put together arou
   \label{fig:machine:riscv}
 \end{figure}
 
-% signals: complex blocks, what complex mean, signals (1 or more bits), control and data
+% signals: bloacks and arrows, complex blocks, what complex mean, signals (1 or more bits), control and data
+The diagram consists of various blocks connected by arrows. These blocks are \idx{complex}{Complex!Block}. That is, they represent a \idx{logical}{Logical} unit but are physically constructed from smaller parts \ldots\ with arrows between them. We call the arrows \idx{signals}{Signal}. They represent a value of one or more bits. One can think of them as how data flows through the processor. Concretely, this is accomplished through \idx{register transfer level}{Register Transfer Level} (RTL) logic and a \idx{clock signal}{Signal!Clock}. But then things get really complecated, and we don't need it that badly.
+
+% data and control plane
 
 % multiplexers (mux): identifying the component visually, interface (number of inputs, one output, a control), role of control
 
