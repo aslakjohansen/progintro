@@ -101,6 +101,7 @@ In the diagram, you will find three \idx{multiplexers}{Multiplexer} (or \idx{mux
 % memory operation: other operations will need to store the value of some register to memory, how does this value get from the register to the data input of data memory?
 
 % branching: when is it decided to branch? This can be seen through the AND gate that controls whether the +4 PC increment should be overwritten by something else, but where should it branch to? by tracing back the lines we can see that we add something to the current PC value (e.g., an offset), this offset is hardcoded in the instruction, we say that the branch takes a relative jump
+% TODO: we are covering the control plane here. Should that part be moved into the next section, or does that separation not make sense?
 
 \subsubsection{Control Plane}
 
