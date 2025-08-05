@@ -111,7 +111,7 @@ In the diagram, you will find three \idx{multiplexers}{Multiplexer} (or \idx{mux
 
 % Branch
 
-% MemRead & MemWrite
+% MemRead & MemWrite: from the data memorys perspective there are three kinds of instructions (those that have no relevance, those that read and those that write), in the no relevance case we don't want to stress the memory, in the read case we want to produce an output data signal, this is indicated by the MemRead control signal, in the write case we want to modify the contents of data memory (under no other circumstances is this acceptable), this is indicated by the MemWrite control signal
 
 % RegWrite & MemtoReg: two classes of operations (whether a write to a register is part of the operation), how RegWrite fits in, two classes of operations when a write is part of the operation (depending on the source of the write), do we write the output from the ALU (e.g., as in a plus operation) or do we write data that are loaded from data memory (e.g., as in a load operation).
 
