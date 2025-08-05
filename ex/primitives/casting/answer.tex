@@ -1,0 +1,10 @@
+We are always allowed to cast explicitly, but this is considered a bad practice as it is unnecessary and distracting. The following code shows the minimal amount of explicit casting:
+
+\inputminted{csharp}{\context/answer/Casting.cs}
+
+As the typechecker executes at compiletime it (generally) cannot take concrete values into account. It thus has to work at the type-level, and act according to a worst-case scenario.
+
+There is no guarantee that a \typename{long} value can \textsl{fit} into the smaller size of an \typename{int} variable, or similarly, that a \typename{double} value can fit into a \typename{float} variable. Naturally, a floating point number cannot fit into an integer number.
+
+The rule is that an explicit cast is necessary if the operation has the potential to result in a loss of data.
+
