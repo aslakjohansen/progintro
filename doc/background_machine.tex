@@ -97,6 +97,7 @@ The execution of an instruction starts at the \idx{program counter}{Program coun
 The program memory block then \idx{fetches}{Fetching} the instruction that the program counter \idx{points to}{Pointer}. It then decodes it into it principal components. These are the code for the operation (aka the instruction \idx{identity}{Identity}), and the relevant register numbers and/or immediate values.
 
 % register read: reading the values of each of these registers, register bank
+Depending on the concrete instruction, up to two of those registers are used as input to the operation. So the next step is to read the values of these registers from the \idx{register bank}{Register bank}. These values are produced at the labels \say{Value 1} and \say{Value 2} in the diagram. If only one of them is needed, then the other will be \idx{undefined}{Undefined}. That means that the \idx{architectural model}{Architectural mode!Processor} of the processor does not dictate what any physical processor should do in this case. While this may seem like a problem, the control signals (that we will cover in section \ref{sec:bg:machine:control_plane}) will make sure it does cause any trouble.
 
 % alu operation: operands to alu, register vs immediate value, control module tells it which operation to perform, many operations will require the result of the operation to be written back to the register bank
 
@@ -108,6 +109,7 @@ The program memory block then \idx{fetches}{Fetching} the instruction that the p
 % TODO: we are covering the control plane here. Should that part be moved into the next section, or does that separation not make sense?
 
 \subsubsection{Control Plane}
+\label{sec:bg:machine:control_plane}
 
 % the clock cycle ticks
 
