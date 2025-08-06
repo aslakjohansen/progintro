@@ -94,6 +94,7 @@ In the diagram, you will find three \idx{multiplexers}{Multiplexer} (or \idx{mux
 The execution of an instruction starts at the \idx{program counter}{Program counter} (or PC, for short). It is usually incremented in steps of four as this matches the size of a RISC-V 32-bit instruction. The program counter is a \idx{register}{Register} that holds the address of the next instruction. This address is fed into the program memory block.
 
 % instruction fetch and decode: the next step is to fetch that instruction (at that address) from instruction memory and decode it into its principal components, this usually includes instruction identity and a number of registers or immediate values
+The program memory block then \idx{fetches}{Fetching} the instruction that the program counter \idx{points to}{Pointer}. It then decodes it into it principal components. These are the code for the operation (aka the instruction \idx{identity}{Identity}), and the relevant register numbers and/or immediate values.
 
 % register read: reading the values of each of these registers, register bank
 
