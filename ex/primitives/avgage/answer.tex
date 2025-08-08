@@ -1,0 +1,18 @@
+When executed the program prints out the following:
+
+\begin{verbatim}
+Average livespan of a male computer scientist: 76.666664
+Average livespan of a female computer scientist: 68.666664
+Average livespan of a computer scientist: 72.666664
+Males lives this much longer than female: 8.0
+\end{verbatim}
+
+The program consists of (i) 6 variable declarations with initial assignment of values, (ii) a number of variable declarations where each variable is initialized to hold the result of some calculations, and (iii) printouts of the resulting values of these variable.
+
+In the first part, six \typename{int} variables are declared. Each of these are named after a well-known computer scientist, and is initialized to their lifespan in years. For each of these a commented out link to their page on Wikipedia is provided.
+
+Next comes four calculations, each of which is stored in a \typename{float} variable.
+
+In the first calculation, all the \say{male} variables are summed up. The result of this is cast to a \typename{float} and then divided by three (i.e., the number of people). Finally the result is stored in the \varname{male\_avg} variable. In similar fashion, the average for the female computer scientists is calculated and stored in the \varname{female\_avg} variable. In the third calculation, these two averages are summed, then divided by two, and finally stored in the \varname{avg} variable. This is correct as the number of males and females are the same. As \varname{male\_avg} is a \typename{float}, it is not necessary to cast in order to avoid a potential rounding error in the division. In the last calculation, \varname{female\_avg} is subtracted from \varname{male\_avg} and the result is stored in the variable \varname{diff}.
+
+Finally, each of these 4 variables are printed to the screen. To do this, two statements are used for each. In the first statement, a string that describes what the contents of the variable represents is printed without newline. In the second and last statement, the value is printed with newline.
