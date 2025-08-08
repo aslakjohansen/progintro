@@ -1,0 +1,3 @@
+\inputminted{csharp}{\context/answer/DailyDiffs.cs}
+
+It does the calculation wrongly because of the ways floating-point numbers are represented in a computer (throuh IEEE floats). This method is not exact, and will often produce small errors. There are more preceise ways of representing floating-point numbers (e.g., using fractions of integers), but they are quite a bit slower.
