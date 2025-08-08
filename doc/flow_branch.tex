@@ -26,6 +26,18 @@ hello
 \subsubsection{Dangling Else}
 \label{sec:flow:branch:danglingelse}
 
+% problem: take a moment to look at CODE, do a manual execution of it, and note down what the result was.
+
+% parse trees: as we know the compiler sees the code differently from humans, it converts it into a sequence of tokens and then builds a parse tree from it, one can easily imagine two possible outcomes of this as illustrated in figure FIG
+
+% figure of the two parse trees
+
+% however, the rules that govern how the parse tree is constructed dictates that it is the version to the right is the correct variant, why?
+
+% problem & solution: The problem here is that the indentations were \say{wrong}, and that likely fooled you, two mistakes were made (wrong indent, relying on indent for understanding), both are very easy to make, the way around this is to always use blocks to disambiguate
+
+% solution example
+
 \csharpsubsection{\csharp}
 
 \begin{syntaxfloat}
