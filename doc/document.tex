@@ -12,6 +12,7 @@
 \usepackage{pdfcomment} % for \pdftooltip command
 \usepackage{layout} % for the \layout{} command used for debugging tikz
 \usepackage{amsmath} % for aligned environment
+\usepackage{titling} % for easy access to \thetitle, \theauthor and \thedate
 
 % for subfigures
 \usepackage{caption}
@@ -152,12 +153,29 @@
 \newcommand{\context}[0]{this should be renewed to something useful}
 
 \title{Introduction to Programming \ldots\ in \csharp}
-\author{Aslak Johansen \href{mailto:asjo@mmmi.sdu.dk}{asjo@mmmi.sdu.dk}}
+\author{by Aslak Johansen}
+%\author{Aslak Johansen \href{mailto:asjo@mmmi.sdu.dk}{asjo@mmmi.sdu.dk}}
 
 \begin{document}
 
+% front page
+\begin{tikzpicture}[remember picture, overlay]
+  \newcommand{\backgroundcolor}[0]{purple}
+  \newcommand{\spacing}[0]{1.4cm}
+  
+  \coordinate (left)  at ([xshift= \spacing, yshift=183mm]current page.south west);
+  \coordinate (right) at ([xshift=-\spacing, yshift=183mm]current page.south east);
+  
+  \shade[top color=\backgroundcolor, bottom color=\backgroundcolor] (current page.south west) rectangle (current page.north east);
+  \draw[very thick, draw=white] (left) -- (right);
+  \node[anchor=south west] () at ([yshift=4mm]left) {\Huge{\textcolor{white}{\thetitle}}};
+  \node[anchor=north east] () at ([yshift=-4mm]right) {\Large{\textcolor{white}{\theauthor}}};
+  \node[anchor=center] () at ([yshift=-183mm]current page.north) {\Large{\textcolor{white}{some date}}};
+\end{tikzpicture}
+\newpage
+
 % front matter
-\maketitle
+%\maketitle
 \setcounter{tocdepth}{2}
 \tableofcontents
 \newpage
