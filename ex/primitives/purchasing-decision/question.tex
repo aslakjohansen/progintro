@@ -1,0 +1,16 @@
+Consider the following code:
+
+\begin{minted}{csharp}
+double price = 599.95;
+double budget = 1000.0;
+bool requiredReading = true;
+bool shouldBuy = price < budget && requiredReading;
+\end{minted}
+
+Explain the last line, and focus on:
+\begin{itemize}
+  \item In which order is what calculated?
+  \item Which values (named and otherwise) are each operator evaluated on?
+  \item What are the types of these values?
+  \item What does the variable \varname{shouldBuy} represent?
+\end{itemize}

@@ -1,0 +1,30 @@
+The calculation is done according to the \idx{parse tree}{Tree!Parse}:
+\begin{center}
+  \begin{tikzpicture}[]
+    \newcommand{\dist}[0]{15mm}
+    
+    \tikzstyle{node} = [
+      rectangle,
+      draw=black,
+      thick,
+    ]
+    
+    \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
+    
+    \node[node] (shouldbuy) at (0,0) {\varname{shouldBuy}};
+    \node[node] (and) at ([yshift=\dist]shouldbuy) {\texttt{\&\&}};
+    \node[node] (lt) at ([xshift=-\dist,yshift=\dist]and) {\texttt{<}};
+    \node[node] (requiredreading) at ([xshift=\dist,yshift=\dist]and) {\varname{requiredReading}};
+    \node[node] (price) at ([xshift=-\dist,yshift=\dist]lt) {\varname{price}};
+    \node[node] (budget) at ([xshift=\dist,yshift=\dist]lt) {\varname{budget}};
+    
+    \draw[dedge] (price)->(lt);
+    \draw[dedge] (budget)->(lt);
+    \draw[dedge] (lt)->(and);
+    \draw[dedge] (requiredreading)->(and);
+    \draw[dedge] (and)->(shouldbuy);
+  \end{tikzpicture}
+\end{center}
+
+The variable \varname{shouldBuy} represents the outcome of the decision of whether to purchase a book. The book should be purchased when then price is below budget, and the book is required reading.
+
