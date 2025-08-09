@@ -103,8 +103,10 @@ Depending on the concrete instruction, up to two of those registers are used as 
 Data flows through the \textsl{main} ALU. The first input comes from a register, but the second comes -- depending on instruction -- from either a register or an immediate value encoded directly in the instruction. The control model tells it which operation to perform. Many instructions will require the result of the operation to be written back to the register bank, in which case the control module will make sure this happens.
 
 % memory operation: other operations will need to store the value of some register to memory, how does this value get from the register to the data input of data memory?
+Other instructions will need to \idx{store}{Store} the value of some register in memory, or \idx{load}{Load} a value from memory into a register. The data memory is responsible for those load and stope operations. The data involved in a store instruction will essentially bypass the main ALU by feeding \say{Value 2} for the register bank into \say{Data} of the data memory. The address is calculated by the ALU though.
 
 % register write back
+In a load operation, the \say{Value} output of the data memory block (which represents the data at the input \say{Address}) is fed into the \say{Data} input of the register bank. A mux on the way will have to be instructed by the control block to route the data signal appropriately.
 
 % branching: when is it decided to branch? This can be seen through the AND gate that controls whether the +4 PC increment should be overwritten by something else, but where should it branch to? by tracing back the lines we can see that we add something to the current PC value (e.g., an offset), this offset is hardcoded in the instruction, we say that the branch takes a relative jump
 % TODO: we are covering the control plane here. Should that part be moved into the next section, or does that separation not make sense?
