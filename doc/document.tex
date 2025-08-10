@@ -162,14 +162,18 @@
 \begin{tikzpicture}[remember picture, overlay]
   \newcommand{\backgroundcolor}[0]{purple}
   \newcommand{\spacing}[0]{1.4cm}
+  \newcommand{\linedist}[0]{2mm}
   
   \coordinate (left)  at ([xshift= \spacing, yshift=183mm]current page.south west);
   \coordinate (right) at ([xshift=-\spacing, yshift=183mm]current page.south east);
   
   \shade[top color=\backgroundcolor, bottom color=\backgroundcolor] (current page.south west) rectangle (current page.north east);
+  
   \draw[very thick, draw=white] (left) -- (right);
-  \node[anchor=south west] () at ([yshift=4mm]left) {\Huge{\textcolor{white}{\thetitle}}};
-  \node[anchor=north east] () at ([yshift=-4mm]right) {\Large{\textcolor{white}{\theauthor}}};
+  
+  \node[anchor=south west] () at ([yshift=\linedist]left) {\Huge{\textcolor{white}{\thetitle}}};
+  \node[anchor=north east] () at ([yshift=-\linedist]right) {\Large{\textcolor{white}{\theauthor}}};
+  
   \node[anchor=center] () at ([yshift=-183mm]current page.north) {\Large{\textcolor{white}{some date}}};
 \end{tikzpicture}
 \newpage
