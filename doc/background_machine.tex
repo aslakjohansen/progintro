@@ -118,7 +118,7 @@ In a load operation, the \say{Value} output of the data memory block (which repr
 
 % ALU signals: ALUOp for choosing operation, output for making jumps, when do we need to make jumps? (unconditional and conditional)
 
-% Branch
+% Branch: normal operation (PC+=4), deviation from norm (a branch: the AND'ing of alu output control signal and Branch signal from control block), if the control block is telling us that we have a branch operation (Branch signal) and the alu tells us that the branch should be taken then we branch
 
 % MemRead & MemWrite: from the data memorys perspective there are three kinds of instructions (those that have no relevance, those that read and those that write), in the no relevance case we don't want to stress the memory, in the read case we want to produce an output data signal, this is indicated by the MemRead control signal, in the write case we want to modify the contents of data memory (under no other circumstances is this acceptable), this is indicated by the MemWrite control signal
 
