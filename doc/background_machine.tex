@@ -115,7 +115,7 @@ In a load operation, the \say{Value} output of the data memory block (which repr
 \label{sec:bg:machine:control_plane}
 
 % the clock cycle ticks: the cpu contains a clock, this is essentially a metronome for the machine, every time it ticks a new instruction is processed, footnote (while this is true in our simplified setup, it becomes a lot more complicated in real processors), this is the original control signal
-The processor contains a clock generator. This is essentially a metronome for the machine. Every time it ticks, a new instruction is processed\footnote{While this is true in our simplified setup, real processors are much more complicated. This is, in part, how they achieve a high execution speed.}. The clock signal is the original control signal
+The processor contains a clock generator. This is essentially a metronome for the machine. Every time it ticks, a new instruction is processed\footnote{While this is true in our simplified setup, real processors are much more complicated. This is, in part, how they achieve a high execution speed.}. The clock signal is the original control signal.
 
 % ALU signals: ALUOp for choosing operation, output for making jumps, when do we need to make jumps? (unconditional and conditional)
 At each clock cycle, the ALU receives two data inputs. An \say{ALUOp} control signal informs it of which operation to perform on these inputs. For branch instructions, the ALU has a control output that dictates whether the a jump should be initiated. For a unconditional jump instruction that control output will always indicate to initiate the jump. For a conditional jump (i.e., a branch) it will depend on the condition of the jump.
