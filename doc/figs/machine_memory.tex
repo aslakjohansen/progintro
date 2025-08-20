@@ -3,10 +3,12 @@
     \newcommand{\cellheight}[0]{8mm}
     \newcommand{\cellwidth}[0]{24mm}
     
+    \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
+    
     \tikzstyle{cell}=[
       rectangle,
       draw=purple,
-      anchor=south,
+      anchor=north,
       thick,
       minimum height=\cellheight,
       minimum width=\cellwidth,
@@ -14,31 +16,32 @@
     \tikzstyle{address}=[
       anchor=east,
     ]
+    \tikzstyle{comment}=[
+      anchor=west,
+    ]
     
-    \node[cell] (cellA) at (0, 0*\cellheight) {};
-    \node[cell] (cellB) at (0, 1*\cellheight) {};
-    \node[cell] (cellC) at (0, 2*\cellheight) {};
-    \node[cell] (cellD) at (0, 3*\cellheight) {};
-    \node[cell] (cellE) at (0, 4*\cellheight) {};
-    \node[cell] (cellF) at (0, 5*\cellheight) {};
-    \node[cell] (cellG) at (0, 6*\cellheight) {};
-    \node[cell] (cellH) at (0, 7*\cellheight) {};
-    \node[cell] (cellI) at (0, 8*\cellheight) {};
-    \node[cell] (cellJ) at (0, 9*\cellheight) {};
-    \node[cell] (cellK) at (0,10*\cellheight) {};
-    \node[cell] (cellL) at (0,11*\cellheight) {};
+    \node[cell,minimum height=5*\cellheight] (dynsegment) at (0, -0*\cellheight) {};
+    \node[cell,draw=none] (stacksegment) at (0, -0*\cellheight) {Stack};
+    \node[cell,draw=none] (dotssegment) at (0, -2*\cellheight) {};
+    \node[cell,draw=none] (heapsegment) at (0, -4*\cellheight) {Heap};
+    \node[cell] (datasegment) at (0, -5*\cellheight) {Data};
+    \node[cell] (textsegment) at (0, -6*\cellheight) {Text};
+    \node[cell] (reservedsegment) at (0, -7*\cellheight) {Reserved};
     
-    \node[address] () at (cellA.west) {0};
-    \node[address] () at (cellB.west) {1};
-    \node[address] () at (cellC.west) {2};
-    \node[address] () at (cellD.west) {3};
-    \node[address] () at (cellE.west) {4};
-    \node[address] () at (cellF.west) {5};
-    \node[address] () at (cellG.west) {6};
-    \node[address] () at (cellH.west) {7};
-    \node[address] () at (cellI.west) {8};
-    \node[address] () at (cellJ.west) {9};
-    \node[address] () at (cellK.west) {10};
-    \node[address] () at (cellL.west) {11};
+    \node[address] () at (reservedsegment.south west) {$0$};
+    \node[address] () at (dynsegment.north west) {\textsl{max}};
+    
+    \node[comment] () at ([xshift=2mm]dynsegment.east) {Dynamic program data};
+    \node[comment] () at ([xshift=2mm]datasegment.east) {Static program data};
+    \node[comment] () at ([xshift=2mm]textsegment.east) {Program instructions};
+    \node[comment] () at ([xshift=2mm]reservedsegment.east) {Input and output};
+    
+    \draw[dedge] (stacksegment) -- (dotssegment);
+    \draw[dedge] (heapsegment) -- (dotssegment);
+    
+    \draw[dedge] ([xshift=-4mm,yshift= 4mm]reservedsegment.south west)
+              -- ([xshift=-4mm,yshift=-4mm]dynsegment.north west)
+              node[midway,sloped,above] {address range of main memory}
+    ;
   \end{tikzpicture}
 \end{center}
