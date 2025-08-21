@@ -52,6 +52,7 @@ The instruction repertoire of the majority of instruction sets is fairly large.
 \subsubsection{Memory Access}
 
 % access model: most program data is in main memory, we can only operate on registers and we have a limited number of these, (we need a way of loading data from main memory into registers so that we can work on it, and then store the results back into main memory to make space -- in the registers -- for more useful work)
+The processor can only operate on registers, but has a very limited number of them. For 32 bit RISC-V, there are 32 of them. That is only enough for the smallest of programs, and nothing that can be written in \csharp. Instead, most program data resides in main memory. This means that we need a way of loading data from main memory into registers so that we can work on it, and then another way of storing the results back into main memory to make (register) space for other data. This way, we can continue to do useful work.
 
 % enumerate: load and store instructions
 
