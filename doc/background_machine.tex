@@ -55,6 +55,12 @@ The instruction repertoire of the majority of instruction sets is fairly large.
 The processor can only operate on registers, but has a very limited number of them. For 32 bit RISC-V, there are 32 of them. That is only enough for the smallest of programs, and nothing that can be written in \csharp. Instead, most program data resides in main memory. This means that we need a way of loading data from main memory into registers so that we can work on it, and then another way of storing the results back into main memory to make (register) space for other data. This way, we can continue to do useful work.
 
 % enumerate: load and store instructions
+We have a number of instructions for loading and storing data. In this description, we only care about those that operates on \textsl{words}. A \defi{word}{Word} is the type of integer that matches the size that the processor is optimized to work on. In our case, it is a 32 bit integer.
+\begin{itemize}
+  \item \texttt{LW} (\say{load word}) This loads a word from an address in main memory into a named register in the processor.
+  \item \texttt{SW} (\say{store word}) Stores the value of a named register in the processor to an address in main memory.
+\end{itemize}
+These addresses are the sum of the value of a register, and a 12-bit integer that is encoded in (read: part of) the instruction itself. That last part acts as a static offset to the value in the register.
 
 \subsubsection{Arithmetic Operations}
 
