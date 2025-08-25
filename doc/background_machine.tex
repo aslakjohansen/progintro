@@ -178,6 +178,11 @@ From the perspective of the \idx{data memory}{Memory!Data}, there are three kind
 % RegWrite & MemtoReg: two classes of operations (whether a write to a register is part of the operation), how RegWrite fits in, two classes of operations when a write is part of the operation (depending on the source of the write), do we write the output from the ALU (e.g., as in a plus operation) or do we write data that are loaded from data memory (e.g., as in a load operation).
 Similarly to the data memory, the \idx{register bank}{Register!Bank} can be read from and written to. What to do depends on the instruction, and it is the job of the control block to decode the instruction and \ldots\ well \ldots\ \textsl{control} the register bank. The register addressed on the data inputs \say{Register 1} and \say{Register 2} are always read and outputted to \say{Value 1} and \say{Value 2}. The \say{RegWrite} control signal controls whether the \say{Data} input should be written to the register addressed by \say{Register 3}. The \say{MemtoReg} control signal determines which data output is fed into the \say{Data} input of the register bank: Should it be the output of the ALU (e.g., as in a plus instruction) or should it be the output of data memory (e.g., as in a load instruction)?
 
+\subsection{\csharp\ Link}
+
+% the operating system / vm
+This machine model is slightly deceptive in the sense that we -- in this book -- won't be programming the processor itself. A special program called a \idx{kernel}{Kernel} is running on top of the processor. This program \idx{orchestrates}{Orchestration} a number of programs that make up the \idx{operating system}{Operating system}. When we \idx{execute}{Execution} the \csharp\ programs that we make throughout this book, we do so through a special program called a \idx{virtual machine}{Virtual machine} that runs on this operating system. All of these programs, except for the kernel, exists in the dynamic program data memory segment. The virtual machine translates the \idx{CIL}{CIL} instruction of your compiled \csharp\ code into instructions that can be executed on your physical processor.
+
 \subsection{Takeaways}
 
 % why languages tend to look the same
