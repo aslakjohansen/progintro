@@ -31,11 +31,23 @@ There are many different \idx{processor architectures}{Architecture!Processor}. 
 
 \subsection{Memory Model}
 
+% addresses
+The memory of a computer is laid out in a sequence of bytes. The first byte has address zero, the second one has address one, and so on. Most values take up more than a single byte. If a value takes up address four through seven then we refer to its position through its lowest address (i.e., four).
+
+% figure overview
+The memory is laid out as illustrated in figure \ref{fig:machine:memory}. At the lowest \idx{memory segment}{Memory!Segment} we have reserved data. Among these, we have memory-mapped input and output. Every time we write to an output, it triggers some electrical signal to be generated to a peripheral to the processor. Every time we read from an input, a value is \textsl{read} from some peripheral to the processor. Then we have a text segment that contains our program code. This is the instructions that tells the processor what to do. The next segment contains static data that is available to the processor, and the remaining memory is used for dynamic program data. This is the \textsl{working area} of the processor.
+
 \begin{figure}[tbp]
   \input{figs/machine_memory.tex}
   \caption{Memory model.}
   \label{fig:machine:memory}
 \end{figure}
+
+% heap
+As our program executes, it produces temporary data. This needs to be stored somewhere. In practice, it is stored on a \idx{heap}{Heap} that is placed at the lower addresses of the dynamic program data segment. Throughout the lifecycle of the program, this \idx{datastructure}{Datastructure} will grow to higher addresses when more space is needed, and shrink when the highest addresses are no longer needed. It is up to the program to to administer this. In \csharp, however, a so-called \idx{garbage collector}{Garbage collector} will do this for you.
+
+% stack
+Another data structure grows from the other end of the dynamic program segment in the other direction. This way, we won't run out of memory until all the memory is in use. This datastructure is called a stack, and because it is so central to the operation of the computer it is referred to as \idx{\textsl{the} stack}{Stack, The}. The stack is used to store data when groups of instructions \textsl{farm out} part of their function to other groups of instructions. More about this in the next section.
 
 \subsection{Registers}
 
