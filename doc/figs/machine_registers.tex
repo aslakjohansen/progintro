@@ -1,0 +1,21 @@
+\begin{center}
+  \begin{tabular}{|l|l|l|c|}
+    \hline
+    Register & ABI Name & Description & Saver \\
+    \hline
+    \regname{x0} & \regname{zero} & Hard-wired to zero & --- \\
+    \regname{x1} & \regname{ra} & Return address & caller \\
+    \regname{x2} & \regname{sp} & Stack pointer & callee \\
+    \regname{x3} & \regname{gp} & Global pointer & --- \\
+    \regname{x4} & \regname{tp} & Thread pointer & --- \\
+    \regname{x5} & \regname{t0} & Temporary/alternate link register & caller \\
+    \regname{x6-7} & \regname{t1-2} & Temporaries & caller \\
+    \regname{x8} & \regname{s0/fp} & Saved register/frame pointer & callee \\
+    \regname{x9} & \regname{s1} & Saved register & callee \\
+    \regname{x10-11} & \regname{a0-1} & Function arguments/return values & caller \\
+    \regname{x12-17} & \regname{a2-7} & Function arguments & caller \\
+    \regname{x18-27} & \regname{s2-11} & Saved registers & callee \\
+    \regname{x28-31} & \regname{t3-6} & Temporaries & caller \\
+    \hline
+  \end{tabular}
+\end{center}
