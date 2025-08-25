@@ -87,7 +87,7 @@ These addresses are the sum of the value of a register, and a 12-bit integer tha
 % intro: what is?, operation interface (1-2 inputs, 1 output), examples (+-*/, but there are more that fits the pattern)
 The processor implements instructions for a number of arithmetic operations. The classical ones are addition, subtraction, multiplication and division. These make up a class of instructions that take two input values and produce a single output value. There are other operations that fit that pattern and have value for programmers. Boolean operations that you will get familiar with in section \ref{primitives:bools} are examples of these. The processor supports a number of these through instruction.
 
-% register and immediate variants
+% register and immediate variants: summary (2 inputs, 1 outputs), generic version (register, restricts 3 registers), registers as a scarce resource, common case of having one fixed operand, specialized version (restricts only 2 registers), this means that the compiler (that turns the human readable source code into instructions) can do a better job.
 
 % floats: in this book we only cover integers, similar instructions exist for floats
 In this book we will only cover integers to this depth. Similar instructions exists for floating point numbers that you may know as decimal numbers. The binary representation of the numbers is much more complicated, and this brings some intricacies. These are detailed in section \ref{primitives:float} when we cover floating point numbers in \csharp.
