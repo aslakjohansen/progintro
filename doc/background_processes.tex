@@ -15,13 +15,15 @@ Processes are typically written as if nothing else is running on the machine. Bu
 Most people interact with their computer through a desktop environment. \defi{Desktop environments}{Desktop environment} are comprised of a number of processes responsible for drawing on the \idx{screen}{Screen}, arranging windows, starting applications, services for shared configuration and communication between applications.
 
 % examples: windows, osx, linux (gnome, kde, ...)
-Examples of desktop environments include Microsoft \idx{Windows}{Windows}, Apple \idx{OSX}{OSX}, \idx{Gnome}{Gnome} and \idx{KDE}{KDE}. The latter two are popular choices on \idx{Linux}{Linux}, but there are many other options.
+Examples of desktop environments include Microsoft \idx{Windows}{Windows}, Apple \idx{OSX}{OSX}, \idx{Gnome}{Gnome} and \idx{KDE}{KDE}. The latter two are popular choices on \idx{Linux}{Linux}, but there are many other options. Desktop environments are sometimes referred to as \textsl{desktop shells}.
 
 \subsection{Terminal}
 
 One type of application that you will get familiar with is that of a \defi{terminal}{Terminal}. In some ways, this is an extremely simple application. It opens a window that can act as the interface to a \idx{text-based}{Program!Text-based} program. It allows you to provide inputs to that program, and see the output that program prints to the \textsl{screen}. Sometimes a terminal is called a \say{console} or a \say{command prompt}. The latter term is a bit unfortunate though as it also encompasses a \textsl{shell}.
 
 \subsection{Shell}
+
+The typical program to run inside a terminal is a \defi{shell}{Shell}. This is an interactive program that provides you with a \idx{prompt}{Prompt}. Through the prompt you can issue commands. Some commands change the \idx{working directory}{Directory!Working}, some adjust \idx{environment variables}{Environment variable} (i.e., a set of named values that affect the way programs execute), and some start other programs. Figure \ref{fig:bg:processes:navigation} illustrates how one can use the \commandname{cd} command to change the working directory.
 
 \begin{figure}[tbp]
   \input{figs/background_processes_navigation.tex}
