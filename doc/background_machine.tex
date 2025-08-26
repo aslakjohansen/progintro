@@ -77,8 +77,8 @@ The processor can only operate on registers, but has a very limited number of th
 % enumerate: load and store instructions
 We have a number of instructions for loading and storing data. In this description, we only care about those that operates on \textsl{words}. A \defi{word}{Word} is the type of integer that matches the size that the processor is optimized to work on. In our case, it is a 32 bit integer.
 \begin{itemize}
-  \item \texttt{LW} (\say{load word}) This loads a word from an address in main memory into a named register in the processor.
-  \item \texttt{SW} (\say{store word}) Stores the value of a named register in the processor to an address in main memory.
+  \item \instname{LW} (\say{load word}) This loads a word from an address in main memory into a named register in the processor.
+  \item \instname{SW} (\say{store word}) Stores the value of a named register in the processor to an address in main memory.
 \end{itemize}
 These addresses are the sum of the value of a register, and a 12-bit integer that is encoded in (read: part of) the instruction itself. That last part acts as a static offset to the value in the register.
 
@@ -93,9 +93,9 @@ There is a generic variant of these instructions that maps each input and output
 % selection of instructions: add, addi, mul, !muli
 As these instructions look very similar, we will only cover a few:
 \begin{itemize}
-  \item \texttt{ADD} (\say{add}) Add the values of two registers and store the resulting value in a third register.
-  \item \texttt{ADDI} (\say{add immediate}) Add an immediate value to the value of a register and store the resulting value in a second register.
-  \item \texttt{MUL} (\say{multiply}) Multiply the values of two registers and store the resulting value in a third register. No immediate variant exist for this operation.
+  \item \instname{ADD} (\say{add}) Add the values of two registers and store the resulting value in a third register.
+  \item \instname{ADDI} (\say{add immediate}) Add an immediate value to the value of a register and store the resulting value in a second register.
+  \item \instname{MUL} (\say{multiply}) Multiply the values of two registers and store the resulting value in a third register. No immediate variant exist for this operation.
 \end{itemize}
 
 % floats: in this book we only cover integers, similar instructions exist for floats
@@ -109,16 +109,16 @@ Instructions are by default \idx{evaluated}{Evaluation!Instructions} in the orde
 
 Unconditional branch instructions:
 \begin{itemize}
-  \item \texttt{J} (\say{jump}) Jump to a specific memory address.
-  \item \texttt{JAL} (\say{jump and link}) Jump to a specific memory address, and \textsl{link}.
+  \item \instname{J} (\say{jump}) Jump to a specific memory address.
+  \item \instname{JAL} (\say{jump and link}) Jump to a specific memory address, and \textsl{link}.
 \end{itemize}
 
 But, what does it mean to \defi{link}{Link!Instruction level}? Instructions are often arranged in groups. These are the equivalent of what you will come to know as \idx{functions}{Function}. They operate on some registers and can use the \instname{JAL} instruction to transfer execution to another group of instructions. That group of instructions can then solve a part of the problem, place the result in a specific register (or at a specific memory address), and then transfer execution back to the first group of instructions. We say that the first group \idx{calls}{Call} the second. This makes the first group take the role of the \idx{caller}{Caller} and the second group that of the \idx{callee}{Callee}. To make sure that there is no conflict in register use (e.g., that the callee overrides a register that is in use by the caller) a convention is established for which role needs to save the contents of a register before overriding it (and restore it before \idx{returning}{Return} execution). This can be seen in figure \ref{fig:machine:regs}.
 
 Conditional branch instructions (no link):
 \begin{itemize}
-  \item \texttt{BNE} (\say{branch not equal}) Jump to a specific memory address if two register have different values. Otherwise continue.
-  \item \texttt{BLT} (\say{branch lest than}) Jump to a specific memory address if one register has a value that is less than that of another one. Otherwise continue.
+  \item \instname{BNE} (\say{branch not equal}) Jump to a specific memory address if two register have different values. Otherwise continue.
+  \item \instname{BLT} (\say{branch lest than}) Jump to a specific memory address if one register has a value that is less than that of another one. Otherwise continue.
 \end{itemize}
 
 \subsubsection{Instruction Format Types}
