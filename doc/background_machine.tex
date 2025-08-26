@@ -90,7 +90,13 @@ The processor implements instructions for a number of arithmetic operations. The
 % register and immediate variants: summary (2 inputs, 1 outputs), generic version (register, restricts 3 registers), registers as a scarce resource, common case of having one fixed operand, specialized version (restricts only 2 registers), this means that the compiler (that turns the human readable source code into instructions) can do a better job.
 There is a generic variant of these instructions that maps each input and output to a register. That is, it takes inputs from two registers, and writes the output to a single register. These three registers could potentially be the same. Often these operations have a fixed operand though. As registers are a scarce resource, specialized variants -- that have the fixed value encoded directly in the instruction -- are available for some of the operations. Such fixed values are then called \idx{immediate}{Value!Immediate} values. Because of their lower register footprint, the compiler (that turns the human readable source code into instructions) can do a better job.
 
-% selection of instructions: add, addi, mul, muli
+% selection of instructions: add, addi, mul, !muli
+As these instructions look very similar, we will only cover a few:
+\begin{itemize}
+  \item \texttt{ADD} (\say{add}) Add the values of two registers and store the resulting value in a third register.
+  \item \texttt{ADDI} (\say{add immediate}) Add an immediate value to the value of a register and store the resulting value in a second register.
+  \item \texttt{MUL} (\say{multiply}) Multiply the values of two registers and store the resulting value in a third register. No immediate variant exist for this operation.
+\end{itemize}
 
 % floats: in this book we only cover integers, similar instructions exist for floats
 In this book we will only cover integers to this depth. Similar instructions exists for floating point numbers that you may know as decimal numbers. The binary representation of the numbers is much more complicated, and this brings some intricacies. These are detailed in section \ref{primitives:float} when we cover floating point numbers in \csharp.
