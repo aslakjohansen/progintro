@@ -52,6 +52,7 @@ Another data structure grows from the other end of the dynamic program segment i
 \subsection{Registers}
 
 % how many, naming (x0 through x31) special roles? ABI names
+RV32I has 32 registers (plus a something called a program counter that we will cover in the next section. The 32 registers are covered in figure \ref{fig:machine:regs}. They are named \regname{x0} though \regname{x31} but also have aliases named after their purpose (the ABI name). The \say{Saver} column is covered in section \ref{sec:machine:inst:choice}. The \regname{zero} register is always zero. It cannot be overwritten. We will not cover the remaining registers in detail. But for now, lets just say that they are 32 bit values that instructions can read from and write to. %TODO: What is a bit?
 
 % figure: caller saved, callee saved
 \begin{figure}[tbp]
@@ -59,8 +60,6 @@ Another data structure grows from the other end of the dynamic program segment i
   \caption{Register overview.}
   \label{fig:machine:regs}
 \end{figure}
-
-%TODO: we need an introduction to branches and loops in order to talk caller/callee saved registers. Where should it be placed? Maybe add a forward reference to the section covering the JAL instruction?
 
 \subsection{Instructions}
 
@@ -102,6 +101,7 @@ As these instructions look very similar, we will only cover a few:
 In this book we will only cover integers to this depth. Similar instructions exists for floating point numbers that you may know as decimal numbers. The binary representation of the numbers is much more complicated, and this brings some intricacies. These are detailed in section \ref{primitives:float} when we cover floating point numbers in \csharp.
 
 \subsubsection{Choice}
+\label{sec:machine:inst:choice}
 
 % source: https://docs.openhwgroup.org/projects/cva6-user-manual/01_cva6_user/RISCV_Instructions_RV32I.html#control-transfer-instructions
 
