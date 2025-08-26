@@ -43,12 +43,12 @@
     \node[app] (opowerpoint) at (\xapp, 6*\yappunit+\yappoffset) {Microsoft PowerPoint 365};
     
     % type
-    \node[type] (docx) at (\xtype, 0*\ytypeunit+\ytypeoffset) {XML-baseret Word (\filename{.docx})};
-    \node[type] (doc) at (\xtype, 1*\ytypeunit+\ytypeoffset) {Traditionel Word (\filename{.doc})};
+    \node[type] (docx) at (\xtype, 0*\ytypeunit+\ytypeoffset) {XML-based Word (\filename{.docx})};
+    \node[type] (doc) at (\xtype, 1*\ytypeunit+\ytypeoffset) {Traditional Word (\filename{.doc})};
     \node[type] (odt) at (\xtype, 2*\ytypeunit+\ytypeoffset) {Open Document Format (\filename{.odt})};
     \node[type] (pdf) at (\xtype, 3*\ytypeunit+\ytypeoffset) {Portable Document Format (\filename{.pdf})};
-    \node[type] (pptx) at (\xtype, 4*\ytypeunit+\ytypeoffset) {XML-baseret PowerPoint (\filename{.pptx})};
-    \node[type] (ppt) at (\xtype, 5*\ytypeunit+\ytypeoffset) {Traditionel PowerPoint (\filename{.ppt})};
+    \node[type] (pptx) at (\xtype, 4*\ytypeunit+\ytypeoffset) {XML-based PowerPoint (\filename{.pptx})};
+    \node[type] (ppt) at (\xtype, 5*\ytypeunit+\ytypeoffset) {Traditional PowerPoint (\filename{.ppt})};
     
     % app ↦ type
     {
@@ -78,23 +78,23 @@
     }
     
     % use
-    \node[use] (report) at (\xuse, 0*\yuseunit+\yuseoffset) {Rapport};
-    \node[use] (stil) at (\xuse, 1*\yuseunit+\yuseoffset) {Stil};
-    \node[use] (presentation) at (\xuse, 2*\yuseunit+\yuseoffset) {Præsentation};
+    \node[use] (report) at (\xuse, 0*\yuseunit+\yuseoffset) {Report};
+    \node[use] (essay) at (\xuse, 1*\yuseunit+\yuseoffset) {Essay};
+    \node[use] (presentation) at (\xuse, 2*\yuseunit+\yuseoffset) {Presentation};
     
     % type ↦ use
     {
       \draw[arrow] ([yshift= \yoffII]docx.east) to[out=0, in=180, looseness=0.7] ([yshift= 1.5*\yoffIV]report.west);
-      \draw[arrow] ([yshift=-\yoffII]docx.east) to[out=0, in=180, looseness=0.7] ([yshift= 1.5*\yoffIV]stil.west);
+      \draw[arrow] ([yshift=-\yoffII]docx.east) to[out=0, in=180, looseness=0.7] ([yshift= 1.5*\yoffIV]essay.west);
       
       \draw[arrow] ([yshift= \yoffII]doc.east) to[out=0, in=180, looseness=0.7] ([yshift= 0.5*\yoffIV]report.west);
-      \draw[arrow] ([yshift=-\yoffII]doc.east) to[out=0, in=180, looseness=0.7] ([yshift= 0.5*\yoffIV]stil.west);
+      \draw[arrow] ([yshift=-\yoffII]doc.east) to[out=0, in=180, looseness=0.7] ([yshift= 0.5*\yoffIV]essay.west);
       
       \draw[arrow] ([yshift= \yoffII]odt.east) to[out=0, in=180, looseness=0.7] ([yshift= -0.5*\yoffIV]report.west);
-      \draw[arrow] ([yshift=-\yoffII]odt.east) to[out=0, in=180, looseness=0.7] ([yshift= -0.5*\yoffIV]stil.west);
+      \draw[arrow] ([yshift=-\yoffII]odt.east) to[out=0, in=180, looseness=0.7] ([yshift= -0.5*\yoffIV]essay.west);
       
       \draw[arrow] ([yshift= \yoffIII]pdf.east) to[out=0, in=180, looseness=0.7] ([yshift= -1.5*\yoffIV]report.west);
-      \draw[arrow] (                  pdf.east) to[out=0, in=180, looseness=0.7] ([yshift= -1.5*\yoffIV]stil.west);
+      \draw[arrow] (                  pdf.east) to[out=0, in=180, looseness=0.7] ([yshift= -1.5*\yoffIV]essay.west);
       \draw[arrow] ([yshift=-\yoffIII]pdf.east) to[out=0, in=180, looseness=0.7] ([yshift= 1.5*\yoffIII]presentation.west);
       
       \draw[arrow] (pptx.east) to[out=0, in=180, looseness=0.7] (presentation.west);
