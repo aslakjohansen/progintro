@@ -5,11 +5,23 @@
   \quoted{It might seem easy enough, but computer language design is just like a stroll in the park. Jurassic Park, that is.}
 \end{inspiration}
 
+% intro
+In order to build a program, we describe \textsl{how} that program should work or \textsl{what} it should do. This is done according to the formalized rules of a \defi{programming language}. Most such languages will have high-level abstractions (compared the the assembly instructions known to the machine). They are designed in such a way that a human can reason about them. Those descriptions are stored in files and referred to as \idx{source code}{Source code}. Later on, that source code in converted into instructions and executed.
+
+% different languages and categorization
+There are many programming languages to pick from, and they each have strong and weak points. When faced with a particular problem it is important to pick a language that have relevant strong points and acceptable weak points. Many properties can be used to classify these languages. Figure \ref{fig:background:lang:categorization} focuses on two properties, namely whether there is a separate phase for compiling and whether a garbage collector is employed.
+
 \begin{figure}[tbp]
   \input{figs/background_lang_categories.tex}
   \caption{Categorization of programming languages.}
   \label{fig:background:lang:categorization}
 \end{figure}
+
+% separate compilation phase
+As programming languages are designed for humans to write, and the machine only understands assembly instructions, something has to \idx{compile}{Compilation} the language into these instructions. Technically, this is always a separate step, but that can be more or less obvious to the user. Some compilers will give the option of compiling the code when you try to execute the code. So, the boundary is a bit fluid. Here, we are using whether the compiled code is stored on disk after compilation as the arbiter. Languages where this is not the case are often used for tying together workflows involving many processes and files. These are called \idx{scripting languages}{Programming language!Scripting}. \csharp\ is a compiled language and not a script language (even though Microsoft likes to talk about \csharp\ scripts).
+
+% garbage collection
+Throughout the lifecycle of a process, it will need temporary chunks of memory to do its work. These chunks can be of different size and the need for this can come at varying frequency. We say that the kernel \idx{allocates}{Memory!Allocation} memory to the process on demand. This ensures that the process has exclusive access to this piece of memory and thus that no other process can interfere with its business\footnote{In reality this can be be avoided through shared segments of memory, but that is a topic way too advanced for this book.}. Once the process is done with this piece of memory it is \idx{deallocated}{Memory!Deallocation} (or \idx{freed}{Memory!Freeing}) so that it can be reclaimed by the kernel and put to use later on. This process of allocation and deallocation is manual in some languages and automatic in others. When automatic, a \idx{garbage collector}{Garbage collector} component is compiled into the running code. It essentially scans all allocations and deallocate those that are no longer in use. Again, there are pros and cons with each solution. \csharp\ is a garbage collected language.
 
 \subsection{Parsing}
 
