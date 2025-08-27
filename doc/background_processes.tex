@@ -50,6 +50,7 @@ Files are stored in a \idx{filesystem}{Filesystem} that is usually persisted on 
 \subsubsection{Editing Files}
 
 % what does it mean to edit a file?
+When we edit a file, we change the contents of that file. If we add something to the beginning, then the old contents needs to be shifted forward to make space for the new material. If we add something at the end, then some material can be easily added. If the modification happens anywhere in between then part of the original contents needs to be moved. Doing these operations on disk would be highly ineffective. So, in reality it happens in the computers memory and the saving to disk is initiated by either a human intervention or someting like a \idx{timeout}{Timeout}.
 
 % explain it
 Figure \ref{fig:bg:processes:edit} illustrates how a typical \idx{text editor}{Text editor} will work with a file. First the file is \idx{opened}{File!Opening}. Then, the contents of the file is read and written to \idx{primary memory}{Memory!Primary}. The user may then manipulate the in-memory representation through some user interface, and saved the modified buffer (memory representation) to disk. Finally, the program will \idx{close}{File!Closing} the file.
