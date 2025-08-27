@@ -38,8 +38,10 @@ Files are stored in a \idx{filesystem}{Filesystem} that is usually persisted on 
 \subsubsection{Copying Files}
 
 % what does it mean to copy a file?
+Creating a \idx{copy}{Copy} of a file means to replicate the contents and the metadata of the file in some other directory of a filesystem. That could happen on the same disk or another disk, and that disk could be on the same or another computer.
 
 % explain it
+The principal operation is illustrated in figure \ref{fig:bg:processes:copy}. First the source file is opened for reading and the destination file for writing. This gives the process a \idx{file descriptor}{File descriptor} for each through which it can ask the kernel to perform operations on the file. The process performing the copying \idx{allocates}{Allocation} a \idx{buffer}{Buffer} of a reasonable size. Then it reads data from the source file to the buffer. When this operation is completed it writes the contents of the buffer to the destination file. The buffer will likely be smaller than the file being copied (otherwise you would need to have more memory than the largest file), so the process may have to repeated a number of times with different \idx{offsets}{Offset}. When this process has been repeated enough times, the source and destination files are closed.
 
 \begin{figure}[tbp]
   \input{figs/background_processes_copy.tex}
