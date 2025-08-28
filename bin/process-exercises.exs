@@ -119,7 +119,7 @@ defmodule Script do
       \\node[bar] () at ([yshift= \\halfvspacing]origin) {};
       \\node[bar] () at ([yshift=-\\halfvspacing]origin) {};
       
-      \\node[anchor=west] () at ([xshift=3mm+\\barwidth,yshift=0]origin) {\\footnotesize \\pdftooltip{\\href{#{@base_feedback_url}#{params}}{feedback}}{Give feedback!}};
+      %\\node[anchor=west] () at ([xshift=3mm+\\barwidth,yshift=0]origin) {\\footnotesize \\pdftooltip{\\href{#{@base_feedback_url}#{params}}{feedback}}{Give feedback!}};
     \\end{tikzpicture}
     \\vspace{-3mm}
     """
