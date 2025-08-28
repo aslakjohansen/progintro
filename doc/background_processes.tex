@@ -33,6 +33,29 @@ The typical program to run inside a terminal is a \defi{shell}{Shell}. This is a
   \label{fig:bg:processes:navigation}
 \end{figure}
 
+Different shells will have different names for commands that perform similar action. In the book, we follow the convention of the \idx{bash}{Bash} shell (that is often default on Linux). The commands that we cover are called the same in \idx{zsh}{Zsh} (that is default on OSX). Commonly used commands include:
+\begin{itemize}
+  \item \highlight{\texttt{ls}} (\textsl{list}) This command lists the contents of a directory. A few variants:
+    \begin{itemize}
+      \item \highlight{\texttt{ls -l}} Also display select metadata information for each file.
+      \item \highlight{\texttt{ls ..}} List contents for parent directory (any valid path can be given as parameter).
+    \end{itemize}
+  \item \highlight{\texttt{rm}} (\textsl{remove}) Remove a subtree (\idx{unlink}{Unlink} really) of the filesystem. Look it up before you delete anything of value.
+  \item \highlight{\texttt{mkdir}} (\textsl{make directory}) Create a new directory:
+    \begin{itemize}
+      \item \highlight{\texttt{mkdir mydir}} Creates a directory in the current working directory.
+    \end{itemize}
+  \item \highlight{\texttt{cp}} (\textsl{copy}) copy a subtree of the filesystem (by default only a single element):
+    \begin{itemize}
+      \item \highlight{\texttt{cp source destination}} Creates a copy of the source under the name of the destination.
+      \item \highlight{\texttt{cp -r source destination}} Same, but recursively.
+    \end{itemize}
+  \item \highlight{\texttt{mv}} (\textsl{move}) move a subtree of the filesystem :
+    \begin{itemize}
+      \item \highlight{\texttt{cp source destination}} Move the source to the destination.
+    \end{itemize}
+\end{itemize}
+
 \subsection{Working with Files}
 
 Files are stored in a \idx{filesystem}{Filesystem} that is usually persisted on a disk. This works out very well when you \idx{reboot}{Reboot} your computer and see that your data is still there. That would not have been the case had the files been stored in \idx{main memory}{Memory!Main}. However, the computer can only work with data in main memory, so in order to do something with the contents of those files, they will have to be read into memory. And if you want the result of what you end up doing with them to survive a reboot, then you need to store it on the disk again.
