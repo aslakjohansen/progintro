@@ -6,6 +6,9 @@ AUTOGEN_DEPS = \
 	exercises/answers.tex \
 
 
+Aslak\ Johansen\ -\ Introduction\ to\ Programming\ …\ in\ C\#.pdf: all
+	cp document.pdf Aslak\ Johansen\ -\ Introduction\ to\ Programming\ …\ in\ C\#.pdf
+
 all: ${TARGETS}
 
 clean:
