@@ -1,0 +1,5 @@
+An array is a \textsl{datastruktur} in which a static number of elements are placed contiguously in memory. Lookups are efficient as all elements have the same size. Behind the scene \csharp\ does something like this:
+
+\begin{eqnarray}
+  A_{\mathrm{element}} = A_{\mathrm{array}} + \mathrm{index}*\mathbf{sizeof}(\mathbf{typeof}(\mathrm{element}))
+\end{eqnarray}
