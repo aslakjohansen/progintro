@@ -1,0 +1,25 @@
+Write a program that calculates all prime numbers below 1,000,000 and prints out the largest.
+
+Hints (unless you want more of a challenge):
+\begin{itemize}
+  \item A positive integer is a prime number if, and only if it is not divisible by integers other than 1.
+  \item Use a \idx{divide-and-conquer strategy}{Divide and conquer}\footnote{\url{https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm}} whereby you subdivide the task into these subtasks:
+    \begin{itemize}
+      \item Iterate through all positive integers below 1.000.000. Don't we have a construct that can do this?
+      \item Determine whether a given positive number is a prime.
+      \item Print out an integer number (if it is prime).
+    \end{itemize}
+  \item In order to determine whether a given positive integer is prime, you can, once again, divide an conquer:
+    \begin{enumerate}
+      \item Declare a \typename{boolean} variable named \varname{is\_prime} and initialize it to \valuename{True}.
+      \item Iterate through all integers from (and including) 2 until (but not including) 1,000,000.
+      \item Check whether the prime candidate is divisible by each of these numbers. If that is the case, you should assign the \valuename{False} value to \varname{is\_prime}. But how do you determine one number is divisible by another?
+        \begin{itemize}
+          \item You try it, of course!
+          \item If a number is divisible by another, then there won't be a remainder if you do an integer division and the modulo operation (via the \texttt{\%} operator) will evaluate to zero.
+          \item As an alternative, one could exploit that the integer division will result in a rounding error so that $(a/b) \cdot b \neq a$.
+        \end{itemize}
+      \item At this point, \varname{is\_prime} represent the truth value of whether the prime candidate is an actual prime.
+    \end{enumerate}
+\end{itemize}
+
