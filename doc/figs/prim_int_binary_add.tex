@@ -1,0 +1,111 @@
+% 2+4+16 = 22
+% 1+4+16+32 = 53
+% 22 + 53 = 75
+% 1+2+8+64 = 75
+
+\begin{center}
+  \begin{tikzpicture}[remember picture]
+    \newcommand{\xStep}[0]{4cm}
+    \newcommand{\yStep}[0]{3cm}
+    \newcommand{\highl}[1]{\textcolor{purple}{#1}}
+    \newcommand{\charspace}[0]{\textcolor{white}{0}}
+    
+    \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
+    
+    \tikzstyle{node}=[
+      rectangle,
+      draw=purple,
+      anchor=center,
+      thick,
+      minimum size=1,
+    ]
+    
+    \node[node] (n1) at (0*\xStep,0*\yStep) {
+      \begin{tabular}{lr}
+          & \texttt{} \\
+          & \texttt{00010110} \\
+        + & \texttt{00110101} \\
+        \hline
+          & \texttt{} \\
+      \end{tabular}
+    };
+    
+    \node[node] (n2) at (1*\xStep,0*\yStep) {
+      \begin{tabular}{lr}
+          & \texttt{} \\
+          & \texttt{0001011\highl{0}} \\
+        + & \texttt{0011010\highl{1}} \\
+        \hline
+          & \texttt{\highl{1}} \\
+      \end{tabular}
+    };
+    
+    \node[node] (n3) at (2*\xStep,0*\yStep) {
+      \begin{tabular}{lr}
+          & \texttt{} \\
+          & \texttt{000101\highl{1}0} \\
+        + & \texttt{001101\highl{0}1} \\
+        \hline
+          & \texttt{\highl{1}1} \\
+      \end{tabular}
+    };
+    
+    \node[node] (n4) at (3*\xStep,0*\yStep) {
+      \begin{tabular}{lr}
+          & \texttt{\highl{1}\charspace\charspace\charspace} \\
+          & \texttt{00010\highl{1}10} \\
+        + & \texttt{00110\highl{1}01} \\
+        \hline
+          & \texttt{\highl{0}11} \\
+      \end{tabular}
+    };
+    
+    \node[node] (n5) at (0*\xStep,-1*\yStep) {
+      \begin{tabular}{lr}
+          & \texttt{\highl{1}\charspace\charspace\charspace} \\
+          & \texttt{0001\highl{0}110} \\
+        + & \texttt{0011\highl{0}101} \\
+        \hline
+          & \texttt{\highl{1}011} \\
+      \end{tabular}
+    };
+    
+    \node[node] (n6) at (1*\xStep,-1*\yStep) {
+      \begin{tabular}{lr}
+          & \texttt{\highl{1}\charspace\charspace\charspace\charspace\charspace} \\
+          & \texttt{000\highl{1}0110} \\
+        + & \texttt{001\highl{1}0101} \\
+        \hline
+          & \texttt{\highl{0}1011} \\
+      \end{tabular}
+    };
+    
+    \node[node] (n7) at (2*\xStep,-1*\yStep) {
+      \begin{tabular}{lr}
+          & \texttt{\highl{1}\highl{1}\charspace\charspace\charspace\charspace\charspace} \\
+          & \texttt{00\highl{0}10110} \\
+        + & \texttt{00\highl{1}10101} \\
+        \hline
+          & \texttt{\highl{0}01011} \\
+      \end{tabular}
+    };
+    
+    \node[node] (n8) at (3*\xStep,-1*\yStep) {
+      \begin{tabular}{lr}
+          & \texttt{\highl{1}\charspace\charspace\charspace\charspace\charspace\charspace} \\
+          & \texttt{\highl{00}010110} \\
+        + & \texttt{\highl{00}110101} \\
+        \hline
+          & \texttt{\highl{01}001011} \\
+      \end{tabular}
+    };
+    
+    \draw[dedge] (n1)--(n2);
+    \draw[dedge] (n2)--(n3);
+    \draw[dedge] (n3)--(n4);
+    \draw[dedge] (n4)|-(1.5*\xStep,-0.5*\yStep)-|(n5);
+    \draw[dedge] (n5)--(n6);
+    \draw[dedge] (n6)--(n7);
+    \draw[dedge] (n7)--(n8);
+  \end{tikzpicture}
+\end{center}
