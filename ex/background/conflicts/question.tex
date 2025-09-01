@@ -1,0 +1,30 @@
+In this exercise, we raise the complexity a bit.
+
+\begin{enumerate}
+  \item Make sure to check out the \filename{progintro-exercises} repository in two locations of your filesystem. This is a way of simulating that multiple software developers are working on the same repository. Each have their own \idx{working copy}{Working copy!GIT}. In the following text, we are going to refer to these as directory A and directory B.
+  \item Go to directory A, are replace the work \say{text} in each of the two last lines with the word \say{emphasis}. Commit the change, and push it.
+    \begin{itemize}
+      \item What would be a good commit message?
+    \end{itemize}
+  \item Go to directory B, and translate the last two lines to a (human) language of your choice. For Danish, this would be:
+    \begin{minted}{markdown}
+1. *italics* tekst.
+2. **bold** tekst.
+    \end{minted}
+  \item Then save the file, commit the change and push the commit.
+    \begin{itemize}
+      \item What would be a good commit message?
+    \end{itemize}
+  \item If you have followed these istructions, you should have gotten an error message. Destribe what has happened, and try to draw it as a graph of commits.
+  \item In order to solve the problem, we need to decide how to \idx{resolve}{Resoling} the situation:
+    \begin{enumerate}
+      \item Are we going to keep the version from B, and delete everything from A?
+      \item Are we going to keep the version from A, and delete everything from B?
+      \item Can we do a rewriting that honer both intentions (change of noun, and translation to different language)?
+    \end{enumerate}
+  \item Argue your choice.
+  \item Make the necessary change, commit it, and push the commit.
+  \item Verify on github that things are now in order.
+  \item Check that your understanding of what has happened by interpreting githubs \say{network graph}. You may have to search a bit for it.
+\end{enumerate}
+
