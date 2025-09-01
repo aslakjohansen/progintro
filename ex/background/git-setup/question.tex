@@ -1,0 +1,11 @@
+Find the section called \say{First-Time Git Setup} in the Pro Git book\cite{chacon2014pro}. Read it, and then execute the commands for setting up your identity (i.e., name and email), and editor\footnote{If in doubt, \say{nano} isn't the worst choice in the world.}.
+
+Then run
+\begin{minted}{shell}
+git config --list --show-origin
+\end{minted}
+
+This command lists those things that GIT knows about you, and what the sources for this information is. Find the name of the file containing\texttt{user.name}. Open -- via the command line - this file. Which other information does it contain?
+
+\textbf{Note:} If the printouts of the above command does \textsl{not} mention \texttt{user.name} then the first part of the exercise hasn't been correctly completed.
+
