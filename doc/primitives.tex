@@ -35,13 +35,16 @@ This operation is tightly coupled to both the \idx{remainder}{Remainder} and the
 \label{primitives:int:representation}
 
 % intro: decimal (least significant digit to the right, 10 values for each digit, 10x difference between significance of neighboring digits), same for binary
-We all know the \idx{decimal numeral system}{Decimal numeral system}. That is, the way we represent numbers using \idx{base-10}{Base-10} positioning of digits. In the west, we write the least significant digit to the right. There are ten potential values for each digit and a 10x order of magnitude between two successive digits. The same goes for binary (or \idx{base-2}{Base-2}). We write the least significant digit to the right, we have two potential values for each digit (zero and one), and the difference between two neighboring digits is a factor of two. Figure \ref{fig:prim:int:repr:base} illustrates how to interpret a binary number.
+We all know the \idx{decimal numeral system}{Decimal numeral system}. That is, the way we represent numbers using \idx{base-10}{Base-10} positioning of digits. In the west, we write the least significant digit to the right. There are ten potential values for each digit and a 10x order of magnitude between two successive digits. The same goes for \idx{binary}{Binary} (or \idx{base-2}{Base-2}). We write the least significant digit to the right, we have two potential values for each digit (zero and one), and the difference between two neighboring digits is a factor of two. Binary values are often \idx{prefixed}{Prefix!Number} by \say{0b}. Figure \ref{fig:prim:int:repr:base} illustrates how to interpret a binary number.
 
 \begin{figure}[tbp]
   \input{figs/prim_int_repr_base.tex}
   \caption{Representation of numbers in decimal and binary.}
   \label{fig:prim:int:repr:base}
 \end{figure}
+
+% hex
+Often, you will also come across \idx{hexadecimal}{Hexadecimal} representation, which is still the same only \idx{base-16}{Base-16}. But here we run into a problem: While it is easy how to represent the ten lowest valued digits in a 16 digit system (i.e., 0 through 9), what do you the with the remaining six? How about eleven? Obviously, we could call it 11. But the consequence of that would be that we would either have to use two characters for each digit (e.g., 06 for 6), or rely on some other formatting trick (e.g., \{1,7,12,14,3\}) to be able to unambiguously decode a number. Both solutions are cumbersome and take up space. Instead, we usually say that eleven is \say{a}, twelve is \say{b} and so on. Then a digit is still a single character, and this allows us to write a number compactly. \idx{Hex values}{Value!Hex}, as these are called, are often prefixed by \say{0x}. An example of such a value is 0x04ff2b.
 
 % binary example, and how to read it
 
