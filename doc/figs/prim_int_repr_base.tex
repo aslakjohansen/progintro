@@ -1,0 +1,171 @@
+\begin{center}
+  \begin{tikzpicture}[]
+    \newcommand{\spacing}[0]{ 4mm }
+    \tikzstyle{edge} = [thick ,draw=black]
+    \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
+    \tikzstyle{shared}=[
+      anchor=center,
+    ]
+    \tikzstyle{structure}=[
+      shared,
+    ]
+    \tikzstyle{digit}=[
+      shared,
+      text=teal,
+      font=\ttfamily,
+    ]
+    \tikzstyle{label}=[
+      font=\ttfamily,
+    ]
+    
+    \node[matrix,row sep=\spacing,column sep=0mm,anchor=north,] () at (0,0) {
+      % representations
+      \node[digit] (bseven) {1};
+      &
+      &
+      \node[digit] (bsix)   {0};
+      &
+      &
+      \node[digit] (bfive)  {0};
+      &
+      &
+      \node[digit] (bfour)  {1};
+      &
+      &
+      \node[digit] (bthree) {1};
+      &
+      &
+      \node[digit] (btwo)   {0};
+      &
+      &
+      \node[digit] (bone)   {1};
+      &
+      &
+      \node[digit] (bzero)  {1};
+      &
+      \node[label] (spacing spacing spacing) {\hspace{4mm}};
+      &
+      \node[digit] ()       {=};
+      &
+      \node[label] (spacing spacing spacing) {\hspace{4mm}};
+      &
+      \node[digit] (dtwo)   {1};
+      &
+      &
+      \node[digit] (done)   {5};
+      &
+      &
+      \node[digit] (dzero)  {5};
+      \\
+      
+      % units
+      \node[label] (bseven label) {$2^7$};
+      &
+      &
+      \node[label] (bsix label)   {$2^6$};
+      &
+      &
+      \node[label] (bfive label)  {$2^5$};
+      &
+      &
+      \node[label] (bfour label)  {$2^4$};
+      &
+      &
+      \node[label] (bthree label) {$2^3$};
+      &
+      &
+      \node[label] (btwo label)   {$2^2$};
+      &
+      &
+      \node[label] (bone label)   {$2^1$};
+      &
+      &
+      \node[label] (bzero label)  {$2^0$};
+      &
+      &
+      &
+      &
+      \node[label] (dtwo label)   {$10^2$};
+      &
+      &
+      \node[label] (done label)   {$10^1$};
+      &
+      &
+      \node[label] (dzero label)  {$10^0$};
+      \\
+      
+      % values
+      \node[label] (bseven value) {$128$};
+      &
+      \node[label] () {$+$};
+      &
+      \node[label] (bsix value)   {$0$};
+      &
+      \node[label] () {$+$};
+      &
+      \node[label] (bfive value)  {$0$};
+      &
+      \node[label] () {$+$};
+      &
+      \node[label] (bfour value)  {$16$};
+      &
+      \node[label] () {$+$};
+      &
+      \node[label] (bthree value) {$8$};
+      &
+      \node[label] () {$+$};
+      &
+      \node[label] (btwo value)   {$0$};
+      &
+      \node[label] () {$+$};
+      &
+      \node[label] (bone value)   {$2$};
+      &
+      \node[label] () {$+$};
+      &
+      \node[label] (bzero value)  {$1$};
+      &
+      &
+      \node[label] () {$=$};
+      &
+      &
+      \node[label] (dtwo value)   {$100$};
+      &
+      \node[label] () {$+$};
+      &
+      \node[label] (done value)   {$50$};
+      &
+      \node[label] () {$+$};
+      &
+      \node[label] (dzero value)  {$5$};
+      \\
+    };
+    
+    \draw[dedge] (bseven label)--(bseven);
+    \draw[dedge] (bsix label)  --(bsix);
+    \draw[dedge] (bfive label) --(bfive);
+    \draw[dedge] (bfour label) --(bfour);
+    \draw[dedge] (bthree label)--(bthree);
+    \draw[dedge] (btwo label)  --(btwo);
+    \draw[dedge] (bone label)  --(bone);
+    \draw[dedge] (bzero label) --(bzero);
+    \draw[dedge] (dtwo label)  --(dtwo);
+    \draw[dedge] (done label)  --(done);
+    \draw[dedge] (dzero label) --(dzero);
+    
+    \draw[edge] (bseven label)--(bseven value);
+    \draw[edge] (bsix label)  --(bsix value);
+    \draw[edge] (bfive label) --(bfive value);
+    \draw[edge] (bfour label) --(bfour value);
+    \draw[edge] (bthree label)--(bthree value);
+    \draw[edge] (btwo label)  --(btwo value);
+    \draw[edge] (bone label)  --(bone value);
+    \draw[edge] (bzero label) --(bzero value);
+    \draw[edge] (dtwo label)  --(dtwo value);
+    \draw[edge] (done label)  --(done value);
+    \draw[edge] (dzero label) --(dzero value);
+    
+    \draw[decorate,decoration={brace, amplitude=10pt, raise=5pt}] (bseven.north west) to node[black,midway,above=15pt] {binary (\textcolor{teal}{0b10011011})} (bzero.north east);
+    \draw[decorate,decoration={brace, amplitude=10pt, raise=5pt}] (dtwo.north west) to node[black,midway,above=15pt] {decimal (\textcolor{teal}{155})} (dzero.north east);
+  \end{tikzpicture}
+\end{center}
