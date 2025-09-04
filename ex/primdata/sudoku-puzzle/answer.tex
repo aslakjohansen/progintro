@@ -1,0 +1,138 @@
+A Sūdoku puzzle is a two-dimensional grid with $9 \cdot 9$ digits. This matches perfectly to a 2D array of integers, which ends up being a single allocation. The more interesting solution is to use an array of arrays (even though the 2D array would be a strictly better solution).
+
+In an array-of-arrays solution, we would have 9 inner arrays (of \typename{int}) embedded in an outer array (of \typename{int[]}). We say that the inner arrays are \idx{nested}{Nested} in the outer array. Structurally it looks like this:
+
+% TODO: Should this be a figure? If so, it will show up in the LoF :-(
+\begin{center}
+  \begin{tikzpicture}[]
+    \newcommand{\spacing}[0]{2mm}
+    \newcommand{\nodesize}[0]{6mm}
+    
+    \tikzstyle{node}=[
+      rectangle,
+      anchor=center,
+      draw=black,
+      fill=black!5,
+      thick,
+      minimum height=\nodesize,
+      minimum width=\nodesize,
+    ]
+    \tikzstyle{label}=[
+      rectangle,
+      anchor=south,
+    ]
+    \tikzstyle{dedge} = [thick,->,>=stealth, draw=black]
+    
+    \coordinate (origin) at (0mm,0mm);
+    
+    \node[label] (var) at (origin) {\varname{variable}};
+    
+    % outer
+    \node[node] (outer1) at ([yshift=-1.5*\nodesize] origin) {};
+    \node[node] (outer2) at ([yshift=-2.5*\nodesize] origin) {};
+    \node[node] (outer3) at ([yshift=-3.5*\nodesize] origin) {};
+    \node[node] (outer4) at ([yshift=-4.5*\nodesize] origin) {};
+    \node[node] (outer5) at ([yshift=-5.5*\nodesize] origin) {};
+    \node[node] (outer6) at ([yshift=-6.5*\nodesize] origin) {};
+    \node[node] (outer7) at ([yshift=-7.5*\nodesize] origin) {};
+    \node[node] (outer8) at ([yshift=-8.5*\nodesize] origin) {};
+    
+    % odd
+    {
+      % inner1
+      \node[node] (inner11) at ([xshift=2*\nodesize] outer1) {};
+      \node[node] (inner12) at ([xshift=3*\nodesize] outer1) {};
+      \node[node] (inner13) at ([xshift=4*\nodesize] outer1) {};
+      \node[node] (inner14) at ([xshift=5*\nodesize] outer1) {};
+      \node[node] (inner15) at ([xshift=6*\nodesize] outer1) {};
+      \node[node] (inner16) at ([xshift=7*\nodesize] outer1) {};
+      \node[node] (inner17) at ([xshift=8*\nodesize] outer1) {};
+      \node[node] (inner18) at ([xshift=9*\nodesize] outer1) {};
+      
+      % inner3
+      \node[node] (inner31) at ([xshift=2*\nodesize] outer3) {};
+      \node[node] (inner32) at ([xshift=3*\nodesize] outer3) {};
+      \node[node] (inner33) at ([xshift=4*\nodesize] outer3) {};
+      \node[node] (inner34) at ([xshift=5*\nodesize] outer3) {};
+      \node[node] (inner35) at ([xshift=6*\nodesize] outer3) {};
+      \node[node] (inner36) at ([xshift=7*\nodesize] outer3) {};
+      \node[node] (inner37) at ([xshift=8*\nodesize] outer3) {};
+      \node[node] (inner38) at ([xshift=9*\nodesize] outer3) {};
+      
+      % inner5
+      \node[node] (inner51) at ([xshift=2*\nodesize] outer5) {};
+      \node[node] (inner52) at ([xshift=3*\nodesize] outer5) {};
+      \node[node] (inner53) at ([xshift=4*\nodesize] outer5) {};
+      \node[node] (inner54) at ([xshift=5*\nodesize] outer5) {};
+      \node[node] (inner55) at ([xshift=6*\nodesize] outer5) {};
+      \node[node] (inner56) at ([xshift=7*\nodesize] outer5) {};
+      \node[node] (inner57) at ([xshift=8*\nodesize] outer5) {};
+      \node[node] (inner58) at ([xshift=9*\nodesize] outer5) {};
+      
+      % inner7
+      \node[node] (inner71) at ([xshift=2*\nodesize] outer7) {};
+      \node[node] (inner72) at ([xshift=3*\nodesize] outer7) {};
+      \node[node] (inner73) at ([xshift=4*\nodesize] outer7) {};
+      \node[node] (inner74) at ([xshift=5*\nodesize] outer7) {};
+      \node[node] (inner75) at ([xshift=6*\nodesize] outer7) {};
+      \node[node] (inner76) at ([xshift=7*\nodesize] outer7) {};
+      \node[node] (inner77) at ([xshift=8*\nodesize] outer7) {};
+      \node[node] (inner78) at ([xshift=9*\nodesize] outer7) {};
+    }
+    
+    % even
+    {
+      % inner2
+      \node[node] (inner21) at ([xshift=-2*\nodesize] outer2) {};
+      \node[node] (inner22) at ([xshift=-3*\nodesize] outer2) {};
+      \node[node] (inner23) at ([xshift=-4*\nodesize] outer2) {};
+      \node[node] (inner24) at ([xshift=-5*\nodesize] outer2) {};
+      \node[node] (inner25) at ([xshift=-6*\nodesize] outer2) {};
+      \node[node] (inner26) at ([xshift=-7*\nodesize] outer2) {};
+      \node[node] (inner27) at ([xshift=-8*\nodesize] outer2) {};
+      \node[node] (inner28) at ([xshift=-9*\nodesize] outer2) {};
+      
+      % inner4
+      \node[node] (inner41) at ([xshift=-2*\nodesize] outer4) {};
+      \node[node] (inner42) at ([xshift=-3*\nodesize] outer4) {};
+      \node[node] (inner43) at ([xshift=-4*\nodesize] outer4) {};
+      \node[node] (inner44) at ([xshift=-5*\nodesize] outer4) {};
+      \node[node] (inner45) at ([xshift=-6*\nodesize] outer4) {};
+      \node[node] (inner46) at ([xshift=-7*\nodesize] outer4) {};
+      \node[node] (inner47) at ([xshift=-8*\nodesize] outer4) {};
+      \node[node] (inner48) at ([xshift=-9*\nodesize] outer4) {};
+      
+      % inner6
+      \node[node] (inner61) at ([xshift=-2*\nodesize] outer6) {};
+      \node[node] (inner62) at ([xshift=-3*\nodesize] outer6) {};
+      \node[node] (inner63) at ([xshift=-4*\nodesize] outer6) {};
+      \node[node] (inner64) at ([xshift=-5*\nodesize] outer6) {};
+      \node[node] (inner65) at ([xshift=-6*\nodesize] outer6) {};
+      \node[node] (inner66) at ([xshift=-7*\nodesize] outer6) {};
+      \node[node] (inner67) at ([xshift=-8*\nodesize] outer6) {};
+      \node[node] (inner68) at ([xshift=-9*\nodesize] outer6) {};
+      
+      % inner8
+      \node[node] (inner81) at ([xshift=-2*\nodesize] outer8) {};
+      \node[node] (inner82) at ([xshift=-3*\nodesize] outer8) {};
+      \node[node] (inner83) at ([xshift=-4*\nodesize] outer8) {};
+      \node[node] (inner84) at ([xshift=-5*\nodesize] outer8) {};
+      \node[node] (inner85) at ([xshift=-6*\nodesize] outer8) {};
+      \node[node] (inner86) at ([xshift=-7*\nodesize] outer8) {};
+      \node[node] (inner87) at ([xshift=-8*\nodesize] outer8) {};
+      \node[node] (inner88) at ([xshift=-9*\nodesize] outer8) {};
+    }
+    
+    \draw[dedge] (var) -- (outer1);
+    \draw[dedge] (outer1.center) -- (inner11);
+    \draw[dedge] (outer2.center) -- (inner21);
+    \draw[dedge] (outer3.center) -- (inner31);
+    \draw[dedge] (outer4.center) -- (inner41);
+    \draw[dedge] (outer5.center) -- (inner51);
+    \draw[dedge] (outer6.center) -- (inner61);
+    \draw[dedge] (outer7.center) -- (inner71);
+    \draw[dedge] (outer8.center) -- (inner81);
+  ﻿﻿\end{tikzpicture}
+\end{center}
+
+As the addresses of the computers memory are laid out in a single dimension, these individual arrays will end up being allocated more or less sequentially. You will have to follow two references in order to locate the data of a cell, and these references can be redefined. In a 2D array it would be a single allocation, and a single reference to follow, and no possibility of redefining the (missing) inner reference.
