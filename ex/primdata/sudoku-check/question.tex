@@ -1,0 +1,26 @@
+Write a program in which
+\begin{itemize}
+  \item A variable is initialized to hold a filled-out \idx{Sūdoku}{Sūdoku}\footnote{\url{https://en.wikipedia.org/wiki/Sudoku}} puzzle.
+    \begin{itemize}
+      \item How can we represent a cell that isn't filled out?
+      \item What should the type of this variable be?
+      \item How do you declare it?
+      \item How do you initialize it?
+      \item \textbf{Hint:} Find a filled out (aka solved) sūdoku puzzle online.
+    \end{itemize}
+  \item write code that checks if the puzzle contains a correct solution.
+    \begin{itemize}
+      \item \textbf{Hint 1:} This is the cass when all of the following hold:
+        \begin{itemize}
+          \item Every cell is filled out.
+          \item No row contains two cells with the same value. Alternatively: All numbers 1-9 are present in all rows.
+          \item No column contains two cells with the same value. Alternatively: All numbers 1-9 are present in all columns.
+          \item No 3x3 group contains two cells with the same value. Alternatively: All numbers 1-9 are present in all 3x3 groups.
+        \end{itemize}
+      \textbf{Hint 2:} In order to check if all the numbers 1-9 exist, one could create a \typename{boolean[9]} representing wheter each of the numbers have been found, initialize this to all \texttt{false} values, iterate through all relevant cells and et the index corresponding to the value to \texttt{true}. If any \texttt{false} values are left, then at least one number is missing, and the sūdoku is not solved.
+    \end{itemize}
+  \item The result of this check is printed to the screen.
+    \begin{itemize}
+      \item Does the program also give a correct answer when you give it a wrongly filled out sūdoku puzzle?
+    \end{itemize}
+\end{itemize}

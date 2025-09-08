@@ -1,0 +1,11 @@
+A filled out Sūdoku puzzle has 9 rows and 9 columns. This is in principle a rectangular (square, actually) array. The following solution implements this as an array of arrays (even though a 2d array would have been better). % TODO: convert?
+
+Every cell has a value between 1 and 9 (both included). This is an integer, and they are small. We can, for instance, use an \typename{int}. We thus end with the type\typename{int[][]}.
+
+\textbf{Note:} We could have used a \typename{byte[][]} and thus saved a bit of memory, but in this case it is very little. By doing this, we would have saved $(4-1)\mathrm{B} \cdot 9 \cdot 9=243\mathrm{B}$, but the program would also have been slower (as 8-bit integers are usually slower that 32-bit integers).
+
+The following is a solution:
+\inputminted{csharp}{\context/answer/SudokuVerifier.cs}
+
+By moving the comment characters to the other \varname{puzzle} definition, one can test the code with both a correct and an incorrect puzzle.
+
