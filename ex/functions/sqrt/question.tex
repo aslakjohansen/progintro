@@ -1,0 +1,8 @@
+Write a program in which:
+\begin{enumerate}
+  \item A function called \funcname{sqrt} is defined that calculates the square root of its input (of type \typename{double}) with a specific (e.g., 7) number of decimals.
+    \begin{itemize}
+      \item \textbf{Hint:} Solve this experimentall by starting with the most significant digit of he solution and iterate towards the least significant digit. For this you pick a start and an end. These could be 1000000000 and 0.000000001. What should the value of this digit be? When you have found the right value for this digit, continue with the next. The right value is that which (when added to the previously determined digits and then squared) is $\leq$ the input. As you iterate through the digits, you will get closer and closer to the perfect answer.
+    \end{itemize}
+  \item Some code demonstrate how to call this function.
+\end{enumerate}
