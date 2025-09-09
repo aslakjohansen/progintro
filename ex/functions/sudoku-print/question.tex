@@ -1,0 +1,26 @@
+Let the following data structure represent a filled out \idx{Sūdoku}{Sūdoku} puzzle:
+\begin{minted}{csharp}
+﻿int[][] puzzle = {
+  new int[] {7, 3, 6, 4, 5, 2, 9, 8, 1},
+  new int[] {1, 9, 8, 6, 3, 7, 4, 5, 2},
+  new int[] {4, 2, 5, 9, 8, 1, 3, 7, 6},
+  new int[] {3, 6, 4, 5, 2, 8, 1, 9, 7},
+  new int[] {9, 5, 2, 7, 1, 4, 6, 3, 8},
+  new int[] {8, 1, 7, 3, 9, 6, 2, 4, 5},
+  new int[] {2, 8, 9, 1, 7, 3, 5, 6, 4},
+  new int[] {6, 7, 3, 2, 4, 5, 8, 1, 9},
+  new int[] {5, 4, 1, 8, 6, 9, 7, 2, 3},
+};
+\end{minted}
+
+Write a program in which:
+\begin{enumerate}
+  \item The above data structure is defined.
+  \item A function is defined that, as a parameter takes such a data structure, and prints it out on the screen.
+    \begin{itemize}
+      \item Which \idx{function prototype}{Function!Prototype} (i.e., return type and signature) should this method have?
+      \item Should one print out a full row at a time or a full column at a time?
+      \item \textbf{Hint:} The \methodname{Console.Write} method does the same as the \methodname{Console.WriteLine} method but doesn't break the line.
+    \end{itemize}
+  \item Some code that calls this function.
+\end{enumerate}
