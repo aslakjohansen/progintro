@@ -1,0 +1,29 @@
+\textbf{Delopgave 1}
+
+To compile and execute the code:
+\begin{minted}[fontsize=\footnotesize]{shell}
+$ dotnet build
+...
+$ dotnet run
+Unhandled exception. System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at Program.<Main>$(String[] args) in .../ArrayIncrementer.cs:line 6
+$ 
+\end{minted}
+
+\textbf{Delopgave 2}
+
+In the printout of this run we can see that a \typename{System.IndexOutOfRangeException} exception is thrown.
+
+\textbf{Delopgave 3}
+
+The exception is thrown on line 6 of \typename{ArrayIncrementer}. On this line \varname{array} is being indexed using \varname{i} which at this point is bound to the value 5. As \varname{array} is initialized to hold 5 values the space allocated can only hold 5 values, and as \csharp\ is a 0-indexed language this means that the last valid index is 4. To avoid us trying to access memory outside of the \idx{allocation}{Memory!Allocation} of the \idx{process}{Process}, the \csharp\ runtime throws this exception.
+
+
+\textbf{Delopgave 4}
+
+\inputminted{csharp}{\context/answer/ArrayIncrementer.cs}
+
+\textbf{Delopgave 5}
+
+No, this is not the correct solution. This is caused by a \idx{bug}{Bug} in the code. It is clear to us that this exception will be thrown every time the code is executed. A non-ugly solution will involve us not getting into a situation where this exception is thrown, and this can be done by \textsl{correcting} the code.
+
