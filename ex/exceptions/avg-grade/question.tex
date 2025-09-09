@@ -1,0 +1,17 @@
+On some educations, the average grade is calculated solely from the passing grades a student has achieved. Lets assume that any grade below 2 (or 02) is a failing grade. In this exercise we explore how that could be implemented.
+
+\begin{enumerate}
+  \item Create a new project.
+  \item Declare an \typename{int[]} variable called \varname{grades} and initialize this to hold the grades 4, 7, 02, 00, 10, 4, og 12.
+  \item Then declare a \methodname{GetGrade} function that takes an \typename{int} as parameter and returns an \typename{int}. Give the parameter the name \varname{courseid}.
+  \item In the body of this function, extract using indexing first a value from the \varname{courseid} position of \varname{grades}. This value is stored in a local \typename{int} variable called \varname{grade}. If this is a passing grade, then return the grade. Otherwise, throw an exception.
+  \item Finally, write the main program code. It is split into three parts:
+    \begin{enumerate}
+      \descitem{Initialization} Two variables of the type \typename{int} are declared and named \varname{count} and \varname{sum}.
+      \descitem{Process}
+      Iterate through all indices (call them \varname{courseid}) from \varname{grades} using a \texttt{for} loop. Make sure it does \underline{not} hardcode the number of courses\footnote{Accordingly, the number is not constant, but rather derived at runtime from \varname{grades}.}. For every \varname{courseid}, you call \methodname{GetGrade}. Make sure that the the calls that \textsl{doesn't} result in an exception results in (i) \varname{count} being incremented, and (ii) \varname{sum} being incremented with the return value.
+      \descitem{Printout} The average $\left(\frac{\varname{sum}}{\varname{count}}\right)$ is calculated and printed to the screen.
+    \end{enumerate}
+  \item Verify that the code work as intended.
+\end{enumerate}
+
