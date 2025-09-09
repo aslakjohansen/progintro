@@ -4,7 +4,7 @@
   }
   
   if (i > 0) {
-    return i * Fac(i - 1);
+    return i * fac(i - 1);
   } else {
     return 1;
   }
