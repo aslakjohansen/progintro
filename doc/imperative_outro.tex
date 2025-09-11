@@ -13,3 +13,26 @@ This is -- so far -- the final exercise in our \idx{Sūdoku}{Sūdoku} series. Th
   \item A checker in exercise \ref{q:primdata:sudoku-check}.
 \end{itemize}
 
+\subsection{Game of Life}
+
+Make an implementation of \idx{John Comway}{Conway!John}'s \idx{Game of Life}{Game of Life}. You can find a description of this simulation on \idx{Wikipedia}{Wikipedia}.
+
+\textbf{Note:} A few hints:
+\begin{itemize}
+  \item Illustrate each generation using characters (e.g., a space for no life and an asterisk for life).
+  \item Pick a world size that fits on your screen.
+  \item Insert a pause in between each generation.
+  \item Initialize your world randomly
+\end{itemize}
+
+We have not quite covered everything needed to do follow these hints. The missing pieces, you can derive experimentally from this code:
+
+\begin{minted}{csharp}
+Random r = new Random();
+
+while (true) {
+  Console.WriteLine(r.Next(2));
+  Thread.Sleep(1000);
+}
+\end{minted}
+
