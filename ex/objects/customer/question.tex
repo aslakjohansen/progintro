@@ -1,0 +1,32 @@
+Follow the following recipe for a program:
+\begin{enumerate}
+  \item Create a new project with a class that contains a \methodname{Main}-method.
+  \item Create, in this project, a new class called \classname{Customer}.
+  \item In the \typename{Customer} class, add the following:
+    \begin{itemize}
+      \item An attribute called \varname{name} of type \typename{string}.
+      \item An attribute called \varname{id} of type \typename{int}.
+      \item An attribute called \varname{balance} of type \typename{double}.
+    \end{itemize}
+  \item Add constructors to the \classname{Customer} class:
+    \begin{itemize}
+      \item One constructor takes a name and an id as parameters, and uses these values to initialize their corresponding attributes. The \varname{balance} attribute is initialized to zero.
+      \item One constructor takes a name, an id and a balance as parameters, and uses these values to initialize their corresponding attributes.
+    \end{itemize}
+  \item Add methods to the \classname{Customer} class:
+    \begin{itemize}
+      \item A method named \methodname{Deposit} with \typename{void} return type that takes a parameter named \varname{amount} of type \typename{double}. This method must increment the value of \varname{balance} with the value of \varname{amount}.
+      \item A method named \methodname{Withdraw} with \typename{void} return type that takes a parameter named \varname{amount} of type \typename{double}. This method must decrement the value of \varname{balance} with the value of \varname{amount} if and only if \varname{balance} is greater than \varname{balance}. In other words, the balance is not allowed to go negative.
+      \item A method named \methodname{GetBalance} that returns a \typename{double}. When called, this method should return the value of \varname{balance}.
+    \end{itemize}
+  \item In the \methodname{Main} method, declare a variable called \varname{aCustomer} of type \classname{Customer}.
+  \item Then, assign to \varname{aCustomer} a (reference to a new) \typename{Customer} object. This is done using an assignment statement where the right-hand side creates a new \typename{Customer} bject by calling a constructor for \typename{Customer}. You decide which arguments to give it.
+    \begin{itemize}
+      \item \textbf{Hint:} \say{\texttt{new}} is used to call the constructor of a class.
+    \end{itemize}
+  \item Deposit money to the \typename{Customer} object by calling the \methodname{Deposit} method using an amount of your choice.
+  \item Withdraw money from the \typename{Customer} object by calling the \methodname{Withdraw} method with an amount of your choice (that is less than the amount that you deposited).
+  \item Print out the value of the \varname{balance} attribute of the \typename{Customer} object by calling the \methodname{GetBalance} instance method and then calling \methodname{Console.WriteLine} with the return value of \methodname{GetBalance} as argument.
+  \item Verify -- by observing the printout -- that the code works as you would expect.
+\end{enumerate}
+
