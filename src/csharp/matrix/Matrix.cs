@@ -10,21 +10,16 @@ public class Matrix
     Values = values;
   }
   
-  public static Matrix Zeroes (int width, int height) {
+  public static Matrix Constant (int width, int height, double val) {
     double[,] values = new double[height, width];
     for (int i = 0; i < height; i++)
       for (int j = 0; j < width; j++)
-        values[i, j] = 0;
+        values[i, j] = val;
     return new Matrix(values);
   }
   
-  public static Matrix Ones (int width, int height) {
-    double[,] values = new double[height, width];
-    for (int i = 0; i < height; i++)
-      for (int j = 0; j < width; j++)
-        values[i, j] = 1;
-    return new Matrix(values);
-  }
+  public static Matrix Zeroes (int width, int height) { return Constant(width, height, 0); }
+  public static Matrix Ones   (int width, int height) { return Constant(width, height, 1); }
   
   public static Matrix Identity (int size) {
     double[,] values = new double[size, size];
