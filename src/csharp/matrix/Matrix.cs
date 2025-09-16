@@ -27,13 +27,13 @@ public class Matrix
   }
   
   public override string ToString () {
-    string toPrint = "";
+    string result = "";
     for (int i = 0; i < Height; i++) {
       for (int j = 0; j < Width; j++)
-        toPrint += (j==0 ? "" : ", ") + Values[i, j];
-      toPrint += "\n";
+        result += (j==0 ? "" : ", ") + Values[i, j];
+      result += "\n";
     }
-    return toPrint;
+    return result;
   }
   public static bool operator + (bool m1, Matrix m2) {return true;}
   public static Matrix operator + (Matrix m1, Matrix m2) {
