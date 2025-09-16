@@ -57,11 +57,9 @@ public class Matrix
     double[,] result = new double[m1.Height,m2.Width];
     
     for (int i = 0; i < m1.Height; i++)
-      for (int j = 0; j < m2.Width; j++) {
-        result[i, j] = 0;
+      for (int j = 0; j < m2.Width; j++)
         for (int k=0 ; k<m1.Width ; k++ )
           result[i, j] += m1.Values[i,k] * m2.Values[k,j];
-      }
     return new Matrix(result);
   }
 }
