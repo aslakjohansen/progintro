@@ -53,7 +53,7 @@ public class Matrix
   public static bool operator +(bool m1, Matrix m2) {return true;}
   public static Matrix operator +(Matrix m1, Matrix m2) {
     if (m1.Width != m2.Width || m1.Height != m2.Height)
-      throw new Exception("Matrices of different sizes cannot be added or subtracted!");
+      throw new Exception("Parameters do not agree in size");
     
     double[,] result = new double[m1.Height,m1.Width];
     
@@ -65,7 +65,7 @@ public class Matrix
   
   public static Matrix operator *(Matrix m1, Matrix m2) {
     if (m1.Width != m2.Height)
-      throw new Exception("For multiplication, number of columns (width) in the first matrix must be equal to the number of rows (height) in the second matrix!");
+      throw new Exception("Incompatible parameter sizes");
     
     double[,] result = new double[m1.Height,m2.Width];
     
