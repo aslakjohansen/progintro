@@ -26,20 +26,6 @@ public class Matrix
     return new Matrix(values);
   }
   
-  public double[] GetRow(int index) {
-    double[] row = new double[Width];
-    for (int j = 0; j < Width; j++)
-      row[j] = Values[index, j];
-    return row;
-  }
-  
-  public double[] GetColumn(int index) {
-    double[] column = new double[Height];
-    for (int i = 0; i < Height; i++)
-      column[i] = Values[i, index];
-    return column;
-  }
-  
   public override string ToString() {
     string toPrint = "";
     for (int i = 0; i < Height; i++)
@@ -70,16 +56,11 @@ public class Matrix
     double[,] result = new double[m1.Height,m2.Width];
     
     for (int i = 0; i < m1.Height; i++)
-      for (int j = 0; j < m2.Width; j++)
-        result[i, j] = Dot(m1.GetRow(i), m2.GetColumn(j));
-    
+      for (int j = 0; j < m2.Width; j++) {
+        result[i, j] = 0;
+        for (int k=0 ; k<m1.Width ; k++ )
+          result[i, j] += m1.Values[i,k] * m2.Values[k,j];
+      }
     return new Matrix(result);
-  }
-  
-  private static double Dot(double[] row, double[] column) {
-    double sum = 0;
-    for (int k = 0; k < row.Length; k++)
-      sum += row[k] * column[k];
-    return sum;
   }
 }
