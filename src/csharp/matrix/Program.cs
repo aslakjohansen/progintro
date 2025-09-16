@@ -6,3 +6,4 @@ Matrix m2 = new Matrix(new double[,] {
 Matrix m3 = Matrix.Zeroes(4,3);
 Console.WriteLine(m1*m2+m3);
 Console.WriteLine(false + m3);
+Console.WriteLine(Matrix.Identity(5));

@@ -26,6 +26,13 @@ public class Matrix
     return new Matrix(values);
   }
   
+  public static Matrix Identity (int size) {
+    double[,] values = new double[size, size];
+    for (int i = 0; i < size; i++)
+      values[i, i] = 1;
+    return new Matrix(values);
+  }
+  
   public override string ToString () {
     string result = "";
     for (int i = 0; i < Height; i++) {
