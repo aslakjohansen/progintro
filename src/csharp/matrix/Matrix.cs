@@ -4,13 +4,13 @@ public class Matrix
   public int Height; // number of rows (m)
   public double[,] Values;
   
-  public Matrix(double[,] values) {
+  public Matrix (double[,] values) {
     Height = values.GetLength(0);
     Width  = values.GetLength(1);
     Values = values;
   }
   
-  public static Matrix Zeroes(int width, int height) {
+  public static Matrix Zeroes (int width, int height) {
     double[,] values = new double[height, width];
     for (int i = 0; i < height; i++)
       for (int j = 0; j < width; j++)
@@ -18,7 +18,7 @@ public class Matrix
     return new Matrix(values);
   }
   
-  public static Matrix Ones(int width, int height) {
+  public static Matrix Ones (int width, int height) {
     double[,] values = new double[height, width];
     for (int i = 0; i < height; i++)
       for (int j = 0; j < width; j++)
@@ -26,7 +26,7 @@ public class Matrix
     return new Matrix(values);
   }
   
-  public override string ToString() {
+  public override string ToString () {
     string toPrint = "";
     for (int i = 0; i < Height; i++)
     {
@@ -36,8 +36,8 @@ public class Matrix
     }
     return toPrint;
   }
-  public static bool operator +(bool m1, Matrix m2) {return true;}
-  public static Matrix operator +(Matrix m1, Matrix m2) {
+  public static bool operator + (bool m1, Matrix m2) {return true;}
+  public static Matrix operator + (Matrix m1, Matrix m2) {
     if (m1.Width != m2.Width || m1.Height != m2.Height)
       throw new Exception("Parameters do not agree in size");
     
@@ -49,7 +49,7 @@ public class Matrix
     return new Matrix(result);
   }
   
-  public static Matrix operator *(Matrix m1, Matrix m2) {
+  public static Matrix operator * (Matrix m1, Matrix m2) {
     if (m1.Width != m2.Height)
       throw new Exception("Incompatible parameter sizes");
     
