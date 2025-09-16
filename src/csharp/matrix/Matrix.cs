@@ -28,10 +28,9 @@ public class Matrix
   
   public override string ToString () {
     string toPrint = "";
-    for (int i = 0; i < Height; i++)
-    {
+    for (int i = 0; i < Height; i++) {
       for (int j = 0; j < Width; j++)
-        toPrint += Values[i, j] + ", ";
+        toPrint += (j==0 ? "" : ", ") + Values[i, j];
       toPrint += "\n";
     }
     return toPrint;
