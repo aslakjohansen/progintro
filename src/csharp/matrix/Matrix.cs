@@ -4,32 +4,13 @@ public class Matrix
   public int Height; // number of rows (m)
   public double[,] Values;
   
-  public Matrix(double[,] values)
-  {
+  public Matrix(double[,] values) {
     Height = values.GetLength(0);
     Width  = values.GetLength(1);
     Values = values;
   }
   
-  public Matrix(params double[][] values)
-  {
-    Height = values.Length;
-    Width = values[0].Length;
-    
-    Values = new double[Height, Width];
-    
-    for (int i = 0; i < Height; i++)
-    {
-      if (values[i].Length != Width)
-        throw new Exception("Not all rows are of equal size!");
-      
-      for (int j = 0; j < Width; j++)
-        Values[i, j] = values[i][j];
-    }
-  }
-  
-  public static Matrix Zeroes(int width, int height)
-  {
+  public static Matrix Zeroes(int width, int height) {
     double[,] values = new double[height, width];
     for (int i = 0; i < height; i++)
       for (int j = 0; j < width; j++)
@@ -37,8 +18,7 @@ public class Matrix
     return new Matrix(values);
   }
   
-  public static Matrix Ones(int width, int height)
-  {
+  public static Matrix Ones(int width, int height) {
     double[,] values = new double[height, width];
     for (int i = 0; i < height; i++)
       for (int j = 0; j < width; j++)
@@ -46,24 +26,21 @@ public class Matrix
     return new Matrix(values);
   }
   
-  public double[] GetRow(int index)
-  {
+  public double[] GetRow(int index) {
     double[] row = new double[Width];
     for (int j = 0; j < Width; j++)
       row[j] = Values[index, j];
     return row;
   }
   
-  public double[] GetColumn(int index)
-  {
+  public double[] GetColumn(int index) {
     double[] column = new double[Height];
     for (int i = 0; i < Height; i++)
       column[i] = Values[i, index];
     return column;
   }
   
-  public override string ToString()
-  {
+  public override string ToString() {
     string toPrint = "";
     for (int i = 0; i < Height; i++)
     {
@@ -74,8 +51,7 @@ public class Matrix
     return toPrint;
   }
   public static bool operator +(bool m1, Matrix m2) {return true;}
-  public static Matrix operator +(Matrix m1, Matrix m2)
-  {
+  public static Matrix operator +(Matrix m1, Matrix m2) {
     if (m1.Width != m2.Width || m1.Height != m2.Height)
       throw new Exception("Matrices of different sizes cannot be added or subtracted!");
     
@@ -87,8 +63,7 @@ public class Matrix
     return new Matrix(result);
   }
   
-  public static Matrix operator *(Matrix m1, Matrix m2)
-  {
+  public static Matrix operator *(Matrix m1, Matrix m2) {
     if (m1.Width != m2.Height)
       throw new Exception("For multiplication, number of columns (width) in the first matrix must be equal to the number of rows (height) in the second matrix!");
     
@@ -101,13 +76,10 @@ public class Matrix
     return new Matrix(result);
   }
   
-  private static double Dot(double[] row, double[] column)
-  {
+  private static double Dot(double[] row, double[] column) {
     double sum = 0;
     for (int k = 0; k < row.Length; k++)
-    {
       sum += row[k] * column[k];
-    }
     return sum;
   }
 }
