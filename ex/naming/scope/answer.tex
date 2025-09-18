@@ -1,0 +1,30 @@
+The following table shows where each to the five variables can and should (marked with underline) be declared.
+
+\begin{center}
+  \begin{tabular}{lccccc}
+    \emph{Lokation} & \varname{i} & \varname{d} & \varname{tmp} & \varname{sum} & \varname{bonus} \\
+    Location 0  & $\times$ & $\times$ & $\times$ & $\times$ & \underline{$\times$} \\
+    Location 1  & $\times$ & $\times$ & $\times$ & $\times$ &          \\
+    Location 2  &          & \underline{$\times$} &          &          &          \\
+    Location 3  &          &          &          &          &          \\
+    Location 4  &          &          &          &          &          \\
+    Location 5  & $\times$ & $\times$ & $\times$ & $\times$ &          \\
+    Location 6  & $\times$ &          & $\times$ & \underline{$\times$} &          \\
+    Location 7  & $\times$ &          & $\times$ &          &          \\
+    Location 8  & \underline{$\times$} &          & $\times$ &          &          \\
+    Location 9  &          &          &          &          &          \\
+    Location 10 &          &          & $\times$ &          &          \\
+    Location 11 &          &          & \underline{$\times$} &          &          \\
+    Location 12 &          &          &          &          &          \\
+    Location 13 &          &          &          &          &          \\
+    Location 14 &          &          &          &          &          \\
+    Location 15 &          &          &          &          &          \\
+    Location 16 & $\times$ & $\times$ & $\times$ & $\times$ &          \\
+  \end{tabular}
+\end{center}
+
+A variable must be declared before the first reference of it, and it should be declared in the narrowest possible scope. If you declare it in a wider scope, you must ensure that it cannot hold an unintentional value across multiple evaluations of the inner scope.
+
+Even though the order of the declarations at class level doesn't matter, it is good practice to declare the variable at the same line as the first assignment. On top of that, convention dictates that field declarations should be at the top of a class definition.
+
+\csharp does not allow us to redeclara a variable. If you try to do so, then the program won't compile.
