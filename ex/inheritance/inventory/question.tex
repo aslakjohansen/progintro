@@ -1,0 +1,52 @@
+\textbf{Subtask 1}
+
+The UML class diagram in figure \ref{inheritance:inventory:uml} shows parts of an inventory system that makes use of inheritane. Implement the classes depicted in this figure.
+
+\begin{figure}[tbp]
+  \begin{tikzpicture}%[show  background  grid]
+    \begin{class}[text width=6cm]{Item}{0,0}
+      \attribute{- name: string}
+      \attribute{- price: double}
+      \operation{+ GetName(): string}
+      \operation{+ GetPrice(): double}
+    \end{class}
+    
+    \begin{class}{FoodItem}{-4,-6}
+      \inherit{Item}
+      \attribute{- expiresAt : DateTime}
+      \operation{+ GetExpiresAt(): DateTime}
+      \operation{+ ToString(): string}
+    \end{class}
+    
+    \begin{class}{NonFoodItem}{4,-6}
+      \inherit{Item}
+      \attribute{- materials : string[]}
+      \operation{+ GetMaterials(): string[]}
+      \operation{+ ToString(): string}
+    \end{class}
+  \end{tikzpicture}
+  \caption{\label{inheritance:inventory:uml} Arvehierarki for lagersystem.}
+\end{figure}
+
+The \methodname{ToString} methods in \typename{FoodItem} and \typename{NonFoodItem} must be annotated with the \keywordname{override} keyword as they override the method from the \typename{Object} class (not shown on the diagram).
+
+The \methodname{ToString} method in \typename{FoodItem} must return the name, price, and expiration date as a \typename{string}.
+
+The \methodname{ToString} method in \typename{NonFoodItem} must return the name, price, and list of materials as a \typename{string}.
+
+\textbf{Subtask 2}
+
+Make in your own \methodname{Main} method an array that can hold 10 \typename{FoodItem} objects. Use a look to add a \typename{FoodItem} object to each element in this array.
+
+Then add a loop in which you call the \methodname{ToString} method on each of the \typename{FoodItem} objects in your array and print out the resulting string with \methodname{Console.WriteLine}.
+
+\textbf{Subtask 3}
+
+Repeat the exercise from the previous subtask, only this time for \typename{NonFoodItem} objects.
+
+\textbf{Subtask 4}
+
+Once again, repeat the last two exercises, but this time declare the array to contain objects of type \typename{Item} and make sure that every even position is populated by a \typename{FoodItem} and every off position by a \typename{NonFoodItem}.
+
+Make sure that you keep all three versions of the code.
+
