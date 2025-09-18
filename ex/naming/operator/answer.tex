@@ -6,9 +6,9 @@ There are two operators; \texttt{+} and \texttt{-}. The mapping of the five call
     \mathtt{(?4?)} &\mapsto& \mathtt{-} \\
     \mathtt{(?5?)} &\mapsto& \mathtt{-}
 \end{eqnarray*}
-Of these \texttt{+} is implemented by the first declaration of the \methodname{Operator} method, and \texttt{-} is implemented by the last. These declarations obviously have different bodies, but they are also differentiated by their signatures. Here, the type of the third argument is different. The value of the parameter is not used for anything, but the parameter type makes the two signatures unique, and because of that we can name each of them by supplying a value of the right type.
+Of these \texttt{+} is implemented by the first declaration of the \methodname{Operator} method, and \texttt{-} is implemented by the last. These declarations obviously have different bodies, but they are also differentiated by their \idx{signatures}{Signature}. Here, the type of the third argument is different. The value of the parameter is not used for anything, but the parameter type makes the two signatures unique, and because of that we can name each of them by supplying a value of the right type.
 
-This allows the choice of which \methodname{Operator} variant to be called to be determined at compile time. This is fast. But it is also an implementation that is hard to read. Many would likely consider this a misuse of the type system. In reality, most compilers will be able to compile the following implementation to bytecode that is just as efficient:
+This allows the choice of which \methodname{Operator} variant to be called to be determined at compile time. This is fast. But it is also an implementation that is hard to read. Many would likely consider this a misuse of the \idx{type system}{Type system}. In reality, most compilers will be able to compile the following implementation to bytecode that is just as efficient:
 
 \inputminted{csharp}{\context/answer/OperatorTest.cs}
 
