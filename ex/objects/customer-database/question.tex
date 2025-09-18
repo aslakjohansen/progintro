@@ -1,0 +1,18 @@
+Extend the result from \ref{q:objects:customer} with the following:
+\begin{enumerate}
+  \item Create a new class called \typename{CustomerDatabase}.
+  \item Add an attribute named \varname{customers} of type \typename{Customer[]} to \typename{CustomerDatabase}.
+  \item Add a constructor to \typename{CustomerDatabase} that doesn't take any parameters. It should initialize the \varname{customers} attribute with an empty \typename{Customer}-array with a length of 10.
+  \item Add the following methods to \typename{CustomerDatabase}:
+    \begin{itemize}
+      \item A method that takes a  \typename{Customer}-object as parameter, and adds it to the \varname{customers} array at an empty position. What would be suitable names for the method, and its parameter?
+      \item A method that takes an \typename{int} parameter, and searches through the \varname{customers} array to check if the \varname{id} attribute of any element matches this parameter. If that is the case, the matching object is removed from the array. Otherwise, nothing is changed. What would be suitable names for this method, and its parameter.
+        \begin{itemize}
+          \item \textbf{Hint:} The \varname{customers} array holds references to \typename{Customer} objects. The value \texttt{null} is used to indicate that a reference is invalid (aka, that the space is unused).
+        \end{itemize}
+      \item A method that returns (all the contents of) the \varname{customers} array. What would be a good name for this method?
+      \item A method that prints out all the \typename{Customer} objects in \varname{customers}. What would be a good name for this method?
+    \end{itemize}
+  \item Add a \methodname{main} method to test the new functionality. How would you do this?
+\end{enumerate}
+
