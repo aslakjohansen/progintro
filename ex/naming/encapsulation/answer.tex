@@ -1,0 +1,34 @@
+The program constructs a \typename{Circle} object, increases the radius by 37\% and adds 0.65 to the x-coordiate of the center. The state of teh the object is printed out -- via its attributes -- both before and after the changes are made.
+
+To replace the radius attribute \varname{r} with the diameter attribute \varname{d} in \typename{Circle}, we have to:
+\begin{itemize}
+  \item Update the declaration of the attribute in \typename{Circle}.
+  \item Update the initialization of the attribute in the constructor for \typename{Circle}. Now, we need to multiply the parameter (which is still a radius) by two.
+  \item The two printouts in the \methodname{Main} methods needs to be updated to refer to the new attribute name.
+  \item The line that increases \varname{r} needs to be converted to a line that increases \varname{d}.
+\end{itemize}
+
+The result is:
+\inputminted{csharp}{\context/answer/d/Circle.cs}
+\inputminted{csharp}{\context/answer/d/TestCircle.cs}
+
+And after encapsulation, the code base looks like this:
+\inputminted{csharp}{\context/answer/e/Circle.cs}
+\inputminted{csharp}{\context/answer/e/TestCircle.cs}
+
+To replace the attributes \varname{x} and \varname{y} with an attribute \varname{c} of type \typename{Coordinate} we have to:
+\begin{itemize}
+  \item Add the class \typename{Coordinate}.
+  \item Replace the declaration of the attributes \varname{x} and \varname{y} in \typename{Circle} with a single declaration of the coordinate \varname{c}.
+  \item Replace the initialization of the attributes \varname{x} and \varname{y} in the \typename{Circle} constructor with a single initialization of \varname{c} using a call to the \typename{Coordinate} constructor.
+  \item Getters and setters for the attributes \varname{x} og \varname{y} are kept but updated to forward their calls to the corresponding methods in the attribute \varname{c}.
+\end{itemize}
+
+The result is:
+\inputminted{csharp}{\context/answer/c/Coordinate.cs}
+\inputminted{csharp}{\context/answer/c/Circle.cs}
+\inputminted{csharp}{\context/answer/c/TestCircle.cs}
+
+The update to diameter is not directly comparable to the update to \typename{Coordinate}; one is simple, the other complex. But if we look past this difference, then the two changes are very similar inside \typename{Circle} and different where we use the definition of \typename{Circle} (our \methodname{Main} method). The change in the encapsulated variant of \typename{Circle} did not affect the code base \textsl{outside of} \typename{Circle} at all. Here, we consider \typename{Coordinate} to be inside of \typename{Circle}. We say that encapsulation ensures that we can modify the \textsl{internal} representation without affecting the \textsl{external} code.
+
+The downside of encapsulation is that we have to go through getters and setters in stead of manipulating the attributes directly. This gives us som clunkier code, but it will usually be an acceptable trade; especially in larger code bases.

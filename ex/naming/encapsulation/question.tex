@@ -1,0 +1,24 @@
+Consider the following program:
+
+\inputminted{csharp}{\context/question/Circle.cs}
+\inputminted{csharp}{\context/question/TestCircle.cs}
+
+Follow these instructions:
+\begin{enumerate}
+  \item Describe in english what the programs \methodname{Main} method does. Focus on the details.  Verify by evaluation.
+  \item Make a copy of this program. You will not continue the work on the old version, but you need it for step \ref{naming/encapsulation/final}.
+  \item Update the new copy so that the attribute \varname{r} (that represents a radius) is replaced by a \varname{d} attribute (that represents a diameter).
+  \item \label{naming/encapsulation/diff1} Write down the changes you have made to achieve this.
+  \item Make a copy of this program. You will not continue the work on the old version, but you need it for step \ref{naming/encapsulation/final}.
+  \item Encapsulate all attributes. To encapsulate an attribute, you need to:
+    \begin{itemize}
+      \item Declare the attribute \texttt{private}.
+      \item Add relevant getters and setters.
+    \end{itemize}
+  \item Make a copy of this program. You will not continue the work on the old version.
+  \item Create a new class by the name \typename{Coordinate} that represent an $(x,y)$ coordinate.
+  \item Update the new program to make use of the \typename{Coordinate} class.
+  \item \label{naming/encapsulation/diff2} Write down the changes you have made to achieve this.
+  \item \label{naming/encapsulation/final} Steps \ref{naming/encapsulation/diff1} and \ref{naming/encapsulation/diff2} represents similar changes with different starting points. The difference is whether the attributes are encapsulated. Compare not you notes from these steps. What does encapsulation for for you when you modify the representation of \typename{Circle}?
+\end{enumerate}
+
