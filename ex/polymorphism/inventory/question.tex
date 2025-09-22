@@ -1,0 +1,53 @@
+This exercise builds on the exercise from section \ref{q:inheritance:inventory}. You can find a reference solution in section \ref{a:inheritance:inventory}. It is your choice whether to build on this, or your own solution.
+
+\textbf{Subtask 1}
+
+Extend the implementation to reflext this UML class diagram:
+
+\scalebox{.655}{
+\begin{tikzpicture}%[show  background  grid]
+  \begin{class}[text width=6cm]{Item}{0,0}
+    \attribute{- name: string}
+    \attribute{- price: double}
+    \operation{+ GetName(): string}
+    \operation{+ GetPrice(): double}
+  \end{class}
+  
+  \begin{class}[text width=6cm]{Inventory}{-8, 0}
+    \attribute{- items: Item[]}
+    \operation{+ AddItem(Item): void}
+    \operation{+ RemoveItem(Item): void}
+    \operation{+ GetInventoryValue(): double}
+    \operation{+ PrintInventory(): void}
+  \end{class}
+  
+  \begin{class}{FoodItem}{-4,-6}
+    \inherit{Item}
+    \attribute{- expiresAt : DateTime}
+    \operation{+ GetExpiresAt(): DateTime}
+    \operation{+ ToString(): String}
+  \end{class}
+  
+  \begin{class}{NonFoodItem}{4,-6}
+    \inherit{Item}
+    \attribute{- materials : string[]}
+    \operation{+ GetMaterials(): string[]}
+    \operation{+ ToString(): string}
+  \end{class}
+  
+  \draw[umlcd style, fill=none, ->] (Inventory.east)  |- node[above ,sloped , black]{\hspace{5mm}1} (Item.west);
+\end{tikzpicture}
+}
+
+The \methodname{GetInventoryValue} must iterate through all \typename{Item} objects in \varname{items}, call \methodname{GetPrice} on each of the objects, sum up the resulting values and return this value.
+
+The \methodname{PrintInventory} method must print out a textual representation of all the objects in the \varname{items} array using \methodname{Console.WriteLine}. Use a loop of your choice to accomplish this.
+
+\methodname{AddItem} and \methodname{RemoveItem} must add and remove objects to and from the \varname{items} array.
+
+\textbf{Subtask 2}
+
+Move the \methodname{Main} method out into a \classname{Test} class and update it in such a way that you add items of both \typename{FoodItem} and \typename{NonFoodItem} to an \typename{Items} array in an instance of \typename{Inventory}.
+
+Call the \methodname{PrintInventory} and \methodname{GetInventoryValue} methods to validate their functionality.
+
