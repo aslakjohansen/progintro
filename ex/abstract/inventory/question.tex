@@ -1,0 +1,23 @@
+This exercise builds on the exercise from section \ref{q:polymorphism:inventory}. You can find a reference solution in section \ref{a:polymorphism:inventory}. It is your choice whether to build on this, or your own solution.
+
+\textbf{Subtask 1}
+
+To ensure that items are always instantiated as either \typename{FoodItem} or \typename{NonFoodItem} objects, you must declare the \typename{Item} class abstract. What happens if you then try to instantiate the \typename{Item} class directly, and why is this the case?
+
+\textbf{Subtask 2}
+
+Create an interface called \typename{IExpireable} that contains a method with the following prototype:
+
+\begin{minted}{csharp}
+bool IsExpired();
+\end{minted}
+
+\textbf{Subtask 3}
+
+Implement this interface in \typename{Item}.
+
+\textbf{Subtask 4}
+
+As \typename{FoodItem} and \typename{NonFoodItem} inherits from \typename{Item}, they also inherit the \methodname{IsExpired} method. \textsl{Override} this method in the \typename{FoodItem} class and make its implementation rely on the \varname{expiresAt} attribute for defining when the item is too old.
+
+\textbf{Hint:} The \typename{DateTime} type in the .NET framework can be used to represent dates (and a time of day).
