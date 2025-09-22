@@ -1,0 +1,122 @@
+Consider the following program specification:
+
+\begin{center}
+  \textsl{The enrollment system contains a list of students and courses. It can display the list of students which are enrolled in a particular course. It is possible to enroll students to a course and remove them from a course.}
+\end{center}
+
+\begin{minipage}{\textwidth}
+From it, the following requirements have been derived:
+
+\begin{itemize}
+  \descitem{Functional requirements:} \\
+    \begin{tabular}{|p{8mm}|p{4cm}|p{6cm}|}
+      \hline
+      \emph{ID} & \emph{Name} & \emph{Description} \\
+      \hline
+      F01 & Display a list of students & It must be possible to display a list of students \\
+      \hline
+      F02 & Display a list of courses & It must be possible to display a list of courses \\
+      \hline
+      F03 & Add and remove association & It must be possible to associate students to a course, and to remove such associations \\
+      \hline
+    \end{tabular}
+  \descitem{Non-functional requirements:} \\
+    \begin{tabular}{|p{8mm}|p{4cm}|p{6cm}|}
+      \hline
+      \emph{ID} & \emph{Name} & \emph{Description} \\
+      \hline
+      NF01 & Capacity & The system must be able to handle 10 courses \\
+      \hline
+      NF02 & Interoperability & The system must be able to integrate with itslearning \\
+      \hline
+    \end{tabular}
+\end{itemize}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+A noun-verb analysis of the program specification has resulted in:
+
+\begin{center}
+  \textsl{The \hlnoun{enrollment} system \hlverb{contains} a \hlnoun{list} of \hlnoun{students} and \hlnoun{courses}. \hlnoun{It} can \hlverb{display} the \hlnoun{list} of \hlnoun{students} which \hlverb{are} enrolled in a particular \hlnoun{course}. It is possible to \hlverb{enroll} \hlnoun{students} to a \hlnoun{course} and \hlverb{remove} \hlnoun{them} from a \hlnoun{course}.}
+\end{center}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+This has resulted in the following CRC card:
+
+\begin{tabular}{|p{0.7\textwidth-2\tabcolsep}|p{0.3\textwidth-2\tabcolsep}|}
+  \hline
+  \multicolumn{2}{|l|}{\cellcolor{black!20} EnrollmentSystem} \\
+  \hline
+  \emph{\cellcolor{black!10} Responsibilities} & \emph{\cellcolor{black!10} Collaborators} \\
+  \hline
+  \begin{itemize}
+    \item Contains list of \typename{Course}-objects
+    \item Contains list of \typename{Student}-objects
+    \item Can enroll \typename{Student}-objects in \typename{Course}-objects
+    \item Can remove \typename{Student}-objects from \typename{Course}-objects
+    \item Can display \typename{Student}-objects enrolled in any given \typename{Course}-object
+  \end{itemize}
+  &
+  \begin{itemize}
+    \item Student
+    \item Course
+  \end{itemize}
+  \\
+  \hline
+\end{tabular}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+Based on this, and similar for the remainding classes -- the following class diagram has been constructed:
+
+\begin{tikzpicture}%[show  background  grid]
+  \begin{class}[text width=6cm]{EnrollmentSystem}{0,0}
+    \attribute{+ students: Student[]}
+    \attribute{+ courses: Course[]}
+    \operation{+ Enroll(Student, Course): void}
+    \operation{+ Remove(Student, Course): void}
+    \operation{+ ShowParticipants(Course): void}
+    \operation{+ GetCourses(): void}
+    \operation{+ GetStudents(): void}
+  \end{class}
+  
+  \begin{class}{Course}{-4,-6}
+    \attribute{name : string}
+    \attribute{participants : Student[]}
+    \operation{+ Enroll(Student): void}
+    \operation{+ Remove(Student): void}
+    \operation{+ GetParticipants(): Student[]}
+  \end{class}
+  
+  \begin{class}{Student}{4,-6}
+    \attribute{name : string}
+    \attribute{id : int}
+    \operation{+ GetName(): string}
+  \end{class}
+  
+  \unidirectionalAssociation{EnrollmentSystem}{}{}{Course}
+  \unidirectionalAssociation{EnrollmentSystem}{}{}{Student}
+  \draw[umlcd style, fill=none, ->] (Course.east) |- node[above ,sloped , black]{} (Student.west);
+\end{tikzpicture}
+\end{minipage}
+
+This has resulted in the following implementation:
+
+\inputminted{csharp}{\context/question/Student.cs}
+\inputminted{csharp}{\context/question/Course.cs}
+\inputminted{csharp}{\context/question/EnrollmentSystem.cs}
+
+With all of that as a starting point:
+\begin{enumerate}
+  \item The program specification has the significant deficiency that it doesn't describe any possibility to add or remove courses or students. Update the specification so that this functionality is included in the specification.
+  \item Update the list of requirements to reflect these changes.
+  \item Redo the noun/verb analysis on the reviced program specification, and update the list of methods and/or classes.
+  \item Update the CRC card so that it matches the new noun-verb analysis and requiremetns. Add new cards if necessary.
+  \item Update the UML cladd diagram so that it reflects your updated CRC card.
+  \item Update the implementation of the program so that it reflects your new UML class diagram.
+\end{enumerate}
+
+
+
+

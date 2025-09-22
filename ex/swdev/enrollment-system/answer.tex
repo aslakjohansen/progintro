@@ -1,0 +1,105 @@
+The new program specification with noun-verb analysis:
+
+\begin{center}
+  \textsl{The \hlnoun{enrollment} system \hlverb{contains} a \hlnoun{list} of \hlnoun{students} and \hlnoun{courses}. \hlnoun{It} can \hlverb{display} the \hlnoun{list} of \hlnoun{students} which \hlverb{are} enrolled in a particular \hlnoun{course}. It is possible to \hlverb{enroll} \hlnoun{students} to a \hlnoun{course} and \hlverb{remove} \hlnoun{them} from a \hlnoun{course}. It is possible to \hlverb{add} and \hlverb{remove}, both \hlnoun{students} and \hlnoun{courses}, to/from the \hlnoun{enrollment} system.}
+\end{center}
+
+The new requirement specification:
+
+\begin{itemize}
+  \descitem{Functional requirements:} \\
+    \begin{tabular}{|p{8mm}|p{4cm}|p{6cm}|}
+      \hline
+      \emph{ID} & \emph{Name} & \emph{Description} \\
+      \hline
+      F01 & Display a list of students & It must be possible to display a list of students \\
+      \hline
+      F02 & Display a list of courses & It must be possible to display a list of courses \\
+      \hline
+      F03 & Add and remove association & It must be possible to associate students to a course, and to remove such associations \\
+      \hline
+      F04 & Add and remove students & It must be possible to add students to and remove students from the system \\
+      \hline
+      F05 & Add and remove courses & It must be possible to add students to and remove courses from the system \\
+      \hline
+    \end{tabular}
+  \descitem{Non-functional requirements:} \\
+    \begin{tabular}{|p{8mm}|p{4cm}|p{6cm}|}
+      \hline
+      \emph{ID} & \emph{Name} & \emph{Description} \\
+      \hline
+      NF01 & Capacity & The system must be able to handle 10 courses \\
+      \hline
+      NF02 & Interoperability & The system must be able to integrate with itslearning \\
+      \hline
+    \end{tabular}
+\end{itemize}
+
+This leads to the new CRC card:
+
+\begin{tabular}{|p{0.7\textwidth-2\tabcolsep}|p{0.3\textwidth-2\tabcolsep}|}
+  \hline
+  \multicolumn{2}{|l|}{\cellcolor{black!20} EnrollmentSystem} \\
+  \hline
+  \emph{\cellcolor{black!10} Responsibilities} & \emph{\cellcolor{black!10} Collaborators} \\
+  \hline
+  \begin{itemize}
+    \item Contains list of \typename{Course}-objects
+    \item Contains list of \typename{Student}-objects
+    \item Can enroll \typename{Student}-objects in Course-objects
+    \item Can remove \typename{Student}-objects from Course-objects
+    \item Can display \typename{Student}-objects enrolled in any given \typename{Course}-object
+    \item Can add \typename{Student}-objects to the list of \typename{Student}-objects
+    \item Can remove \typename{Student}-objects from the list of \typename{Student}-objects
+    \item Can add \typename{Course}-objects to the list of \typename{Course}-objects
+    \item Can remove \typename{Course}-objects from the list of \typename{Course}-objects
+  \end{itemize}
+  &
+  \begin{itemize}
+    \item Student
+    \item Course
+  \end{itemize}
+  \\
+  \hline
+\end{tabular}
+
+Based on this we get the following UML class diagram:
+
+\begin{tikzpicture}%[show  background  grid]
+  \begin{class}[text width=6cm]{EnrollmentSystem}{0,0}
+    \attribute{+ students: Student[]}
+    \attribute{+ courses: Course[]}
+    \operation{+ Enroll(Student, Course): void}
+    \operation{+ Remove(Student, Course): void}
+    \operation{+ ShowParticipants(Course): void}
+    \operation{+ GetCourses(): void}
+    \operation{+ GetStudents(): void}
+    \operation{+ AddStudent(Student): void}
+    \operation{+ RemoveStudent(Student): void}
+    \operation{+ AddCourse(Course): void}
+    \operation{+ RemoveCourse(Course): void}
+  \end{class}
+  
+  \begin{class}{Course}{-4,-6}
+    \attribute{name : string}
+    \attribute{participants : Student[]}
+    \operation{+ Enroll(Student): void}
+    \operation{+ Remove(Student): void}
+    \operation{+ GetParticipants(): Student[]}
+  \end{class}
+  
+  \begin{class}{Student}{4,-6}
+    \attribute{name : string}
+    \attribute{id : int}
+    \operation{+ GetName(): string}
+  \end{class}
+  
+  \unidirectionalAssociation{EnrollmentSystem}{}{}{Course}
+  \unidirectionalAssociation{EnrollmentSystem}{}{}{Student}
+  \draw[umlcd style, fill=none, ->] (Course.east) |- node[above ,sloped , black]{} (Student.west);
+\end{tikzpicture}
+
+In the final code, only the \typename{EnrollmentSystem} class has been modified:
+
+\inputminted{csharp}{\context/answer/EnrollmentSystem.cs}
+
