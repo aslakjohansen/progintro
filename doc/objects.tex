@@ -115,13 +115,26 @@ Matrices can take part in \idx{scalar multiplication}{Multiplication!Scalar} and
 % figure: (matrix) multiplication
 
 % special matrices: zeroes, ones, identity
-On top of this, there are a number of special matrix configurations that we often use. Sometimes we need a matrix of a particular size where all entries are zero or one. At other times we need one that is square and has a diagonal of ones starting in the upper left corner. The rest of the entries in this matrix are zeroes. This matrix is called an \idx{identity matrix}{Identity!Matrix}.
+On top of this, there are a number of special matrix configurations that we often use. Sometimes we need a matrix of a particular size where all entries are zero or one. These are known as \idx{constant}{Matrix!Constant} (value) matrices. At other times we need one that is square and has a diagonal of ones starting in the upper left corner. The rest of the entries in this matrix are zeroes. This matrix is called an \idx{identity matrix}{Identity!Matrix}.
 
 \csharpsubsection{\csharp}
 
 % the part that is solved by the object
+So, how do we represent a matrix in \csharp? Well, the data fits nicely into a 2d array. For convenience, we would like to place these cata inside of an object. This allows us to easily attach behavior in the form of methods and to organize related operations in the namespace of the class. Such relevant operations include methods for producing identity matrices, and constant-value matrices. This should not be too much of a stretch.
 
 % the part that is not
+The stretch comes when we look into how to best implement the binary matrix operations (i.e., those that take a matrix as at least one of two parameters). Now that we have just learnt of instance methods, that would be an obvious vehicle for implementing this. For the add operation, we would have an instance method defined on a \classname{Matrix} class that takes a \classname{Matrix} as a parameter and return a new \classname{Matrix}. But lets imagine that we want to add four matrices using such implementation:
+\begin{minted}{csharp}
+Matrix result = matrix1.add(matrix2.add(matrix3.add(matrix4)));
+\end{minted}
+While it certainly gets the job done, \idx{readability}{Readability} suffer.
+
+% alternative
+As an alternative, we can \idx{overload}{Overload!Operators} the ordinary +, - and * operators. To do this, we need to provide \csharp\ with an implementation for each of the relevant function \idx{signatures}{Signature}. The mechanism that \csharp\ has for this is tied to the \idx{dispatch mechanism}{Dispatch mechanism}. A binary operator has two parameters and thus one or two types. We can provide the implementation as a static method on the class of either of these types. This static method is named \say{\texttt{operator +}} for the plus operation, and so on. Using the implementation from figure \ref{fig:objects:matrix:lib}, the example of addin four matrices end up looking like this:
+\begin{minted}{csharp}
+Matrix result = matrix1 + matrix2 + matrix3 + matrix4;
+\end{minted}
+For the person who has \textsl{consume} that class (e.g., write code that makes use of it), this interface is a whole lot nicer!
 
 \begin{figure}[tbp]
   \inputminted[fontsize=\footnotesize]{csharp}{../src/csharp/matrix/Matrix.cs}
