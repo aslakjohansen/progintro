@@ -37,7 +37,7 @@ public class Matrix
     }
     return result;
   }
-  public static bool operator + (bool m1, Matrix m2) {return true;}
+  
   public static Matrix operator + (Matrix m1, Matrix m2) {
     if (m1.Width != m2.Width || m1.Height != m2.Height)
       throw new Exception("Parameters do not agree in size");
