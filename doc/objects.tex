@@ -120,7 +120,7 @@ On top of this, there are a number of special matrix configurations that we ofte
 \csharpsubsection{\csharp}
 
 % the part that is solved by the object
-So, how do we represent a matrix in \csharp? Well, the data fits nicely into a 2d array. For convenience, we would like to place these data inside of an object. This allows us to easily attach behavior in the form of methods and to organize related operations in the namespace of the class. Such relevant operations include methods for producing identity matrices, and constant-value matrices. This should not be too much of a stretch.
+So, how do we represent a matrix in \csharp? Well, the data fits nicely into a 2d array. For convenience, we would like to place these data inside of an object. This allows us to easily attach behavior in the form of methods and to organize related operations in the \idx{namespace}{Namespace!of class} of the class. Such relevant operations include methods for producing identity matrices, and constant-value matrices. This should not be too much of a stretch.
 
 % the part that is not
 The stretch comes when we look into how to best implement the binary matrix operations (i.e., those that take a matrix as at least one of two parameters). Now that we have just learnt of instance methods, that would be an obvious vehicle for implementing this. For the add operation, we would have an instance method defined on a \classname{Matrix} class that takes a \classname{Matrix} as a parameter and return a new \classname{Matrix}. But lets imagine that we want to add four matrices using such implementation:
