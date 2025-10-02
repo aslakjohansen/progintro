@@ -16,11 +16,11 @@ Follow the following recipe for a program:
   \item Add methods to the \classname{Customer} class:
     \begin{itemize}
       \item A method named \methodname{Deposit} with \typename{void} return type that takes a parameter named \varname{amount} of type \typename{double}. This method must increment the value of \varname{balance} with the value of \varname{amount}.
-      \item A method named \methodname{Withdraw} with \typename{void} return type that takes a parameter named \varname{amount} of type \typename{double}. This method must decrement the value of \varname{balance} with the value of \varname{amount} if and only if \varname{balance} is greater than \varname{balance}. In other words, the balance is not allowed to go negative.
+      \item A method named \methodname{Withdraw} with \typename{void} return type that takes a parameter named \varname{amount} of type \typename{double}. This method must decrement the value of \varname{balance} with the value of \varname{amount} if and only if \varname{balance} is greater than or equal to \varname{amount}. In other words, the balance is not allowed to go negative.
       \item A method named \methodname{GetBalance} that returns a \typename{double}. When called, this method should return the value of \varname{balance}.
     \end{itemize}
   \item In the \methodname{Main} method, declare a variable called \varname{aCustomer} of type \classname{Customer}.
-  \item Then, assign to \varname{aCustomer} a (reference to a new) \typename{Customer} object. This is done using an assignment statement where the right-hand side creates a new \typename{Customer} bject by calling a constructor for \typename{Customer}. You decide which arguments to give it.
+  \item Then, assign to \varname{aCustomer} a (reference to a new) \typename{Customer} object. This is done using an assignment statement where the right-hand side creates a new \typename{Customer} object by calling a constructor for \typename{Customer}. You decide which arguments to give it.
     \begin{itemize}
       \item \textbf{Hint:} \say{\texttt{new}} is used to call the constructor of a class.
     \end{itemize}
