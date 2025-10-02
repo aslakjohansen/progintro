@@ -126,7 +126,11 @@ defmodule Script do
   end
 
   def process_exercise(topic, exercise, data) do
-    data = Map.merge(data, %{exercise: exercise})
+    data = Map.merge(data, %{
+      type: "exercise",
+      segment: topic,
+      entry: exercise
+    })
     IO.puts(exercise)
 
     meta =
