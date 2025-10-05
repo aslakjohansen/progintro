@@ -1,0 +1,11 @@
+Write a program which
+\begin{enumerate}
+  \item Constructs a \typename{DateType} object for each of the timestamps $10^3$, $10^4$, $10^5$ og $10^6$.
+    \begin{itemize}
+      \item First, use the \methodname{System.DateTimeOffset.FromUnixTimeMilliseconds} method to create a \typename{DateTimeOffset} object from the timestamp.
+      \item Then acess the \varname{DateTime} attribute.
+    \end{itemize}
+  \item For each of these, print out the time represented by the object by using its implementation of the \methodname{ToString} method.
+  \item Verify that these printouts makes sense by reading the documentation\footnote{\url{https://learn.microsoft.com/en-us/dotnet/api/system.datetimeoffset.fromunixtimemilliseconds}}.
+\end{enumerate}
+

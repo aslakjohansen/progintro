@@ -1,0 +1,12 @@
+\inputminted{csharp}{\context/answer/DateTest.cs}
+
+Executing the code yields the following printout:
+\begin{verbatim}
+01/01/1970 00.00.01
+01/01/1970 00.00.10
+01/01/1970 00.01.40
+01/01/1970 00.16.40
+\end{verbatim}
+
+Measured in seconds, there is a factor of $10$ between each of these lines. This means that C\#'s timing is done in milliseconds and starts on January 1, 1970 at 01:00 in the night.
+
