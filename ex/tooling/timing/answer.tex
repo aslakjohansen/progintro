@@ -1,0 +1,13 @@
+\textbf{Subtask 1:}
+
+\inputminted{csharp}{\context/answer/Timing.cs}
+
+\textbf{Subtask 2:}
+
+Yes, when \texttt{\methodname{Fun}(\varname{x},-1)} is called in this implementation, the value that \varname{x} is bound to is returned.
+
+If the condition in \methodname{Fun} had tested for equality, a negative \varname{y} value would have ended up in the \keywordname{else} branch and it would not calculate \texttt{\methodname{fun}(\varname{x},\varname{y})} correctly. Then, when \texttt{\methodname{fun}(1.0000001,-1)} is calculated, it does so by first calculating \texttt{\methodname{fun}(1.0000001, -2)}. This would be done by first calculating \texttt{\methodname{fun}(1.0000001,-3)} and so on. This sequence only stops when the \varname{y} value reaches \texttt{1}, which (in practice) does not happen. This implementation is not correct for negative numbers (or large positive numbers for that matter).
+
+\textbf{Subtask 3:}
+
+But this is not the only reason why it is a bad algorithm. If we look a little closer at what happens if we have to calculate \texttt{\methodname{fun}(5,4)}, then \texttt{\methodname{fun}(5,3)} is calculated twice. For each of these, \texttt{\methodname{fun}(5,2)} is calculated twice (that is 4 times in total), and for each of these, \texttt{\methodname{fun}(5,1)} is "calculated" twice (that is 8 times in total). This would be even worse with a larger exponent. This would have been fine if the result of these calculations depended on something external that could not be predicted, but in this case it is obvious that the calculation of \texttt{\methodname{fun}(5,3)} results in the same value every time. One would therefore see a huge improvement in performance by calculating \texttt{\methodname{fun}(\varname{x},\varname{y}-1)} once and multiplying this value by itself.

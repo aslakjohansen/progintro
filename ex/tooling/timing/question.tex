@@ -1,0 +1,26 @@
+\textbf{Subtask 1:}
+
+Write a program in which:
+\begin{enumerate}
+  \item There is a single class called \typename{Timing}.
+  \item This class contains a single static method called \methodname{Fun}. This method takes two \typename{double} parameters (\varname{x} and \varname{y}), and returns a \typename{double}. This method is recursively defined so that:
+    \begin{itemize}
+      \item If \varname{y} $\leq$ 1 then it returns the value of \varname{x}.
+      \item Otherwise (\varname{y} $>$ 1), it turns the value of the following expression:
+      \\
+      \texttt{\methodname{Fun}(\varname{x},\varname{y}-1) * \methodname{Fun}(\varname{x},\varname{y}-1)}.
+    \end{itemize}
+  \item The same class contains a \methodname{Main} method which for \texttt{\varname{x} = 1.0000001} iterates through all \varname{y} values from 1 to 32 (both included). For every combination of \varname{x} and \varname{y}, it evaluates \methodname{Fun}(\varname{x},\varname{y}), prints out the resulting value, and times how long time the evaluation takes.
+    \begin{itemize}
+      \item The static method \methodname{DateTimeOffset.Now.ToUnixTimeMilliseconds} returns a timestamp measured in milliseconds in the form of a \typename{long}.
+      \item By subtracting one such timestamp from another, you get the time in between.
+    \end{itemize}
+\end{enumerate}
+
+\textbf{Subtask 2:}
+
+Does this implementation calculate \methodname{Fun}(\varname{x},-1) correctly, and why is this the case?
+
+\textbf{Subtask 3:}
+
+Is this otherwise a good implementation of \methodname{Fun}(\varname{x},\varname{y})?
