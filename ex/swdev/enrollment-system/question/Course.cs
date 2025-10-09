@@ -1,7 +1,6 @@
 public class Course {
   string    name;
   Student[] participants;
-  int       id;
   
   public Course (string nameValue) {
     name = nameValue;
