@@ -43,6 +43,9 @@ We all know the \idx{decimal numeral system}{Decimal numeral system}. That is, t
   \label{fig:prim:int:repr:base}
 \end{figure}
 
+% integer size
+Normally, when we write out a number, we don't care about how much space it takes up. We have a need to represent the number and it takes up the space it takes up. Space is not an issue. But in a computer, that number need to be worked on by the machine (see section \ref{sec:machine}). The \idx{ALU}{ALU} has to be designed for parameters of a specific number of bits, and the instructions for loading and storing register values have to be designed for a specific number of bits. While the hardware support doesn't necessarily put hard restrictions on what we can do, it does dictate which sizes of integers will be \idx{efficient}{Efficiency} for us to work with. These are usually calculated in bytes and measured in powers of two. Common examples are 1, 2, 4, and 8 bytes, or the corresponding 8, 16, 32 and 64 bits.
+
 % hex
 Often, you will also come across \idx{hexadecimal}{Hexadecimal} representation, which is still the same only \idx{base-16}{Base-16}. But here we run into a problem: While it is easy how to represent the ten lowest valued digits in a 16 digit system (i.e., 0 through 9), what do you the with the remaining six? How about eleven? Obviously, we could call it 11. But the consequence of that would be that we would either have to use two characters for each digit (e.g., 06 for 6), or rely on some other formatting trick (e.g., \{1,7,12,14,3\}) to be able to unambiguously decode a number. Both solutions are cumbersome and take up space. Instead, we usually say that eleven is \say{a}, twelve is \say{b} and so on. Then a digit is still a single character, and this allows us to write a number compactly. \idx{Hex values}{Value!Hex}, as these are called, are often prefixed by \say{0x}. An example of such a value is 0x04ff2b.
 
