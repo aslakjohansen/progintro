@@ -67,6 +67,9 @@ The binary notation is convenient when we think about how the numbers are repres
 % integer types available: and how to pick
 \csharp\ supports the signed and unsigned integer types listed in figure \ref{fig:prim:int:csharp:types}. Lets say that you need to be able to represent any positive number below 100.000. That number sits somewhere in between the limit of 16 bits and 32 bits. This means that we need at least 32 bits, and if we use more than 32 bits to represent it then we will be wasting memory. Depending on our \idx{architecture}{Architecture!Processor}, there might be processing speed to \idx{trade}{Tradeoff} for this \say{wasted} memory. But lets just stick to the 32 bits for now. As we don't need the negative values we will go for an \typename{int}.
 
+% native types
+That last line on the table is a little bit different though. You may have noticed that it is measured in \idx{words}{Word} instead of bits or bytes. On most processor architectures, a word will be defined as either 32 bits or 64 bits. See it as the most efficient integer size. The \typename{n} in \typename{nuint} and \typename{nint} stands for \textsl{\idx{native}{Native}}. A side-effect of using these types is that the effective MAXINT is machine dependent, and that can cause \idx{portability}{Portability} issues if you are not careful. For now, just stay away from these two types.
+
 \begin{figure}[tbp]
   \input{figs/prim_int_csharp_types.tex}
   \caption{Integer types available in \csharp.}
