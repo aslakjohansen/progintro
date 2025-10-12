@@ -70,6 +70,9 @@ The binary notation is convenient when we think about how the numbers are repres
 % native types
 That last line on the table is a little bit different though. You may have noticed that it is measured in \idx{words}{Word} instead of bits or bytes. On most processor architectures, a word will be defined as either 32 bits or 64 bits. See it as the most efficient integer size. The \typename{n} in \typename{nuint} and \typename{nint} stands for \textsl{\idx{native}{Native}}. A side-effect of using these types is that the effective MAXINT is machine dependent, and that can cause \idx{portability}{Portability} issues if you are not careful. For now, just stay away from these two types.
 
+% naming conventions
+The naming convention of the integer types is a bit unfortunate from a consistency perspective. The \typename{u} prefix is used to denote an \idx{unsigned}{Unsigned} variant, except for the \typename{byte} case where the \typename{s} prefix is used to denote an \idx{signed}{Signed} variant. In \typename{nuint} the \typename{u} still denotes something that is unsigned but it is not at the beginning of the name. So, from a human side, parsing these names if a relatively complex task. With a bit of experience though, you won't notice.
+
 \begin{figure}[tbp]
   \input{figs/prim_int_csharp_types.tex}
   \caption{Integer types available in \csharp.}
