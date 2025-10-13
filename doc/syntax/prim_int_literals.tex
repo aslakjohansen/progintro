@@ -1,0 +1,14 @@
+\begin{syntax}{expr}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[nonterminal] (ruleI)  at \SyntaxDistribute{MainWest}{MainEast}{1}{1} {int-literal};
+  \node[nonterminal] (ruleII) at \SyntaxDistributeLine{MainWest}{MainEast}{1}{1}{1} {uint-literal};
+  \node[nonterminal] (ruleIII) at \SyntaxDistributeLine{MainWest}{MainEast}{1}{1}{2} {long-literal};
+  \node[nonterminal] (ruleIV) at \SyntaxDistributeLine{MainWest}{MainEast}{1}{1}{3} {ulong-literal};
+  
+  \draw[path] (begin)--(ruleI)--(end);
+  \draw[path] (begin) to[-|-] (ruleII) to[-|-] (end);
+  \draw[path] (begin) to[-|-] (ruleIII) to[-|-] (end);
+  \draw[path] (begin) to[-|-] (ruleIV) to[-|-] (end);
+\end{syntax}

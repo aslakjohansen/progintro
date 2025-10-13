@@ -110,6 +110,13 @@ It is a bit more complicated than that though: Literals are \defi{typed}{Typed}.
 \end{figure}
 
 % syntax: int, uint, long, ulong as expressions
+Literals in general, and integer literals in particular, are expressions. That means that we can extend our set of syntax rules with the set from syntax \ref{syntax:prim:int:literals}. This is the reason why the line of code from the beginning of this section is \idx{syntactically valid}{Validity!Syntactic}.
+
+\begin{syntaxfloat}
+  \input{syntax/prim_int_literals.tex}
+  \caption{Expressions of integer literals}
+  \label{syntax:prim:int:literals}
+\end{syntaxfloat}
 
 \subsubsection{Operations}
 
