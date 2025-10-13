@@ -83,11 +83,23 @@ The naming convention of the integer types is a bit unfortunate from a consisten
 
 \subsubsection{Expressions}
 
-% literal definition
+% printing out expressions
+The following line prints out \say{42} to the screen:
+\begin{minted}{csharp}
+Console.WriteLine(42);
+\end{minted}
+
+% explanation, tokens, literal definition
+Then the \idx{lexer}{Lexer} is fed this program, it produces the token sequence of figure \ref{fig:primitives:int:tokens}. The \texttt{INT} token represents a concrete \typename{int} value that was embedded in the input source code. Such values embedded in source code are called \defi{literals}{Literal}. Literal forms exist for most of the primitive types.
+
+% fig
+\begin{figure}[tbp]
+  \input{figs/primitives_int_tokens.tex}
+  \caption{Token sequence of a program the prints out an integer.}
+  \label{fig:primitives:int:tokens}
+\end{figure}
 
 % extend the set of expression forms: literal forms
-
-% printing out expressions
 
 \subsubsection{Operations}
 
