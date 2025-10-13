@@ -92,7 +92,7 @@ Console.WriteLine(42);
 % explanation, tokens, literal definition
 Then the \idx{lexer}{Lexer} is fed this program, it produces the token sequence of figure \ref{fig:primitives:int:tokens}. The \texttt{INT} token represents a concrete \typename{int} value that was embedded in the input source code. Such values embedded in source code are called \defi{literals}{Literal}. Literal forms exist for most of the primitive types.
 
-% fig
+% fig: int literals in token sequence
 \begin{figure}[tbp]
   \input{figs/primitives_int_tokens.tex}
   \caption{Token sequence of a program the prints out an integer.}
@@ -100,6 +100,14 @@ Then the \idx{lexer}{Lexer} is fed this program, it produces the token sequence 
 \end{figure}
 
 % extend the set of expression forms: literal forms
+It is a bit more complicated than that though: Literals are \defi{typed}{Typed}. That means that the compiler sees it as having a type in addition to having a value. So, in the previous example, that \texttt{42} part of the code represented an \typename{int} with a value of $42$. We know this because of the \idx{literal specifier}{Literal!Specifier} rules of \csharp. For integers, the rules are listed in figure \ref{fig:primitives:int:literals}.
+
+% fig: literal specifiers
+\begin{figure}[tbp]
+  \input{figs/primitives_int_literals.tex}
+  \caption{Literal specifiers for integer values.}
+  \label{fig:primitives:int:literals}
+\end{figure}
 
 \subsubsection{Operations}
 
