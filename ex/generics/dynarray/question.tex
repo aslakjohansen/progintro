@@ -1,0 +1,16 @@
+Arrays, as you know, have a fixed size. This is fine for many uses, but sometimes you need to be able to insert and remove elements at will. This can be done by keeping track of three values:
+\begin{enumerate}
+  \item \varname{data} The underlying array of type \typename{T[]}. The data held by the dynamic array is at the beginning of this array. If you run out of space, another array that is twice as large is created, and the data is copied over. If at some point you use less than half the space, another array that is half as large is created, and the data is copied over.
+  \item \varname{capacity} The size of \varname{data}.
+  \item \varname{fill} Number of elements currently used in \varname{data}. This means that \varname{fill} $\leq$ \varname{capacity}.
+\end{enumerate}
+
+In this exercise, you must implement a dynamic array that can be parameterized with an arbitrary type in a \classname{DynArray<T>} class. This class must implement the following interface:
+
+\inputminted[fontsize=\small]{csharp}{\context/answer/IDynArray.cs}
+
+You can optionally use the following program to test your code:
+
+\inputminted[fontsize=\small]{csharp}{\context/answer/Program.cs}
+
+By creatively \textsl{overriding} the \methodname{ToString} method on \classname{DynArray<T>}, you can make this program illustrate how the individual operations work.
