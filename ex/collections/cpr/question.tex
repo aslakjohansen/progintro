@@ -1,0 +1,39 @@
+\textbf{Subtask 1}
+
+Implement in \csharp a class for this UML diagram.
+
+\begin{center}
+    \begin{tikzpicture}
+      \begin{class}[text width=6cm]{Person}{0,0}
+        \attribute{- name: String}
+        \attribute{- age: int}
+        \attribute{- cpr: String}
+        \operation{+ GetName(): String}
+        \operation{+ GetAge(): int}
+        \operation{+ GetCpr(): String}
+        \operation{+ ToString(): String}
+      \end{class}
+    \end{tikzpicture}
+\end{center}
+
+\textbf{Note:} The CPR is a Danish social security number.
+
+\textbf{Hint:} When the \methodname{ToString} method is defined in the UML class, then you have to override the method and give it a meaningful implementation.
+
+\textbf{Subtask 2}
+
+Make a \typename{List} that contains 5 \typename{Person} objects. You decide the attribute values. One person must have the CPR number \texttt{010101-0101}.
+
+\textbf{Subtask 3}
+
+Loop through your \typename{List} object and find the person with the CPR number \texttt{010101-0101} by calling the method \methodname{GetCpr} on each object.
+
+Print the result of an (explicit or implicit) call to the \methodname{ToString} method on this object.
+
+\textbf{Subtask 4}
+
+Create a \typename{Dictionary<string, Person>} map and add the \typename{Person} objects to this map that you previously added to the \typename{List} object in subtask 2. Use the CPR number as the \textsl{key}.
+
+\textbf{Subtask 5}
+
+Find the person with the CPR number \texttt{010101-0101} in the \typename{Dictionary} object and print the value returned from a call to the \methodname{ToString} method on this object.
