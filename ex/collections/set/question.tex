@@ -1,0 +1,74 @@
+From highschool, you know the following set operations:
+
+% inspiration: https://texample.net/tikz/examples/set-operations-illustrated-with-venn-diagrams/
+\begin{center}
+\begin{tikzpicture}
+  \newcommand{\firstcircle}[2]{(#1,#2) circle (1.1cm)}
+  \newcommand{\secondcircle}[2]{(#1+1.6cm,#2) circle (1.1cm)}
+  \newcommand{\xoffset}[0]{4.1cm}
+  
+%  \def\firstcircle{(0,0) circle (1.5cm)}
+%  \def\secondcircle{(0:2cm) circle (1.5cm)}
+  
+  \colorlet{circle edge}{blue!50}
+  \colorlet{circle area}{blue!20}
+  
+  \tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+    outline/.style={draw=circle edge, thick}}
+  
+  % intersection: A and B
+  \begin{scope}
+    \clip \firstcircle{0*\xoffset}{0};
+    \fill[filled] \secondcircle{0*\xoffset}{0};
+  \end{scope}
+  \draw[outline] \firstcircle{0*\xoffset}{0} node {$A$};
+  \draw[outline] \secondcircle{0*\xoffset}{0} node {$B$};
+  \node[anchor=south] at (0*\xoffset+1.6cm/2, 1.1) {Intersection};
+  
+  % union: A or B
+  \draw[filled] \firstcircle{1*\xoffset}{0} node {$A$}
+                \secondcircle{1*\xoffset}{0} node {$B$};
+  \node[anchor=south] at (1*\xoffset+1.6cm/2, 1.1) {Union};
+  
+  % difference: B but not A
+  \begin{scope}
+    \clip \firstcircle{2*\xoffset}{0};
+    \draw[filled, even odd rule] \secondcircle{2*\xoffset}{0}
+                                 \firstcircle{2*\xoffset}{0};
+  \end{scope}
+  \draw[outline] \firstcircle{2*\xoffset}{0} node {$A$}
+                 \secondcircle{2*\xoffset}{0} node {$B$};
+  \node[anchor=south] at (2*\xoffset+1.6cm/2, 1.1) {Difference};
+\end{tikzpicture}
+\end{center}
+
+These operations can be implemented using the instance methods provided by \typename{Set}. These operations, however, are \textsl{destructive} and that's often not what you want. Lets make a different variant.
+
+\textbf{Subtask 1}
+
+First, declare a \typename{NondestructiveSet<T>} interface (i.e., a parameterized \typename{NondestructiveSet}) with the methods:
+\begin{itemize}
+  \item \methodname{Intersection} The intersection contains all elements that are in both sets.
+  \item \methodname{Union} The union contains all elements that are in at least one of the sets.
+  \item \methodname{Difference} The difference contains all elements from one set that are not in another set.
+\end{itemize}
+
+These methods all take a \typename{NondestructiveSet<T>} parameter and return a new \typename{NondestructiveSet<T>}.
+
+\textbf{Subtask 2}
+
+Next, you need to implement a \typename{NondestructiveHashSet<T>} class that inherits from \typename{HashSet<T>} and implements \typename{NondestructiveSet<T>}. Make sure that none of the methods from \typename{NondestructiveSet<T>} affect their inputs.
+
+\textbf{Subtask 3}
+
+Demonstrate that your implementation works as expected.
+
+\textbf{Subtask 4}
+
+Extend your \typename{NondestructiveSet<T>} class with methods for:
+\begin{itemize}
+  \item \methodname{IsDisjoint} which returns \valuename{true} if and only if the \typename{NondestructiveSet<T>} argument it receives has no elements in common with itself.
+  \item \methodname{IsSubset} which returns \valuename{true} if and only if all elements in its parameter (of type \typename{NondestructiveSet<T>}) exist in itself.
+\end{itemize}
+
+Implement these in \typename{NondestructiveHashSet<T>} and demonstrate correctness.
