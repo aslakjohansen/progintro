@@ -1,0 +1,7 @@
+\inputminted{csharp}{\context/answer/Months.cs}
+
+This code relies on the \filename{output.txt} file produced by the code from section \ref{a:io:fileoutput}.
+
+The \csharp\ compiler cannot know at compile time whether the file we want to read from exists, and therefore it chooses to produce code that at runtime may \textsl{throw} a \typename{FileNotFoundException} exception. We have to handle this.
+
+The starting point for this task is that the file is \textsl{encoded} in a certain way and we write logic that extracts data based on an assumption that this encoding is respected. This assumption will not always be correct, and it is an attractive quality of our logic to respond appropriately to this situation. We say that the code is \idx{robust}{Robustness} (with respect to this input).
