@@ -1,0 +1,7 @@
+\inputminted{csharp}{\context/answer/Months.cs}
+
+After execution, the result can be verified by opening the new file \filename{output.txt}.
+
+At compile time, the \csharp\ compiler cannot know whether the file we want to write to exists, or for that matter whether we are allowed to write to it. It does not even know which user the program will be executed as or which rights this user has at runtime. Therefore, one of two exceptions can be thrown at runtime: \typename{FileNotFoundException} and \typename{AccessDeniedException}. Both of these are subtypes of \typename{IOException} and -- as we want to treat those cases the same -- we can therefore just \textsl{catch} this one.
+
+In the class variable \varname{months}, the month number is implicitly represented through the index of the array. In this solution, I have chosen to store it explicitly to disk, even though that is not strictly the intention. To get a file format that is easy for humans to understand, I have \textsl{offset} the index of the array so that January gets the usual value 1.
