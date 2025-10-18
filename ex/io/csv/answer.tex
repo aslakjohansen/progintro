@@ -1,0 +1,11 @@
+A cell cannot contain the text \say{\texttt{1,2}} because the comma represents a separation of cells. If you try to do so anyway, you end up inserting two cells in the same row; one with the text \say{\texttt{1}} and one with the text \say{\texttt{2}}.
+
+\inputminted{csharp}{\context/answer/Matrix.cs}
+
+This solution has a number of weaknesses:
+\begin{enumerate}
+  \item The \methodname{Main} method is not informed of a possible lack of success during loading of data in the constructor that takes a \typename{String} as argument. Ideally, one would make sure that the constructor returns a \texttt{null} object, but this is not possible in \csharp. One could throw an exception, but then we would have to handle this and that is not an attractive solution either. Instead, the code should be refactored so that the \methodname{Load} method is separate from the constructor. This is considered good style. % https://shipilev.net/blog/2014/exceptional-performance/
+  \item A matrix is ​​by definition rectangular. It is possible to construct a CSV file that the constructor for \typename{Matrix} will interpret into a data structure that is not rectangular. For example, try deleting the last cell in the top row. The method \methodname{Load} will happily load this data structure, but the data structure will not be consistent with the model the class is designed to represent. This means that the class is not \idx{robust}{Robustness} to input data of the wrong structure.
+  \item Similarly, \methodname{Load} will not react sensibly to a cell that does not contain anything it can parse to a \typename{double}. This means that the class is not \idx{robust}{Robustness} to input data of the wrong format.
+  \item There is no check in either \methodname{GetValue} or \methodname{SetValue} for whether you are trying to index into the data structure outside the dimensions of the matrix.
+\end{enumerate}

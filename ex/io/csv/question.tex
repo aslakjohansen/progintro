@@ -1,0 +1,44 @@
+The CSV (Comma Separated Value) file format is a simple way to store a 2D table of data (as we know it from a spreadsheet). In this format, one row is stored at a time. A line break is used to differentiate between two rows. In each row, the individual cells are separated by a comma. Microsoft Excel is known to misinterpret formats by replacing the comma in the role of \textsl{separator character} with a semicolon. The following is an example of a CSV file:
+
+\begin{verbatim}
+1,1.2,1.5,1.0,1.0
+2,2.4,3.0,4.0,1.0
+3,3.6,4.5,9,0,1.0
+4,4.8,6.0,16.0,1.0
+5,6.0,7.5,25.0,1.0
+6,7.2,9.0,36.0,1.0
+\end{verbatim}
+
+What happens if you store the text \say{\texttt{1,2}} in a cell?
+
+Now create a new class with the name \typename{Matrix}, and implement the following:
+\begin{enumerate}
+  \item An instance attribute with the name \varname{data} of the type \typename{double[][]}.
+  \item A constructor that takes a file name as an argument and loads \varname{data} from it.
+  \item A constructor that takes two integers as arguments and assigns \varname{data} a \say{2d} array of this size where all cells have the value 0.
+  \item Appropriate getter and setter methods. By \say{appropriate} we mean the getter and setter methods that are needed. Note that these take two \typename{int} parameters -- in addition to the ones you normally see -- in order to be able to specify a cell.
+  \item A \methodname{Save} method that saves the object's current state (read: \varname{data}) to a file whose name is taken as a parameter.
+\end{enumerate}
+
+Now create a program that uses this class to create a 4*6 table with 0 values. Verify using a spreadsheet program that the result is correct. That is, that it can save a file with the contents:
+
+\begin{verbatim}
+0.0,0.0,0.0,0.0
+0.0,0.0,0.0,0.0
+0.0,0.0,0.0,0.0
+0.0,0.0,0.0,0.0
+0.0,0.0,0.0,0.0
+0.0,0.0,0.0,0.0
+\end{verbatim}
+
+Finally, create a program that reads the resulting file, adds one to the diagonal where $x=y$ and saves the result in a new file. This file should end up having the following content:
+
+\begin{verbatim}
+1.0,0.0,0.0,0.0
+0.0,1.0,0.0,0.0
+0.0,0.0,1.0,0.0
+0.0,0.0,0.0,1.0
+0.0,0.0,0.0,0.0
+0.0,0.0,0.0,0.0
+\end{verbatim}
+
