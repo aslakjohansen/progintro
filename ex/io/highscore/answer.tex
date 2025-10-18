@@ -1,0 +1,3 @@
+The data structure we want to represent is a sequence of score$\times$player sorted by score. We could introduce a \classname{ScoreEntry} class that contains a score and a player, but to keep the problem simple (e.g., by not having to consider what a player is), the following solution chooses to represent this data as two separate arrays: one for scores and one for player names. These arrays are of equal length and an index designates a combination of score and player.
+
+\inputminted{csharp}{\context/answer/Highscores.cs}
