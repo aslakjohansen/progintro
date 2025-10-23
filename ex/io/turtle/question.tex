@@ -1,0 +1,23 @@
+In this assignment, we are going to create a drawing program. So we start by creating a class called \typename{Canvas} whose constructor takes two integer parameters (a width and a height) and assigns an attribute called \varname{data} a \typename{bool[][]} of this size. Add getters and setters, and a method called \methodname{Print} that prints the contents in a nice way.
+
+We draw by giving instructions to a turtle with a pen. So we create a \typename{Turtle} class with two \typename{int} attributes (\varname{x} and \varname{y}) for position, a \typename{bool} attribute called \varname{draw} to indicate whether to draw when it moves, and a \typename{Canvas} attribute that tells which canvas it is on. Also add getters, setters, and \say{movers}. By \say{movers} we mean methods such as \methodname{GoNorth} that adjust the turtle's coordinate and draw on the canvas if \varname{draw} is true.
+
+Now define a command language that makes it possible to perform a sequence of operations on such a turtle. There could be, for example, one command per line. Commands could optionally be parameterized so that you could write \texttt{north 5} to move the turtle 5 spaces north. Implement a test program with a \methodname{Main} method that reads a file that meets this format (i.e., the command language), executes the commands, and prints the result to the screen.
+
+Create a file that meets your format and draws the following image:
+\begin{verbatim}
+  +-----------+
+  |           |
+  |     X   X |
+  |    X X    |
+  |   X   X   |
+  |  X     X  |
+  | X       X |
+  | X       X |
+  | X       X |
+  | X       X |
+  | X       X |
+  | XXXXXXXXX |
+  |           |
+  +-----------+
+\end{verbatim}
