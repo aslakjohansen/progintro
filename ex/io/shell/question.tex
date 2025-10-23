@@ -1,0 +1,21 @@
+Create a program in which the user is presented with a prompt through which commands can be entered. More precisely:
+\begin{enumerate}
+  \item Create a \methodname{Main} method.
+  \item In this method, create a \typename{bool} variable named \varname{done} and initialize it to \texttt{false}.
+  \item Place a \texttt{while}-loop inside the \varname{Main} method and use as condition \texttt{!\varname{done}}. Try to pronounce this line!
+  \item The rest of the code will be placed inside this \texttt{while} loop.
+  \item First, a prompt \underline{without line breaks} is printed. This could be the text string \say{\texttt{\$ }}.
+  \item Next, a line is read.
+  \item Split this line on spaces.
+  \item A reference to the resulting list is stored in a variable named \varname{command\_args}. What would a reasonable type for this be?
+  \item A reference to the first element of \varname{command\_args} is stored in a variable named \varname{command}.
+  \item Use a \texttt{switch} construct on \varname{command} to implement a series of commands. Implement at least the following commands:
+    \begin{enumerate}
+      \descitem{exit} This sets the variable \varname{done} to the value \texttt{true}.
+      \descitem{echo} This prints the same text as it received.
+      \descitem{time} This prints the current time.
+    \end{enumerate}
+  \item Make sure to print an informative error message if \varname{command} is not recognized.
+\end{enumerate}
+
+Test that the above functionality works.
