@@ -1,0 +1,8 @@
+<svg width="600" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="600" height="600" style="fill:#ff8800"/>
+  <rect x="10" y="10" width="580" height="580" style="stroke:black;stroke-width:5;fill:white"/>
+  <line x1="10" y1="10" x2="590" y2="590" stroke="black" stroke-width="2"/>
+  <text x="400" y="200" text-anchor="middle" font-size="28">Some text</text>
+  <text x="200" y="400" text-anchor="middle" font-size="28" font-weight="bold">Other text</text>
+  <circle cx="600" cy="600" r="300" fill="none" stroke="#0000ff" />
+</svg>
