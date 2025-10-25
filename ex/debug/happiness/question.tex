@@ -1,0 +1,23 @@
+The following program describes a situation where a person wants to buy 15 items, each costing 6000 DKK. This person has an amount in his bankbook and owns a house of modest value. In addition, the individual has a distorted perception of his own happiness. The following program \textsl{simulates} how the individual purchases affect the individual's happiness.
+
+\inputminted{csharp}{\context/question/Happiness.cs}
+
+\textbf{Subtask 1}
+
+The \methodname{Main} method consists of a loop where each iteration (through some method calls) works on the variables \varname{account}, \varname{ownsHouse} and \varname{happy}.
+
+Start by running the program manually. This means that you sit down with a piece of paper (you decide whether it should be physical or virtual). On this paper you draw a table with a column for each of the three variables and a line for each of the 15 iterations. For each iteration, you now fill in the values ​​that the three variables have after calculating happy.
+
+How do you do that? Well, you pretend to be the \idx{CLR}{CLR} \idx{virtual machine}{Virtual machine} that can interpret compiled \csharp\ code, follow the method calls that are made and note which variables are written to along the way.
+
+What will the program print out?
+
+\textbf{Subtask 2}
+
+Get the CLR virtual machine to execute the program. What does it actually print out?
+
+\textbf{Subtask 3}
+
+Is there a match between what you have guessed it will print out and what it actually prints out?
+
+In the event of a mismatch, you must track down where this mismatch occurs, and investigate whether there is a problem in your understanding of how \csharp\ interprets the code, or whether you had simply overlooked something. To do this, you insert printouts at appropriate places in the code.

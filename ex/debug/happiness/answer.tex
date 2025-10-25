@@ -1,0 +1,9 @@
+The trick here is that \csharp\ -- like almost all other programming languages ​​-- will evaluate boolean expressions \idx{lazily}{Evaluation!Lazy} and short-circuit. This means that with the boolean operators AND and OR, you only evaluate the right-hand side if it has the possibility to affect the result of the full expression. For example, the value of the expression \texttt{false \&\& \methodname{SomeMethod}()} will be false regardless of what \methodname{SomeMethod} evaluates to, and \csharp\ will therefore choose \textsl{not} to call \methodname{SomeMethod}. Similarly, \texttt{true || \methodname{SomeMethod}()} will always evaluate to true and \csharp\ will thus not call \methodname{SomeMethod}.
+
+This is often used for some \textsl{smart} constructions. For instance, you can guard against problematic situations such as method calls on \texttt{null} objects:
+
+\begin{minted}{csharp}
+if (person!=null && person.IsAlive()) {
+    Console.WriteLine(person.GetName()+" is alive!");
+}
+\end{minted}
