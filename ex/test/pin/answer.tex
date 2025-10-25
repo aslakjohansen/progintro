@@ -1,0 +1,33 @@
+\textbf{Subtask 1}
+
+A counter \varname{time2pin} keeps track of how many transactions there are before we \textsl{have to} ask for a password. If this limit is zero, or the limit amount \varname{CRITICAL\_AMOUNT} has been exceeded, then this variable is reset to the starting point (\varname{MAX\_TRANSACTIONS}).
+
+We then check whether the critical amount has been exceeded and if this is not the case, we count \varname{time2pin} down by one and check whether the result is zero. If one of these conditions applies, then a PIN code must be requested and the method returns \texttt{true}.
+
+\textbf{Subtask 2}
+
+The amount \varname{amount} has 350 and 351 as limit values ​​because the rule is whether the amount is \textsl{greater than} 350. 350 is the largest amount where this is not the case and 351 is the smallest amount where it is the case.
+
+The variable \varname{time2pin} is a little more complicated. In the code we can see that the value of \varname{MAX\_TRANSACTIONS} is assigned. This makes this value a limit value. We can also see that \varname{time2pin} decreases with time, is integer and is compared to zero. Therefore -1, 0 and 1 (zero and neighbors) are also limit values.
+
+\textbf{Subtask 3}
+
+\inputminted{csharp}{\context/answer/Pin.cs}
+
+Executing this program prints the following:
+\begin{verbatim}
+a=350 t=-1 r=false
+a=350 t=0 r=true
+a=350 t=1 r=false
+a=351 t=-1 r=true
+a=351 t=0 r=true
+a=351 t=1 r=true
+\end{verbatim}
+
+From this we can see that all test cases with a \varname{amount} of 351 give us a \texttt{true} value, and that the test case where \varname{amount} is 0 and \varname{time2pin} is 0 gives a \texttt{true} value. This represents correct behavior.
+
+These combinations of boundary values ​​represent the most obvious potential for problems. We cannot conclude from this analysis whether \methodname{Expend} works under all combinations of input (\varname{amount}) and state (\varname{time2pin}), but it is a good start.
+
+\textbf{Subtask 4}
+
+If a random number generator had been involved, we would have had to run our test cases enough times to be able to argue that we have statistical evidence to draw a conclusion.
