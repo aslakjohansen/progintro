@@ -1,0 +1,9 @@
+The \methodname{sum} method contains three bugs:
+\begin{enumerate}
+  \item The method operates on indices instead of the elements that are at the index positions in \varname{numbers}.
+  \item The \keywordname{for}-loop condition is off-by-one such that the method goes one step too far. This results in an \texttt{IndexOutOfRangeException}.
+  \item The loop variable \varname{i} starts with the value 1, which means that the first element in \varname{numbers} is skipped. The calculated result is therefore the value of \texttt{\varname{numbers}[0]} too low.
+\end{enumerate}
+
+These errors are fixed in the following code:
+\inputminted{csharp}{\context/answer/Adder.cs}
