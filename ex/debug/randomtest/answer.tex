@@ -1,0 +1,29 @@
+When we subtract one random number from another, we get a random number. The average of a series of random numbers approaches the \idx{mean}{Mean} of the generator's distribution. So when we take the average of 20 random numbers 10 times in a row, the results should be close to each other, relative to the width of the distribution.
+
+This is not fit the case that we are observing. In addition to the fluctuating averages, the standard deviation seems to be relatively small. This suggests that something is wrong. It turns out that the test \textsl{is} wrong. The problem comes from the calculation of \texttt{\varname{d}[\varname{i}]} where it is always the first element of \varname{a} that is subtracted from the \varname{i}th element of \varname{b}. This means that in practice, the elements from \varname{b} are offset by the value of \texttt{\varname{d}[1]} (which is constant for all \varname{i}) instead of offset by the random number in \texttt{\varname{a}[\varname{i}]}.
+
+After correcting this, we get a smaller variation in the mean, and larger standard deviations:
+{\tiny
+\begin{verbatim}
+[  101    6   43   21   10  -60    3  -94  -74   61  -80   81   40  -49 -124 -179   95 -101  -51 -127    4   85   98  -75
+    51 -118 -110   26   33   33  136    1  -56  -56    6   93  -12   44  131    8  -64  114   43 -148   94   14   95  105 ] avg=   2 stdev=80.76
+[   20 -195   43  -32   -2 -128   58  102    1  -96   77  -62  -91  -33   33  -78  -40   23  -36 -113 -122  -79  -99  -89
+  -104  -40  -19    5   29  -66  -86 -107  -13   27  -36  -44  110   19  -39  103   43   57   -7   16   -1  -26   -4   42 ] avg= -22 stdev=66.33
+[  -99  143  -96  -12    7  -54   77   98  176   35   11 -118   67   95  -31   59   64  102  -73   48 -191   26  -11  -55
+   -54  -87    1  -96    8   24  -51   76   41   -3  -84    8   74  -22  -67   19   11 -108   -6  105   45  138  -20  156 ] avg=   7 stdev=78.90
+[  -48 -139 -116  -64   20   89  -16  -62  -45   30  -44   39   29 -166   54  -84   84  114 -135   34    4    3  -93   -1
+    87   10 -139 -109  128  -38   11  158  140  -57    5  -57  -53   44   20   87   10  -32 -100   45   55  -55  -72  124 ] avg=  -6 stdev=79.45
+[   87  -76   25 -129   45   -9  -17   98  -97   14   31    3   35   74   41   -3   84  -45  140   64  -73 -156   72    1
+   -11   99  -20  -11   40   64  157  -18   10  129  -71  -89  -68  -85  -49 -101  -18  -45  -70  -54   13  -31  -95  -47 ] avg=  -3 stdev=71.66
+[  -83 -118  -47   39 -114   30 -137 -142   50   33  -44  100   13  146  -18   18  -19  -60  -77   -7  -10  -95   77   99
+    30  -23  -12   43 -107  -43   39    1   68  148   34   15  -19    2  110   55  -63  191   48 -114  107   61   85  -78 ] avg=   4 stdev=78.36
+[    3   33  -66   30   79   33   54  105   65   -7  -26   64 -101   -6   26  -69   82  111    4  -14  -11   66   86   26
+   135   22  -32    5  -76   47   53  -52 -129  107  138  110   42  -47  -55   59   48   -6   81  127    1   64    8  -85 ] avg=  23 stdev=64.04
+[  -50 -130   55   -2  132 -116   97  -22  -55 -128   23   56  -79  -67  -14   32  106   28  -56  148   68   30   39 -117
+    65   51   35  -43   20   18   -8   35  -71  116  -97  -58    6 -169  112 -185   -4  -47  143 -132   31   20  -51 -112 ] avg=  -7 stdev=82.75
+[ -108  -75  -69   53 -115   -6  -61   -2  -44   -1    1  -23   -1   -6   10  -47  -29  -44  -66  -55  -14  143   64   49
+   -14 -104  139   55 -135  -33   42  -26   24  -38  -29   57   20   58  -40   43    3  -24    4  -60   28 -100  -95  -75 ] avg= -15 stdev=59.59
+[   11  -37  -80 -135  -10  -15  -85 -138    8  139   99   54  -24  -43  -14   26  -57   41   81 -117   29  -44 -102 -133
+   -88  -10  -33  -74  112  -31  -16  129  -26  101   24  -67  -99 -107   98  -28  -50   55   54  -39  -13  -24  -55  -93 ] avg= -17 stdev=71.40
+\end{verbatim}
+}
