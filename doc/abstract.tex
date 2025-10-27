@@ -7,6 +7,9 @@ Hello
 
 % definition: collection of methods
 
+% example: Lockable
+For instance, many things can be locked and unlocked. These things are \textsl{lockable}, and that is a quality that we might want to associate with both buildings and vehicles. We can use an interface to group two methods that define this behavior; one that locks, and one that unlocks.
+
 % can be used as a type
 
 % contract across the type
@@ -14,6 +17,8 @@ Hello
 % Check: in order to satisfy an interface type, an instantiable type must have implementations for those methods
 
 \subsubsection{Naming Convention}
+
+It is convention, in \csharp, to prefix the name of an interface with a capital \interfacename{I}. The interface defining the \textsl{lockable} behavior should thus be called \interfacename{ILockable}. This convention is not enforced.
 
 \section{Abstract Classes}
 \csharpsubsection{\csharp}
