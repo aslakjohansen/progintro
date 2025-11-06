@@ -1,0 +1,153 @@
+These tasks build on the series of tasks about a storage system. The task includes the code from section \ref{q:swarch:inventory:code} below. There is quite a bit.
+
+\textbf{Subtask 1}
+
+Create a new project in your development environment and add the files from section \ref{q:swarch:inventory:code}. Make sure that the \methodname{Main} method in \typename{Test} runs and that it behaves in a reasonable way.
+
+\textbf{Subtask 2}
+
+The code is divided into 3 namespaces. Look through the code and count how many references there are from one file to another. A reference means a method call or an access to an attribute/variable. It is not so important that the numbers are exact and you can just focus on references that cross namespaces. Furthermore, we are not interested in whether the references are at the object or class level (count both). Complete the following table so that one field contains the number of references from a file on the x-axis to a file on the y-axis. Time how long it takes to complete the table.
+
+{\setlength\tabcolsep{1.5pt}
+\begin{center}
+  \begin{tabular}{l|c|c|c|c|c|c|c|c|c|c|}
+    & \rotatebox{90}{\texttt{data/FileBackend.cs}}
+    & \rotatebox{90}{\texttt{domain/Item.cs}}
+    & \rotatebox{90}{\texttt{domain/FoodItem.cs}}
+    & \rotatebox{90}{\texttt{domain/NonFoodItem.cs}}
+    & \rotatebox{90}{\texttt{domain/ItemNameLengthComparator.cs}}
+    & \rotatebox{90}{\texttt{domain/Expirable.cs}}
+    & \rotatebox{90}{\texttt{domain/ExpiredItemAddedException.cs}}
+    & \rotatebox{90}{\texttt{domain/Inventory.cs}}
+    & \rotatebox{90}{\texttt{presentation/Test.cs}}
+    \\
+    \hline
+    \texttt{data/FileBackend.cs}                 & \cellcolor{black} & \cellcolor{black!15} & \cellcolor{black!15} & \cellcolor{black!15} & \cellcolor{black!15} & \cellcolor{black!15} & \cellcolor{black!15} & \cellcolor{black!15} & \\
+    \hline
+    \texttt{domain/Item.cs}                      & \cellcolor{black!15} & \cellcolor{black} & & & & & & & \cellcolor{black!15} \\
+    \hline
+    \texttt{domain/FoodItem.cs}                  & \cellcolor{black!15} & & \cellcolor{black} & & & & & & \cellcolor{black!15} \\
+    \hline
+    \texttt{domain/NonFoodItem.cs}               & \cellcolor{black!15} & & & \cellcolor{black} & & & & & \cellcolor{black!15} \\
+    \hline
+    \texttt{domain/ItemNameLengthComparator.cs}  & \cellcolor{black!15} & & & & \cellcolor{black} & & & & \cellcolor{black!15} \\
+    \hline
+    \texttt{domain/Expirable.cs}                 & \cellcolor{black!15} & & & & & \cellcolor{black} & & & \cellcolor{black!15} \\
+    \hline
+    \texttt{domain/ExpiredItemAddedException.cs} & \cellcolor{black!15} & & & & & & \cellcolor{black} & & \cellcolor{black!15} \\
+    \hline
+    \texttt{domain/Inventory.cs}                 & \cellcolor{black!15} & & & & & & & \cellcolor{black} & \cellcolor{black!15} \\
+    \hline
+    \texttt{presentation/Test.cs}             & & \cellcolor{black!15} & \cellcolor{black!15} & \cellcolor{black!15} & \cellcolor{black!15} & \cellcolor{black!15} & \cellcolor{black!15} & \cellcolor{black!15} & \cellcolor{black} \\
+    \hline
+  \end{tabular}
+\end{center}
+}
+
+\textbf{Subtask 3}
+
+Describe the responsibilities of each namespace.
+
+\textbf{Subtask 4}
+
+Based on the analysis in subtask 2, describe the extent to which these responsibilities depend on each other.
+
+If you want to change a file in the \namespacename{Domain} namespace, which files could you risk having to adjust in order not to introduce an error? In which namespaces are these files located? How do these answers depend on \textsl{which} file the change is made in?
+
+\textbf{Subtask 5}
+
+How would the answer to the previous task change if we had another project (that we did not know about) that used our \namespacename{Domain} namespace?
+
+\textbf{Subtask 6}
+
+Now create a copy of the project and add a namespace named \namespacename{Interface} with an interface named \typename{IDomain}. This interface must contain the following content:
+
+\begin{minted}{csharp}
+namespace Interface {
+  public interface IDomain {
+      public void Load ();
+      public void Store ();
+      public void AddNonFoodItem (string name, double price, string[] materials);
+  }
+}
+\end{minted}
+
+\textbf{Subtask 7}
+
+Now create a class named \typename{Domain} in the namespace \namespacename{Domain}. This class must be declared \texttt{public} and implement the interface \typename{Interface.IDomain}. This class must now function as the only link between the \namespacename{Domain} namespace and the \namespacename{Presentation} namespace.
+
+To do this, the constructor must take a filename of type \typename{string} as an argument. This filename must be stored in an object attribute named \varname{filename}. In addition, the constructor must create an \typename{Inventory} object and store a reference to it in an object variable named \varname{inventory}.
+
+Override all the methods from \typename{Interface.IDomain}:
+\begin{itemize}
+  \item \methodname{Load} This method should call \methodname{Load} on \varname{inventory} with \varname{filename} as argument.
+  \item \methodname{Store} This method should call \methodname{Store} on \varname{inventory} with \varname{filename} as argument.
+  \item \methodname{AddNonFoodItem} This method should create a \typename{NonFoodItem} object with the parameters it has received, and call \methodname{AddItem} on \varname{inventory} with this object as argument.
+\end{itemize}
+
+\textbf{Subtask 8}
+
+Modify the access modifiers in ALL other classes in the namespace \namespacename{Domain} to be default (in other words, remove the \texttt{public} keyword before the class names).
+
+Update all classes in the namespace \namespacename{Presentation} to create an object of type \typename{Domain.Domain}, store this in a variable of type \typename{Interface.IDomain} and make sure that all references to the \namespacename{Domain} namespace go through this object.
+
+Make sure that the \methodname{Main} method in \typename{Test} can run and that it behaves in a reasonable manner.
+
+\textbf{Subtask 9}
+
+Now we have two versions of this codebase: the released one and the updated one. They do the same thing, but have different code qualities.
+
+Let's repeat \textbf{subtask 4} for the updated codebase: If you want to change a file in the \namespacename{Domain} namespace, which files could you risk having to adjust in order not to introduce an error? In which namespaces are these files located? How do these answers depend on \textsl{which} file the change is made in?
+
+Let's repeat \textbf{subtask 5} for the updated codebase: How would the answer to the previous task change if we had another project (that we didn't know about) that used our \namespacename{Domain} namespace?
+
+\textbf{Subtask 10}
+
+In what ways is which codebase better?
+
+\subsubsection{Provided Code}
+\label{q:swarch:inventory:code}
+
+The following code is divided into 3 namespaces, each representing a layer:
+\begin{enumerate}
+  \item \namespacename{Data}
+  \item \namespacename{Domain}
+  \item \namespacename{Presentation}
+\end{enumerate}
+
+Code to save state to files (\filename{data/FileBackend.cs}):
+
+\inputminted{csharp}{\context/question/data/FileBackend.cs}
+
+Code for an item (\filename{domain/Item.cs}):
+
+\inputminted{csharp}{\context/question/domain/Item.cs}
+
+Code for an edible item (\filename{domain/FoodItem.cs}):
+
+\inputminted{csharp}{\context/question/domain/FoodItem.cs}
+
+Code for a non-edible item (\filename{domain/NonFoodItem.cs}):
+
+\inputminted{csharp}{\context/question/domain/NonFoodItem.cs}
+
+A comparator for product lengths (\filename{domain/ItemNameLengthComparer.cs}):
+
+\inputminted{csharp}{\context/question/domain/ItemNameLengthComparer.cs}
+
+Interface for whether something has expired (\filename{domain/IExpirable.cs}):
+
+\inputminted{csharp}{\context/question/domain/IExpirable.cs}
+
+Exception for an expired item (\filename{domain/ExpiredItemAddedException.cs}):
+
+\inputminted{csharp}{\context/question/domain/ExpiredItemAddedException.cs}
+
+Code for an inventory (\filename{domain/Inventory.cs}):
+
+\inputminted{csharp}{\context/question/domain/Inventory.cs}
+
+Sample code (\filename{presentation/Test.cs}):
+
+\inputminted{csharp}{\context/question/presentation/Test.cs}
+
