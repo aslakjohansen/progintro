@@ -3,7 +3,8 @@ public class RaceCar : Racer
   private double fuel;
   private double fuelEfficiency;
   
-  public RaceCar (string name, double speed, double fuel, double fuelEfficiency) : base (name, speed) {
+  public RaceCar (string name, double speed, double fuel, double fuelEfficiency)
+       : base (name, speed) {
     this.fuel = fuel;
     this.fuelEfficiency = fuelEfficiency;
   }

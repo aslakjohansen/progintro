@@ -51,7 +51,7 @@ To simulate races, create a method somewhere in your program which:
   \item Declares a local \typename{bool} variable called \varname{finished} and sets it to \keywordname{false}.
   \item Contains a loop which repeats while \varname{finished} is \keywordname{false}. In each iteration of this loop, iterate through the \varname{racers} and for every \typename{Racer} object:
     \begin{enumerate}
-      \item Calculates that \varname{racer}'s current distance raced by calling \texttt{\methodname{Race}(\varname{playbackSpeed})} and saving the result in a local variable called \varname{distance}.
+      \item Calculate that \varname{racer}'s current distance raced by calling \texttt{\methodname{Race}(\varname{playbackSpeed})} and saving the result in a local variable called \varname{distance}.
       \item For every integer number from zero until (but not including) \varname{distance}, write \say{\texttt{-}} to the screen without linebreaks.
       \item Write the name of the racer to the screen and then break the line.
       \item Check if distance is greater than or equal to \varname{raceDistance}, and set \varname{finished} to \keywordname{true} if it is.
