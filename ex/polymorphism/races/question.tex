@@ -1,0 +1,75 @@
+In this exercise, you'll write a program that can simulate races between different types of racers. The program should be flexible, so that no matter what set of entities enter a race (for example a car and a horse), the overall implementation doesn't need to change. You'll use inheritance and polymorphism to achieve this.
+
+\textbf{Subtask 1}
+
+Create a class called \classname{Racer}. It should contain the following:
+\begin{itemize}
+  \item A \keywordname{public} instance variable called \varname{Name} of type \typename{string}.
+  \item A \keywordname{protected} instance variable called \varname{speed} of type \typename{double}.
+  \item A \keywordname{protected} instance variable called \varname{distance} of type \typename{double}.
+  \item A constructor which takes a \typename{string} value and a \typename{double} value as parameters and uses them to initialize \varname{Name} and \varname{speed}.
+  \item A \keywordname{virtual} method called \methodname{Race} which returns a \typename{double}. The purpose of this method is to calculate the racer's distance over time while in a race. It should take a \typename{double} value called \varname{time} as parameter. The method should multiply the \varname{time} parameter with the racer's \varname{speed} and add the result to its \varname{distance}. It should then return the distance.
+\end{itemize}
+
+\textbf{Subtask 2}
+
+Create a class called \classname{RaceCar} and make it inherit from \classname{Racer}. In this new class, do the following:
+\begin{itemize}
+  \item Add two more instance variables of type \typename{double}, one called \varname{fuel} and one called \varname{fuelEfficiency}.
+  \item Add a constructor which takes the same parameters as the \classname{Racer} constructor plus an additional two \typename{double} parameters. It should call the \keywordname{base} constructor to initialize \varname{Name} and \varname{speed}, and use the two new \typename{double} variables to initialize \varname{fuel} and \varname{fuelEfficiency}.
+  \item Override the \methodname{Race} method. Add new code inside the method which:
+    \begin{enumerate}
+      \item Subtracts \varname{time} divided by \varname{fuelEfficiency} from \varname{fuel}.
+      \item Checks if \varname{fuel} is now less than or equal to zero, and sets speed to zero if it is.
+      \item Finally adds \varname{speed} multiplied by \varname{time} to \varname{distance} and returns \varname{distance} (call the \keywordname{base} method implementation to reuse existing code).
+    \end{enumerate}
+\end{itemize}
+
+Create a class called \classname{RaceHorse} and make it inherit from \classname{Racer}. In this new class, do the following:
+\begin{itemize}
+  \item Add one more instance variable called \varname{stamina} of type \typename{double}.
+  \item Add a constructor which takes the same parameters as the \classname{Racer} constructor plus an additional \typename{double} parameter. It should call the \keywordname{base} constructor to initialize \varname{Name} and \varname{speed}, and use the new \typename{double} variable to initialize \varname{stamina}.
+  \item Override the \methodname{Race} method. Add new code inside the method which:
+    \begin{enumerate}
+      \item Subtracts \varname{time} divided by \varname{stamina} from \varname{speed}.
+      \item Sets \varname{speed} to a minimum value (for instance two) if it is now less than that value.
+      \item Finally adds \varname{speed} multiplied by \varname{time} to \varname{distance} and returns \varname{distance}.
+    \end{enumerate}
+\end{itemize}
+
+\textbf{Extension:} Create one or more other classes that inherit from \classname{Racer}. Override the \methodname{Race} method in each of these classes and implement your own logic that determines how \varname{distance} over \varname{time} should be calculated.
+
+\textbf{Subtask 3}
+
+Before proceeding to the final step of simulating the races themselves, you should test your current implementation to see if everything works as expected. This can be done by instantiating at least one object of each class that inherits from \classname{Racer} and calling every implementation of the \methodname{Race} method. You can then write the results to the terminal to verify that they come out as expected.
+
+\textbf{Subtask 4}
+
+To simulate races, create a method somewhere in your program which:
+\begin{enumerate}
+  \item Takes the following parameters: \varname{racers} of type \typename{Racer[]}, \varname{raceDistance} of type \typename{double}, and \varname{playbackSpeed} of type \typename{double}.
+  \item Declares a local \typename{bool} variable called \varname{finished} and sets it to \keywordname{false}.
+  \item Contains a loop which repeats while \varname{finished} is \keywordname{false}. In each iteration of this loop, iterate through the \varname{racers} and for every \typename{Racer} object:
+    \begin{enumerate}
+      \item Calculates that \varname{racer}'s current distance raced by calling \texttt{\methodname{Race}(\varname{playbackSpeed})} and saving the result in a local variable called \varname{distance}.
+      \item For every integer number from zero until (but not including) \varname{distance}, write \say{\texttt{-}} to the screen without linebreaks.
+      \item Write the name of the racer to the screen and then break the line.
+      \item Check if distance is greater than or equal to \varname{raceDistance}, and set \varname{finished} to \keywordname{true} if it is.
+    \end{enumerate}
+  \item After iterating through all the \varname{racers}, write this line of code at the end of your loop: \texttt{Thread.Sleep(1000);}. It will pause the execution of your program for 1000 ms.
+\end{enumerate}
+
+Once you've finished making the method, it's time to have some races. Do the following in your program's \methodname{Main} method:
+\begin{itemize}
+  \item Instantiate at least one object of each class that inherits from \classname{Racer}.
+  \item Create an array of type \typename{Racer[]}, and add all of your newly instantiated \classname{Racer} objects to it.
+  \item Call the method you just made and pass the array of racers as argument, along with your choice of \varname{raceDistance} and \varname{playbackSpeed}.
+  \item Repeat this process a number of times and use different parameters to see how the results differ.
+\end{itemize}
+
+\textbf{Extension:} Adjust the method for simulating races to your liking to make it more interesting to look at. You could, for instance, make the racers wait at the beginning of the race before they start moving, show visually where the goal is, or announce the winner of the race at the end.
+
+\textbf{Subtask 5}
+
+But how do you determine -- in code -- who won the race? What happens when two racers cross the finish line in the same simulation step?
+
