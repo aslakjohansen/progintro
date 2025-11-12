@@ -1,0 +1,75 @@
+The Fibonacci sequence is an infinite sequence of integers determined by the following formula:
+\begin{align*}
+  \mathrm{fib}(n) =
+    \begin{cases}
+      0 & \text{for}~ n=0 \\
+      1 & \text{for}~ n=1 \\
+      \mathrm{fib}(n-1)+\mathrm{fib}(n-2) & \text{for}~ n>1
+    \end{cases}
+\end{align*}
+
+This sequence can be observed in a number of places in nature and is also used in a number of data structures.
+
+\textbf{Subtask 1}
+
+Create a new notebook in Livebook and in an Elixir code cell create a module named \modulename{FibPrimitive}. Inside this module, you now create three functions called \funcname{calc}:
+\begin{enumerate}
+  \item The first takes the value $0$ as a parameter and evaluates to the value 0.
+  \item The second takes the value $1$ as a parameter and evaluates to the value 1.
+  \item The third takes the value $n$ as a parameter and evaluates to the sum of the result of a recursive call with the parameter $n-1$ and the result of another recursive call with the parameter $n-2$. Add a guard that checks that $n$ is positive.
+\end{enumerate}
+
+Test by creating a new Elixir code cell and entering the following code:
+\begin{minted}{elixir}
+0..40
+|> Enum.map(&FibPrimitive.calc/1)
+\end{minted}
+
+This should yield:
+\begin{minted}{iex}
+iex(1)> 0..40|> Enum.map(&FibPrimitive.calc/1)
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584,
+ 4181, 6765, 10946, 17711, 28657, 46368, 75025, 121393, 196418, 317811, 514229,
+ 832040, 1346269, 2178309, 3524578, 5702887, 9227465, 14930352, 24157817,
+ 39088169, 63245986, 102334155]
+\end{minted}
+ 
+\textbf{Subtask 2}
+
+Unfortunately, it takes a significant amount of time to calculate these first 40 numbers in the sequence. Why that is?
+
+\textbf{Subtask 3}
+
+Let's try to implement an alternative definition of the sequence. Here, we work with the last two values ​​and the number of remaining iterations. As a starting point we use the first two numbers in the sequence; that is, $0$ and $1$. In the following, $r_n$ stands for the $n$th result in the sequence.
+
+The new definition:
+\begin{align*}
+  \mathrm{fib}(n) &= \mathrm{fib}_2(0, 1, n) &  \\
+  \mathrm{fib}_2(r_{-1}, r_{-2}, n) &=
+    \begin{cases}
+      r_{-1} & \text{for}~ n=0 \\
+      \mathrm{fib}_2(r_{-1}+r_{-2}, r_{-1}, n-1) & \text{for}~ n>0
+    \end{cases}
+  \\
+\end{align*}
+
+Create a new Elixir code cell with a module named \modulename{FibThoughtfull}. Inside this module you now create functions called \funcname{calc} for the above definitions.
+
+Verify that the code is working correctly. How fast is it compared to the last version and why?
+
+\textbf{Subtask 4}
+
+Lets try to visualize that differense.
+
+Add the latest version of the following modules to your workbooks \textsl{dependencies}:
+\begin{itemize}
+  \item \texttt{:vega\_lite}
+  \item \texttt{:kino\_vega\_lite}
+\end{itemize}
+
+Then copy the following code into your notebook in appropriate cells:
+\inputminted[fontsize=\small]{elixir}{\context/question/eval.exs}
+
+Run these cells.
+
+Which solution would you choose for $n=50$?

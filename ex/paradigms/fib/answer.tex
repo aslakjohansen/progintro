@@ -1,0 +1,17 @@
+\textbf{Subtask 1}
+
+\inputminted[fontsize=\footnotesize]{elixir}{\context/answer/FibPrimitive.ex}
+
+\textbf{Subtask 2}
+
+To calculate $\mathrm{fib}(n)$ where $n=1$, $\mathrm{fib}(1)$ must be evaluated exactly once. If $n=3$, $\mathrm{fib}(1)$ must be evaluated exactly twice: $\mathrm{fib}(3)$ is indeed equal to $\mathrm{fib}(2)+\mathrm{fib}(1)$, and each of these requires that $\mathrm{fib}(1)$ be evaluated once. Each time $n$ is increased by one, the number of times $\mathrm{fib}(1)$ must be evaluated doubles. In other words, we have a \textsl{complexity} that follows $2^n$. It quickly becomes a problem.
+
+\textbf{Subtask 3}
+
+\inputminted[fontsize=\footnotesize]{elixir}{\context/answer/FibThoughtfull.ex}
+
+The difference here is that nothing is calculated twice.
+
+\textbf{Subtask 4}
+
+According to the resulting plot, it is quite clear that the solution from subtask 3 is massively superior. This is something you often see within algorithms.
