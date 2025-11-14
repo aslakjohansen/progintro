@@ -1,0 +1,7 @@
+\textbf{Subtask 1}
+
+The abstract syntax tree represents the structure of our code. It is constructed from the language's grammar, which is recursively defined\footnote{\url{https://github.com/aslakjohansen/cflat/blob/main/src/parser.yrl}} with a number of rules for what constitutes a statement, what constitutes an expression, and so on.
+
+\textbf{Subtask 2}
+
+A \keywordname{while} loop is evaluated by first evaluating a condition. If this evaluates to \valuename{false}, our current state is returned. If it evaluates to \valuename{true}, the body is evaluated (resulting in a new state) and then we repeat this procedure by recursion.
