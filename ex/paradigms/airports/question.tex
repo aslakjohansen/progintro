@@ -1,0 +1,46 @@
+The following link contains a list of airports in the world, with country code and coordinates: \scalebox{0.95}{\url{https://raw.githubusercontent.com/ip2location/ip2location-iata-icao/master/iata-icao.csv}}
+
+\textbf{Subtask 1}
+
+Copy the following code into a Livebook notebook (use multiple cells):
+\inputminted[fontsize=\footnotesize]{elixir}{\context/question/airports.exs}
+
+Three external modules are used:
+\begin{itemize}
+  \item \texttt{:req} to retrieve things from the internet.
+  \item \texttt{:maplibre} to work with maps.
+  \item \texttt{:kino\_maplibre} to display maps.
+\end{itemize}
+
+These modules must be added at the top under \say{Notebook dependencies and setup}. Select the latest versions of these modules.
+
+You should now be able to click through the notebook and get a world map with a bunch of pins. You can zoom in in this map.
+
+\textbf{Subtask 2}
+
+What does the function \funcname{Req.get!} do?
+
+\textbf{Subtask 3}
+
+What is the role of \varname{index}?
+
+\textbf{Subtask 4}
+
+The module \modulename{Enum} has a \funcname{member?} function that tells whether a term is a member of a list. The same module has a \funcname{filter} function. Use a combination of these to ensure that only the airports located in a city from a country mentioned in \varname{countries\_interest} are shown.
+
+\textbf{Subtask 5}
+
+Now we need to color the markers according to the following rules:
+\begin{itemize}
+  \item Members of \varname{countries\_eu} should be colored \texttt{"blue"}.
+  \item Members of \varname{countries\_efta} should be colored \texttt{"cyan"}.
+  \item Members of \varname{countries\_eu\_cand} should be colored \texttt{"green"}.
+  \item Members of \varname{countries\_enp} should be colored \texttt{"orange"}.
+  \item Members of \varname{countries\_other} should be colored \texttt{"white"}.
+\end{itemize}
+
+Verify that it works!
+
+\textbf{Subtask 6}
+
+Why is \say{Heathrow Airport} not on the final map?

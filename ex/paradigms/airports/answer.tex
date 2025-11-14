@@ -1,0 +1,19 @@
+\textbf{Subtask 1}
+
+There is no reference solution for this task.
+
+\textbf{Subtask 2}
+
+The function \funcname{Req.get!} takes a parameter which must be a string representing a valid URL. It then performs an HTTP GET operation (which means that it downloads the file) and returns a data structure through which (via the key \texttt{:body}) the contents of this file can be accessed.
+
+\textbf{Subtask 3}
+
+\varname{index} is a data structure of type \typename{Map} which can be used to look up a column in our CSV data file based on a name. It thus enables us to name columns so that we can refer to the column \say{latitude} instead of its index.
+
+\textbf{Subtasks 4 and 5}
+
+\inputminted[fontsize=\footnotesize]{elixir}{\context/answer/airports.exs}
+
+\textbf{Subtask 6}
+
+\say{Heathrow Airport} appears on the list of airports, but it is listed as belonging to GB (Great Britain), and GB is not mentioned on these country lists from the EU. Here, UK (United Kingdom) is mentioned. This means that it is filtered out as a result of partial task 4.
