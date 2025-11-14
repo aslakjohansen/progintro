@@ -1,0 +1,34 @@
+\textbf{Subtask 1}
+
+Make a program that prints out the width and the height of the terminal (measured in characters) every second. Verify the at program works by resizing the window.
+
+Hints:
+\begin{itemize}
+  \item The width and height of the terminal is available throgh the \propertyname{WindowWidth} and \propertyname{WindowHeight} properties on the \classname{Console} class.
+  \item The \methodname{Thread.Sleep} method takes an integer parameters and sleeps for this many ms.
+  \item You can exit the program by killing the process (e.g., by pressing Ctrl-C).
+\end{itemize}
+
+\textbf{Subtask 2}
+
+Make a program that draws a crosshairs in the terminal, and updates this every second. That is, a vertical and a horizontal line should split the screen in four areas of equal size. As this will only be possible with combinations of odd widths and height, we can accept the dimensions of the areas to be off by a single character.
+
+\textbf{Subtask 3}
+
+Now we have a canvas to draw on. Lets simulate a ball bouncing around inside the window.
+
+Hints:
+\begin{itemize}
+  \item Draw the ball as a \say{\texttt{O}} character.
+  \item Hardcode the starting position to be (0,0). That is, the upper left corner.
+  \item Hardcode the initial direction to be (1,1). That is, south east bound.
+  \item Assume that the terminal will not be resized.
+  \item Reduce the sleep time from 1000ms to 100ms in between each simulation step. 
+\end{itemize}
+
+\textbf{Subtask 4}
+
+The implementation from the last subtask had some significant limitations. For instance, the initial direction was fixed and a single step on each axis. That simplified things. Lets unsimplify it by allowing any combination of two integers to define the initial direction. You can start by getting (1,2) to work and then also make it work with (3,2).
+
+\textbf{Note:} This is a significantly harder task.
+
