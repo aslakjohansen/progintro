@@ -1,0 +1,13 @@
+Let's work our way backwards:
+\begin{enumerate}
+  \item We know that \varname{b} is an \typename{int}, and that \valuename{1} is an integer type.
+  \item This means that \csharp must allow an implicit cast of any result of \say{\texttt{\varname{a} + 1}} to \typename{int}.
+  \item The \texttt{+} operator is defined on a number of types:
+    \begin{itemize}
+      \item If any of the operands is a floating point type, then the result of the operation is a value of a floating point type. No floating point type can be implicitly cast to an \typename{int}. So, \varname{a} is not a variable of a floating point type.
+      \item If both operands are integer types and at least one of them is signed, then the result is of a signed integer type. But since \varname{b} is unsigned, we know that \varname{a} is unsigned as well.
+      \item If both operands are integer types then the resulting value with have an integer type. That type will match the largest of the operand types. This restricts the type of \varname{a} to integers of a size that is no larger than an \typename{int}. Those are \typename{sbyte}, \typename{short} and \typename{int}.
+    \end{itemize}
+\end{enumerate}
+
+So, \varname{a} must have one of the following types: \typename{sbyte}, \typename{short} and \typename{int}.
