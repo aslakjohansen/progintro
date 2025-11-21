@@ -1,0 +1,22 @@
+\begin{center}
+  \begin{tikzpicture}[]
+    \newcommand{\spacing}[0]{6mm}
+    
+    \tikzstyle{choice}=[
+      diamond,
+      draw=black,
+      fill=black!5,
+      thick,
+    ]
+    \tikzstyle{arrow} = [thick,->,>=stealth, draw=black]
+    
+    \node[choice] (condition) at (0,0) {condition};
+    \node[] (pre)   at ([xshift= 0*\spacing, yshift= 1*\spacing] condition.north) {};
+    \node[anchor=north] (true)  at ([xshift=-3*\spacing, yshift=-1*\spacing] condition.west) {\textsl{Outcome A}};
+    \node[anchor=north] (false) at ([xshift= 3*\spacing, yshift=-1*\spacing] condition.east) {\textsl{Outcome B}};
+    
+    \path[arrow] (pre) -- (condition);
+    \path[arrow] (condition) -| node [near start, anchor=south] {true} (true);
+    \path[arrow] (condition) -| node [near start, anchor=south] {false} (false);
+  ﻿﻿\end{tikzpicture}
+\end{center}
