@@ -1,0 +1,179 @@
+\begin{center}
+  \begin{tikzpicture}[]
+    \newcommand{\spacing}[0]{6mm}
+    \newcommand{\absspacing}[0]{30mm}
+    \newcommand{\seqX}[0]{ 0*\absspacing}
+    \newcommand{\condX}[0]{1*\absspacing}
+    \newcommand{\forkX}[0]{2*\absspacing}
+    \newcommand{\whileX}[0]{3*\absspacing}
+    \newcommand{\dowhileX}[0]{4*\absspacing}
+    
+    \tikzstyle{endpoint} = []
+    \tikzstyle{stmt} = [circle,ultra thick,inner sep=0pt,minimum size=1.2mm,fill=none,draw=black]
+    \tikzstyle{arrow} = [thick,->,>=stealth, draw=black]
+    \tikzstyle{flow} = [arrow,ultra thick]
+    \tikzstyle{label} = [anchor=north]
+    \tikzstyle{subtype} = [draw=black]
+    \tikzstyle{choice} = [draw=teal,fill=teal,minimum size=1.6mm]
+    
+    \coordinate (seqAnchor)  at (\seqX ,0);
+    \coordinate (condAnchor) at (\condX,0);
+    \coordinate (forkAnchor) at (\forkX,0);
+    \coordinate (whileAnchor) at (\whileX,0);
+    \coordinate (dowhileAnchor) at (\dowhileX,0);
+    
+    % sequence
+    {
+      \node[endpoint] (seqBegin) at ([yshift=0*\spacing]seqAnchor) {};
+      \node[stmt] (seqA) at ([yshift=-1*\spacing]seqAnchor) {};
+      \node[stmt] (seqB) at ([yshift=-2*\spacing]seqAnchor) {};
+      \node[stmt] (seqC) at ([yshift=-3*\spacing]seqAnchor) {};
+      \node[stmt] (seqD) at ([yshift=-4*\spacing]seqAnchor) {};
+      \node[stmt] (seqE) at ([yshift=-5*\spacing]seqAnchor) {};
+      \node[stmt] (seqF) at ([yshift=-6*\spacing]seqAnchor) {};
+      \node[endpoint] (seqEnd) at ([yshift=-7.5*\spacing]seqAnchor) {};
+      \node[label] () at ([yshift=0*\spacing]seqEnd) {Sequence};
+      
+      \path[flow] (seqBegin)
+               -- (seqA)
+               -- (seqB)
+               -- (seqC)
+               -- (seqD)
+               -- (seqE)
+               -- (seqF)
+               -- (seqEnd)
+      ;
+    }
+    
+    % conditional
+    {
+      \node[endpoint] (condBegin) at ([yshift=0*\spacing]condAnchor) {};
+      \node[stmt] (condA) at ([yshift=-1*\spacing]condAnchor) {};
+      \node[stmt,choice] (condB) at ([yshift=-2*\spacing]condAnchor) {};
+      \node[stmt,draw=purple] (condC) at ([yshift=-3*\spacing,xshift=\spacing]condAnchor) {};
+      \node[stmt,draw=purple] (condD) at ([yshift=-4*\spacing,xshift=\spacing]condAnchor) {};
+      \node[stmt] (condE) at ([yshift=-5*\spacing]condAnchor) {};
+      \node[stmt] (condF) at ([yshift=-6*\spacing]condAnchor) {};
+      \node[endpoint] (condEnd) at ([yshift=-7.5*\spacing]condAnchor) {};
+      \node[label] (cond) at ([yshift=0*\spacing]condEnd) {Conditional};
+      
+      \path[flow,-] (condBegin)
+               -- (condA)
+               -- (condB)
+      ;
+      \path[flow,-,draw=purple] (condB)
+               -- (condE)
+      ;
+      \path[flow,-,draw=purple] (condB)
+               to [out=270,in=90] (condC)
+               -- (condD)
+               to [out=270,in=90]  (condE)
+      ;
+      \path[flow] (condE)
+               -- (condF)
+               -- (condEnd)
+      ;
+    }
+    
+    % fork
+    {
+      \node[endpoint] (forkBegin) at ([yshift=0*\spacing]forkAnchor) {};
+      \node[stmt] (forkA) at ([yshift=-1*\spacing]forkAnchor) {};
+      \node[stmt,choice] (forkB) at ([yshift=-2*\spacing]forkAnchor) {};
+      \node[stmt,draw=purple] (forkCtrue) at ([yshift=-3*\spacing,xshift=-\spacing]forkAnchor) {};
+      \node[stmt,draw=purple] (forkDtrue) at ([yshift=-4*\spacing,xshift=-\spacing]forkAnchor) {};
+      \node[stmt,draw=purple] (forkCfalse) at ([yshift=-3*\spacing,xshift=\spacing]forkAnchor) {};
+      \node[stmt,draw=purple] (forkDfalse) at ([yshift=-4*\spacing,xshift=\spacing]forkAnchor) {};
+      \node[stmt] (forkE) at ([yshift=-5*\spacing]forkAnchor) {};
+      \node[stmt] (forkF) at ([yshift=-6*\spacing]forkAnchor) {};
+      \node[endpoint] (forkEnd) at ([yshift=-7.5*\spacing]forkAnchor) {};
+      \node[label] (fork) at ([yshift=0*\spacing]forkEnd) {Fork};
+      
+      \path[flow,-] (forkBegin)
+               -- (forkA)
+               -- (forkB)
+      ;
+      \path[flow,-,draw=purple] (forkB)
+               to [out=270,in=90] (forkCtrue)
+               -- (forkDtrue)
+               to [out=270,in=90] (forkE)
+      ;
+      \path[flow,-,draw=purple] (forkB)
+               to [out=270,in=90] (forkCfalse)
+               -- (forkDfalse)
+               to [out=270,in=90] (forkE)
+      ;
+      \path[flow] (forkE)
+               -- (forkF)
+               -- (forkEnd)
+      ;
+    }
+    
+    % while loop
+    {
+      \node[endpoint] (whileBegin) at ([yshift=0*\spacing]whileAnchor) {};
+      \node[stmt] (whileA) at ([yshift=-1*\spacing]whileAnchor) {};
+      \node[stmt,choice] (whileB) at ([yshift=-2*\spacing]whileAnchor) {};
+      \node[stmt,draw=purple] (whileC) at ([yshift=-3*\spacing]whileAnchor) {};
+      \node[stmt,draw=purple] (whileD) at ([yshift=-4*\spacing]whileAnchor) {};
+      \node[stmt] (whileE) at ([yshift=-5*\spacing,xshift=-\spacing]whileAnchor) {};
+      \node[stmt] (whileF) at ([yshift=-6*\spacing,xshift=-\spacing]whileAnchor) {};
+      \node[endpoint] (whileEnd) at ([yshift=-7.5*\spacing,xshift=-\spacing]whileAnchor) {};
+      \node[label] (while) at ([yshift=0*\spacing]whileEnd) {while/for};
+      
+      \path[flow] (whileBegin)
+               -- (whileA)
+               -- (whileB)
+               to [out=270,in=90] ([yshift=-1*\spacing,xshift=-1*\spacing]whileB)
+               -- (whileE)
+               -- (whileF)
+               -- (whileEnd)
+      ;
+      \path[flow,-,draw=purple] (whileB)
+               -- (whileC)
+               -- (whileD)
+               to [out=270,in=270] ([xshift=1*\spacing]whileD)
+               -- ([xshift=1*\spacing]whileB.center)
+               to [out=90,in=90] (whileB)
+      ;
+    }
+    
+    % do-while loop
+    {
+      \node[endpoint] (dowhileBegin) at ([yshift=0*\spacing]dowhileAnchor) {};
+      \node[stmt] (dowhileA) at ([yshift=-1*\spacing]dowhileAnchor) {};
+      \node[stmt] (dowhileB) at ([yshift=-2*\spacing]dowhileAnchor) {};
+      \node[stmt,draw=purple] (dowhileC) at ([yshift=-3*\spacing]dowhileAnchor) {};
+      \node[stmt,draw=purple] (dowhileD) at ([yshift=-4*\spacing]dowhileAnchor) {};
+      \node[stmt,choice] (dowhileE) at ([yshift=-5*\spacing]dowhileAnchor) {};
+      \node[stmt] (dowhileF) at ([yshift=-6*\spacing]dowhileAnchor) {};
+      \node[endpoint] (dowhileEnd) at ([yshift=-7.5*\spacing]dowhileAnchor) {};
+      \node[label] (dowhile) at ([yshift=0*\spacing]dowhileEnd) {do-while};
+      
+      \path[flow] (dowhileBegin)
+               -- (dowhileA)
+               -- (dowhileB)
+               -- (dowhileC)
+               -- (dowhileD)
+               -- (dowhileE)
+               -- (dowhileF)
+               -- (dowhileEnd)
+      ;
+      \path[flow,-,draw=purple] (dowhileC)
+               -- (dowhileD)
+               -- (dowhileE)
+               to [out=270,in=270] ([xshift=1*\spacing]dowhileE)
+               -- ([xshift=1*\spacing]dowhileC.center)
+               to [out=90,in=90] (dowhileC)
+      ;
+    }
+    
+    % branch
+    \node[label] (branch) at ([yshift=-1*\spacing] $(cond)!0.5!(fork)$) {Branch};
+    \path[subtype] (cond) |- (branch) -| (fork);
+    
+    % loop
+    \node[label] (loop) at ([yshift=-1*\spacing] $(while)!0.5!(dowhile)$) {Loop};
+    \path[subtype] (while) |- (loop) -| (dowhile);
+  ﻿﻿\end{tikzpicture}
+\end{center}
