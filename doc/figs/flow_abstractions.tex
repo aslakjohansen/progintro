@@ -119,7 +119,7 @@
       \node[stmt] (whileE) at ([yshift=-5*\spacing,xshift=-\spacing]whileAnchor) {};
       \node[stmt] (whileF) at ([yshift=-6*\spacing,xshift=-\spacing]whileAnchor) {};
       \node[endpoint] (whileEnd) at ([yshift=-7.5*\spacing,xshift=-\spacing]whileAnchor) {};
-      \node[label] (while) at ([yshift=0*\spacing]whileEnd) {while/for};
+      \node[label] (while) at ([yshift=0*\spacing]whileEnd) {Skippable loop};
       
       \path[flow] (whileBegin)
                -- (whileA)
@@ -148,7 +148,7 @@
       \node[stmt,choice] (dowhileE) at ([yshift=-5*\spacing]dowhileAnchor) {};
       \node[stmt] (dowhileF) at ([yshift=-6*\spacing]dowhileAnchor) {};
       \node[endpoint] (dowhileEnd) at ([yshift=-7.5*\spacing]dowhileAnchor) {};
-      \node[label] (dowhile) at ([yshift=0*\spacing]dowhileEnd) {do-while};
+      \node[label] (dowhile) at ([yshift=0*\spacing]dowhileEnd) {Non-skippable loop};
       
       \path[flow] (dowhileBegin)
                -- (dowhileA)
@@ -173,7 +173,7 @@
     \path[subtype] (cond) |- (branch) -| (fork);
     
     % loop
-    \node[label] (loop) at ([yshift=-1*\spacing] $(while)!0.5!(dowhile)$) {Loop};
+    \node[label] (loop) at ([yshift=-1*\spacing] $(while)!0.5!(dowhile)$) {Repetition};
     \path[subtype] (while) |- (loop) -| (dowhile);
   ﻿﻿\end{tikzpicture}
 \end{center}
