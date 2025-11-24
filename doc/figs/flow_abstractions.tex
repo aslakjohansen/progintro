@@ -31,7 +31,7 @@
       \node[stmt] (seqD) at ([yshift=-4*\spacing]seqAnchor) {};
       \node[stmt] (seqE) at ([yshift=-5*\spacing]seqAnchor) {};
       \node[endpoint] (seqEnd) at ([yshift=-6.5*\spacing]seqAnchor) {};
-      \node[label] () at ([yshift=0*\spacing]seqEnd) {Sequence};
+      \node[label] () at ([yshift=0*\spacing]seqEnd) {\small Sequence};
       
       \path[flow] (seqBegin)
                -- (seqA)
@@ -52,7 +52,7 @@
       \node[stmt,draw=purple] (condD) at ([yshift=-4*\spacing,xshift=\spacing]condAnchor) {};
       \node[stmt] (condE) at ([yshift=-5*\spacing]condAnchor) {};
       \node[endpoint] (condEnd) at ([yshift=-6.5*\spacing]condAnchor) {};
-      \node[label] (cond) at ([yshift=0*\spacing]condEnd) {Conditional};
+      \node[label] (cond) at ([yshift=0*\spacing]condEnd) {\small Conditional};
       
       \path[flow,-] (condBegin)
                -- (condA)
@@ -82,7 +82,7 @@
       \node[stmt,draw=purple] (forkDfalse) at ([yshift=-4*\spacing,xshift=\spacing]forkAnchor) {};
       \node[stmt] (forkE) at ([yshift=-5*\spacing]forkAnchor) {};
       \node[endpoint] (forkEnd) at ([yshift=-6.5*\spacing]forkAnchor) {};
-      \node[label] (fork) at ([yshift=0*\spacing]forkEnd) {Fork};
+      \node[label] (fork) at ([yshift=0*\spacing]forkEnd) {\small Fork};
       
       \path[flow,-] (forkBegin)
                -- (forkA)
@@ -143,7 +143,7 @@
       \node[stmt] (whileF) at ([yshift=-4*\spacing]whileAnchor) {};
       \node[stmt] (whileG) at ([yshift=-5*\spacing]whileAnchor) {};
       \node[endpoint] (whileEnd) at ([yshift=-6.5*\spacing]whileAnchor) {};
-      \node[label] (while) at ([yshift=0*\spacing]whileEnd) {Skippable Loop};
+      \node[label] (while) at ([yshift=0*\spacing]whileEnd) {\small Skippable Loop};
       
       \path[flow] (whileBegin)
                -- (whileA)
@@ -173,7 +173,7 @@
       \node[stmt,choice] (dowhileD) at ([yshift=-4*\spacing]dowhileAnchor) {};
       \node[stmt] (dowhileE) at ([yshift=-5*\spacing]dowhileAnchor) {};
       \node[endpoint] (dowhileEnd) at ([yshift=-6.5*\spacing]dowhileAnchor) {};
-      \node[label] (dowhile) at ([yshift=0*\spacing]dowhileEnd) {Non-Skippable Loop};
+      \node[label] (dowhile) at ([yshift=0*\spacing]dowhileEnd) {\small Non-Skippable Loop};
       
       \path[flow] (dowhileBegin)
                -- (dowhileA)
