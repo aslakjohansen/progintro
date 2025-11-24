@@ -163,6 +163,9 @@
                -- ([yshift=1*\spacing]whileC.west)
                to [out=180,in=180,looseness=1.2] (whileC.west)
       ;
+      
+      % TODO: this is a hack to make this node appear on top of the loop path
+      \node[stmt,choice] (whileB) at ([yshift=-2*\spacing]whileAnchor) {};
     }
     
     % do-while loop
