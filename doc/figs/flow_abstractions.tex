@@ -30,8 +30,7 @@
       \node[stmt] (seqC) at ([yshift=-3*\spacing]seqAnchor) {};
       \node[stmt] (seqD) at ([yshift=-4*\spacing]seqAnchor) {};
       \node[stmt] (seqE) at ([yshift=-5*\spacing]seqAnchor) {};
-      \node[stmt] (seqF) at ([yshift=-6*\spacing]seqAnchor) {};
-      \node[endpoint] (seqEnd) at ([yshift=-7.5*\spacing]seqAnchor) {};
+      \node[endpoint] (seqEnd) at ([yshift=-6.5*\spacing]seqAnchor) {};
       \node[label] () at ([yshift=0*\spacing]seqEnd) {Sequence};
       
       \path[flow] (seqBegin)
@@ -40,7 +39,6 @@
                -- (seqC)
                -- (seqD)
                -- (seqE)
-               -- (seqF)
                -- (seqEnd)
       ;
     }
@@ -53,8 +51,7 @@
       \node[stmt,draw=purple] (condC) at ([yshift=-3*\spacing,xshift=\spacing]condAnchor) {};
       \node[stmt,draw=purple] (condD) at ([yshift=-4*\spacing,xshift=\spacing]condAnchor) {};
       \node[stmt] (condE) at ([yshift=-5*\spacing]condAnchor) {};
-      \node[stmt] (condF) at ([yshift=-6*\spacing]condAnchor) {};
-      \node[endpoint] (condEnd) at ([yshift=-7.5*\spacing]condAnchor) {};
+      \node[endpoint] (condEnd) at ([yshift=-6.5*\spacing]condAnchor) {};
       \node[label] (cond) at ([yshift=0*\spacing]condEnd) {Conditional};
       
       \path[flow,-] (condBegin)
@@ -70,7 +67,6 @@
                to [out=270,in=90]  (condE)
       ;
       \path[flow] (condE)
-               -- (condF)
                -- (condEnd)
       ;
     }
@@ -85,8 +81,7 @@
       \node[stmt,draw=purple] (forkCfalse) at ([yshift=-3*\spacing,xshift=\spacing]forkAnchor) {};
       \node[stmt,draw=purple] (forkDfalse) at ([yshift=-4*\spacing,xshift=\spacing]forkAnchor) {};
       \node[stmt] (forkE) at ([yshift=-5*\spacing]forkAnchor) {};
-      \node[stmt] (forkF) at ([yshift=-6*\spacing]forkAnchor) {};
-      \node[endpoint] (forkEnd) at ([yshift=-7.5*\spacing]forkAnchor) {};
+      \node[endpoint] (forkEnd) at ([yshift=-6.5*\spacing]forkAnchor) {};
       \node[label] (fork) at ([yshift=0*\spacing]forkEnd) {Fork};
       
       \path[flow,-] (forkBegin)
@@ -104,7 +99,6 @@
                to [out=270,in=90] (forkE)
       ;
       \path[flow] (forkE)
-               -- (forkF)
                -- (forkEnd)
       ;
     }
@@ -142,42 +136,43 @@
     {
       \node[endpoint] (whileBegin) at ([yshift=0*\spacing]whileAnchor) {};
       \node[stmt] (whileA) at ([yshift=-1*\spacing]whileAnchor) {};
-      \node[stmt,choice] (whileB) at ([yshift=-2*\spacing]whileAnchor) {};
-      \node[stmt,draw=purple] (whileC) at ([yshift=-2.5*\spacing,xshift=0.5*\spacing]whileAnchor) {};
-      \node[stmt,draw=purple] (whileD) at ([yshift=-2.5*\spacing,xshift=1.5*\spacing]whileAnchor) {};
-      \node[stmt] (whileE) at ([yshift=-3*\spacing]whileAnchor) {};
+      \node[stmt] (whileB) at ([yshift=-2*\spacing]whileAnchor) {};
+      \node[stmt,choice] (whileC) at ([yshift=-3*\spacing]whileAnchor) {};
+      \node[stmt,draw=purple] (whileD) at ([yshift=-3.5*\spacing,xshift=0.5*\spacing]whileAnchor) {};
+      \node[stmt,draw=purple] (whileE) at ([yshift=-3.5*\spacing,xshift=1.5*\spacing]whileAnchor) {};
       \node[stmt] (whileF) at ([yshift=-4*\spacing]whileAnchor) {};
-      \node[endpoint] (whileEnd) at ([yshift=-5.5*\spacing]whileAnchor) {};
+      \node[stmt] (whileG) at ([yshift=-5*\spacing]whileAnchor) {};
+      \node[endpoint] (whileEnd) at ([yshift=-6.5*\spacing]whileAnchor) {};
       \node[label] (while) at ([yshift=0*\spacing]whileEnd) {Skippable Loop};
       
       \path[flow] (whileBegin)
                -- (whileA)
                -- (whileB)
-               -- (whileE)
+               -- (whileC)
                -- (whileF)
+               -- (whileG)
                -- (whileEnd)
       ;
-      \path[flow,-,draw=purple](whileC)
-               -- (whileD)
-               to [out=0,in=0,looseness=1.2] ([yshift=1*\spacing]whileD.east)
-               -- ([yshift=1*\spacing]whileC.west)
-               to [out=180,in=180,looseness=1.2] (whileC.west)
+      \path[flow,-,draw=purple](whileD)
+               -- (whileE)
+               to [out=0,in=0,looseness=1.2] ([yshift=1*\spacing]whileE.east)
+               -- ([yshift=1*\spacing]whileD.west)
+               to [out=180,in=180,looseness=1.2] (whileD.west)
       ;
       
       % TODO: this is a hack to make this node appear on top of the loop path
-      \node[stmt,choice] (whileB) at ([yshift=-2*\spacing]whileAnchor) {};
+      \node[stmt,choice] (whileC) at ([yshift=-3*\spacing]whileAnchor) {};
     }
     
     % do-while loop
     {
       \node[endpoint] (dowhileBegin) at ([yshift=0*\spacing]dowhileAnchor) {};
       \node[stmt] (dowhileA) at ([yshift=-1*\spacing]dowhileAnchor) {};
-      \node[stmt] (dowhileB) at ([yshift=-2*\spacing]dowhileAnchor) {};
+      \node[stmt,draw=purple] (dowhileB) at ([yshift=-2*\spacing]dowhileAnchor) {};
       \node[stmt,draw=purple] (dowhileC) at ([yshift=-3*\spacing]dowhileAnchor) {};
-      \node[stmt,draw=purple] (dowhileD) at ([yshift=-4*\spacing]dowhileAnchor) {};
-      \node[stmt,choice] (dowhileE) at ([yshift=-5*\spacing]dowhileAnchor) {};
-      \node[stmt] (dowhileF) at ([yshift=-6*\spacing]dowhileAnchor) {};
-      \node[endpoint] (dowhileEnd) at ([yshift=-7.5*\spacing]dowhileAnchor) {};
+      \node[stmt,choice] (dowhileD) at ([yshift=-4*\spacing]dowhileAnchor) {};
+      \node[stmt] (dowhileE) at ([yshift=-5*\spacing]dowhileAnchor) {};
+      \node[endpoint] (dowhileEnd) at ([yshift=-6.5*\spacing]dowhileAnchor) {};
       \node[label] (dowhile) at ([yshift=0*\spacing]dowhileEnd) {Non-Skippable Loop};
       
       \path[flow] (dowhileBegin)
@@ -186,15 +181,14 @@
                -- (dowhileC)
                -- (dowhileD)
                -- (dowhileE)
-               -- (dowhileF)
                -- (dowhileEnd)
       ;
-      \path[flow,-,draw=purple] (dowhileC)
+      \path[flow,-,draw=purple] (dowhileB)
+               -- (dowhileC)
                -- (dowhileD)
-               -- (dowhileE)
-               to [out=270,in=270,looseness=1.2] ([xshift=1*\spacing]dowhileE.south)
-               -- ([xshift=1*\spacing]dowhileC.north)
-               to [out=90,in=90,looseness=1.2] (dowhileC)
+               to [out=270,in=270,looseness=1.2] ([xshift=1*\spacing]dowhileD.south)
+               -- ([xshift=1*\spacing]dowhileB.north)
+               to [out=90,in=90,looseness=1.2] (dowhileB)
       ;
     }
     
