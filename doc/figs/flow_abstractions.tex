@@ -109,32 +109,59 @@
       ;
     }
     
+%    % while loop
+%    {
+%      \node[endpoint] (whileBegin) at ([yshift=0*\spacing]whileAnchor) {};
+%      \node[stmt] (whileA) at ([yshift=-1*\spacing]whileAnchor) {};
+%      \node[stmt,choice] (whileB) at ([yshift=-2*\spacing]whileAnchor) {};
+%      \node[stmt,draw=purple] (whileC) at ([yshift=-3*\spacing]whileAnchor) {};
+%      \node[stmt,draw=purple] (whileD) at ([yshift=-4*\spacing]whileAnchor) {};
+%      \node[stmt] (whileE) at ([yshift=-5*\spacing,xshift=-\spacing]whileAnchor) {};
+%      \node[stmt] (whileF) at ([yshift=-6*\spacing,xshift=-\spacing]whileAnchor) {};
+%      \node[endpoint] (whileEnd) at ([yshift=-7.5*\spacing,xshift=-\spacing]whileAnchor) {};
+%      \node[label] (while) at ([yshift=0*\spacing]whileEnd) {Skippable Loop};
+%      
+%      \path[flow] (whileBegin)
+%               -- (whileA)
+%               -- (whileB)
+%               to [out=270,in=90] ([yshift=-1*\spacing,xshift=-1*\spacing]whileB)
+%               -- (whileE)
+%               -- (whileF)
+%               -- (whileEnd)
+%      ;
+%      \path[flow,-,draw=purple] (whileB)
+%               -- (whileC)
+%               -- (whileD)
+%               to [out=270,in=270] ([xshift=1*\spacing]whileD)
+%               -- ([xshift=1*\spacing]whileB.center)
+%               to [out=90,in=90] (whileB)
+%      ;
+%    }
+    
     % while loop
     {
       \node[endpoint] (whileBegin) at ([yshift=0*\spacing]whileAnchor) {};
       \node[stmt] (whileA) at ([yshift=-1*\spacing]whileAnchor) {};
       \node[stmt,choice] (whileB) at ([yshift=-2*\spacing]whileAnchor) {};
-      \node[stmt,draw=purple] (whileC) at ([yshift=-3*\spacing]whileAnchor) {};
-      \node[stmt,draw=purple] (whileD) at ([yshift=-4*\spacing]whileAnchor) {};
-      \node[stmt] (whileE) at ([yshift=-5*\spacing,xshift=-\spacing]whileAnchor) {};
-      \node[stmt] (whileF) at ([yshift=-6*\spacing,xshift=-\spacing]whileAnchor) {};
-      \node[endpoint] (whileEnd) at ([yshift=-7.5*\spacing,xshift=-\spacing]whileAnchor) {};
+      \node[stmt,draw=purple] (whileC) at ([yshift=-2.5*\spacing,xshift=0.5*\spacing]whileAnchor) {};
+      \node[stmt,draw=purple] (whileD) at ([yshift=-2.5*\spacing,xshift=1.5*\spacing]whileAnchor) {};
+      \node[stmt] (whileE) at ([yshift=-3*\spacing]whileAnchor) {};
+      \node[stmt] (whileF) at ([yshift=-4*\spacing]whileAnchor) {};
+      \node[endpoint] (whileEnd) at ([yshift=-5.5*\spacing]whileAnchor) {};
       \node[label] (while) at ([yshift=0*\spacing]whileEnd) {Skippable Loop};
       
       \path[flow] (whileBegin)
                -- (whileA)
                -- (whileB)
-               to [out=270,in=90] ([yshift=-1*\spacing,xshift=-1*\spacing]whileB)
                -- (whileE)
                -- (whileF)
                -- (whileEnd)
       ;
-      \path[flow,-,draw=purple] (whileB)
-               -- (whileC)
+      \path[flow,-,draw=purple](whileC)
                -- (whileD)
-               to [out=270,in=270] ([xshift=1*\spacing]whileD)
-               -- ([xshift=1*\spacing]whileB.center)
-               to [out=90,in=90] (whileB)
+               to [out=0,in=0,looseness=1.2] ([yshift=1*\spacing]whileD.east)
+               -- ([yshift=1*\spacing]whileC.west)
+               to [out=180,in=180,looseness=1.2] (whileC.west)
       ;
     }
     
@@ -162,9 +189,9 @@
       \path[flow,-,draw=purple] (dowhileC)
                -- (dowhileD)
                -- (dowhileE)
-               to [out=270,in=270] ([xshift=1*\spacing]dowhileE.south)
+               to [out=270,in=270,looseness=1.2] ([xshift=1*\spacing]dowhileE.south)
                -- ([xshift=1*\spacing]dowhileC.north)
-               to [out=90,in=90] (dowhileC)
+               to [out=90,in=90,looseness=1.2] (dowhileC)
       ;
     }
     
