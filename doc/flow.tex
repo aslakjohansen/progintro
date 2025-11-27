@@ -1,11 +1,11 @@
 \chapter{Flow Control}
 
 % motivation
-So far, we have worked with a strict sequence of \idx{statements}{Statement}. All of these statements are evaluated, in \idx{order}{Order}. This is a quality that we will often come to rely on. But it is not expressive enough. 
+So far, we have worked with a strict sequence of \idx{statements}{Statement}. All of these statements are evaluated, in \idx{order}{Order}. This is a quality that we will often come to rely on. But it is not expressive enough. We need to introduce \idx{choice}{Choice} and \idx{repetition}{Repetition} to our vocabulary, and our toolbox. Figure \ref{fig:flow:types} illustrates the set of basic flow abstractions that we will cover in this chapter. It is up to the individual programmer to decide how to combine these in order to implement desired behavior.
 
 \begin{figure}[tbp]
   \input{figs/flow_abstractions.tex}
-  \caption[Basic flow abstractions]{Basic flow abstractions. The execution path can be controlled by making a choice at runtime. The point of the choice is marked in \textcolor{teal}{teal} and the optional dynamic "routes" are marked in \textcolor{purple}{purple}.}
+  \caption[Basic statement flow abstractions]{Basic statement flow abstractions. The execution path can be controlled by making a choice at runtime. The point of the choice is marked in \textcolor{teal}{teal} and the optional dynamic "routes" are marked in \textcolor{purple}{purple}.}
   \label{fig:flow:types}
 \end{figure}
 
