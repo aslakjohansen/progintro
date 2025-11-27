@@ -1,0 +1,19 @@
+\begin{syntax}{expr}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence] () at ([yshift=0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleIa) {expr};
+    &
+    \node[terminal]    (ruleIb) {?};
+    &
+    \node[nonterminal] (ruleIc) {expr};
+    &
+    \node[terminal]    (ruleId) {:};
+    &
+    \node[nonterminal] (ruleIe) {expr};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(ruleId)--(ruleIe)--(end);
+\end{syntax}
