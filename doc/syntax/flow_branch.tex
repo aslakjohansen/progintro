@@ -4,7 +4,7 @@
   
   \node[terminal]    (ruleIa)  at \SyntaxDistribute{MainWest}{MainEast}{1}{5} {if};
   \node[terminal]    (ruleIb)  at \SyntaxDistribute{MainWest}{MainEast}{2}{5} {(};
-  \node[nonterminal] (ruleIc)  at \SyntaxDistribute{MainWest}{MainEast}{3}{5} {expr};
+  \node[nonterminal] (ruleIc)  at \SyntaxDistribute{MainWest}{MainEast}{3}{5} {cond};
   \node[terminal]    (ruleId)  at \SyntaxDistribute{MainWest}{MainEast}{4}{5} {)};
   \node[nonterminal] (ruleIe)  at \SyntaxDistribute{MainWest}{MainEast}{5}{5} {stmt};
   
@@ -13,7 +13,7 @@
     &
     \node[terminal]    (ruleIIb) {(};
     &
-    \node[nonterminal] (ruleIIc) {expr};
+    \node[nonterminal] (ruleIIc) {cond};
     &
     \node[terminal]    (ruleIId) {)};
     &

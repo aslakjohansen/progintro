@@ -1,38 +1,38 @@
-\begin{syntax}{expr}
+\begin{syntax}{cond}
   \SyntaxWestSplit{MainWest}
   \SyntaxEastSplit{MainEast}
   
   \node[sequence] () at ([yshift=0*\syntaxruledist]$(begin)!0.5!(end)$) {
-    \node[nonterminal] (ruleIa) {expr};
+    \node[nonterminal] (ruleIa) {cond};
     &
     \node[terminal]    (ruleIb) {\&\&};
     &
-    \node[nonterminal] (ruleIc) {expr};
+    \node[nonterminal] (ruleIc) {cond};
     \\
   };
   
   \node[sequence] () at ([yshift=-1*\syntaxruledist]$(begin)!0.5!(end)$) {
-    \node[nonterminal] (ruleIIa) {expr};
+    \node[nonterminal] (ruleIIa) {cond};
     &
     \node[terminal]    (ruleIIb) {||};
     &
-    \node[nonterminal] (ruleIIc) {expr};
+    \node[nonterminal] (ruleIIc) {cond};
     \\
   };
   
   \node[sequence] () at ([yshift=-2*\syntaxruledist]$(begin)!0.5!(end)$) {
-    \node[nonterminal] (ruleIIIa) {expr};
+    \node[nonterminal] (ruleIIIa) {cond};
     &
     \node[terminal]    (ruleIIIb) {\^{}};
     &
-    \node[nonterminal] (ruleIIIc) {expr};
+    \node[nonterminal] (ruleIIIc) {cond};
     \\
   };
   
   \node[sequence] () at ([yshift=-3*\syntaxruledist]$(begin)!0.5!(end)$) {
     \node[terminal]    (ruleIVa) {!};
     &
-    \node[nonterminal] (ruleIVb) {expr};
+    \node[nonterminal] (ruleIVb) {cond};
     \\
   };
   
@@ -40,4 +40,12 @@
   \draw[path] (begin) to[-|-] ([xshift=4cm,yshift=-1*\syntaxruledist]begin.east)--(ruleIIa)--(ruleIIb)--(ruleIIc)--([xshift=-4cm,yshift=-1*\syntaxruledist]end.west) to[-|-] (end);
   \draw[path] (begin) to[-|-] ([xshift=4cm,yshift=-2*\syntaxruledist]begin.east)--(ruleIIIa)--(ruleIIIb)--(ruleIIIc)--([xshift=-4cm,yshift=-2*\syntaxruledist]end.west) to[-|-] (end);
   \draw[path] (begin) to[-|-] ([xshift=4cm,yshift=-3*\syntaxruledist]begin.east)--(ruleIVa)--(ruleIVb)--([xshift=-4cm,yshift=-3*\syntaxruledist]end.west) to[-|-] (end);
+\end{syntax}
+\begin{syntax}[[xshift=22mm]concept.west]{expr}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[nonterminal] (ruleIa) at ($(begin)!0.5!(end)$) {cond};
+  
+  \draw[path] (begin)--(ruleIa)--(end);
 \end{syntax}
