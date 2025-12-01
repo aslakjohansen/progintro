@@ -149,7 +149,11 @@ Elixir code, still runs on the same hardware though. This hardware does not have
 \section{Truth Values}
 \label{primitives:bools}
 
+% intro: what they are
+So far, we have covered numbers. Integers of various sizes and signedness, and decimal numbers of different range and precision. A 32 bit unsigned integer is capable of representing any value between $0$ and $2^{32}-1$ (both included). Similarly, a 1 bit integer would be able to represent exactly two values: $0$ and $1$. Sets of integers go, that is not particularly useful. But, if we look past the individual numerical values, being able to represent that something has one of two states (e.g., on/off or open/closed) certainly is. 
+
 % what do they represent
+One particular pair of states is especially useful for us: Truth values. It allows is to represent whether something is \idx{true}{True} or \idx{false}{False}. In reality we map $0$ to false and $1$ to true. That is, we have the value mapping: $\{0 \mapsto \mathrm{false}, 1 \mapsto \mathrm{true}\}$. As the concept of truth values was introduced by \idx{George Boole}{Boole!George}, we have come to refer to these values as \idx{booleans}{Boolean} or, in short, \textsl{bools}.
 
 \subsection{Operations on Nontruthy Values}
 
@@ -163,7 +167,7 @@ Any valid comparison between two nontruthy values will yield a truthy value. For
 
 \subsection{Operations on Truthy Values}
 
-% the role of booleans extend beyond that of representing the result of some comparison
+% the role of booleans extend beyond that of representing the result of some comparison, there is a whole algebra for 
 
 \begin{figure}[tbp]
   \input{figs/prim_bool_and.tex}
