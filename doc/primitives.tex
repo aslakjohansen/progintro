@@ -151,11 +151,15 @@ We use integers to express a number of whole units. The number itself does not t
 \section{Truth Values}
 \label{primitives:bools}
 
+% intro: what they are
+So far, we have covered numbers. Integers of various sizes and signedness, and decimal numbers of different range and precision. A 32 bit unsigned integer is capable of representing any value between $0$ and $2^{32}-1$ (both included). Similarly, a 1 bit integer would be able to represent exactly two values: $0$ and $1$. Sets of integers go, that is not particularly useful. But, if we look past the individual numerical values, being able to represent that something has one of two states (e.g., on/off or open/closed) certainly is. 
+
 % what do they represent
+One particular pair of states is especially useful for us: Truth values. It allows is to represent whether something is \idx{true}{True} or \idx{false}{False}. In reality we map $0$ to false and $1$ to true. That is, we have the value mapping: $\{0 \mapsto \mathrm{false}, 1 \mapsto \mathrm{true}\}$. As the concept of truth values was introduced by \idx{George Boole}{Boole!George}, we have come to refer to these values as \idx{booleans}{Boolean} or, in short, \textsl{bools}.
 
-\subsection{Operations on Nontruthy Values}
+\subsection{Operations on Non-Truth Values}
 
-Any valid comparison between two nontruthy values will yield a truthy value. For instance, if we ask \quoted{is 42 equal to 56?} then the resulting value is \valuename{false} but if we ask \quoted{is 1 less than or equal to 2?} then the resulting value is \valuename{true}. The full set of comparison operators are listed in figure \ref{fig:prim:bool:comparison}. This is one of the primary ways of creating boolean values.
+Any valid comparison between two non-truth values will yield a truth value. For instance, if we ask \quoted{is 42 equal to 56?} then the resulting value is \valuename{false} but if we ask \quoted{is 1 less than or equal to 2?} then the resulting value is \valuename{true}. The full set of comparison operators are listed in figure \ref{fig:prim:bool:comparison}. This is one of the primary ways of creating boolean values.
 
 \begin{figure}[tbp]
   \input{figs/prim_bool_comp.tex}
@@ -163,9 +167,9 @@ Any valid comparison between two nontruthy values will yield a truthy value. For
   \label{fig:prim:bool:comparison}
 \end{figure}
 
-\subsection{Operations on Truthy Values}
+\subsection{Operations on Truth Values}
 
-% the role of booleans extend beyond that of representing the result of some comparison
+% the role of booleans extend beyond that of representing the result of some comparison, there is a whole algebra for 
 
 \begin{figure}[tbp]
   \input{figs/prim_bool_and.tex}
