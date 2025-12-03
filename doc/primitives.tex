@@ -141,6 +141,8 @@ Elixir code, still runs on the same hardware though. This hardware does not have
 \section{Floating Point Numbers}
 \label{primitives:float}
 
+We use integers to express a number of whole units. The number itself does not tell us what that unit is. That depends on what the integer represents. What it is used for. Decimal numbers, on the other hand, are use to express numbers are a \idx{granularity}{Granularity} that is higher than one unit. That is, they can express fractional units. A recipe for an omelet might state that you need $1.5$ eggs per person. We can't represent those $1.5$ using an integer type. For that, we need a decimal (or \idx{floating-point}{Floating-point type}) type.
+
 \subsection{Operations}
 \subsection{Representation}
 \csharpsubsection{\csharp}
