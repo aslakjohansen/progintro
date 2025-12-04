@@ -167,12 +167,21 @@ Any valid comparison between two numerical values will yield a truth value. For 
 
 \subsection{Operations on Truth Values}
 
-% the role of booleans extend beyond that of representing the result of some comparison, there is a whole algebra for 
+% the role of booleans extend beyond that of representing the result of some comparison, there is a whole algebra for it
+Booleans are, however, not just something that can be used to represent the outcome of some comparison. In fact, there is a whole algebra built around this type. We will cover the following operations:
+\begin{itemize}
+  \descitem{NOT} Whether a value is not true (aka whether it is false).
+  \descitem{AND} Whether two values are both true.
+  \descitem{OR} Whether at least one of two values is true.
+  \descitem{XOR} Whether exactly one of two values is true.
+\end{itemize}
+
+It is common to demonstrate operations on boolean values using a so-called \idx{truth table}{Truth table} such as the one in figure \ref{fig:prim:bool:ops}. The leftmost columns represent the input parameters. Any additional columns represent operations on these. Each column is labeled, and there is one row for each possible combination of the inputs. 
 
 \begin{figure}[tbp]
-  \input{figs/prim_bool_and.tex}
+  \input{figs/prim_bool_ops.tex}
   \caption{Truth table for the boolean operations.}
-  \label{fig:prim:bool:and}
+  \label{fig:prim:bool:ops}
 \end{figure}
 
 % TODO: De Morgan's law
