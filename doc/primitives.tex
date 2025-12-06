@@ -184,6 +184,9 @@ It is common to demonstrate operations on boolean values using a so-called \idx{
   \label{fig:prim:bool:ops}
 \end{figure}
 
+% example: 
+But, lets look at a real-world example. Imagine that we are building a game. In this game the player progresses through a sequence of levels. In order to progress to the next level, the player must at the end of the current level (i) be alive, and (ii) have obtained a certain number of points. After each level the number of required points is raised. Whether the player should progress can then be determined as $alive \wedge P \geq P_{required}$ or (depending on what we track) $\neg dead \wedge P \geq P_{required}$.
+
 % TODO: relation to set theory
 
 % TODO: De Morgan's laws
@@ -201,6 +204,11 @@ It is common to demonstrate operations on boolean values using a so-called \idx{
   \caption{Expressions of boolean operators}
   \label{syntax:prim:bool:ops}
 \end{syntaxfloat}
+
+% example
+\begin{minted}{csharp}
+bool progress = alive && (points > required_points);
+\end{minted}
 
 \elixirsubsection{Elixir}
 
