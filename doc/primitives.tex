@@ -176,8 +176,6 @@ Booleans are, however, not just something that can be used to represent the outc
   \descitem{XOR Operator} Whether exactly one of two values is true. It is written as $a \oplus b$. A swinging door will open if it is either being pushed or being pulled: $will\_open = pushed \oplus pulled$.
 \end{itemize}
 
-% differentiating between OR and XOR: can both inputs be true? (then it doesn't matter and we normally use XOR), are both allowed to be true?, example(game is over if you win or die)
-
 It is common to demonstrate operations on boolean values using a so-called \idx{truth table}{Truth table} such as the one in figure \ref{fig:prim:bool:ops}. The leftmost columns represent the input parameters. Any additional columns represent operations on these. Each column is labeled, and there is one row for each possible combination of the inputs. 
 
 \begin{figure}[tbp]
@@ -185,6 +183,8 @@ It is common to demonstrate operations on boolean values using a so-called \idx{
   \caption{Truth table for the boolean operations.}
   \label{fig:prim:bool:ops}
 \end{figure}
+
+% differentiating between OR and XOR: can both inputs be true? (then it doesn't matter and we normally use XOR), are both allowed to be true?, example(game is over if you win or die)
 
 % example: 
 But, lets look at a real-world example. Imagine that we are building a game. In this game the player progresses through a sequence of levels. In order to progress to the next level, the player must at the end of the current level (i) be alive, and (ii) have obtained a certain number of points. After each level the number of required points is raised. Whether the player should progress can then be determined as $alive \wedge P \geq P_{required}$ or (depending on what we track) $\neg dead \wedge P \geq P_{required}$.
