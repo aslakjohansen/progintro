@@ -173,7 +173,7 @@ Booleans are, however, not just something that can be used to represent the outc
   \descitem{NOT Operator} Whether a value is not true (aka whether it is false). It is written as $\neg a$. A door is open if it is not closed: $open = \neg closed$.
   \descitem{AND Operator} Whether two values are both true. It is written as $a \wedge b$. You are free to go if you have a green light and the road is clear: $free\_to\_go = green\_light \wedge clear\_road$. 
   \descitem{OR Operator} Whether at least one of two values is true. It is written as $a \vee b$. A plant will die if kept dry or in darkness: $will\_die = dry \vee darkness$.
-  \descitem{XOR Operator} Whether exactly one of two values is true. It is written as $a \oplus b$. A swinging door will open if it is either being pushed or being pulled: $will\_open = pushed \oplus pulled$.
+  \descitem{XOR Operator (pronounced X-OR)} Whether exactly one of two values is true. It is written as $a \oplus b$. A swinging door will open if it is either being pushed or being pulled: $will\_open = pushed \oplus pulled$.
 \end{itemize}
 
 It is common to demonstrate operations on boolean values using a so-called \idx{truth table}{Truth table} such as the one in figure \ref{fig:prim:bool:ops}. The leftmost columns represent the input parameters. Any additional columns represent operations on these. Each column is labeled, and there is one row for each possible combination of the inputs. 
@@ -184,7 +184,8 @@ It is common to demonstrate operations on boolean values using a so-called \idx{
   \label{fig:prim:bool:ops}
 \end{figure}
 
-% differentiating between OR and XOR: can both inputs be true? (then it doesn't matter and we normally use XOR), are both allowed to be true?, example(game is over if you win or die)
+% differentiating between OR and XOR: XOR not being considered one of the basic operators, can both inputs be true? (then it doesn't matter and we normally use OR), are both allowed to be true?, example(game is over if you win or die)
+The XOR operator is not considered one of the \textsl{basic} boolean operators, and it is also -- by some margin -- the least used one. It can be hard to differentiate between OR and XOR. For instance, be might say that a game is over if you win or if you die. Should you choose to define this using OR or XOR? The only difference between these operators is what happens if both are true, and that never happens in a game: You don't both win and die. So, in this case it doesn't really matter. When it doesn't matter, most programmers will chose OR. Probably because we consider it linguistically simpler. In other scenarios, the behavior when both inputs are true does matter, and then that becomes the \idx{arbiter}{Arbiter}.
 
 % example: 
 But, lets look at a real-world example. Imagine that we are building a game. In this game the player progresses through a sequence of levels. In order to progress to the next level, the player must at the end of the current level (i) be alive, and (ii) have obtained a certain number of points. After each level the number of required points is raised. Whether the player should progress can then be determined as $alive \wedge P \geq P_{required}$ or (depending on what we track) $\neg dead \wedge P \geq P_{required}$.
