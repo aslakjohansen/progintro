@@ -170,11 +170,13 @@ Any valid comparison between two numerical values will yield a truth value. For 
 % the role of booleans extend beyond that of representing the result of some comparison, there is a whole algebra for it
 Booleans are, however, not just something that can be used to represent the outcome of some comparison. In fact, there is a whole algebra built around this type. We will cover the following operations:
 \begin{itemize}
-  \descitem{NOT} Whether a value is not true (aka whether it is false). It is written as $\neg a$.
-  \descitem{AND} Whether two values are both true. It is written as $a \wedge b$.
-  \descitem{OR} Whether at least one of two values is true. It is written as $a \vee b$.
-  \descitem{XOR} Whether exactly one of two values is true. It is written as $a \oplus b$.
+  \descitem{NOT Operator} Whether a value is not true (aka whether it is false). It is written as $\neg a$. A door is open if it is not closed: $open = \neg closed$.
+  \descitem{AND Operator} Whether two values are both true. It is written as $a \wedge b$. You are free to go if you have a green light and the road is clear: $free\_to\_go = green\_light \wedge clear\_road$. 
+  \descitem{OR Operator} Whether at least one of two values is true. It is written as $a \vee b$. A plant will die if kept dry or in darkness: $will\_die = dry \vee darkness$.
+  \descitem{XOR Operator} Whether exactly one of two values is true. It is written as $a \oplus b$. A swinging door will open if it is either being pushed or being pulled: $will\_open = pushed \oplus pulled$.
 \end{itemize}
+
+% differentiating between OR and XOR: can both inputs be true? (then it doesn't matter and we normally use XOR), are both allowed to be true?, example(game is over if you win or die)
 
 It is common to demonstrate operations on boolean values using a so-called \idx{truth table}{Truth table} such as the one in figure \ref{fig:prim:bool:ops}. The leftmost columns represent the input parameters. Any additional columns represent operations on these. Each column is labeled, and there is one row for each possible combination of the inputs. 
 
