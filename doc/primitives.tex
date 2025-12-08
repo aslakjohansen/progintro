@@ -192,12 +192,17 @@ But, lets look at a real-world example. Imagine that we are building a game. In 
 
 % TODO: relation to set theory
 
-% TODO: De Morgan's laws
-
+% De Morgan's laws
+As we know from \idx{elementary algebra}{Algebra!Elementary}, there are rules for transforming certain constructs. For instance, we know that $a(b+c) = ab + ac$. Similar rules exist for \idx{boolean algebra}{Algebra!Boolean}. The two most important of these rules are known as \idx{De Morgan's Laws}{De Morgan's Laws} (after \idx{Augustus De Morgan}{De Morgan, Augustus}). They state that:
 \begin{align*}
   \neg (A \vee B) &= (\neg A) \wedge (\neg B) \\
   \neg (A \wedge B) &= (\neg A) \vee (\neg B) 
 \end{align*}
+Or, in plain English, we have that:
+\begin{enumerate}
+  \item The negation of A or B is the same as (the negation of A) and (the negation of B).
+  \item The negation of A and B is the same as (the negation of A) or (the negation of B).
+\end{enumerate}
 
 \subsection{Representation}
 
