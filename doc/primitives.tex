@@ -212,6 +212,13 @@ As mentioned, a boolean is a type that holds one of two values. That is a bit of
 \csharpsubsection{\csharp}
 
 % TODO: placing the introduction of the C# operators
+It would be very tedious to use the symbols covered for AND, OR and NOT. \csharp, like many other languages, use a different notation:
+\begin{itemize}
+  \descitem{AND Operator} Two ampersands in a row is an \idx{infix}{infix} AND operator. Example: \texttt{unlocked \&\& open} should be read as \say{unlocked and open}.
+  \descitem{OR Operator} Two vertical bars in a row is an \idx{infix}{infix} OR operator. Example: \texttt{working || waiting} should be read as \say{working or waiting}.
+  \descitem{XOR Operator} A hat charactor is an \idx{infix}{infix} XOR operator. Example: \texttt{sunken || afloat} should be read as \say{sunken xor afloat} (as in, it cannot be both).
+  \descitem{NOT Operator} An exclamation mark negates whatever condition comes after it. Example: \texttt{!ready} should be read as \say{not ready}.
+\end{itemize}
 
 \begin{syntaxfloat}
   \input{syntax/prim_bool_ops.tex}
