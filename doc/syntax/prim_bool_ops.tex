@@ -3,6 +3,60 @@
   \SyntaxEastSplit{MainEast}
   
   \node[sequence] () at ([yshift=0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleCompIa) {expr};
+    &
+    \node[terminal]    (ruleCompIb) {==};
+    &
+    \node[nonterminal] (ruleCompIc) {expr};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-1*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleCompIIa) {expr};
+    &
+    \node[terminal]    (ruleCompIIb) {!=};
+    &
+    \node[nonterminal] (ruleCompIIc) {expr};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-2*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleCompIIIa) {expr};
+    &
+    \node[terminal]    (ruleCompIIIb) {<};
+    &
+    \node[nonterminal] (ruleCompIIIc) {expr};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-3*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleCompIVa) {expr};
+    &
+    \node[terminal]    (ruleCompIVb) {<=};
+    &
+    \node[nonterminal] (ruleCompIVc) {expr};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-4*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleCompVa) {expr};
+    &
+    \node[terminal]    (ruleCompVb) {>};
+    &
+    \node[nonterminal] (ruleCompVc) {expr};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-5*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleCompVIa) {expr};
+    &
+    \node[terminal]    (ruleCompVIb) {>=};
+    &
+    \node[nonterminal] (ruleCompVIc) {expr};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-6*\syntaxruledist]$(begin)!0.5!(end)$) {
     \node[nonterminal] (ruleIa) {cond};
     &
     \node[terminal]    (ruleIb) {\&\&};
@@ -11,7 +65,7 @@
     \\
   };
   
-  \node[sequence] () at ([yshift=-1*\syntaxruledist]$(begin)!0.5!(end)$) {
+  \node[sequence] () at ([yshift=-7*\syntaxruledist]$(begin)!0.5!(end)$) {
     \node[nonterminal] (ruleIIa) {cond};
     &
     \node[terminal]    (ruleIIb) {||};
@@ -20,7 +74,7 @@
     \\
   };
   
-  \node[sequence] () at ([yshift=-2*\syntaxruledist]$(begin)!0.5!(end)$) {
+  \node[sequence] () at ([yshift=-8*\syntaxruledist]$(begin)!0.5!(end)$) {
     \node[nonterminal] (ruleIIIa) {cond};
     &
     \node[terminal]    (ruleIIIb) {\^{}};
@@ -29,17 +83,23 @@
     \\
   };
   
-  \node[sequence] () at ([yshift=-3*\syntaxruledist]$(begin)!0.5!(end)$) {
+  \node[sequence] () at ([yshift=-9*\syntaxruledist]$(begin)!0.5!(end)$) {
     \node[terminal]    (ruleIVa) {!};
     &
     \node[nonterminal] (ruleIVb) {cond};
     \\
   };
   
-  \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(end);
-  \draw[path] (begin) to[-|-] ([xshift=4cm,yshift=-1*\syntaxruledist]begin.east)--(ruleIIa)--(ruleIIb)--(ruleIIc)--([xshift=-4cm,yshift=-1*\syntaxruledist]end.west) to[-|-] (end);
-  \draw[path] (begin) to[-|-] ([xshift=4cm,yshift=-2*\syntaxruledist]begin.east)--(ruleIIIa)--(ruleIIIb)--(ruleIIIc)--([xshift=-4cm,yshift=-2*\syntaxruledist]end.west) to[-|-] (end);
-  \draw[path] (begin) to[-|-] ([xshift=4cm,yshift=-3*\syntaxruledist]begin.east)--(ruleIVa)--(ruleIVb)--([xshift=-4cm,yshift=-3*\syntaxruledist]end.west) to[-|-] (end);
+  \draw[path] (begin)--(ruleCompIa)--(ruleCompIb)--(ruleCompIc)--(end);
+  \draw[path] (begin) to[-|-] ([xshift=4cm,yshift=-1*\syntaxruledist]begin.east)--(ruleCompIIa)--(ruleCompIIb)--(ruleCompIIc)--([xshift=-4cm,yshift=-1*\syntaxruledist]end.west) to[-|-] (end);
+  \draw[path] (begin) to[-|-] ([xshift=4cm,yshift=-2*\syntaxruledist]begin.east)--(ruleCompIIIa)--(ruleCompIIIb)--(ruleCompIIIc)--([xshift=-4cm,yshift=-2*\syntaxruledist]end.west) to[-|-] (end);
+  \draw[path] (begin) to[-|-] ([xshift=4cm,yshift=-3*\syntaxruledist]begin.east)--(ruleCompIVa)--(ruleCompIVb)--(ruleCompIVc)--([xshift=-4cm,yshift=-3*\syntaxruledist]end.west) to[-|-] (end);
+  \draw[path] (begin) to[-|-] ([xshift=4cm,yshift=-4*\syntaxruledist]begin.east)--(ruleCompVa)--(ruleCompVb)--(ruleCompVc)--([xshift=-4cm,yshift=-4*\syntaxruledist]end.west) to[-|-] (end);
+  \draw[path] (begin) to[-|-] ([xshift=4cm,yshift=-5*\syntaxruledist]begin.east)--(ruleCompVIa)--(ruleCompVIb)--(ruleCompVIc)--([xshift=-4cm,yshift=-5*\syntaxruledist]end.west) to[-|-] (end);
+  \draw[path] (begin) to[-|-] ([xshift=4cm,yshift=-6*\syntaxruledist]begin.east)--(ruleIa)--(ruleIb)--(ruleIc)--([xshift=-4cm,yshift=-6*\syntaxruledist]end.west) to[-|-] (end);
+  \draw[path] (begin) to[-|-] ([xshift=4cm,yshift=-7*\syntaxruledist]begin.east)--(ruleIIa)--(ruleIIb)--(ruleIIc)--([xshift=-4cm,yshift=-7*\syntaxruledist]end.west) to[-|-] (end);
+  \draw[path] (begin) to[-|-] ([xshift=4cm,yshift=-8*\syntaxruledist]begin.east)--(ruleIIIa)--(ruleIIIb)--(ruleIIIc)--([xshift=-4cm,yshift=-8*\syntaxruledist]end.west) to[-|-] (end);
+  \draw[path] (begin) to[-|-] ([xshift=4cm,yshift=-9*\syntaxruledist]begin.east)--(ruleIVa)--(ruleIVb)--([xshift=-4cm,yshift=-9*\syntaxruledist]end.west) to[-|-] (end);
 \end{syntax}
 \begin{syntax}[[xshift=16mm]concept.west]{expr}
   \SyntaxWestSplit{MainWest}
