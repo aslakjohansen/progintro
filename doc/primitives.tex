@@ -148,6 +148,11 @@ We use integers to express a number of whole units. The number itself does not t
 \csharpsubsection{\csharp}
 \elixirsubsection{Elixir}
 
+\section{Set Theory}
+\label{primitives:sets}
+
+% why we won't cover sets (in this section): not primitive values
+
 \section{Truth Values}
 \label{primitives:bools}
 
@@ -157,41 +162,96 @@ So far, we have covered numbers. Integers of various sizes and signedness, and d
 % what do they represent
 One particular pair of states is especially useful for us: Truth values. It allows is to represent whether something is \idx{true}{True} or \idx{false}{False}. In reality we map $0$ to false and $1$ to true. That is, we have the value mapping: $\{0 \mapsto \mathrm{false}, 1 \mapsto \mathrm{true}\}$. As the concept of truth values was introduced by \idx{George Boole}{Boole!George}, we have come to refer to these values as \idx{booleans}{Boolean} or, in short, \textsl{bools}.
 
-\subsection{Operations on Non-Truth Values}
+\subsection{Operations on Numerical Values}
 
-Any valid comparison between two non-truth values will yield a truth value. For instance, if we ask \quoted{is 42 equal to 56?} then the resulting value is \valuename{false} but if we ask \quoted{is 1 less than or equal to 2?} then the resulting value is \valuename{true}. The full set of comparison operators are listed in figure \ref{fig:prim:bool:comparison}. This is one of the primary ways of creating boolean values.
+Any valid comparison between two numerical values will yield a truth value. For instance, if we ask \quoted{is 42 equal to 56?} then the resulting value is \valuename{false} but if we ask \quoted{is 1 less than or equal to 2?} then the resulting value is \valuename{true}. Comparing values is one of the primary ways of creating boolean values.
 
+
+\subsection{Operations on Truth Values}
+
+% the role of booleans extend beyond that of representing the result of some comparison, there is a whole algebra for it
+Booleans are, however, not just something that can be used to represent the outcome of some comparison. In fact, there is a whole algebra built around this type. We will cover the following operations:
+\begin{itemize}
+  \descitem{NOT Operator} Whether a value is not true (aka whether it is false). It is written as $\neg a$. A door is open if it is not closed: $open = \neg closed$.
+  \descitem{AND Operator} Whether two values are both true. It is written as $a \wedge b$. You are free to go if you have a green light and the road is clear: $free\_to\_go = green\_light \wedge clear\_road$. 
+  \descitem{OR Operator} Whether at least one of two values is true. It is written as $a \vee b$. A plant will die if kept dry or in darkness: $will\_die = dry \vee darkness$.
+  \descitem{XOR Operator (pronounced X-OR)} Whether exactly one of two values is true. It is written as $a \oplus b$. A swinging door will open if it is either being pushed or being pulled: $will\_open = pushed \oplus pulled$.
+\end{itemize}
+
+It is common to demonstrate operations on boolean values using a so-called \idx{truth table}{Truth table} such as the one in figure \ref{fig:prim:bool:ops}. The leftmost columns represent the input parameters. Any additional columns represent operations on these. Each column is labeled, and there is one row for each possible combination of the inputs. 
+
+\begin{figure}[tbp]
+  \input{figs/prim_bool_ops.tex}
+  \caption{Truth table for the boolean operations.}
+  \label{fig:prim:bool:ops}
+\end{figure}
+
+% differentiating between OR and XOR: XOR not being considered one of the basic operators, can both inputs be true? (then it doesn't matter and we normally use OR), are both allowed to be true?, example(game is over if you win or die)
+The XOR operator is not considered one of the \textsl{basic} boolean operators, and it is also -- by some margin -- the least used one. It can be hard to differentiate between OR and XOR. For instance, be might say that a game is over if you win or if you die. Should you choose to define this using OR or XOR? The only difference between these operators is what happens if both are true, and that never happens in a game: You don't both win and die. So, in this case it doesn't really matter. When it doesn't matter, most programmers will chose OR. Probably because we consider it linguistically simpler. In other scenarios, the behavior when both inputs are true does matter, and then that becomes the \idx{arbiter}{Arbiter}.
+
+% example: 
+But, lets look at a real-world example. Imagine that we are building a game. In this game the player progresses through a sequence of levels. In order to progress to the next level, the player must at the end of the current level (i) be alive, and (ii) have obtained a certain number of points. After each level the number of required points is raised. Whether the player should progress can then be determined as $alive \wedge P \geq P_{required}$ or (depending on what we track) $\neg dead \wedge P \geq P_{required}$.
+
+% TODO: relation to set theory
+
+% De Morgan's laws
+As we know from \idx{elementary algebra}{Algebra!Elementary}, there are rules for transforming certain constructs. For instance, we know that $a(b+c) = ab + ac$. Similar rules exist for \idx{boolean algebra}{Algebra!Boolean}. The two most important of these rules are known as \idx{De Morgan's Laws}{De Morgan's Laws} (after \idx{Augustus De Morgan}{De Morgan, Augustus}). They state that:
+\begin{align*}
+  \neg (A \vee B) &= (\neg A) \wedge (\neg B) \\
+  \neg (A \wedge B) &= (\neg A) \vee (\neg B) 
+\end{align*}
+Or, in plain English, we have that:
+\begin{enumerate}
+  \item The negation of A or B is the same as (the negation of A) and (the negation of B).
+  \item The negation of A and B is the same as (the negation of A) or (the negation of B).
+\end{enumerate}
+
+\subsection{Representation}
+
+% technically a bit, but typically (mostly unless in array form) a byte or word
+As mentioned, a boolean is a type that holds one of two values. That is a bit of information. However, in order to perform operations on a boolean, we need to store it in a register and common processors don't have these. Instead, booleans are placed in integer registers. Depending on the language and/or compiler may store the same booleans in main memory as bytes, integers (of register compatible size) or -- if there is a number of them -- packed into one byte per 8 booleans.
+
+\csharpsubsection{\csharp}
+
+% TODO: placing the introduction of the C# operators
+It would be very tedious to use the symbols covered for AND, OR and NOT. \csharp, like many other languages, use a different notation:
+\begin{itemize}
+  \descitem{AND Operator} Two ampersands in a row is an \idx{infix}{infix} AND operator. \\
+    Example: \texttt{unlocked \&\& open} should be read as \say{unlocked and open}.
+  \descitem{OR Operator} Two vertical bars in a row is an \idx{infix}{infix} OR operator. \\
+    Example: \texttt{working || waiting} should be read as \say{working or waiting}.
+  \descitem{XOR Operator} A hat character is an \idx{infix}{infix} XOR operator. \\
+    Example: \texttt{sunken || afloat} should be read as \say{sunken xor afloat} (as in, it cannot be both).
+  \descitem{NOT Operator} An exclamation mark negates whatever condition comes after it. \\
+    Example: \texttt{!ready} should be read as \say{not ready}.
+\end{itemize}
+
+% introduce syntax: new concept (cond), a cond is an expr that evaluates to a boolean value, a cond can take the form of a comparison or a boolean operator
+
+The full set of comparison operators are listed in figure \ref{fig:prim:bool:comparison}.
 \begin{figure}[tbp]
   \input{figs/prim_bool_comp.tex}
   \caption{Comparison operators.}
   \label{fig:prim:bool:comparison}
 \end{figure}
 
-\subsection{Operations on Truth Values}
-
-% the role of booleans extend beyond that of representing the result of some comparison, there is a whole algebra for 
-
-\begin{figure}[tbp]
-  \input{figs/prim_bool_and.tex}
-  \caption{Truth table for the boolean operations.}
-  \label{fig:prim:bool:and}
-\end{figure}
-
-% TODO: De Morgan's law
-
-\subsection{Representation}
-
-% technically a bit, but typically (mostly unless in array form) a byte or word
-
-\csharpsubsection{\csharp}
-
+% TODO: add comparisons
 \begin{syntaxfloat}
   \input{syntax/prim_bool_ops.tex}
   \caption{Expressions of boolean operators}
   \label{syntax:prim:bool:ops}
 \end{syntaxfloat}
 
+% example
+\begin{minted}{csharp}
+bool progress = alive && (points > required_points);
+\end{minted}
+
+\subsubsection{Lazy Evaluation}
+
 \elixirsubsection{Elixir}
+
+% difference in naming operators: && -> and
 
 \csubsection{C}
 
