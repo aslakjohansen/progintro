@@ -1,0 +1,23 @@
+\textbf{Subtask 1}
+
+The other variable is used to identify a unit, so perhaps we should just call it \varname{unit}? It needs to be of a type that can represent each of the supported types, and that is it's only purpose: to represent on of a number of named values. We normally use an \keywordname{enum} for this.
+
+\textbf{Subtask 2}
+
+There is a number of ways of mapping a unit type to a factor. We will highlight two such methods:
+\begin{itemize}
+  \descitem{Switch Statement:} We switch on the the unit and add a case for each supported unit. In each of these cases, the resulting conversion is performed.
+  \descitem{Array Lookup:} Allocate an array of all the relevant factors, and use the integer value from the \keywordname{enum} unit type as index. 
+\end{itemize}
+
+\textbf{Subtask 3}
+
+The straight-forward solution (that uses a switch statement) looks like this:
+
+\inputminted{csharp}{\context/answer/simple/Units.cs}
+
+In a larger program, that one would have to develop and maintain over time, a better approach would be (to use an array lookup):
+
+\inputminted{csharp}{\context/answer/scalable/Units.cs}
+
+Here, the initialization phase would end up in a separate file.
