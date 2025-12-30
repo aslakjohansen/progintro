@@ -296,6 +296,7 @@ A consequence of this is that C doesn't have a notion of a \idx{boolean}{Boolean
 We are not done yet though. Assuming that we have some operator -- lets call it $\odot$ -- and keeping in mind that the \idx{compiler}{Compiler} needs to convert any expression needs to be converted to a sequence of operations for the processor, how should $a \odot b \odot c$ be interpreted? By adding parentheses, we can remove this ambiguity. But, should $a \odot b \odot c$ be equal to $(a \odot b) \odot c$ or to $a \odot (b \odot c)$?
 
 % why it matters
+Given what we have covered so far, that question may not seem to matter. Most of the operators that we have covered exhibit the \idx{associative property}{Associative property}. That is, the order of evaluation does not affect the result. This changes, however, when composing complex expressions that modifies shared state (e.g., when pre-incrementing variables). From section \ref{sec:func} onward, we will cover operators that obviously does not have the associative property.
 
 % solution
 
