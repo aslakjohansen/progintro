@@ -299,6 +299,7 @@ We are not done yet though. Assuming that we have some operator -- lets call it 
 Given what we have covered so far, that question may not seem to matter. Most of the operators that we have covered exhibit the \idx{associative property}{Associative property}. That is, the order of evaluation does not affect the result. This changes, however, when composing complex expressions that modifies shared state (e.g., when pre-incrementing variables). From section \ref{sec:func} onward, we will cover operators that obviously does not have the associative property.
 
 % solution
+But lets get back to the question of where to place the parentheses. Some operators are left-associative, some are right-associative and some are non-associative. A \idx{left-associative operator}{Operator!Associativity!Left} is grouped from the left. This means that $a \odot b \odot c = (a \odot b) \odot c$, and that the syntax tree of a sequence of such operations skews heavily to the left-hand side. A \idx{right-associative operator}{Operator!Associativity!Right} is grouped from the right. This means that $a \odot b \odot c = a \odot (b \odot c)$, and that the syntax tree of a sequence of such operations skews heavily to the right-hand side. A \idx{non-associative operator}{Operator!Associativity!Non} is not allowed to appear in such a sequence.
 
 \csharpsubsection{\csharp}
 
