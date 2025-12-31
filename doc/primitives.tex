@@ -284,7 +284,8 @@ A consequence of this is that C doesn't have a notion of a \idx{boolean}{Boolean
 % intro: the code we write consists of a sequence of characters, C# will interpret this, we need to understand how it does this, otherwise how can we hope to "communicate" correctly with it?
 When we are writing code, what we are really doing is to produce a sequence of characters. We store those in a file, and then ask the \csharp\ \idx{compiler}{Compiler} to interpret them. Given that \csharp\ is a language that we share with the compiler, we need a certain level of understanding of how it goes about interpreting it. Otherwise, how can we hope to \say{communicate} correctly with it?
 
-% parsing: in this section we have introduced the notion of an expression, expressions are made up of operators, lets take a look at how expressions are parsed, that is: how a sequence of characters at a position in out code where the compiler expects an expression is translated into a parse tree
+% parsing: in this chapter we have introduced the notion of an expression, expressions are made up of operators, lets take a look at how expressions are parsed, that is: how a sequence of characters at a position in our code where the compiler expects an expression is translated into a parse tree
+In this chapter, we have introduced the notion of an expression. Expressions are -- in part -- made up of operators. Lets take a look at how expressions are \idx{parsed}{Parsing}. That is, how does a sequence of characters, at a position in our code where the compiler expects an expression, get translated into a parse tree?
 
 \subsection{Operator Precedence}
 
