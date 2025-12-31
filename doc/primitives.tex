@@ -295,8 +295,6 @@ Basic math tells us that $2+3*4=2+(3*4)=14$ as opposed to $(2+3)*4=24$. This is 
 % grouping: most languages define a hierarchy of operators, operators at the top level of the hierarchy binds the strongest and operators at to bottom level binds the weakest, within a given level all operators are treated as binding equally strong and the parsing is dictated on the associativity of the level (see next section)
 Most programming languages define a hierarchy of operator classes. Operator classes at the top level of the hierarchy bind the strongest, and operators and the bottom of level binds the weakest. Within a given level, all operators are treated as binding equally strong. Parsing of expressions involving two such operators is dictated on the \idx{associativity}{Operator!Associativity} of the operator class. More on this in the next section.
 
-% parentheses: when the precedence is not to our liking we use parentheses, novice programmers often sprinkle parentheses around their code, this becomes a source of confusion for more experienced programmers and is thus frowned upon
-
 \subsection{Operator Associativity}
 
 % question
@@ -309,6 +307,10 @@ Given what we have covered so far, that question may not seem to matter. Most of
 But lets get back to the question of where to place the parentheses. Some operators are left-associative, some are right-associative and some are non-associative. A \idx{left-associative operator}{Operator!Associativity!Left} is grouped from the left. This means that $a \odot b \odot c = (a \odot b) \odot c$, and that the syntax tree of a sequence of such operations skews heavily to the left-hand side. A \idx{right-associative operator}{Operator!Associativity!Right} is grouped from the right. This means that $a \odot b \odot c = a \odot (b \odot c)$, and that the syntax tree of a sequence of such operations skews heavily to the right-hand side. A \idx{non-associative operator}{Operator!Associativity!Non} is not allowed to appear in such a sequence.
 
 % TODO: Add figure of the parse trees of $a \odot b \odot c \odot d$ given $\odot$ being left and right associative
+
+\subsubsection{Overruling}
+
+% parentheses: when the precedence is not to our liking we use parentheses, novice programmers often sprinkle parentheses around their code, this becomes a source of confusion for more experienced programmers and is thus frowned upon
 
 \csharpsubsection{\csharp}
 
