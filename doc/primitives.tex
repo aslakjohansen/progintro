@@ -311,8 +311,10 @@ But lets get back to the question of where to place the parentheses. Some operat
 \subsubsection{Overruling}
 
 % good intentions: the rules (of precedence and associativity) are defined the way they are defined for a reason, in most situations they represent "what you want", but there is no way to cater for all scenarios, you will find yourself in a situation where the interpretation of the compiler is different from what you intend to express
+There are good intentions behind the parse rules; those that cover precedence and associativity. They are defined the way they are defined for a reason. In most situations they represent \say{what you want} by allowing code to be written as briefly and succinctly as possible. There is, however, no one way to cater for all scenarios: You will find yourself in situations where the compilers interpretation is suboptimal for what you intend to express.
 
 % parentheses: when the precedence is not to our liking we use parentheses, novice programmers often sprinkle parentheses around their code, this becomes a source of confusion for more experienced programmers and is thus frowned upon
+When this happens, we use parentheses to force a specific interpretation. Novice programmers are often seen sprinkling parantheses around their code to avoid learning the underlying rules. This becomes a source of confusion for more experienced programmers and -- for that reason -- it is frowned upon.
 
 \csharpsubsection{\csharp}
 
