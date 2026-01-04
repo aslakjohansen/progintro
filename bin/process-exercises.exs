@@ -126,11 +126,13 @@ defmodule Script do
   end
 
   def process_exercise(topic, exercise, data) do
-    data = Map.merge(data, %{
-      type: "exercise",
-      segment: topic,
-      entry: exercise
-    })
+    data =
+      Map.merge(data, %{
+        type: "exercise",
+        segment: topic,
+        entry: exercise
+      })
+
     IO.puts(exercise)
 
     meta =
@@ -148,16 +150,20 @@ defmodule Script do
     {
       """
       \\renewcommand{\\context}[0]{#{context}}
-      \\subsection{#{meta.title}}
-      \\label{q:#{topic}:#{exercise}}
+      %\\subsection{#{meta.title}}
+      %\\label{q:#{topic}:#{exercise}}
+      \\begin{exercise}{#{topic}}{#{exercise}}{#{meta.title}}
       #{difficulty}
       \\input{#{qfile}}
+      \\end{exercise}
       """,
       """
       \\renewcommand{\\context}[0]{#{context}}
-      \\subsection{#{meta.title}}
-      \\label{a:#{topic}:#{exercise}}
+      %\\subsection{#{meta.title}}
+      %\\label{a:#{topic}:#{exercise}}
+      \\begin{solution}{#{topic}}{#{exercise}}{#{meta.title}}
       \\input{#{afile}}
+      \\end{solution}
       """
     }
   end

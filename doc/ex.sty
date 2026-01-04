@@ -1,0 +1,33 @@
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesPackage{ex}[2026/01/04 v0.1
+                 LaTeX package for exercises and exercise solution]
+
+% packages and TikZ librairies
+\RequirePackage{chngcntr}
+
+% define counters
+\newcounter{exercise}
+\newcounter{solution}
+
+% configure counters
+\counterwithin{exercise}{chapter}
+%\counterwithin{solution}{chapter}
+
+\newenvironment{exercise}[3]
+{
+  \refstepcounter{exercise}\par\medskip\noindent
+  \textsc{Exercise~\theexercise\label{q:#1:#2}: #3}
+  
+}
+{
+}
+
+\newenvironment{solution}[3]
+{
+  \refstepcounter{solution}\par\medskip\noindent
+  \textsc{Solution for exercise~\ref{q:#1:#2}\label{a:#1:#2}: #3}
+  
+}
+{
+}
+
