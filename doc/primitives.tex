@@ -62,7 +62,7 @@ The binary notation is convenient when we think about how the numbers are repres
 
 % signedness: two's compliment
 
-\csharpsubsection{\csharp}
+\subsection{\csharp}
 
 % integer types available: and how to pick
 \csharp\ supports the signed and unsigned integer types listed in figure \ref{fig:prim:int:csharp:types}. Lets say that you need to be able to represent any positive number below 100.000. That number sits somewhere in between the limits of 16 bits and 32 bits. This means that we need at least 32 bits, and if we use more than 32 bits to represent it then we will be wasting memory. Depending on our \idx{architecture}{Architecture!Processor}, there might be processing speed to \idx{trade}{Tradeoff} for this \say{wasted} memory. But lets just stick to the 32 bits for now. As we don't need the negative values we will go for an \typename{int}.
@@ -130,7 +130,7 @@ Literals in general, and integer literals in particular, are expressions. That m
 
 % example
 
-\elixirsubsection{Elixir}
+\subsection{High-Level Languages}
 
 % arbitrary sizes: pros
 In Elixir, there is only one integer type and that has an \idx{arbitrary size}{Arbitrary size}. As long as an integral value fits in memory, an Elixir integer can hold it. The value is not in having integers that each take up 90\% of your \idx{primary memory}{Memory!Primary}. It is very rare that we have a need for integers beyond 128 bits or even 64 bits. But when we work with \idx{fixed size}{Fixed size} integers, we always have to be aware of that hard limit. In Elixir, we don't have to: If we somehow end up with a number needing 7000 bits, then that is what gets allocated. We don't have to worry.
