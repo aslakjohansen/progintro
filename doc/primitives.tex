@@ -173,7 +173,7 @@ Any valid comparison between two numerical values will yield a truth value. For 
 % the role of booleans extend beyond that of representing the result of some comparison, there is a whole algebra for it
 Booleans are, however, not just something that can be used to represent the outcome of some comparison. In fact, there is a whole algebra built around this type. We will cover the following operations:
 \begin{itemize}
-  \descitem{NOT Operator} Whether a value is not true (aka whether it is false). It is written as $\neg a$. A door is open if it is not closed: $open = \neg closed$.
+  \descitem{NOT Operator} Whether a value is not true (aka whether it is false). It is written as $\overline{a}$. A door is open if it is not closed: $open = \overline{closed}$.
   \descitem{AND Operator} Whether two values are both true. It is written as $a \wedge b$. You are free to go if you have a green light and the road is clear: $free\_to\_go = green\_light \wedge clear\_road$. 
   \descitem{OR Operator} Whether at least one of two values is true. It is written as $a \vee b$. A plant will die if kept dry or in darkness: $will\_die = dry \vee darkness$.
   \descitem{XOR Operator (pronounced X-OR)} Whether exactly one of two values is true. It is written as $a \oplus b$. A swinging door will open if it is either being pushed or being pulled: $will\_open = pushed \oplus pulled$.
@@ -191,15 +191,15 @@ It is common to demonstrate operations on boolean values using a so-called \idx{
 The XOR operator is not considered one of the \textsl{basic} boolean operators, and it is also -- by some margin -- the least used one. It can be hard to differentiate between OR and XOR. For instance, be might say that a game is over if you win or if you die. Should you choose to define this using OR or XOR? The only difference between these operators is what happens if both are true, and that never happens in a game: You don't both win and die. So, in this case it doesn't really matter. When it doesn't matter, most programmers will chose OR. Probably because we consider it linguistically simpler. In other scenarios, the behavior when both inputs are true does matter, and then that becomes the \idx{arbiter}{Arbiter}.
 
 % example: 
-But, lets look at a real-world example. Imagine that we are building a game. In this game the player progresses through a sequence of levels. In order to progress to the next level, the player must at the end of the current level (i) be alive, and (ii) have obtained a certain number of points. After each level the number of required points is raised. Whether the player should progress can then be determined as $alive \wedge P \geq P_{required}$ or (depending on what we track) $\neg dead \wedge P \geq P_{required}$.
+But, lets look at a real-world example. Imagine that we are building a game. In this game the player progresses through a sequence of levels. In order to progress to the next level, the player must at the end of the current level (i) be alive, and (ii) have obtained a certain number of points. After each level the number of required points is raised. Whether the player should progress can then be determined as $alive \wedge P \geq P_{required}$ or (depending on what we track) $\overline{dead} \wedge P \geq P_{required}$.
 
 % TODO: relation to set theory
 
 % De Morgan's laws
 As we know from \idx{elementary algebra}{Algebra!Elementary}, there are rules for transforming certain constructs. For instance, we know that $a(b+c) = ab + ac$. Similar rules exist for \idx{boolean algebra}{Algebra!Boolean}. The two most important of these rules are known as \idx{De Morgan's Laws}{De Morgan's Laws} (after \idx{Augustus De Morgan}{De Morgan, Augustus}). They state that:
 \begin{align*}
-  \neg (A \vee B) &= (\neg A) \wedge (\neg B) \\
-  \neg (A \wedge B) &= (\neg A) \vee (\neg B) 
+  \overline{A \vee B} &= \overline{A} \wedge \overline{B} \\
+  \overline{A \wedge B} &= \overline{A} \vee \overline{B}
 \end{align*}
 Or, in plain English, we have that:
 \begin{enumerate}
