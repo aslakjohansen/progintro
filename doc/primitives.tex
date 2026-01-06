@@ -301,6 +301,16 @@ When communicating with another human, we use names to refer to things. We can d
 We still haven't covered much of the \csharp\ language, and thus haven't encountered a whole lot of things that need to be named. We have explicitly covered a few different kinds of primitive types and local variables. As the name suggests, there are other kinds of variables that are \textsl{not} local. We have briefly touched on \texttt{Console.WriteLine}. As we will cover in chapter \ref{sec:objects}, \texttt{Console} is something called a \idx{class}{Class}, and \texttt{WriteLine} is a \idx{static method}{Method!Static}. So, we have already touched on a number of classes of elements that we need to be able to name, and we will keep on introducing such classes. One could call this a \idx{classification scheme}{Classification scheme}.
 
 % def: naming convention
+Programming languages often comes with naming conventions. A \defi{naming convention}{Naming convention} dictates a mapping from each such class to a specific \idx{naming scheme}{Naming scheme}. That is, it defines rules for \textsl{how} to name elements belonging to these classes. By choosing different naming schemes for different classes, a naming convention can make it likely that a human -- based on the observed naming scheme -- can guess which naming class it belongs to. This acts as a hint to the programmer. Software projects often adopt the naming convention of the programming languages they use, but it is not uncommon -- for better or worse -- to see deviations.
+
+% parameters of naming conventions: 
+A name could theoretically be anything, but more often than not, we en up wanting to use a sequence of words. An yet, we are not allowed to use space characters in our names. 
+
+\begin{figure}[tbp]
+  \input{figs/prim_naming_conventions.tex}
+  \caption{Overview of select naming conventions.}
+  \label{fig:prim:naming}
+\end{figure}
 
 % naming of local variables in C#
 
