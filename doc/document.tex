@@ -18,7 +18,9 @@
 \usepackage{caption}
 \usepackage{subcaption}
 
+% local packages
 \usepackage{vissyntax}
+\usepackage{ex}
 
 %% attachfile2 symbol configuration
 %\renewcommand{\atfi@acroPaperclip@data}{download}
@@ -130,6 +132,17 @@
 {
   
   \raggedleft{--- \textsl{\saveme}}
+  \end{minipagewithmarginpars}
+  \end{center}
+}
+
+\newenvironment{caution}[0]
+{
+  \begin{center}
+  \begin{minipagewithmarginpars}{0.9\textwidth}
+  \textbf{Caution:}
+}
+{
   \end{minipagewithmarginpars}
   \end{center}
 }

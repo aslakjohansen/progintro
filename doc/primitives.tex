@@ -62,7 +62,7 @@ The binary notation is convenient when we think about how the numbers are repres
 
 % signedness: two's compliment
 
-\csharpsubsection{\csharp}
+\subsection{\csharp}
 
 % integer types available: and how to pick
 \csharp\ supports the signed and unsigned integer types listed in figure \ref{fig:prim:int:csharp:types}. Lets say that you need to be able to represent any positive number below 100.000. That number sits somewhere in between the limits of 16 bits and 32 bits. This means that we need at least 32 bits, and if we use more than 32 bits to represent it then we will be wasting memory. Depending on our \idx{architecture}{Architecture!Processor}, there might be processing speed to \idx{trade}{Tradeoff} for this \say{wasted} memory. But lets just stick to the 32 bits for now. As we don't need the negative values we will go for an \typename{int}.
@@ -130,7 +130,7 @@ Literals in general, and integer literals in particular, are expressions. That m
 
 % example
 
-\elixirsubsection{Elixir}
+\subsection{High-Level Languages}
 
 % arbitrary sizes: pros
 In Elixir, there is only one integer type and that has an \idx{arbitrary size}{Arbitrary size}. As long as an integral value fits in memory, an Elixir integer can hold it. The value is not in having integers that each take up 90\% of your \idx{primary memory}{Memory!Primary}. It is very rare that we have a need for integers beyond 128 bits or even 64 bits. But when we work with \idx{fixed size}{Fixed size} integers, we always have to be aware of that hard limit. In Elixir, we don't have to: If we somehow end up with a number needing 7000 bits, then that is what gets allocated. We don't have to worry.
@@ -148,10 +148,11 @@ We use integers to express a number of whole units. The number itself does not t
 \csharpsubsection{\csharp}
 \elixirsubsection{Elixir}
 
-\section{Set Theory}
-\label{primitives:sets}
+% TODO: Should we have a brief intro before boolean operators?
+%\section{Set Theory}
+%\label{primitives:sets}
 
-% why we won't cover sets (in this section): not primitive values
+%% why we won't cover sets (in this section): not primitive values
 
 \section{Truth Values}
 \label{primitives:bools}
@@ -172,7 +173,7 @@ Any valid comparison between two numerical values will yield a truth value. For 
 % the role of booleans extend beyond that of representing the result of some comparison, there is a whole algebra for it
 Booleans are, however, not just something that can be used to represent the outcome of some comparison. In fact, there is a whole algebra built around this type. We will cover the following operations:
 \begin{itemize}
-  \descitem{NOT Operator} Whether a value is not true (aka whether it is false). It is written as $\neg a$. A door is open if it is not closed: $open = \neg closed$.
+  \descitem{NOT Operator} Whether a value is not true (aka whether it is false). It is written as $\overline{a}$. A door is open if it is not closed: $open = \overline{closed}$.
   \descitem{AND Operator} Whether two values are both true. It is written as $a \wedge b$. You are free to go if you have a green light and the road is clear: $free\_to\_go = green\_light \wedge clear\_road$. 
   \descitem{OR Operator} Whether at least one of two values is true. It is written as $a \vee b$. A plant will die if kept dry or in darkness: $will\_die = dry \vee darkness$.
   \descitem{XOR Operator (pronounced X-OR)} Whether exactly one of two values is true. It is written as $a \oplus b$. A swinging door will open if it is either being pushed or being pulled: $will\_open = pushed \oplus pulled$.
@@ -190,15 +191,15 @@ It is common to demonstrate operations on boolean values using a so-called \idx{
 The XOR operator is not considered one of the \textsl{basic} boolean operators, and it is also -- by some margin -- the least used one. It can be hard to differentiate between OR and XOR. For instance, be might say that a game is over if you win or if you die. Should you choose to define this using OR or XOR? The only difference between these operators is what happens if both are true, and that never happens in a game: You don't both win and die. So, in this case it doesn't really matter. When it doesn't matter, most programmers will chose OR. Probably because we consider it linguistically simpler. In other scenarios, the behavior when both inputs are true does matter, and then that becomes the \idx{arbiter}{Arbiter}.
 
 % example: 
-But, lets look at a real-world example. Imagine that we are building a game. In this game the player progresses through a sequence of levels. In order to progress to the next level, the player must at the end of the current level (i) be alive, and (ii) have obtained a certain number of points. After each level the number of required points is raised. Whether the player should progress can then be determined as $alive \wedge P \geq P_{required}$ or (depending on what we track) $\neg dead \wedge P \geq P_{required}$.
+But, lets look at a real-world example. Imagine that we are building a game. In this game the player progresses through a sequence of levels. In order to progress to the next level, the player must at the end of the current level (i) be alive, and (ii) have obtained a certain number of points. After each level the number of required points is raised. Whether the player should progress can then be determined as $alive \wedge P \geq P_{required}$ or (depending on what we track) $\overline{dead} \wedge P \geq P_{required}$.
 
 % TODO: relation to set theory
 
 % De Morgan's laws
 As we know from \idx{elementary algebra}{Algebra!Elementary}, there are rules for transforming certain constructs. For instance, we know that $a(b+c) = ab + ac$. Similar rules exist for \idx{boolean algebra}{Algebra!Boolean}. The two most important of these rules are known as \idx{De Morgan's Laws}{De Morgan's Laws} (after \idx{Augustus De Morgan}{De Morgan, Augustus}). They state that:
 \begin{align*}
-  \neg (A \vee B) &= (\neg A) \wedge (\neg B) \\
-  \neg (A \wedge B) &= (\neg A) \vee (\neg B) 
+  \overline{A \vee B} &= \overline{A} \wedge \overline{B} \\
+  \overline{A \wedge B} &= \overline{A} \vee \overline{B}
 \end{align*}
 Or, in plain English, we have that:
 \begin{enumerate}
@@ -249,6 +250,12 @@ bool progress = alive && (points > required_points);
 
 \subsubsection{Lazy Evaluation}
 
+% TODO: Make it make sense at this location
+
+% why is lazy evaluation a good thing: example, if the RHS part does not affect the result why should we spend cpu cycles evaluating it?
+
+% most operations we have covered so far have been pure, what that means, example of non-pure operator (i++), there are others
+
 \subsection{High-Level Languages}
 
 % difference in naming operators: && -> and
@@ -280,8 +287,13 @@ A consequence of this is that C doesn't have a notion of a \idx{boolean}{Boolean
 
 % rule: an explicit cast is necessary if we risk loosing data (can you round-trip it?), example, by casting we tell the compiler that we take on the responsibility of this risk, "trust me, bro!"
 
+% problem
+
+% calculations on types
+
 \section{Local Variables}
-\csharpsubsection{\csharp}
+
+\subsection{\csharp}
 
 \begin{syntaxfloat}
   \input{syntax/prim_vars_locals.tex}
@@ -289,7 +301,38 @@ A consequence of this is that C doesn't have a notion of a \idx{boolean}{Boolean
   \label{syntax:prim:vars:locals}
 \end{syntaxfloat}
 
-\elixirsubsection{Elixir}
+\subsection{Functional Programming}
+
+% tuples: composite values
+
+% pattern matching
+
+\section{Naming Conventions}
+
+% def naming
+When communicating with another human, we use names to refer to things. We can do this because we have a shared vocabulary. It doesn't matter what specific names we use, as long as we agree on their meaning. The same goes for when we write source code. Here, we \idx{name}{Naming} various parts of our code so that other programmers (as well as older versions of ourselves) will \say{get} what their intended function is. As long as all parts of the code is written with a consistent understanding of what these names mean, the compiler won't care. But the specific names are key to us humans.
+
+% classes to name
+We still haven't covered much of the \csharp\ language, and thus haven't encountered a whole lot of things that need to be named. We have explicitly covered a few different kinds of primitive types and local variables. As the name suggests, there are other kinds of variables that are \textsl{not} local. We have briefly touched on \texttt{Console.WriteLine}. As we will cover in chapter \ref{sec:objects}, \texttt{Console} is something called a \idx{class}{Class}, and \texttt{WriteLine} is a \idx{static method}{Method!Static}. So, we have already touched on a number of classes of elements that we need to be able to name, and we will keep on introducing such classes. One could call this a \idx{classification scheme}{Classification scheme}.
+
+% def: naming convention
+Programming languages often comes with naming conventions. A \defi{naming convention}{Naming convention} dictates a mapping from each such class to a specific \idx{naming scheme}{Naming scheme}. That is, it defines rules for \textsl{how} to name elements belonging to these classes. By choosing different naming schemes for different classes, a naming convention can make it likely that a human -- based on the observed naming scheme -- can guess which naming class it belongs to. This acts as a hint to the programmer. Software projects often adopt the naming convention of the programming languages they use, but it is not uncommon -- for better or worse -- to see deviations.
+
+% parameters of naming conventions: 
+A name could theoretically be anything, but more often than not, we en up wanting to use a sequence of words. An yet, we are not allowed to use space characters in our names. 
+
+\begin{figure}[tbp]
+  \input{figs/prim_naming_conventions.tex}
+  \caption{Overview of select naming conventions.}
+  \label{fig:prim:naming}
+\end{figure}
+
+% best practices:
+
+\subsection{\csharp}
+
+% naming of local variables in C#
+The \csharp\ naming convention states that local variables should be named using camel case.
 
 \section{Parsing}
 
@@ -302,7 +345,7 @@ In this chapter, we have introduced the notion of an expression. Expressions are
 \subsection{Operator Precedence}
 
 % intro: basic math tells us that $2+3*4=2+(3*4)=14$ as opposed to $(2+3)*4=24$, this is because we have agreed that a multiplication operation binds tighter than an addition, similar rules exist programming languages, and just as we learned that $2+3*4=2+(3*4)$ we need to learn how tightly each of the operators we make use of while programming bind
-Basic math tells us that $2+3*4=2+(3*4)=14$ as opposed to $(2+3)*4=24$. This is because we have agreed on the rule that the multiplication operation binds tighter than the addition addition operation. Similar rules exist for expressions in programming languages. Just as we learned that $2+3*4=2+(3*4)$, we ned to learn how tightly each of the operators (we make use of while programming) bind.
+Basic math tells us that $2+3 \cdot 4=2+(3 \cdot 4)=14$ as opposed to $(2+3) \cdot 4=24$. This is because we have agreed on the rule that the multiplication operation binds tighter than the addition addition operation. Similar rules exist for expressions in programming languages. Just as we learned that $2+3 \cdot 4=2+(3 \cdot 4)$, we ned to learn how tightly each of the operators (we make use of while programming) bind.
 
 % grouping: most languages define a hierarchy of operators, operators at the top level of the hierarchy binds the strongest and operators at to bottom level binds the weakest, within a given level all operators are treated as binding equally strong and the parsing is dictated on the associativity of the level (see next section)
 Most programming languages define a hierarchy of operator classes. Operator classes at the top level of the hierarchy bind the strongest, and operators and the bottom of level binds the weakest. Within a given level, all operators are treated as binding equally strong. Parsing of expressions involving two such operators is dictated on the \idx{associativity}{Operator!Associativity} of the operator class. More on this in the next section.
@@ -328,7 +371,7 @@ There are good intentions behind the parse rules; those that cover precedence an
 % parentheses: when the precedence is not to our liking we use parentheses, novice programmers often sprinkle parentheses around their code, this becomes a source of confusion for more experienced programmers and is thus frowned upon
 When this happens, we use parentheses to force a specific interpretation. Novice programmers are often seen sprinkling parantheses around their code to avoid learning the underlying rules. This becomes a source of confusion for more experienced programmers and -- for that reason -- it is frowned upon.
 
-\csharpsubsection{\csharp}
+\subsection{\csharp}
 
 % https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/
 
@@ -345,8 +388,9 @@ When this happens, we use parentheses to force a specific interpretation. Novice
 \end{figure}
 
 % caution: C# has an & operator in addition to the && operator, the difference is that & does not short circuit, normally (in the C family of languages) & means something different, C# is really only pretending to be part of this group of languages and in this case it stumbles
-
-\exercises{primitives}{Primitive Types}
+\begin{caution}
+\csharp\ has an \texttt{\&} operator in addition to the \texttt{\&\&} operator that we have covered here. The difference is that the \texttt{\&} operator does not \idx{short circuit}{Short circuit}. Normally, in the C family of languages, the \texttt{\&} operator has a different meaning. \csharp\ is really only pretending to be part of this group of languages, and in this case it stumbles. The similarity is mostly at syntax level.
+\end{caution}
 
 \section{Resolving Uncertainty}
 
@@ -358,4 +402,6 @@ Such situations has at least one of a number of negative consequences. If you ar
 
 % solution: poke the system
 Awareness of the disconnect enables you to handle the situation constructively. See it as an opportunity to treat the situation with the respect (and time) it deserves: Read up on the relevant theory, or start poking it experimentally. Construct a piece of software with the single purpose of revealing \textsl{how} it behaves. This, with the intention of expanding your mental model of the language. Don't be afraid to get your hands dirty!
+
+\exercises{primitives}{Primitive Types}
 
