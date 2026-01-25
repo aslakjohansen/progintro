@@ -2,6 +2,10 @@
 
 \section{Dynamic Arrays}
 
+% TODO: merge the two next
+
+% array restrictions: what an array is (1: sequence of allocations of a fixed size, 2: elements of a specific type), on initialization space for a fixed number of elements is allocated on the heap, this works really well for sequences that will have a fixed length throughout the lifetime of our program (e.g., if we have some element per month - the number of months is not likely to change anytime soon, in fact this would break an absolutely incredible amount of software), in other situations this is a problem (e.g., a shopping basket), conclusion(this property (a number of items that is fixed) is really a special case), discussion about the tradeoffs of which limit to set, this is not an attractive solution, we need a way to add or removed elements. 
+
 % problem: things were simple when we worked with months (always the same number), the number of items is not always known, shopping cart example, we could allocate space for the largest conceivable number of items, Amazon is estimated to have 600+ million products in their inventory (2025 number) and 315 million customers (2024), assuming that 1B is enough store how many products a customer orders (limit of 255) this gives us approx 190PB just to hold the shopping carts, this is not feasible, a different approach is needed
 
 % the growth and recession approach
