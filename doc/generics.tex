@@ -15,6 +15,9 @@ A minimal example of this is a \say{pair}. That is, two of something. The concep
   \label{fig:generics:pair:problem}
 \end{figure}
 
+% differences
+It doesn't quite feel right though. The concept of the pair is intertwined with the type of the elements. The \methodname{ToString} method and the body of the constructor are exactly the same in the two classes. If we look past the types, then so are the instance variables and constructor parameters. These are all things that are linked to the concept of a pair; not the type of the elements. The only reason for the classes (and thus their constructors) to be named differently is that they can't have the same name.
+
 % problem: scalability
 
 \section{Solution}
