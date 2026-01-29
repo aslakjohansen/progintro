@@ -26,13 +26,31 @@ But this still leaves us with a missed opportunity for polymorphism. It would be
 
 \section{Solution}
 
-% there is another way though, that is to create a parameterized (or generic) type, define recipe (take class or interface as starting point, insert placeholders for needed types, declare these placeholders as parameters to the type you are defining)
+% there is another way though, that is to create a parameterized (or generic) type, definition (named placeholders instead of certain types), define recipe (take class or interface as starting point, insert placeholders for needed types, declare these placeholders as parameters to the type you are defining)
+To solve this problem many programming languages have introduced a notion of a \idx{parameterized (or generic) type}{Type!Parameterized}. A type (thing class or interface) is parameterized when certain types withing its definition are replaced by named placeholders. The recipe can be written down as:
+\begin{enumerate}
+  \descitem{Starting Point:} Take a complex type definition as a starting point. As an example we will use the definition of the \classname{IntPair} class from figure \ref{fig:generics:pair:problem}.
+  \descitem{Locate References:} Find the references to types that we wish to parameterize. In \classname{IntPair}, we need to find the locations of the types that have to match the two elements that the class wrap. These are the types of the two instance variables and the parameter types for the constructor. It is not the return type of the \methodname{ToString} method. That has to be \typename{string} in order to match the \idx{method prototype}{Method!Prototype} that we are trying to override, and it is independent of the of the type of the wrapped elements.
+  \descitem{Insert Placeholders} For each parameterized type, come up with a placeholder name, and replace each found type reference with the matching placeholder name. For placeholder names we usually use single upper-case characters (often \typename{T}). As both elements of our pair needs to be of the same type, we only need a single placeholder name. Lets just use \typename{T}.
+  \descitem{Declare Placeholders} Declare that the type is parameterized over the set of placeholder names.
+\end{enumerate}
 
-% compiler: then the compiler will automatically generate concrete type variants on demand
+% fig: generic pair
+\begin{figure}[tbp]
+  \input{figs/generics_pair_solution.tex}
+  \caption{Generic pair definition.}
+  \label{fig:generics:pair:solution}
+\end{figure}
 
-\subsection{\csharp}
-\subsubsection{Multiple Parameters}
-\subsubsection{Restrictions on Type}
+% compiler: then the compiler will automatically generate concrete type variants on demand, if we follow that recipe we end up with FIG, from this the compiler will be able to generate the equivalents of IntPair and PointPair from FIG, note that these do no actually end up in files
+If we follow the recipe on the definition of \classname{IntPair} or \classname{PointPair}, we end up with the generic \classname{Pair} definition in figure \ref{fig:generics:pair:solution}. Given such parameterized definitions, the compiler will automatically generate concrete type variants on demand and that demand is driven by actual use. If the code refers to a pair of \typename{int} values, then the equivalent of \classname{IntPair} will be created. If it refers to a pair of dogs, then the equivalent of a \classname{DogPair} will be created. Note that these \textsl{creations} never end up in files.
+
+\section{\csharp}
+
+% declaration of the placeholders
+
+\subsection{Multiple Parameters}
+\subsection{Restrictions on Type}
 
 \exercises{generics}{Parameterized Types}
 
