@@ -1,0 +1,59 @@
+\begin{syntax}{class}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence] () at ([yshift=-0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleIa) {class-annotations};
+    &
+    \node[terminal]    (ruleIb) {class};
+    &
+    \node[nonterminal] (ruleIc) {name};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-1.5*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal]    (ruleId) {<};
+    &
+    \node[nonterminal] (ruleIe) {placeholder-list};
+    &
+    \node[terminal]    (ruleIf) {>};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-3*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal]    (ruleIg) {(};
+    &
+    \node[nonterminal] (ruleIh) {parameter-list};
+    &
+    \node[terminal]    (ruleIi) {)};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-4.5*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleIj) {where-list};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-6*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleIk) {:};
+    &
+    \node[nonterminal] (ruleIl) {name};
+    &
+    \node[terminal] (ruleIm) {\{};
+    &
+    \node[nonterminal] (ruleIn) {class-body};
+    &
+    \node[terminal] (ruleIo) {\}};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)
+    -|([xshift=1cm,yshift=-0.4cm]ruleIc.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleId.west)|-
+    (ruleId)--(ruleIe)--(ruleIf)
+    -|([xshift=1cm,yshift=-0.4cm]ruleIf.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleIg.west)|-
+    (ruleIg)--(ruleIh)--(ruleIi)
+    -|([xshift=1cm,yshift=-0.4cm]ruleIi.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleIj.west)|-
+    (ruleIj)
+    -|([xshift=1cm,yshift=-0.4cm]ruleIj.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleIk.west)|-
+    (ruleIk)--(ruleIl)--(ruleIm)--(ruleIn)--(ruleIo) to[-|-] (end);
+\end{syntax}
