@@ -35,6 +35,49 @@
   |- (ruleIa);
 \end{syntax}
 
+\begin{syntax}{class-body}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence] () at ([yshift=-1*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal]    (ruleI) {context-variable};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-2*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal]    (ruleII) {constructor};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-3*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal]    (ruleIII) {method};
+    \\
+  };
+  
+  \draw[path] (begin)--(end);
+  
+  \draw[path]
+    (begin)
+    -| ([xshift=3cm,yshift=-0.4cm]begin.east) |-
+    (ruleI)
+    -| ([xshift=-3cm,yshift=-0.4cm]end.west) |-
+    (end);
+  \draw[path]
+    (begin)
+    -| ([xshift=3cm,yshift=-0.4cm]begin.east) |-
+    (ruleII)
+    -| ([xshift=-3cm,yshift=-0.4cm]end.west) |-
+    (end);
+  \draw[path]
+    (begin)
+    -| ([xshift=3cm,yshift=-0.4cm]begin.east) |-
+    (ruleIII)
+    -| ([xshift=-3cm,yshift=-0.4cm]end.west) |-
+    (end);
+  
+  \draw[path] (begin) -| ([xshift=-2cm,yshift=0.4cm]end.west) |- ([yshift=1*\syntaxruledist]$(begin)!0.5!(end)$) -| ([xshift=2cm,yshift=0.4cm]begin.east) |- (end);
+\end{syntax}
+
 \begin{syntax}{class}
   \SyntaxWestSplit{MainWest}
   \SyntaxEastSplit{MainEast}
