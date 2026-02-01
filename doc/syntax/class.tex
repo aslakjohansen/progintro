@@ -5,35 +5,35 @@
   \draw[path] (begin)--(end);
 \end{syntax}
 
-\begin{syntax}{parameter-list}
-  \SyntaxWestSplit{MainWest}
-  \SyntaxEastSplit{MainEast}
-  
-  \node[sequence] () at ([yshift=-1*\syntaxruledist]$(begin)!0.5!(end)$) {
-    \node[nonterminal] (ruleIa) {type};
-    &
-    \node[nonterminal] (ruleIb) {name};
-    \\
-  };
-  
-  \node[sequence] () at ([yshift=-2*\syntaxruledist]$(begin)!0.5!(end)$) {
-    \node[terminal]    (ruleII) {,};
-    \\
-  };
-  
-  \draw[path] (begin)--(end);
-  
-  \draw[path]
-    (begin)
-    -| ([xshift=-2cm,yshift=0.4cm]ruleIa.west) |-
-    (ruleIa)--(ruleIb)
-    -| ([xshift=2cm,yshift=0.4cm]ruleIb.east) |-
-    (end);
-  
-  \draw[path] (ruleIb)
-  -| ([xshift=1cm,yshift=-0.4cm]ruleIb.east) |- (ruleII) -| ([xshift=-1cm,yshift=-0.4cm]ruleIa.west)
-  |- (ruleIa);
-\end{syntax}
+%\begin{syntax}{parameter-list}
+%  \SyntaxWestSplit{MainWest}
+%  \SyntaxEastSplit{MainEast}
+%  
+%  \node[sequence] () at ([yshift=-1*\syntaxruledist]$(begin)!0.5!(end)$) {
+%    \node[nonterminal] (ruleIa) {type};
+%    &
+%    \node[nonterminal] (ruleIb) {name};
+%    \\
+%  };
+%  
+%  \node[sequence] () at ([yshift=-2*\syntaxruledist]$(begin)!0.5!(end)$) {
+%    \node[terminal]    (ruleII) {,};
+%    \\
+%  };
+%  
+%  \draw[path] (begin)--(end);
+%  
+%  \draw[path]
+%    (begin)
+%    -| ([xshift=-2cm,yshift=0.4cm]ruleIa.west) |-
+%    (ruleIa)--(ruleIb)
+%    -| ([xshift=2cm,yshift=0.4cm]ruleIb.east) |-
+%    (end);
+%  
+%  \draw[path] (ruleIb)
+%  -| ([xshift=1cm,yshift=-0.4cm]ruleIb.east) |- (ruleII) -| ([xshift=-1cm,yshift=-0.4cm]ruleIa.west)
+%  |- (ruleIa);
+%\end{syntax}
 
 \begin{syntax}{class-body}
   \SyntaxWestSplit{MainWest}
@@ -94,7 +94,7 @@
   \node[sequence] () at ([yshift=-1.5*\syntaxruledist]$(begin)!0.5!(end)$) {
     \node[terminal]    (ruleId) {(};
     &
-    \node[nonterminal] (ruleIe) {parameter-list};
+    \node[nonterminal] (ruleIe) {params};
     &
     \node[terminal]    (ruleIf) {)};
     \\
