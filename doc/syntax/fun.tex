@@ -20,6 +20,11 @@
             |-(                            [yshift=0.0*\syntaxruledist]ruleIIa)
             -|([xshift=-0.75*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIa.west)
             |-(ruleIa);
+  \draw[path] (begin)
+            -|([xshift=-1.5*\syntaxruledist,yshift=-0.5*\syntaxruledist]ruleIa.west)
+            |-(                            [yshift=-1.0*\syntaxruledist]ruleIa.center)
+            -|([xshift= 1.5*\syntaxruledist,yshift=-0.5*\syntaxruledist]ruleIb.east)
+            |-(end);
 \end{syntax}
 
 \begin{syntax}[[xshift=20mm]concept.west]{fun-def}
