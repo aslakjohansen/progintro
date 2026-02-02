@@ -1,11 +1,80 @@
-\begin{syntax}{class-annotations}
+\begin{syntax}[[xshift=36mm]concept.west]{class-anno}
   \SyntaxWestSplit{MainWest}
   \SyntaxEastSplit{MainEast}
   
   \draw[path] (begin)--(end);
 \end{syntax}
 
-\begin{syntax}{class-body}
+\begin{syntax}[[xshift=36mm]concept.west]{context-var-anno}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \draw[path] (begin)--(end);
+\end{syntax}
+
+\begin{syntax}[[xshift=36mm]concept.west]{constructor-anno}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \draw[path] (begin)--(end);
+\end{syntax}
+
+\begin{syntax}[[xshift=36mm]concept.west]{method-anno}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \draw[path] (begin)--(end);
+\end{syntax}
+
+\begin{syntax}[[xshift=36mm]concept.west]{constructor}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence] () at ([yshift=0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleIaa) {constructor-anno};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-1.5*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleIa) {name};
+    &
+    \node[terminal]    (ruleIb) {(};
+    &
+    \node[nonterminal] (ruleIc) {params};
+    &
+    \node[terminal]    (ruleId) {)};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-3*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleIe) {stmt};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleIaa)
+    -|([xshift=1cm,yshift=-0.4cm]ruleIaa.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleIa.west)|-
+    (ruleIa)--(ruleIb)--(ruleIc)--(ruleId)
+    -|([xshift=1cm,yshift=-0.4cm]ruleId.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleIe.west)|-
+    (ruleIe)--([xshift=3cm]ruleIe.east)
+    to[-|-]
+    (end);
+\end{syntax}
+
+\begin{syntax}[[xshift=36mm]concept.west]{method}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence] () at ([yshift=0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal]    (ruleIa) {method-anno};
+    &
+    \node[nonterminal]    (ruleIb) {function};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleIa)--(ruleIb)--(end);
+\end{syntax}
+
+\begin{syntax}[[xshift=36mm]concept.west]{class-body}
   \SyntaxWestSplit{MainWest}
   \SyntaxEastSplit{MainEast}
   
@@ -48,12 +117,12 @@
   \draw[path] (begin) -| ([xshift=-2cm,yshift=0.4cm]end.west) |- ([yshift=1*\syntaxruledist]$(begin)!0.5!(end)$) -| ([xshift=2cm,yshift=0.4cm]begin.east) |- (end);
 \end{syntax}
 
-\begin{syntax}{class}
+\begin{syntax}[[xshift=36mm]concept.west]{class}
   \SyntaxWestSplit{MainWest}
   \SyntaxEastSplit{MainEast}
   
   \node[sequence] () at ([yshift=-0*\syntaxruledist]$(begin)!0.4!(end)$) {
-    \node[nonterminal] (ruleIa) {class-annotations};
+    \node[nonterminal] (ruleIa) {class-anno};
     &
     \node[terminal]    (ruleIb) {class};
     &
