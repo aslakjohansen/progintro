@@ -12,15 +12,6 @@
   };
   
   \node[sequence] () at ([yshift=-1.5*\syntaxruledist]$(begin)!0.5!(end)$) {
-    \node[terminal]    (ruleId) {(};
-    &
-    \node[nonterminal] (ruleIe) {parameter-list};
-    &
-    \node[terminal]    (ruleIf) {)};
-    \\
-  };
-  
-  \node[sequence] () at ([yshift=-3*\syntaxruledist]$(begin)!0.5!(end)$) {
     \node[nonterminal] (ruleIg) {:};
     &
     \node[nonterminal] (ruleIh) {name};
@@ -34,8 +25,6 @@
   };
   
   \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)
-    -|([xshift=1cm,yshift=-0.4cm]ruleIc.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleId.west)|-
-    (ruleId)--(ruleIe)--(ruleIf)
-    -|([xshift=1cm,yshift=-0.4cm]ruleIf.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleIg.west)|-
+    -|([xshift=1cm,yshift=-0.4cm]ruleIc.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleIg.west)|-
     (ruleIg)--(ruleIh)--(ruleIi)--(ruleIj)--(ruleIk) to[-|-] (end);
 \end{syntax}
