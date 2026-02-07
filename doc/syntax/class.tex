@@ -60,6 +60,20 @@
     (end);
 \end{syntax}
 
+\begin{syntax}[[xshift=36mm]concept.west]{context-variable}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence] () at ([yshift=0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal]    (ruleIa) {context-var-anno};
+    &
+    \node[nonterminal]    (ruleIb) {local-var};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleIa)--(ruleIb)--(end);
+\end{syntax}
+
 \begin{syntax}[[xshift=36mm]concept.west]{method}
   \SyntaxWestSplit{MainWest}
   \SyntaxEastSplit{MainEast}
