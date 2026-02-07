@@ -1,0 +1,17 @@
+\begin{syntax}{stmt}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence] () at ([yshift=-0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal]    (ruleI) {break};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-1*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal]    (ruleII) {continue};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleI)--(end);
+  \draw[path] (begin) to[-|-] (ruleII) to[-|-] (end);
+\end{syntax}
