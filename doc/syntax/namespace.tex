@@ -1,0 +1,49 @@
+\begin{syntax}[[xshift=34mm]concept.west]{namespace-body}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence] () at ([yshift=-1*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleI) {class};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-2*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleII) {interface};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-3*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleIII) {enum};
+    \\
+  };
+  
+  \draw[path] (begin)--(end);
+  \draw[path] (begin) to[-|-] (ruleI) to[-|-] (end);
+  \draw[path] (begin) to[-|-] (ruleII) to[-|-] (end);
+  \draw[path] (begin) to[-|-] (ruleIII) to[-|-] (end);
+  
+  \draw[path]
+    (begin)--([xshift=2cm]begin.east)-|([xshift=1cm]begin.east)
+    |-([yshift=\syntaxruledist]$(begin)!0.5!(end)$)-|
+    ([xshift=-1cm]end.west)|-([xshift=-2cm]end.west)--(end);
+\end{syntax}
+
+\begin{syntax}[[xshift=34mm]concept.west]{stmt}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence] () at ([yshift=-0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal]    (ruleIa) {namespace};
+    &
+    \node[nonterminal] (ruleIb) {name};
+    &
+    \node[terminal]    (ruleIc) {\{};
+    &
+    \node[nonterminal] (ruleId) {namespace-body};
+    &
+    \node[terminal]    (ruleIe) {\}};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(ruleId)--(ruleIe)--(end);
+\end{syntax}
