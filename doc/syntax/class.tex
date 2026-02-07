@@ -144,15 +144,6 @@
     \\
   };
   
-%  \node[sequence] () at ([yshift=-1.5*\syntaxruledist]$(begin)!0.5!(end)$) {
-%    \node[terminal]    (ruleId) {(};
-%    &
-%    \node[nonterminal] (ruleIe) {params};
-%    &
-%    \node[terminal]    (ruleIf) {)};
-%    \\
-%  };
-%  
   \node[sequence] () at ([yshift=-1.5*\syntaxruledist]$(begin)!0.5!(end)$) {
     \node[terminal] (ruleIi) {\{};
     &
@@ -164,7 +155,5 @@
   
   \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)
     -|([xshift=1cm,yshift=-0.4cm]ruleIc.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleIi.west)|-
-%    (ruleId)--(ruleIe)--(ruleIf)
-%    -|([xshift=1cm,yshift=-0.4cm]ruleIf.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleIi.west)|-
     (ruleIi)--(ruleIj)--(ruleIk) to[-|-] (end);
 \end{syntax}
