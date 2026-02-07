@@ -1,0 +1,77 @@
+\begin{syntax}[[xshift=36mm]concept.west]{class-anno}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence] () at ([yshift=-1*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleI) {vismod};
+    \\
+  };
+  
+  \draw[path] (begin)--(end);
+  \draw[path] (begin) to[-|-] (ruleI) to[-|-] (end);
+\end{syntax}
+
+\begin{syntax}[[xshift=36mm]concept.west]{context-var-anno}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence] () at ([yshift=-1*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleI) {vismod};
+    \\
+  };
+  
+  \draw[path] (begin)--(end);
+  \draw[path] (begin) to[-|-] (ruleI) to[-|-] (end);
+\end{syntax}
+
+\begin{syntax}[[xshift=36mm]concept.west]{constructor-anno}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence] () at ([yshift=-1*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleI) {vismod};
+    \\
+  };
+  
+  \draw[path] (begin)--(end);
+  \draw[path] (begin) to[-|-] (ruleI) to[-|-] (end);
+\end{syntax}
+
+\begin{syntax}[[xshift=36mm]concept.west]{method-anno}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence] () at ([yshift=-1*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleI) {vismod};
+    \\
+  };
+  
+  \draw[path] (begin)--(end);
+  \draw[path] (begin) to[-|-] (ruleI) to[-|-] (end);
+\end{syntax}
+
+\begin{syntax}[[xshift=36mm]concept.west]{vismod}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence] () at ([yshift=-1*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal] (ruleI) {public};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-2*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal] (ruleII) {protected};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-3*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal] (ruleIII) {private};
+    \\
+  };
+  
+  \draw[path] (begin)--(end);
+  \draw[path] (begin) to[-|-] (ruleI) to[-|-] (end);
+  \draw[path] (begin) to[-|-] (ruleII) to[-|-] (end);
+  \draw[path] (begin) to[-|-] (ruleIII) to[-|-] (end);
+\end{syntax}
+
