@@ -31,3 +31,50 @@
     (ruleIg)--(ruleIh)--(ruleIi)--(ruleIj)--(ruleIk) to[-|-] (end);
   \draw[path] ([yshift=1.5/2*\syntaxruledist]ruleIi.center) -| ([yshift=1.5/4*\syntaxruledist]dummy.center) |- (ruleIi);
 \end{syntax}
+
+\begin{syntax}{constructor}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence] () at ([yshift=0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleIaa) {constructor-anno};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-1.5*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleIa) {name};
+    &
+    \node[terminal]    (ruleIb) {(};
+    &
+    \node[nonterminal] (ruleIc) {params};
+    &
+    \node[terminal]    (ruleId) {)};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-3*\syntaxruledist]$(begin)!0.4!(end)$) {
+    \node[terminal]    (ruleIe) {:};
+    &
+    \node[terminal]    (ruleIf) {base};
+    &
+    \node[terminal]    (ruleIg) {(};
+    &
+    \node[nonterminal] (ruleIh) {args};
+    &
+    \node[terminal]    (ruleIi) {)};
+    &
+    \node[] (dummy) {};
+    &
+    \node[nonterminal] (ruleIj) {stmt};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleIaa)
+    -|([xshift=1cm,yshift=-0.4cm]ruleIaa.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleIa.west)|-
+    (ruleIa)--(ruleIb)--(ruleIc)--(ruleId)
+    -|([xshift=1cm,yshift=-0.4cm]ruleId.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleIe.west)|-
+    (ruleIe)--(ruleIf)--(ruleIg)--(ruleIh)--(ruleIi)--(ruleIj)%--([xshift=3cm]ruleIj.east)
+    to[-|-]
+    (end);
+  \draw[path] ([yshift=1.5/2*\syntaxruledist]ruleIj.center) -| ([yshift=1.5/4*\syntaxruledist]dummy.center) |- (ruleIj);
+\end{syntax}
