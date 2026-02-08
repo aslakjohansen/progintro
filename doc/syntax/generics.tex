@@ -58,15 +58,6 @@
     \\
   };
   
-%  \node[sequence] () at ([yshift=-3*\syntaxruledist]$(begin)!0.5!(end)$) {
-%    \node[terminal]    (ruleIg) {(};
-%    &
-%    \node[nonterminal] (ruleIh) {parameter-list};
-%    &
-%    \node[terminal]    (ruleIi) {)};
-%    \\
-%  };
-  
   \node[sequence] () at ([yshift=-3*\syntaxruledist]$(begin)!0.5!(end)$) {
     \node[nonterminal] (ruleIj) {where-list};
     \\
@@ -89,8 +80,6 @@
     -|([xshift=1cm,yshift=-0.4cm]ruleIc.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleId.west)|-
     (ruleId)--(ruleIe)--(ruleIf)
     -|([xshift=1cm,yshift=-0.4cm]ruleIf.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleIj.west)|-
-%    (ruleIg)--(ruleIh)--(ruleIi)
-%    -|([xshift=1cm,yshift=-0.4cm]ruleIi.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleIj.west)|-
     (ruleIj)
     -|([xshift=1cm,yshift=-0.4cm]ruleIj.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleIk.west)|-
     (ruleIk)--(ruleIl)--(ruleIm)--(ruleIn)--(ruleIo) to[-|-] (end);
