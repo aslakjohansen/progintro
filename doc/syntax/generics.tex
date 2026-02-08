@@ -66,7 +66,9 @@
   \node[sequence] () at ([yshift=-4.5*\syntaxruledist]$(begin)!0.5!(end)$) {
     \node[nonterminal] (ruleIk) {:};
     &
-    \node[nonterminal] (ruleIl) {name};
+    \node[nonterminal] (ruleIl) {unames};
+    &
+    \node[] (dummy) {};
     &
     \node[terminal] (ruleIm) {\{};
     &
@@ -83,4 +85,5 @@
     (ruleIj)
     -|([xshift=1cm,yshift=-0.4cm]ruleIj.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleIk.west)|-
     (ruleIk)--(ruleIl)--(ruleIm)--(ruleIn)--(ruleIo) to[-|-] (end);
+  \draw[path] ([yshift=1.5/2*\syntaxruledist]ruleIm.center) -| ([yshift=1.5/4*\syntaxruledist]dummy.center) |- (ruleIm);
 \end{syntax}
