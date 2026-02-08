@@ -1,0 +1,51 @@
+\begin{syntax}[[xshift=20mm]concept.west]{unames}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence] () at ([yshift=-0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleI) {name};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-1*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal]    (ruleII) {,};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleI)--(end);
+  \draw[path] (ruleI) -| ([xshift=1cm,yshift=-0.4cm]ruleI.east) |- (ruleII) -| ([xshift=-1cm]ruleI.west) -- (ruleI);
+\end{syntax}
+
+\begin{syntax}[[xshift=20mm]concept.west]{class}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence] () at ([yshift=-0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleIa) {class-annotations};
+    &
+    \node[terminal]    (ruleIb) {class};
+    &
+    \node[nonterminal] (ruleIc) {name};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-1.5*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleIg) {:};
+    &
+    \node[nonterminal] (ruleIh) {unames};
+    &
+    \node[] (dummy) {};
+    &
+    \node[terminal] (ruleIi) {\{};
+    &
+    \node[nonterminal] (ruleIj) {class-body};
+    &
+    \node[terminal] (ruleIk) {\}};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)
+    -|([xshift=1cm,yshift=-0.4cm]ruleIc.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleIg.west)|-
+    (ruleIg)--(ruleIh)--(ruleIi)--(ruleIj)--(ruleIk) to[-|-] (end);
+  \draw[path] ([yshift=1.5/2*\syntaxruledist]ruleIi.center) -| ([yshift=1.5/4*\syntaxruledist]dummy.center) |- (ruleIi);
+\end{syntax}
