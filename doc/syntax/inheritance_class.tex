@@ -16,6 +16,8 @@
     &
     \node[nonterminal] (ruleIh) {name};
     &
+    \node[] (dummy) {};
+    &
     \node[terminal] (ruleIi) {\{};
     &
     \node[nonterminal] (ruleIj) {class-body};
@@ -27,4 +29,5 @@
   \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)
     -|([xshift=1cm,yshift=-0.4cm]ruleIc.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleIg.west)|-
     (ruleIg)--(ruleIh)--(ruleIi)--(ruleIj)--(ruleIk) to[-|-] (end);
+  \draw[path] ([yshift=1.5/2*\syntaxruledist]ruleIi.center) -| ([yshift=1.5/4*\syntaxruledist]dummy.center) |- (ruleIi);
 \end{syntax}
