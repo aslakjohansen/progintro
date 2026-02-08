@@ -20,8 +20,25 @@
     \\
   };
   
-  
   \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)
     -|([xshift=1cm,yshift=-0.4cm]ruleIc.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleIg.west)|-
     (ruleIg)--(ruleIh)--(ruleIi) to[-|-] (end);
+\end{syntax}
+
+\begin{syntax}{unames}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence] () at ([yshift=-0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleI) {name};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-1.5*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal]    (ruleII) {,};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleI)--(end);
+  \draw[path] (ruleI) -| ([xshift=1cm,yshift=-0.4cm]ruleI.east) |- (ruleII) -| ([xshift=-1cm]ruleI.west) -- (ruleI);
 \end{syntax}
