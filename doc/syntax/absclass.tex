@@ -16,7 +16,9 @@
   \node[sequence] () at ([yshift=-1.5*\syntaxruledist]$(begin)!0.5!(end)$) {
     \node[nonterminal] (ruleIg) {:};
     &
-    \node[nonterminal] (ruleIh) {name};
+    \node[nonterminal] (ruleIh) {unames};
+    &
+    \node[] (dummy) {};
     &
     \node[terminal] (ruleIi) {\{};
     &
@@ -29,4 +31,5 @@
   \draw[path] (begin)--(ruleIa)--(ruleIab)--(ruleIb)--(ruleIc)
     -|([xshift=1cm,yshift=-0.4cm]ruleIc.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleIg.west)|-
     (ruleIg)--(ruleIh)--(ruleIi)--(ruleIj)--(ruleIk) to[-|-] (end);
+  \draw[path] ([yshift=1.5/2*\syntaxruledist]ruleIi.center) -| ([yshift=1.5/4*\syntaxruledist]dummy.center) |- (ruleIi);
 \end{syntax}
