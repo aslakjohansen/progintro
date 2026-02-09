@@ -1,106 +1,4 @@
-\begin{syntax}{placeholder-list}
-  \SyntaxWestSplit{MainWest}
-  \SyntaxEastSplit{MainEast}
-  
-  \node[sequence] () at ([yshift=0*\syntaxruledist]$(begin)!0.5!(end)$) {
-    \node[nonterminal] (ruleI) {name};
-    \\
-  };
-  
-  \node[sequence] () at ([yshift=-1*\syntaxruledist]$(begin)!0.5!(end)$) {
-    \node[terminal]    (ruleII) {,};
-    \\
-  };
-  
-  \draw[path] (begin)--(ruleI)--(end);
-  \draw[path] (ruleI)
-           -| ([xshift=1cm,yshift=-0.4cm]ruleI.east)
-           |- (ruleII)
-           -| ([xshift=-1cm,yshift=-0.4cm]ruleI.west)
-           |- (ruleI);
-\end{syntax}
-
-\begin{syntax}[[xshift=26mm]concept.west]{where-list}
-  \SyntaxWestSplit{MainWest}
-  \SyntaxEastSplit{MainEast}
-  
-  \node[sequence] () at ([yshift=-1*\syntaxruledist]$(begin)!0.5!(end)$) {
-    \node[terminal]    (ruleIa) {where};
-    &
-    \node[terminal]    (ruleIb) {:};
-    &
-    \node[]            (dummy) {};
-    &
-    \node[nonterminal] (ruleIc) {name};
-    \\
-  };
-  
-  \node[terminal]    (ruleId) at ([yshift=-1*\syntaxruledist]ruleIc) {,};
-  
-  \draw[path] (begin)--(end);
-  \draw[path] (begin)
-           -| ([xshift=-1cm,yshift=0.4cm]ruleIa.west)
-           |- (ruleIa)--(ruleIb)--(ruleIc)
-           -| ([xshift=1cm,yshift=0.4cm]ruleIc.east)
-           |- (end);
-  \draw[path] (ruleIc)
-           -| ([xshift=1cm,yshift=-0.4cm]ruleIc.east)
-           |- (ruleId)
-           -| ([yshift=-0.4cm]dummy.center)
-           |- (ruleIc);
-  \draw[path] (ruleIc)
-           -| ([xshift=2cm,yshift=-0.4cm]ruleIc.east)
-           |- ([yshift=-2*\syntaxruledist]ruleIb.center)
-           -| ([xshift=-1cm,yshift=-0.4cm]ruleIa.west)
-           |- (ruleIa);
-\end{syntax}
-
-\begin{syntax}[[xshift=22mm]concept.west]{interface}
-  \SyntaxWestSplit{MainWest}
-  \SyntaxEastSplit{MainEast}
-  
-  \node[sequence] () at ([yshift=-0*\syntaxruledist]$(begin)!0.4!(end)$) {
-    \node[nonterminal] (ruleIa) {class-annotations};
-    &
-    \node[terminal]    (ruleIb) {interface};
-    &
-    \node[nonterminal] (ruleIc) {name};
-    \\
-  };
-  
-  \node[sequence] () at ([yshift=-1.5*\syntaxruledist]$(begin)!0.5!(end)$) {
-    \node[terminal]    (ruleId) {<};
-    &
-    \node[nonterminal] (ruleIe) {placeholder-list};
-    &
-    \node[terminal]    (ruleIf) {>};
-    \\
-  };
-  
-  \node[sequence] () at ([yshift=-3*\syntaxruledist]$(begin)!0.5!(end)$) {
-    \node[nonterminal] (where) {where-list};
-    \\
-  };
-  
-  \node[sequence] () at ([yshift=-4.5*\syntaxruledist]$(begin)!0.5!(end)$) {
-    \node[terminal]    (ruleIg) {\{};
-    &
-    \node[nonterminal] (ruleIh) {abstract-method-list};
-    &
-    \node[terminal]    (ruleIi) {\}};
-    \\
-  };
-  
-  \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)
-    -|([xshift=1cm,yshift=-0.4cm]ruleIc.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleId.west)|-
-    (ruleId)--(ruleIe)--(ruleIf)
-    -|([xshift=1cm,yshift=-0.4cm]ruleIf.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]where.west)|-
-    (where)
-    -|([xshift=1cm,yshift=-0.4cm]where.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleIg.west)|-
-    (ruleIg)--(ruleIh)--(ruleIi) to[-|-] (end);
-\end{syntax}
-
-\begin{syntax}[[xshift=22mm]concept.west]{class}
+\begin{syntax}[[xshift=18mm]concept.west]{class}
   \SyntaxWestSplit{MainWest}
   \SyntaxEastSplit{MainEast}
   
@@ -122,7 +20,6 @@
     \\
   };
   
-  % TODO: where-list
   \node[sequence] () at ([yshift=-3*\syntaxruledist]$(begin)!0.5!(end)$) {
     \node[nonterminal] (ruleIj) {where-list};
     \\
@@ -153,7 +50,7 @@
   \draw[path] ([yshift=1.5/2*\syntaxruledist]ruleIm.center) -| ([yshift=1.5/4*\syntaxruledist]dummy.center) |- (ruleIm);
 \end{syntax}
 
-\begin{syntax}[[xshift=22mm]concept.west]{aclass}
+\begin{syntax}[[xshift=18mm]concept.west]{aclass}
   \SyntaxWestSplit{MainWest}
   \SyntaxEastSplit{MainEast}
   
