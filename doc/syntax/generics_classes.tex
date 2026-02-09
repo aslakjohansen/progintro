@@ -54,8 +54,10 @@
   \SyntaxWestSplit{MainWest}
   \SyntaxEastSplit{MainEast}
   
-  \node[sequence] () at ([yshift=-0*\syntaxruledist]$(begin)!0.5!(end)$) {
+  \node[sequence] () at ([yshift=-0*\syntaxruledist]$(begin)!0.42!(end)$) {
     \node[nonterminal] (ruleIa) {class-annotations};
+    &
+    \node[terminal]    (abstract) {abstract};
     &
     \node[terminal]    (ruleIb) {class};
     &
@@ -92,7 +94,7 @@
     \\
   };
   
-  \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)
+  \draw[path] (begin)--(ruleIa)--(abstract)--(ruleIb)--(ruleIc)
     -|([xshift=1cm,yshift=-0.4cm]ruleIc.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleId.west)|-
     (ruleId)--(ruleIe)--(ruleIf)
     -|([xshift=1cm,yshift=-0.4cm]ruleIf.east) to[|-|] ([xshift=-1cm,yshift=0.4cm]ruleIj.west)|-
