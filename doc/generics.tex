@@ -45,7 +45,7 @@ To solve this problem many programming languages have introduced a notion of a \
 % compiler: then the compiler will automatically generate concrete type variants on demand, if we follow that recipe we end up with FIG, from this the compiler will be able to generate the equivalents of IntPair and PointPair from FIG, note that these do no actually end up in files
 If we follow the recipe on the definition of \classname{IntPair} or \classname{PointPair}, we end up with the generic \classname{Pair} definition in figure \ref{fig:generics:pair:solution}. Given such parameterized definitions, the compiler will automatically generate concrete type variants on demand and that demand is driven by actual use. If the code refers to a pair of \typename{int} values, then the equivalent of \classname{IntPair} will be created. If it refers to a pair of dogs, then the equivalent of a \classname{DogPair} will be created. Note that these \textsl{creations} never end up in files.
 
-\section{Why No Rely on Polymorphism?}
+\section{Why Not Rely on Polymorphism?}
 
 % loss of type specificity, resolution penalty
 
