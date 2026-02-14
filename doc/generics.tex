@@ -55,6 +55,19 @@ If we follow the recipe on the definition of \classname{IntPair} or \classname{P
 \section{\csharp}
 
 % syntax: we have already seen what parameterized types look like in csharp, to support this we need to expand our set of allowed syntax
+By now, we have already seen what a parameterized class looks like in \csharp. Syntax \ref{syntax:generics:support} and \ref{syntax:generics:classes} formalizes this.
+
+\begin{syntaxfloat}
+  \input{syntax/generics_support.tex}
+  \caption{Support definitions for parameterized types}
+  \label{syntax:generics:support}
+\end{syntaxfloat}
+
+\begin{syntaxfloat}
+  \input{syntax/generics_classes.tex}
+  \caption{Class definitions as parameterized types}
+  \label{syntax:generics:classes}
+\end{syntaxfloat}
 
 % declaration of the placeholders
 
@@ -62,12 +75,6 @@ If we follow the recipe on the definition of \classname{IntPair} or \classname{P
   \input{syntax/generics_interface.tex}
   \caption{Interface definitions as parameterized types}
   \label{syntax:generics:interface}
-\end{syntaxfloat}
-
-\begin{syntaxfloat}
-  \input{syntax/generics_classes.tex}
-  \caption{Class definitions as parameterized types}
-  \label{syntax:generics:classes}
 \end{syntaxfloat}
 
 \subsection{Multiple Parameters}
