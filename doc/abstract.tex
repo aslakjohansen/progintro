@@ -41,5 +41,15 @@ It is convention, in \csharp, to prefix the name of an interface with a capital 
   \label{syntax:absclass}
 \end{syntaxfloat}
 
+\subsection{Case: Line Segments}
+
+Lets imagine that we are writing a \classname{LineSegment} class from which we can create line segments. Those are straight lines between two points. Clearly, each instance needs to be associated with two points then. One purpose of that class is to calculate the length of such a line segment. This, however, depends of the dimensionality of the space referenced by these points. For the purpose of this example, we would like to support points in either 2d or 3d space. As illustrated in figure FIG, the natural implementation would have the following structure:
+\begin{itemize}
+  \item \classname{LineSegment}: A class that represents a line segment that has two \classname{Point} instance variables.
+  \item \classname{Point}: An abstract class that has an abstract function for calculating the distance to another point.
+  \item \classname{Point2D}: A class that represents a point in two dimensions, inherits from \classname{Point} and knows how to calculate the distance to another \classname{Point2D}.
+  \item \classname{Point3D}: A class that represents a point in three dimensions, inherits from \classname{Point} and knows how to calculate the distance to another \classname{Point3D}.
+\end{itemize}
+
 \exercises{abstract}{Abstract Methods}
 

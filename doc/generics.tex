@@ -55,7 +55,7 @@ If we follow the recipe on the definition of \classname{IntPair} or \classname{P
 \section{\csharp}
 
 % syntax: we have already seen what parameterized types look like in csharp, to support this we need to expand our set of allowed syntax
-By now, we have already seen what a parameterized class looks like in \csharp. Syntax \ref{syntax:generics:support} and \ref{syntax:generics:classes} formalizes this.
+By now, we have already seen what a parameterized class looks like in \csharp. Syntax \ref{syntax:generics:support} and \ref{syntax:generics:classes} formalizes this. Just like classes can be parameterized, so can interfaces. The rules for these can be found in syntax \ref{syntax:generics:interface}. Lets dig into the most interesting details!
 
 \begin{syntaxfloat}
   \input{syntax/generics_support.tex}
@@ -69,13 +69,13 @@ By now, we have already seen what a parameterized class looks like in \csharp. S
   \label{syntax:generics:classes}
 \end{syntaxfloat}
 
-% declaration of the placeholders
-
 \begin{syntaxfloat}
   \input{syntax/generics_interface.tex}
   \caption{Interface definitions as parameterized types}
   \label{syntax:generics:interface}
 \end{syntaxfloat}
+
+% declaration of the placeholders
 
 \subsection{Multiple Parameters}
 
@@ -83,7 +83,7 @@ By now, we have already seen what a parameterized class looks like in \csharp. S
 
 \subsection{Restrictions on Type}
 
-% need for restrictions on type (2d/3d point example so that we can calculate distances)
+% need for restrictions on type
 
 \section{The C Precompiler}
 
