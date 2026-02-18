@@ -4,22 +4,12 @@
 
 % packages and TikZ libraries
 
-%\newcommand{\umlClass}[2][default]{
-%  1:#1 2:#2
-%}
-
-%\umlClass[1]{2}
-
-%\umlClass{2}
-
 % args: class name, extra params to tikz node (just keep empty), position, number of attributes, number of methods
 \newenvironment{classs}[5]
 {
   \newcommand{\headerHeight}[0]{8mm}
   \newcommand{\fieldHeight}[0]{6mm}
   \newcommand{\border}[0]{2mm}
-%  \newcommand{\umlclassname}[0]{MyClassName}
-%  \newcommand{\umlclassname}[0]{#1}
   
   \tikzstyle{node}=[
     overlay,
@@ -65,21 +55,3 @@
 {
 }
 
-% args:
-%  - 1: id modifier (default: empty)
-%  - 2: index
-%  - 3: count
-%  - 4: return type
-%  - 5: method name,
-%  - 6: parameter list
-%  - 7: visibility modifier
-%\newcommand{\visibleMethod}[7]{
-%  \node[minimum height=\headerHeight] (class\expandafter \def \umlclassname \endcsname #5 #1) at (class\expandafter \def \umlclassname \endcsname) {\texttt{#7 #5 (#6) : #4}};
-%}
-%  \node[minimum height=\headerHeight] (class\umlclassname #5 #1) at (class\umlclassname) {\texttt{#7 #5 (#6) : #4}};
-%}
-
-%% args: id modifier (default: empty), index, count, return type, method name, parameter list
-%\newcommand{\publicMethod}[6][]{
-%  \visibleMethod{#1}{#2}{#3}{#4}{#5}{+}
-%}
