@@ -38,7 +38,11 @@
   %  - 6: parameter list
   %  - 7: visibility modifier
   \newcommand{\visibleMethod}[7]{
-    \node[minimum height=\headerHeight] (class#1 ##5 ##1) at (class#1) {\texttt{##7 ##5 (##6) : ##4}};
+    \node[minimum height=\headerHeight]
+      (class#1 ##5 ##1)
+      at (class#1)
+      {\texttt{##7 ##5 (##6) : ##4}}
+    ;
   }
   
 %  % args: id modifier (default: empty), index, count, return type, method name, parameter list
