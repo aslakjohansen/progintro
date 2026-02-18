@@ -9,7 +9,7 @@
 {
   \newcommand{\headerHeight}[0]{8mm}
   \newcommand{\fieldHeight}[0]{6mm}
-  \newcommand{\border}[0]{2mm}
+  \newcommand{\border}[0]{1mm}
   
   \tikzstyle{node}=[
     overlay,
@@ -28,9 +28,9 @@
   %  - 6: parameter list
   %  - 7: visibility modifier
   \newcommand{\visibleMethod}[7]{
-    \node[minimum height=\headerHeight]
+    \node[minimum height=\fieldHeight,anchor=north west]
       (class#1 ##5 ##1)
-      at (class#1)
+      at ([yshift=-\headerHeight-3*\border-#4*\fieldHeight-##2*\fieldHeight,xshift=\border]class#1.north west)
       {\texttt{##7 ##5 (##6) : ##4}}
     ;
   }
