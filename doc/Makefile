@@ -1,5 +1,9 @@
+DEMOS = \
+	uml-demo.pdf \
+
 TARGETS = \
 	document.pdf \
+	${DEMOS}
 
 AUTOGEN_DEPS = \
 	hlsections.tex \
@@ -39,4 +43,7 @@ document.pdf: Makefile ${AUTOGEN_DEPS} *.sty *.tex */*.tex references.bib
 	biber document.bcf
 	lualatex document.tex
 	lualatex document.tex
+
+uml-demo.pdf: Makefile uml-demo.tex uml.sty
+	lualatex uml-demo.tex
 

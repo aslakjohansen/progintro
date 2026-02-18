@@ -1,0 +1,20 @@
+\documentclass[a4paper, oneside]{memoir}
+
+\usepackage{tikz}
+\usepackage{uml}
+
+\usepackage{trace}
+\tracingmacros=1
+
+\begin{document}
+
+\begin{center}
+  \begin{tikzpicture}[remember picture]
+    \begin{classs}{Point}{}{0,0}{2}{3}
+      \visibleMethod{a}{0}{3}{int}{sum}{int}{+}
+%      \publicMethod{0}{3}{int}{sum}{int}
+    \end{classs}
+  \end{tikzpicture}
+\end{center}
+
+\end{document}
