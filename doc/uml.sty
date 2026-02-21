@@ -22,34 +22,32 @@
   % args:
   % - 1: id modifier (default: empty)
   % - 2: index
-  % - 3: count
-  % - 4: return type
-  % - 5: method name,
-  % - 6: parameter list
-  % - 7: visibility modifier
-  \newcommand{\visibleMethod}[7]{
+  % - 3: return type
+  % - 4: method name,
+  % - 5: parameter list
+  % - 6: visibility modifier
+  \newcommand{\visibleMethod}[6]{
     \node[minimum height=\fieldHeight,anchor=north west]
-      (class#1 ##5 ##1)
+      (class#1 ##4 ##1)
       at ([yshift=-\headerHeight-3*\border-#4*\fieldHeight-##2*\fieldHeight,xshift=\border]class#1.north west)
-      {\texttt{##7 ##5 (##6) : ##4}}
+      {\texttt{##6 ##4 (##5) : ##3}}
     ;
   }
   
   % args:
   % - 1: id modifier (default: empty)
   % - 2: index
-  % - 3: count
-  % - 4: return type
-  % - 5: method name
-  % - 6: parameter list
-  \newcommand{\publicMethod}[6]{
-    \visibleMethod{##1}{##2}{##3}{##4}{##5}{##6}{+}
+  % - 3: return type
+  % - 4: method name
+  % - 5: parameter list
+  \newcommand{\publicMethod}[5]{
+    \visibleMethod{##1}{##2}{##3}{##4}{##5}{+}
   }
-  \newcommand{\protectedMethod}[6]{
-    \visibleMethod{##1}{##2}{##3}{##4}{##5}{##6}{\%}
+  \newcommand{\protectedMethod}[5]{
+    \visibleMethod{##1}{##2}{##3}{##4}{##5}{\%}
   }
-  \newcommand{\privateMethod}[6]{
-    \visibleMethod{##1}{##2}{##3}{##4}{##5}{##6}{-}
+  \newcommand{\privateMethod}[5]{
+    \visibleMethod{##1}{##2}{##3}{##4}{##5}{-}
   }
   
   \node[
