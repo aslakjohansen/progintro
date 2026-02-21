@@ -40,13 +40,13 @@
   % - 3: return type
   % - 4: method name
   % - 5: parameter list
-  \newcommand{\publicMethod}[5]{
+  \newcommand{\publicMethod}[5][]{
     \visibleMethod{##1}{##2}{##3}{##4}{##5}{+}
   }
-  \newcommand{\protectedMethod}[5]{
+  \newcommand{\protectedMethod}[5][]{
     \visibleMethod{##1}{##2}{##3}{##4}{##5}{\%}
   }
-  \newcommand{\privateMethod}[5]{
+  \newcommand{\privateMethod}[5][]{
     \visibleMethod{##1}{##2}{##3}{##4}{##5}{-}
   }
   
