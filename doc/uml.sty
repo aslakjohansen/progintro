@@ -13,6 +13,27 @@
 \newcommand{\@fieldHeight}[0]{5mm}
 \newcommand{\@border}[0]{1mm}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% generic producers
+
+% args:
+% - 1: id modifier (default: empty)
+% - 2: name
+% - 3: index
+% - 4: field name,
+% - 5: field type
+% - 6: visibility modifier
+\newcommand{\@visibleField}[6]{
+  \node[minimum height=\@fieldHeight,anchor=north west]
+    (class#2 #4 #1)
+    at ([yshift=-\@headerHeight-1*\@border-#3*\@fieldHeight,xshift=\@border]class#2.north west)
+    {\texttt{#6 #4 : #5}}
+  ;
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% specific environments
+
 % args: class name, extra params to tikz node (just keep empty), position, number of attributes, number of methods
 \newenvironment{umlclass}[5]
 {
@@ -32,28 +53,14 @@
   % - 2: index
   % - 3: field name,
   % - 4: field type
-  % - 5: visibility modifier
-  \newcommand{\visibleField}[5]{
-    \node[minimum height=\@fieldHeight,anchor=north west]
-      (class#1 ##3 ##1)
-      at ([yshift=-\@headerHeight-1*\@border-##2*\@fieldHeight,xshift=\@border]class#1.north west)
-      {\texttt{##5 ##3 : ##4}}
-    ;
-  }
-  
-  % args:
-  % - 1: id modifier (default: empty)
-  % - 2: index
-  % - 3: field name,
-  % - 4: field type
   \newcommand{\publicField}[4][]{
-    \visibleField{##1}{##2}{##3}{##4}{+}
+    \@visibleField{##1}{#1}{##2}{##3}{##4}{+}
   }
   \newcommand{\protectedField}[4][]{
-    \visibleField{##1}{##2}{##3}{##4}{\%}
+    \@visibleField{##1}{#1}{##2}{##3}{##4}{\%}
   }
   \newcommand{\privateField}[4][]{
-    \visibleField{##1}{##2}{##3}{##4}{-}
+    \@visibleField{##1}{#1}{##2}{##3}{##4}{-}
   }
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
