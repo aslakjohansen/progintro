@@ -83,7 +83,13 @@ By now, we have already seen what a parameterized class looks like in \csharp. S
 
 \subsection{Restrictions on Type}
 
-% problem (knowing that a field exists does know allow us to do much with it, we can only rely on functionality defined on Object, unless we make use of the non-idiomatic construct of a cascading 'is' checks), interface solution, awkward/complex to use interfaces (the types that we are not in charge of may need wrapping), restrictions on type (no need to wrap the types of others [e.g., primitive types], need for restrictions on multiple interfaces, constructor availability)
+% problem: knowing that a field exists does know allow us to do much with it
+We still haven't actually solved to problem of not having guarantees on the available functionality. In our instance and class variables, we can store references to objects, we can update these references and pass them along to other pieces of code. We need to make sure that our code is valid irrespective of the type others choose as parameters, otherwise the compiler won't be happy. This means that we can't do much else with those fields.
+
+% hack: use of the non-idiomatic construct of a cascading 'is' checks
+One non-\idx{idiomatic}{Idiomatic} way of getting around this would be to create a cascade of \idx{is}{is@\texttt{is} keyword} checks. That way, we end up with one \keywordname{if} case per supported type. It tests whether the type of the actual object satisfies some specific type, and -- if so -- hands it over to some code that knows how to deal with it. Otherwise, it hands control over to the next stage in the cascade. These checks would have to be evaluated in sequence, and this would -- on top of the \idx{readability}{Readability} issues stemming from a deep nesting of \keywordname{if} statements -- carry a performance penalty.
+
+% solution: interface solution, awkward/complex to use interfaces (the types that we are not in charge of may need wrapping), restrictions on type (no need to wrap the types of others [e.g., primitive types], need for restrictions on multiple interfaces, constructor availability)
 
 \section{The C Precompiler}
 
