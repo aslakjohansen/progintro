@@ -4,6 +4,10 @@
 
 % packages and TikZ libraries
 
+% example of how to hide inner definitions
+\newcommand{\@notexported}[0]{test}
+\newcommand{\exported}[0]{\@notexported}
+
 % args: class name, extra params to tikz node (just keep empty), position, number of attributes, number of methods
 \newenvironment{classs}[5]
 {
