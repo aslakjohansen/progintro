@@ -8,13 +8,14 @@
 \newcommand{\@notexported}[0]{test}
 \newcommand{\exported}[0]{\@notexported}
 
+% styling properties
+\newcommand{\@headerHeight}[0]{8mm}
+\newcommand{\@fieldHeight}[0]{6mm}
+\newcommand{\@border}[0]{1mm}
+
 % args: class name, extra params to tikz node (just keep empty), position, number of attributes, number of methods
 \newenvironment{classs}[5]
 {
-  \newcommand{\headerHeight}[0]{8mm}
-  \newcommand{\fieldHeight}[0]{6mm}
-  \newcommand{\border}[0]{1mm}
-  
   \tikzstyle{node}=[
     overlay,
     rectangle,
@@ -33,9 +34,9 @@
   % - 4: field type
   % - 5: visibility modifier
   \newcommand{\visibleField}[5]{
-    \node[minimum height=\fieldHeight,anchor=north west]
+    \node[minimum height=\@fieldHeight,anchor=north west]
       (class#1 ##3 ##1)
-      at ([yshift=-\headerHeight-1*\border-##2*\fieldHeight,xshift=\border]class#1.north west)
+      at ([yshift=-\@headerHeight-1*\@border-##2*\@fieldHeight,xshift=\@border]class#1.north west)
       {\texttt{##5 ##3 : ##4}}
     ;
   }
@@ -66,9 +67,9 @@
   % - 5: parameter list
   % - 6: visibility modifier
   \newcommand{\visibleMethod}[6]{
-    \node[minimum height=\fieldHeight,anchor=north west]
+    \node[minimum height=\@fieldHeight,anchor=north west]
       (class#1 ##4 ##1)
-      at ([yshift=-\headerHeight-3*\border-#4*\fieldHeight-##2*\fieldHeight,xshift=\border]class#1.north west)
+      at ([yshift=-\@headerHeight-3*\@border-#4*\@fieldHeight-##2*\@fieldHeight,xshift=\@border]class#1.north west)
       {\texttt{##6 ##4 (##5) : ##3}}
     ;
   }
@@ -95,14 +96,14 @@
   \node[
     node,
     #2,
-    minimum height=\headerHeight+4*\border+#4*\fieldHeight+#5*\fieldHeight,
+    minimum height=\@headerHeight+4*\@border+#4*\@fieldHeight+#5*\@fieldHeight,
   ] (class#1) at (#3) {};
-  \node[anchor=center,text=black] (class#1name) at ([yshift=-\headerHeight/2]class#1.north) {\large{#1}};
+  \node[anchor=center,text=black] (class#1name) at ([yshift=-\@headerHeight/2]class#1.north) {\large{#1}};
   
-  \draw[thick] ([yshift=-\headerHeight]class#1.north west)
-             --([yshift=-\headerHeight]class#1.north east);
-  \draw[thick] ([yshift=-\headerHeight-\border-#4*\fieldHeight]class#1.north west)
-             --([yshift=-\headerHeight-\border-#4*\fieldHeight]class#1.north east);
+  \draw[thick] ([yshift=-\@headerHeight]class#1.north west)
+             --([yshift=-\@headerHeight]class#1.north east);
+  \draw[thick] ([yshift=-\@headerHeight-\@border-#4*\@fieldHeight]class#1.north west)
+             --([yshift=-\@headerHeight-\@border-#4*\@fieldHeight]class#1.north east);
 }
 {
 }
