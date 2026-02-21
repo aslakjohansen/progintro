@@ -31,6 +31,23 @@
   ;
 }
 
+% args:
+% - 1: id modifier (default: empty)
+% - 2: name
+% - 3: field count
+% - 4: index
+% - 5: return type
+% - 6: method name,
+% - 7: parameter list
+% - 8: visibility modifier
+\newcommand{\@visibleMethod}[8]{
+  \node[minimum height=\@fieldHeight,anchor=north west]
+    (class#2 #6 #1)
+    at ([yshift=-\@headerHeight-3*\@border-#3*\@fieldHeight-#4*\@fieldHeight,xshift=\@border]class#2.north west)
+    {\texttt{#8 #6 (#7) : #5}}
+  ;
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% specific environments
 
@@ -66,20 +83,20 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% methods
   
-  % args:
-  % - 1: id modifier (default: empty)
-  % - 2: index
-  % - 3: return type
-  % - 4: method name,
-  % - 5: parameter list
-  % - 6: visibility modifier
-  \newcommand{\visibleMethod}[6]{
-    \node[minimum height=\@fieldHeight,anchor=north west]
-      (class#1 ##4 ##1)
-      at ([yshift=-\@headerHeight-3*\@border-#4*\@fieldHeight-##2*\@fieldHeight,xshift=\@border]class#1.north west)
-      {\texttt{##6 ##4 (##5) : ##3}}
-    ;
-  }
+%  % args:
+%  % - 1: id modifier (default: empty)
+%  % - 2: index
+%  % - 3: return type
+%  % - 4: method name,
+%  % - 5: parameter list
+%  % - 6: visibility modifier
+%  \newcommand{\visibleMethod}[6]{
+%    \node[minimum height=\@fieldHeight,anchor=north west]
+%      (class#1 ##4 ##1)
+%      at ([yshift=-\@headerHeight-3*\@border-#4*\@fieldHeight-##2*\@fieldHeight,xshift=\@border]class#1.north west)
+%      {\texttt{##6 ##4 (##5) : ##3}}
+%    ;
+%  }
   
   % args:
   % - 1: id modifier (default: empty)
@@ -88,13 +105,13 @@
   % - 4: method name
   % - 5: parameter list
   \newcommand{\publicMethod}[5][]{
-    \visibleMethod{##1}{##2}{##3}{##4}{##5}{+}
+    \@visibleMethod{##1}{#1}{#4}{##2}{##3}{##4}{##5}{+}
   }
   \newcommand{\protectedMethod}[5][]{
-    \visibleMethod{##1}{##2}{##3}{##4}{##5}{\%}
+    \@visibleMethod{##1}{#1}{#4}{##2}{##3}{##4}{##5}{\%}
   }
   \newcommand{\privateMethod}[5][]{
-    \visibleMethod{##1}{##2}{##3}{##4}{##5}{-}
+    \@visibleMethod{##1}{#1}{#4}{##2}{##3}{##4}{##5}{-}
   }
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
