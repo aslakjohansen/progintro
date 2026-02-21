@@ -8,10 +8,21 @@
 \newcommand{\@notexported}[0]{test}
 \newcommand{\exported}[0]{\@notexported}
 
-% styling properties
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% styling
+
+% properties
 \newcommand{\@headerHeight}[0]{8mm}
 \newcommand{\@fieldHeight}[0]{5mm}
 \newcommand{\@border}[0]{1mm}
+
+\tikzstyle{node}=[
+  overlay,
+  rectangle,
+  draw=purple,
+  thick,
+  minimum width=20mm,
+]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% generic producers
@@ -54,14 +65,6 @@
 % args: class name, extra params to tikz node (just keep empty), position, number of attributes, number of methods
 \newenvironment{umlclass}[5]
 {
-  \tikzstyle{node}=[
-    overlay,
-    rectangle,
-    draw=purple,
-    thick,
-    minimum width=20mm,
-  ]
-  
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% fields
   
@@ -82,21 +85,6 @@
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% methods
-  
-%  % args:
-%  % - 1: id modifier (default: empty)
-%  % - 2: index
-%  % - 3: return type
-%  % - 4: method name,
-%  % - 5: parameter list
-%  % - 6: visibility modifier
-%  \newcommand{\visibleMethod}[6]{
-%    \node[minimum height=\@fieldHeight,anchor=north west]
-%      (class#1 ##4 ##1)
-%      at ([yshift=-\@headerHeight-3*\@border-#4*\@fieldHeight-##2*\@fieldHeight,xshift=\@border]class#1.north west)
-%      {\texttt{##6 ##4 (##5) : ##3}}
-%    ;
-%  }
   
   % args:
   % - 1: id modifier (default: empty)
