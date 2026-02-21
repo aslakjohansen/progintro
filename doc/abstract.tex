@@ -51,5 +51,22 @@ Lets imagine that we are writing a \classname{LineSegment} class from which we c
   \item \classname{Point3D}: A class that represents a point in three dimensions, inherits from \classname{Point} and knows how to calculate the distance to another \classname{Point3D}.
 \end{itemize}
 
+%\umlClass[1]{2}
+
+%\umlClass{2}
+
+before
+
+\begin{center}
+  \begin{tikzpicture}[remember picture]
+    \begin{classs}{Point}{}{0,0}{2}{3}
+      \visibleMethod{a}{0}{3}{int}{sum}{int}{+}
+%      \publicMethod{0}{3}{int}{sum}{int}
+    \end{classs}
+  \end{tikzpicture}
+\end{center}
+
+after
+
 \exercises{abstract}{Abstract Methods}
 
