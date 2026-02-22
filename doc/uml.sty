@@ -3,6 +3,7 @@
                  LaTeX package for UML diagrams]
 
 % packages and TikZ libraries
+\usetikzlibrary{arrows}
 
 % example of how to hide inner definitions
 \newcommand{\@notexported}[0]{test}
@@ -58,6 +59,13 @@
     {\texttt{#8 #6 (#7) : #5}}
   ;
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% relations
+
+\tikzstyle{inherit} = [thick,->,>=open triangle 45, draw=teal]
+\tikzstyle{instanceof} = [thick, densely dotted, draw=purple]
+\tikzstyle{implements} = [inherit, densely dashed, draw=orange]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% specific environments
