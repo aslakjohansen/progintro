@@ -45,6 +45,17 @@
       \publicMethod{2}{int}{sum3}{int}
     \end{umlclass}
     
+    \begin{umlclass}{Rectangle}{anchor=west,minimum width=40mm}{[xshift=2cm]aclassPoint.east}{2}{3}
+      \publicField{0}{age}{int}
+      \privateField{1}{name}{string}
+      
+      \privateMethod{0}{int}{sum}{int}
+      \protectedMethod{1}{int}{sum2}{int}
+      \publicMethod{2}{int}{sum3}{int}
+    \end{umlclass}
+    
+    \draw[knows] (classRectangle)
+              -- (aclassPoint);
     \draw[implements] (aclassPoint.north)
                    -- (interfacePointable.south);
     \draw[inherit] (classPoint2D.north)
