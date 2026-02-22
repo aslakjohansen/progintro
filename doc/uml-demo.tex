@@ -12,7 +12,13 @@
 
 \begin{center}
   \begin{tikzpicture}[remember picture]
-    \begin{umlaclass}{Point}{minimum width=40mm}{0,0}{2}{3}
+    \begin{umlinterface}{Pointable}{minimum width=40mm}{0,0}{0}{3}
+      \privateMethod{0}{int}{sum}{int}
+      \protectedMethod{1}{int}{sum2}{int}
+      \publicMethod{2}{int}{sum3}{int}
+    \end{umlinterface}
+    
+    \begin{umlaclass}{Point}{anchor=north,minimum width=40mm}{[yshift=-2cm]interfacePointable.south}{2}{3}
       \publicField{0}{age}{int}
       \privateField{1}{name}{string}
       
@@ -39,6 +45,8 @@
       \publicMethod{2}{int}{sum3}{int}
     \end{umlclass}
     
+    \draw[implements] (aclassPoint.north)
+                   -- (interfacePointable.south);
     \draw[inherit] (classPoint2D.north)
                 -- ([yshift=1cm]classPoint2D.north)
                 -| ([xshift=-1cm]aclassPoint);
