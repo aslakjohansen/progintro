@@ -1,0 +1,38 @@
+\begin{center}
+  \begin{tikzpicture}[remember picture]
+    \begin{umlaclass}{Point}{anchor=north,minimum width=54mm}{0,0}{0}{1}
+      \publicMethod{0}{double}{Distance}{Point}
+    \end{umlaclass}
+    
+    \begin{umlclass}{Point2D}{anchor=north east,minimum width=54mm}{[yshift=-2cm,xshift=-1cm]aclassPoint.south}{2}{1}
+      \privateField{0}{x}{double}
+      \privateField{1}{y}{double}
+      
+      \publicMethod{0}{double}{Distance}{Point}
+    \end{umlclass}
+    
+    \begin{umlclass}{Point3D}{anchor=north west,minimum width=54mm}{[yshift=-2cm,xshift=1cm]aclassPoint.south}{3}{1}
+      \privateField{0}{x}{double}
+      \privateField{1}{y}{double}
+      \privateField{2}{z}{double}
+      
+      \publicMethod{0}{double}{Distance}{Point}
+    \end{umlclass}
+    
+    \begin{umlclass}{LineSegment}{anchor=east,minimum width=48mm}{[xshift=-2cm]aclassPoint.west}{2}{1}
+      \privateField{0}{endpointA}{Point}
+      \privateField{1}{endpointB}{Point}
+      
+      \publicMethod{0}{double}{GetLength}{}
+    \end{umlclass}
+    
+    \draw[knows] (classLineSegment)
+              -- (aclassPoint);
+    \draw[inherit] (classPoint2D.north)
+                -- ([yshift=1cm]classPoint2D.north)
+                -| ([xshift=-1cm]aclassPoint);
+    \draw[inherit] (classPoint3D.north)
+                -- ([yshift=1cm]classPoint3D.north)
+                -| ([xshift=1cm]aclassPoint);
+  \end{tikzpicture}
+\end{center}
