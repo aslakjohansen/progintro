@@ -29,7 +29,7 @@
 % - 1: id modifier (default: empty)
 % - 2: name
 % - 3: index
-% - 4: field name,
+% - 4: field name,headerHeight
 % - 5: field type
 % - 6: visibility modifier
 % - 7: header height
@@ -58,6 +58,20 @@
     {\texttt{#8 #6 (#7) : #5}}
   ;
 }
+%\newcommand{\@visibleMethod}[9]{
+%  \node[minimum height=\@fieldHeight,anchor=north west]
+%    (#2 #6 #1)
+%    at ([yshift=-#9-3*\@border-#3*\@fieldHeight-#4*\@fieldHeight,xshift=\@border]#2.north west)
+%    {\texttt{Hello World}}
+%  ;
+%}
+%\newcommand{\visibleMethod}[9]{
+%  \node[minimum height=\@fieldHeight,anchor=north west]
+%    (#2 #6 #1)
+%    at ([yshift=-#9-3*\@border-#3*\@fieldHeight-#4*\@fieldHeight,xshift=\@border]#2.north west)
+%    {\texttt{#8 #6 (#7) : #5}}
+%  ;
+%}
 
 % args:
 % - 1: extra params to tikz node (just keep empty)
@@ -92,12 +106,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% specific environments
 
 % args:
-% - 1: class name
-% - 2: extra params to tikz node (just keep empty)
-% - 3: position
-% - 4: number of attributes
-% - 5: number of methods
-\newenvironment{umlclass}[5]
+% - 1: id prefix
+% - 2: class name
+% - 3: extra params to tikz node (just keep empty)
+% - 4: position
+% - 5: number of attributes
+% - 6: number of methods
+\newenvironment{umlclass}[6]
 {
   % args:
   % - 1: id modifier (default: empty)
@@ -105,13 +120,13 @@
   % - 3: field name,
   % - 4: field type
   \newcommand{\publicField}[4][]{
-    \@visibleField{##1}{class#1}{##2}{##3}{##4}{+}{\@headerHeight}
+    \@visibleField{##1}{#1}{##2}{##3}{##4}{+}{\@headerHeight}
   }
   \newcommand{\protectedField}[4][]{
-    \@visibleField{##1}{class#1}{##2}{##3}{##4}{\%}{\@headerHeight}
+    \@visibleField{##1}{#1}{##2}{##3}{##4}{\%}{\@headerHeight}
   }
   \newcommand{\privateField}[4][]{
-    \@visibleField{##1}{class#1}{##2}{##3}{##4}{-}{\@headerHeight}
+    \@visibleField{##1}{#1}{##2}{##3}{##4}{-}{\@headerHeight}
   }
   
   % args:
@@ -121,29 +136,30 @@
   % - 4: method name
   % - 5: parameter list
   \newcommand{\publicMethod}[5][]{
-    \@visibleMethod{##1}{class#1}{#4}{##2}{##3}{##4}{##5}{+}{\@headerHeight}
+    \@visibleMethod{##1}{#1}{#5}{##2}{##3}{##4}{##5}{+}{\@headerHeight}
   }
   \newcommand{\protectedMethod}[5][]{
-    \@visibleMethod{##1}{class#1}{#4}{##2}{##3}{##4}{##5}{\%}{\@headerHeight}
+    \@visibleMethod{##1}{#1}{#5}{##2}{##3}{##4}{##5}{\%}{\@headerHeight}
   }
   \newcommand{\privateMethod}[5][]{
-    \@visibleMethod{##1}{class#1}{#4}{##2}{##3}{##4}{##5}{-}{\@headerHeight}
+    \@visibleMethod{##1}{#1}{#5}{##2}{##3}{##4}{##5}{-}{\@headerHeight}
   }
   
-  \@genericElement{#2}{class#1}{#3}{\@headerHeight}{(2*\@border+#4*\@fieldHeight)}{(2*\@border+#5*\@fieldHeight)}
+  \@genericElement{#3}{#1}{#4}{\@headerHeight}{(2*\@border+#5*\@fieldHeight)}{(2*\@border+#6*\@fieldHeight)}
   
-  \node[anchor=center,text=black] (class#1name) at ([yshift=-\@headerHeight/2]class#1.north) {\large{#1}};
+  \node[anchor=center,text=black] (#1name) at ([yshift=-\@headerHeight/2]#1.north) {\large{#2}};
 }
 {
 }
 
 % args:
-% - 1: class name
-% - 2: extra params to tikz node (just keep empty)
-% - 3: position
-% - 4: number of attributes
-% - 5: number of methods
-\newenvironment{umlaclass}[5]
+% - 1: id prefix
+% - 2: class name
+% - 3: extra params to tikz node (just keep empty)
+% - 4: position
+% - 5: number of attributes
+% - 6: number of methods
+\newenvironment{umlaclass}[6]
 {
   % args:
   % - 1: id modifier (default: empty)
@@ -151,13 +167,13 @@
   % - 3: field name,
   % - 4: field type
   \newcommand{\publicField}[4][]{
-    \@visibleField{##1}{aclass#1}{##2}{##3}{##4}{+}{(\@headerHeight*2/3+\@subHeaderHeight)}
+    \@visibleField{##1}{#1}{##2}{##3}{##4}{+}{(\@headerHeight*2/3+\@subHeaderHeight)}
   }
   \newcommand{\protectedField}[4][]{
-    \@visibleField{##1}{aclass#1}{##2}{##3}{##4}{\%}{(\@headerHeight*2/3+\@subHeaderHeight)}
+    \@visibleField{##1}{#1}{##2}{##3}{##4}{\%}{(\@headerHeight*2/3+\@subHeaderHeight)}
   }
   \newcommand{\privateField}[4][]{
-    \@visibleField{##1}{aclass#1}{##2}{##3}{##4}{-}{(\@headerHeight*2/3+\@subHeaderHeight)}
+    \@visibleField{##1}{#1}{##2}{##3}{##4}{-}{(\@headerHeight*2/3+\@subHeaderHeight)}
   }
   
   % args:
@@ -167,30 +183,31 @@
   % - 4: method name
   % - 5: parameter list
   \newcommand{\publicMethod}[5][]{
-    \@visibleMethod{##1}{aclass#1}{#4}{##2}{##3}{##4}{##5}{+}{(\@headerHeight*2/3+\@subHeaderHeight)}
+    \@visibleMethod{##1}{#1}{#5}{##2}{##3}{##4}{##5}{+}{(\@headerHeight*2/3+\@subHeaderHeight)}
   }
   \newcommand{\protectedMethod}[5][]{
-    \@visibleMethod{##1}{aclass#1}{#4}{##2}{##3}{##4}{##5}{\%}{(\@headerHeight*2/3+\@subHeaderHeight)}
+    \@visibleMethod{##1}{#1}{#5}{##2}{##3}{##4}{##5}{\%}{(\@headerHeight*2/3+\@subHeaderHeight)}
   }
   \newcommand{\privateMethod}[5][]{
-    \@visibleMethod{##1}{aclass#1}{#4}{##2}{##3}{##4}{##5}{-}{(\@headerHeight*2/3+\@subHeaderHeight)}
+    \@visibleMethod{##1}{#1}{#5}{##2}{##3}{##4}{##5}{-}{(\@headerHeight*2/3+\@subHeaderHeight)}
   }
   
-  \@genericElement{#2}{aclass#1}{#3}{(\@headerHeight*2/3+\@subHeaderHeight)}{(2*\@border+#4*\@fieldHeight)}{(2*\@border+#5*\@fieldHeight)}
+  \@genericElement{#3}{#1}{#4}{(\@headerHeight*2/3+\@subHeaderHeight)}{(2*\@border+#5*\@fieldHeight)}{(2*\@border+#6*\@fieldHeight)}
   
-  \node[anchor=center,text=black] (aclass#1name) at ([yshift=-\@subHeaderHeight/2-0.5mm]aclass#1.north) {\small{\texttt{<<abstract>>}}};
-  \node[anchor=center,text=black] (aclass#1name) at ([yshift=-\@subHeaderHeight*2/3-\@headerHeight/2+0.5mm]aclass#1.north) {\large{#1}};
+  \node[anchor=center,text=black] (#1abstract) at ([yshift=-\@subHeaderHeight/2-0.5mm]#1.north) {\small{\texttt{<<abstract>>}}};
+  \node[anchor=center,text=black] (#1name) at ([yshift=-\@subHeaderHeight*2/3-\@headerHeight/2+0.5mm]#1.north) {\large{#1}};
 }
 {
 }
 
 % args:
-% - 1: class name
-% - 2: extra params to tikz node (just keep empty)
-% - 3: position
-% - 4: number of attributes
-% - 5: number of methods
-\newenvironment{umlinterface}[5]
+% - 1: id prefix
+% - 2: class name
+% - 3: extra params to tikz node (just keep empty)
+% - 4: position
+% - 5: number of attributes
+% - 6: number of methods
+\newenvironment{umlinterface}[6]
 {
   % args:
   % - 1: id modifier (default: empty)
@@ -198,13 +215,13 @@
   % - 3: field name,
   % - 4: field type
   \newcommand{\publicField}[4][]{
-    \@visibleField{##1}{interface#1}{##2}{##3}{##4}{+}{(\@headerHeight*2/3+\@subHeaderHeight)}
+    \@visibleField{##1}{#1}{##2}{##3}{##4}{+}{(\@headerHeight*2/3+\@subHeaderHeight)}
   }
   \newcommand{\protectedField}[4][]{
-    \@visibleField{##1}{interface#1}{##2}{##3}{##4}{\%}{(\@headerHeight*2/3+\@subHeaderHeight)}
+    \@visibleField{##1}{#1}{##2}{##3}{##4}{\%}{(\@headerHeight*2/3+\@subHeaderHeight)}
   }
   \newcommand{\privateField}[4][]{
-    \@visibleField{##1}{interface#1}{##2}{##3}{##4}{-}{(\@headerHeight*2/3+\@subHeaderHeight)}
+    \@visibleField{##1}{#1}{##2}{##3}{##4}{-}{(\@headerHeight*2/3+\@subHeaderHeight)}
   }
   
   % args:
@@ -214,19 +231,19 @@
   % - 4: method name
   % - 5: parameter list
   \newcommand{\publicMethod}[5][]{
-    \@visibleMethod{##1}{interface#1}{#4}{##2}{##3}{##4}{##5}{+}{(\@headerHeight*2/3+\@subHeaderHeight)}
+    \@visibleMethod{##1}{#1}{#5}{##2}{##3}{##4}{##5}{+}{(\@headerHeight*2/3+\@subHeaderHeight)}
   }
   \newcommand{\protectedMethod}[5][]{
-    \@visibleMethod{##1}{interface#1}{#4}{##2}{##3}{##4}{##5}{\%}{(\@headerHeight*2/3+\@subHeaderHeight)}
+    \@visibleMethod{##1}{#1}{#5}{##2}{##3}{##4}{##5}{\%}{(\@headerHeight*2/3+\@subHeaderHeight)}
   }
   \newcommand{\privateMethod}[5][]{
-    \@visibleMethod{##1}{interface#1}{#4}{##2}{##3}{##4}{##5}{-}{(\@headerHeight*2/3+\@subHeaderHeight)}
+    \@visibleMethod{##1}{#1}{#5}{##2}{##3}{##4}{##5}{-}{(\@headerHeight*2/3+\@subHeaderHeight)}
   }
   
-  \@genericElement{#2}{interface#1}{#3}{(\@headerHeight*2/3+\@subHeaderHeight)}{(2*\@border+#4*\@fieldHeight)}{(2*\@border+#5*\@fieldHeight)}
+  \@genericElement{#3}{#1}{#4}{(\@headerHeight*2/3+\@subHeaderHeight)}{(2*\@border+#5*\@fieldHeight)}{(2*\@border+#6*\@fieldHeight)}
   
-  \node[anchor=center,text=black] (interface#1name) at ([yshift=-\@subHeaderHeight/2-0.5mm]interface#1.north) {\small{\texttt{<<interface>>}}};
-  \node[anchor=center,text=black] (interface#1name) at ([yshift=-\@subHeaderHeight*2/3-\@headerHeight/2+0.5mm]interface#1.north) {\large{#1}};
+  \node[anchor=center,text=black] (#1name) at ([yshift=-\@subHeaderHeight/2-0.5mm]#1.north) {\small{\texttt{<<interface>>}}};
+  \node[anchor=center,text=black] (#1name) at ([yshift=-\@subHeaderHeight*2/3-\@headerHeight/2+0.5mm]#1.north) {\large{#2}};
 }
 {
 }

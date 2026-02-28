@@ -1,22 +1,22 @@
 \documentclass[a4paper, oneside]{memoir}
 
-\usepackage{tikz}
-\usepackage{uml}
-
 \usepackage{trace}
 \tracingmacros=1
+
+\usepackage{tikz}
+\usepackage{uml}
 
 \begin{document}
 
 \begin{center}
   \begin{tikzpicture}[remember picture]
-    \begin{umlinterface}{Pointable}{minimum width=40mm}{0,0}{0}{3}
+    \begin{umlinterface}{Pointable}{Pointable}{minimum width=40mm}{0,0}{0}{3}
       \privateMethod{0}{int}{sum}{int}
       \protectedMethod{1}{int}{sum2}{int}
       \publicMethod{2}{int}{sum3}{int}
     \end{umlinterface}
     
-    \begin{umlaclass}{Point}{anchor=north,minimum width=40mm}{[yshift=-2cm]interfacePointable.south}{2}{3}
+    \begin{umlaclass}{Point}{Point}{anchor=north,minimum width=40mm}{[yshift=-2cm]Pointable.south}{2}{3}
       \publicField{0}{age}{int}
       \privateField{1}{name}{string}
       
@@ -25,7 +25,7 @@
       \publicMethod{2}{int}{sum3}{int}
     \end{umlaclass}
     
-    \begin{umlclass}{Point2D}{anchor=north east,minimum width=40mm}{[yshift=-2cm,xshift=-1cm]aclassPoint.south}{2}{3}
+    \begin{umlclass}{Point2D}{Point2D}{anchor=north east,minimum width=40mm}{[yshift=-2cm,xshift=-1cm]Point.south}{2}{3}
       \publicField{0}{age}{int}
       \privateField{1}{name}{string}
       
@@ -34,7 +34,7 @@
       \publicMethod{2}{int}{sum3}{int}
     \end{umlclass}
     
-    \begin{umlclass}{Point3D}{anchor=north west,minimum width=40mm}{[yshift=-2cm,xshift=1cm]aclassPoint.south}{2}{3}
+    \begin{umlclass}{Point3D}{Point3D}{anchor=north west,minimum width=40mm}{[yshift=-2cm,xshift=1cm]Point.south}{2}{3}
       \publicField{0}{age}{int}
       \privateField{1}{name}{string}
       
@@ -43,7 +43,7 @@
       \publicMethod{2}{int}{sum3}{int}
     \end{umlclass}
     
-    \begin{umlclass}{Rectangle}{anchor=west,minimum width=40mm}{[xshift=2cm]aclassPoint.east}{2}{3}
+    \begin{umlclass}{Rectangle}{Rectangle}{anchor=west,minimum width=40mm}{[xshift=2cm]Point.east}{2}{3}
       \publicField{0}{age}{int}
       \privateField{1}{name}{string}
       
@@ -52,16 +52,16 @@
       \publicMethod{2}{int}{sum3}{int}
     \end{umlclass}
     
-    \draw[knows] (classRectangle)
-              -- (aclassPoint);
-    \draw[implements] (aclassPoint.north)
-                   -- (interfacePointable.south);
-    \draw[inherit] (classPoint2D.north)
-                -- ([yshift=1cm]classPoint2D.north)
-                -| ([xshift=-1cm]aclassPoint);
-    \draw[inherit] (classPoint3D.north)
-                -- ([yshift=1cm]classPoint3D.north)
-                -| ([xshift=1cm]aclassPoint);
+    \draw[knows] (Rectangle)
+              -- (Point);
+    \draw[implements] (Point.north)
+                   -- (Pointable.south);
+    \draw[inherit] (Point2D.north)
+                -- ([yshift=1cm]Point2D.north)
+                -| ([xshift=-1cm]Point);
+    \draw[inherit] (Point3D.north)
+                -- ([yshift=1cm]Point3D.north)
+                -| ([xshift=1cm]Point);
   \end{tikzpicture}
 \end{center}
 
