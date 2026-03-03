@@ -34,10 +34,10 @@
 % - 6: visibility modifier
 % - 7: header height
 \newcommand{\@visibleField}[7]{
-  \node[minimum height=\@fieldHeight,anchor=north west]
+  \node[minimum height=\@scale*\@fieldHeight,anchor=north west]
     (#2 #4 #1)
-    at ([yshift=-#7-1*\@border-#3*\@fieldHeight,xshift=\@border]#2.north west)
-    {\texttt{#6 #4 : #5}}
+    at ([yshift=\@scale*(-#7-1*\@border-#3*\@fieldHeight),xshift=\@scale*(\@border)]#2.north west)
+    {\scalebox{\@scale}{\texttt{#6 #4 : #5}}}
   ;
 }
 
@@ -52,10 +52,10 @@
 % - 8: visibility modifier
 % - 9: header height
 \newcommand{\@visibleMethod}[9]{
-  \node[minimum height=\@fieldHeight,anchor=north west]
+  \node[minimum height=\@scale*\@fieldHeight,anchor=north west]
     (#2 #6 #1)
-    at ([yshift=-#9-3*\@border-#3*\@fieldHeight-#4*\@fieldHeight,xshift=\@border]#2.north west)
-    {\texttt{#8 #6 (#7) : #5}}
+    at ([yshift=\@scale*(-#9-3*\@border-#3*\@fieldHeight-#4*\@fieldHeight),xshift=\@scale*(\@border)]#2.north west)
+    {\scalebox{\@scale}{\texttt{#8 #6 (#7) : #5}}}
   ;
 }
 
@@ -70,13 +70,13 @@
   \node[
     node,
     #1,
-    minimum height=#4+#5+#6,
+    minimum height=\@scale*(#4+#5+#6),
   ] (#2) at (#3) {};
   
-  \draw[thick] ([yshift=-#4]#2.north west)
-             --([yshift=-#4]#2.north east);
-  \draw[thick] ([yshift=-#4-#5]#2.north west)
-             --([yshift=-#4-#5]#2.north east);
+  \draw[thick] ([yshift=\@scale*(-#4)]#2.north west)
+             --([yshift=\@scale*(-#4)]#2.north east);
+  \draw[thick] ([yshift=\@scale*(-#4-#5)]#2.north west)
+             --([yshift=\@scale*(-#4-#5)]#2.north east);
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -87,6 +87,15 @@
 \tikzstyle{knows} = [thick,->,>=angle 60, draw=blue]
 
 \tikzstyle{instanceof} = [thick, densely dotted, draw=purple]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% config
+
+\newcommand{\@scale}[0]{0.8}
+
+\newcommand{\umlsetscale}[1]{
+  \renewcommand{\@scale}[0]{#1}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% specific environments
@@ -133,7 +142,7 @@
   
   \@genericElement{#3}{#1}{#4}{\@headerHeight}{(2*\@border+#5*\@fieldHeight)}{(2*\@border+#6*\@fieldHeight)}
   
-  \node[anchor=center,text=black] (#1name) at ([yshift=-\@headerHeight/2]#1.north) {\large{#2}};
+  \node[anchor=center,text=black] (#1name) at ([yshift=\@scale*(-\@headerHeight/2)]#1.north) {\scalebox{\@scale}{\large{#2}}};
 }
 {
 }
@@ -180,8 +189,8 @@
   
   \@genericElement{#3}{#1}{#4}{(\@headerHeight*2/3+\@subHeaderHeight)}{(2*\@border+#5*\@fieldHeight)}{(2*\@border+#6*\@fieldHeight)}
   
-  \node[anchor=center,text=black] (#1abstract) at ([yshift=-\@subHeaderHeight/2-0.5mm]#1.north) {\small{\texttt{<<abstract>>}}};
-  \node[anchor=center,text=black] (#1name) at ([yshift=-\@subHeaderHeight*2/3-\@headerHeight/2+0.5mm]#1.north) {\large{#1}};
+  \node[anchor=center,text=black] (#1abstract) at ([yshift=\@scale*(-\@subHeaderHeight/2-0.5mm)]#1.north) {\scalebox{\@scale}{\small{\texttt{<<abstract>>}}}};
+  \node[anchor=center,text=black] (#1name) at ([yshift=\@scale*(-\@subHeaderHeight*2/3-\@headerHeight/2+0.5mm)]#1.north) {\scalebox{\@scale}{\large{#1}}};
 }
 {
 }
@@ -228,8 +237,8 @@
   
   \@genericElement{#3}{#1}{#4}{(\@headerHeight*2/3+\@subHeaderHeight)}{(2*\@border+#5*\@fieldHeight)}{(2*\@border+#6*\@fieldHeight)}
   
-  \node[anchor=center,text=black] (#1name) at ([yshift=-\@subHeaderHeight/2-0.5mm]#1.north) {\small{\texttt{<<interface>>}}};
-  \node[anchor=center,text=black] (#1name) at ([yshift=-\@subHeaderHeight*2/3-\@headerHeight/2+0.5mm]#1.north) {\large{#2}};
+  \node[anchor=center,text=black] (#1name) at ([yshift=\@scale*(-\@subHeaderHeight/2-0.5mm)]#1.north) {\scalebox{\@scale}{\small{\texttt{<<interface>>}}}};
+  \node[anchor=center,text=black] (#1name) at ([yshift=\@scale*(-\@subHeaderHeight*2/3-\@headerHeight/2+0.5mm)]#1.north) {\scalebox{\@scale}{\large{#2}}};
 }
 {
 }
