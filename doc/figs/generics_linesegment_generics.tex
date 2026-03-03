@@ -1,17 +1,17 @@
 \begin{center}
   \begin{tikzpicture}[remember picture]
-    \begin{umlinterface}{Point}{Point<T>}{anchor=north,minimum width=54mm}{0,0}{0}{1}
+    \begin{umlinterface}{Point}{Point<T>}{anchor=north,minimum width=43mm}{0,0}{0}{1}
       \publicMethod{0}{double}{DistanceTo}{T}
     \end{umlinterface}
     
-    \begin{umlclass}{Point2D}{Point2D}{anchor=north east,minimum width=61mm}{[yshift=-2cm,xshift=-1cm]Point.south}{2}{1}
+    \begin{umlclass}{Point2D}{Point2D}{anchor=north east,minimum width=50mm}{[yshift=-1cm,xshift=-0.5cm]Point.south}{2}{1}
       \privateField{0}{x}{double}
       \privateField{1}{y}{double}
       
       \publicMethod{0}{double}{DistanceTo}{Point2D}
     \end{umlclass}
     
-    \begin{umlclass}{Point3D}{Point3D}{anchor=north west,minimum width=61mm}{[yshift=-2cm,xshift=1cm]Point.south}{3}{1}
+    \begin{umlclass}{Point3D}{Point3D}{anchor=north west,minimum width=50mm}{[yshift=-1cm,xshift=0.5cm]Point.south}{3}{1}
       \privateField{0}{x}{double}
       \privateField{1}{y}{double}
       \privateField{2}{z}{double}
@@ -19,7 +19,7 @@
       \publicMethod{0}{double}{DistanceTo}{Point3D}
     \end{umlclass}
     
-    \begin{umlclass}{LineSegment}{LineSegment<T : Point<T>{ }>}{anchor=east,minimum width=55mm}{[xshift=-2cm]Point.west}{2}{1}
+    \begin{umlclass}{LineSegment}{LineSegment<T : Point<T>{ }>}{anchor=east,minimum width=52mm}{[xshift=-2cm]Point.west}{2}{1}
       \privateField{0}{endpointA}{T}
       \privateField{1}{endpointB}{T}
       
@@ -29,10 +29,10 @@
     \draw[knows] (LineSegment)
               -- (Point);
     \draw[implements] (Point2D.north)
-                   -- ([yshift=1cm]Point2D.north)
-                   -| ([xshift=-1cm]Point);
+                   -- ([yshift=0.5cm]Point2D.north)
+                   -| ([xshift=-2cm]Point);
     \draw[implements] (Point3D.north)
-                   -- ([yshift=1cm]Point3D.north)
-                   -| ([xshift=1cm]Point);
+                   -- ([yshift=0.5cm]Point3D.north)
+                   -| ([xshift=2cm]Point);
   \end{tikzpicture}
 \end{center}

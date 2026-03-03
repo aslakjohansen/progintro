@@ -1,17 +1,17 @@
 \begin{center}
   \begin{tikzpicture}[remember picture]
-    \begin{umlaclass}{Point}{Point}{anchor=north,minimum width=54mm}{0,0}{0}{1}
+    \begin{umlaclass}{Point}{Point}{anchor=north,minimum width=46mm}{0,0}{0}{1}
       \publicMethod{0}{double}{Distance}{Point}
     \end{umlaclass}
     
-    \begin{umlclass}{Point2D}{Point2D}{anchor=north east,minimum width=54mm}{[yshift=-2cm,xshift=-1cm]Point.south}{2}{1}
+    \begin{umlclass}{Point2D}{Point2D}{anchor=north east,minimum width=46mm}{[yshift=-1cm,xshift=-0.5cm]Point.south}{2}{1}
       \privateField{0}{x}{double}
       \privateField{1}{y}{double}
       
       \publicMethod{0}{double}{Distance}{Point}
     \end{umlclass}
     
-    \begin{umlclass}{Point3D}{Point3D}{anchor=north west,minimum width=54mm}{[yshift=-2cm,xshift=1cm]Point.south}{3}{1}
+    \begin{umlclass}{Point3D}{Point3D}{anchor=north west,minimum width=46mm}{[yshift=-1cm,xshift=0.5cm]Point.south}{3}{1}
       \privateField{0}{x}{double}
       \privateField{1}{y}{double}
       \privateField{2}{z}{double}
@@ -19,7 +19,7 @@
       \publicMethod{0}{double}{Distance}{Point}
     \end{umlclass}
     
-    \begin{umlclass}{LineSegment}{LineSegment}{anchor=east,minimum width=48mm}{[xshift=-2cm]Point.west}{2}{1}
+    \begin{umlclass}{LineSegment}{LineSegment}{anchor=east,minimum width=46mm}{[xshift=-2cm]Point.west}{2}{1}
       \privateField{0}{endpointA}{Point}
       \privateField{1}{endpointB}{Point}
       
@@ -29,10 +29,10 @@
     \draw[knows] (LineSegment)
               -- (Point);
     \draw[inherit] (Point2D.north)
-                -- ([yshift=1cm]Point2D.north)
-                -| ([xshift=-1cm]Point);
+                -- ([yshift=0.5cm]Point2D.north)
+                -| ([xshift=-2cm]Point);
     \draw[inherit] (Point3D.north)
-                -- ([yshift=1cm]Point3D.north)
-                -| ([xshift=1cm]Point);
+                -- ([yshift=0.5cm]Point3D.north)
+                -| ([xshift=2cm]Point);
   \end{tikzpicture}
 \end{center}
