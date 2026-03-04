@@ -6,7 +6,7 @@ class Point2D : Point<Point2D> {
     this.y = y;
   }
   
-  public double DistanceTo (Point2D other) {
+  public override double DistanceTo (Point2D other) {
     double xdiff = this.x-other.x;
     double ydiff = this.y-other.y;
     return Math.Sqrt(xdiff*xdiff + ydiff*ydiff);

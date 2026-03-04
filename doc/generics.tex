@@ -110,13 +110,31 @@ On the surface, this looks good, and it would indeed work. But it would also req
   \label{fig:generics:linesegment:aclass}
 \end{figure}
 
-% generics fix: core problem (LineSegment needs endpointA to have a declared type through which DistanceTo is defined with a parameter of the same type while at the same time decouple LineSegment from the specific Point variant)
+% generics fix: core problem (LineSegment needs endpointA to have a declared type -- lets call it T -- through which DistanceTo is defined with a parameter of the same type -- T -- while at the same time decouple LineSegment from the specific Point variant), how does this affect our types?
+The core of the problem is that \classname{LineSegment} needs its \varname{endpointA} instance variable to have a declared type -- lets call it \typename{T} -- on which a \methodname{DistanceTo} method is declared with a parameter of type \typename{T} while at the same time decople \classname{LineSegment} from the specific \classname{Point} subclass. How does this affect our types?
+\begin{itemize}
+  \item \classname{LineSegment}: Still a class, but this time we make it parameterized over \typename{T}. This allows us to define \varname{endpointA} and \varname{endpointB} as \typename{T}. While this appears as us just replacing one fairly generic type (\classname{Point}) with another (\typename{T}), this has two implications:
+    \begin{enumerate}
+      \item The types of \varname{endpointA} and \varname{endpointB} have to satisfy the same concrete value of \typename{T}.
+      \item \typename{T} is symbolic, and can thus appear as a parameter to a restriction on \typename{T}.
+    \end{enumerate}
+  \item \classname{Point}: An abstract class that has an abstract function for calculating the distance to an object of the type \typename{T}. We do this for the singular purpose of linking the type of the parameter to the \methodname{DistanceTo} method to the concrete descendants of \classname{Point}. Using a parameterized type gives us a lot of flexibility, but we never end up exercising it. Instead, it is locked down in the \classname{Point2D} and \classname{Point3D} classes.
+  \item \classname{Point2D}: A class that represents a point in two dimensions, inherits from \classname{Point} and knows how to calculate the distance to another \classname{Point2D}. That is, it locks \typename{T} to \classname{Point2D}.
+  \item \classname{Point3D}: A class that represents a point in three dimensions, inherits from \classname{Point} and knows how to calculate the distance to another \classname{Point3D}. That is, it locks \typename{T} to \classname{Point3D}.
+\end{itemize}
+
+% generics solution
+What we end up with is illustrated in figure \ref{fig:generics:linesegment:generics}. Granted, it is a rather complicated solution. The choice of applying such complexity should always be considered. In this case we are gaining \idx{type guarantees}{Type!Guarantee} at the expense of complexity. Is that a trade that we are willing to make?
 
 \begin{figure}[tbp]
   \input{figs/generics_linesegment_generics.tex}
   \caption{\classname{LineSegment} representation using a generic class.}
   \label{fig:generics:linesegment:generics}
 \end{figure}
+
+\section{UML}
+
+% note on the poor offering
 
 \section{The C Precompiler}
 

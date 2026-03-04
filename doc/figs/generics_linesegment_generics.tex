@@ -1,8 +1,8 @@
 \begin{center}
   \begin{tikzpicture}[remember picture]
-    \begin{umlinterface}{Point}{Point<T>}{anchor=north,minimum width=43mm}{0,0}{0}{1}
+    \begin{umlaclass}{Point}{Point<T>}{anchor=north,minimum width=43mm}{0,0}{0}{1}
       \publicMethod{0}{double}{DistanceTo}{T}
-    \end{umlinterface}
+    \end{umlaclass}
     
     \begin{umlclass}{Point2D}{Point2D}{anchor=north east,minimum width=50mm}{[yshift=-1cm,xshift=-0.5cm]Point.south}{2}{1}
       \privateField{0}{x}{double}
@@ -28,11 +28,11 @@
     
     \draw[knows] (LineSegment)
               -- (Point);
-    \draw[implements] (Point2D.north)
-                   -- ([yshift=0.5cm]Point2D.north)
-                   -| ([xshift=-2cm]Point);
-    \draw[implements] (Point3D.north)
-                   -- ([yshift=0.5cm]Point3D.north)
-                   -| ([xshift=2cm]Point);
+    \draw[inherit] (Point2D.north)
+                -- ([yshift=0.5cm]Point2D.north)
+                -| ([xshift=-2cm]Point);
+    \draw[inherit] (Point3D.north)
+                -- ([yshift=0.5cm]Point3D.north)
+                -| ([xshift=2cm]Point);
   \end{tikzpicture}
 \end{center}

@@ -1,3 +1,3 @@
-interface Point<T> {
-  double DistanceTo (T other);
+abstract class Point<T> {
+  public abstract double DistanceTo (T other);
 }

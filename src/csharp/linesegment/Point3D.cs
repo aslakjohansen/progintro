@@ -7,7 +7,7 @@ class Point3D : Point<Point3D> {
     this.z = z;
   }
   
-  public double DistanceTo (Point3D other) {
+  public override double DistanceTo (Point3D other) {
     double xdiff = this.x-other.x;
     double ydiff = this.y-other.y;
     double zdiff = this.z-other.z;
