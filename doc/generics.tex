@@ -75,24 +75,73 @@ By now, we have already seen what a parameterized class looks like in \csharp. S
   \label{syntax:generics:interface}
 \end{syntaxfloat}
 
-% declaration of the placeholders
+% declaration of the placeholders: updates made to class aclass and interface rules are very similar (a placeholder-list and a where-list is added), these are defined in syntax {syntax:generics:support}, the placeholder-list is simply a way of declaring that the class or structure is parameterized over these specific parameters (section ? covers this in detail), the where-list is a mechanism for putting restrictions on the allowed placeholder replacement types (section ? covers this in details), why don't we need to add updates to the body of the class or interface? because a placeholder name matches the definition of a type name.
+Upon inspection, we see that the updates to the \conceptname{class}, \conceptname{aclass} and \conceptname{interface} rules are similar and restricted to the addition of \conceptname{placeholder-list} and \conceptname{where-list}. These are defined in syntax \ref{syntax:generics:support}. The \conceptname{placeholder-list} is simply a way of declaring which specific placeholders the class or interface is parameterized over. Section \ref{generics:csharp:multi} covers this in detail. The \conceptname{where-list} is a mechanism for putting restrictions on the allowed placeholder replacement types. Section \ref{generics:csharp:restrictions} covers this in detail. Why don't we need to update the definitions of the class and interface bodies? Because the placeholder name already matches the definition of a type name (see syntax \ref{syntax:prim:vars:locals}).
 
 \subsection{Multiple Parameters}
+\label{generics:csharp:multi}
 
-% need for multiple parameters (trivial map implementation)
+% need: If we can have a need for a single type parameter then it's not really a stretch to imagine that we can have a need for more than one
 
 \subsection{Restrictions on Type}
+\label{generics:csharp:restrictions}
 
 % problem: knowing that a field exists does know allow us to do much with it
-We still haven't actually solved to problem of not having guarantees on the available functionality. In our instance and class variables, we can store references to objects, we can update these references and pass them along to other pieces of code. We need to make sure that our code is valid irrespective of the type others choose as parameters, otherwise the compiler won't be happy. This means that we can't do much else with those fields.
+We still haven't actually solved to problem of not having guarantees on the available functionality. In our instance and class variables, we can store references to objects, we can update these references and pass them along to other pieces of code. We need to make sure that our code is valid irrespective of the type others choose as parameters, otherwise the compiler won't be happy. Without such such guarantees, we can't do much else with those fields.
 
-% hack #1: use of the non-idiomatic construct of a cascading 'is' checks
-One non-\idx{idiomatic}{Idiomatic} way of getting around this would be to create a cascade of \idx{is}{is@\texttt{is} keyword} checks. That way, we end up with one \keywordname{if} case per supported type. It tests whether the type of the actual object satisfies some specific type, and -- if so -- hands it over to some code that knows how to deal with it. Otherwise, it hands control over to the next stage in the cascade. These checks would have to be evaluated in sequence, and this would -- on top of the \idx{readability}{Readability} issues stemming from a deep nesting of \keywordname{if} statements -- carry a performance penalty.
+% hack: use of the non-idiomatic construct of a cascading 'is' checks
+One non-\idx{idiomatic}{Idiomatic} way of getting around this would be to create a cascade of \idx{is}{is@\texttt{is} keyword} checks. That way, we end up with one \keywordname{if} case per supported type. It tests whether the type of the actual object satisfies some specific type, and -- if so -- hands it over to some code that knows how to deal with it. Otherwise, it hands control over to the next stage in the cascade. These checks would have to be evaluated in sequence and at \idx{runtime}{Runtime}, and this would -- on top of the \idx{readability}{Readability} issues stemming from a deep nesting of \keywordname{if} statements -- carry a performance penalty.
 
-% hack #2: interface solution, awkward/complex to use interfaces (the types that we are not in charge of may need wrapping), restrictions on type (no need to wrap the types of others [e.g., primitive types], need for restrictions on multiple interfaces, constructor availability)
-Another option would be to rely on interfaces and polymorphism. In this solution, an interface would be used instead of the parameterized type, and that interface would define all the functionality that our class relies on. Any class that we would want to use would then have to implement this interface. This becomes awkward when we are not in charge of the types that we want to use, as they then need wrapping.
+% solution: interface solution, awkward/complex to use interfaces (the types that we are not in charge of may need wrapping)
+Another solution would be to rely on an interface to define the type contract and polymorphism for dispatch. Any class that we would want to use would then have to implement this interface. While this would be in line with the way interfaces are intended to be used, it is not always a good solution. When we are not in charge of the types that we want to refer to, then these need to be wrapped. That adds complexity and is generally awkward.
 
-% solution:
+% restrictions on type (no need to wrap the types of others [e.g., primitive types], need for restrictions on multiple interfaces, constructor availability)
+Adding restrictions on types improve the situation a bit: Primitive types does not need to be wrapped, and there is more flexibility in how to deal with types that are outside of ones control. Furthermore, restrictions on type also allow for expressing the requirements through multiple interfaces, and for passing along these type restrictions to constructors. These restrictions are expressed in syntax \ref{syntax:generics:support} under the \conceptname{where-list} rule. Here, what is on the left-hand side of the colon has to satisfy what is on the right-hand side.
+
+\section{Case: Line Segments}
+
+Lets imagine that we are writing a \classname{LineSegment} class from which we can create line segment instances. A line segment is a straight line between two points. Clearly, each instance needs to be associated with two points then. One purpose of that class is to calculate the length of such a line segment. This, however, depends of the dimensionality of the space referenced by these points. For the purpose of this example, we would like to support points in either 2d or 3d space. As illustrated in figure \ref{fig:generics:linesegment:aclass}, we cound construct such an implementation using the following structure:
+\begin{itemize}
+  \item \classname{LineSegment}: A class that represents a line segment that has two \classname{Point} instance variables.
+  \item \classname{Point}: An abstract class that has an abstract function for calculating the distance to another point.
+  \item \classname{Point2D}: A class that represents a point in two dimensions, inherits from \classname{Point} and knows how to calculate the distance to another \classname{Point2D}.
+  \item \classname{Point3D}: A class that represents a point in three dimensions, inherits from \classname{Point} and knows how to calculate the distance to another \classname{Point3D}.
+\end{itemize}
+
+% problem: this would work ... as long as we use these classes correctly, the problem lies in th subclasses to Point, how would Point2D go about calculating the distance to another Point? it would have to cast this to a Point2D, but whe have no guarantee that such a cast would succeed, perhaps a developer has instantiated LineSegment with a Point2D and a Point3d, this would be a messup (but that is what developers do), as we have just bypassed the type checker (by downcasting) we don't really have a good solution available to us, a bad one would be to introduce factory methods for constructing LineSegment instances with same endpoint types and use visibility modifiers to hide all other paths to the constructor of LineSegment, but then we have essentially just shifted the problem.
+On the surface, this looks good, and it would indeed work. But it would also require us to bypass the \idx{type checker}{Type!Checker}, and that comes with some consequences that we would rather avoid. Lets explore this dissonance through a random subclass of \classname{Point}: How would \classname{Point2D} go about calculating the distance to another \classname{Point} in the \methodname{DistanceTo} method? It would have to \idx{cast}{Cast} this to a \classname{Point2D}, and yet we have no guarantee that such cast would succeed. Perhaps a developer has constructed a \classname{LineSegment} object from a \classname{Point2D} and a \classname{Point3D}. This would be a messup from the developers side, but a messup that we should expect to developer to commit nevertheless. As we have used the \idx{downcast}{Downcast} to bypass the typechecker we don't really have a good solution available to us. A bad one would be to introduce \idx{factory}{Factory} methods for constructing \classname{LineSegment} instances with same endpoint types, and then to use visibility modifiers to hide all other paths to the constructor of \classname{LineSegment}. But then we have essentially just shifted the problem.
+
+\begin{figure}[tbp]
+  \input{figs/generics_linesegment_abstract.tex}
+  \caption{\classname{LineSegment} representation using an abstract class.}
+  \label{fig:generics:linesegment:aclass}
+\end{figure}
+
+% generics fix: core problem (LineSegment needs endpointA to have a declared type -- lets call it T -- through which DistanceTo is defined with a parameter of the same type -- T -- while at the same time decouple LineSegment from the specific Point variant), how does this affect our types?
+The core of the problem is that \classname{LineSegment} needs its \varname{endpointA} instance variable to have a declared type -- lets call it \typename{T} -- on which a \methodname{DistanceTo} method is declared with a parameter of type \typename{T} while at the same time decople \classname{LineSegment} from the specific \classname{Point} subclass. How does this affect our types?
+\begin{itemize}
+  \item \classname{LineSegment}: Still a class, but this time we make it parameterized over \typename{T}. This allows us to define \varname{endpointA} and \varname{endpointB} as \typename{T}. While this appears as us just replacing one fairly generic type (\classname{Point}) with another (\typename{T}), this has two implications:
+    \begin{enumerate}
+      \item The types of \varname{endpointA} and \varname{endpointB} have to satisfy the same concrete value of \typename{T}.
+      \item \typename{T} is symbolic, and can thus appear as a parameter to a restriction on \typename{T}.
+    \end{enumerate}
+  \item \classname{Point}: An abstract class that has an abstract function for calculating the distance to an object of the type \typename{T}. We do this for the singular purpose of linking the type of the parameter to the \methodname{DistanceTo} method to the concrete descendants of \classname{Point}. Using a parameterized type gives us a lot of flexibility, but we never end up exercising it. Instead, it is locked down in the \classname{Point2D} and \classname{Point3D} classes.
+  \item \classname{Point2D}: A class that represents a point in two dimensions, inherits from \classname{Point} and knows how to calculate the distance to another \classname{Point2D}. That is, it locks \typename{T} to \classname{Point2D}.
+  \item \classname{Point3D}: A class that represents a point in three dimensions, inherits from \classname{Point} and knows how to calculate the distance to another \classname{Point3D}. That is, it locks \typename{T} to \classname{Point3D}.
+\end{itemize}
+
+% generics solution
+What we end up with is illustrated in figure \ref{fig:generics:linesegment:generics}. Granted, it is a rather complicated solution. The choice of applying such complexity should always be considered. In this case we are gaining \idx{type guarantees}{Type!Guarantee} at the expense of complexity. Is that a trade that we are willing to make?
+
+\begin{figure}[tbp]
+  \input{figs/generics_linesegment_generics.tex}
+  \caption{\classname{LineSegment} representation using a generic class.}
+  \label{fig:generics:linesegment:generics}
+\end{figure}
+
+\section{UML}
+
+% note on the poor offering
 
 \section{The C Precompiler}
 

@@ -27,6 +27,8 @@
   \node[sequence] () at ([yshift=-1*\syntaxruledist]$(begin)!0.5!(end)$) {
     \node[terminal]    (ruleIa) {where};
     &
+    \node[nonterminal] (ruleIab) {name};
+    &
     \node[terminal]    (ruleIb) {:};
     &
     \node[]            (dummy) {};
@@ -40,7 +42,7 @@
   \draw[path] (begin)--(end);
   \draw[path] (begin)
            -| ([xshift=-1cm,yshift=0.4cm]ruleIa.west)
-           |- (ruleIa)--(ruleIb)--(ruleIc)
+           |- (ruleIa)--(ruleIab)--(ruleIb)--(ruleIc)
            -| ([xshift=1cm,yshift=0.4cm]ruleIc.east)
            |- (end);
   \draw[path] (ruleIc)

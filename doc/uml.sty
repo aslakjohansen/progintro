@@ -3,54 +3,242 @@
                  LaTeX package for UML diagrams]
 
 % packages and TikZ libraries
+\usetikzlibrary{arrows}
 
-% args: class name, extra params to tikz node (just keep empty), position, number of attributes, number of methods
-\newenvironment{classs}[5]
-{
-  \newcommand{\headerHeight}[0]{8mm}
-  \newcommand{\fieldHeight}[0]{6mm}
-  \newcommand{\border}[0]{1mm}
-  
-  \tikzstyle{node}=[
-    overlay,
-    rectangle,
-    draw=purple,
-    thick,
-    minimum width=20mm,
-  ]
-  
-  % args:
-  %  - 1: id modifier (default: empty)
-  %  - 2: index
-  %  - 3: count
-  %  - 4: return type
-  %  - 5: method name,
-  %  - 6: parameter list
-  %  - 7: visibility modifier
-  \newcommand{\visibleMethod}[7]{
-    \node[minimum height=\fieldHeight,anchor=north west]
-      (class#1 ##5 ##1)
-      at ([yshift=-\headerHeight-3*\border-#4*\fieldHeight-##2*\fieldHeight,xshift=\border]class#1.north west)
-      {\texttt{##7 ##5 (##6) : ##4}}
-    ;
-  }
-  
-%  % args: id modifier (default: empty), index, count, return type, method name, parameter list
-%  \newcommand{\publicMethod}[6][]{
-%    \visibleMethod{#1}{#2}{#3}{#4}{#5}{+}
-%  }
-  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% styling
+
+% properties
+\newcommand{\@headerHeight}[0]{8mm}
+\newcommand{\@subHeaderHeight}[0]{4mm}
+\newcommand{\@fieldHeight}[0]{5mm}
+\newcommand{\@border}[0]{1mm}
+
+\tikzstyle{node}=[
+  overlay,
+  rectangle,
+  draw=purple,
+  thick,
+  minimum width=20mm,
+]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% generic producers
+
+% args:
+% - 1: id modifier (default: empty)
+% - 2: name
+% - 3: index
+% - 4: field name,headerHeight
+% - 5: field type
+% - 6: visibility modifier
+% - 7: header height
+\newcommand{\@visibleField}[7]{
+  \node[minimum height=\@scale*\@fieldHeight,anchor=north west]
+    (#2 #4 #1)
+    at ([yshift=\@scale*(-#7-1*\@border-#3*\@fieldHeight),xshift=\@scale*(\@border)]#2.north west)
+    {\scalebox{\@scale}{\texttt{#6 #4 : #5}}}
+  ;
+}
+
+% args:
+% - 1: id modifier (default: empty)
+% - 2: name
+% - 3: field count
+% - 4: index
+% - 5: return type
+% - 6: method name,
+% - 7: parameter list
+% - 8: visibility modifier
+% - 9: header height
+\newcommand{\@visibleMethod}[9]{
+  \node[minimum height=\@scale*\@fieldHeight,anchor=north west]
+    (#2 #6 #1)
+    at ([yshift=\@scale*(-#9-3*\@border-#3*\@fieldHeight-#4*\@fieldHeight),xshift=\@scale*(\@border)]#2.north west)
+    {\scalebox{\@scale}{\texttt{#8 #6 (#7) : #5}}}
+  ;
+}
+
+% args:
+% - 1: extra params to tikz node (just keep empty)
+% - 2: base id
+% - 3: position
+% - 4: header height
+% - 5: field height
+% - 6: method height
+\newcommand{\@genericElement}[6]{
   \node[
     node,
-    #2,
-    minimum height=\headerHeight+4*\border+#4*\fieldHeight+#5*\fieldHeight,
-  ] (class#1) at (#3) {};
-  \node[anchor=center,text=black] (class#1name) at ([yshift=-\headerHeight/2]class#1.north) {\large{#1}};
+    #1,
+    minimum height=\@scale*(#4+#5+#6),
+  ] (#2) at (#3) {};
   
-  \draw[thick] ([yshift=-\headerHeight]class#1.north west)
-             --([yshift=-\headerHeight]class#1.north east);
-  \draw[thick] ([yshift=-\headerHeight-\border-#4*\fieldHeight]class#1.north west)
-             --([yshift=-\headerHeight-\border-#4*\fieldHeight]class#1.north east);
+  \draw[thick] ([yshift=\@scale*(-#4)]#2.north west)
+             --([yshift=\@scale*(-#4)]#2.north east);
+  \draw[thick] ([yshift=\@scale*(-#4-#5)]#2.north west)
+             --([yshift=\@scale*(-#4-#5)]#2.north east);
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% relations
+
+\tikzstyle{inherit} = [thick,->,>=open triangle 45, draw=teal]
+\tikzstyle{implements} = [inherit, densely dashed, draw=orange]
+\tikzstyle{knows} = [thick,->,>=angle 60, draw=blue]
+
+\tikzstyle{instanceof} = [thick, densely dotted, draw=purple]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% config
+
+\newcommand{\@scale}[0]{0.8}
+
+\newcommand{\umlsetscale}[1]{
+  \renewcommand{\@scale}[0]{#1}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% specific environments
+
+% args:
+% - 1: id prefix
+% - 2: class name
+% - 3: extra params to tikz node (just keep empty)
+% - 4: position
+% - 5: number of attributes
+% - 6: number of methods
+\newenvironment{umlclass}[6]
+{
+  % args:
+  % - 1: id modifier (default: empty)
+  % - 2: index
+  % - 3: field name,
+  % - 4: field type
+  \newcommand{\publicField}[4][]{
+    \@visibleField{##1}{#1}{##2}{##3}{##4}{+}{\@headerHeight}
+  }
+  \newcommand{\protectedField}[4][]{
+    \@visibleField{##1}{#1}{##2}{##3}{##4}{\%}{\@headerHeight}
+  }
+  \newcommand{\privateField}[4][]{
+    \@visibleField{##1}{#1}{##2}{##3}{##4}{-}{\@headerHeight}
+  }
+  
+  % args:
+  % - 1: id modifier (default: empty)
+  % - 2: index
+  % - 3: return type
+  % - 4: method name
+  % - 5: parameter list
+  \newcommand{\publicMethod}[5][]{
+    \@visibleMethod{##1}{#1}{#5}{##2}{##3}{##4}{##5}{+}{\@headerHeight}
+  }
+  \newcommand{\protectedMethod}[5][]{
+    \@visibleMethod{##1}{#1}{#5}{##2}{##3}{##4}{##5}{\%}{\@headerHeight}
+  }
+  \newcommand{\privateMethod}[5][]{
+    \@visibleMethod{##1}{#1}{#5}{##2}{##3}{##4}{##5}{-}{\@headerHeight}
+  }
+  
+  \@genericElement{#3}{#1}{#4}{\@headerHeight}{(2*\@border+#5*\@fieldHeight)}{(2*\@border+#6*\@fieldHeight)}
+  
+  \node[anchor=center,text=black] (#1name) at ([yshift=\@scale*(-\@headerHeight/2)]#1.north) {\scalebox{\@scale}{\large{#2}}};
+}
+{
+}
+
+% args:
+% - 1: id prefix
+% - 2: class name
+% - 3: extra params to tikz node (just keep empty)
+% - 4: position
+% - 5: number of attributes
+% - 6: number of methods
+\newenvironment{umlaclass}[6]
+{
+  % args:
+  % - 1: id modifier (default: empty)
+  % - 2: index
+  % - 3: field name,
+  % - 4: field type
+  \newcommand{\publicField}[4][]{
+    \@visibleField{##1}{#1}{##2}{##3}{##4}{+}{(\@headerHeight*2/3+\@subHeaderHeight)}
+  }
+  \newcommand{\protectedField}[4][]{
+    \@visibleField{##1}{#1}{##2}{##3}{##4}{\%}{(\@headerHeight*2/3+\@subHeaderHeight)}
+  }
+  \newcommand{\privateField}[4][]{
+    \@visibleField{##1}{#1}{##2}{##3}{##4}{-}{(\@headerHeight*2/3+\@subHeaderHeight)}
+  }
+  
+  % args:
+  % - 1: id modifier (default: empty)
+  % - 2: index
+  % - 3: return type
+  % - 4: method name
+  % - 5: parameter list
+  \newcommand{\publicMethod}[5][]{
+    \@visibleMethod{##1}{#1}{#5}{##2}{##3}{##4}{##5}{+}{(\@headerHeight*2/3+\@subHeaderHeight)}
+  }
+  \newcommand{\protectedMethod}[5][]{
+    \@visibleMethod{##1}{#1}{#5}{##2}{##3}{##4}{##5}{\%}{(\@headerHeight*2/3+\@subHeaderHeight)}
+  }
+  \newcommand{\privateMethod}[5][]{
+    \@visibleMethod{##1}{#1}{#5}{##2}{##3}{##4}{##5}{-}{(\@headerHeight*2/3+\@subHeaderHeight)}
+  }
+  
+  \@genericElement{#3}{#1}{#4}{(\@headerHeight*2/3+\@subHeaderHeight)}{(2*\@border+#5*\@fieldHeight)}{(2*\@border+#6*\@fieldHeight)}
+  
+  \node[anchor=center,text=black] (#1abstract) at ([yshift=\@scale*(-\@subHeaderHeight/2-0.5mm)]#1.north) {\scalebox{\@scale}{\small{\texttt{<<abstract>>}}}};
+  \node[anchor=center,text=black] (#1name) at ([yshift=\@scale*(-\@subHeaderHeight*2/3-\@headerHeight/2+0.5mm)]#1.north) {\scalebox{\@scale}{\large{#2}}};
+}
+{
+}
+
+% args:
+% - 1: id prefix
+% - 2: class name
+% - 3: extra params to tikz node (just keep empty)
+% - 4: position
+% - 5: number of attributes
+% - 6: number of methods
+\newenvironment{umlinterface}[6]
+{
+  % args:
+  % - 1: id modifier (default: empty)
+  % - 2: index
+  % - 3: field name,
+  % - 4: field type
+  \newcommand{\publicField}[4][]{
+    \@visibleField{##1}{#1}{##2}{##3}{##4}{+}{(\@headerHeight*2/3+\@subHeaderHeight)}
+  }
+  \newcommand{\protectedField}[4][]{
+    \@visibleField{##1}{#1}{##2}{##3}{##4}{\%}{(\@headerHeight*2/3+\@subHeaderHeight)}
+  }
+  \newcommand{\privateField}[4][]{
+    \@visibleField{##1}{#1}{##2}{##3}{##4}{-}{(\@headerHeight*2/3+\@subHeaderHeight)}
+  }
+  
+  % args:
+  % - 1: id modifier (default: empty)
+  % - 2: index
+  % - 3: return type
+  % - 4: method name
+  % - 5: parameter list
+  \newcommand{\publicMethod}[5][]{
+    \@visibleMethod{##1}{#1}{#5}{##2}{##3}{##4}{##5}{+}{(\@headerHeight*2/3+\@subHeaderHeight)}
+  }
+  \newcommand{\protectedMethod}[5][]{
+    \@visibleMethod{##1}{#1}{#5}{##2}{##3}{##4}{##5}{\%}{(\@headerHeight*2/3+\@subHeaderHeight)}
+  }
+  \newcommand{\privateMethod}[5][]{
+    \@visibleMethod{##1}{#1}{#5}{##2}{##3}{##4}{##5}{-}{(\@headerHeight*2/3+\@subHeaderHeight)}
+  }
+  
+  \@genericElement{#3}{#1}{#4}{(\@headerHeight*2/3+\@subHeaderHeight)}{(2*\@border+#5*\@fieldHeight)}{(2*\@border+#6*\@fieldHeight)}
+  
+  \node[anchor=center,text=black] (#1name) at ([yshift=\@scale*(-\@subHeaderHeight/2-0.5mm)]#1.north) {\scalebox{\@scale}{\small{\texttt{<<interface>>}}}};
+  \node[anchor=center,text=black] (#1name) at ([yshift=\@scale*(-\@subHeaderHeight*2/3-\@headerHeight/2+0.5mm)]#1.north) {\scalebox{\@scale}{\large{#2}}};
 }
 {
 }
