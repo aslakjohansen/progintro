@@ -96,7 +96,7 @@ One non-\idx{idiomatic}{Idiomatic} way of getting around this would be to create
 Another solution would be to rely on an interface to define the type contract. While this would be in line with the way interfaces are intended to be used, it is not always a good solution. When we are not in charge of the types that we want to refer to, then these need to be wrapped. This adds complexity and is generally awkward.
 
 % restrictions on type (no need to wrap the types of others [e.g., primitive types], need for restrictions on multiple interfaces, constructor availability)
-
+Adding restrictions on types improve the situation a bit: Primitive types does not need to be wrapped, and there is more flexibility in how to deal with types that are outside of ones control. Furthermore, restrictions on type also allow for expressing the requirements through multiple interfaces, and for passing along these type restrictions to constructors. These restrictions are expressed in syntax \ref{syntax:generics:support} under the \conceptname{where-list} rule. Here, what is on the left-hand side of the colon has to satisfy what is on the right-hand side.
 
 \section{Case: Line Segments}
 
