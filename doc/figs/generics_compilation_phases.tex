@@ -45,18 +45,29 @@
       
       % ordinary nodes
       
-      \node[matrix,row sep=2mm,anchor=north,] () at (0,0) {
-        \node[node] (cPreI) {PP};
+      \node[matrix,row sep=2mm,anchor=north,] (csharp) at (0,0) {
+        \node[node, minimum size=1.2cm, draw=white, fill=white] (csharpPreI) {};
         \\
-        \node[node] (cPreII) {PP};
+        \node[node, minimum size=1.2cm, draw=white, fill=white] (csharpPreII) {};
         \\
-        \node[node] (cPreIII) {PP};
+        \node[node, minimum size=1.2cm, draw=white, fill=white] (csharpPreIII) {};
+        \\
+      };
+      
+      \node[matrix,row sep=2mm,anchor=north,] () at (csharp.south) {
+        \node[node, minimum size=1.2cm] (cPreI) {PP};
+        \\
+        \node[node, minimum size=1.2cm] (cPreII) {PP};
+        \\
+        \node[node, minimum size=1.2cm] (cPreIII) {PP};
         \\
       };
       
       \node[node] (cComp) at ([xshift=2*\spacing]cPreII.east) {Compiler};
+      \node[node] (csharpComp) at ([xshift=2*\spacing]csharpPreII.east) {Compiler};
       
-      \node[node] (cE) at ([xshift=2*\spacing]cComp.east) {E};
+      \node[node] (cE) at ([xshift=2*\spacing]cComp.east) {HW};
+      \node[node] (csharpE) at ([xshift=2*\spacing]csharpComp.east) {VM};
       
       % file nodes
       
@@ -67,13 +78,19 @@
       \draw[draw=purple] ([xshift=-\spacing]cPreIII.west) pic{file={\filesize}};
       \draw[draw=purple] ([xshift= \spacing]cPreIII.east) pic{file={\filesize}};
       
+      \draw[draw=purple] ([xshift=-\spacing]csharpPreI.west) pic{file={\filesize}};
+      \draw[draw=purple] ([xshift=-\spacing]csharpPreII.west) pic{file={\filesize}};
+      \draw[draw=purple] ([xshift=-\spacing]csharpPreIII.west) pic{file={\filesize}};
+      
       \draw[draw=purple] ([xshift= \spacing]cComp.east) pic{file={\filesize}};
+      \draw[draw=purple] ([xshift= \spacing]csharpComp.east) pic{file={\filesize}};
       
       % labels
       
-      \node[label] () at ([xshift=-\spacing,yshift=-2*\filesize*1cm]cPreIII.west) {source};
+      \node[label] () at ([xshift=-\spacing,yshift=-2*\filesize*1cm]cPreIII.west) {sources};
       \node[label] () at ([xshift= \spacing,yshift=-2*\filesize*1cm]cPreIII.east) {intermediaries};
       \node[label] () at ([xshift= \spacing,yshift=-2*\filesize*1cm]cComp.east) {binary};
+      \node[label] () at ([xshift= \spacing,yshift=-2*\filesize*1cm]csharpComp.east) {bytecode};
       
       % edges
       
@@ -85,11 +102,21 @@
       \draw[dedge] (cPreIII)--([xshift=6mm]cPreIII.east);
       
       \draw[dedge] ([xshift=-6mm]cComp.west)--(cComp);
-      \draw[dedge] ([xshift=-6mm,yshift= 1.85cm+2mm]cComp.west) to[out=0,in= 90] (cComp);
-      \draw[dedge] ([xshift=-6mm,yshift=-1.85cm-2mm]cComp.west) to[out=0,in=270] (cComp);
+      \draw[dedge] ([xshift=-6mm,yshift= 1.2cm+2mm]cComp.west) to[out=0,in=120] (cComp);
+      \draw[dedge] ([xshift=-6mm,yshift=-1.2cm-2mm]cComp.west) to[out=0,in=240] (cComp);
+      
+      \draw[dedge] ([xshift=-6mm]csharpPreII.west)--(csharpComp);
+      \draw[dedge] ([xshift=-6mm]csharpPreI.west)
+                 --([xshift=-6mm,yshift= 1.2cm+2mm]csharpComp.west)
+                 to[out=0,in=120] (csharpComp);
+      \draw[dedge] ([xshift=-6mm]csharpPreIII.west)
+                 --([xshift=-6mm,yshift=-1.2cm-2mm]csharpComp.west)
+                 to[out=0,in=240] (csharpComp);
       
       \draw[dedge] (cComp)--([xshift=6mm]cComp.east);
       \draw[dedge] ([xshift=-6mm]cE.west)--(cE);
+      \draw[dedge] (csharpComp)--([xshift=6mm]csharpComp.east);
+      \draw[dedge] ([xshift=-6mm]csharpE.west)--(csharpE);
     \end{tikzpicture}
   }
 \end{center}
