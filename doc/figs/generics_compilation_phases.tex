@@ -1,0 +1,95 @@
+\begin{center}
+  \scalebox{0.885}{
+    \begin{tikzpicture}[remember picture]
+      \newcommand{\spacing}[0]{ 10mm }
+      \newcommand{\filesize}[0]{ 0.5 }
+      \tikzstyle{edge}  = [thick,>=stealth,draw=black]
+      \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
+      \tikzstyle{node}=[
+        circle,
+        draw=purple!70,
+        fill=purple!10,
+        anchor=west,
+        align=center,
+        very thick,
+        minimum size=1.85cm
+      ]
+      \tikzstyle{label}=[
+        anchor=north,
+        align=center,
+      ]
+      
+      \tikzset{
+        pics/file/.style args={#1}{
+          code={
+            \newcommand{\fileh}[0]{1.0}
+            \newcommand{\filew}[0]{0.8}
+            \newcommand{\filehc}[0]{\fileh/2}
+            \newcommand{\filewc}[0]{\filew/2}
+            \draw[-,thick]
+              (-\filew *#1, \fileh *#1) to % north west
+              ( \filewc*#1, \fileh *#1) to % north east 1
+              ( \filew *#1, \filehc*#1) to % north east 2
+              ( \filew *#1,-\fileh *#1) to % south east
+              (-\filew *#1,-\fileh *#1) to % south west
+              (-\filew *#1, \fileh *#1)    % north west
+              ;
+            \draw[-,thick]
+              ( \filewc*#1, \fileh *#1) to
+              ( \filewc*#1, \filehc*#1) to
+              ( \filew *#1, \filehc*#1)
+              ;
+          }
+        },
+      }
+      
+      % ordinary nodes
+      
+      \node[matrix,row sep=2mm,anchor=north,] () at (0,0) {
+        \node[node] (cPreI) {PP};
+        \\
+        \node[node] (cPreII) {PP};
+        \\
+        \node[node] (cPreIII) {PP};
+        \\
+      };
+      
+      \node[node] (cComp) at ([xshift=2*\spacing]cPreII.east) {Compiler};
+      
+      \node[node] (cE) at ([xshift=2*\spacing]cComp.east) {E};
+      
+      % file nodes
+      
+      \draw[draw=purple] ([xshift=-\spacing]cPreI.west) pic{file={\filesize}};
+      \draw[draw=purple] ([xshift= \spacing]cPreI.east) pic{file={\filesize}};
+      \draw[draw=purple] ([xshift=-\spacing]cPreII.west) pic{file={\filesize}};
+      \draw[draw=purple] ([xshift= \spacing]cPreII.east) pic{file={\filesize}};
+      \draw[draw=purple] ([xshift=-\spacing]cPreIII.west) pic{file={\filesize}};
+      \draw[draw=purple] ([xshift= \spacing]cPreIII.east) pic{file={\filesize}};
+      
+      \draw[draw=purple] ([xshift= \spacing]cComp.east) pic{file={\filesize}};
+      
+      % labels
+      
+      \node[label] () at ([xshift=-\spacing,yshift=-2*\filesize*1cm]cPreIII.west) {source};
+      \node[label] () at ([xshift= \spacing,yshift=-2*\filesize*1cm]cPreIII.east) {intermediaries};
+      \node[label] () at ([xshift= \spacing,yshift=-2*\filesize*1cm]cComp.east) {binary};
+      
+      % edges
+      
+      \draw[dedge] ([xshift=-6mm]cPreI.west)--(cPreI);
+      \draw[dedge] (cPreI)--([xshift=6mm]cPreI.east);
+      \draw[dedge] ([xshift=-6mm]cPreII.west)--(cPreII);
+      \draw[dedge] (cPreII)--([xshift=6mm]cPreII.east);
+      \draw[dedge] ([xshift=-6mm]cPreIII.west)--(cPreIII);
+      \draw[dedge] (cPreIII)--([xshift=6mm]cPreIII.east);
+      
+      \draw[dedge] ([xshift=-6mm]cComp.west)--(cComp);
+      \draw[dedge] ([xshift=-6mm,yshift= 1.85cm+2mm]cComp.west) to[out=0,in= 90] (cComp);
+      \draw[dedge] ([xshift=-6mm,yshift=-1.85cm-2mm]cComp.west) to[out=0,in=270] (cComp);
+      
+      \draw[dedge] (cComp)--([xshift=6mm]cComp.east);
+      \draw[dedge] ([xshift=-6mm]cE.west)--(cE);
+    \end{tikzpicture}
+  }
+\end{center}
