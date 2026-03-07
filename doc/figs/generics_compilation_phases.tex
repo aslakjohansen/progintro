@@ -117,6 +117,10 @@
       \draw[dedge] ([xshift=-6mm]cE.west)--(cE);
       \draw[dedge] (csharpComp)--([xshift=6mm]csharpComp.east);
       \draw[dedge] ([xshift=-6mm]csharpE.west)--(csharpE);
+      
+      % lang labels
+      \node[label, anchor=west] () at ([xshift=-7*\spacing]cPreII.west) {\Large{C Evaluation Pipeline:}};
+      \node[label, anchor=west] () at ([xshift=-7*\spacing]csharpPreII.west) {\Large{\csharp\ Evaluation Pipeline:}};
     \end{tikzpicture}
   }
 \end{center}
