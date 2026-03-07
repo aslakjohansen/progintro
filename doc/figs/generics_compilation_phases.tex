@@ -87,10 +87,10 @@
       
       % labels
       
-      \node[label] () at ([xshift=-\spacing,yshift=-2*\filesize*1cm]cPreIII.west) {sources};
-      \node[label] () at ([xshift= \spacing,yshift=-2*\filesize*1cm]cPreIII.east) {intermediaries};
-      \node[label] () at ([xshift= \spacing,yshift=-2*\filesize*1cm]cComp.east) {binary};
-      \node[label] () at ([xshift= \spacing,yshift=-2*\filesize*1cm]csharpComp.east) {bytecode};
+      \node[label,anchor=south] () at ([xshift=-\spacing,yshift=-2.5*\filesize*1cm]cPreIII.west) {sources};
+      \node[label,anchor=south] () at ([xshift= \spacing,yshift=-2.5*\filesize*1cm]cPreIII.east) {intermediaries};
+      \node[label,anchor=south] () at ([xshift= \spacing,yshift=-2.5*\filesize*1cm]cComp.east) {binary};
+      \node[label,anchor=south] () at ([xshift= \spacing,yshift=-2.5*\filesize*1cm]csharpComp.east) {bytecode};
       
       % edges
       
@@ -102,8 +102,8 @@
       \draw[dedge] (cPreIII)--([xshift=6mm]cPreIII.east);
       
       \draw[dedge] ([xshift=-6mm]cComp.west)--(cComp);
-      \draw[dedge] ([xshift=-6mm,yshift= 1.2cm+2mm]cComp.west) to[out=0,in=120] (cComp);
-      \draw[dedge] ([xshift=-6mm,yshift=-1.2cm-2mm]cComp.west) to[out=0,in=240] (cComp);
+      \draw[dedge] ([xshift=-6mm,yshift= 1.2cm+2mm+1.6pt]cComp.west) to[out=0,in=120] (cComp);
+      \draw[dedge] ([xshift=-6mm,yshift=-1.2cm-2mm-1.6pt]cComp.west) to[out=0,in=240] (cComp);
       
       \draw[dedge] ([xshift=-6mm]csharpPreII.west)--(csharpComp);
       \draw[dedge] ([xshift=-6mm,yshift= 1.2cm+2mm+1.6pt]csharpPreII.west)
