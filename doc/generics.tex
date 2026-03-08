@@ -153,5 +153,25 @@ Looking at figure \ref{fig:generics:linesegment:generics}, we see syntax element
   \label{fig:generics:c}
 \end{figure}
 
+\inputminted{c}{../src/c/generics/define.c}
+
+\begin{minted}{console}
+$ gcc -O0 -Wpedantic -DMULTIPLIER=3 define.c -o define
+$ ./define
+r=36 => d=72
+$ 
+\end{minted}
+
+\inputminted{c}{../src/c/generics/ifdef.c}
+
+\begin{minted}{console}
+$ gcc -O0 -Wpedantic ifdef.c -o ifdef
+$ ./ifdef
+$ gcc -O0 -Wpedantic -DBENCHMARK ifdef.c -o ifdef_test
+$ ./ifdef_test
+Performed 1073741824 iterations in 2.163524s
+$ 
+\end{minted}
+
 \exercises{generics}{Parameterized Types}
 
