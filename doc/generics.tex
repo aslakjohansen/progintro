@@ -155,7 +155,11 @@ Looking at figure \ref{fig:generics:linesegment:generics}, we see syntax element
   \label{fig:generics:c}
 \end{figure}
 
-% directive suite: the c preprocessor supports a suite of directives, these directives starts with a hashtag at the beginning of a line, Lets take a look at a few of these directives (define, include, ifdef, ifndef, endif)
+% directive suite: the c preprocessor supports a suite of directives, these directives starts with a hashtag at the beginning of a line, lets take a look at a few of these directives (define, include, ifdef, ifndef, endif)
+
+% macros: these are sometimes referred to as macros, macro expansion, lets look at two examples
+
+% 1st example: in the first example three definitions are involved (DEFAULT, RADIUS2DIAMETER and MULTIPLIER), the two first are defined in the source itself, one is parameterized and one is not, the last definition is provided compiletime as an instruction to the compiler
 
 \inputminted{c}{../src/c/generics/define.c}
 
@@ -165,6 +169,8 @@ $ ./define
 r=36 => d=72
 $ 
 \end{minted}
+
+% 2nd example: 
 
 \inputminted{c}{../src/c/generics/ifdef.c}
 
