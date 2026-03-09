@@ -159,14 +159,18 @@ Behind all of this, \csharp\ has a \idx{preprocessor}{Preprocessor} for producin
 % directive suite: the c preprocessor supports a suite of directives, these directives starts with a hashtag at the beginning of a line, lets take a look at a few of these directives (define, include, ifdef, ifndef, endif)
 The C preprocessor supports a suite of \idx{directives}{Directive}. Such directives appears in the code at the beginning of a line and starts with a hashtag. Lets take a look at a few of these directives:
 \begin{itemize}
-  \item \idx{Macros}{Macro} can be defined with \idx{\directivename{define}}{define@\directivename{define} directive}. The process of replacing every occurrence of them is referred to as \idx{macro expansion}{Macro!Expansion}.
+  \item \idx{Macros}{Macro} can be defined with \idx{\directivename{define}}{define@\directivename{define} directive}. The process of replacing every occurrence of them is referred to as \idx{macro expansion}{Macro!Expansion}. This \textsl{expansion} is quite simply a string replacement operation, so it may violate imagined \idx{operator precedence}{Operator!Precedence}.
   \item We can branch on the definition (or lack thereof) with \idx{\directivename{ifdef}}{ifdef@\directivename{ifdef} directive} and \idx{\directivename{ifndef}}{ifndef@\directivename{ifndef} directive}. Such a branch is ended using \idx{\directivename{endif}}{endif@\directivename{endif} directive}.
   \item The contents of another file can be injected using \idx{\directivename{include} directive}{include@\directivename{include} directive}.
 \end{itemize}
 
-% 1st example: lets look at two examples, in the first example three definitions are involved (DEFAULT, RADIUS2DIAMETER and MULTIPLIER), the two first are defined in the source itself, one is parameterized and one is not, the last definition is provided compiletime as an instruction to the compiler
+% 1st example: lets look at two examples, in the first example three definitions are involved (DEFAULT, RADIUS2DIAMETER and MULTIPLIER), the two first are defined in the source itself, one is parameterized and one is not
+Lets look at two examples. The first example makes use of three macro definitions, namely \macroname{DEFAULT}, \macroname{RADIUS2DIAMETER} and \macroname{MULTIPLIER}. The first two are defined in the source file itself. One is parameterized, and one is not:
 
 \inputminted{c}{../src/c/generics/define.c}
+
+% the last definition is provided compiletime as an instruction to the compiler
+The last definition is provided at \idx{compile time}{Compile time} as a parameter to the compiler:
 
 \begin{minted}{console}
 $ gcc -O0 -Wpedantic -DMULTIPLIER=3 define.c -o define
