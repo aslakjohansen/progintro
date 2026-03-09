@@ -180,6 +180,7 @@ $
 \end{minted}
 
 % 2nd example: the second example is a bit more complicated, it's fine not to understand the details, the central piece of the code does a loop with $2^{30}$ iterations, that is enough for it to take a bit of time, one version of the program can be built that does just this, another version can be built that times this operation and also prints out how long time it took, the source code holds to potential for both programs without any overhead for the first version. It looks like this:
+The second example is a bit more complicated, but luckily most of the complexities have to do with operations on time and you only need to understand them at a high level of abstraction. The central piece of the code does a loop with $2^{30}$ iterations. That is enough for it to take a bit of time. One version of the program can be built that does just this. Another version can be built that times this operation, and prints out how long time it took. The same source code holds the potential to become both programs without any overhead for the first version. It looks like this:
 
 \inputminted{c}{../src/c/generics/ifdef.c}
 
