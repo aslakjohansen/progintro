@@ -164,8 +164,10 @@ The C preprocessor supports a suite of \idx{directives}{Directive}. Such directi
   \item The contents of another file can be injected using \idx{\directivename{include}}{include@\directivename{include} directive}.
 \end{itemize}
 
+\subsection{Macro Expansion}
+
 % 1st example: lets look at two examples, in the first example three definitions are involved (DEFAULT, RADIUS2DIAMETER and MULTIPLIER), the two first are defined in the source itself, one is parameterized and one is not
-Lets look at two examples. The first example makes use of three macro definitions, namely \macroname{DEFAULT}, \macroname{RADIUS2DIAMETER} and \macroname{MULTIPLIER}. The first two are defined in the source file itself. One is parameterized, and one is not:
+The following example makes use of three macro definitions, namely \macroname{DEFAULT}, \macroname{RADIUS2DIAMETER} and \macroname{MULTIPLIER}. The first two are defined in the source file itself. One is parameterized, and one is not:
 
 \inputminted{c}{../src/c/generics/define.c}
 
@@ -179,8 +181,10 @@ r=36 => d=72
 $ 
 \end{minted}
 
+\subsection{Conditional Compilation}
+
 % 2nd example: the second example is a bit more complicated, it's fine not to understand the details, the central piece of the code does a loop with $2^{30}$ iterations, that is enough for it to take a bit of time, one version of the program can be built that does just this, another version can be built that times this operation and also prints out how long time it took, the source code holds to potential for both programs without any overhead for the first version. It looks like this:
-The second example is a bit more complicated, but luckily most of the complexities have to do with operations on \idx{time}{Time} and you only need to understand them at a high level of \idx{abstraction}{Abstraction}. The central piece of the code does a loop with $2^{30}$ iterations. That is enough for it to take a bit of time. One version of the program can be built that does just this. Another version can be built that times this operation, and prints out how long time it took. The same source code holds the potential to become both programs without any \idx{overhead}{Overhead} for the first version. It looks like this:
+This example is a bit more complicated, but luckily most of the complexities have to do with operations on \idx{time}{Time} and you only need to understand them at a high level of \idx{abstraction}{Abstraction}. The central piece of the code does a loop with $2^{30}$ iterations. That is enough for it to take a bit of time. One version of the program can be built that does just this. Another version can be built that times this operation, and prints out how long time it took. The same source code holds the potential to become both programs without any \idx{overhead}{Overhead} for the first version. It looks like this:
 
 \inputminted{c}{../src/c/generics/ifdef.c}
 
