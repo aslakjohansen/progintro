@@ -157,6 +157,12 @@ Behind all of this, \csharp\ has a preprocessor for producing variants of parame
 \end{figure}
 
 % directive suite: the c preprocessor supports a suite of directives, these directives starts with a hashtag at the beginning of a line, lets take a look at a few of these directives (define, include, ifdef, ifndef, endif)
+The C preprocessor supports a suite of directives. Such directives appears in the code at the beginning of a line and starts with a hashtag. Lets take a look at a few of these directives:
+\begin{itemize}
+  \item Macros can be defined with \directivename{define}.
+  \item We can branch on the definition (or lack thereof) with \directivename{ifdef} and \directivename{ifndef}. Such a branch is ended using \directivename{endif}.
+  \item The contents of another file can be injected using \directivename{include}.
+\end{itemize}
 
 % macros: these are sometimes referred to as macros, macro expansion, lets look at two examples
 
