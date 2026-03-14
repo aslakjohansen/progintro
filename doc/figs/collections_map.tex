@@ -1,0 +1,34 @@
+\scalebox{1.0}{
+  \begin{tikzpicture}[x=1cm, y=-1.0cm, node distance=0 cm,outer sep = 0pt]
+    \tikzstyle{arrow} = [thick,->,>=stealth, draw=black]
+    
+    \coordinate (left)  at (0cm,10mm);
+    \coordinate (mid) at (5.1cm,-55mm);
+    \coordinate (right) at (10.2cm,10mm);
+    
+    % name universe
+    \node[ellipse,thick,draw=teal,fill=teal!20,minimum height=7cm,minimum width=5cm,anchor=north] (src) at (left) {};
+    \node[draw=none,anchor=north,align=center] (srclabel) at ([yshift=12mm] src.north) {\textbf{Key}\\universe of values};
+    
+    % value universe
+    \node[ellipse,thick,draw=purple,fill=purple!20,minimum height=7cm,minimum width=5cm,anchor=north] (dst) at (right) {};
+    \node[draw=none,anchor=north,align=center] (dstlabel) at ([yshift=12mm] dst.north) {\textbf{Value}\\universe of values};
+    
+    % jan
+    \node[draw=none,anchor=west,align=center] (Jan) at ([xshift=2mm] src.center) {Jan};
+    \node[draw=none,anchor=north,align=center] (31) at ([xshift=-2mm, yshift=12mm] dst.center) {31};
+    \draw[arrow] (Jan) to[out=0, in=200, looseness=0.5, edge node={node [sloped,below] {}}] (31);
+    
+    % jun
+    \node[draw=none,anchor=west,align=center] (Jun) at ([yshift=-18mm] src.center) {Jun};
+    \node[draw=none,anchor=north,align=center] (30) at ([xshift=6mm, yshift=-24mm] dst.center) {30};
+    \draw[arrow] (Jun) to[out=0, in=180, looseness=0.5, edge node={node [sloped,below] {}}] (30);
+    
+    % may
+    \node[draw=none,anchor=west,align=center] (May) at ([xshift=-14mm, yshift=22mm] src.center) {May};
+    \draw[arrow] (May) to[out=0, in=160, looseness=0.5, edge node={node [sloped,below] {}}] (31);
+    
+    % type
+    \node[draw=none,anchor=north,align=center] (type) at (mid) {\texttt{Dictionary<\textcolor{teal}{string}, \textcolor{purple}{int}>}};
+  ﻿﻿\end{tikzpicture}
+}
