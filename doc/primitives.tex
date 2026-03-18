@@ -145,6 +145,8 @@ We use integers to express a number of whole units. The number itself does not t
 
 \subsection{Operations}
 
+% most integer operations work on floats as well, +-*/, modulo/remainder doesn't make sense in the general case
+
 \subsection{Representation}
 
 \begin{figure}[tbp]
@@ -152,6 +154,10 @@ We use integers to express a number of whole units. The number itself does not t
   \caption{IEEE representation of floating-point values.}
   \label{fig:primitives:float:repr}
 \end{figure}
+
+% special values: there are special values (inf, -inf, NaN), their encodings,
+
+% key takeaway: ieee floats are not exact, they consists of a sign an exponent and a mantissa, if one of the exponent/mantissa is not large enough then you need a larger float size,  0==-0
 
 \subsection{\csharp}
 
