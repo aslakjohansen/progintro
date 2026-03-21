@@ -163,6 +163,7 @@ Modern processors support operations om floating point numbers that follow the I
 % key takeaway: ieee floats are not exact, they consists of a sign an exponent and a mantissa, if one of the exponent/mantissa is not large enough then you need a larger float size,  0==-0
 
 % numerical instability: adding two numbers involves finding a common exponent, this may result in reduced resolution in one of the operands, this causes rounding errors in the result, because of this a+b might end up equaling a even if a!=b, something similar happens with other operations and compounding error can end up being not only significant but large, this is referred to as numerical instability, in scientific computing care is taken to rephrase important calculations in such a way that the order of operations minimize the introduced error
+Adding two floating-point numbers involves finding a common exponent. This may result in reduced resolution in one of the operands, and that causes rounding errors in the result. Because of this, we may find that $a+b=a$ even at times when $b \neq 0$. This usually happens when the magnitude of $a$ and $b$ are very different. Something similar happens with other operations on floating-point numbers, and the compounding error can end up being not only significant but large as well. This is referred to as numerical instability. In scientific computing, care is taken to rephrase important calculations in such ways that the order of operations minimize the introduced error.
 
 \subsection{\csharp}
 
