@@ -149,6 +149,9 @@ We use integers to express a number of whole units. The number itself does not t
 
 \subsection{Representation}
 
+% intro
+Modern processors support operations om floating point numbers that follow the IEEE-754 standard. These are commonly referred to as IEEE (pronounced I-tripple-E) floats. This standard covers the representation of the numbers and definitions of how certain operations work on them.
+
 \begin{figure}[tbp]
   \input{figs/prim_float_repr.tex}
   \caption{IEEE representation of floating-point values.}
@@ -158,6 +161,8 @@ We use integers to express a number of whole units. The number itself does not t
 % special values: there are special values (inf, -inf, NaN), their encodings,
 
 % key takeaway: ieee floats are not exact, they consists of a sign an exponent and a mantissa, if one of the exponent/mantissa is not large enough then you need a larger float size,  0==-0
+
+% numerical instability: adding two numbers involves finding a common exponent, this may result in reduced resolution in one of the operands, this causes rounding errors in the result, because of this a+b might end up equaling a even if a!=b, something similar happens with other operations and compounding error can end up being not only significant but large, this is referred to as numerical instability, in scientific computing care is taken to rephrase important calculations in such a way that the order of operations minimize the introduced error
 
 \subsection{\csharp}
 
