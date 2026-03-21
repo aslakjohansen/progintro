@@ -1,0 +1,58 @@
+\begin{center}
+  \begin{tikzpicture}[remember picture]
+    \newcommand{\spacing}[0]{2mm}
+    
+    \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
+    
+    \tikzstyle{block}=[
+      rectangle,
+      draw=purple,
+      fill=purple!10,
+      anchor=west,
+      thick,
+      minimum height=14mm,
+      inner sep=5mm,
+    ]
+    
+    \tikzstyle{size}=[
+      text=purple,
+      font=\slshape\small,
+      anchor=center,
+    ]
+    
+    \node[block] (sign) at (0,0) {Sign};
+    \node[block] (exponent) at ([xshift=\spacing]sign.east) {Biased Exponent};
+    \node[block] (mantissa) at ([xshift=\spacing]exponent.east) {Normalized Mantissa};
+    
+    % 32 bit sizes
+    \node[size,anchor=south] (signSingle) at ([yshift=\spacing]sign.north) {1 bit};
+    \node[size,anchor=south] (exponentSingle) at ([yshift=\spacing]exponent.north) {8 bits};
+    \node[size,anchor=south] (mantissaSingle) at ([yshift=\spacing]mantissa.north) {23 bits};
+    \draw[dedge] (signSingle)--($(sign.south west)!(signSingle)!(sign.north west)$);
+    \draw[dedge] (signSingle)--($(sign.south east)!(signSingle)!(sign.north east)$);
+    \draw[dedge] (exponentSingle)--($(exponent.south west)!(exponentSingle)!(exponent.north west)$);
+    \draw[dedge] (exponentSingle)--($(exponent.south east)!(exponentSingle)!(exponent.north east)$);
+    \draw[dedge] (mantissaSingle)--($(mantissa.south west)!(mantissaSingle)!(mantissa.north west)$);
+    \draw[dedge] (mantissaSingle)--($(mantissa.south east)!(mantissaSingle)!(mantissa.north east)$);
+    \node[anchor=south] (single) at ([yshift=3.5*\spacing]$(sign.north west)!0.5!(mantissa.north east)$) {Single-Precision IEEE Float (32 bits)};
+    \draw[thick,draw=black] ([yshift=\spacing]$(sign.south west)!(signSingle.north)!(sign.north west)$)
+                         |- (single)
+                         -| ([yshift=\spacing]$(mantissa.south east)!(signSingle.north)!(mantissa.north east)$);
+    
+    % 64 bit sizes
+    \node[size,anchor=north] (signDouble) at ([yshift=-\spacing]sign.south) {1 bit};
+    \node[size,anchor=north] (exponentDouble) at ([yshift=-\spacing]exponent.south) {11 bits};
+    \node[size,anchor=north] (mantissaDouble) at ([yshift=-\spacing]mantissa.south) {52 bits};
+    \draw[dedge] (signDouble)--($(sign.south west)!(signDouble)!(sign.north west)$);
+    \draw[dedge] (signDouble)--($(sign.south east)!(signDouble)!(sign.north east)$);
+    \draw[dedge] (exponentDouble)--($(exponent.south west)!(exponentDouble)!(exponent.north west)$);
+    \draw[dedge] (exponentDouble)--($(exponent.south east)!(exponentDouble)!(exponent.north east)$);
+    \draw[dedge] (mantissaDouble)--($(mantissa.south west)!(mantissaDouble)!(mantissa.north west)$);
+    \draw[dedge] (mantissaDouble)--($(mantissa.south east)!(mantissaDouble)!(mantissa.north east)$);
+    \node[anchor=north] (double) at ([yshift=-3.5*\spacing]$(sign.south west)!0.5!(mantissa.south east)$) {Double-Precision IEEE Float (64 bits)};
+    \draw[thick,draw=black] ([yshift=-\spacing]$(sign.south west)!(signDouble.south)!(sign.north west)$)
+                         |- (double)
+                         -| ([yshift=-\spacing]$(mantissa.south east)!(signDouble.south)!(mantissa.north east)$);
+    
+  \end{tikzpicture}
+\end{center}
