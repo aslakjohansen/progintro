@@ -150,7 +150,7 @@ We use integers to express a number of whole units. The number itself does not t
 \subsection{Representation}
 
 % intro
-Modern processors support operations om floating point numbers that follow the \idx{IEEE-754}{IEEE-754} standard. These are commonly referred to as IEEE (pronounced I-tripple-E) floats. This standard covers the representation of the numbers and definitions of how certain operations work on them.
+Modern processors support operations om floating point numbers that follow the \idx{IEEE-754}{IEEE-754} standard. These are commonly referred to as IEEE (pronounced I-tripple-E) floats. This standard covers the representation of the numbers and definitions of how certain operations work on them. It is important to realize that many numbers cannot be represented exactly using IEEE floats, and to accept that this often causes calculated results to be a bit off.
 
 \begin{figure}[tbp]
   \input{figs/prim_float_repr.tex}
@@ -158,7 +158,7 @@ Modern processors support operations om floating point numbers that follow the \
   \label{fig:primitives:float:repr}
 \end{figure}
 
-% key takeaway: ieee floats are not exact, they consists of a sign an exponent and a mantissa, if one of the exponent/mantissa is not large enough then you need a larger float size
+% key takeaway: ieee floats consists of a sign an exponent and a mantissa, if one of the exponent/mantissa is not large enough then you need a larger float size
 
 % special values: 0 and -0, while they have different encoding 0==-0, inf and -inf, NaN
 
