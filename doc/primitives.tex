@@ -166,6 +166,7 @@ Modern processors support operations om floating point numbers that follow the \
 Adding two floating-point numbers involves finding a common exponent. This may result in reduced \idx{resolution}{Resolution!Of floating-point number} in one of the \idx{operands}{Operand}, and that causes rounding errors in the result. Because of this, we may find that $a+b=a$ even at times when $b \neq 0$. This usually happens when the magnitude of $a$ and $b$ are very different. Something similar happens with other operations on floating-point numbers, and the compounding error can end up being not only significant but large as well. This is referred to as \idx{numerical instability}{Numerical instability}. In \idx{scientific computing}{Scientific computing}, care is taken to rephrase important calculations in such ways that the order of operations minimize the introduced error.
 
 % use: ieee floats consists of a sign an exponent and a mantissa, if one of the exponent/mantissa is not large enough then you need a larger float size
+So, IEEE floats consists of a sign, an exponent and a mantissa. If either the mantissa or the exponent isn't large enough, then you need a larger float size. Most modern processors have hardware support for IEEE single and double precision floats, and this is typically mapped to two types in programming languages: 32 bit floats and 64 bit floats. We can implement support for arbitrary sized mantissas and exponents ourselves, but that will be without hardware support in the processor and thus very slow.
 
 \subsection{\csharp}
 
