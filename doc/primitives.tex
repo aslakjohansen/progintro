@@ -168,6 +168,10 @@ Adding two floating-point numbers involves finding a common exponent. This may r
 % use: ieee floats consists of a sign an exponent and a mantissa, if one of the exponent/mantissa is not large enough then you need a larger float size
 So, IEEE floats consists of a sign, an exponent and a mantissa. If either the mantissa or the exponent isn't large enough, then you need a larger float size. Most modern processors have hardware support for IEEE single and double precision floats, and this is typically mapped to two types in programming languages: 32 bit floats and 64 bit floats. We can implement support for arbitrary sized mantissas and exponents ourselves, but that will be without hardware support in the processor and thus very slow.
 
+\subsubsection{Alternatives}
+
+One alternative is to express a floating-point number as a fraction of two integers. Operations on such numbers are slower than their equivalents on IEEE floats, but it allows us to to avoid the situation where common operations introduce errors.
+
 \subsection{\csharp}
 
 \subsection{Elixir}
