@@ -158,7 +158,7 @@ The basic idea behind the IEEE representation is that a floating-point number is
 % structure: reality of course is a bit more complicated, just as our integers come in multiple forms so do floats, we will be focusing of single and double precision, illustrated in figure \ref{fig:primitives:float:repr}, sign+mantissa+exponent
 Reality is, of course, a bit more complicated. Just as our integers come in multiple sizes, so do floats. We will be focusing on two versions, namely single-precision that takes up 32 bits each and double precision that takes up 64 bits each. Unlike integers, they do have an inner structure. This structure is illustrated in figure \ref{fig:primitives:float:repr} and consists of:
 \begin{itemize}
-  \descitem{Sign:}
+  \descitem{Sign:} A single bit is dedicated to the sign of the number. This means that all floats are signed.
   \descitem{Normalized Mantissa:}
   \descitem{Biased Exponent:}
 \end{itemize}
