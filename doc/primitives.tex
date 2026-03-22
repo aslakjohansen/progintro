@@ -153,7 +153,7 @@ We use integers to express a number of whole units. The number itself does not t
 Modern processors support operations om floating point numbers that follow the \idx{IEEE-754}{IEEE-754} standard. These are commonly referred to as IEEE (pronounced I-tripple-E) floats. This standard covers the representation of the numbers and definitions of how certain operations work on them. It is important to realize that many numbers cannot be represented exactly using IEEE floats, and to accept that this often causes calculated results to be a bit off.
 
 % basic idea: 
-The basic idea behind the IEEE representation is that a floating-point number is an integer that has been shifted. That is, it can be expressed as $m \cdot 10^e$. Here, $m$ is referred to as the mantissa, and $e$ as the exponent. $-1.2$ is can then be expressed using a mantissa of $-12$ and an exponent of $-1$ because $-12 \cdot 10^-1$.
+The basic idea behind the IEEE representation is that a floating-point number is an integer that has been shifted. That is, it can be expressed as $m \cdot 10^e$. Here, $m$ is referred to as the \idx{mantissa}{Mantissa!IEEE Floats}, and $e$ as the \idx{exponent}{Exponent!IEEE Floats}. $-1.2$ is can then be expressed using a mantissa of $-12$ and an exponent of $-1$ because $-12 \cdot 10^-1$.
 
 % structure: sign+mantissa+exponent, comes in at least two forms (32 vs 64 bits)
 
