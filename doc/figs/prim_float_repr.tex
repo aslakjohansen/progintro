@@ -26,7 +26,7 @@
     
     % 32 bit sizes
     \node[size,anchor=south] (signSingle) at ([yshift=\spacing]sign.north) {1 bit};
-    \node[size,anchor=south] (exponentSingle) at ([yshift=\spacing]exponent.north) {8 bits};
+    \node[size,anchor=south] (exponentSingle) at ([yshift=\spacing]exponent.north) {8 bits (bias: 127)};
     \node[size,anchor=south] (mantissaSingle) at ([yshift=\spacing]mantissa.north) {23 bits};
     \draw[dedge] (signSingle)--($(sign.south west)!(signSingle)!(sign.north west)$);
     \draw[dedge] (signSingle)--($(sign.south east)!(signSingle)!(sign.north east)$);
@@ -41,7 +41,7 @@
     
     % 64 bit sizes
     \node[size,anchor=north] (signDouble) at ([yshift=-\spacing]sign.south) {1 bit};
-    \node[size,anchor=north] (exponentDouble) at ([yshift=-\spacing]exponent.south) {11 bits};
+    \node[size,anchor=north] (exponentDouble) at ([yshift=-\spacing]exponent.south) {11 bits (bias: 1023)};
     \node[size,anchor=north] (mantissaDouble) at ([yshift=-\spacing]mantissa.south) {52 bits};
     \draw[dedge] (signDouble)--($(sign.south west)!(signDouble)!(sign.north west)$);
     \draw[dedge] (signDouble)--($(sign.south east)!(signDouble)!(sign.north east)$);
