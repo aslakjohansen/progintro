@@ -176,6 +176,12 @@ Reality is, of course, a bit more complicated. Just as our integers come in mult
 \end{figure}
 
 % special values: 0 and -0, while they have different encoding 0==-0, inf and -inf, NaN
+The IEEE float format leaves space for a number of special values:
+\begin{enumerate}
+  \descitem{Zeroes:}
+  \descitem{Infinities:}
+  \descitem{NaN:}
+\end{enumerate}
 
 % numerical instability: adding two numbers involves finding a common exponent, this may result in reduced resolution in one of the operands, this causes rounding errors in the result, because of this a+b might end up equaling a even if a!=b, something similar happens with other operations and compounding error can end up being not only significant but large, this is referred to as numerical instability, in scientific computing care is taken to rephrase important calculations in such a way that the order of operations minimize the introduced error
 Adding two floating-point numbers involves finding a common exponent. This may result in reduced \idx{resolution}{Resolution!Of floating-point number} in one of the \idx{operands}{Operand}, and that causes rounding errors in the result. Because of this, we may find that $a+b=a$ even at times when $b \neq 0$. This usually happens when the magnitude of $a$ and $b$ are very different. Something similar happens with other operations on floating-point numbers, and the compounding error can end up being not only significant but large as well. This is referred to as \idx{numerical instability}{Numerical instability}. In \idx{scientific computing}{Scientific computing}, care is taken to rephrase important calculations in such ways that the order of operations minimize the introduced error.
