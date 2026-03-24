@@ -146,6 +146,7 @@ We use integers to express a number of whole units. The number itself does not t
 \subsection{Operations}
 
 % most integer operations work on floats as well, +-*/, modulo/remainder doesn't make sense in the general case
+Most of the operations listed under integers are also applicable to floats. This includes all the comparisons, and all of the arithmetic operations don't rely on integer values. That is, addition, subtraction, multiplication and division. The modulo (remainder, really) operator is the odd one out. While it would make sense to talk about a remainder when dividing one float by another, this is not how the operation is used in practice, and we normally only have hardware support for it as the result of an integer division.
 
 \subsection{Representation}
 
