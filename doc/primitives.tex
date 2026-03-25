@@ -178,7 +178,7 @@ Reality is, of course, a bit more complicated. Just as our integers come in mult
 % special values: 0 and -0, while they have different encoding 0==-0, inf and -inf, NaN
 The IEEE float format leaves space for a number of special values:
 \begin{enumerate}
-  \descitem{Zeroes:}
+  \descitem{Zeroes:} Any float with a normalized mantissa of zero and a biased exponent of zero is a zero value. The only thing left is the sign bit, and accordingly we have a positive and a negative zero. These two values are equal by definition.
   \descitem{Infinities:}
   \descitem{NaN:}
 \end{enumerate}
