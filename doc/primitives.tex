@@ -180,7 +180,7 @@ The IEEE float format leaves space for a number of special values:
 \begin{enumerate}
   \descitem{Zeroes:} Any float with a normalized mantissa of \idx{zero}{Zero!In floats} and a biased exponent of zero is a zero value. The only thing left is the sign bit, and accordingly we have a positive and a negative zero. These two values are equal by definition.
   \descitem{Infinities:} Any float with a normalized mantissa of zero and a biased exponent of all ones represent \idx{infinity}{Infinity} ($\infty$). The sign bit is used to differentiate between $\infty$ and $-\infty$.
-  \descitem{NaN:}
+  \descitem{NaN:} Some combinations of operations and operands are not allowed (e.g., the multiplying any infinity by zero). Such operations yields the \idx{NaN}{NaN} (or Not a Number) value. Any float where the normalized mantissa is nonzero and the biased exponent is all ones is a NaN value. There are a few more details to this, but we have no need to get into them here.
 \end{enumerate}
 
 % numerical instability: adding two numbers involves finding a common exponent, this may result in reduced resolution in one of the operands, this causes rounding errors in the result, because of this a+b might end up equaling a even if a!=b, something similar happens with other operations and compounding error can end up being not only significant but large, this is referred to as numerical instability, in scientific computing care is taken to rephrase important calculations in such a way that the order of operations minimize the introduced error
