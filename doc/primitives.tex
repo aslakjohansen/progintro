@@ -283,6 +283,13 @@ It would be very tedious to use the symbols covered for AND, OR and NOT. \csharp
 \end{itemize}
 
 % introduce syntax: new concept (cond), a cond is an expr that evaluates to a boolean value, a cond can take the form of a comparison or a boolean operator
+In order to support booleans, we need to introduce a new syntactical condition concept called \conceptname{cond}. A \conceptname{cond} is an \conceptname{expr} that ealuates to a boolean value. A \conceptname{cond} can take the form of a comparison, a boolean operator or a boolean constant. This is covered in syntax \ref{syntax:prim:bool:ops}.
+
+\begin{syntaxfloat}
+  \input{syntax/prim_bool_ops.tex}
+  \caption{Expressions of boolean operators}
+  \label{syntax:prim:bool:ops}
+\end{syntaxfloat}
 
 The full set of comparison operators are listed in figure \ref{fig:prim:bool:comparison}.
 \begin{figure}[tbp]
@@ -290,12 +297,6 @@ The full set of comparison operators are listed in figure \ref{fig:prim:bool:com
   \caption{Comparison operators.}
   \label{fig:prim:bool:comparison}
 \end{figure}
-
-\begin{syntaxfloat}
-  \input{syntax/prim_bool_ops.tex}
-  \caption{Expressions of boolean operators}
-  \label{syntax:prim:bool:ops}
-\end{syntaxfloat}
 
 % example
 \begin{minted}{csharp}
