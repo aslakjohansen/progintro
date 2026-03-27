@@ -41,7 +41,7 @@ defmodule Script do
     machine = [
       %ScanEntry{
         re: ~r/^\\input{([^}#]+)}/,
-        handler: fn _context, [_ | [filename | _]] -> filename end
+        handler: fn _context, [_ | [filename | _]] -> {filename, process(filename)} end
       }
     ]
 
