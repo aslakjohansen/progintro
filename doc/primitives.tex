@@ -269,6 +269,14 @@ As mentioned, a boolean is a type that holds one of two values. That is a bit of
 
 \subsection{\csharp}
 
+Comparison operations yield boolean values. The full set of comparison operators supported by \csharp\ are listed in figure \ref{fig:prim:bool:comparison}.
+
+\begin{figure}[tbp]
+  \input{figs/prim_bool_comp.tex}
+  \caption{Comparison operators.}
+  \label{fig:prim:bool:comparison}
+\end{figure}
+
 % TODO: placing the introduction of the C# operators
 It would be very tedious to use the symbols covered for AND, OR and NOT. \csharp, like many other languages, use a different notation:
 \begin{itemize}
@@ -290,13 +298,6 @@ In order to support booleans, we need to introduce a new syntactical condition c
   \caption{Expressions of boolean operators}
   \label{syntax:prim:bool:ops}
 \end{syntaxfloat}
-
-The full set of comparison operators are listed in figure \ref{fig:prim:bool:comparison}.
-\begin{figure}[tbp]
-  \input{figs/prim_bool_comp.tex}
-  \caption{Comparison operators.}
-  \label{fig:prim:bool:comparison}
-\end{figure}
 
 % example
 \begin{minted}{csharp}
