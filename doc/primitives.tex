@@ -342,7 +342,7 @@ A consequence of this is that C doesn't have a notion of a \idx{boolean}{Boolean
 % calculations on type: every value has a type, any expression over a value (or two) evaluates to another value, the tree structure of the expression determines how a complex of expressions is evaluated, but the same tree structure is handed over to the type checker, the type checker performs type checking on the program, when it gets to any primitive expression it compares input types, operand and output type, it has a set of rules of how the individual operands translates input types to output type, and it makes sure that there is a matching rule, if it cant find such a rule then it produces a type error and the compilation fails
 Every value has a type, and so does every expression. More specifically, every expression over a value (or two) evaluates to a value that has a type. As an initial step of the compilation, the tree structure of each complex expression is handed over to the \idx{type checker}{Type!Checker} so that it can perform \idx{type checking}{Type!Checking} on that part of the program. For each \idx{operand}{Operand}, it compares input types, operand and output type to a set of rules for how operands translates input types to an output type. If no matching rule is found, then it produces a \idx{type error}{Type!Error} and the compilation fails.
 
-% example
+% example: left (tree of "bool progress = alive && (points > required_points)"), right (individual checks), arrows from right to left
 
 % rules
 
