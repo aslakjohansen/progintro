@@ -81,12 +81,38 @@ defmodule Tex do
   end
 end
 
+defmodule CsharpHandler do
+  def process(_filename, _params) do
+    :handled
+  end
+end
+
+defmodule DumbHandler do
+  def process(_filename, _params) do
+    :skipped
+  end
+end
+
 defmodule Script do
   def run(filename) do
+    handlers = %{
+      "c" => DumbHandler,
+      "csharp" => CsharpHandler,
+      "python" => DumbHandler,
+      "elixir" => DumbHandler
+    }
+
     jobs =
       filename
       |> Tex.process()
       |> List.flatten()
+      |> Enum.map(fn job ->
+        case job do
+          {:job, lang, filename, params} ->
+            handler = Map.get(handlers, lang)
+            handler.process(filename, params)
+        end
+      end)
 
     IO.inspect(jobs)
   end
