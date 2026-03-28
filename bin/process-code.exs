@@ -36,7 +36,7 @@ defmodule Scanner do
   end
 end
 
-defmodule Script do
+defmodule Tex do
   defp parse(contents) do
     machine = [
       %ScanEntry{
@@ -60,18 +60,20 @@ defmodule Script do
     Scanner.process(machine, contents)
   end
 
-  defp process(filename) do
+  def process(filename) do
     IO.puts("Processing '#{filename}'")
 
     filename
     |> File.read!()
     |> parse()
   end
+end
 
+defmodule Script do
   def run(filename) do
     jobs =
       filename
-      |> process()
+      |> Tex.process()
 
     IO.inspect(jobs)
   end
