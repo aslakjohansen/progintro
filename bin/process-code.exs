@@ -3,35 +3,34 @@
 filename = "../doc/document.tex"
 
 defmodule ScanEntry do
-  defstruct re: nil, handler: nil, context: nil
+  defstruct re: nil, handler: nil, params: nil
 end
 
 defmodule Scanner do
-  @spec match(list(ScanEntry), list(ScanEntry), binary(), list(any())) :: list(any())
-  defp match(_rest, _all, "", output), do: output
+  @spec match(list(ScanEntry), list(ScanEntry), list(any()), binary()) :: list(any())
+  defp match(_rest, _all, acc, ""), do: acc
 
-  defp match([], all, input, output) do
-    match(all, all, String.slice(input, 1..-1//1), output)
+  defp match([], all, acc, input) do
+    match(all, all, acc, String.slice(input, 1..-1//1))
   end
 
-  defp match([first | rest], all, input, output) do
-    %{re: re, handler: handler, context: context} = first
+  defp match([first | rest], all, acc, input) do
+    %{re: re, handler: handler, params: params} = first
 
     r = Regex.run(re, input)
 
     if r == nil do
-      match(rest, all, input, output)
+      match(rest, all, acc, input)
     else
       l = r |> Enum.at(0) |> String.length()
-      result = handler.(context, r)
-      output = [result | output]
+      acc = handler.(r, params, acc)
       input = String.slice(input, l..-1//1)
-      match(all, all, input, output)
+      match(all, all, acc, input)
     end
   end
 
   def process(machine, input) do
-    match(machine, machine, input, [])
+    match(machine, machine, [], input)
     |> Enum.reverse()
   end
 end
@@ -46,25 +45,24 @@ defmodule Tex do
     machine = [
       %ScanEntry{
         re: ~r/^\\input{([^}#]+)}/,
-        handler: fn _context, [_ | [filename | _]] ->
-          # {:file, filename, process(filename)}
-          process(filename)
+        handler: fn [_ | [filename | _]], _params, acc ->
+          process(filename) ++ acc
         end
       },
       %ScanEntry{
         re: ~r/^\\include([^}]+)File{([^}#]+)}{([^}#]+)}/,
-        handler: fn _context, [_, lang, minted_params, filename] ->
+        handler: fn [_, lang, minted_params, filename], _params, acc ->
           lang = langmap(lang)
           filename = "../src/#{lang}/#{filename}"
-          {:job, lang, filename, minted_params}
+          [{:job, lang, filename, minted_params} | acc]
         end
       },
       %ScanEntry{
         re: ~r/^\\include([^}]+)File{([^}#]+)}/,
-        handler: fn _context, [_, lang, filename] ->
+        handler: fn [_, lang, filename], _params, acc ->
           lang = langmap(lang)
           filename = "../src/#{lang}/#{filename}"
-          {:job, lang, filename, ""}
+          [{:job, lang, filename, ""} | acc]
         end
       }
     ]
@@ -105,7 +103,6 @@ defmodule Script do
     jobs =
       filename
       |> Tex.process()
-      |> List.flatten()
       |> Enum.map(fn job ->
         case job do
           {:job, lang, filename, params} ->
