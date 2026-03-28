@@ -41,7 +41,19 @@ defmodule Script do
     machine = [
       %ScanEntry{
         re: ~r/^\\input{([^}#]+)}/,
-        handler: fn _context, [_ | [filename | _]] -> {filename, process(filename)} end
+        handler: fn _context, [_ | [filename | _]] -> {:file, filename, process(filename)} end
+      },
+      %ScanEntry{
+        re: ~r/^\\include([^}]+)File{([^}#]+)}{([^}#]+)}/,
+        handler: fn _context, [_, lang, minted_params, filename] ->
+          {:job, lang, filename, minted_params}
+        end
+      },
+      %ScanEntry{
+        re: ~r/^\\include([^}]+)File{([^}#]+)}/,
+        handler: fn _context, [_, lang, filename] ->
+          {:job, lang, filename, ""}
+        end
       }
     ]
 
