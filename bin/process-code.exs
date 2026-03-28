@@ -7,30 +7,30 @@ defmodule ScanEntry do
 end
 
 defmodule Scanner do
-  @spec match(list(ScanEntry), list(ScanEntry), list(any()), binary()) :: list(any())
-  defp match(_rest, _all, acc, ""), do: acc
+  @spec match(list(ScanEntry), list(ScanEntry), list(any()), binary(), boolean()) :: list(any())
+  defp match(_rest, _all, acc, "", _skippable), do: acc
 
-  defp match([], all, acc, input) do
-    match(all, all, acc, String.slice(input, 1..-1//1))
+  defp match([], all, acc, input, skippable) when skippable == true do
+    match(all, all, acc, String.slice(input, 1..-1//1), skippable)
   end
 
-  defp match([first | rest], all, acc, input) do
+  defp match([first | rest], all, acc, input, skippable) do
     %{re: re, handler: handler, params: params} = first
 
     r = Regex.run(re, input)
 
     if r == nil do
-      match(rest, all, acc, input)
+      match(rest, all, acc, input, skippable)
     else
       l = r |> Enum.at(0) |> String.length()
       acc = handler.(r, params, acc)
       input = String.slice(input, l..-1//1)
-      match(all, all, acc, input)
+      match(all, all, acc, input, skippable)
     end
   end
 
-  def process(machine, input) do
-    match(machine, machine, [], input)
+  def process(machine, input, skippable) do
+    match(machine, machine, [], input, skippable)
     |> Enum.reverse()
   end
 end
@@ -67,7 +67,7 @@ defmodule Tex do
       }
     ]
 
-    Scanner.process(machine, contents)
+    Scanner.process(machine, contents, true)
   end
 
   def process(filename) do
@@ -80,14 +80,23 @@ defmodule Tex do
 end
 
 defmodule CsharpHandler do
-  def process(_filename, _params) do
-    :handled
+  defp parse(_contents) do
+    nil
+  end
+
+  def process(filename, _params) do
+    result =
+      filename
+      |> File.read!()
+      |> parse()
+
+    {:handled, result}
   end
 end
 
 defmodule DumbHandler do
   def process(_filename, _params) do
-    :skipped
+    {:skipped}
   end
 end
 
