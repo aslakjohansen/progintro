@@ -37,21 +37,33 @@ defmodule Scanner do
 end
 
 defmodule Tex do
+  defp langmap("C"), do: "c"
+  defp langmap("Csharp"), do: "csharp"
+  defp langmap("Elixir"), do: "elixir"
+  defp langmap("Python"), do: "python"
+
   defp parse(contents) do
     machine = [
       %ScanEntry{
         re: ~r/^\\input{([^}#]+)}/,
-        handler: fn _context, [_ | [filename | _]] -> {:file, filename, process(filename)} end
+        handler: fn _context, [_ | [filename | _]] ->
+          # {:file, filename, process(filename)}
+          process(filename)
+        end
       },
       %ScanEntry{
         re: ~r/^\\include([^}]+)File{([^}#]+)}{([^}#]+)}/,
         handler: fn _context, [_, lang, minted_params, filename] ->
+          lang = langmap(lang)
+          filename = "../src/#{lang}/#{filename}"
           {:job, lang, filename, minted_params}
         end
       },
       %ScanEntry{
         re: ~r/^\\include([^}]+)File{([^}#]+)}/,
         handler: fn _context, [_, lang, filename] ->
+          lang = langmap(lang)
+          filename = "../src/#{lang}/#{filename}"
           {:job, lang, filename, ""}
         end
       }
@@ -74,6 +86,7 @@ defmodule Script do
     jobs =
       filename
       |> Tex.process()
+      |> List.flatten()
 
     IO.inspect(jobs)
   end
