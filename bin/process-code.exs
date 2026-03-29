@@ -7,8 +7,9 @@ defmodule ScanEntry do
 end
 
 defmodule Scanner do
-  @spec match(list(ScanEntry), list(ScanEntry), list(any()), binary(), boolean()) :: list(any())
-  defp match(_rest, _all, acc, "", _skippable), do: acc
+  @spec match(list(ScanEntry), list(ScanEntry), list(any()), binary(), boolean()) ::
+          {list(any()), binary()}
+  defp match(_rest, _all, acc, "", _skippable), do: {acc, ""}
 
   defp match([], all, acc, input, skippable) when skippable == true do
     match(all, all, acc, String.slice(input, 1..-1//1), skippable)
@@ -30,8 +31,8 @@ defmodule Scanner do
   end
 
   def process(machine, input, skippable) do
-    match(machine, machine, [], input, skippable)
-    |> Enum.reverse()
+    {res, rest} = match(machine, machine, [], input, skippable)
+    {Enum.reverse(res), rest}
   end
 end
 
@@ -68,6 +69,7 @@ defmodule Tex do
     ]
 
     Scanner.process(machine, contents, true)
+    |> elem(0)
   end
 
   def process(filename) do
