@@ -82,15 +82,25 @@ defmodule Tex do
 end
 
 defmodule CsharpHandler do
-  defp parse(_contents) do
-    nil
+  defp parse(contents, :outer = state) do
+    machine = [
+      %ScanEntry{
+        re: ~r/^\\input{(\s+)}/,
+        handler: fn [_ | [match | _]], _params, %{output: output} = acc ->
+          Map.merge(acc, %{output: output <> match, state: state})
+          # move state out of acc?
+        end
+      }
+    ]
+
+    Scanner.process(machine, contents, false)
   end
 
   def process(filename, _params) do
     result =
       filename
       |> File.read!()
-      |> parse()
+      |> parse(:outer)
 
     {:handled, result}
   end
