@@ -65,7 +65,7 @@ The binary notation is convenient when we think about how the numbers are repres
 \subsection{\csharp}
 
 % integer types available: and how to pick
-\csharp\ supports the signed and unsigned integer types listed in figure \ref{fig:prim:int:csharp:types}. Lets say that you need to be able to represent any positive number below 100.000. That number sits somewhere in between the limits of 16 bits and 32 bits. This means that we need at least 32 bits, and if we use more than 32 bits to represent it then we will be wasting memory. Depending on our \idx{architecture}{Architecture!Processor}, there might be processing speed to \idx{trade}{Tradeoff} for this \say{wasted} memory. But lets just stick to the 32 bits for now. As we don't need the negative values we will go for an \typename{int}.
+\csharp\ supports the signed and unsigned integer types listed in figure \ref{fig:prim:int:csharp:types}. Let's say that you need to be able to represent any positive number below 100.000. That number sits somewhere in between the limits of 16 bits and 32 bits. This means that we need at least 32 bits, and if we use more than 32 bits to represent it then we will be wasting memory. Depending on our \idx{architecture}{Architecture!Processor}, there might be processing speed to \idx{trade}{Tradeoff} for this \say{wasted} memory. But let's just stick to the 32 bits for now. As we don't need the negative values we will go for an \typename{int}.
 
 \begin{figure}[tbp]
   \input{figs/prim_int_csharp_types.tex}
@@ -246,7 +246,7 @@ It is common to demonstrate operations on boolean values using a so-called \idx{
 The XOR operator is not considered one of the \textsl{basic} boolean operators, and it is also -- by some margin -- the least used one. It can be hard to differentiate between OR and XOR. For instance, be might say that a game is over if you win or if you die. Should you choose to define this using OR or XOR? The only difference between these operators is what happens if both are true, and that never happens in a game: You don't both win and die. So, in this case it doesn't really matter. When it doesn't matter, most programmers will chose OR. Probably because we consider it linguistically simpler. In other scenarios, the behavior when both inputs are true does matter, and then that becomes the \idx{arbiter}{Arbiter}.
 
 % example: 
-But, lets look at a real-world example. Imagine that we are building a game. In this game the player progresses through a sequence of levels. In order to progress to the next level, the player must at the end of the current level (i) be alive, and (ii) have obtained a certain number of points. After each level the number of required points is raised. Whether the player should progress can then be determined as $alive \wedge P \geq P_{required}$ or (depending on what we track) $\overline{dead} \wedge P \geq P_{required}$.
+But, let's look at a real-world example. Imagine that we are building a game. In this game the player progresses through a sequence of levels. In order to progress to the next level, the player must at the end of the current level (i) be alive, and (ii) have obtained a certain number of points. After each level the number of required points is raised. Whether the player should progress can then be determined as $alive \wedge P \geq P_{required}$ or (depending on what we track) $\overline{dead} \wedge P \geq P_{required}$.
 
 % TODO: relation to set theory
 
@@ -413,8 +413,8 @@ The \csharp\ naming convention states that local variables should be named using
 % intro: the code we write consists of a sequence of characters, C# will interpret this, we need to understand how it does this, otherwise how can we hope to "communicate" correctly with it?
 When we are writing code, what we are really doing is to produce a sequence of characters. We store those in a file, and then ask the \csharp\ \idx{compiler}{Compiler} to interpret them. Given that \csharp\ is a language that we share with the compiler, we need a certain level of understanding of how it goes about interpreting it. Otherwise, how can we hope to \say{communicate} correctly with it?
 
-% parsing: in this chapter we have introduced the notion of an expression, expressions are made up of operators, lets take a look at how expressions are parsed, that is: how a sequence of characters at a position in our code where the compiler expects an expression is translated into a parse tree
-In this chapter, we have introduced the notion of an expression. Expressions are -- in part -- made up of operators. Lets take a look at how expressions are \idx{parsed}{Parsing}. That is, how does a sequence of characters, at a position in our code where the compiler expects an expression, get translated into a parse tree?
+% parsing: in this chapter we have introduced the notion of an expression, expressions are made up of operators, let's take a look at how expressions are parsed, that is: how a sequence of characters at a position in our code where the compiler expects an expression is translated into a parse tree
+In this chapter, we have introduced the notion of an expression. Expressions are -- in part -- made up of operators. Let's take a look at how expressions are \idx{parsed}{Parsing}. That is, how does a sequence of characters, at a position in our code where the compiler expects an expression, get translated into a parse tree?
 
 \subsection{Operator Precedence}
 
@@ -427,13 +427,13 @@ Most programming languages define a hierarchy of operator classes. Operator clas
 \subsection{Operator Associativity}
 
 % question
-We are not done yet though. Assuming that we have some operator -- lets call it $\odot$ -- and keeping in mind that the \idx{compiler}{Compiler} needs to convert any expression needs to be converted to a sequence of operations for the processor, how should $a \odot b \odot c$ be interpreted? By adding parentheses, we can remove this ambiguity. But, should $a \odot b \odot c$ be equal to $(a \odot b) \odot c$ or to $a \odot (b \odot c)$?
+We are not done yet though. Assuming that we have some operator -- let's call it $\odot$ -- and keeping in mind that the \idx{compiler}{Compiler} needs to convert any expression needs to be converted to a sequence of operations for the processor, how should $a \odot b \odot c$ be interpreted? By adding parentheses, we can remove this ambiguity. But, should $a \odot b \odot c$ be equal to $(a \odot b) \odot c$ or to $a \odot (b \odot c)$?
 
 % why it matters
 Given what we have covered so far, that question may not seem to matter. Most of the operators that we have covered exhibit the \idx{associative property}{Associative property}. That is, the order of evaluation does not affect the result. This changes, however, when composing complex expressions that modifies shared state (e.g., when pre-incrementing variables). From section \ref{sec:func} onward, we will cover operators that obviously does not have the associative property.
 
 % solution
-But lets get back to the question of where to place the parentheses. Some operators are left-associative, some are right-associative and some are non-associative. A \idx{left-associative operator}{Operator!Associativity!Left} is grouped from the left. This means that $a \odot b \odot c = (a \odot b) \odot c$, and that the syntax tree of a sequence of such operations skews heavily to the left-hand side. A \idx{right-associative operator}{Operator!Associativity!Right} is grouped from the right. This means that $a \odot b \odot c = a \odot (b \odot c)$, and that the syntax tree of a sequence of such operations skews heavily to the right-hand side. A \idx{non-associative operator}{Operator!Associativity!Non} is not allowed to appear in such a sequence.
+But let's get back to the question of where to place the parentheses. Some operators are left-associative, some are right-associative and some are non-associative. A \idx{left-associative operator}{Operator!Associativity!Left} is grouped from the left. This means that $a \odot b \odot c = (a \odot b) \odot c$, and that the syntax tree of a sequence of such operations skews heavily to the left-hand side. A \idx{right-associative operator}{Operator!Associativity!Right} is grouped from the right. This means that $a \odot b \odot c = a \odot (b \odot c)$, and that the syntax tree of a sequence of such operations skews heavily to the right-hand side. A \idx{non-associative operator}{Operator!Associativity!Non} is not allowed to appear in such a sequence.
 
 % TODO: Add figure of the parse trees of $a \odot b \odot c \odot d$ given $\odot$ being left and right associative
 

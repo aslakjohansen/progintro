@@ -38,7 +38,7 @@ To solve this problem many programming languages have introduced a notion of a \
 \begin{enumerate}
   \descitem{Starting Point:} Take a complex type definition as a starting point. As an example we will use the definition of the \classname{IntPair} class from figure \ref{fig:generics:pair:problem}.
   \descitem{Locate References:} Find the references to types that we wish to parameterize. In \classname{IntPair}, we need to find the locations of the types that have to match the two elements that the class wrap. These are the types of the two instance variables and the parameter types for the constructor. It is not the return type of the \methodname{ToString} method. That has to be \typename{string} in order to match the \idx{method prototype}{Method!Prototype} that we are trying to override, and it is independent of the of the type of the wrapped elements.
-  \descitem{Insert Placeholders} For each parameterized type, come up with a placeholder name, and replace each found type reference with the matching placeholder name. For placeholder names we usually use single upper-case characters (often \typename{T}). As both elements of our pair needs to be of the same type, we only need a single placeholder name. Lets just use \typename{T}.
+  \descitem{Insert Placeholders} For each parameterized type, come up with a placeholder name, and replace each found type reference with the matching placeholder name. For placeholder names we usually use single upper-case characters (often \typename{T}). As both elements of our pair needs to be of the same type, we only need a single placeholder name. Let's just use \typename{T}.
   \descitem{Declare Placeholders} Declare that the type is parameterized over the set of placeholder names.
 \end{enumerate}
 
@@ -55,7 +55,7 @@ If we follow the recipe on the definition of \classname{IntPair} or \classname{P
 \section{\csharp}
 
 % syntax: we have already seen what parameterized types look like in csharp, to support this we need to expand our set of allowed syntax
-By now, we have already seen what a parameterized class looks like in \csharp. Syntax \ref{syntax:generics:support} and \ref{syntax:generics:classes} formalizes this. Just like classes can be parameterized, so can interfaces. The rules for these can be found in syntax \ref{syntax:generics:interface}. Lets dig into the most interesting details!
+By now, we have already seen what a parameterized class looks like in \csharp. Syntax \ref{syntax:generics:support} and \ref{syntax:generics:classes} formalizes this. Just like classes can be parameterized, so can interfaces. The rules for these can be found in syntax \ref{syntax:generics:interface}. Let's dig into the most interesting details!
 
 \begin{syntaxfloat}
   \input{syntax/generics_support.tex}
@@ -101,7 +101,7 @@ Adding restrictions on types improve the situation a bit: Primitive types does n
 
 \section{Case: Line Segments}
 
-Lets imagine that we are writing a \classname{LineSegment} class from which we can create line segment instances. A line segment is a straight line between two points. Clearly, each instance needs to be associated with two points then. One purpose of that class is to calculate the length of such a line segment. This, however, depends of the dimensionality of the space referenced by these points. For the purpose of this example, we would like to support points in either 2d or 3d space. As illustrated in figure \ref{fig:generics:linesegment:aclass}, we cound construct such an implementation using the following structure:
+Let's imagine that we are writing a \classname{LineSegment} class from which we can create line segment instances. A line segment is a straight line between two points. Clearly, each instance needs to be associated with two points then. One purpose of that class is to calculate the length of such a line segment. This, however, depends of the dimensionality of the space referenced by these points. For the purpose of this example, we would like to support points in either 2d or 3d space. As illustrated in figure \ref{fig:generics:linesegment:aclass}, we cound construct such an implementation using the following structure:
 \begin{itemize}
   \item \classname{LineSegment}: A class that represents a line segment that has two \classname{Point} instance variables.
   \item \classname{Point}: An abstract class that has an abstract function for calculating the distance to another point.
@@ -110,7 +110,7 @@ Lets imagine that we are writing a \classname{LineSegment} class from which we c
 \end{itemize}
 
 % problem: this would work ... as long as we use these classes correctly, the problem lies in th subclasses to Point, how would Point2D go about calculating the distance to another Point? it would have to cast this to a Point2D, but whe have no guarantee that such a cast would succeed, perhaps a developer has instantiated LineSegment with a Point2D and a Point3d, this would be a messup (but that is what developers do), as we have just bypassed the type checker (by downcasting) we don't really have a good solution available to us, a bad one would be to introduce factory methods for constructing LineSegment instances with same endpoint types and use visibility modifiers to hide all other paths to the constructor of LineSegment, but then we have essentially just shifted the problem.
-On the surface, this looks good, and it would indeed work. But it would also require us to bypass the \idx{type checker}{Type!Checker}, and that comes with some consequences that we would rather avoid. Lets explore this dissonance through a random subclass of \classname{Point}: How would \classname{Point2D} go about calculating the distance to another \classname{Point} in the \methodname{DistanceTo} method? It would have to \idx{cast}{Cast} this to a \classname{Point2D}, and yet we have no guarantee that such cast would succeed. Perhaps a developer has constructed a \classname{LineSegment} object from a \classname{Point2D} and a \classname{Point3D}. This would be a messup from the developers side, but a messup that we should expect to developer to commit nevertheless. As we have used the \idx{downcast}{Downcast} to bypass the typechecker we don't really have a good solution available to us. A bad one would be to introduce \idx{factory}{Factory} methods for constructing \classname{LineSegment} instances with same endpoint types, and then to use visibility modifiers to hide all other paths to the constructor of \classname{LineSegment}. But then we have essentially just shifted the problem.
+On the surface, this looks good, and it would indeed work. But it would also require us to bypass the \idx{type checker}{Type!Checker}, and that comes with some consequences that we would rather avoid. Let's explore this dissonance through a random subclass of \classname{Point}: How would \classname{Point2D} go about calculating the distance to another \classname{Point} in the \methodname{DistanceTo} method? It would have to \idx{cast}{Cast} this to a \classname{Point2D}, and yet we have no guarantee that such cast would succeed. Perhaps a developer has constructed a \classname{LineSegment} object from a \classname{Point2D} and a \classname{Point3D}. This would be a messup from the developers side, but a messup that we should expect to developer to commit nevertheless. As we have used the \idx{downcast}{Downcast} to bypass the typechecker we don't really have a good solution available to us. A bad one would be to introduce \idx{factory}{Factory} methods for constructing \classname{LineSegment} instances with same endpoint types, and then to use visibility modifiers to hide all other paths to the constructor of \classname{LineSegment}. But then we have essentially just shifted the problem.
 
 \begin{figure}[tbp]
   \input{figs/generics_linesegment_abstract.tex}
@@ -118,8 +118,8 @@ On the surface, this looks good, and it would indeed work. But it would also req
   \label{fig:generics:linesegment:aclass}
 \end{figure}
 
-% generics fix: core problem (LineSegment needs endpointA to have a declared type -- lets call it T -- through which DistanceTo is defined with a parameter of the same type -- T -- while at the same time decouple LineSegment from the specific Point variant), how does this affect our types?
-The core of the problem is that \classname{LineSegment} needs its \varname{endpointA} instance variable to have a declared type -- lets call it \typename{T} -- on which a \methodname{DistanceTo} method is declared with a parameter of type \typename{T} while at the same time decople \classname{LineSegment} from the specific \classname{Point} subclass. How does this affect our types?
+% generics fix: core problem (LineSegment needs endpointA to have a declared type -- let's call it T -- through which DistanceTo is defined with a parameter of the same type -- T -- while at the same time decouple LineSegment from the specific Point variant), how does this affect our types?
+The core of the problem is that \classname{LineSegment} needs its \varname{endpointA} instance variable to have a declared type -- let's call it \typename{T} -- on which a \methodname{DistanceTo} method is declared with a parameter of type \typename{T} while at the same time decople \classname{LineSegment} from the specific \classname{Point} subclass. How does this affect our types?
 \begin{itemize}
   \item \classname{LineSegment}: Still a class, but this time we make it parameterized over \typename{T}. This allows us to define \varname{endpointA} and \varname{endpointB} as \typename{T}. While this appears as us just replacing one fairly generic type (\classname{Point}) with another (\typename{T}), this has two implications:
     \begin{enumerate}
@@ -147,8 +147,8 @@ Looking at figure \ref{fig:generics:linesegment:generics}, we see syntax element
 
 \section{The C Preprocessor}
 
-% behind all of this csharp has a preprocessor for producing variants of parameterized types, c does not have parameterized types but it does have a preprocessor, it is more generic in nature though and is not nearly as integrated as the one from csharp, lets first take a look at how it operates, as illustrated in figure REF it is applied to each individual source file before they reach the compiler
-Behind all of this, \csharp\ has a \idx{preprocessor}{Preprocessor} for producing variants of parameterized types. The C programming language does not have parameterized types, but it does have a preprocessor. This preprocessor is more generic in nature though, and is not nearly as integrated into the language as the one for \csharp. Lets take a look at figure \ref{fig:generics:c} that describes how the the C preprocessor operates. It is applied to each individual source file before they reach the \idx{compiler}{Compiler}.
+% behind all of this csharp has a preprocessor for producing variants of parameterized types, c does not have parameterized types but it does have a preprocessor, it is more generic in nature though and is not nearly as integrated as the one from csharp, let's first take a look at how it operates, as illustrated in figure REF it is applied to each individual source file before they reach the compiler
+Behind all of this, \csharp\ has a \idx{preprocessor}{Preprocessor} for producing variants of parameterized types. The C programming language does not have parameterized types, but it does have a preprocessor. This preprocessor is more generic in nature though, and is not nearly as integrated into the language as the one for \csharp. Let's take a look at figure \ref{fig:generics:c} that describes how the the C preprocessor operates. It is applied to each individual source file before they reach the \idx{compiler}{Compiler}.
 
 \begin{figure}[tbp]
   \input{figs/generics_compilation_phases.tex}
@@ -156,8 +156,8 @@ Behind all of this, \csharp\ has a \idx{preprocessor}{Preprocessor} for producin
   \label{fig:generics:c}
 \end{figure}
 
-% directive suite: the c preprocessor supports a suite of directives, these directives starts with a hashtag at the beginning of a line, lets take a look at a few of these directives (define, include, ifdef, ifndef, endif)
-The C preprocessor supports a suite of \idx{directives}{Directive}. Such directives appears in the code at the beginning of a line and starts with a hashtag. Lets take a look at a few of these directives:
+% directive suite: the c preprocessor supports a suite of directives, these directives starts with a hashtag at the beginning of a line, let's take a look at a few of these directives (define, include, ifdef, ifndef, endif)
+The C preprocessor supports a suite of \idx{directives}{Directive}. Such directives appears in the code at the beginning of a line and starts with a hashtag. Let's take a look at a few of these directives:
 \begin{itemize}
   \item \idx{Macros}{Macro} can be defined with \idx{\directivename{define}}{define@\directivename{define} directive}. The process of replacing every occurrence of them is referred to as \idx{macro expansion}{Macro!Expansion}. This \textsl{expansion} is quite simply a string replacement operation, so it may violate imagined \idx{operator precedence}{Operator!Precedence}.
   \item We can branch on the definition (or lack thereof) with \idx{\directivename{ifdef}}{ifdef@\directivename{ifdef} directive} and \idx{\directivename{ifndef}}{ifndef@\directivename{ifndef} directive}. Such a branch is ended using \idx{\directivename{endif}}{endif@\directivename{endif} directive}.
@@ -166,7 +166,7 @@ The C preprocessor supports a suite of \idx{directives}{Directive}. Such directi
 
 \subsection{Macro Expansion}
 
-% 1st example: lets look at two examples, in the first example three definitions are involved (DEFAULT, RADIUS2DIAMETER and MULTIPLIER), the two first are defined in the source itself, one is parameterized and one is not
+% 1st example: let's look at two examples, in the first example three definitions are involved (DEFAULT, RADIUS2DIAMETER and MULTIPLIER), the two first are defined in the source itself, one is parameterized and one is not
 The following example makes use of three macro definitions, namely \macroname{DEFAULT}, \macroname{RADIUS2DIAMETER} and \macroname{MULTIPLIER}. The first two are defined in the source file itself. One is parameterized, and one is not:
 
 \inputminted{c}{../src/c/generics/define.c}
