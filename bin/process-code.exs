@@ -1,18 +1,22 @@
 #!/usr/bin/env elixir
 
-filename = "../doc/document.tex"
+_filename = "../doc/document.tex"
+filename = "/tmp/test.tex"
 
 defmodule ScanEntry do
   defstruct re: nil, handler: nil, params: nil
 end
 
 defmodule Scanner do
-  @spec match(list(ScanEntry), list(ScanEntry), list(any()), binary(), boolean()) ::
-          {list(any()), binary()}
+  # @spec match(list(ScanEntry), list(ScanEntry), list(any()), binary(), boolean()) :: {list(any()), binary()}
   defp match(_rest, _all, acc, "", _skippable), do: {acc, ""}
 
   defp match([], all, acc, input, skippable) when skippable == true do
     match(all, all, acc, String.slice(input, 1..-1//1), skippable)
+  end
+
+  defp match([], _all, acc, input, skippable) when skippable == false do
+    {acc, input}
   end
 
   defp match([first | rest], all, acc, input, skippable) do
@@ -30,8 +34,8 @@ defmodule Scanner do
     end
   end
 
-  def process(machine, input, skippable) do
-    {res, rest} = match(machine, machine, [], input, skippable)
+  def process(machine, input, skippable, acc \\ []) do
+    {res, rest} = match(machine, machine, acc, input, skippable)
     {Enum.reverse(res), rest}
   end
 end
@@ -82,21 +86,25 @@ defmodule Tex do
 end
 
 defmodule CsharpHandler do
-  defp parse(contents, :outer = state) do
+  defp parse(contents, :outer = _state) do
     machine = [
       %ScanEntry{
-        re: ~r/^\\input{(\s+)}/,
-        handler: fn [_ | [match | _]], _params, %{output: output} = acc ->
-          Map.merge(acc, %{output: output <> match, state: state})
-          # move state out of acc?
+        re: ~r/^([a-zA-Z0-9_]+)(\s+)([a-zA-Z0-9_]+)(\s*;)/,
+        handler: fn [_full, type, space, name, ending],
+                    _params,
+                    %{output: output, state: state} = _acc ->
+          ext = "#{type}#{space}#{name}#{ending}"
+          %{output: output <> ext, state: state}
         end
       }
     ]
 
-    Scanner.process(machine, contents, false)
+    Scanner.process(machine, contents, false, %{output: "", state: :outer})
   end
 
   def process(filename, _params) do
+    IO.puts("CS Processing '#{filename}'")
+
     result =
       filename
       |> File.read!()
