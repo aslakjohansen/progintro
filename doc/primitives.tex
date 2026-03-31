@@ -368,8 +368,8 @@ Syntax \ref{syntax:prim:cast} introduces the practical mechanics of an \idx{expl
 % problem: but what is behind that term (lossless)?, can you round-trip it?
 But what is behind that \textsl{lossless} term? Consider two integer types, namely \typename{int} (32 bits) and \typename{long} (64 bits). If we have an expression that evaluates to a value of type \typename{int}, then that value falls within the $0..2^{32}-1$ range. Note that the corresponding range of a \typename{long} is $0..2^{64}-1$ and thus strictly broader. That is, every single value of an \typename{int} can be converted to a \typename{long} and back again without without us having to worry about \idx{loss of data}{Loss of data}. We say that we can \idx{roundtrip}{Roundtrip!When casting} it. The same is not true if we go in the opposite direction: While some \typename{long} values can be converted to \typename{int} values and back again successfully, this is not generally the case. The value $2^{32}$, for instance, will \idx{overflow}{Overflow} into the value $0$ in \typename{int} form and it will stay $0$ when converted back to \typename{long} form. Similarly, any floating point value will naturally loose the decimals if converted to an integer format.
 
-% an explicit cast is necessary if we risk loosing data, example, by casting we tell the compiler that we take on the responsibility of this risk, "trust me, bro!"
-
+% an explicit cast is necessary if we risk loosing data, by casting we tell the compiler that we take on the responsibility of this risk, "trust me, bro!"
+An explicit cast is necessary if we risk loosing data. By performing an explicit cast, we tell the compiler (or really the typechecker part of it) that we take on the responsibility of the risk: Trust me, bro! And so, care should be taken.
 
 % calculations on types
 
