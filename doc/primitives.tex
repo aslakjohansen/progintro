@@ -357,7 +357,7 @@ Most, if not all, of these casts costs a bit of \idx{execution time}{Execution t
 \subsection{\csharp}
 
 % reason[loss of data]: explicit/implicit cast, when loss of data is a risk (based purely on types and not actual data) then an explicit cast is needed
-Syntax \ref{syntax:prim:cast} introduces the practical mechanics of an explicit cast in \csharp: We need an expression of one type and a different type to cast it to. If the cast is invalid (i.e., not between compatible types) then the type checker catch it and reject the code with a cast error. An implicit cast does exactly the same, but the destination type is automatically inferred, and (ii) it is only allowed when the type conversion is guaranteed to be lossless.
+Syntax \ref{syntax:prim:cast} introduces the practical mechanics of an explicit cast in \csharp: We need an expression of one type and a different type to cast it to. If the cast is \idx{invalid}{Cast!Invalid} (i.e., not between compatible types) then the \idx{type checker}{Type!Checker} catch it and reject the code with a \idx{cast error}{Cast!Error}. An implicit cast does exactly the same, but the destination type is automatically \idx{inferred}{Inference}, and (ii) it is only allowed when the type conversion is guaranteed to be \idx{lossless}{Lossless!Type conversion}.
 
 \begin{syntaxfloat}
   \input{syntax/prim_cast.tex}
@@ -366,6 +366,7 @@ Syntax \ref{syntax:prim:cast} introduces the practical mechanics of an explicit 
 \end{syntaxfloat}
 
 % rule: an explicit cast is necessary if we risk loosing data (can you round-trip it?), example, by casting we tell the compiler that we take on the responsibility of this risk, "trust me, bro!"
+
 
 % problem
 
