@@ -1,0 +1,46 @@
+% example: left (tree of "bool progress = alive && (points > required_points)"), right (individual checks), arrows from right to left
+\begin{center}
+  \begin{tikzpicture}[remember picture]
+    \newcommand{\spacing}[0]{ 3mm }
+    
+    \tikzstyle{node}=[
+      rectangle,
+      thick,
+      anchor=center,
+      minimum height=\syntaxrulenodeheight,
+      draw=black,
+      text=black,
+      fill=black!5,
+    ]
+    \tikzstyle{terminal}=[
+      node,
+      draw=\SyntaxTerminalColor,
+      text=\SyntaxTerminalColor,
+      fill=\SyntaxTerminalColor!5,
+      font=\ttfamily,
+    ]
+    \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
+    
+    \coordinate (root) at (0,0);
+    
+    \node[node] (eq) at (root) {decl-assign};
+    \node[node,anchor=north] (progress) at ([yshift=-\spacing]eq.south) {progress};
+    \node[node,anchor=east] (bool) at ([xshift=-\spacing]progress.west) {bool};
+    \node[terminal,anchor=west] (and) at ([xshift=\spacing]progress.east) {\&\&};
+    \node[terminal,anchor=north east] (alive) at ([xshift=-\spacing/2,yshift=-\spacing]and.south) {alive};
+    \node[terminal,anchor=north west] (par) at ([xshift=\spacing/2,yshift=-\spacing]and.south) {()};
+    \node[terminal,anchor=north] (lt) at ([yshift=-\spacing]par.south) {<};
+    \node[terminal,anchor=north east] (lhs) at ([xshift=-\spacing/2,yshift=-\spacing]lt.south) {points};
+    \node[terminal,anchor=north west] (rhs) at ([xshift=\spacing/2,yshift=-\spacing]lt.south) {required\_points};
+    
+    \draw[dedge] (eq) -- (bool);
+    \draw[dedge] (eq) -- (progress);
+    \draw[dedge] (eq) -- (and);
+    \draw[dedge] (and) -- (alive);
+    \draw[dedge] (and) -- (par);
+    \draw[dedge] (par) -- (lt);
+    \draw[dedge] (lt) -- (lhs);
+    \draw[dedge] (lt) -- (rhs);
+    
+  \end{tikzpicture}
+\end{center}
