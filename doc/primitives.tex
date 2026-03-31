@@ -365,10 +365,11 @@ Syntax \ref{syntax:prim:cast} introduces the practical mechanics of an \idx{expl
   \label{syntax:prim:cast}
 \end{syntaxfloat}
 
-% but what is behind that term (lossless)?, can you round-trip it?, an explicit cast is necessary if we risk loosing data, example, by casting we tell the compiler that we take on the responsibility of this risk, "trust me, bro!"
+% problem: but what is behind that term (lossless)?, can you round-trip it?
+But what is behind that \textsl{lossless} term? Consider two integer types, namely \typename{int} (32 bits) and \typename{long} (64 bits). If we have an expression that evaluates to a value of type \typename{int}, then that value falls within the $0..2^{32}-1$ range. Note that the corresponding range of a \typename{long} is $0..2^{64}-1$ and thus strictly broader. That is, every single value of an \typename{int} can be converted to a \typename{long} and back again without without us having to worry about loss of data. We say that we can roundtrip it. The same is not true if we go in the opposite direction: While some \typename{long} values can be converted to \typename{int} values and back again successfully, this is not generally the case. The value $2^32$, for instance, will overflow into the value $0$ in \typename{int} form and it will stay $0$ when converted back to \typename{long} form. Similarly, any floating point value will naturally loose the decimals if converted to an integer format.
 
+% an explicit cast is necessary if we risk loosing data, example, by casting we tell the compiler that we take on the responsibility of this risk, "trust me, bro!"
 
-% problem
 
 % calculations on types
 
