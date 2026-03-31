@@ -346,6 +346,8 @@ Every value has a type, and so does every expression. More specifically, every e
 
 % example: left (tree of "bool progress = alive && (points > required_points)"), right (individual checks), arrows from right to left
 
+\subsection{Calculations on Types}
+
 \section{Type Conversion}
 
 % problem: when everything is typed, we might not have our data typed to give us access to the (versions of the) operations that we want
@@ -370,8 +372,6 @@ But what is behind that \textsl{lossless} term? Consider two integer types, name
 
 % an explicit cast is necessary if we risk loosing data, by casting we tell the compiler that we take on the responsibility of this risk, "trust me, bro!"
 An explicit cast is necessary if we risk loosing data. By performing an explicit cast, we tell the compiler (or really the typechecker part of it) that we take on the responsibility of the risk: Trust me, bro! And so, care should be taken.
-
-\section{Calculations on Types}
 
 \section{Local Variables}
 
