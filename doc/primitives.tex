@@ -354,9 +354,16 @@ When every expression is typed and those types determine the operands available 
 % execution speed: most (if not all) of these casts takes a bit of time, the representation has to change so that the observed rules of the typed operands (e.g., overflow) will apply, it's not a lot of time, in fact it is so little that we usually don't care about it at all
 Most, if not all, of these casts costs a bit of \idx{execution time}{Execution time}. The cause of this is that the representation has to change in order to guarantee that the rules of the typed operands (e.g., overflow) are observed. It is not a lot of execution time though. In fact, it is so little that we usually don't care about it at all.
 
-% reason[loss of data]: explicit/implicit cast, when loss of data is a risk (based purely on types and not actual data) then an explicit cast is needed, it is our way of telling the compiler that we take responsibility, trust me bro!
-
 \subsection{\csharp}
+
+% reason[loss of data]: explicit/implicit cast, when loss of data is a risk (based purely on types and not actual data) then an explicit cast is needed
+Syntax \ref{syntax:prim:cast} introduces the practical mechanics of an explicit cast in \csharp: We need an expression of one type and a different type to cast it to. If the cast is invalid (i.e., not between compatible types) then the type checker catch it and reject the code with a cast error. An implicit cast does exactly the same, but the destination type is automatically inferred, and (ii) it is only allowed when the type conversion is guaranteed to be lossless.
+
+\begin{syntaxfloat}
+  \input{syntax/prim_cast.tex}
+  \caption{Casting of an expression to a different type.}
+  \label{syntax:prim:cast}
+\end{syntaxfloat}
 
 % rule: an explicit cast is necessary if we risk loosing data (can you round-trip it?), example, by casting we tell the compiler that we take on the responsibility of this risk, "trust me, bro!"
 
