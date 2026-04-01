@@ -89,6 +89,12 @@ defmodule CsharpHandler do
   defp parse(contents, :outer = _state) do
     machine = [
       %ScanEntry{
+        re: ~r/^(\s+)/,
+        handler: fn [_full, match], _params, %{output: output, state: state} = _acc ->
+          %{output: output <> match, state: state}
+        end
+      },
+      %ScanEntry{
         re: ~r/^([a-zA-Z0-9_]+)(\s+)([a-zA-Z0-9_]+)(\s*;)/,
         handler: fn [_full, type, space, name, ending],
                     _params,
