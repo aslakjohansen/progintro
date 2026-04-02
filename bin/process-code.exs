@@ -7,6 +7,24 @@ defmodule ScanEntry do
   defstruct re: nil, handler: nil, params: nil
 end
 
+# Scanner.match interface:
+# - Input: 
+#   - list of remaining ScanEntry
+#   - list of all ScanEntry
+#   - accumulator
+#   - remaining input string
+#   - skippable: bool for whether single characters should be skipped is no match is found
+# - output: {res, rest}
+#   - res: our accumulator
+#   - rest: remaining (unmatched) input
+# 
+# ScanEntry.handler interface:
+# - Input:
+#   - result of Regex.run: list of full match, followed by individual match sites
+#   - parameters from ScanEntry (usually empty)
+#   - accumulator
+# - Output:
+#   - accumulator
 defmodule Scanner do
   # @spec match(list(ScanEntry), list(ScanEntry), list(any()), binary(), boolean()) :: {list(any()), binary()}
   defp match(_rest, _all, acc, "", _skippable), do: {acc, ""}
@@ -86,12 +104,21 @@ defmodule Tex do
 end
 
 defmodule CsharpHandler do
-  defp parse(contents, :outer = _state) do
+  defp parse(contents, [:outer | _] = _state) do
     machine = [
       %ScanEntry{
         re: ~r/^(\s+)/,
         handler: fn [_full, match], _params, %{output: output, state: state} = _acc ->
           %{output: output <> match, state: state}
+        end
+      },
+      %ScanEntry{
+        re: ~r/^([a-zA-Z0-9_]+)(\s+)([a-zA-Z0-9_]+)(\s*=)/,
+        handler: fn [_full, type, space, name, ending],
+                    _params,
+                    %{output: output, state: state} = _acc ->
+          ext = "#{type}#{space}#{name}#{ending}"
+          %{output: output <> ext, state: [:expr | state]}
         end
       },
       %ScanEntry{
@@ -105,7 +132,34 @@ defmodule CsharpHandler do
       }
     ]
 
-    Scanner.process(machine, contents, false, %{output: "", state: :outer})
+    {acc, rest} = Scanner.process(machine, contents, false, %{output: "", state: [:outer]})
+    parse(rest, acc)
+  end
+
+  defp parse(contents, [:expr | last_state] = _state) do
+    machine = [
+      %ScanEntry{
+        re: ~r/^(\s+)/,
+        handler: fn [_full, match], _params, %{output: output, state: state} = _acc ->
+          %{output: output <> match, state: state}
+        end
+      },
+      %ScanEntry{
+        re: ~r/^(\d+|\d+\.\d+)/,
+        handler: fn [_full, match], _params, %{output: output, state: state} = _acc ->
+          %{output: output <> match, state: state}
+        end
+      },
+      %ScanEntry{
+        re: ~r/^(;)/,
+        handler: fn [_full, match], _params, %{output: output, state: state} = _acc ->
+          %{output: output <> match, state: last_state}
+        end
+      }
+    ]
+
+    {acc, rest} = Scanner.process(machine, contents, false, %{output: "", state: [:outer]})
+    parse(rest, acc)
   end
 
   def process(filename, _params) do
@@ -114,7 +168,7 @@ defmodule CsharpHandler do
     result =
       filename
       |> File.read!()
-      |> parse(:outer)
+      |> parse([:outer])
 
     {:handled, result}
   end
