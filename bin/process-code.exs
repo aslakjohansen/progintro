@@ -27,6 +27,10 @@ end
 #   - accumulator
 # 
 # An accumulator given through an initial call is repeatedly passed to (and returned from) the handlers from the various ScanEntrys'. These are attempted matched according to the order provided. The final accumulator is returned from Scanner.match along with the unmatched remainder of the input. This should allow the caller to pass the remainder to another call to Scanner.match according to a state managed within the accumulator.
+# 
+# This means that the accumulator has (at least) two functions:
+# - keep state throughout the entire matching sequence
+# - keep the (likely growing) output
 defmodule Scanner do
   # @spec match(list(ScanEntry), list(ScanEntry), list(any()), binary(), boolean()) :: {list(any()), binary()}
   defp match(_rest, _all, acc, "", _skippable), do: {acc, ""}
