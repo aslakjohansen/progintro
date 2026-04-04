@@ -1,0 +1,40 @@
+\begin{center}
+\begin{minipage}{5.7cm}
+\begin{minted}[breaklines,highlightlines={},escapeinside=||]{csharp}
+|\tikzmark{returntypebefore}|int|\tikzmark{returntypeafter}| |\tikzmark{sigbefore}||\tikzmark{namebefore}|max|\tikzmark{nameafter}| (|\tikzmark{parbefore}|int num1, int num2|\tikzmark{parafter}|)|\tikzmark{sigafter}| {
+
+|\tikzmark{bodybefore}|  int result;
+
+if (num1 > num2) {
+  result = num1;
+} else {
+  result = num2;
+}
+
+|\tikzmark{bodyafter}|  return result;|\tikzmark{returnstatement}|
+}
+\end{minted}
+\end{minipage}
+\end{center}
+\begin{tikzpicture}[remember picture]
+  % method name
+  \draw[overlay, decorate,decoration={brace, amplitude=10pt, raise=11pt}] (pic cs:namebefore) to node[black,midway,above=21pt] {\rotatebox{90}{name}} (pic cs:nameafter);
+  
+  % parameter list
+  \draw[overlay, decorate,decoration={brace, amplitude=10pt, raise=11pt}] (pic cs:parbefore) to node[black,midway,above=21pt] {parameter list} (pic cs:parafter);
+  
+  % signature
+  \draw[overlay, decorate,decoration={brace, mirror, amplitude=10pt, raise=5pt, aspect=0.8}] (pic cs:sigbefore) to node[black,midway,below=15pt] {\hspace{28mm} signature} (pic cs:sigafter);
+  
+  % return type
+  \draw[overlay, decorate,decoration={brace, amplitude=10pt, raise=11pt}] (pic cs:returntypebefore) to node[black,midway,above=21pt] {\rotatebox{90}{return}\\\rotatebox{90}{type}} (pic cs:returntypeafter);
+  
+  % prototype
+  \draw[overlay, decorate,decoration={brace, mirror, amplitude=10pt, raise=5pt}] ([yshift=3mm] pic cs:returntypebefore) to node[black,midway,left=15pt] {\rotatebox{0}{function prototype}} ([yshift=-1mm] pic cs:returntypebefore);
+  
+  % return statement
+  \draw[overlay, decorate,decoration={brace, amplitude=10pt, raise=5pt}] ([yshift=3.5mm] pic cs:returnstatement) to node[black,midway,right=15pt] {return statement} ([yshift=-2mm] pic cs:returnstatement);
+  
+  % body
+  \draw[overlay, decorate,decoration={brace, mirror, amplitude=10pt, raise=5pt}] ([yshift=2mm] pic cs:bodybefore) to node[black,midway,left=15pt] {\rotatebox{90}{function body}} (pic cs:bodyafter);
+\end{tikzpicture}
