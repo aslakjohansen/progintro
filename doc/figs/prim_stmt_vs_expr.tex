@@ -1,0 +1,49 @@
+\begin{center}
+  \begin{tikzpicture}
+    \newcommand{\spacing}[0]{ 6mm }
+    
+    \tikzstyle{nt}=[
+      draw=\SyntaxNonterminalColor,
+      text=\SyntaxNonterminalColor,
+      fill=\SyntaxNonterminalColor!5,
+      minimum height=10mm,
+      anchor=north,
+      very thick,
+      align=center,
+    ]
+    \tikzstyle{t}=[
+      draw=\SyntaxTerminalColor,
+      text=\SyntaxTerminalColor,
+      fill=\SyntaxTerminalColor!5,
+      minimum height=10mm,
+      anchor=north,
+      very thick,
+      align=center,
+    ]
+    
+    \tikzstyle{edge} = [thick,->,>=stealth,draw=black]
+    
+    \node[nt] (full) at (0,0) {\textsl{stmt}\\\texttt{int i = 42 + j++ * k}};
+    \node[t] (name) at ([yshift=-\spacing]full.south) {\textsl{name}\\\texttt{i}};
+    \node[t,anchor=east] (type) at ([xshift=-\spacing]name.west) {\textsl{type}\\\texttt{int}};
+    \node[nt,anchor=west] (expr) at ([xshift=\spacing]name.east) {\textsl{expr}\\\texttt{42 + j++ * k}};
+    \node[t] (pop) at ([yshift=-\spacing]expr.south) {\textsl{operator}\\\texttt{+}};
+    \node[t,anchor=east] (pop answer) at ([xshift=-\spacing]pop.west) {\textsl{value}\\\texttt{42}};
+    \node[nt,anchor=west] (pop subexpr) at ([xshift=\spacing]pop.east) {\textsl{expr}\\\texttt{j++ * k}};
+    \node[t] (mop) at ([yshift=-\spacing]pop subexpr.south) {\textsl{operator}\\\texttt{*}};
+    \node[nt,anchor=east] (mop answer) at ([xshift=-\spacing]mop.west) {\textsl{expr}\\\texttt{j++}};
+    \node[t,anchor=west] (mop subexpr) at ([xshift=\spacing]mop.east) {\textsl{name}\\\texttt{k}};
+    \node[t] (j) at ([yshift=-\spacing]mop answer.south) {\textsl{name}\\\texttt{j}};
+    
+    \draw[edge] (full) -- (name);
+    \draw[edge] ([xshift=-1*\spacing]full.south) to[out=270,in=90] (type.north);
+    \draw[edge] ([xshift= 1*\spacing]full.south) to[out=270,in=90] (expr.north);
+    \draw[edge] (expr) -- (pop);
+    \draw[edge] ([xshift=-1*\spacing]expr.south) to[out=270,in=90] (pop answer.north);
+    \draw[edge] ([xshift= 1*\spacing]expr.south) to[out=270,in=90] (pop subexpr.north);
+    \draw[edge] (pop subexpr) -- (mop);
+    \draw[edge] ([xshift=-1*\spacing]pop subexpr.south) to[out=270,in=90] (mop answer.north);
+    \draw[edge] ([xshift= 1*\spacing]pop subexpr.south) to[out=270,in=90] (mop subexpr.north);
+    \draw[edge] (mop answer) -- (j);
+  \end{tikzpicture}
+\end{center}
