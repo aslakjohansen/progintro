@@ -482,7 +482,98 @@ When this happens, we use parentheses to force a specific interpretation. Novice
 
 \section{State Transformation}
 
+\section{Statements vs Expressions}
 
+A language can be said to be defined through three layers:
+\begin{enumerate}
+    \descitem{Syntax} Describing how the structure of valid code \textsl{looks}.
+    \descitem{Semantics} Describing what code \textsl{means}, and by extension how it should be interpreted.
+    \descitem{Libraries} Contain reusable code fragments, written using the same syntax and semantics.
+\end{enumerate}
+In this section we use syntax and semantics to describe pre- and post incrementation and decrementation.
+
+We have covered various forms of expressions and statements through the \conceptname{expr} and \conceptname{stmt} rules. Certain expressions can be used as statements. We could call them \idx{expression statements}{Expression statement}. While expression statements are evaluated to a value, they also have \idx{side-effects}{Side-effect}, like modifying some state in memory (e.g., a variable). The necessary additions to the language can be found in syntax \ref{syntax:prim:exprstmt}.
+
+% syntax: pre/post increment/decrement
+\begin{syntaxfloat}
+  \input{syntax/prim_expr_stmt.tex}
+  \caption{Expression statements.}
+  \label{syntax:prim:exprstmt}
+\end{syntaxfloat}
+
+Take the following \csharp\ code as an example:
+\begin{minted}{csharp}
+int i = 42 + j++ * i;
+\end{minted}
+
+In order to compile this to \idx{bytecode}{Bytecode} that the \idx{CLR}{CLR} (the .NET virtual machine) can execute, it must first parse it to a syntax tree. This is done according to syntax rules presented in this chapter and results in the parse free of figure \ref{fig:prim:stmtVSexpr}.
+
+% figure: parse tree
+\begin{figure}[tbp]
+  \input{figs/prim_stmt_vs_expr.tex}
+  \caption{Parse tree of \texttt{int i = 42 + j++ * i}.}
+  \label{fig:prim:stmtVSexpr}
+\end{figure}
+
+Each node contains annotations of semantic classes, and not part of the tree structure itself. The top node represents the root of the tree. It then branches off into \textsl{child nodes} and ends up in \textsl{leaf nodes} (those that have no children). This is the parsed statement produced by the parsing of the code. It matches a pattern in the semantic class \conceptname{stmt} that is composed of three class elements. An \textsl{edge} connects the root statement to each of these. The first is a \conceptname{type}, the next is a \conceptname{name} and the last is an \conceptname{expr}. That last \conceptname{expr} takes the form of a multiplication. Try to continue this description of the remainder of the parse tree yourself.
+
+\subsection{Semantics}
+
+The semantics of a language defines what the expressions, statements, operators and the like \textsl{mean}. For instance, the operator \texttt{+} adds two values. The expression \texttt{\varname{a} + 1} evaluates the \texttt{+} operator on the value referenced by the variable \varname{a} and the constant \texttt{1}. Knowing these rules, the parse tree should be evaluated from the leaves towards the root.
+
+\subsubsection{Pre Incrementation}
+
+Pre incrementation is an example of more complex semantics. It essentially does two operations:
+\begin{itemize}
+  \item First, it \textsl{increments} (that is, it increases a value) the value of a variable by one.
+  \item Next, the expression statement takes the value of the that variable.
+\end{itemize}
+Lets look at a concrete example:
+\begin{minted}{csharp}
+int i = 1;
+int j = ++i;
+\end{minted}
+The first line declares a variable \varname{i} and assigns the value \texttt{1} to it. In the second line, \texttt{++\varname{i}} is first evaluated. In doing so, \varname{i} is incremented to the value 2 and then this value is used as the \textsl{result} of that evaluation. That is, the evaluation of \texttt{++\varname{i}}. Still in the second line, \varname{j} is then assigned this value. After those two lines, we can describe the state as $\{\mathrm{i} \mapsto 2, \mathrm{j} \mapsto 2\}$.
+
+\subsubsection{Pre Decrementation}
+
+This is exactly the same as pre incrementation, only with a different operator. The corresponding example is:
+\begin{minted}{csharp}
+int i = 1;
+int j = --i;
+\end{minted}
+Again, we assign the value \texttt{1} to \varname{i}, and again we perform an operation on \varname{i} before we assign the value of \varname{i} to \varname{j}. Accordingly, we end up with the state $\{\mathrm{i} \mapsto 0, \mathrm{j} \mapsto 0\}$.
+
+\subsubsection{Post Incrementation}
+
+Post incrementation changes the order of the two operations involved, so that:
+\begin{itemize}
+    \item First, the expression statement takes the original value of the variable.
+    \item Next, it \textsl{increments} the value of the variable by one.
+\end{itemize}
+The example is:
+\begin{minted}{csharp}
+int i = 1;
+int j = i++;
+\end{minted}
+Once again, we start by assigning a value \texttt{1} to \varname{i}. Then we extract the value of \varname{i} (that is the \texttt{1} we have just assigned). Next, we increment \varname{i} by one and marks \texttt{\varname{i}++} as having the previously extracted value. This is then assigned to \varname{j}, and we are left with the state $\{\mathrm{i} \mapsto 2, \mathrm{j} \mapsto 1\}$.
+
+\subsubsection{Post Decrementation}
+
+If you have any doubt regarding the outcome of the following code, then I suggest that you figure it out experimentally by writing a program:
+\begin{minted}{csharp}
+int i = 1;
+int j = i--;
+\end{minted}
+
+\subsubsection{Summary}
+
+These expression statements can be thought of has having two components:
+\begin{itemize}
+    \descitem{A Side-Effect} This is an operation (plus or minus one) on a variable.
+    \descitem{A Value} This is taken from the variable.
+\end{itemize}
+When the value is extracted from the variable is determined by whether the \texttt{++} or \texttt{-{}-} is located before or after the variable in the code.
 
 \section{Resolving Uncertainty}
 
