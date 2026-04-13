@@ -1,7 +1,7 @@
 \chapter{Code Reuse}
 \label{sec:func}
 
-% motivation: 
+% motivation: in the last chapter we covered branching and loops for flow control, this gave us mechanisms for selective and repeated execution of statements, the repetition constructs allows us to repeatedly call some lines of code from the same location in code, that is every time we get to a specific part of a loop we execute these lines, but what if there are two places where we want to execute those lines? We certainly could duplicate those lines, but that solution doesn't scale, you will soon see situation where there are tens of such locations and accept that there can easily be tens of thousands, technically we could have that many copies but that would be expensive in terms of memory and -- more importantly -- impose a severe maintenance burden on us, what happens when we want to extend that functionality or find a bug? Then we need to find all of these potentially thousands of locations and update them, we need tooling for that
 
 \section{Mathematical Functions}
 
