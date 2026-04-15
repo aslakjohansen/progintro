@@ -15,13 +15,11 @@ Functions -- like many of the concepts that we will introduce later on -- give \
 % definition: by taking a few liberties we can define a mathematical function as a mapping from a list of values to a single value, the list of input values are matched against and assigned to the symbolic names of the function definition, the mapping is expressed -- if we put on our programming glasses -- as an expression over these symbolic names
 By taking a few liberties, we can define a mathematical function as a mapping from a list of values to a single value. The list of input values are matched against and assigned to the symbolic names of the function definition. The mapping itself is expressed -- if we put on our programming glasses -- as an expression over these symbolic names.
 
-\section{Concrete Implementations}
-
 \subsection{Linear Functions}
 
 \subsection{Area of Rectangle}
 
-\subsection{\csharp}
+\section{\csharp}
 
 \begin{syntaxfloat}
   \input{syntax/fun.tex}
@@ -31,7 +29,7 @@ By taking a few liberties, we can define a mathematical function as a mapping fr
 
 % nested functions
 
-\subsubsection{Anatomy of a Function}
+\subsection{Anatomy of a Function}
 
 % intro: recap of what a mathematical function is, figure \ref{fig:fun:anatomy} exemplifies the structure of the programming equivalent,
 
@@ -44,19 +42,19 @@ By taking a few liberties, we can define a mathematical function as a mapping fr
 % parameters vs arguments: a function is a parameterized piece of code, the concrete values that the parameters are bound to are called arguments, this constitutes the input interface of the function
 A function is a parameterized piece of code. We can describe that function from the outside through its three interfaces, namely: The input interface, the output interface and the sideeffect interface. On the input side, we have typed parameters. When invoked (or as we often say: called), the parameters available to the function body are bound to concrete values from the calling side. We can refer to these concrete values as arguments.
 
-\subsubsection{Returning Values}
+\subsection{Returning Values}
 
 % when can a call be placed as an expression? when does it need to be as a statement?
 
 % the output interface of the function, the explict way of describing what (as in type) the function evaluates to
 
-\subsubsection{Side-Effects}
+\subsection{Side-Effects}
 
 % the side-effect interface of the function: the primary interface consists of inputs and outputs, side-effects is an umbrella term that covers every other effect (that is, how it affects the part of the world that is external to it)
 
 % function purity
 
-\subsubsection{Dispatch}
+\subsection{Dispatch}
 
 % problem: identification of function implementation, 
 
@@ -64,11 +62,11 @@ A function is a parameterized piece of code. We can describe that function from 
 
 \subsection{The Stack}
 
-\subsection{Python}
+\section{Python}
 
 % def keyword
 
-\subsection{Elixir}
+\section{Elixir}
 
 % anonymous functions, we will see real functions later on
 
