@@ -76,6 +76,10 @@ A function is a parameterized piece of code. We can describe that function from 
 
 % introduction: as the body of a function is an ordinary statement functions can call functions, this leads to one challenge in particular: as the code of a function is compiled to machine code variables are mapped to registers, what happens if a function calls itself? Are those variables then shared across the two invocations? while that could be useful it would certainly be confusing, in fact most programming language designers (those of \csharp included) have decided that it too confusing, their solution is to include a program-wide datastructure called *the stack* that can store the registers of the calling functions so that the called function is free to do with them as it pleases, as a side-effect this greatly simplifies the compilation process as compilation can be done on a per-function bases
 
+% what is a stack: 
+
+% stack frames: 
+
 \section{Python}
 
 % def keyword

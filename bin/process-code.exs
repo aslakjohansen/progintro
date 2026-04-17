@@ -1,7 +1,7 @@
 #!/usr/bin/env elixir
 
 _filename = "../doc/document.tex"
-filename = "/tmp/test.tex"
+filename = "/tmp/repo/doc/test.tex"
 
 defmodule ScanEntry do
   defstruct re: nil, handler: nil, params: nil
@@ -33,7 +33,7 @@ end
 # - keep the (likely growing) output
 defmodule Scanner do
   # @spec match(list(ScanEntry), list(ScanEntry), list(any()), binary(), boolean()) :: {list(any()), binary()}
-  defp match(_rest, _all, acc, "", _skippable), do: {acc, ""}
+  defp match(_rest, _all, acc, input, _skippable) when input == "", do: {acc, input}
 
   defp match([], all, acc, input, skippable) when skippable == true do
     match(all, all, acc, String.slice(input, 1..-1//1), skippable)
@@ -49,18 +49,25 @@ defmodule Scanner do
     r = Regex.run(re, input)
 
     if r == nil do
+      IO.puts("failed match input='#{input}'")
+      IO.inspect(re)
       match(rest, all, acc, input, skippable)
     else
-      l = r |> Enum.at(0) |> String.length()
+      IO.inspect(acc)
+      IO.puts("calling handler")
       acc = handler.(r, params, acc)
+      IO.puts("handler returns")
+      IO.inspect(acc)
+      l = r |> Enum.at(0) |> String.length()
       input = String.slice(input, l..-1//1)
       match(all, all, acc, input, skippable)
     end
   end
 
-  def process(machine, input, skippable, acc \\ []) do
+  def process(machine, input, skippable, acc) do
     {res, rest} = match(machine, machine, acc, input, skippable)
-    {Enum.reverse(res), rest}
+    {res, rest}
+    # removed a referse here
   end
 end
 
@@ -74,7 +81,7 @@ defmodule Tex do
     machine = [
       %ScanEntry{
         re: ~r/^\\input{([^}#]+)}/,
-        handler: fn [_ | [filename | _]], _params, acc ->
+        handler: fn [_, filename], _params, acc ->
           process(filename) ++ acc
         end
       },
@@ -96,7 +103,7 @@ defmodule Tex do
       }
     ]
 
-    Scanner.process(machine, contents, true)
+    Scanner.process(machine, contents, true, [])
     |> elem(0)
   end
 
@@ -110,11 +117,14 @@ defmodule Tex do
 end
 
 defmodule CsharpHandler do
-  defp parse(contents, [:outer | _] = _state) do
+  defp parse(contents, %{state: [:outer | _], output: _output} = acc) do
     machine = [
       %ScanEntry{
         re: ~r/^(\s+)/,
-        handler: fn [_full, match], _params, %{output: output, state: state} = _acc ->
+        handler: fn [_full, match], _params, %{output: output, state: state} = acc ->
+          IO.puts("CsharpHandler.parse outer whitespace output='#{output}' match='#{match}'")
+          IO.inspect(acc)
+
           %{output: output <> match, state: state}
         end
       },
@@ -124,6 +134,7 @@ defmodule CsharpHandler do
                     _params,
                     %{output: output, state: state} = _acc ->
           ext = "#{type}#{space}#{name}#{ending}"
+          IO.puts("CsharpHandler.parse outer assignment output='#{output}' ext='#{ext}'")
           %{output: output <> ext, state: [:expr | state]}
         end
       },
@@ -138,34 +149,43 @@ defmodule CsharpHandler do
       }
     ]
 
-    {acc, rest} = Scanner.process(machine, contents, false, %{output: "", state: [:outer]})
-    parse(rest, acc)
+    {acc, rest} = Scanner.process(machine, contents, false, acc)
+    IO.puts("returns:")
+    IO.inspect(rest)
+    IO.inspect(acc)
+    {acc, rest}
+    # parse(rest, acc)
+    # we need to somehow process the :expr that has been prepended
   end
 
-  defp parse(contents, [:expr | last_state] = _state) do
+  defp parse(contents, %{state: [:expr | last_state], output: _output} = acc) do
     machine = [
       %ScanEntry{
         re: ~r/^(\s+)/,
         handler: fn [_full, match], _params, %{output: output, state: state} = _acc ->
+          IO.puts("CsharpHandler.parse expr space output='#{output}' match='#{match}'")
           %{output: output <> match, state: state}
         end
       },
       %ScanEntry{
         re: ~r/^(\d+|\d+\.\d+)/,
         handler: fn [_full, match], _params, %{output: output, state: state} = _acc ->
+          IO.puts("##############################################################")
+          IO.puts("CsharpHandler.parse expr number output='#{output}' match='#{match}'")
           %{output: output <> match, state: state}
         end
       },
       %ScanEntry{
         re: ~r/^(;)/,
-        handler: fn [_full, match], _params, %{output: output, state: state} = _acc ->
+        handler: fn [_full, match], _params, %{output: output, state: _state} = _acc ->
+          IO.puts("CsharpHandler.parse expr scolon output='#{output}' match='#{match}'")
           %{output: output <> match, state: last_state}
         end
       }
     ]
 
-    {acc, rest} = Scanner.process(machine, contents, false, %{output: "", state: [:outer]})
-    parse(rest, acc)
+    {_acc, _rest} = Scanner.process(machine, contents, false, acc)
+    # parse(rest, acc)
   end
 
   def process(filename, _params) do
@@ -174,7 +194,7 @@ defmodule CsharpHandler do
     result =
       filename
       |> File.read!()
-      |> parse([:outer])
+      |> parse(%{state: [:outer], output: ""})
 
     {:handled, result}
   end
