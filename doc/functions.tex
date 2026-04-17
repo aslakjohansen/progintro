@@ -81,6 +81,7 @@ As the body of a function is an ordinary statement, functions can call functions
 Think of a stack as a stack of papers. It is a form of data structure that has two operations: You can add a value to the top of it (through a push operation) and you can remove a value from the top of it (through a pop operation). In reality, this means that the stack operates as a last-in-first-out (or LIFO) mechanism. Stacks are generic datastructures that are frequently used in programming. When we refer to \say{the stack} then it is the stack that keeps track of the variables that are local to calling function invocations that we mean.
 
 % stack frames: instead of placing individual values on the stack we place stack frames, these are structures of data that match what needs to be saved, everything that needs to be reestablished on return from the function call can be "removed" in a single operation
+Instead of placing individual values on the stack, we place stack frames. These are structures of data that match what needs to be saved. Everything that needs to be reestablished on return from the function call can then be popped in a single operation.
 
 \section{Python}
 
