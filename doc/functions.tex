@@ -71,6 +71,7 @@ The output interface of a function is explicitly described through the return ty
 If we want the function to evaluate to an \typename{int} then the return type should be \typename{int}. We can have any valid type as return type, even the complex types that we define ourselves. But unlike mathematical functions, not all \csharp\ functions evaluate to a value. Perhaps they simply print out a datastructure in a readable way. Instead of having such functions return some value that doesn't carry any meaning (e.g., a zero) have have the return type follow from that value, \csharp\ has a \typename{void} type. If a function has a return type of \typename{void} then it doesn't evaluate to a value and is thus not allowed to return a value.
 
 % when can a call be placed as an expression? when does it need to be as a statement?
+Any function call can be used as a statement. When used as a statement, any return value will be discarded. For a function call to be used as an expression, it naturally must produce a value and that value must be of a type that is compatible with the use of that expression (i.e., its parent node in the parse tree). A \typename{void} function does not return a value and can thus never be used as an expression.
 
 \subsection{Side-Effects}
 
