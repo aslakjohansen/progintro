@@ -74,6 +74,13 @@ If we want the function to evaluate to an \typename{int} then the return type sh
 Unlike mathematical functions, not all \csharp\ functions evaluate to a value. Perhaps they simply print out a datastructure in a readable way. Instead of having such functions return some value that doesn't carry any meaning (e.g., a zero) have have the return type follow from that value, \csharp\ has a \typename{void} type. If a function has a return type of \typename{void} then it doesn't evaluate to a value and is thus not allowed to return a value.
 
 % return statement rules: every path through the function must end in a return statement, nothing must exist after a return statement (how would it be reached? indicator for a programming error), all return values must match the return type of the function
+A special return statement is used to explicitly state which value to evaluate to. The valid uses of return statements are governed by the following rules:
+\begin{itemize}
+  \item Every path through the function must end in a return statement (unless it is a \typename{void} function).
+  \item A \typename{void} function has an implicit return statement at the end.
+  \item No path through a function is allowed to have any statement after a return statement. How would such statement be reached? It is a clear indicator of a programming mistake.
+  \item All return values must match the return type of the surrounding function. If it is a \typename{void} function, then the return statement does not take an expression.
+\end{itemize}
 
 % when can a call be placed as an expression? when does it need to be as a statement?
 Any function call can be used as a statement. When used as a statement, any return value will be discarded. For a function call to be used as an expression, it naturally must produce a value and that value must be of a type that is compatible with the use of that expression (i.e., its parent node in the parse tree). A \typename{void} function does not return a value and a call to it can thus never be used as an expression.
