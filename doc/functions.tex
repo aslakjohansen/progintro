@@ -68,6 +68,7 @@ We can describe the interface of a function from three sides:
 The output interface of a function is explicitly described through the return type. In the subset of \csharp\ that we cover in this book, only one value can be returned. That value can be complex though. Do note that this is an artificial restriction that we add to keep things (relatively) simple.
 
 % the void type
+If we want the function to evaluate to an \typename{int} then the return type should be \typename{int}. We can have any valid type as return type, even the complex types that we define ourselves. But unlike mathematical functions, not all \csharp\ functions evaluate to a value. Perhaps they simply print out a datastructure in a readable way. Instead of having such functions return some value that doesn't carry any meaning (e.g., a zero) have have the return type follow from that value, \csharp\ has a \typename{void} type. If a function has a return type of \typename{void} then it doesn't evaluate to a value and is thus not allowed to return a value.
 
 % when can a call be placed as an expression? when does it need to be as a statement?
 
