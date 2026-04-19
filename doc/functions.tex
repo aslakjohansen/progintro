@@ -93,6 +93,8 @@ Any function call can be used as a statement. When used as a statement, any retu
 
 \subsection{Caller and Callee}
 
+We are always in some function, even in our hello world example from section \ref{first:projectcreation}. The entirety of this example is a single statement. The compiler will essentially wrap that code in a dummy function. So, whenever a function is called, there are two roles: The caller and the callee. If the function \funcname{a} calls the function \funcname{b}, then we refer to \funcname{a} as the caller and \funcname{b} as the callee.
+
 \subsection{Dispatch}
 
 % problem: identification of function implementation, 
