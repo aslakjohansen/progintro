@@ -97,7 +97,7 @@ The primary interface of a function consists of its inputs and outputs. Function
 % function purity
 Functions that neither have or rely on side-effects are said to be \idx{pure}{Purity!Function}. Such functions are \idx{stateless}{Stateless} and \idx{deterministic}{Deterministic} (in the sense that they will always produce the same output given the same input). This means that the function call can be substituted with the value it evaluates to. This quality is called \idx{referential transparency}{Transparency!Referential}.
 
-\subsection{Caller and Callee}
+\subsection{Caller and Callee Roles}
 
 We are always in some function, even in our hello world example from section \ref{first:projectcreation}. The entirety of this example is a single statement. The compiler will essentially wrap that code in a dummy function. So, whenever a function is called, there are two roles: The caller and the callee. If the function \funcname{a} calls the function \funcname{b}, then we refer to \funcname{a} as the \idx{caller}{Caller} and \funcname{b} as the \idx{callee}{Callee}.
 
