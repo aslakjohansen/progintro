@@ -88,14 +88,14 @@ Any function call can be used as a statement. When used as a statement, any retu
 \subsection{Side-Effects}
 
 % the side-effect interface of the function: the primary interface consists of inputs and outputs, side-effects is an umbrella term that covers every other effect (that is, how it affects the part of the world that is external to it)
-The primary interface of a function consists of its inputs and outputs. Functions can, however, also have \textsl{side-effects}. Side-effect is an umbrella term that covers every other effect. That is, how it affects the part of the world that is external to it. Examples of this include:
+The primary interface of a function consists of its inputs and outputs. Functions can, however, also have \textsl{side-effects}. \idx{Side-effect}{Side-effect} is an umbrella term that covers every other effect. That is, how it affects the part of the world that is external to it. Examples of this include:
 \begin{itemize}
   \item Modifying data that is not local to the function. This would be through a reference.
   \item Printing to the screen.
 \end{itemize}
 
 % function purity
-Functions that neither have or rely on side-effects are said to be pure. Such functions are stateless and deterministic (in the sense that they will always produce the same output given the same input). This means that the function call can be substituted with the value it evaluates to. This quality is called referential transparency.
+Functions that neither have or rely on side-effects are said to be \idx{pure}{Purity!Function}. Such functions are \idx{stateless}{Stateless} and \idx{deterministic}{Deterministic} (in the sense that they will always produce the same output given the same input). This means that the function call can be substituted with the value it evaluates to. This quality is called \idx{referential transparency}{Transparency!Referential}.
 
 \subsection{Caller and Callee}
 
