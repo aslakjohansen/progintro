@@ -103,9 +103,9 @@ We are always in some function, even in our hello world example from section \re
 
 \subsection{Dispatch}
 
-% problem: identification of function implementation, 
+% problem: in order to call a function a concrete implementation must first be identified, a dispatch mechanism is then responsible for handing over the thread of execution to the callee
 
-% solution: 
+% solution: in \csharp this lookup is done based on the combination of the function name and the ordered sequence of parameter types, as a consequence we are allowed to have two function definitions under the same name as long as their parameter type lists differ, that is their signatures are different, if we have two identical signatures then \csharp wouldn't be able to differentiate between them and thus be unable to uniquely dispatch in a consistent manner, because of this such code will result in a compile-time error
 
 \subsection{The Stack}
 
