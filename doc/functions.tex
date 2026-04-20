@@ -128,7 +128,8 @@ Instead of placing individual values on the stack, we place \idx{stack frames}{S
 
 \section{Elixir}
 
-% function lookup in the BEAM: elixir inherits the BEAM runtime from erlang, in it, function dispatch is performed at runtime using function name and number of parameters, this mechanism can be used to redefine the implementation at runtime for hot-code updates, this trades function call speed for maintainability
+% function lookup in the BEAM: elixir inherits the BEAM runtime from erlang, in it function dispatch is performed at runtime using function name and number of parameters, this mechanism can be used to redefine the implementation at runtime for hot-code updates, this trades function call speed for maintainability
+Elixir inherits the BEAM runtime from Erlang. It it, function dispatch is performed by lookup against a table at runtime using function name and parameter count. This indirection can be used to redefine the implementation of functions at runtime, and that ability is used to issue hot updates. These are code updates to a running system. So, function call speed is traded for maintainability. This is especially important for long-running deployments.
 
 % anonymous functions, we will see real functions later on
 
