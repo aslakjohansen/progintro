@@ -88,6 +88,11 @@ Any function call can be used as a statement. When used as a statement, any retu
 \subsection{Side-Effects}
 
 % the side-effect interface of the function: the primary interface consists of inputs and outputs, side-effects is an umbrella term that covers every other effect (that is, how it affects the part of the world that is external to it)
+The primary interface of a function consists of its inputs and outputs. Functions can, however, also have \textsl{side-effects}. Side-effect is an umbrella term that covers every other effect. That is, how it affects the part of the world that is external to it. Examples of this include:
+\begin{itemize}
+  \item Modifying data that is not local to the function. This would be through a reference.
+  \item Printing to the screen.
+\end{itemize}
 
 % function purity
 
