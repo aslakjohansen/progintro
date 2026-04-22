@@ -45,12 +45,13 @@ This constitutes a \defi{color space}{Color!Space} whereby all colors fit within
 \subsection{Arrays}
 
 % definition: array is a simple datastructure in which elements of the same size is laid our contiguously in memory, figure \ref{fig:data:array:alloc} illustrates this, accordingly given a pointer (address) to (the beginning of) the array, an index and an element size we can find the address of an element by
+An array is a simple datastructure which contains zero or more elements of the same size. These elements are laid out contiguously in memory as depicted in figure \ref{fig:data:array:alloc}. Given a pointer to an array (i.e., the address of the beginning of the array allocation) $p$, an index within that array $i$ and a an element size $s$, we can find the address of that element by:
 
-\begin{figure}[tbp]
+\begin{figure*}[tbp]
   \input{figs/data_array_alloc.tex}
   \caption{The positioning of an array in memory.}
   \label{fig:data:array:alloc}
-\end{figure}
+\end{figure*}
 
 \begin{alignat}{1}
   \mathrm{index}(p,i,s) &= p + i \cdot s
