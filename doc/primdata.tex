@@ -44,11 +44,16 @@ This constitutes a \defi{color space}{Color!Space} whereby all colors fit within
 
 \subsection{Arrays}
 
+
 \begin{figure}[tbp]
   \input{figs/data_array_alloc.tex}
   \caption{The positioning of an array in memory.}
   \label{fig:data:array:alloc}
 \end{figure}
+
+\begin{alignat}{1}
+  \mathrm{index}(p,i,s) &= p + i \cdot s
+\end{alignat}
 
 \subsubsection{Indexing}
 
