@@ -16,7 +16,7 @@
 
 % solution (ref type): references do fit into a single register, variables of reference types holds the reference (address) and not the value, two variables may refer to the same data (by holding the same reference), nothing changes with respect to the data being referenced, it still doesn't fit into a single register, but copying the reference is a trivial and fast operation
 
-% solution (acceptance)
+% solution (acceptance): another solution is simply to accept that the datastructure cannot be represented in a single register and deal with the complications that stem/arise from that, this is essentially what you have done so far if you have had two related variables and you needed to make a copy of the combination, so for two values it is easy (and yet it represents a complication), the moment you need to deal with a number of values that is not known at then the code is written, then things get more complicated, luckily those complications are usually handled by the compiler
 
 \section{Structured Data}
 
