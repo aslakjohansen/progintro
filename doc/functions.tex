@@ -88,18 +88,26 @@ Any function call can be used as a statement. When used as a statement, any retu
 \subsection{Side-Effects}
 
 % the side-effect interface of the function: the primary interface consists of inputs and outputs, side-effects is an umbrella term that covers every other effect (that is, how it affects the part of the world that is external to it)
+The primary interface of a function consists of its inputs and outputs. Functions can, however, also have \textsl{side-effects}. \idx{Side-effect}{Side-effect} is an umbrella term that covers every other effect. That is, how it affects the part of the world that is external to it. Examples of this include:
+\begin{itemize}
+  \item Modifying data that is not local to the function. This would be through a reference.
+  \item Printing to the screen.
+\end{itemize}
 
 % function purity
+Functions that neither have or rely on side-effects are said to be \idx{pure}{Purity!Function}. Such functions are \idx{stateless}{Stateless} and \idx{deterministic}{Deterministic} (in the sense that they will always produce the same output given the same input). This means that the function call can be substituted with the value it evaluates to. This quality is called \idx{referential transparency}{Transparency!Referential}.
 
-\subsection{Caller and Callee}
+\subsection{Caller and Callee Roles}
 
 We are always in some function, even in our hello world example from section \ref{first:projectcreation}. The entirety of this example is a single statement. The compiler will essentially wrap that code in a dummy function. So, whenever a function is called, there are two roles: The caller and the callee. If the function \funcname{a} calls the function \funcname{b}, then we refer to \funcname{a} as the \idx{caller}{Caller} and \funcname{b} as the \idx{callee}{Callee}.
 
 \subsection{Dispatch}
 
-% problem: identification of function implementation, 
+% problem: in order to call a function a concrete implementation must first be identified, a dispatch mechanism is then responsible for handing over the thread of execution to the callee
+In order to call a function, a concrete implementation must first be identified. This is done for us by the compiler. A \idx{dispatch mechanism}{Dispatch mechanism} is responsible for handing over the \idx{thread of execution}{Thread of execution} to the called function.
 
-% solution: 
+% solution: in \csharp this lookup is done based on the combination of the function name and the ordered sequence of parameter types, as a consequence we are allowed to have two function definitions under the same name as long as their parameter type lists differ, that is their signatures are different, if we have two identical signatures then \csharp wouldn't be able to differentiate between them and thus be unable to uniquely dispatch in a consistent manner, because of this such code will result in a compile-time error
+In \csharp, this lookup is done based on the combination of the function name and the ordered sequence of parameter types. As a consequence of this, we are allowed to have two functions of the same name as long as their parameter type lists differ. That is, their \idx{signatures}{Signature} must be unique. If we have two identical signatures, then \csharp wouldn't be able to differentiate between them and thus be unable to uniquely dispatch in a consistent manner. Because of this, such code will result in a \idx{compile-time error}{Error!Compile-time}.
 
 \subsection{The Stack}
 
@@ -114,9 +122,14 @@ Instead of placing individual values on the stack, we place \idx{stack frames}{S
 
 \section{Python}
 
+% python is a scripting language, there is no separate compilation phase, function lookup is dynamic, we can get a runtime error from a missing function
+
 % def keyword
 
 \section{Elixir}
+
+% function lookup in the BEAM: elixir inherits the BEAM runtime from erlang, in it function dispatch is performed at runtime using function name and number of parameters, this mechanism can be used to redefine the implementation at runtime for hot-code updates, this trades function call speed for maintainability
+Elixir inherits the BEAM runtime from Erlang. It it, function dispatch is performed by lookup against a table at runtime using function name and parameter count. This indirection can be used to redefine the implementation of functions at runtime, and that ability is used to issue hot updates. These are code updates to a running system. So, function call speed is traded for maintainability. This is especially important for long-running deployments.
 
 % anonymous functions, we will see real functions later on
 

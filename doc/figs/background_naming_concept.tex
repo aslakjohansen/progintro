@@ -1,0 +1,58 @@
+\begin{center}
+  \begin{tikzpicture}[]
+    \tikzstyle{arrow} = [thick,->,>=stealth, draw=black]
+    \tikzstyle{point} = [diamond,draw=black,inner sep=0.4mm]
+    \tikzstyle{hl} = [very thick,draw=purple,fill=purple!20]
+    
+    \node[ellipse, thick, draw, minimum height=1.2cm, minimum width=2.4cm,anchor=center] (context) at (7,-0.5) {};
+    \node[draw=none,anchor=center] (countdst) at (context) {\textbf{Context}};
+    
+    \node[rounded corners=2mm, thick, draw, minimum height=1.2cm, minimum width=2cm,anchor=center] (mapper) at (7,-2.5) {Name-mapping};
+    
+    \node[ellipse, thick, draw, minimum height=5cm, minimum width=5cm,anchor=center] (src) at (2.5,-2.5) {};
+    \node[draw=none,anchor=center] (countdst) at (2.5,-0.5) {\textbf{Name}};
+    
+    \node[ellipse, thick, draw, minimum height=5cm, minimum width=5cm,anchor=center] (dst) at (11.5,-2.5) {};
+    \node[draw=none,anchor=center] (countdst) at (11.5,-0.5) {\textbf{Value}};
+    
+    \draw[arrow] (src.east) -- (mapper.west);
+    \draw[arrow] (mapper.east) -- (dst.west);
+    \draw[arrow] (context.south) -- (mapper.north);
+    
+    % points in name universe
+    \node[point,hl] () at ([xshift=-1.038778714cm,yshift=0.4793650325cm]src.center) {};
+    \node[point] () at ([xshift=-0.3189004127cm,yshift=-0.2951679697cm]src.center) {};
+    \node[point] () at ([xshift=0.6347331735cm,yshift=0.9036238451cm]src.center) {};
+    \node[point] () at ([xshift=1.581653974cm,yshift=-0.5498122924cm]src.center) {};
+    \node[point] () at ([xshift=1.4800544475cm,yshift=0.5443216741cm]src.center) {};
+    \node[point] () at ([xshift=-1.3132867631cm,yshift=0.2821016667cm]src.center) {};
+    \node[point] () at ([xshift=-0.034363229cm,yshift=-1.6303052806cm]src.center) {};
+    \node[point] () at ([xshift=1.1394843704cm,yshift=-1.1227989184cm]src.center) {};
+    \node[point] () at ([xshift=-0.2093829124cm,yshift=0.4762554271cm]src.center) {};
+    \node[point] () at ([xshift=-0.4821786336cm,yshift=0.6762260237cm]src.center) {};
+    \node[point] () at ([xshift=-0.3888891983cm,yshift=0.8481397862cm]src.center) {};
+    \node[point] () at ([xshift=-0.9836626638cm,yshift=1.2963652142cm]src.center) {};
+    \node[point] () at ([xshift=-1.5079431995cm,yshift=-0.0291752875cm]src.center) {};
+    \node[point] () at ([xshift=0.5987067891cm,yshift=0.6169328302cm]src.center) {};
+    \node[point] () at ([xshift=1.5184263208cm,yshift=-0.2007129028cm]src.center) {};
+    \node[point] () at ([xshift=-0.2990265121cm,yshift=-1.0791849845cm]src.center) {};
+    
+    % points in value universe
+    \node[point] () at ([xshift=-0.5551776501cm,yshift=0.3322550585cm]dst.center) {};
+    \node[point] () at ([xshift=0.5165668807cm,yshift=1.480885983cm]dst.center) {};
+    \node[point,hl] () at ([xshift=0.4932956804cm,yshift=-0.7208661322cm]dst.center) {};
+    \node[point] () at ([xshift=1.1951151957cm,yshift=0.875385296cm]dst.center) {};
+    \node[point] () at ([xshift=0.9449629879cm,yshift=-0.269985298cm]dst.center) {};
+    \node[point] () at ([xshift=0.3551247404cm,yshift=1.0293367111cm]dst.center) {};
+    \node[point] () at ([xshift=-0.8085656165cm,yshift=0.2645115312cm]dst.center) {};
+    \node[point] () at ([xshift=-0.7652878722cm,yshift=0.6009478384cm]dst.center) {};
+    \node[point] () at ([xshift=-1.4846547508cm,yshift=0.2312554925cm]dst.center) {};
+    \node[point] () at ([xshift=1.0390879049cm,yshift=-0.8822629894cm]dst.center) {};
+    \node[point] () at ([xshift=-1.6092347026cm,yshift=-0.6665691987cm]dst.center) {};
+    \node[point] () at ([xshift=-0.0200034718cm,yshift=1.1863308913cm]dst.center) {};
+    \node[point] () at ([xshift=-0.8511278387cm,yshift=0.7883811055cm]dst.center) {};
+    \node[point] () at ([xshift=-0.6553680288cm,yshift=-0.6898920274cm]dst.center) {};
+    \node[point] () at ([xshift=1.0842067146cm,yshift=0.1635080166cm]dst.center) {};
+    \node[point] () at ([xshift=0.2906254913cm,yshift=0.7627023752cm]dst.center) {};
+  ﻿﻿\end{tikzpicture}
+\end{center}

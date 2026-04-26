@@ -6,7 +6,17 @@
 
 \subsection{Complex Types}
 
+% atomic types: types that cannot meaningfully be subdivided further, yes an int can be split into bits but why would I care if the 7th bit is set? it gets a bit more murky with floats, here I might want to look into the sign or the magnitude (exponent), but all the float instructions of our processor operate at the unit of a float, so atomic is an apt qualifier for such types (real atoms also consists of smaller elements), in \csharp\ they are called primitive
+
+% complex types: complex types are are complexes of data, they contain (or at least may contain) multiple elements of data, these data can in turn be atomic or complex, those complex types can arrange and expose their elements in different ways, this chapter will cover the most basic variations, because these types structure data we call them datastructures
+
 \subsection{Reference Types}
+
+% problem: from the compilers point of view atomic types are easy to work with, an atomic type fits into a register and can be read read from and written to memory through a single operation, a complex type on the other hand does not fit into a single register, and so the compiler has to decide how large a part of the data needs to be loaded from memory to registers how and how much needs to be written back after we are done with it, later on you will learn the multiple things can go on at the same time within the same program, so the the implementation of this needs to ensure that a consistent view of the data is presented to all these ongoing things
+
+% solution (ref type): references do fit into a single register, variables of reference types holds the reference (address) and not the value, two variables may refer to the same data (by holding the same reference), nothing changes with respect to the data being referenced, it still doesn't fit into a single register, but copying the reference is a trivial and fast operation
+
+% solution (acceptance): another solution is simply to accept that the datastructure cannot be represented in a single register and deal with the complications that stem/arise from that, this is essentially what you have done so far if you have had two related variables and you needed to make a copy of the combination, so for two values it is easy (and yet it represents a complication), the moment you need to deal with a number of values that is not known at then the code is written, then things get more complicated, luckily those complications are usually handled by the compiler
 
 \section{Structured Data}
 
@@ -15,10 +25,10 @@
 \subsection{Colors}
 
 % light as a spectrum
-\defix{Light} is made up of photons, and each \idx{photon}{Photon} has a wavelength. The \defi{wavelength}{Wavelength} of the photons determines which color our eyes will observe. A wavelength of 380nm is \idx{violet}{Violet} and one of 740nm is \idx{red}{Red}. In between these you have all the colors of the \idx{rainbow}{Rainbow}, in the order of the rainbow. Coincidence? Just outside of the \idx{visible spectrum}{Spectrum!Visible}, you will find \idx{infra-red}{Infra-red} and \idx{ultra-violet}{Untra-violet}. Our eyes are, however, constantly bombarded by photons, so in reality we always observe a distribution across this spectrum. Our \idx{eyes}{Eye}, though only has three (or four) tunings of receptors. These, roughly corresponds to red, green and blue. So, your eyes (and \idx{brains}{Brain}) need to do a lot of interpretation.
+\defix{Light} is made up of photons, and each \idx{photon}{Photon} has a wavelength. The \defi{wavelength}{Wavelength} of the photons determines which color our eyes will observe. A wavelength of 380nm is \idx{violet}{Violet} and one of 740nm is \idx{red}{Red}. In between these you have all the colors of the \idx{rainbow}{Rainbow}, in the order of the rainbow. Coincidence? Just outside of the \idx{visible spectrum}{Spectrum!Visible}, you will find \idx{infra-red}{Infra-red} and \idx{ultra-violet}{Ultra-violet}. Our eyes are, however, constantly bombarded by photons, so in reality we always observe a distribution across this spectrum. Our \idx{eyes}{Eye}, though only has three (or four) tunings of receptors. These, roughly corresponds to red, green and blue. So, your eyes (and \idx{brains}{Brain}) need to do a lot of interpretation.
 
 % computer representation
-In a computer, colors are typically \idx{represented}{Representation!Color} using three values; one for red intensity, one for green intensity, and one for blue intensity. That somehow matches the model of our eyes \ldots We say that these are the \textsl{components} of the color. There is a number of ways to express such an \idx{intensity}{Intensity}. It seem natural to use a number between 0 and 100, or perhaps a number between 0.0 and 1.0. However, due to the way processors work on integers, these boundaries are not particularly special. Typically, a byte is use to represent each component of the color. That means that we have the ability to express $2^8=256$ different intensities of each component, or a total of $256^3=16777216$ different colors. The value zero is used to represent complete \idx{darkness}{Darkness}. Full intensity is then the value 255.
+In a computer, colors are typically \idx{represented}{Representation!Color} using three values; one for red intensity, one for green intensity, and one for blue intensity. That somehow matches the model of our eyes \ldots\ We say that these are the \textsl{components} of the color. There is a number of ways to express such an \idx{intensity}{Intensity}. It seem natural to use a number between 0 and 100, or perhaps a number between 0.0 and 1.0. However, due to the way processors work on integers, these boundaries are not particularly special. Typically, a byte is use to represent each component of the color. That means that we have the ability to express $2^8=256$ different intensities of each component, or a total of $256^3=16777216$ different colors. The value zero is used to represent complete \idx{darkness}{Darkness}. Full intensity is then the value 255.
 
 % figure: color cube
 \begin{figure}[tbp]
@@ -44,11 +54,18 @@ This constitutes a \defi{color space}{Color!Space} whereby all colors fit within
 
 \subsection{Arrays}
 
-\begin{figure}[tbp]
+% definition: array is a simple datastructure in which elements of the same size is laid our contiguously in memory, figure \ref{fig:data:array:alloc} illustrates this, accordingly given a pointer (address) to (the beginning of) the array, an index and an element size we can find the address of an element by
+An array is a simple datastructure which contains zero or more elements of the same size. These elements are laid out contiguously in memory as depicted in figure \ref{fig:data:array:alloc}. Given a pointer to an array (i.e., the address of the beginning of the array allocation) $p$, an index within that array $i$ and a an element size $s$, we can find the address of that element by:
+
+\begin{figure*}[tbp]
   \input{figs/data_array_alloc.tex}
   \caption{The positioning of an array in memory.}
   \label{fig:data:array:alloc}
-\end{figure}
+\end{figure*}
+
+\begin{alignat}{1}
+  \mathrm{index}(p,i,s) &= p + i \cdot s
+\end{alignat}
 
 \subsubsection{Indexing}
 
@@ -62,6 +79,7 @@ This constitutes a \defi{color space}{Color!Space} whereby all colors fit within
 
 \subsubsection{Arrays of Arrays}
 
+% intro: values of any type can be stored in an array, that includes arrays, we can have arrays of arrays, outer and inner array roles, the rules of an array states that all elements mush have a common type, however the type of an array does not include information about the array length, because of this all inner arrays don't have to be of the same size
 
 \begin{figure}[tbp]
   \begin{subfigure}[b]{0.45\textwidth}
@@ -78,6 +96,12 @@ This constitutes a \defi{color space}{Color!Space} whereby all colors fit within
   \caption{Nesting arrays in arrays.}
   \label{fig:data:array:nest}
 \end{figure}
+
+% shared nested arrays
+
+% figure: example of a week with different work hours for mon-thu, fri and sat-sun
+
+% pitfall: when iterating over nested arrays make sure to extract the actual length of the nested array
 
 \subsubsection{Multidimensional Arrays}
 
@@ -98,6 +122,14 @@ This constitutes a \defi{color space}{Color!Space} whereby all colors fit within
   \\
   i &= \textcolor{teal}{y} \cdot width + \textcolor{teal}{x}
 \end{alignat}
+
+\begin{figure}[tbp]
+  \input{figs/data_2darray_layout.tex}
+  \caption{The memory layout of a 2d array.}
+  \label{fig:data:IIDarray:layout}
+\end{figure}
+
+% comparison to arrays of arrays: more rigid, faster to look up stuff, why is it faster? explain, this doesn't sound like a lot but if you do it often enough it might be significant
 
 \subsubsection{\csharp}
 
@@ -124,6 +156,12 @@ This constitutes a \defi{color space}{Color!Space} whereby all colors fit within
 \subsection{Linked Lists}
 
 % head and tail
+
+\begin{figure}[tbp]
+  \input{figs/primdata_linkedlist.tex}
+  \caption{Structure of a linked list.}
+  \label{fig:primdata:linkedlist}
+\end{figure}
 
 \subsubsection{Functional Languages}
 
@@ -155,6 +193,8 @@ iex(3)> {head, tail}
 \section{Enumerations}
 
 \subsection{State Machines}
+
+% what
 
 \subsection{String Parsing Example}
 
