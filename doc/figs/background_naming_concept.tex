@@ -4,15 +4,15 @@
     \tikzstyle{point} = [diamond,draw=black,inner sep=0.4mm]
     \tikzstyle{hl} = [very thick,draw=purple,fill=purple!20]
     
-    \node[ellipse, draw, minimum height=1.2cm, minimum width=2.4cm,anchor=center] (context) at (7,-0.5) {};
+    \node[ellipse, thick, draw, minimum height=1.2cm, minimum width=2.4cm,anchor=center] (context) at (7,-0.5) {};
     \node[draw=none,anchor=center] (countdst) at (context) {\textbf{Context}};
     
-    \node[rounded corners=2mm, draw, minimum height=1.2cm, minimum width=2cm,anchor=center] (mapper) at (7,-2.5) {Name-mapping};
+    \node[rounded corners=2mm, thick, draw, minimum height=1.2cm, minimum width=2cm,anchor=center] (mapper) at (7,-2.5) {Name-mapping};
     
-    \node[ellipse, draw, minimum height=5cm, minimum width=5cm,anchor=center] (src) at (2.5,-2.5) {};
+    \node[ellipse, thick, draw, minimum height=5cm, minimum width=5cm,anchor=center] (src) at (2.5,-2.5) {};
     \node[draw=none,anchor=center] (countdst) at (2.5,-0.5) {\textbf{Name}};
     
-    \node[ellipse, draw, minimum height=5cm, minimum width=5cm,anchor=center] (dst) at (11.5,-2.5) {};
+    \node[ellipse, thick, draw, minimum height=5cm, minimum width=5cm,anchor=center] (dst) at (11.5,-2.5) {};
     \node[draw=none,anchor=center] (countdst) at (11.5,-0.5) {\textbf{Value}};
     
     \draw[arrow] (src.east) -- (mapper.west);
