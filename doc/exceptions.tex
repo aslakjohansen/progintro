@@ -2,7 +2,7 @@
 
 % normal flow: the normal flow of a program is that one statement is evaluated after another, some are conditionally evaluated and some are repeated, functions are called (parameters transferred to them, work on the stack to keep track of local caller/callee variables), these functions return the thread of execution to the caller than then carries on with its evaluation, eventually, then last statement will complete and the program will exit
 
-% handling error through return values
+% handling error through return values: certain operations cannot be guaranteed to be successful, functions implementing such operations will have some mechanism for reporten whether they were successfull, historically this has often been done through the return value and/or global variables, global variables have to downside of being shared across all threads of execution (and that can make it hard to interpret), this is not a concept that we cover in this book (but it is hightly relevent soon thereafter), returning an error state is very common but most programming languages only supports returning a single value, so one would have to find a concrete value to represent an error, if you want to read a number of bytes from a file (that doesn't exist) and the function should return the number of bytes actually read then any successfull operation will result in a non-negative number of bytes read (and that means that we can use negative values to represent errors), this is combersome though and we have to keep the error coding present in our minds, it also forces us to check the error after each function call (that could produce an error), the handling is coupled to the function call
 
 % implicit partial handling with exceptions
 
