@@ -11,6 +11,7 @@ Keeping track of a single value is trivial. But once you start having a handful 
 Primitive types cannot meaningfully be subdivided further. Yes, an \typename{int} can be split into bits, but why would I care what the value of the 7th bit is. It gets a bit more murky with floats. Here, I might want to look into the sign or the magnitude (i.e., the exponent). But all the floating-point instructions of our processor operate at the unit of a full floating-point value (i.e., sign, mantissa and exponent). So, atomic is an apt qualifier for such types. After all, real \idx{atoms}{Atom} also consists of smaller elements. In \csharp, such types are called \defi{primitive}{Type!Primitive}.
 
 % complex types: complex types are are complexes of data, they contain (or at least may contain) multiple elements of data, these data can in turn be atomic or complex, those complex types can arrange and expose their elements in different ways, this chapter will cover the most basic variations, because these types structure data we call them datastructures
+Complex types are complexes of data. They contain (or at least may contain) multiple elements of data that can in turn be atomic or complex. Those complex types can be used to arrange and expose these elements in different ways. This chapter will cover the most basic variations. Because these types structure data, we call them datastructures.
 
 \subsection{Reference Types}
 
