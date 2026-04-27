@@ -25,7 +25,7 @@ A reference is an \idx{address}{Address!Memory} (in memory) to some datastructur
 Another solution is simply to accept that datastructures cannot be represented in a single register, and deal with the complications that arise from that. This is essentially what you have done so far when you had two variables and needed to make a copy of that combination. Luckily, those complications can be handled by the compiler. So, while making datastructures reference types is the natural choice, they can also be made value types. \csharp\ offers mostly reference type datastructures, and these are the ones we will be focusing on.
 
 % summary
-So, types where a variable is mapped to hold values in register(s) are called value types, and types where variable is mapped to hold a reference to an address in memory is called a reference type. Copying a reference type copies the reference, and any modification to whatever it refers to is visible through all reference copies to these data.
+So, types where a variable is mapped to hold values in register(s) are called \idx{value types}{Value type}, and types where variable is mapped to hold a reference to an address in memory is called a \idx{reference type}{Reference type}. Copying a reference type copies the reference, and any modification to whatever it refers to is visible through all reference copies to these data.
 
 \section{Structured Data}
 
