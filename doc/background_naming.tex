@@ -1,7 +1,7 @@
 \section{Naming}
 
 % intro: importance, not about coming up with good names for stuff, about the ability to reference stuff and how the mechanics of that ability work, in this book we will cover several such mechanisms
-Naming is a concept that is central to computer science. In this context, it has nothing to do with coming up with good names for things. Instead, it refers to the ability to reference things. In programming, we rely on a number of mechanisms for looking up references to things. Generally, they follow the model in figure \ref{fig:bg:naming:concept}. In this book, we cover several of these.
+\defi{Naming}{Naming} is a concept that is central to computer science. In this context, it has nothing to do with coming up with good names for things. Instead, it refers to the ability to reference things. In programming, we rely on a number of mechanisms for looking up references to things. Generally, they follow the model in figure \ref{fig:bg:naming:concept}. In this book, we cover several of these.
 
 \begin{figure}[tbp]
   \input{figs/background_naming_concept.tex}
@@ -27,5 +27,5 @@ Let's take a look at what happens when we look up a specific file. Starting from
 \end{enumerate}
 
 % followup: you often see this form of repeated lookup, note that two files can have the same name as along as they are in different directories, then they are looked up through different contexts, they are uniquely identified through a path, but the concept extends beyond files, it has many uses inside program source code, examples will be scattered all around this book
-You often see this form of repeated lookup. Because files are looked up through their encapsulating directories, two files of the same name can exists and be named. This is because they are looked up through different contexts (i.e., directories in this case). They are uniquely identified through a path. But the concept of naming extends beyond files. It has many uses inside program source code. Throughout this book you will encounter numerous examples of naming.
+You often see this form of repeated \idx{lookup}{Lookup}. Because files are looked up through their encapsulating directories, two files of the same name can exists and be named. This is because they are looked up through different \idx{contexts}{Context} (i.e., directories in this case). They are uniquely identified through a path. But the concept of naming extends beyond files. It has many uses inside program source code. Throughout this book you will encounter numerous examples of naming.
 
