@@ -10,7 +10,22 @@ Naming is a concept that is central to computer science. In this context, it has
 \end{figure}
 
 % example: for now we will leave you with an example, in figure REF you will find an example of the structure of a fairly typical software project, at the root of the project there are directories for the source code (\filename{src}) documentation (\filename{doc}) resources (\filename{var}) and configurations (\filename{etc}), Each of these contains files and/or subdirectories
+For now, we will leave you with an example: In figure \ref{fig:bg:naming:example}, you will find an example of the structure of a typical software project. At the root of the project there are directories for the source code (\filename{src}) documentation (\filename{doc}) resources (\filename{var}) and configurations (\filename{etc}). Each of these contains files and/or subdirectories.
 
 % figure: example filesystem of a project
+\begin{figure}[tbp]
+  \input{figs/background_naming_example.tex}
+  \caption[Example structure of the files in a software project]{Example structure of the files in a software project. Note how parts of the directory structure have been collapsed.}
+  \label{fig:bg:naming:example}
+\end{figure}
 
-% lookup of a file
+% lookup of a file: lets take a look at what happens when we look up a specific file
+Let's take a look at what happens when we look up a specific file. Starting from the root (\filename{/}) of the project directory:
+\begin{enumerate}
+  \item Given the context of \filename{/} we look up \filename{src}. We will call the result \filename{/src}.
+  \item Given the context of \filename{/src} we look up \filename{README.md}. We will call the result \filename{/src/README.md}. That is, the \filename{README.md} file that exists in the \filename{/src}  directory.
+\end{enumerate}
+
+% followup: you often see this form of repeated lookup, note that two files can have the same name as along as they are in different directories, then they are looked up through different contexts, they are uniquely identified through a path, but the concept extends beyond files, it has many uses inside program source code, examples will be scattered all around this book
+You often see this form of repeated lookup. Because files are looked up through their encapsulating directories, two files of the same name can exists and be named. This is because they are looked up through different contexts (i.e., directories in this case). They are uniquely identified through a path. But the concept of naming extends beyond files. It has many uses inside program source code. Throughout this book you will encounter numerous examples of naming.
+
