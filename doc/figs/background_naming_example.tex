@@ -1,0 +1,82 @@
+\begin{center}
+  \begin{tikzpicture}[]
+    \newcommand{\yspacing}[0]{6mm}
+    \newcommand{\xspacing}[0]{10mm}
+    
+    \tikzstyle{edge}  = [thick,>=stealth,draw=black]
+    \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
+    \tikzstyle{node}=[
+      circle,
+      draw=purple,
+      anchor=center,
+      thick,
+      minimum size=0.2,
+      minimum height=0.6cm,
+    ]
+    \tikzstyle{dir}=[
+      node,
+      rectangle,
+      minimum width=0.3cm,
+    ]
+    \tikzstyle{file}=[
+      node,
+      rectangle,
+      draw=green!60!black,
+      rounded corners=1mm,
+    ]
+    \tikzstyle{dirhighlight}=[
+      dir,
+      very thick,
+      pattern=north east lines,
+      pattern color=purple!60,
+      even odd rule,
+    ]
+    \tikzstyle{filehighlight}=[
+      file,
+      very thick,
+      pattern=north east lines,
+      pattern color=green!60!black,
+      even odd rule,
+    ]
+    
+    \node[dir] (root) at (0,0) {\texttt{/}};
+    
+    \node[matrix, column sep=\xspacing, anchor=north] () at ([yshift=-\yspacing]root.south) {
+      \node[dir] (src) {\texttt{src}};
+      &
+      \node[dir] (doc) {\texttt{doc}};
+      &
+      \node[dir] (var) {\texttt{var}};
+      &
+      \node[dir] (etc) {\texttt{etc}};
+      \\
+    };
+    
+    \node[matrix, column sep=\xspacing, anchor=north] () at ([yshift=-\yspacing]src.south) {
+      \node[file] (src readme) {\texttt{README.md}};
+      &
+      \node[file, minimum height=0.3cm] (src file) {};
+      &
+      \node[dir] (src plugins) {\texttt{plugins}};
+      \\
+    };
+    
+    \node[matrix, column sep=\xspacing, anchor=north] () at ([yshift=-\yspacing]etc.south) {
+      \node[file] (etc readme) {\texttt{README.md}};
+      &
+      \node[file, minimum height=0.3cm] (etc file) {};
+      \\
+    };
+    
+    % edges
+    \draw[dedge] (root) -- (src);
+    \draw[dedge] (root) -- (doc);
+    \draw[dedge] (root) -- (var);
+    \draw[dedge] (root) -- (etc);
+    \draw[dedge] (src) -- (src readme);
+    \draw[dedge] (src) -- (src file);
+    \draw[dedge] (src) -- (src plugins);
+    \draw[dedge] (etc) -- (etc readme);
+    \draw[dedge] (etc) -- (etc file);
+  \end{tikzpicture}
+\end{center}
