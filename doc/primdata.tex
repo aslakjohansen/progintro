@@ -81,7 +81,7 @@ This constitutes a \defi{color space}{Color!Space} whereby all colors fit within
 
 % intro: rooting in structs, structured data are laid out in sequence, every element can be named through a field name, two consequences follow from this (1: we need to define a name for each element at compiletime, 2: doing something with every element requires us to keep track of the order through other means)
 
-% indexed quality
+% indexed quality: addressing individual elements through symbolic names certainly has its advantages, imagine a company that stores doors, one day they may have 80 doors in stock, but we certainly don't want to create symbolic names for each of these, then we would have to update our code every time a door is shipped or a new shipment is received, what we are looking for is an indexed data structure, that is a datastructure that contains element that can be named through an integer value (that typically represents its position in that structure), the ability to do so allows us to loop over all elements of the structure and that is -- as we will see -- an extremely useful ability
 
 \subsection{Arrays}
 
