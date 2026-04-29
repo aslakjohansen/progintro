@@ -40,6 +40,23 @@ Looking at figure \ref{fig:data:struct:alloc}, we can see how a concrete instanc
   \label{fig:data:struct:alloc}
 \end{figure}
 
+\subsection{\csharp}
+
+% example:
+
+% syntax:
+
+\begin{syntaxfloat}
+  \input{syntax/data_struct.tex}
+  \caption{Structured data}
+  \label{syntax:data:struct}
+\end{syntaxfloat}
+
+% note: csharp uses the struct term in a slightly different way, as this is difficult to briefly introduce in a pedagogically clean way and not central to learning about the csharp language and OO paradigm we have decided to skip this deviation, just know that when people talk about structs in csharp then they mean something slightly different, so why call them structs? because that is what everyone else calls them
+\textbf{Note:} \csharp\ has a construct that it calls a struct, and that definition deviates a bit from what we have covered here. Pedagogically it doesn't fit nicely into a clean introduction to the language, and it is neither central to the language or the object-oriented paradigm. Because of this, we have decided skip the \csharp\ variant of the concept. Just know that when people talk about structs in \csharp then they mean something slightly different. But why call them structs then? Well, that is what everyone else calls them.
+
+% TODO: potential for introduction: value type through struct, reference type through class
+
 \subsection{Colors}
 
 % light as a spectrum
@@ -57,23 +74,6 @@ In a computer, colors are typically \idx{represented}{Representation!Color} usin
 
 % color spaces
 This constitutes a \defi{color space}{Color!Space} whereby all colors fit within a \idx{color cube}{Color!Cube} spanned by the red, green and blue color vectors. Hence, it is named the \idxx{RGB} color space. Figure \ref{fig:primdata:struct:color} depicts this space. It is a direct fit for how \idx{GPUs}{GPU} represent \idx{images}{Image}. Other color spaces exist though, and there are good reasons for their existence. Other popular color spaces include \idxx{HSV} (which is shaped like a cylinder) and \idxx{XYZ} (which is shaped like an tongue). Formulas exists for \idx{converting}{Color!Space!Converting} between these. Each of these color spaces represents practical simplifications of what light really is.
-
-\subsection{\csharp}
-
-% example:
-
-% syntax:
-
-\begin{syntaxfloat}
-  \input{syntax/data_struct.tex}
-  \caption{Structured data}
-  \label{syntax:data:struct}
-\end{syntaxfloat}
-
-% note: csharp uses the struct term in a slightly different way, as this is difficult to briefly introduce in a pedagogically clean way and not central to learning about the csharp language and OO paradigm we have decided to skip this deviation, just know that when people talk about structs in csharp then they mean something slightly different, so why call them structs? because that is what everyone else calls them
-\textbf{Note:} \csharp\ has a construct that it calls a struct, and that definition deviates a bit from what we have covered here. Pedagogically it doesn't fit nicely into a clean introduction to the language, and it is neither central to the language or the object-oriented paradigm. Because of this, we have decided skip the \csharp\ variant of the concept. Just know that when people talk about structs in \csharp then they mean something slightly different. But why call them structs then? Well, that is what everyone else calls them.
-
-% TODO: potential for introduction: value type through struct, reference type through class
 
 \section{Sequences in Data}
 
