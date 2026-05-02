@@ -232,7 +232,7 @@ iex(3)> {head, tail}
 
 % intro: set of allowed values from a bool (true and false), set of allowed values from a byte (0..255), other built-in types have other sets, but these are built-in, the thing about built-in constructs is that they are written with no specific problem in mind and thus have to be very generic in nature, at times -- when working with certain specific problems -- there are benefits like code clarity to be gained by defining problem-specific values and a type that allows exactly this set of values, we define this through an enumeration
 
-% why is it called an enumeration?: 
+% why is it called an enumeration?: enumeration, that is a funny name, how could I possibly remember that? well in an enumeration you list all the values that you want the type to be able to represent, the compiler then enumerates them: the first values gets the value zero, then next one one, and so on, this way the values throughout the whole program are translated to integers at compile-time, they then fit in a register and we already have the necessary mechanisms for working with them
 
 \subsection{State Machines}
 
