@@ -230,6 +230,10 @@ iex(3)> {head, tail}
 
 \section{Enumerations}
 
+% intro: set of allowed values from a bool (true and false), set of allowed values from a byte (0..255), other built-in types have other sets, but these are built-in, the thing about built-in constructs is that they are written with no specific problem in mind and thus have to be very generic in nature, at times -- when working with certain specific problems -- there are benefits like code clarity to be gained by defining problem-specific values and a type that allows exactly this set of values, we define this through an enumeration
+
+% why is it called an enumeration?: 
+
 \subsection{State Machines}
 
 % what: a state machine is a way of structuring the flow of a program, think of it as a graph consisting of states in the form of nodes and transitions between those states in the form of edges, at any given time the machine will have one active state, each outgoing edge is associated with some event that will cause that transition to be followed, this updated the active state, upon arrival at a state some code is executed, state machine are typically used to to process streams of inputs
