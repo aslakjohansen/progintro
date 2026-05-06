@@ -1,0 +1,39 @@
+\begin{center}
+  \begin{tikzpicture}[]
+    \newcommand{\scale}[0]{0.9}
+    \newcommand{\spacing}[0]{45mm}
+    \newcommand{\weight}[1]{node[midway,sloped,above] {\scalebox{\scale}{\textsl{\textcolor{purple}{#1}}}}}
+    
+    \tikzstyle{edge}  = [thick,>=stealth,draw=black]
+    \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
+    \tikzstyle{node}=[
+      circle,
+      draw=purple,
+      anchor=center,
+      thick,
+      minimum size=24mm,
+    ]
+    
+    \node[node] (u) at ( 0*\spacing, 0*\spacing) {Unknown};
+    \node[node] (s) at ( 1*\spacing, 0*\spacing) {String};
+    \node[node] (i) at ( 0*\spacing,-1*\spacing) {Integer};
+    \node[node] (f) at (-1*\spacing,-1*\spacing) {Float};
+    
+    \draw[dedge] ([xshift=-\spacing/4]u.west)--(u);
+    \draw[dedge] (u)--(f) \weight{period};
+    \draw[dedge] (u)--(i) \weight{0..9};
+    \draw[dedge] (u)--(s) \weight{default};
+    \draw[dedge] (i)--(f) \weight{period};
+    \draw[dedge] (i)--(s) \weight{not 0..9};
+    \draw[dedge] (f)
+               --([yshift=-\spacing/3]f.south)
+               -- node[midway,below] {\scalebox{\scale}{\textsl{\textcolor{purple}{default}}}}
+                  ([yshift=-\spacing/3-\spacing]s.south)
+               -- (s);
+    
+    \draw[dedge] (s) to[out=10,in=-10,looseness=3] node[midway,right] {\scalebox{\scale}{\textsl{\textcolor{purple}{default}}}} (s);
+    \draw[dedge] (f) to[out=180+10,in=180-10,looseness=3] node[midway,left] {\scalebox{\scale}{\textsl{\textcolor{purple}{default}}}} (f);
+    \draw[dedge] (i) to[out=270+10,in=270-10,looseness=3] node[midway,below] {\scalebox{\scale}{\textsl{\textcolor{purple}{default}}}} (i);
+    
+  \end{tikzpicture}
+\end{center}
