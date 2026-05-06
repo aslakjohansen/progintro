@@ -40,6 +40,7 @@
 \subsubsection{Problem of Repetition}
 
 % motivation: so now we have two ways of doing the same thing, that begs the question: which option to go for? more importantly why should one option be chosen over the other? which qualities should we use for "scoring" each of the two options?
+So, now we have two ways of doing (more or less) the same thing. That begs the question: Which option should we pick? More importantly, why should one option be chosen over the other? And which qualities should we use for \textsl{scoring} each of the two options?
 
 % problem: two qualities stick out: readability and maintainability, readability essentially means how easy the code is to read and maintainability on the other hand boils down to how easy the code is to maintain, we can employ a number of (more or less well-defined) metrics for each, in this particular situation they both point in the same direction, this stems for one option having a duplicate element, for instance the way we went from a do-while to a while way to copy out a copy of the loop body before the loop, from a readability perspective this creates more lines burdens us with the need to recognize that those two pieces of code are identical and part of the same loop (this is explicit in the other option), from a maintainability perspective duplicated code is always risky as the developer is burdened with the need to manually keep the two copies in sync, any failure to do so will result in a bug, in summary unless you have a good reason not to you should simply use to most compact version
 
