@@ -48,7 +48,13 @@ The \idx{Perl}{Perl programming language} programming language has a feature tha
 
 \subsection{Blocks}
 
-% problem: technically branching on a single statement is all we need, but it is not particularly convenient, imagine us having to do two things if a condition holds true: we will have to check a condition and if true do the first thing, then we will have to check the same condition again and if true do the second thing, this comes with three significant downsides, namely: (i) the condition needs to be evaluated twice and this takes time and could involve complex side effects, (ii) the code would quickly get complex to understand, and (iii) it would get significantly more convoluted if the first thing modifies a variable that takes part of the condition
+% problem: technically branching on a single statement is all we need, but it is not particularly convenient, imagine us having to do two things if a condition holds true: we will have to check a condition and if true do the first thing, then we will have to check the same condition again and if true do the second thing, this comes with three significant downsides, namely: (i) the condition needs to be evaluated twice and this takes time and could involve complex side effects, (ii) the code would quickly get complex to understand, and (iii) it would get significantly more convoluted if the first thing modifies a variable that takes part in the condition
+Technically, branching on a single statement is all we need. But this would not be particularly convenient. Imagine us having to do two things if a condition holds true: We would have to check a condition and if true do the first thing. Then we would would have to check the same condition again, and if true do the second thing. This comes withthree significant downsides, namely:
+\begin{enumerate}
+  \item The condition needs to be evaluated twice. This takes some amount of time and could involve complex side effects.
+  \item The code would quickly get complex to understand.
+  \item It would get significantly more convoluted if the first thing modifies a variable that takes part in the condition.
+\end{enumerate}
 
 % solution: most imperative programming language have the notion of a block, this is a sequence of statements that take the place of a single statement, so by employing a block the one statement at the true branch of an if statement could become a sequence of statement, and likewise of the false branch
 
