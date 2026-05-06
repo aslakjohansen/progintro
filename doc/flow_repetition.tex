@@ -50,7 +50,8 @@ Two qualities stick out: Readability and maintainability. \defi{Readability}{Rea
 % common use case: it didn't take long for a common pattern of while loop usage to emerge, in this pattern a loop variable is declared before the loop, at the end of the loop this variable is adjusted and the condition checks whether this variable has passed some value
 It didn't take long for a common \idx{pattern}{Pattern} of while loop usage to emerge. In this pattern, a loop variable is declared before the loop, at the end of the loop this variable is adjusted and the condition check whether this variable has passed some value. This is, for instance, how you would loop through all integers between two values.
 
-% defining template: given this pattern a template can ben synthesized: initialization statement, condition, update statement, body, by generalizing the template we ensure that it is applicable as possible, a new kind of loop -- the for loop -- is designed specifically to accommodate this template
+% defining template: given this pattern a template can ben synthesized: initialization statement, condition, update statement, body, by generalizing the template we ensure that it is as applicable as possible, a new kind of loop -- the for loop -- is designed specifically to accommodate this template
+If generalized, a template can be synthesized from this pattern. We ne an initialization statement, a condition, an update statement, and a body. The generalization comes from us using the generic construct of a statement for initialization and updates. Note that by choosing to build on statements, we also gain the option of having the initialization and update statements be expressed without any shared variables. By generalizing the template we ensure that it is as applicable as possible. A new kind of loop -- the \keywordname{for} loop -- is designed specifically to accommodate this template.
 
 \subsection{\csharp}
 
