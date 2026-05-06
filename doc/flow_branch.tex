@@ -6,8 +6,8 @@ While not particularly common, choices in expressions can be a very convenient w
 
 %\subsection{Branching}
 
-% def: branching is a term that emcompasses any way of choosing between evaluating one from a number of statements, in this section we will cover the most common means of achieving this, first we cover the simplest options and then we gradually add to that understanding
-\defi{Branching}{Branching} is a term that emcompasses any way of choosing one statement to evaluate from a number of statements. In this section, we will cover the most common means of achieving this. First, we cover the simplest options, and then we gradually add more complex constructs by build on that understanding.
+% def: branching is a term that encompasses any way of choosing between evaluating one from a number of statements, in this section we will cover the most common means of achieving this, first we cover the simplest options and then we gradually add to that understanding
+\defi{Branching}{Branching} is a term that encompasses any way of choosing one statement to evaluate from a number of statements. In this section, we will cover the most common means of achieving this. First, we cover the simplest options, and then we gradually add more complex constructs by build on that understanding.
 
 \subsection{\keywordname{if} and \keywordname{else}}
 
@@ -22,7 +22,7 @@ As illustrated in figure \ref{fig:flow:branch:generic}, the decision on which br
 \end{figure}
 
 % the optional else: a common pattern emerges in which the else statement is empty: if this condition is met then do this, many languages allow for a construct in which the false statement is removed and instead it simply bypasses the true statement
-A common pattern emerges in which the else statemetn is empty: \say{if this condition is met, then do this}. Many programming languages include a construct in which the false statement is removed. Instead, it simply bypasses the true statement if the condition evaluates to \valuename{false}.
+A common pattern emerges in which the else statement is empty: \say{if this condition is met, then do this}. Many programming languages include a construct in which the false statement is removed. Instead, it simply bypasses the true statement if the condition evaluates to \valuename{false}.
 
 \subsubsection{\csharp}
 
@@ -49,7 +49,7 @@ The \idx{Perl}{Perl programming language} programming language has a feature tha
 \subsection{Blocks}
 
 % problem: technically branching on a single statement is all we need, but it is not particularly convenient, imagine us having to do two things if a condition holds true: we will have to check a condition and if true do the first thing, then we will have to check the same condition again and if true do the second thing, this comes with three significant downsides, namely: (i) the condition needs to be evaluated twice and this takes time and could involve complex side effects, (ii) the code would quickly get complex to understand, and (iii) it would get significantly more convoluted if the first thing modifies a variable that takes part in the condition
-Technically, branching on a single statement is all we need. But this would not be particularly convenient. Imagine us having to do two things if a condition holds true: We would have to check a condition and if true do the first thing. Then we would would have to check the same condition again, and if true do the second thing. This comes withthree significant downsides, namely:
+Technically, branching on a single statement is all we need. But this would not be particularly convenient. Imagine us having to do two things if a condition holds true: We would have to check a condition and if true do the first thing. Then we would would have to check the same condition again, and if true do the second thing. This comes with three significant downsides, namely:
 \begin{enumerate}
   \item The condition needs to be evaluated twice. This takes some amount of time and could involve complex side effects.
   \item The code would quickly get complex to understand.
@@ -57,7 +57,7 @@ Technically, branching on a single statement is all we need. But this would not 
 \end{enumerate}
 
 % solution: most imperative programming language have the notion of a block, this is a sequence of statements that take the place of a single statement, so by employing a block the one statement at the true branch of an if statement could become a sequence of statement, and likewise of the false branch
-Most imperative programming languages have a notion of a \defi{block}{Block}. This is a sequence of statements that take the place of a single statemetn. So, by employing a block the one statement at a true branch of an \keywordname{if} statement could become a sequence of statements. And likewise for every syntactic occurrence of a statement (e.g., the false branch of an \keywordname{if} statement).
+Most imperative programming languages have a notion of a \defi{block}{Block}. This is a sequence of statements that take the place of a single statement. So, by employing a block the one statement at a true branch of an \keywordname{if} statement could become a sequence of statements. And likewise for every syntactic occurrence of a statement (e.g., the false branch of an \keywordname{if} statement).
 
 \subsubsection{\csharp}
 
