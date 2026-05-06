@@ -12,11 +12,14 @@
     
     \node[choice] (condition) at (0,0) {condition};
     \node[] (pre)   at ([xshift= 0*\spacing, yshift= 1*\spacing] condition.north) {};
-    \node[anchor=north] (true)  at ([xshift=-3*\spacing, yshift=-1*\spacing] condition.west) {\textsl{Outcome A}};
-    \node[anchor=north] (false) at ([xshift= 3*\spacing, yshift=-1*\spacing] condition.east) {\textsl{Outcome B}};
+    \node[anchor=north] (true)  at ([xshift=-3*\spacing, yshift=-1*\spacing] condition.west) {\textsl{Statement A}};
+    \node[anchor=north] (false) at ([xshift= 3*\spacing, yshift=-1*\spacing] condition.east) {\textsl{Statement B}};
+    \node[] (post)   at ([yshift=-2*\spacing]$(condition.north)!(true.south)!(condition.south)$) {};
     
     \path[arrow] (pre) -- (condition);
-    \path[arrow] (condition) -| node [near start, anchor=south] {true} (true);
-    \path[arrow] (condition) -| node [near start, anchor=south] {false} (false);
+    \path[arrow,rounded corners=2mm] (condition) -| node [near start, anchor=south] {true} (true);
+    \path[arrow,rounded corners=2mm] (condition) -| node [near start, anchor=south] {false} (false);
+    \path[arrow,rounded corners=2mm] (true) -- ([yshift=-1*\spacing]true.south) -| (post);
+    \path[arrow,rounded corners=2mm] (false) -- ([yshift=-1*\spacing]false.south) -| (post);
   ﻿﻿\end{tikzpicture}
 \end{center}
