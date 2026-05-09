@@ -1,0 +1,24 @@
+\begin{center}
+  \begin{tikzpicture}[]
+    \newcommand{\spacing}[0]{12mm}
+    
+    \tikzstyle{edge}  = [thick,>=stealth,draw=black]
+    \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
+    \tikzstyle{node}=[
+      rectangle,
+      draw=purple,
+      anchor=west,
+      thick,
+    ]
+    
+    \node[node] (construction) at (0, 0) {Construction};
+    \node[node] (throw) at ([xshift=\spacing]construction.east) {Throw};
+    \node[node] (catch) at ([xshift=\spacing]throw.east) {Catch};
+    
+    \draw[dedge] (construction)--(throw);
+    \draw[dedge] (throw)--(catch);
+    \draw[dedge,dotted] (catch)
+              -| ([xshift=\spacing,yshift=\spacing/2]catch.north east)
+              -| (throw);
+  \end{tikzpicture}
+\end{center}

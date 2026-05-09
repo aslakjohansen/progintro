@@ -16,6 +16,11 @@ Some languages have support for \idx{exceptions}{Exception}. An exception is a d
 % the stages of the life of an exception: construction, throwing, handling
 
 % figure: looping throwing and handling
+\begin{figure}[tbp]
+  \input{figs/exception_lifecycle.tex}
+  \caption{Lifecycle of an exception.}
+  \label{fig:exception:lifecycle}
+\end{figure}
 
 % locating the site of handling: imagine that throughout the execution of our code we keep track of all the handling sites that we come across, whenever an exception is thrown it is caught by the by the code of the latest handling site, execution immediately jumps to this point in the code (even if it is not part of the current function, in that case the environment of that function is reestablished from the stack)
 
