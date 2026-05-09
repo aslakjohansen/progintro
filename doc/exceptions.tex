@@ -11,9 +11,14 @@ Some languages have support for \idx{exceptions}{Exception}. An exception is a d
 
 \section{Lifecycle of an Exception}
 
-% an exception abruptly ends the normal flow of execution, 
-
 % the stages of the life of an exception: construction, throwing, handling
+In order to discuss what an exception is, we will take a look at its lifecycle. As shown in figure \ref{fig:exception:lifecycle}, the life of an exception goes through three phases, namely:
+\begin{enumerate}
+  \descitem{Construction:} An exception is a form of data structure, and it has a type. We first construct an exception, and then we can do operations on it.
+  \descitem{Throw:} One of those operations is to \textsl{throw} it. This is what we do when we discover that something has gone wrong, and it will abruptly end the normal flow of execution.
+  \descitem{Catch:} At an earlier point on our execution thread we have defined a catch site. This is kind-of a checkpoint. The latest defined catch site that matches the thrown exception will \textsl{catch} it. That means that execution will continue at this location.
+\end{enumerate}
+\textbf{Note:} The catch site has access to the exception data structure and has the option of throwing it once again.
 
 % figure: looping throwing and handling
 \begin{figure}[tbp]
