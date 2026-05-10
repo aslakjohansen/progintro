@@ -49,6 +49,14 @@ To cover exceptions in \csharp, we need to introduce syntax \ref{syntax:exceptio
 
 \subsection{Throwing Exceptions}
 
+\inputminted[firstline=1]{csharp}{../src/csharp/exceptions/throwing/Program.cs}
+
+\begin{minted}{shell-session}
+$ dotnet run
+Unhandled exception. System.Exception: Oops!
+   at Program.<Main>$(String[] args) in Program.cs:line 2
+\end{minted}
+
 \subsection{Catching Exceptions}
 
 \subsection{Finalization}
