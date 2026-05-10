@@ -68,6 +68,16 @@ System.Exception: Oops!
 But still alive ...
 \end{minted}
 
+\inputminted[firstline=1]{csharp}{../src/csharp/exceptions/catching_fun/Program.cs}
+
+\begin{minted}{shell-session}
+$ dotnet run
+System.Exception: Oops!
+   at Program.<<Main>$>g__fun|0_0() in Program.cs:line 2
+   at Program.<Main>$(String[] args) in Program.cs:line 6
+But still alive ...
+\end{minted}
+
 \subsection{Finalization}
 
 \inputminted[firstline=1]{csharp}{../src/csharp/exceptions/finalization/Program.cs}
