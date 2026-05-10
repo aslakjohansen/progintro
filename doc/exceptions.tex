@@ -28,7 +28,7 @@ In order to discuss what an exception is, we will take a look at its lifecycle. 
 \end{figure}
 
 % locating the site of handling: imagine that throughout the execution of our code we keep track of all the handling sites that we come across, whenever an exception is thrown it is caught by the code of the latest handling site, execution immediately jumps to this point in the code (even if it is not part of the current function invocation, in that case the environment of that function is reestablished from the stack)
-We can have multiple handling sites for the same exception. So, which one is used? To answer this, let's imagine that throughout the execution of our code we keep track of all the handling sites that we come across. Whenever an exception is thrown, it is caught by the handler (i.e., code) of the latest handling site. Execution immediately jumps to this point in the code. If it is not part of the current function invocation, stack frames will be popped off until the one matching the handling site is reached, and the environment stored here will be reestablished.
+We can have multiple handling sites for the same exception. So, which one is used? To answer this, let's imagine that throughout the execution of our code we keep track of all the handling sites that we come across. Whenever an exception is thrown, it is caught by the handler (i.e., code) of the latest handling site. \idx{Execution}{Execution} immediately jumps to this point in the code. If it is not part of the current \idx{function invocation}{Function!Invocation}, \idx{stack frames}{Stack frame} will be popped off until the one matching the handling site is reached, and the \idx{environment}{Environment} stored here will be reestablished.
 
 \section{\csharp}
 
