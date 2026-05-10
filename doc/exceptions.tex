@@ -78,6 +78,17 @@ System.Exception: Oops!
 But still alive ...
 \end{minted}
 
+\subsection{Rethrowing}
+
+\inputminted[firstline=1]{csharp}{../src/csharp/exceptions/rethrow/Program.cs}
+
+\begin{minted}{shell-session}
+$ dotnet run
+Things are about to go badly ...
+Unhandled exception. System.Exception: Oops!
+   at Program.<Main>$(String[] args) in Program.cs:line 2
+\end{minted}
+
 \subsection{Finalization}
 
 \inputminted[firstline=1]{csharp}{../src/csharp/exceptions/finalization/Program.cs}
