@@ -75,6 +75,7 @@ A few things are going on here. Let's go through them one by one:
 \subsection{Catching Exceptions}
 
 % intro: any uncaught exception will make the program crash, at times this might be what we want  but often we are trying out some approach and then want to react if an exception is thrown, for catching exceptions we rely on the stmt rule of syntax \ref{syntax:exception}, the following example is close to the simplest possible illustration of the mechanism:
+Any uncaught exception will make the program crash. At times, this may be what you want. But it is more common that we want to try out something, and then want to react if an exception is thrown. For casting exceptions we rely on the \conceptname{stmt} rule of syntax \ref{syntax:exception}. The following example is close to the simplest possible illustration of the mechanism:
 
 \inputminted[firstline=1]{csharp}{../src/csharp/exceptions/catching/Program.cs}
 
