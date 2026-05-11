@@ -32,6 +32,13 @@
   };
   
   \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(end);
+  
+  % bypass expr
+  \draw[path] (ruleIa)
+            -|([xshift=-0.5*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIb.west)
+            |-([                             yshift=1.0*\syntaxruledist]ruleIb.center)
+            -|([xshift= 0.5*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIb.east)
+            |-(ruleIc);
 \end{syntax}
 
 \begin{syntax}[[xshift=18mm]concept.west]{catch}
