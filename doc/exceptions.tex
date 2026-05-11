@@ -53,6 +53,9 @@ To cover exceptions in \csharp, we need to introduce syntax \ref{syntax:exceptio
 
 \inputminted[firstline=1]{csharp}{../src/csharp/exceptions/throwing/Program.cs}
 
+% what are we seeing
+At the moment we have no code to catch the exception. So, when the exception occurs, the program crashes. This causes the exception to be printed:
+
 \begin{minted}{shell-session}
 $ dotnet run
 Unhandled exception. System.Exception: Oops!
