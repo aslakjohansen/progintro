@@ -78,12 +78,16 @@ A few things are going on here. Let's go through them one by one:
 
 \inputminted[firstline=1]{csharp}{../src/csharp/exceptions/catching/Program.cs}
 
+% result: 
+
 \begin{minted}{shell-session}
 $ dotnet run
 System.Exception: Oops!
    at Program.<Main>$(String[] args) in Program.cs:line 2
 But still alive ...
 \end{minted}
+
+% exception can be produced further up the stack
 
 \inputminted[firstline=1]{csharp}{../src/csharp/exceptions/catching_fun/Program.cs}
 
