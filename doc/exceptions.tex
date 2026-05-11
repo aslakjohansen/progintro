@@ -81,7 +81,7 @@ But still alive ...
 \subsection{Rethrowing}
 
 % intro: sometimes we may want to know whether an excepton has happened without having to deal with it, notice how when we caught an exception we got a variable of type \typename{Exception} and how that was exactly what we threw? Well, we can throw it again, so we catch the exception react to it and throw it again, the code looks a bit different that you would assume:
-At times we may want to know whether an exception has occurred, but we don't want to have to deal with it. To do this, we first notice how when we caught an exception we got a variable of the same type as the expression we threw. That means that we can throw it again! So, we catch the exception, react to it, and then throw it again. When we catch an exception and throw it again, we say that we rethrow it. The practical code looks a bit different than what this suggests:
+At times we may want to know whether an exception has occurred, but we don't want to have to deal with it. To do this, we first notice how when we caught an exception we got a variable of the same \idx{type}{Type} as the expression we threw. That means that we can throw it again! So, we catch the exception, react to it, and then throw it again. When we catch an exception and throw it again, we say that we \idx{rethrow}{Exception!Rethrowing} it. The practical code looks a bit different than what this suggests:
 
 \inputminted[firstline=1]{csharp}{../src/csharp/exceptions/rethrowing/Program.cs}
 
