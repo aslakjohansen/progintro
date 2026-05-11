@@ -87,7 +87,7 @@ System.Exception: Oops!
 But still alive ...
 \end{minted}
 
-% exception can be produced further up the stack
+% exception can be produced further up the stack: what happens is that the statements in the try block are evaluated in what we could call a sandbox, here were guarantee that no thrown exception of the Exception type will spill out, and affect the rest of the code, but what happens if these statements call a function and the exception production site in in this function? since the execution thread is still within the try block the sandbox applies, so whenever an exception is thrown is will be caught by the first matching catch block when moving down the stack and out of the statement, we can try it out through this code:
 
 \inputminted[firstline=1]{csharp}{../src/csharp/exceptions/catching_fun/Program.cs}
 
