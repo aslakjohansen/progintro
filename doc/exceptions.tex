@@ -74,11 +74,11 @@ A few things are going on here. Let's go through them one by one:
 
 \subsection{Catching Exceptions}
 
-% intro: 
+% intro: any uncaught exception will make the program crash, at times this might be what we want  but often we are trying out some approach and then want to react if an exception is thrown, for catching exceptions we rely on the stmt rule of syntax \ref{syntax:exception}, the following example is close to the simplest possible illustration of the mechanism:
 
 \inputminted[firstline=1]{csharp}{../src/csharp/exceptions/catching/Program.cs}
 
-% result: 
+% result: executing that code will result in the following. Please note that the last printout makes it to the output so it must have been evaluated, so catching the exception stops it from propagating
 
 \begin{minted}{shell-session}
 $ dotnet run
