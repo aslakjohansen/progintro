@@ -151,5 +151,6 @@ The \idx{Go}{Go programming language} language has support for returning multipl
 \inputminted[firstline=1]{go}{../src/go/exceptions/errorhandling/errorhandling.go}
 
 % defer: the defer line will make more sense when you get to the section on working with files, it makes sure that whenever the surrounding function returns then the file is closed (and the resources allocated to it being open are released)
+The \keywordname{defer} line will make more sense when you get to section \ref{io:files} that explains how to work with files. For now, just accept that (i) files that have been opened for access should be closed again, (ii) this line makes sure that whenever the surrounding function returns then the file is closed (and the resources associated with it being open are released).
 
 \exercises{exceptions}{Exceptions}
