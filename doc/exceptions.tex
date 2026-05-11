@@ -53,7 +53,7 @@ To cover exceptions in \csharp, we need to introduce syntax \ref{syntax:exceptio
 
 \inputminted[firstline=1]{csharp}{../src/csharp/exceptions/throwing/Program.cs}
 
-% what are we seeing
+% what happens
 At the moment we have no code to catch the exception. So, when the exception occurs, the program crashes. This causes the exception to be printed:
 
 \begin{minted}{shell-session}
@@ -61,6 +61,15 @@ $ dotnet run
 Unhandled exception. System.Exception: Oops!
    at Program.<Main>$(String[] args) in Program.cs:line 2
 \end{minted}
+
+% how to interpret
+A few things are going on here. Let's go through them one by one:
+\begin{itemize}
+  \item The virtual machine will print all unhandled exceptions. An unhandled exception, is an exception that have not been caught by handling site and has reached the virtual machine.
+  \item The exception has the type \typename{System.Exception}, for which \typename{Exception} is a a shorthand.
+  \item Attached to the exception was a \valuename{"Oops!"} payload.
+  \item The last line is the stack trace. It provides us with a path from the button of the stack to the production site. For each step we get the function (\keywordname{Main}), the file (\filename{Program.cs}) and the line in this file (line \valuename{2}). In a larger program, the stack trace will typically take up more lines; one for each stack frame.
+\end{itemize}
 
 \subsection{Catching Exceptions}
 
