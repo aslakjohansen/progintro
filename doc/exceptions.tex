@@ -80,6 +80,8 @@ But still alive ...
 
 \subsection{Rethrowing}
 
+% intro: sometimes we may want to be know whether an excepton has happened without having to deal with it, notice how when we caught an exception we got a variable of type \typename{Exception} and how that was exactly what we threw? Well, we can throw it again, so we catch the exception react to it and throw it again, the code looks a bit different that you would assume:
+
 \inputminted[firstline=1]{csharp}{../src/csharp/exceptions/rethrowing/Program.cs}
 
 % note: note how throw is used without an explicit reference to the exception that we want thrown? When throwing an exception the stack trace part of that exception is updated to reflect the location in the code where the exception is thrown, we typically recast to have a peak at what is going on, updating the stack trace would make it look like the exception originated from the part of the code that is peaking and that would make it difficult to debug, we would know what has happened but not where, \csharp\ has this implicit throw mechanism to rethrow the currently caught exception without updating its stack trace, accordingly we don't need to bind a name to that matched exception, in fact we would get a warning if we tried, this because if would most likely lead to trouble
