@@ -126,7 +126,7 @@ Unhandled exception. System.Exception: Oops!
 
 \subsection{Finalization}
 
-% motivation: 
+% motivation: unfortulatly working with exceptions is more complicated than you likely realize, what happens when an exception is thrown inside a catch block? the statement after the try-catch block certainly isn't evaluated, so if we need something to happen regardless of wheter the initial exception is thrown we cannot just put it after the try-catch construct, we could put it inside each of the two blocks but that would mean duplicate code and making sure that this code is evaluated inside the catch block can be tricky, luckely there is another way: we can add a finally block, we are guaranteed that the finally block is evaluated after the last statement of either the try block or the catch block (depending on whether an exception happens inside the try block)
 
 \inputminted[firstline=1]{csharp}{../src/csharp/exceptions/finalization/Program.cs}
 
