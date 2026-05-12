@@ -6,9 +6,9 @@ int count = 0;
 foreach (int i in input) {
   count++;
   try {
-    if (i==2) throw new Exception("Imagine that something went wrong");
+    if (i==4) throw new Exception("Imagine that something went wrong");
+    sum += i;
   } catch (Exception) {}
-  sum += i;
 }
 
 Console.WriteLine("average: "+(sum/count));
