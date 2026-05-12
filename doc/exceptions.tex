@@ -149,7 +149,7 @@ Anyways ...
 \subsection{Side-Effects}
 
 % motivation: it makes sense to think of a try-catch construct as us trying out something, but it is not a rollback, any side-effects caused from within the try block will "spill out", accordingly we may end up with the side-effects of a partially evaluated try block
-It makes sense to think of a try construct as a means for us to try out something. But, if something goes wrong then it doesn't roll back: Any side-effects caused from within the try block will \textsl{spill out}. Accordingly, we may end up with side-effects of a partially evaluated \keywordname{try} block, and that can cause inconsistencies in our data if we are not careful.
+It makes sense to think of a try construct as a means for us to try out something. But, if something goes wrong then it doesn't \idx{roll back}{Rollback}: Any side-effects caused from within the try block will \textsl{spill out}. Accordingly, we may end up with side-effects of a partially evaluated \keywordname{try} block, and that can cause \idx{inconsistencies}{Consistency} in our data if we are not careful.
 
 % intro: let's see what that could look like, the following code calculates the average of some array of integers, it does so using a foreach loop over the input values, inside the loop body two things happen: a count variable is incremented and a sum is updated, to illustrate the problem we have inserted code in between these two actions that throws an exception, for one of the iterations this updates the count but not the sum. The full code looks like this:
 
