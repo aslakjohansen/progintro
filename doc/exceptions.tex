@@ -145,6 +145,13 @@ Anyways ...
 
 \subsection{Side-Effects}
 
+\inputminted[firstline=1]{csharp}{../src/csharp/exceptions/sideeffects/Program.cs}
+
+\begin{minted}{shell-session}
+$ dotnet run
+average: 3
+\end{minted}
+
 \section{C}
 
 % why is this interesting: c is an example of a language where errors are typically communicated through return values, functions that do this dedicate a specific value (or more) from the universe of possible return values to indicate that an error has occurred, accordingly the full set of values indicated by the return type is not actually available, but often not all values are relevant anyways, for instance no pointer -- the c equivalent of a reference -- with a value of zero (null) is valid, so any function that returns a pointer can use the zero value to indicate an error without restricting the practical use of that return value, when an error value is returned convention dictates that the errno variable is set to a value that indicate the type of error, this variable is thread local (which in the framing of your current understanding means global), unlike csharp no further information is provided
