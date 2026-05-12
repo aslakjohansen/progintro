@@ -152,6 +152,7 @@ Anyways ...
 It makes sense to think of a try construct as a means for us to try out something. But, if something goes wrong then it doesn't \idx{roll back}{Rollback}: Any side-effects caused from within the \keywordname{try} block will \textsl{spill out}. Accordingly, we may end up with side-effects of a partially evaluated \keywordname{try} block, and that can cause \idx{inconsistencies}{Consistency} in our data if we are not careful.
 
 % intro: let's see what that could look like, the following code calculates the average of some array of integers, it does so using a foreach loop over the input values, inside the loop body two things happen: a count variable is incremented and a sum is updated, to illustrate the problem we have inserted code in between these two actions that throws an exception, for one of the iterations this updates the count but not the sum. The full code looks like this:
+Let's see what that could look like. The following code calculates the average of some array of integers. It does so using a foreach loop over the input values. Inside the loop body, two things happen: a \varname{count} variable is incremented and a \varname{sum} is updated. To illustrate the problem, we have inserted some code in between these two actions that throw an exception for one of the inputs. So, for one of the iterations the count is updated but the sum is not. The full code looks like this:
 
 \inputminted[firstline=1]{csharp}{../src/csharp/exceptions/sideeffects/Program.cs}
 
