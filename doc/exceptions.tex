@@ -111,7 +111,25 @@ But still alive ...
 
 \subsection{Multiple Exception Types}
 
-% intro: we have been focusing on the specific type of exception called Exception, but the truth is that there are more than one exception type, as they all behave the same there is little need to dive deeper into them at this point, in section \ref{sec:inheritance:exceptions} we will explore why they behave the same, for now we will simply show how we can have type-specific handling sites, it looks like this:
+% intro: we have been focusing on the specific type of exception called Exception, but the truth is that there are more than one exception type, as they all behave the same there is little need to dive deeper into them at this point, in section \ref{sec:inheritance:exceptions} we will explore why they behave the same, for now we will simply -- in figure \ref{fig:exceptions:multiple} -- show how we can have type-specific handling sites, when executed this program prints:
+
+\begin{figure}[tbp]
+  \inputminted[firstline=1]{csharp}{../src/csharp/exceptions/multiple/Program.cs}
+  \caption[Demo of multiple exception handling sites]{Demonstration of multiple exception handling sites for a single try block.}
+  \label{fig:exceptions:multiple}
+\end{figure}
+
+\begin{minted}{shell-session}
+$ dotnet run
+Caught IndexOutOfRangeException
+Caught NullReferenceException
+Caught DivideByZeroException
+Caught Exception
+No problem!
+\end{minted}
+
+% note
+The code gives a warning because the compiler can see that we are following a \keywordname{null} reference in case 1. This warning has been removed for brevity.
 
 \subsection{Rethrowing}
 
