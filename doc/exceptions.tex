@@ -44,6 +44,7 @@ To cover exceptions in \csharp, we need to introduce syntax \ref{syntax:exceptio
 \subsection{Creating Exceptions}
 
 % new: like our data structures exceptions are reference types, that means at we need to use new to allocate space for it on the heap, the syntax for creating a new exception is defined in the \conceptname{expr} rule of syntax \ref{syntax:exception} and a practical application of that rule looks like:
+Like our data structure from chapter \ref{sec:primdata}, exceptions are reference types. That means that we need to use \keywordname{new} to allocate space for them on the heap. The syntax for creating a new exception is defined in the \conceptname{expr} rule of syntax \ref{syntax:exception}, and a practical application of that rule looks like this:
 
 \inputminted[]{csharp}{../src/csharp/exceptions/creation/Program.cs}
 
