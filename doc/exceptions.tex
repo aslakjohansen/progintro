@@ -112,6 +112,7 @@ But still alive ...
 \subsection{Multiple Exception Types}
 
 % intro: we have been focusing on the specific type of exception called Exception, but the truth is that there are more than one exception type, as they all behave the same there is little need to dive deeper into them at this point, in section \ref{sec:inheritance:exceptions} we will explore why they behave the same, for now we will simply -- in figure \ref{fig:exceptions:multiple} -- show how we can have type-specific handling sites, when executed this program prints:
+We have been focusing on the specific type of exception called \typename{Exception}. But the truth is that there are more than one exception type. As they all behave the same, there is little need to dive deeper into them at this point. For now, we will simply -- in figure \ref{fig:exceptions:multiple} -- show how we can have type-specific handling sites. In section \ref{sec:inheritance:exceptions}, we will explore \textsl{why} all exceptions behave the same, and figure out that the order of the catch sites matter and why that is. When executed, this program prints:
 
 \begin{figure}[tbp]
   \inputminted[firstline=1]{csharp}{../src/csharp/exceptions/multiple/Program.cs}
