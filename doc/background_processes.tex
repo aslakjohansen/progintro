@@ -75,7 +75,7 @@ Most commands will \idx{accept}{Accept!Argument} a \highlight{\texttt{--help}} a
 
 % executable: when that parent process asks the kernel to start a new process it needs to point to the executable code that this new process should execute, this is done through a filename and the lists of paths in the PATH environment variable is searched for a match, the first match is what will be executed
 
-% streaming i/o: 
+% streaming i/o: the spawned process is tied to the parent process throuch three data streams, through one data stream the parent process can send data at will to the spawned process and that process can read these data, through two channels the spawned process can send data back to the parent process: one is the primary channel and one is the channel for communicating error messages, we will cover these more in section REF
 
 % return code: once a process has finished executing it will report back an integer to its parent process, this integer is called the return code, by convention a zero means that everything went well while an non-zero number indicates a specific type of error
 
