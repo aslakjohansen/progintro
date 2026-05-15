@@ -9,6 +9,8 @@ Any general-purpose operating system will have a \idx{kernel}{Kernel} at its cor
 % time
 Processes are typically written as if nothing else is running on the machine. But in reality, lots of processes are running at any given time. In fact, while I am writing this text, I have 643 processes running on my laptop. Some of them are \idx{active}{Process!Active}, and others are \idx{waiting}{Process!Waiting} for some kind of input. The kernel is making sure that each of the active ones get time (on the processor) on a regular basis. As other processes need \idx{time}{Time} as well, this also means that there are interruptions in the time given to each process. This in term means that the processes essentially experience gaps in time where they are frozen.
 
+\subsection{Interprocess Communication}
+
 \subsection{Desktop Environment}
 
 % what: one or more processes, drawing on screen, arranging windows, starting applications, services for common configuration and communication
