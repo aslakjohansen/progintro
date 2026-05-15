@@ -1,0 +1,59 @@
+\begin{center}
+  \begin{tikzpicture}[]
+    \newcommand{\xspacing}[0]{36mm}
+    \newcommand{\yspacing}[0]{12mm}
+    
+    \tikzstyle{stream} = [thick,->,>=stealth,draw=black, dashed]
+    \tikzstyle{handover} = [thick,->,>=stealth,draw=black]
+    \tikzstyle{process}=[
+      rectangle,
+      anchor=center,
+      draw=black,
+      align=center,
+      thick,
+      minimum width=4cm,
+      minimum height=7cm,
+    ]
+    \tikzstyle{blank}=[
+      anchor=center,
+      thick,
+      minimum size=0.2,
+    ]
+    \tikzstyle{node}=[
+      blank,
+      circle,
+      draw=purple,
+    ]
+    \tikzstyle{linelabel}=[
+      blank,
+      anchor=west,
+      align=left,
+    ]
+    
+    \node[process] (caller) at (-1*\xspacing,0*\yspacing) {\textbf{Original}\\\textbf{Process}};
+    \node[process,anchor=north west] (callee) at ([xshift=5.5cm]caller.north east) {\textbf{Spawned}\\\textbf{Process}};
+    
+    \draw[handover] ([yshift=-0.8cm]caller.north east)
+                 -- ([yshift=-0.8cm]callee.north west)
+                 node[midway,above] {\scalebox{0.7}{\textsl{\textcolor{purple}{working directory}}}};
+    \draw[handover] ([yshift=-1.6cm]caller.north east)
+                 -- ([yshift=-1.6cm]callee.north west)
+                 node[midway,above] {\scalebox{0.7}{\textsl{\textcolor{purple}{inherits string $\mapsto$ string environment}}}};
+    \draw[handover] ([yshift=-2.4cm]caller.north east)
+                 -- ([yshift=-2.4cm]callee.north west)
+                 node[midway,above] {\scalebox{0.7}{\textsl{\textcolor{purple}{command line arguments}}}};
+    \draw[stream] ([yshift=-3.2cm]caller.north east)
+               -- ([yshift=-3.2cm]callee.north west)
+               node[midway,above] {\scalebox{0.7}{\textsl{\textcolor{purple}{STDIN stream}}}};
+    \draw[stream] ([yshift=2.4cm]callee.south west)
+               -- ([yshift=2.4cm]caller.south east)
+               node[midway,above] {\scalebox{0.7}{\textsl{\textcolor{purple}{STDOUT stream}}}};
+    \draw[stream] ([yshift=1.6cm]callee.south west)
+               -- ([yshift=1.6cm]caller.south east)
+               node[midway,above] {\scalebox{0.7}{\textsl{\textcolor{purple}{STDERR stream}}}};
+    \draw[handover] ([yshift=0.8cm]callee.south west)
+                 -- ([yshift=0.8cm]caller.south east)
+                 node[midway,above] {\scalebox{0.7}{\textsl{\textcolor{purple}{return code}}}};
+    
+  \end{tikzpicture}
+\end{center}
