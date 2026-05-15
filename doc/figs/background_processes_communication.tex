@@ -30,7 +30,7 @@
       align=left,
     ]
     
-    \node[process] (caller) at (-1*\xspacing,0*\yspacing) {\textbf{Original}\\\textbf{Process}};
+    \node[process] (caller) at (-1*\xspacing,0*\yspacing) {\textbf{Parent}\\\textbf{Process}};
     \node[process,anchor=north west] (callee) at ([xshift=5.5cm]caller.north east) {\textbf{Spawned}\\\textbf{Process}};
     
     \draw[handover] ([yshift=-0.8cm]caller.north east)
