@@ -67,7 +67,7 @@ Most commands will \idx{accept}{Accept!Argument} a \highlight{\texttt{--help}} a
 
 % intro: let's look into what happens when you open a file in your file manager, do you know? first the file type is determined, how this is done depends on the specific file manager, but once the system knows the type of the file it will use that to look up the default program for handling this type of file, once it know this it will locate the executable for this program and start that program with the path to the chosen file as a parameter
 
-% roles (parent and spawn/child processes)
+% roles: so one process starts another one, we often refer to the first process as the parent and the second one (that is being spawned) as the child process, in reality this parent-child relationship represent a single edge in a logical process tree that is rooted in an init process, there is a lot more complexity to it but this will do for now
 
 \begin{figure}[tbp]
   \input{figs/background_processes_communication.tex}
