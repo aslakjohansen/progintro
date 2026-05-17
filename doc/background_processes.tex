@@ -78,6 +78,12 @@ So, one process starts another one. We often refer to the first process as the \
 \end{figure}
 
 % static inputs: when a process spawns another process it does so in a context, the parent process can configure this as it sees fit, this context consists of (i) a working directory (ref to filesystems section) - typically the spawned process inherits this from its parent, (ii) an environment - what it is, and (iii) a list of parameters - this is the primary means of conveying what specific task the invoked process should perform.
+When a process spawns another process, it does so in a context. The parent process can configure this context as it sees fit. It consists of:
+\begin{itemize}
+  \item A working directory (see section \ref{bg:fs:paths}).
+  \item A list of parameters. This is the primary means of conveying what concrete task the invoked process should perform.
+  \item An environment. This is a mapping from strings to strings. Certain keys have well-defined roles. One of the most important keys will be covered in the following paragraph.
+\end{itemize}
 
 % executable: when that parent process asks the kernel to start a new process it needs to point to the executable code that this new process should execute, this is done through a filename and the lists of paths in the PATH environment variable is searched for a match, the first match is what will be executed
 
