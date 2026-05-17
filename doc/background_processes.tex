@@ -84,6 +84,7 @@ So, one process starts another one. We often refer to the first process as the \
 % streaming i/o: the spawned process is tied to the parent process throuch three data streams, through one data stream the parent process can send data at will to the spawned process and that process can read these data, through two channels the spawned process can send data back to the parent process: one is the primary channel and one is the channel for communicating error messages, we will cover these more in section REF
 
 % return code: once a process has finished executing it will report back an integer to its parent process, this integer is called the return code, by convention a zero means that everything went well while an non-zero number indicates a specific type of error
+Once a process has finished executing, it will report back an integer to its parent process. This integer is called the return code. By convention, a zero means that everything went well while a non-zero number indicates a specific type of error.
 
 % missing: technically there are a few other ways of communicating, the parent will know the both the process id of itself and that to the spawned process, through a process id you can send a "signal" to that process, signals are typed and have no payload, processes can also communicate through files (one process writes to it, another reads from it), lastly processes can communicate through sockets, we will skip sockets completely in this book but it is the fundamental abstraction through which internet communication flows
 
