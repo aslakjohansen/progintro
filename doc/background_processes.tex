@@ -66,6 +66,7 @@ Most commands will \idx{accept}{Accept!Argument} a \highlight{\texttt{--help}} a
 % TODO: Consider moving to the section on file I/O
 
 % intro: let's look into what happens when you open a file in your file manager, do you know? first the file type is determined, how this is done depends on the specific file manager, but once the system knows the type of the file it will use that to look up the default program for handling this type of file, once it know this it will locate the executable for this program and start that program with the path to the chosen file as a parameter
+Let's look into what happens when you open a file in your file mananger. Do you know? First, the file type is determined. How this is done depends on the sprcific file manager, but once the system knows the type of the file, it will use that to look up the default program for handling this type of file. Once it knows which program should handle it, it will locate the executable of that program and start it with the path to the chosen file as a parameter.
 
 % roles: so one process starts another one, we often refer to the first process as the parent and the second one (that is being spawned) as the child process, in reality this parent-child relationship represent a single edge in a logical process tree that is rooted in an init process, there is a lot more complexity to it but this will do for now, let's take a look at how that pair of processes can communicate, this is (mostly) summarized in figure \ref{fig:bg:processes:communication}
 
