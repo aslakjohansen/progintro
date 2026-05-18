@@ -25,4 +25,38 @@
 \label{io:files}
 \subsection{\csharp}
 
+\section{Interprocess Communication}
+
+% intro: let's look into what happens when you open a file in your file manager, do you know? first the file type is determined, how this is done depends on the specific file manager, but once the system knows the type of the file it will use that to look up the default program for handling this type of file, once it know this it will locate the executable for this program and start that program with the path to the chosen file as a parameter
+Let's look into what happens when you open a file in your \idx{file mananger}{File manager}. Do you know? First, the \idx{file type}{File!Type} is determined. How this is done depends on the specific file manager, but once the system knows the type of the file, it will use that to look up the default program for handling this type of file. Once it knows which program should handle it, it will locate the \idx{executable}{Executable} of that program and start it with the \idx{path}{Path} to the chosen file as a parameter.
+
+% roles: so one process starts another one, we often refer to the first process as the parent and the second one (that is being spawned) as the child process, in reality this parent-child relationship represent a single edge in a logical process tree that is rooted in an init process, there is a lot more complexity to it but this will do for now, let's take a look at how that pair of processes can communicate, this is (mostly) summarized in figure \ref{fig:bg:processes:communication}
+So, one process starts another one. We often refer to the first process as the \idx{parent process}{Process!Parent} and the second one (that is being \idx{spawned}{Process!Spawning}) as the \idx{child process}{Process!Child}. In reality, this parent-child relationship represents a single edge in a logical \idx{process tree}{Process!Tree} that is rooted in an \idx{init process}{Init process}. There is a lot more complexity to it, but this will do for now. Let's take a look at how that pair of processes can \idx{communicate}{Process!Communication}. This is (mostly) summarized in figure \ref{fig:bg:processes:communication}.
+
+\begin{figure}[tbp]
+  \input{figs/background_processes_communication.tex}
+  \caption{The interface between a process and a child process.}
+  \label{fig:bg:processes:communication}
+\end{figure}
+
+% static inputs: when a process spawns another process it does so in a context, the parent process can configure this as it sees fit, this context consists of (i) a working directory (ref to filesystems section) - typically the spawned process inherits this from its parent, (ii) an environment - what it is, and (iii) a list of parameters - this is the primary means of conveying what specific task the invoked process should perform.
+When a process spawns another process, it does so in a \idx{context}{Context!Of process}. The parent process can configure this context as it sees fit. It consists of:
+\begin{itemize}
+  \item A \idx{working directory}{Directory!Corrent working} (see section \ref{bg:fs:paths}).
+  \item A list of \idx{parameters}{Parameter!Of process}. This is the primary means of conveying what concrete task the \idx{invoked}{Invocation} process should perform.
+  \item An \idx{environment}{Environment}. This is a mapping from strings to strings. Certain keys have well-defined roles. One of the most important keys will be covered in the following paragraph.
+\end{itemize}
+
+% executable: when that parent process asks the kernel to start a new process it needs to point to the executable code that this new process should execute, this is done through a filename and the lists of paths in the PATH environment variable is searched for a match, the first match is what will be executed
+When the parent process asks the \idx{kernel}{Kernel} to start a new process, it needs to point to the executable code that this new process should execute. This is often done by searching the paths listed in the \idx{\keywordname{PATH}}{path@\keywordname{PATH} environment variable} environment variable for a filename. This environment variable contains a list of \idx{directories}{Directory} (separated by colons) that should be searched for executables. The first match is what will be executed and if no match is found then an \idx{error}{Error} will be reported instead.
+
+% streaming i/o: the spawned process is tied to the parent process throuch three data streams, through one data stream the parent process can send data at will to the spawned process and that process can read these data, through two channels the spawned process can send data back to the parent process: one is the primary channel and one is the channel for communicating error messages, we will cover these more in section REF
+The spawned process is tied to the parent process through three \idx{data streams}{Data stream}. Through one data stream the parent process can send data at will to the child process, and that process can read these data. Through two \idx{channels}{Channel} (of streaming data) the child process can send data back to the parent process: One is the primary channel and one is the channel for communicating error messages. We will cover these in section \ref{sec:io:streams}.
+
+% return code: once a process has finished executing it will report back an integer to its parent process, this integer is called the return code, by convention a zero means that everything went well while an non-zero number indicates a specific type of error
+Once a process has finished executing, it will report back an integer to its parent process. This integer is called the \idx{return code}{Return code}. By convention, a zero means that everything went well while a non-zero number indicates a specific type of \idx{error}{Error}.
+
+% missing: technically there are a few other ways of communicating, the parent will know the both the process id of itself and that of the spawned process, through a process id you can send a "signal" to that process, signals are typed and have no payload, processes can also communicate through files (one process writes to it, another reads from it), lastly processes can communicate through sockets, we will skip sockets completely in this book but it is the fundamental abstraction through which internet communication flows
+Technically, there are a few other ways of communication available to the pair of processes. All processes have a unique \idx{process id}{Process!Id}. The parent process will know both the process id of itself and that of the of child. Throgh a process if, you can send a signal to that process. \defi{Signals}{Signal} are \idx{typed}{Typing} and have no payload, so they can really only be used to \idx{flag}{Flag} events. Processes can also communicate through \idx{files}{File}: One process writes to it while anonther reads from it. Lastly, processes can communicate through \idx{sockets}{Socket}. We will skip sockets completely in this book, but they are the fundamental abstraction through which \idx{Internet}{Internet} communication flows.
+
 \exercises{io}{Input and Output}
