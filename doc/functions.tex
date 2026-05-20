@@ -127,6 +127,15 @@ Instead of placing individual values on the stack, we place \idx{stack frames}{S
 % example: function without guard (something like splitting a cake into n pieces)
 \inputminted[]{csharp}{../src/csharp/functions/no_guard/Program.cs}
 
+When executed, this program prints:
+\begin{minted}{shell-session}
+$ dotnet run
+Slices of 360 degrees will feed 1 mouths
+Slices of 180 degrees will feed 2 mouths
+Slices of 120 degrees will feed 3 mouths
+Slices of 90 degrees will feed 4 mouths
+\end{minted}
+
 % observations
 
 % example: same code with a guard
