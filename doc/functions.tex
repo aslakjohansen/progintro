@@ -129,7 +129,7 @@ Instead of placing individual values on the stack, we place \idx{stack frames}{S
 % example: no function example
 \inputminted[]{csharp}{../src/csharp/functions/no_guard_no_function/Program.cs}
 
-% adding the function:
+% adding the function: the code works but the logic of calculating the angles is mixed in with the logic for cycling through the different inputs, understaning one of these two functionalities requires an overview of both functionalities, in a program of this size that is not a problem but that changes once we get to play with larger codebases, to deal with this we need to find highly coherent parts of the code that can be parameterized as functions and thus abstracted away, in this case the natural abstraction is a function that given a number of participants calculates an angle, then that function can be called for each of the numbers of participants, this allows us to reason about each the the two parts without understanding the intricacies of the other, that looks like this:
 
 % example: function without guard (something like splitting a cake into n pieces)
 \inputminted[]{csharp}{../src/csharp/functions/no_guard/Program.cs}
