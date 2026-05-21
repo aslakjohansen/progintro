@@ -150,9 +150,11 @@ The code works, but the logic of calculating the angles is mixed in witht the lo
 Let's take a look at that \funcname{slice\_angle} function, and in particular line 5. At first glance, this is trivial: It returns the value \valuename{-1}. But imagine that we wanted to have some other code in this block. We know that \varname{mouth\_count} is positive, but why do we know that? We know that because we are in the \keywordname{else} branch of an \keywordname{if-else} construct whose conditions tells us so. That condition is expressed higher up in the code. Only by two lines, but still \ldots\ This distance represents a \idx{context window}{Context window!Mental} that we as programmers have to spend \idx{mental resources}{Resource!Mental} on in order to keep it fresh in mind. The larger and more complex the function, the larger the burden. Let's see if we can simplify it:
 
 % example: same code with a guard
-\inputminted[lastline=7]{csharp}{../src/csharp/functions/guard/Program.cs}
+\inputminted[lastline=7,linenos=true]{csharp}{../src/csharp/functions/guard/Program.cs}
 
-% observations and expansion
+% observations and expansion: first of all this implementation does the same as the previous, in fact it will likely be compiled to the exact same code, in its previous incarnation this function split out the two cases using an if-else construct, all code were either in the true block or in the false block, in the new version there is no false block, or rather because the true block returns the remainder of the function in essense becomes the false block, lines 2-4 are there to filter out a special case, after line 4 we no longer care about what happened up there because we know that our input is sane and from here on it will be smooth sailing
+
+% often you will see a small series of such guards, each rejecting a special case, and then comes the actual implementation of the function, it is good style to lead each guard with a comment explaining (i) that it is a guard, and (ii) which guarantees it provices
 
 \section{Python}
 
