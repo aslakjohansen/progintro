@@ -149,7 +149,7 @@ The code works, but the logic of calculating the angles is mixed in witht the lo
 % observations: let's look at that slice_angle function and in particular line 5, in this particular example that line is trivial: it returns the value -1, but imagine that we wanted to have some other code in his block, we know that mouth_count is positive but why do we know that? we know that because we are in the else branch of an if-else construct whose condition tells us so, that condition is expressed higher up in our code, only by two lines but still, this distance represents a context window that we as programmers have to spend mental resources keeping fresh in mind, the larger and more complex the function the larger the burden, let's see if we can simplify it:
 
 % example: same code with a guard
-\inputminted[]{csharp}{../src/csharp/functions/guard/Program.cs}
+\inputminted[lastline=7]{csharp}{../src/csharp/functions/guard/Program.cs}
 
 % observations and expansion
 
