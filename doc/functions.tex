@@ -161,6 +161,7 @@ Often, you will see a small series of such guards -- each rejecting a spacial ca
 \section{Python}
 
 % python is a scripting language, there is no separate compilation phase, function lookup is dynamic, we can get a runtime error from a missing function
+Python is a scripting language. As is common with such languages, there is no separate compilation phase and function lookup is dynamic (i.e., it happens at runtime). Because of this, if we are missing a function declaration for a specific call, that will be discovered when we try to evaluate that call. This results in a runtime error, and it can take some time and specific inputs for it to appear.
 
 % def keyword
 
