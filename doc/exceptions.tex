@@ -207,6 +207,8 @@ As C has no \idx{garbage collector}{Garbage collector}, \idx{memory management}{
 % that !data line: the condition in the branch line may look a bit weird to you, this stems from a combination of (i) pointers -- like data -- can be manipulated much like integers, (ii) booleans being integers and boolean operations thus operating on integers, and (iii) any non-zero integer representing a true value.
 The condition in that branch line may look quite weird to you. This stems from a combination of (i) pointers -- like \varname{data} -- can be manipulated much like integers, (ii) booleans being integers and boolean operations thus operating on integers, and (iii) any non-zero integer representing a \valuename{true} value.
 
+\section{Python}
+
 \section{Go}
 
 % why is go interesting: go supports returning multiple values, this has played a major role in the design of both the standard library and most third party libraries, by convention any function call that may fail will return two values, the last of these represents the error, if the error is nil then no error has occurred, otherwise it represent the error that has occurred, this is the idiomatic way of dealing with errors in go, the following code indicate how to handle such errors
