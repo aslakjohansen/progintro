@@ -45,10 +45,15 @@ Looking at figure \ref{fig:data:struct:alloc}, we can see how a concrete instanc
 \subsection{\csharp}
 
 % example: that was a lot of text, so lets start out with an example centered around the concept of a door, for the purpose of this example we care about the height and width of a door and whether it is open, we can describe structure capturing these properties like this:
-That was a lot of text! So, let's start out with an example centered around the concept of a door. For the purpose of this example, we care about the height and width of a door, and whether it is open. We can describe a structure capturing these properties under the name of a \typename{Door} like this:
+That was a lot of text! So, let's start out with an example centered around the concept of a door. For the purpose of this example, we care about the height and width of a door, and whether it is open. We can describe a structure capturing these properties under the name of a \typename{Door}, and have it laid out in memory like in figure \ref{fig:data:struct:alloc}, we write:
 
-% figure: code for a Door struct
-\inputminted[]{csharp}{../src/csharp/primdata/doorstruct/Program.cs}
+% figure: code for defining a Door struct
+\inputminted[firstline=4]{csharp}{../src/csharp/primdata/doorstruct/Program.cs}
+
+% how to use:
+
+% figure: code for using the door struct
+\inputminted[lastline=2]{csharp}{../src/csharp/primdata/doorstruct/Program.cs}
 
 % explanation: 
 
