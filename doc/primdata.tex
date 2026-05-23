@@ -45,19 +45,19 @@ Looking at figure \ref{fig:data:struct:alloc}, we can see how a concrete instanc
 \subsection{\csharp}
 
 % example: that was a lot of text, so lets start out with an example centered around the concept of a door, for the purpose of this example we care about the height and width of a door and whether it is open, we can describe structure capturing these properties like this:
-That was a lot of text! So, let's start out with an example centered around the concept of a door. For the purpose of this example, we care about the height and width of a door, and whether it is open. We can describe a structure capturing these properties under the name of a \typename{Door}, and have it laid out in memory like in figure \ref{fig:data:struct:alloc}. To do this we write:
+That was a lot of text! So, let's start out with an example centered around the concept of a door. For the purpose of this example, we care about the height and width of a door, and whether it is open. We can describe a structure capturing these properties under the name of a \typename{Door}, and have it laid out in \idx{memory}{Memory} like in figure \ref{fig:data:struct:alloc}. To do this we write:
 
 % figure: code for defining a Door struct
 \inputminted[firstline=4]{csharp}{../src/csharp/primdata/doorstruct/Program.cs}
 
 % how to use: this stuct definition constitutes a template definition, we can create concrete door structures from this template by using the new keyword and providing concrete values for each of the fields
-This struct definition constitutes the definition of a template. We can create concrete \typename{Door} structures from this template by using the \keywordname{new} keyword and providing concrete values for each of the properties (that are called fields in \csharp\ terminology):
+This struct definition constitutes the definition of a \idx{template}{Template!Struct definition}. We can create concrete \typename{Door} structures from this template by using the \idx{\keywordname{new}}{new@\keywordname{new} keyword} keyword and providing concrete values for each of the properties (that are called \idx{fields}{Field} in \csharp\ terminology):
 
 % figure: code for using the door struct
 \inputminted[lastline=2]{csharp}{../src/csharp/primdata/doorstruct/Program.cs}
 
 % explanation: the result of this is a value of a Door type, and once we have something of a struct type (like Door) then we can access these properties using the period operator
-The result of this is a value of the \typename{Door} type. Once we have something of a struct type (like \typename{Door}) then we can access its fields using the period operator. Evaluating this code will print out \texttt{200}.
+The result of this is a value of the \typename{Door} type. Once we have something of a struct type (like \typename{Door}) then we can access its fields using the \idx{\keywordname{.} operator}{.@\keywordname{.} operator}. Evaluating this code will print out \texttt{200}.
 
 % syntax: obviously there is some formality behind this, the syntactical rules governing how structs can be expressed can by found in syntax \ref{syntax:data:struct}
 Obviously, there is some formality behind this. The syntactical rules governing how structs can be expressed and interacted with can be found in syntax \ref{syntax:data:struct}.
