@@ -180,7 +180,7 @@ As is common with scripting languages, there is no separate compilation phase an
 There are a number of side-effects from functions being \idx{values}{Value}. One such effect is that a function can take functions as \idx{parameters}{Function!as parameter} and have a function as \idx{return value}{Function!as return value}. It can also construct a new function dynamically and return it. Functions that have other functions as part of their parameters or return values are called \defi{higher-order functions}{Function!Higher-order}. We often say that these functions are \idx{composable}{Composability!of functions}. This property has resulted in a number of \idx{patterns}{Pattern} to be defined. Let's start with the \defi{map}{Pattern!Map} pattern. In this pattern a function is applied to each element of a list to construct a new list. In action, it looks like this:
 
 % example: the map function
-\inputminted[firstline=3]{elixir}{../src/elixir/functions/map/map.exs}
+\inputminted[firstline=3]{elixir}{../src/elixir/functions/map/map.exs} % TODO: How to get rid of the awkward printout
 
 % explain:
 
