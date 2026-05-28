@@ -183,6 +183,7 @@ The first line declares an anonymous function and assigns it to a variable calle
 % pipelining: we often see the result of oe function call be used only as an argument for another function call, this pattern is even more common in functional programming, elixir provides syntactic sugar for this pattern in the form of the \keywordname{|>} operator, it injects the result of the function call on its left-hand side as the first argument of a function call on its right-hand side. Because of this, the latter function call will appear to be missing an argument in the code. The elixir standard library is full of functions that are designed to exploid this. But let's take a look at a concrete example:
 
 % example
+\inputminted[firstline=4]{elixir}{../src/elixir/functions/pipelining/pipelining.exs} % TODO: Convert to iex
 
 % explanation
 
