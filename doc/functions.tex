@@ -180,13 +180,17 @@ As is common with scripting languages, there is no separate compilation phase an
 % explain: the first line declares an anonymous function and assigns it to a variable called incr, on the right-hand side of the assignment we find the declaration, the parameter name is found between the fn keyword and the arrow, and the function body is between the arrow and the end keyword, in elixir the function evaluates to whatever the last statement of a function body evaluates to, this works because everything is an expression in elixir, on the second line this function is called, note the period operator, this tells the compiler that we want to treat the variable as a function and call it. This will evaluate to 12+1=13.
 The first line declares an anonymous function and assigns it to a variable called \varname{incr}. On the \idx{right-hand side}{Right-hand side} of the assignment, we find the declaration. The parameter name is found between the \keywordname{fn} keyword and the \keywordname{->} keyword, and the function body is betwen the \keywordname{->} keyword and the \keywordname{end} keyword. In Elixir, functions evaluate to whatever the last statement of their function body evaluates to. This works because everything is an \idx{expression}{Expression} in Elixir. On the second line, this function is called. Note the \keywordname{.} operator. This tells the compiler that we want to treat the variable as a function and call it. This will evaluate to $12+1=13$.
 
+\subsection{Pipelines}
+
 % pipelining: we often see the result of a function call be used only as an argument for another function call, this pattern is even more common in functional programming, elixir provides syntactic sugar for this pattern in the form of the \keywordname{|>} operator, it injects the result of the function call on its left-hand side as the first argument of a function call on its right-hand side. Because of this, the latter function call will appear to be missing an argument in the code. The elixir standard library is full of functions that are designed to exploit this. But let's take a look at a concrete example:
 We often see the result of a function call be used only as an argument for another function call in the next statement. This \idx{pattern}{Pattern} is even more common in \idx{functional programing}{Programming!Functional} than it is in \idx{imperative programming}{Programming!Imperative}. Elixir provides \idx{syntactic sugar}{Syntactic sugar} for this pattern in the form of the \keywordname{|>} operator (aka the pipe operator). It injects the result of the function call in its \idx{left-hand side}{Left-hand side} as the first argument of the function call on its right-hand side. Because of this, the latter function call will appear to be missing an argument in the code. But that is not the case. The Elixir \idx{standard library}{Standard library} if full of functions that are designed to exploit this pattern. But let's take a look at a concrete example:
 
 % example
 \inputminted[firstline=4]{elixir}{../src/elixir/functions/pipelining/pipelining.exs} % TODO: Convert to iex
 
-% explanation
+% explanation: 
+
+\subsection{Higher-Order Functions}
 
 % higher-order functions: there are a number of side-effects from functions being values, one such side-effect is that a function can take a function as parameter and have a function as return value, It can also construct a new function dynamically and return it, functions that have other functions as part as their parameters or return values are called higher-order functions, a few common patters exist, lets start with the map function, explain what it does, let's see this in action:
 There are a number of side-effects from functions being \idx{values}{Value}. One such effect is that a function can take functions as \idx{parameters}{Function!as parameter} and have a function as \idx{return value}{Function!as return value}. It can also construct a new function dynamically and return it. Functions that have other functions as part of their parameters or return values are called \defi{higher-order functions}{Function!Higher-order}. We often say that these functions are \idx{composable}{Composability!of functions}. This property has resulted in a number of \idx{patterns}{Pattern} to be defined. Let's start with the \defi{map}{Pattern!Map} pattern. In this pattern a function is applied to each element of a list to construct a new list. In action, it looks like this:
@@ -196,10 +200,14 @@ There are a number of side-effects from functions being \idx{values}{Value}. One
 
 % explain:
 
+\subsection{Larger Example}
+
 % filter and reduce: the map function should be seen as a pattern where something is done to every element of a list, there are other such patterns, the filter pattern constructs a new list that retains all elements of an input list for which some function evaluates to true, explain reduce, the following is a more complex example that illustrate how expressive these can be:
 The map function should be seen as a pattern where something is done to every element of a list. There are other such patterns. The \defi{filter}{Pattern!Filter} pattern constructs a new list that retains all elements of an input list for which some function evaluates to true. The \defi{reduce}{Pattern!Reduce} pattern repeatedly applies a function to each element and an \idx{accumulator value}{Accumulator value} (that it then updates). This creates one value from the contents of the entire input list. A simple use-case is to find the largest number in a list. The following code is a more complex example that illustrates how \idx{expressive}{Expressiveness} higher-order functions like these can be:
 
 % example: larger higher-order example with map, filter and reduce
+
+\subsection{Function Lookup}
 
 % function lookup in the BEAM: elixir inherits the BEAM runtime from erlang, in it function dispatch is performed at runtime using function name and number of parameters, this mechanism can be used to redefine the implementation at runtime for hot-code updates, this trades function call speed for maintainability
 \idx{Elixir}{Elixir programming language} inherits the \idx{BEAM}{BEAM runtime} runtime from \idx{Erlang}{Erlang programming language}. In it, \idx{function dispatch}{Function dispatch} is performed by lookup against a table at runtime using function name and parameter count. This indirection can be used to redefine the implementation of functions at runtime, and that ability is used to issue \defi{hot updates}{Hot update}. These are code updates to a running system. So, function call speed is traded for \idx{maintainability}{Maintainability}. This is especially important for long-running \idx{deployments}{Deployment}.
