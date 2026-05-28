@@ -201,7 +201,7 @@ There are a number of side-effects from functions being \idx{values}{Value}. One
 \inputminted[firstline=5]{elixir}{../src/elixir/functions/map/map.exs} % TODO: How to get rid of the awkward printout
 
 % explain: again a pipeline with two steps, input is a list with all elements from 1 to 10 (both ends included), then we use the map function to create a new list of the same size where the incr funciton is applied to each value, finally we inspect the result by printing it out, due to a leftover from erlang printing out a list of small integers is a bit intricate, just accept that the last line prints out the result
-Again, we have a pipeline in three phases. Input is a list with all integers from one to ten (both ends included). In the next phase, the \funcname{Enum.map} function is used to create a new list of the same size where the \funcname{incr} function is applied to each of the corresponding values in the input list. Finally, we inspect the result by printing it out. Due to a leftover oddity from \idx{Erlang}{Erlang programming language}, printing out a list of smal lintegers is overly complicated. Just accept that this is what the last line does.
+Again, we have a pipeline in three phases. Input is a list with all integers from one to ten (both ends included). In the next phase, the \funcname{Enum.map} function is used to create a new list of the same size where the \funcname{incr} function is applied to each of the corresponding values in the input list. Finally, we inspect the result by printing it out. Due to a leftover oddity from \idx{Erlang}{Erlang programming language}, printing out a list of small integers is overly complicated. Just accept that this is what the last line does.
 
 \subsection{Larger Example}
 
