@@ -165,6 +165,7 @@ Often, you will see a small series of such guards -- each rejecting a spacial ca
 % TODO: move part of this to the primitives.tex file?
 
 % example: add function
+\inputminted[firstline=3]{python}{../src/python/functions/add/add.exs}
 
 % there is no separate compilation phase, function lookup is dynamic, we can get a runtime error from a missing function
 As is common with scripting languages, there is no separate compilation phase and \idx{function lookup}{Function lookup} is \idx{dynamic}{Function lookup!Dynamic} (i.e., it happens at \idx{runtime}{Runtime}). Because of this, if we are missing a function declaration for a specific call, that will be discovered when we try to evaluate that call. This results in a \idx{runtime error}{Error!At runtime}, and it can take some time and specific inputs for it to appear.
