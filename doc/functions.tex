@@ -211,7 +211,8 @@ The map function should be seen as a pattern where something is done to every el
 % example: larger higher-order example with map, filter and reduce
 \inputminted[firstline=4]{elixir}{../src/elixir/functions/large/large.exs} % TODO: How to get rid of the awkward printout
 
-% explain: so lets take a look at this mouthful, on the first line we define an function called possitive, it cal tell us whether an input is possitive, the we run a pipeline, it starts out with a list of integers, some negative some zero and some positive, then it maps the incr function to them thereby incrementing each number by the value 1, next a filtering is done to keep the positive values, finally (if we disregard the printout) we reduce the remaining numbers, this is where it gets tricky to follow
+% explain: so lets take a look at this mouthful, on the first line we define an function called positive, it can tell us whether an input is positive, then we run a pipeline, it starts out with a list of integers, some negative some zero and some positive, then it maps the incr function to them thereby incrementing each number by the value 1, next a filtering is done to keep the positive values, finally (if we disregard the printout) we reduce the remaining numbers, this is where it gets tricky to follow
+So, let's take a look at this mouthful. One the first line, we define a function called \funcname{positive}. It can tell us whether an input is positive. Then we run a pipeline. It starts out with a list of integers. Som are negative, some are zere and some a positive. Then, it maps the \funcname{incr} function to them, thereby incrementing each number by the value 1. Next, a filtering is done to keep the positive values. Finally -- if we disregard the printout -- we reduce the remaining numbers. Tis is where it gets tricky to follow.
 
 % what happens in the reduce: 
 
