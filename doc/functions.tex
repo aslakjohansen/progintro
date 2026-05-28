@@ -190,7 +190,7 @@ We often see the result of a function call be used only as an argument for anoth
 \inputminted[firstline=4]{elixir}{../src/elixir/functions/pipelining/pipelining.exs} % TODO: Convert to iex
 
 % explanation: double application of the pipe operator, first expression (11) given as input to incr, evaluates to 12, given as input to incr, evaluates to 13
-We have two applications of the pipe operator. This creates a \say{pipeline}. Fist, the expression \valuename{11} is given as argument to the first call to \varname{incr}. This evaluates to $11+1=12$. That 12 is then given as input to the second call to \varname{incr} which evaluates to $12+1=13$.
+We have two applications of the pipe operator. This creates a \say{pipeline}. Fist, the expression \valuename{11} is given as argument to the first call to \funcname{incr}. This evaluates to $11+1=12$. That 12 is then given as input to the second call to \funcname{incr} which evaluates to $12+1=13$.
 
 \subsection{Higher-Order Functions}
 
