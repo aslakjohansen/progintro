@@ -198,7 +198,7 @@ We have two applications of the pipe operator. This creates a \say{pipeline}. Fi
 There are a number of side-effects from functions being \idx{values}{Value}. One such effect is that a function can take functions as \idx{parameters}{Function!as parameter} and have a function as \idx{return value}{Function!as return value}. It can also construct a new function dynamically and return it. Functions that have other functions as part of their parameters or return values are called \defi{higher-order functions}{Function!Higher-order}. We often say that these functions are \idx{composable}{Composability!of functions}. This property has resulted in a number of \idx{patterns}{Pattern} to be defined. Let's start with the \defi{map}{Pattern!Map} pattern. In this pattern a function is applied to each element of a list to construct a new list. In action, it looks like this:
 
 % example: the map function
-\inputminted[firstline=3]{elixir}{../src/elixir/functions/map/map.exs} % TODO: How to get rid of the awkward printout
+\inputminted[firstline=5]{elixir}{../src/elixir/functions/map/map.exs} % TODO: How to get rid of the awkward printout
 
 % explain: again a pipeline with two steps, input is a list with all elements from 1 to 10 (both ends included), then we use the map function to create a new list of the same size where the incr funciton is applied to each value, finally we inspect the result by printing it out, due to a leftover from erlang printing out a list of small integers is a bit intricate, just accept that the last line prints out the result
 
