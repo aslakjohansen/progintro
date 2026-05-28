@@ -209,6 +209,8 @@ Again, we have a pipeline in three phases. Input is a list with all integers fro
 The map function should be seen as a pattern where something is done to every element of a list. There are other such patterns. The \defi{filter}{Pattern!Filter} pattern constructs a new list that retains all elements of an input list for which some function evaluates to true. The \defi{reduce}{Pattern!Reduce} pattern repeatedly applies a function to each element and an \idx{accumulator value}{Accumulator value} (that it then updates). This creates one value from the contents of the entire input list. A simple use-case is to find the largest number in a list. The following code is a more complex example that illustrates how \idx{expressive}{Expressiveness} higher-order functions like these can be:
 
 % example: larger higher-order example with map, filter and reduce
+\inputminted[firstline=4]{elixir}{../src/elixir/functions/large/large.exs} % TODO: How to get rid of the awkward printout
+
 
 % explain:
 
