@@ -108,6 +108,9 @@ Functions that neither have or rely on side-effects are said to be \idx{pure}{Pu
 
 We are always in some function, even in our hello world example from section \ref{first:projectcreation}. The entirety of this example is a single statement. The compiler will essentially wrap that code in a dummy function. So, whenever a function is called, there are two roles: The caller and the callee. If the function \funcname{a} calls the function \funcname{b}, then we refer to \funcname{a} as the \idx{caller}{Caller} and \funcname{b} as the \idx{callee}{Callee}.
 
+% example
+\inputminted[]{csharp}{../src/csharp/functions/roles/Program.cs}
+
 \subsection{Dispatch}
 
 % problem: in order to call a function a concrete implementation must first be identified, a dispatch mechanism is then responsible for handing over the thread of execution to the callee
