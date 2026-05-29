@@ -111,7 +111,8 @@ We are always in some function, even in our hello world example from section \re
 % example
 \inputminted[]{csharp}{../src/csharp/functions/roles/Program.cs}
 
-% followup: note that the role is associated with a specific function call, imagine that we also had a \funcname{c} function so that a called b which called c which simply returned its parameter, then b would be the callee of the first call from a and the caller of the second call to c.
+% followup: note that the role is associated with a specific function call, imagine that we also had a \funcname{c} function so that a called b which called c which simply returned its parameter, then b would be the callee of the first call from a and the caller of the second call to c
+Note that the role is associated with a specific function call. Imagine that we also had a function \funcname{c} such that \funcname{a} called \funcname{b} which called \funcname{c} which in turn just returned the value of its parameter. Then \funcname{b} would be the callee of the first call from \funcname{a} as well as the caller of the second call to \funcname{c}.
 
 \subsection{Dispatch}
 
