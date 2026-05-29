@@ -48,8 +48,6 @@ The underlying principle is the same as it was for the linear function: By provi
   \label{syntax:fun}
 \end{syntaxfloat}
 
-% nested functions: functions can be nested, why would you do this? structure (if the function is only meant to be called from within this particular other function), scope nesting (if the function is simpler to write if it gets access to the function-local scope of the calling function)
-
 \subsection{Anatomy of a Function}
 
 % intro: recap of what a mathematical function is, figure \ref{fig:fun:anatomy} exemplifies the structure of the programming equivalent,
@@ -181,6 +179,10 @@ First of all, this implementation is \idx{functionally equivalent}{Equivalency!F
 
 % outro: often you will see a small series of such guards, each rejecting a special case, and then comes the actual implementation of the function, it is good style to lead each guard with a comment explaining (i) that it is a guard, and (ii) which guarantees it provides
 Often, you will see a small series of such guards -- each rejecting a spacial case -- and then comes the actual implementation of the function. It is good style to lead each guard with a comment explaining (i) that it is a guard, and (ii) which \idx{guarantees}{Guarantee} it provides.
+
+\subsection{Nesting}
+
+% intro: functions can be nested, what that means, why would you do this? structure (if the function is only meant to be called from within this particular other function), scope nesting (if the function is simpler to write if it gets access to the function-local scope of the calling function)
 
 \section{Python}
 
