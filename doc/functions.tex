@@ -107,7 +107,7 @@ Let's take a look at what this looks like in practice:
 % example
 \inputminted[]{csharp}{../src/csharp/functions/sideeffects/Program.cs}
 
-% explain
+% explain: let's first identify what is present in the program: a single global variable is defined then comes two functions and finally the "main" code that calls one function after the other, the first function (incr) increments value, it is allowed to do so as value is in global scope, updating a variable of a different scope than that of the function is a side-effect, the second function takes an integer as parameter, it then prints out a number of dashes that corresponds to that parameter and finally breaks the line, each of these printouts is a side-effect
 
 % function purity
 Functions that neither have or rely on side-effects are said to be \idx{pure}{Purity!Function}. Such functions are \idx{stateless}{Stateless} and \idx{deterministic}{Deterministic} (in the sense that they will always produce the same output given the same input). This means that the function call can be substituted with the value it evaluates to. This quality is called \idx{referential transparency}{Transparency!Referential}.
