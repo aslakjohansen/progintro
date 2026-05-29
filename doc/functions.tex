@@ -122,8 +122,8 @@ Instead of placing individual values on the stack, we place \idx{stack frames}{S
 
 \subsection{Guards}
 
-% intro: consider the following problem: you are hosting a childrens birthday party and you have baked a nice round cake, you want all participants to receive a slice of equal size, how many degrees should each slice be?
-Consider the following problem: You are hosting a childrens birthday party, and you have baked a nice round cake. You want all the participants to receive a slice of equal size. How many degreees should each slice be?
+% intro: consider the following problem: you are hosting a children's birthday party and you have baked a nice round cake, you want all participants to receive a slice of equal size, how many degrees should each slice be?
+Consider the following problem: You are hosting a children's birthday party, and you have baked a nice round cake. You want all the participants to receive a slice of equal size. How many degrees should each slice be?
 
 % transfer to code: what would this look like in code? we have to deliver an angle and that angle depends on a number of participants, this only makes sense for a positive number of participants, so we want to make sure to treat the cases of negative and zero counts in a special way, all things considered, this is pretty simple, we can try out a few different inputs:
 What would this look like in code? We have to deliver an angle, and that angle depends on a number of participants. Note that this only makes sense for a positive number of participants, so we want to make sure to treat cases of negative and zero counts in a special way. We don't have a type that only supports positive integers. The closest we can get is to use a non-negative integer type, and that would still leave us with a \idx{special case}{Special case}. But all things considered, this is pretty simple. We can try out the functionality with a few different inputs:
