@@ -111,6 +111,8 @@ We are always in some function, even in our hello world example from section \re
 % example
 \inputminted[]{csharp}{../src/csharp/functions/roles/Program.cs}
 
+% followup: note that the role is associated with a specific function call, imagine that we also had a \funcname{c} function so that a called b which called c which simply returned its parameter, then b would be the callee of the first call from a and the caller of the second call to c.
+
 \subsection{Dispatch}
 
 % problem: in order to call a function a concrete implementation must first be identified, a dispatch mechanism is then responsible for handing over the thread of execution to the callee
