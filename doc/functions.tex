@@ -189,7 +189,7 @@ Functions can be \defi{nested}{Nesting!Of functions}. This means that a function
 \inputminted[linenos=true]{csharp}{../src/csharp/functions/nesting/Program.cs}
 
 % explain:
-Had it not been for lines five through nine you would likely not had bat an eye at this. To be clear, no sane programmer would write the code like this; it is unnescesarily complex. But it does allow us to discuss nested functions. In this case, the \funcname{operation} function is defined within the scope of the body of the \funcname{fun}. For every invocation of the \funcname{fun} function, there are two local variables, namely \varname{a} and \varname{b}. When the \funcname{operation} function is invoked, it is always within this scope, and thus it is capable of naming these variables (aka it has access to them). When this program is executed, it prints out \say{\texttt{3}}.
+Had it not been for lines five through nine you would likely not had bat an eye at this. To be clear, no sane programmer would write the code like this; it is unnescesarily \idx{complex}{Complexity}. But it does allow us to discuss nested functions. In this case, the \funcname{operation} function is defined within the scope of the body of the \funcname{fun}. For every \idx{invocation}{Invocation!of function} of the \funcname{fun} function, there are two local variables, namely \varname{a} and \varname{b}. When the \funcname{operation} function is invoked, it is always within this scope, and thus it is capable of naming these variables (aka it has access to them). When this program is executed, it prints out \say{\texttt{3}}.
 
 \section{Python}
 
