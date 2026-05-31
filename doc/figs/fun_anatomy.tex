@@ -19,23 +19,23 @@ if (num1 > num2) {
 \end{center}
 \begin{tikzpicture}[remember picture]
   % method name
-  \draw[overlay, decorate,decoration={calligraphic brace, amplitude=10pt, raise=11pt}] (pic cs:namebefore) to node[black,midway,above=21pt] {\rotatebox{90}{name}} (pic cs:nameafter);
+  \draw[overlay, decorate,decoration={calligraphic brace, amplitude=4pt, raise=10pt}] (pic cs:namebefore) to node[black,midway,above=15pt] {\rotatebox{90}{name}} (pic cs:nameafter);
   
   % parameter list
-  \draw[overlay, decorate,decoration={calligraphic brace, amplitude=10pt, raise=11pt}] (pic cs:parbefore) to node[black,midway,above=21pt] {parameter list} (pic cs:parafter);
+  \draw[overlay, decorate,decoration={calligraphic brace, amplitude=4pt, raise=10pt}] (pic cs:parbefore) to node[black,midway,above=15pt] {parameter list} (pic cs:parafter);
   
   % signature
-  \draw[overlay, decorate,decoration={calligraphic brace, mirror, amplitude=10pt, raise=5pt, aspect=0.8}] (pic cs:sigbefore) to node[black,midway,below=15pt] {\hspace{28mm} signature} (pic cs:sigafter);
+  \draw[overlay, decorate,decoration={calligraphic brace, mirror, amplitude=4pt, raise=5pt, aspect=0.8}] (pic cs:sigbefore) to node[black,midway,below=10pt] {\hspace{28mm} signature} (pic cs:sigafter);
   
   % return type
-  \draw[overlay, decorate,decoration={calligraphic brace, amplitude=10pt, raise=11pt}] (pic cs:returntypebefore) to node[black,midway,above=21pt] {\rotatebox{90}{return}\\\rotatebox{90}{type}} (pic cs:returntypeafter);
+  \draw[overlay, decorate,decoration={calligraphic brace, amplitude=4pt, raise=10pt}] (pic cs:returntypebefore) to node[black,midway,above=15pt] {\rotatebox{90}{return}\\\rotatebox{90}{type}} (pic cs:returntypeafter);
   
   % prototype
-  \draw[overlay, decorate,decoration={calligraphic brace, mirror, amplitude=10pt, raise=5pt}] ([yshift=3mm] pic cs:returntypebefore) to node[black,midway,left=15pt] {\rotatebox{0}{function prototype}} ([yshift=-1mm] pic cs:returntypebefore);
+  \draw[overlay, decorate,decoration={calligraphic brace, mirror, amplitude=4pt, raise=5pt}] ([yshift=3.5mm] pic cs:returntypebefore) to node[black,midway,left=12pt] {\rotatebox{0}{function prototype}} ([yshift=-2mm] pic cs:returntypebefore);
   
   % return statement
-  \draw[overlay, decorate,decoration={calligraphic brace, amplitude=10pt, raise=5pt}] ([yshift=3.5mm] pic cs:returnstatement) to node[black,midway,right=15pt] {return statement} ([yshift=-2mm] pic cs:returnstatement);
+  \draw[overlay, decorate,decoration={calligraphic brace, amplitude=4pt, raise=5pt}] ([yshift=3.5mm] pic cs:returnstatement) to node[black,midway,right=12pt] {return statement} ([yshift=-2mm] pic cs:returnstatement);
   
   % body
-  \draw[overlay, decorate,decoration={calligraphic brace, mirror, amplitude=10pt, raise=5pt}] ([yshift=2mm] pic cs:bodybefore) to node[black,midway,left=15pt] {\rotatebox{90}{function body}} (pic cs:bodyafter);
+  \draw[overlay, decorate,decoration={calligraphic brace, mirror, amplitude=4pt, raise=5pt}] ([yshift=2mm] pic cs:bodybefore) to node[black,midway,left=10pt] {\rotatebox{90}{function body}} (pic cs:bodyafter);
 \end{tikzpicture}
