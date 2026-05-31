@@ -42,12 +42,13 @@ The underlying principle is the same as it was for the linear function: By provi
 \section{\csharp}
 
 % intro: recall that definition of f(x) from section \ref{sec:func:linear}? The csharp equivalent looks like this:
-Recall that definition of $f(x)$ from section \ref{sec:func:linear}? In order to create a \csharp\ equivalent, we need to map $x$ and $f(x)$ to specific types. Let's decide that both are \typename{double}. Then the \csharp\ implementation looks like this:
+Recall that definition of $f(x) = -x+5$ from section \ref{sec:func:linear}? In order to create a \csharp\ equivalent, we need to map $x$ and $f(x)$ to specific types. Let's decide that both are \typename{double}. Then the \csharp\ implementation looks like this:
 
 % example: linear function
 \inputminted[linenos]{csharp}{../src/csharp/functions/f/Program.cs}
 
 % followup and continuation
+Lines 1-3 is where the action happens. This is where the function is defined. We will spend the remainder of this section going through it. For now, take a look at it and notice the similarities. The last three lines are simply there to \say{call} the \funcname{f} function with a number of different arguments and print out the result. This is to demonstrate how to use that definition.
 
 % example area function
 
