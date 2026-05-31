@@ -68,7 +68,7 @@ In this section, we will cover the definition and use of functions in \csharp. S
 
 \subsection{Anatomy of a Function Definition}
 
-% intro: recap of what a mathematical function is, figure \ref{fig:fun:anatomy} exemplifies the structure of the programming equivalent, we will take some time to go through these in detail
+% intro: recap of what a mathematical function is (mapping from input values to output value), figure \ref{fig:fun:anatomy} exemplifies the structure of the programming \say{equivalent}, equivalent is in quotation marks as \csharp function can do more than a pure mathematical functions. This is covered in section \ref{sec:func:csharp:sideeffects}. we will take some time to go through these in detail
 
 \begin{figure}[tbp]
   \input{figs/fun_anatomy.tex}
@@ -119,6 +119,7 @@ A special return statement is used to explicitly state which value to evaluate t
 Any function call can be used as a statement. When used as a statement, any return value will be discarded. For a function call to be used as an expression, it naturally must produce a value and that value must be of a type that is compatible with the use of that expression (i.e., its parent node in the parse tree). A \typename{void} function does not return a value and a call to it can thus never be used as an expression.
 
 \subsection{Side-Effects}
+\label{sec:func:csharp:sideeffects}
 
 % the side-effect interface of the function: the primary interface consists of inputs and outputs, side-effects is an umbrella term that covers every other effect (that is, how it affects the part of the world that is external to it)
 The primary interface of a function consists of its inputs and outputs. Functions can, however, also have \textsl{side-effects}. \idx{Side-effect}{Side-effect} is an umbrella term that covers every other effect. That is, how it affects the part of the world that is external to it. Examples of this include:
