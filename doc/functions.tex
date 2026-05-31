@@ -30,6 +30,7 @@ In calculus, a linear function that, when illustrated forms a non-vertical strai
 It is a named formula that is parameterized over $x$. Concrete static values are needed for $a$ and $b$. Appearances of the $f(x)$ shorthand can be replaced by the right-hand side of that equation. So, given a concrete linear function where $[ a \mapsto -1 , b \mapsto 5 ]$ we can calculate $f(4)$ as $-1 \cdot 4 + 5 = 1$.
 
 \subsection{Area of Rectangle}
+\label{sec:func:area}
 
 We can also have function that are parameterized over two independent values. Such a function, for calculating the area of a rectangle, would look like this:
 \begin{eqnarray*}
@@ -48,7 +49,7 @@ Recall that definition of $f(x) = -x+5$ from section \ref{sec:func:linear}? In o
 \inputminted[linenos]{csharp}{../src/csharp/functions/f/Program.cs}
 
 % followup and continuation
-Lines 1-3 is where the action happens. This is where the function is defined. We will spend the remainder of this section going through it. For now, take a look at it and notice the similarities. The last three lines are simply there to \say{call} the \funcname{f} function with a number of different arguments and print out the result. This is to demonstrate how to use that definition.
+Lines 1-3 is where the action happens. This is where the function is defined. We will spend the remainder of this section going through it. For now, take a look at it and notice the similarities. The last three lines are simply there to \say{call} the \funcname{f} function with a number of different arguments and print out the result. This is to demonstrate how to use that definition. Let's do the same with the $area(w,h)$ function from section \ref{sec:func:area}:
 
 % example area function
 
