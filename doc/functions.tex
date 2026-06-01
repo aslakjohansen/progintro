@@ -100,7 +100,7 @@ If we want the function to evaluate to an \typename{int} then the return type sh
 \inputminted[linenos]{csharp}{../src/csharp/functions/return/Program.cs}
 
 % explain
-In the first three declares one of the simplest possible functions that returns a value. Whenever it is called, it returns the value 42 as an \typename{int}. This stems from line two that contains a return statement. On line five, it is called. When executed, the program thus prints out \say{The answer is 42}.
+In the first three declares one of the simplest possible functions that returns a value. Whenever it is called, it returns the value 42 as an \typename{int}. This stems from line two that contains a return statement. On line five, it is called. When executed, the program thus prints out \say{The answer is 42}. Note that line two is valid because it matches the last rule for \conceptname{stmt} in syntax \ref{syntax:fun}. Here, \valuename{42} plays the role of the expression, and it has a type that satisfies the return type of the function. This means that it either is an \typename{int} or it has a type which can be implicitly cast to an \typename{int}.
 
 % the void type
 Unlike mathematical functions, not all \csharp\ functions evaluate to a value. Perhaps they simply print out a datastructure in a readable way. Instead of having such functions return some value that doesn't carry any meaning (e.g., a zero) have have the return type follow from that value, \csharp\ has a \typename{void} type. If a function has a return type of \typename{void} then it doesn't evaluate to a value and is thus not allowed to return a value.
