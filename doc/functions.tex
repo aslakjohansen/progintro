@@ -106,9 +106,10 @@ In the first three declares one of the simplest possible functions that returns 
 Unlike mathematical functions, not all \csharp\ functions evaluate to a value. Perhaps they simply print out a datastructure in a readable way. Instead of having such functions return some value that doesn't carry any meaning (e.g., a zero) have have the return type follow from that value, \csharp\ has a \typename{void} type. If a function has a return type of \typename{void} then it doesn't evaluate to a value and is thus not allowed to return a value.
 
 % example: void print_array()
-\inputminted[]{csharp}{../src/csharp/functions/void/Program.cs}
+\inputminted[linenos]{csharp}{../src/csharp/functions/void/Program.cs}
 
 % explain
+Again, we start out with a function definition followed by an application of it. This function takes an \typename{int[]} (i.e., and array of \typename{int} values) as parameter and doesn't return anything. That last part can be determined from it having a return type of \typename{void}. But, if it doesn't return anything, what is its function? On line three, it prints out all the elements of the array. It makes sure to add a space before each element. Notice the imbalance of spacing on lines two and four. This ensures that there will always be a single space padding between the first/last element and the square brackets. This little function could turn out quite convenient.
 
 % return statement rules: every path through the function must end in a return statement, nothing must exist after a return statement (how would it be reached? indicator for a programming error), all return values must match the return type of the function
 A special return statement is used to explicitly state which value to evaluate to. The valid uses of return statements are governed by the following rules:
