@@ -121,12 +121,24 @@
     \node[terminal]    (ruleIIb) {;};
     \\
   };
+  \node[sequence,column sep=1.5cm] () at ([yshift=-2*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal]    (ruleIIIa) {return};
+    &
+    \node[nonterminal] (ruleIIIb) {expr};
+    \\
+  };
   
   \draw[path] (begin)--(ruleIa)--(end);
   \draw[path] (begin)
             -|([xshift=-1.5*\syntaxruledist,yshift=0.5*\syntaxruledist]ruleIIa.west)
             |-(                                                         ruleIIa)
             --(                                                         ruleIIb)
+            -|([xshift= 1.5*\syntaxruledist,yshift=0.5*\syntaxruledist]ruleIIb.east)
+            |-(end);
+  \draw[path] (begin)
+            -|([xshift=-1.5*\syntaxruledist,yshift=0.5*\syntaxruledist]ruleIIa.west)
+            |-(                                                         ruleIIIa)
+            --(                                                         ruleIIIb)
             -|([xshift= 1.5*\syntaxruledist,yshift=0.5*\syntaxruledist]ruleIIb.east)
             |-(end);
 \end{syntax}
