@@ -94,7 +94,7 @@ We can describe the interface of a function from three sides:
 The output interface of a function is explicitly described through the return type. In the subset of \csharp\ that we cover in this book, only one value can be returned. That value can be complex though. Do note that this is an artificial restriction that we add to keep things (relatively) simple.
 
 % naming functions after their type
-If we want the function to evaluate to an \typename{int} then the return type should be \typename{int}. We can have any valid type as return type, even the complex types that we define ourselves. A call to a function can be placed anywhere in the code where a value of the functions return type can be placed. The return type is thus defining for where the function can be called. For that reason, we often refer to a function that return an \typename{int} as an \typename{int} function. And that convention is, of course, not limited to the \typename{int} type.
+If we want the function to evaluate to an \typename{int} then the return type should be \typename{int}. We can have any valid type as return type, even the complex types that we define ourselves. A call to a function can be placed anywhere in the code where a value of the functions return type can be placed. The return type is thus defining for where the function can be called. For that reason, we often refer to a function that return an \typename{int} as an \typename{int} function. And that convention is, of course, not limited to the \typename{int} type. Let's take a look at an example:
 
 % example: int get_answer()
 \inputminted[linenos]{csharp}{../src/csharp/functions/return/Program.cs}
