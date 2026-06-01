@@ -97,9 +97,10 @@ The output interface of a function is explicitly described through the return ty
 If we want the function to evaluate to an \typename{int} then the return type should be \typename{int}. We can have any valid type as return type, even the complex types that we define ourselves. A call to a function can be placed anywhere in the code where a value of the functions return type can be placed. The return type is thus defining for where the function can be called. For that reason, we often refer to a function that return an \typename{int} as an \typename{int} function. And that convention is, of course, not limited to the \typename{int} type.
 
 % example: int get_answer()
-\inputminted[]{csharp}{../src/csharp/functions/return/Program.cs}
+\inputminted[linenos]{csharp}{../src/csharp/functions/return/Program.cs}
 
 % explain
+In the first three declares one of the simplest possible functions that returns a value. Whenever it is called, it returns the value 42 as an \typename{int}. This stems from line two that contains a return statement. On line five, it is called. When executed, the program thus prints out \say{The answer is 42}.
 
 % the void type
 Unlike mathematical functions, not all \csharp\ functions evaluate to a value. Perhaps they simply print out a datastructure in a readable way. Instead of having such functions return some value that doesn't carry any meaning (e.g., a zero) have have the return type follow from that value, \csharp\ has a \typename{void} type. If a function has a return type of \typename{void} then it doesn't evaluate to a value and is thus not allowed to return a value.
