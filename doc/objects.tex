@@ -34,6 +34,18 @@ hello
   \label{syntax:class}
 \end{syntaxfloat}
 
+\subsection{Dispatch}
+
+% intro
+Method calls, like function calls have to be dispatched. In \csharp, the mechanism is different. This appears to be a decision of the moment rather than something that is thought through\cite{csharp_ldm_2015_01_21}.
+
+% solution: in \csharp this lookup is done based on the combination of the function name and the ordered sequence of parameter types, as a consequence we are allowed to have two function definitions under the same name as long as their parameter type lists differ, that is their signatures are different, if we have two identical signatures then \csharp wouldn't be able to differentiate between them and thus be unable to uniquely dispatch in a consistent manner, because of this such code will result in a compile-time error
+In \csharp, this lookup is done based on the combination of the function name and the ordered sequence of parameter types. As a consequence of this, we are allowed to have two methods of the same name as long as their parameter type lists differ. That is, their \idx{signatures}{Signature} must be unique. If we have two identical signatures, then \csharp\ wouldn't be able to differentiate between them and thus be unable to uniquely dispatch in a consistent manner. Because of this, such code will result in a \idx{compile-time error}{Error!Compile-time}.
+
+% example
+
+% explain
+
 \section{Python}
 hello
 
