@@ -41,8 +41,11 @@
 \indexsetup{othercode=\small}
 \makeindex[program=makeindex,columns=2,intoc=true,options={-s index_style.ist}]
 
+\usepackage[american]{babel}
 \usepackage{fontspec}
 \newfontface\lserif{Liberation Serif}
+\babelprovide[import, onchar=ids fonts]{sanskrit}
+\babelfont[sanskrit]{rm}{Noto Serif Devanagari}
 
 % biblatex setup
 \usepackage[
