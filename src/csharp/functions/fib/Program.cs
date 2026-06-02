@@ -1,4 +1,4 @@
-int fib (int n) {
+uint fib (uint n) {
   switch (n) {
     case 0:
       return 0;
@@ -9,5 +9,5 @@ int fib (int n) {
   }
 }
 
-for (int n=0 ; n<10 ; n++)
+for (uint n=0 ; n<10 ; n++)
   Console.WriteLine("fib("+n+") = "+fib(n));
