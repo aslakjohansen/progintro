@@ -230,7 +230,7 @@ Looking at the above definition, there is no obvious way of implementing the \fu
 \inputminted[]{csharp}{../src/csharp/functions/fib/Program.cs}
 
 % explain: there is a one-to-one mapping between the mathematical formula and this implementation, a switch construct is used to differentiate between the three cases of the formula, the default matches >1 as 0 and 1 have been covered by the previous cases and n is of an unsigned integer type: it can never represent a negative number
-There is a one-to-one mapping between the mathematical formula and this implementation. A \keywordname{switch} construct is used to differentiate between the three different cases of the formula. The \textsl{default} matches $n>$ as $n=0$ and $n=1$ have been covered by previous cases and \varname{n} is of an \idx{unsigned}{Integer!Unsigned} integer type: It can never represent a negative number.
+There is a one-to-one mapping between the mathematical formula and this implementation. A \keywordname{switch} construct is used to differentiate between the three different cases of the formula. The \textsl{default} matches $n>1$ as $n=0$ and $n=1$ have been covered by previous cases and \varname{n} is of an \idx{unsigned}{Integer!Unsigned} integer type: It can never represent a negative number.
 
 % pattern: there is an underlying pattern here: one or more base cases and a recursion step
 
