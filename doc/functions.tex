@@ -246,6 +246,11 @@ There is an underlying \idx{pattern}{Pattern} here: We have one or more trivial 
 
 \subsubsection{Stack}
 
+% csharp
+A recursive call is a function call, and function calls operate on the stack. Recursive algorithms -- like \funcname{fib} -- work by calling a function to solve part of the problem. That function in turn calls a function to solve another part of the problem. So, the stack will grow up until the point where the problem that needs to be solved is a base case, and then it will shrink again. For execution time efficiency reasons, the stack is pre-allocated during the programs startup phase. This, however, means that a specific size of memory is allocated. The moment the recursion depth (aka the number of needed stack frames) exceeds what the stack can hold, the program crashes with stack overflow error. As \csharp was not designed with recursion as a priority the maximum recursion depth is fairly limited for this style of programming. For the imperative style that it is designed for that would be considered a waste of memory.
+
+% functional
+
 \subsection{Guards}
 
 % intro: consider the following problem: you are hosting a children's birthday party and you have baked a nice round cake, you want all participants to receive a slice of equal size, how many degrees should each slice be?
