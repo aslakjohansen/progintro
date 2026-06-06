@@ -1,0 +1,60 @@
+\begin{center}
+  \begin{tikzpicture}[]
+    \newcommand{\spacing}[0]{18mm}
+    \newcommand{\nodelabel}[2]{#1\textcolor{purple}{$_{#2}$}}
+    
+    \tikzstyle{edge} = [draw=black]
+    \tikzstyle{same} = [draw=purple,dashed]
+    \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
+    \tikzstyle{node}=[
+      anchor=center,
+      align=center,
+    ]
+    
+    \coordinate (anchor) at (0, 0);
+    
+    \node[node] (lInI)     at ([xshift=0*\spacing, yshift= 0*\spacing]anchor) {\nodelabel{40}{1}};
+    \node[node] (lIInI)    at ([xshift=2*\spacing, yshift=-1*\spacing]anchor) {\nodelabel{38}{1}};
+    \node[node] (lIInII)   at ([xshift=1*\spacing, yshift=-1*\spacing]anchor) {\nodelabel{39}{1}};
+    \node[node] (lIIInI)   at ([xshift=4*\spacing, yshift=-2*\spacing]anchor) {\nodelabel{36}{1}};
+    \node[node] (lIIInII)  at ([xshift=3*\spacing, yshift=-2*\spacing]anchor) {\nodelabel{37}{2}};
+    \node[node] (lIIInIII) at ([xshift=2*\spacing, yshift=-2*\spacing]anchor) {\nodelabel{38}{1}};
+    \node[node] (lIVnI)    at ([xshift=6*\spacing, yshift=-3*\spacing]anchor) {\nodelabel{34}{1}};
+    \node[node] (lIVnII)   at ([xshift=5*\spacing, yshift=-3*\spacing]anchor) {\nodelabel{35}{3}};
+    \node[node] (lIVnIII)  at ([xshift=4*\spacing, yshift=-3*\spacing]anchor) {\nodelabel{36}{3}};
+    \node[node] (lIVnIV)   at ([xshift=3*\spacing, yshift=-3*\spacing]anchor) {\nodelabel{37}{1}};
+    \node[node] (lVnI)     at ([xshift=8*\spacing, yshift=-4*\spacing]anchor) {\nodelabel{32}{1}};
+    \node[node] (lVnII)    at ([xshift=7*\spacing, yshift=-4*\spacing]anchor) {\nodelabel{33}{4}};
+    \node[node] (lVnIII)   at ([xshift=6*\spacing, yshift=-4*\spacing]anchor) {\nodelabel{34}{6}};
+    \node[node] (lVnIV)    at ([xshift=5*\spacing, yshift=-4*\spacing]anchor) {\nodelabel{35}{4}};
+    \node[node] (lVnV)     at ([xshift=4*\spacing, yshift=-4*\spacing]anchor) {\nodelabel{36}{1}};
+    
+    \draw[same] (lIInI) -- (lIIInIII);
+    \draw[same] (lIIInI) -- (lIVnIII);
+    \draw[same] (lIIInII) -- (lIVnIV);
+    \draw[same] (lIVnI) -- (lVnIII);
+    \draw[same] (lIVnII) -- (lVnIV);
+    \draw[same] (lIVnIII) -- (lVnV);
+    
+    \draw[edge] (lInI) -- (lIInI);
+    \draw[edge] (lInI) -- (lIInII);
+    \draw[edge] (lIInI) -- (lIIInI);
+    \draw[edge] (lIInI) -- (lIIInII);
+    \draw[edge] (lIInII) -- (lIIInII);
+    \draw[edge] (lIInII) -- (lIIInIII);
+    \draw[edge] (lIIInI) -- (lIVnI);
+    \draw[edge] (lIIInI) -- (lIVnII);
+    \draw[edge] (lIIInII) -- (lIVnII);
+    \draw[edge] (lIIInII) -- (lIVnIII);
+    \draw[edge] (lIIInIII) -- (lIVnIII);
+    \draw[edge] (lIIInIII) -- (lIVnIV);
+    \draw[edge] (lIVnI) -- (lVnI);
+    \draw[edge] (lIVnI) -- (lVnII);
+    \draw[edge] (lIVnII) -- (lVnII);
+    \draw[edge] (lIVnII) -- (lVnIII);
+    \draw[edge] (lIVnIII) -- (lVnIII);
+    \draw[edge] (lIVnIII) -- (lVnIV);
+    \draw[edge] (lIVnIV) -- (lVnIV);
+    \draw[edge] (lIVnIV) -- (lVnV);
+  \end{tikzpicture}
+\end{center}
