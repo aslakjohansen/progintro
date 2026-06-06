@@ -138,6 +138,8 @@ In Elixir, there is only one integer type and that has an \idx{arbitrary size}{A
 % and cons, why the tradeoff was resolved in this way
 Elixir code, still runs on the same hardware though. This hardware does not have instructions capable of operating on 7000 bit integers. So, instead of an integer operation being a single \idx{instruction}{Instruction}, it is an \idx{algorithm}{Algorithm} in itself. This is significantly slower. Elixir is designed for network intensive tasks, and these are even slower. So, for the tasks where one would choose Elixir, it basically doesn't matter. And that is why the designers of that language has made that choice.
 
+\subsection{Rust}
+
 \section{Floating Point Numbers}
 \label{primitives:float}
 
