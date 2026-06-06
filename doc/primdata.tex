@@ -268,7 +268,8 @@ iex(3)> {head, tail}
 
 \subsection{State Machines}
 
-% what: a state machine is a way of structuring the flow of a program, think of it as a graph consisting of states in the form of nodes and transitions between those states in the form of edges, at any given time the machine will have one active state, each outgoing edge is associated with some event that will cause that transition to be followed, this updated the active state, upon arrival at a state some code is executed, state machine are typically used to to process streams of inputs
+% what: a state machine is a way of structuring the flow of a program, think of it as a graph consisting of states in the form of nodes and transitions between those states in the form of edges, at any given time the machine will have one active state, each outgoing edge is associated with some event that will cause that transition to be followed, this updated the active state, upon arrival at a state some code is executed, state machine are typically used to process streams of inputs
+A state machine is a way of constructing the flow of a program (or part thereof). Think of it as a graph consisting of states in the form of nodes and transitions between those states in the form of edges. At any given time, the machine will have on active state. Each outgoing edge is associates with some event that will cause that transition to be followed and the active state to be updated. Upon arrival at a state, some code is executed. State machines are typically used to process streams of inputs.
 
 \begin{figure}[tbp]
   \input{figs/primdata_statemachine.tex}
