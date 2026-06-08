@@ -22,8 +22,8 @@ clean:
 	rm    ${TARGETS}
 
 mrproper: clean
-	touch ${AUTOGEN_DEPS} ${SECONDARY_TARGETS} d~ d.aux d.bbl d.bcf d.blg d.idx d.ilg d.ind d.lof d.log d.out d.run.xml d.toc
-	rm    ${AUTOGEN_DEPS} ${SECONDARY_TARGETS} *~ *.aux *.bbl *.bcf *.blg *.idx *.ilg *.ind *.lof *.log *.out *.run.xml *.toc
+	touch ${AUTOGEN_DEPS} ${SECONDARY_TARGETS} d~ d.aux d.bbl d.bcf d.blg d.idx d.ilg d.ind d.lof d.log d.minted d.out d.run.xml d.toc
+	rm    ${AUTOGEN_DEPS} ${SECONDARY_TARGETS} *~ *.aux *.bbl *.bcf *.blg *.idx *.ilg *.ind *.lof *.log *.minted *.out *.run.xml *.toc
 	touch exercises
 	rm -R exercises
 
