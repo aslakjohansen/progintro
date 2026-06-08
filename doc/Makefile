@@ -34,15 +34,14 @@ exercises:
 	mkdir exercises
 
 exercises/answers.tex: *.tex ../bin/process-exercises.exs exercises
-	../bin/process-exercises.exs document.tex .
-
+	../bin/process-exercises.exs contents.tex .
 
 document.pdf: Makefile ${AUTOGEN_DEPS} *.sty *.tex */*.tex references.bib
-	lualatex document.tex
+	lualatex "\newcommand\contentsfile{contents.tex} \input{document.tex}"
 	makeindex document.idx
 	biber document.bcf
-	lualatex document.tex
-	lualatex document.tex
+	lualatex "\newcommand\contentsfile{contents.tex} \input{document.tex}"
+	lualatex "\newcommand\contentsfile{contents.tex} \input{document.tex}"
 
 uml-demo.pdf: Makefile uml-demo.tex uml.sty
 	lualatex uml-demo.tex
