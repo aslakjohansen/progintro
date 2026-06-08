@@ -11,6 +11,18 @@ The goal is for this to become a coursebook introducing new BSc students to prog
 
 ## Practices
 
+### Building
+
+Building whole document (can take some time):
+```console
+$ cd doc ; make
+```
+
+Building the part of the document that corresponds to a single source document (e.g., `functions.tex`):
+```console
+$ cd doc ; make functions.pdf
+```
+
 ### Screenshots
 
 In order to take consistent screenshots, first find the window id by running the `xwininfo` command and then clicking on the window:
