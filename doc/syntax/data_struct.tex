@@ -125,3 +125,19 @@
   
   \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(ruleId)--(ruleIe)--(end);
 \end{syntax}
+
+\begin{syntax}[[xshift=22mm]concept.west]{name}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence] () at ([yshift=-0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal]    (ruleIa) {name};
+    &
+    \node[nonterminal] (ruleIb) {.};
+    &
+    \node[terminal]    (ruleIc) {name};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(end);
+\end{syntax}
