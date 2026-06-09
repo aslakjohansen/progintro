@@ -78,3 +78,50 @@
   
   \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(ruleId)--(ruleIe)--(end);
 \end{syntax}
+
+\begin{syntax}[[xshift=22mm]concept.west]{assign-lst}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence] () at ([yshift=1.5*\syntaxruledist-0.8pt*3]$(begin)!0.5!(end)$) {
+    &
+    \node[terminal]    (ruleIIa) {,}; % TODO: not properly horizontally aligned
+    &
+    \\
+    \node[nonterminal] (ruleIa) {name};
+    &
+    \node[terminal]    (ruleIb) {=};
+    &
+    \node[nonterminal] (ruleIc) {expr};
+    \\
+  };
+  
+  \draw[path] (begin)--(end);
+  \draw[path] (begin) to[-|-] (ruleIa) -- (ruleIb) -- (ruleIc) to[-|-] (end);
+  \draw[path] (ruleIc)
+            -|([xshift= 0.5*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIc.east)
+%            |-(                            [yshift=0.8*\syntaxruledist]ruleIb.center)
+            |-(ruleIIa)
+            -|([xshift=-0.5*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIa.west)
+            |-(ruleIa);
+\end{syntax}
+
+\begin{syntax}[[xshift=22mm]concept.west]{expr}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence,anchor=north] () at ([yshift=\syntaxrulenodeheight-0.8pt*3]$(begin.east)!0.5!(end.west)$) {
+    \node[terminal]    (ruleIa) {new};
+    &
+    \node[terminal]    (ruleIb) {type};
+    &
+    \node[terminal]    (ruleIc) {\{};
+    &
+    \node[nonterminal] (ruleId) {assign-lst};
+    &
+    \node[terminal]    (ruleIe) {\}};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(ruleId)--(ruleIe)--(end);
+\end{syntax}
