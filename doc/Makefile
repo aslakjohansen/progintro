@@ -46,7 +46,7 @@ document.pdf: Makefile ${AUTOGEN_DEPS} *.sty *.tex */*.tex references.bib
 	lualatex "\newcommand\contentsfile{contents.tex} \input{document.tex}"
 
 # for per-chapter targets
-%.pdf: %.tex
+%.pdf: %.tex */*.tex
 	lualatex -jobname=$* "\newcommand\contentsfile{$<} \input{document.tex}"
 
 uml-demo.pdf: Makefile uml-demo.tex uml.sty
