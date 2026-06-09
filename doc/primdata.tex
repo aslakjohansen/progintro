@@ -86,7 +86,7 @@ Obviously, there is some formality behind this. The syntactical rules governing 
 \inputminted[firstline=3,linenos,firstnumber=1]{python}{../src/python/primdata/maps/maps.py}
 
 % explain: no template/schema
-Notice that on line 1, where the datastructure of the specific door is created, there is no \say{door} type defined. There is no enforceable template or schema that defines \textsl{what} a door is? If we were to define another door this way, it would be easy to accidentally define it through slightly different properties. If the property names are not exactly the same for all door instances, then code operating on such doors will likely rely on definition misconceptions and thus be buggy.
+Notice that on line 1, where the datastructure of the specific door is created, there is no \say{door} \idx{type}{Type} defined. There is no enforceable \idx{template}{Template} or \idx{schema}{Schema} that defines \textsl{what} a door is? If we were to define another door this way, it would be easy to accidentally define it through slightly different properties. If the property names are not exactly the same for all door instances, then code operating on such doors will likely rely on misconceptions on definitions and thus be \idx{buggy}{Bug}.
 
 \subsection{Elixir}
 
