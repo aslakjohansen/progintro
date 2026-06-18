@@ -8,19 +8,13 @@
   };
   
   \node[sequence] () at ([yshift=-2*\syntaxruledist]$(begin)!0.5!(end)$) {
-    \node[nonterminal] (ruleII) {interface};
-    \\
-  };
-  
-  \node[sequence] () at ([yshift=-3*\syntaxruledist]$(begin)!0.5!(end)$) {
-    \node[nonterminal] (ruleIII) {enum};
+    \node[nonterminal] (ruleII) {enum};
     \\
   };
   
   \draw[path] (begin)--(end);
   \draw[path] (begin) to[-|-] (ruleI) to[-|-] (end);
   \draw[path] (begin) to[-|-] (ruleII) to[-|-] (end);
-  \draw[path] (begin) to[-|-] (ruleIII) to[-|-] (end);
   
   \draw[path]
     (begin)--([xshift=2cm]begin.east)-|([xshift=1cm]begin.east)
