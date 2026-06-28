@@ -34,10 +34,12 @@ A common pattern emerges in which the else statement is empty: \say{if this cond
   \label{syntax:flow:branch}
 \end{syntaxfloat}
 
-% intro to example: let's say that we get a number as an input from the user, for whichever reason we want to make sure that the humber is even by adding one to all odd input numbers
+% intro to example: let's say that we get a number as an input from the user, for whichever reason we want to make sure that the humber is even by adding one to all odd input numbers, that could be solved like this:
 
 % example: adjust number if odd
 \inputminted[linenos]{csharp}{../src/csharp/flow_branch/if/Program.cs}
+
+% intro to example: in that example we checked for oddness and only cared about the true path, here we adjusted the input, to show an example of what it looks like when the false path comes into play we look at the balance of a bank account, specifically we look at how to report that balance to the customer, we want to report the balance as a positive number that is either held in the bank or owed to the bank, that could be implemented like this:
 
 % example: bank statement (expressing balance in human language)
 \inputminted[linenos]{csharp}{../src/csharp/flow_branch/ifelse/Program.cs}
