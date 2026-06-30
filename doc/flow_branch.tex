@@ -100,6 +100,7 @@ Taken to the extreme, in \idx{pure functional programming}{Functional programmin
 \inputminted[linenos,firstline=3,firstnumber=1]{elixir}{../src/elixir/flow_branch/ifblock/ifblock.exs}
 
 % explain: the rhs of the assignment of line 3 spans lines 4 through 9, this if statement evaluates to either whatever the expression on line 6 evaluates to or to whatever the expression on line 8 evaluates to. Line 6 is the last statement in the true block and line 8 is the only statement in the false block
+The right-hand side of the assignment at line 3 spans lines 4 through 9. This \keywordname{if} statemetn evaluates to either whatever the expression at line 6 evaluates to, or to whatever the expression on line 8 evaluates to. Line 6 s that last statement in the \valuename{true} block and line 8 is that only (and thus last) statement in the \valuename{false} block.
 
 \subsection{Dangling Else}
 \label{sec:flow:branch:danglingelse}
