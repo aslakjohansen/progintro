@@ -21,7 +21,24 @@
       align=center,
     ]
     
-    \tikzstyle{edge} = [thick,->,>=stealth,draw=black]
+    \tikzstyle{edge} = [thick,->,>=stealth,draw=black,rounded corners=2mm]
+    
+    \tikzset{
+      -|-/.style={
+        to path={
+          (\tikztostart) -| ($(\tikztostart)!#1!(\tikztotarget)$) |- (\tikztotarget)
+          \tikztonodes
+        }
+      },
+      -|-/.default=0.5,
+      |-|/.style={
+        to path={
+          (\tikztostart) |- ($(\tikztostart)!#1!(\tikztotarget)$) -| (\tikztotarget)
+          \tikztonodes
+        }
+      },
+      |-|/.default=0.5,
+    }
     
     \node[nt] (full) at (0,0) {\textsl{stmt}\\\texttt{int i = 42 + j++ * k}};
     \node[t] (name) at ([yshift=-\spacing]full.south) {\textsl{name}\\\texttt{i}};
@@ -36,14 +53,14 @@
     \node[t] (j) at ([yshift=-\spacing]mop answer.south) {\textsl{name}\\\texttt{j}};
     
     \draw[edge] (full) -- (name);
-    \draw[edge] ([xshift=-1*\spacing]full.south) to[out=270,in=90] (type.north);
-    \draw[edge] ([xshift= 1*\spacing]full.south) to[out=270,in=90] (expr.north);
+    \draw[edge] ([xshift=-1*\spacing]full.south) to[|-|] (type.north);
+    \draw[edge] ([xshift= 1*\spacing]full.south) to[|-|] (expr.north);
     \draw[edge] (expr) -- (pop);
-    \draw[edge] ([xshift=-1*\spacing]expr.south) to[out=270,in=90] (pop answer.north);
-    \draw[edge] ([xshift= 1*\spacing]expr.south) to[out=270,in=90] (pop subexpr.north);
+    \draw[edge] ([xshift=-1*\spacing]expr.south) to[|-|] (pop answer.north);
+    \draw[edge] ([xshift= 1*\spacing]expr.south) to[|-|] (pop subexpr.north);
     \draw[edge] (pop subexpr) -- (mop);
-    \draw[edge] ([xshift=-1*\spacing]pop subexpr.south) to[out=270,in=90] (mop answer.north);
-    \draw[edge] ([xshift= 1*\spacing]pop subexpr.south) to[out=270,in=90] (mop subexpr.north);
+    \draw[edge] ([xshift=-1*\spacing]pop subexpr.south) to[|-|] (mop answer.north);
+    \draw[edge] ([xshift= 1*\spacing]pop subexpr.south) to[|-|] (mop subexpr.north);
     \draw[edge] (mop answer) -- (j);
   \end{tikzpicture}
 \end{center}
