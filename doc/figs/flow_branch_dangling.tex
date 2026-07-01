@@ -1,4 +1,5 @@
-\begin{center}
+\begin{subfigure}[t]{\textwidth}
+  \centering
   \begin{tikzpicture}
     \newcommand{\spacing}[0]{ 6mm }
     
@@ -67,4 +68,78 @@
     \node[anchor=east] () at (nested.south west) {\small{\textsl{true}}};
     \node[anchor=west] () at (nested.south east) {\small{\textsl{false}}};
   \end{tikzpicture}
-\end{center}
+  \caption{First candidate}
+\end{subfigure}
+
+\begin{subfigure}[t]{\textwidth}
+  \centering
+  \begin{tikzpicture}
+    \newcommand{\spacing}[0]{ 6mm }
+    
+    \tikzstyle{nt}=[
+      draw=\SyntaxNonterminalColor,
+      text=\SyntaxNonterminalColor,
+      fill=\SyntaxNonterminalColor!5,
+      minimum height=10mm,
+      anchor=north,
+      very thick,
+      align=center,
+    ]
+    \tikzstyle{t}=[
+      draw=\SyntaxTerminalColor,
+      text=\SyntaxTerminalColor,
+      fill=\SyntaxTerminalColor!5,
+      minimum height=10mm,
+      anchor=north,
+      very thick,
+      align=center,
+    ]
+    
+    \tikzstyle{edge} = [thick,->,>=stealth,draw=black,rounded corners=2mm]
+    
+    \tikzset{
+      -|-/.style={
+        to path={
+          (\tikztostart) -| ($(\tikztostart)!#1!(\tikztotarget)$) |- (\tikztotarget)
+          \tikztonodes
+        }
+      },
+      -|-/.default=0.5,
+      |-|/.style={
+        to path={
+          (\tikztostart) |- ($(\tikztostart)!#1!(\tikztotarget)$) -| (\tikztotarget)
+          \tikztonodes
+        }
+      },
+      |-|/.default=0.5,
+    }
+    
+    \node[nt] (full) at (0,0) {\textsl{stmt}\\\texttt{if} (line 5)};
+    \node[nt] (full cond) at ([yshift=-\spacing]full.south) {\textsl{cond}\\\texttt{i < j}};
+    \node[nt,anchor=east] (full true) at ([xshift=-\spacing]full cond.west) {\textsl{stmt}\\\texttt{if}};
+    \node[nt,anchor=west,minimum width=10mm,text=black] (full false) at ([xshift=\spacing]full cond.east) {nop};
+    
+    \node[nt] (nested) at ([yshift=-\spacing]full true.south) {\textsl{stmt}\\\texttt{if} (line 6)};
+    \node[nt] (nested cond) at ([yshift=-\spacing]nested.south) {\textsl{cond}\\\texttt{i > k}};
+    \node[nt,anchor=east] (nested true) at ([xshift=-\spacing]nested cond.west) {\textsl{stmt}\\\texttt{Console.WriteLine}};
+    \node[nt,anchor=west] (nested false) at ([xshift=\spacing]nested cond.east) {\textsl{stmt}\\\texttt{Console.WriteLine}};
+    \node[nt] (b) at ([yshift=-\spacing]nested false.south) {\textsl{string}\\\texttt{"B"}};
+    \node[nt] (a) at ([yshift=-\spacing]nested true.south) {\textsl{string}\\\texttt{"A"}};
+    
+    \draw[edge] (full) -- (full cond);
+    \draw[edge] ([xshift=-1*\spacing]full.south) to[|-|] (full true.north);
+    \draw[edge] ([xshift= 1*\spacing]full.south) to[|-|] (full false.north);
+    \draw[edge] (nested false) -- (b);
+    \draw[edge] (full true) -- (nested);
+    \draw[edge] (nested) -- (nested cond);
+    \draw[edge] ([xshift=-1*\spacing]nested.south) to[|-|] (nested true.north);
+    \draw[edge] ([xshift= 1*\spacing]nested.south) to[|-|] (nested false.north);
+    \draw[edge] (nested true) -- (a);
+    
+    \node[anchor=east] () at (full.south west) {\small{\textsl{true}}};
+    \node[anchor=west] () at (full.south east) {\small{\textsl{false}}};
+    \node[anchor=east] () at (nested.south west) {\small{\textsl{true}}};
+    \node[anchor=west] () at (nested.south east) {\small{\textsl{false}}};
+  \end{tikzpicture}
+  \caption{Second candidate}
+\end{subfigure}
