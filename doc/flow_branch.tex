@@ -144,7 +144,7 @@ This shows exactlt what it does: An \keywordname{unless} statement takes a condi
 \subsection{Chaining Branches}
 
 % common pattern: define pattern (instead of choosing one of two paths we may want to chose one of a larger number of paths), we can implement this as a sequence of cascading if statements where the conditions are evaluated one after the other until one matches, then the statement associated with that condition is evaluated
-The \keywordname{if} construct allowed us to chose one of two paths. But sometimes we might want to choose one of three (or more) paths. We can achieve this by nesting \keywordname{if} constructs. The trivial way of implementing this is to create a sequence of cascading \keywordname{if} statements where the conditions are evaluated one after the other until one matches (or the final \keywordname{else} branch is reached). Then the statement associated with that condition is matched.
+The \keywordname{if} construct allowed us to chose one of two paths. But sometimes we might want to choose one of three (or more) paths. We can achieve this by \idx{nesting}{Nesting} \keywordname{if} constructs. The trivial way of implementing this is to create a sequence of \idx{cascading}{if statement@\keywordname{if} statement!Cascade} \keywordname{if} statements where the conditions are evaluated one after the other until one matches (or the final \keywordname{else} branch is reached). Then the statement associated with that condition is matched.
 
 \subsubsection{\csharp}
 
