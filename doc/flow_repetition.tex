@@ -5,6 +5,7 @@
 Let's say that we want to print out \say{Hello} once. This is a single trivial line of code. If we want to do it twice, then we can duplicate that line. That solution will still technically work if we want to print it out 1000 times, but then we are left with a 1000 line program that is hard to understand (lots of scrolling is necessary) and, frankly, quite boring. This is a problem of scalability. But it gets worse: Imagine that we have an integer variable that has been assigned a value from a user input, and we want to print out \say{Hello} this many times. As the concrete value isn't known at compile-time, the strategy of copying the line and pasting the right number of times simply cannot work.
 
 % solution
+To be able to handle this type of problems, programming languages provide a new class of constructs. These implement repetion of logic, or loops. \csharp\ provides three main forms of loops. Sytax \ref{syntax:flow:repetition} illustrates what these look like in code, and we will be spending the next couple of sections going through each of them. In section \ref{sec:primdata:sequence:foreach}, we will go through a fourth form that works at a higher level of abstraction.
 
 \begin{syntaxfloat}
   \input{syntax/flow_repetition.tex}
