@@ -45,6 +45,7 @@ Consider a problem where we have an integer number in one variable, and we need 
 \inputminted[linenos]{csharp}{../src/csharp/flow_repetition/dowhile/Program.cs}
 
 % explain
+The first line declares a variable and initializes it to a value. This is the value that we want to print out one digit at a time. Then comes the \keywordname{do-while} loop. Here, the mnemonic is that as the loop body comes before the condition in the code, it will also be \textsl{evaluated} before the condition. So, the loop body will be evaluated at least once, and it will stop evaluating once \varname{i} reaches zero. For each iteration, line 4 divides \varname{i} by ten (i.e., removed the least significant digit) and updates \varname{i} to reflect this new value. Accordingly, the value of \varname{i} will decrease for each iteration. Line 3 -- which is evaluated before \varname{i} is updated -- takes modulo 10 of \varname{i} (i.e., the least significant digit) and prints this to the screen. So, the loop body essentially chunks off the least significant digit and prints it out.
 
 \subsection{Converting Between \keywordname{while} and \keywordname{do-while}}
 
