@@ -1,4 +1,4 @@
-int i = 12345;
+uint i = 12345;
 do {
   Console.WriteLine(i%10);
   i /= 10;
