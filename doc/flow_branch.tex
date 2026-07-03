@@ -164,7 +164,7 @@ In line 1, the command is expressed as a \typename{char} variable. Then follows 
 \subsection{\keywordname{switch} and \keywordname{case}}
 
 % evaluation of chained branches as a tool
-Let's revisit how those chained branches are evaluated. One condition is evaluated at a time. As this takes time, we would ideally like to avoid it. This particular example employs a common pattern: Each of the chained conditions compare the equality of the same variable. It doesn't take much to imagine a different (higher level) construct that limits this redundancy and allows you to express the same logic in less code. Such a construct would have the added benefit of directly telling the programmer what it is used for. In the previous example, you had to read lines 3, 5, 7 and 9 in order to understand what the purpose of these nested construct were.
+Let's revisit how those \idx{chained branches}{Branch!Chain of} are evaluated. One condition is evaluated at a time. As this takes time, we would ideally like to avoid it. This particular example employs a common pattern: Each of the chained conditions compare the equality of the same variable. It doesn't take much to imagine a different (higher \idx{level}{Abstraction!Level}) construct that limits this redundancy and allows you to express the same logic in less code. Such a construct would have the added benefit of directly telling the programmer what it is used for. In the previous example, you had to read lines 3, 5, 7 and 9 in order to understand what the purpose of these nested construct were.
 
 % the switch alternative
 So, what would such a construct look like?
