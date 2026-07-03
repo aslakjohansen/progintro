@@ -1,0 +1,87 @@
+\begin{syntax}[[xshift=20mm]concept.west]{stmt}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence,column sep=1.2cm] () at ([yshift=-0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal]    (ruleIa) {switch};
+    &
+    \node[terminal]    (ruleIb) {(};
+    &
+    \node[nonterminal] (ruleIc) {expr};
+    &
+    \node[terminal]    (ruleId) {)};
+    &
+    &
+    \\
+  };
+  \node[sequence,column sep=1.2cm] () at ([yshift=-1.5*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal]    (ruleIIa) {\{};
+    &
+    \\
+  };
+  \node[sequence,column sep=1.2cm] () at ([yshift=-3.0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal]    (ruleIIIa) {case};
+    &
+    \node[nonterminal] (ruleIIIb) {expr};
+    &
+    \node[terminal]    (ruleIIIc) {:};
+    &
+    \node[nonterminal] (ruleIIId) {stmt};
+    &
+    \\
+  };
+  \node[sequence,column sep=1.2cm] () at ([yshift=-4.5*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal]    (ruleIVa) {default};
+    &
+    \node[nonterminal] (ruleIVb) {stmt};
+    &
+    \\
+  };
+  \node[sequence,column sep=1.2cm] () at ([yshift=-6.0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal]    (ruleVa) {\}};
+    &
+    \\
+  };
+  
+  % big route
+  \draw[path] (begin)
+           -- (ruleIa)
+           -- (ruleIb)
+           -- (ruleIc)
+           -- (ruleId)
+           -|([xshift= 1.2*\syntaxruledist,yshift=-0.4*\syntaxruledist]ruleId.east)
+           to[|-|] ([xshift=-1.2*\syntaxruledist,yshift= 0.4*\syntaxruledist]ruleIIa.west)
+           |- (ruleIIa)
+           -|([xshift= 1.2*\syntaxruledist,yshift=-0.4*\syntaxruledist]ruleIIa.east)
+           to[|-|] ([xshift=-1.2*\syntaxruledist,yshift= 0.4*\syntaxruledist]ruleIIIa.west)
+           |- (ruleIIIa)
+           -- (ruleIIIb)
+           -- (ruleIIIc)
+           -- (ruleIIId)
+           -|([xshift= 1.2*\syntaxruledist,yshift=-0.4*\syntaxruledist]ruleIIId.east)
+           to[|-|] ([xshift=-1.2*\syntaxruledist,yshift= 0.4*\syntaxruledist]ruleIVa.west)
+           |- (ruleIVa)
+           -- (ruleIVb)
+           -|([xshift= 1.2*\syntaxruledist,yshift=-0.4*\syntaxruledist]ruleIVb.east)
+           to[|-|] ([xshift=-1.2*\syntaxruledist,yshift= 0.4*\syntaxruledist]ruleVa.west)
+           |- (ruleVa)
+           -|([xshift=-1.2*\syntaxruledist,yshift=-0.4*\syntaxruledist]end.center)
+           |- (end)
+  ;
+  
+  % case loop
+  \draw[path] (ruleIIId)
+           -| ([xshift= 1.2*\syntaxruledist,yshift=-0.4*\syntaxruledist]ruleIIId.east)
+           |- ($(ruleIIIb)!0.5!(ruleIVb)$)
+           -| ([xshift=-1.2*\syntaxruledist,yshift=-0.4*\syntaxruledist]ruleIIIa.west)
+           |- (ruleIIIa)
+  ;
+  
+  % bypassing default
+  \draw[path] (ruleIIId)
+           -| ([xshift= 1.2*\syntaxruledist,yshift=-0.4*\syntaxruledist]ruleIIId.east)
+           |- ($(ruleVa)!0.5!(ruleIVb)$)
+           -| ([xshift=-1.2*\syntaxruledist,yshift= 0.4*\syntaxruledist]ruleVa.west)
+           |- (ruleVa)
+  ;
+\end{syntax}
