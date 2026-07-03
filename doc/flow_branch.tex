@@ -155,6 +155,11 @@ Imagine that we are making a program where we are controlling something. That co
 \inputminted[linenos]{csharp}{../src/csharp/flow_branch/chain/Program.cs}
 
 % explain
+In line 1, the command is expressed as a \typename{char} variable. Then follows a sequence of \keywordname{if} statements. First, at line 3, we check if the command is to move north. If that condition turns out to be false then we, at line 5 check if the command is to move south. If that condition turns out to be false then we, at line 7 check if the command is to move east. When we get to line 11, four conditions have been evaluated and we have a fallback.
+
+\textbf{Note:} Let's take a look at line 5. What we are exploiting is that the last nonterminal of the second rule of syntax \ref{syntax:flow:branch} is a \conceptname{stmt}. That means that we can put any statement at this position. Any statement, such as another \keywordname{if} construct.
+
+\textbf{Note:} While the conditions one lines 3, 5, 7 and 9 all check for equality on the \varname{direction} variable, this is purely driven by the example. The condition of line 7 could check whether it is past noon, and the program would still compile.
 
 \subsection{\keywordname{switch} and \keywordname{case}}
 
