@@ -1,4 +1,5 @@
 \chapter{Exceptions}
+\label{sec:exceptions}
 
 % normal flow: the normal flow of a program is that one statement is evaluated after another, some are conditionally evaluated and some are repeated, functions are called (parameters transferred to them, work on the stack to keep track of local caller/callee variables), these functions return the thread of execution to the caller that then carries on with its evaluation, eventually the last statement will complete and the program will exit
 The normal flow of a program is that one statement is evaluated after another; some are conditionally evaluated, some are repeated, and functions are called. Parameters are transferred to the invoked function and work is being done one \idx{the stack}{Stack!The} to keep track of local \idx{caller}{Caller} and \idx{callee}{Callee} variables. Once the end of the function is reached, the \idx{thread of execution}{Thread of execution} is returned to the caller that then carries on with its evaluation. Eventually, the last statement will complete and the \idx{process}{Process} (or program) will \idx{exit}{Exit}.

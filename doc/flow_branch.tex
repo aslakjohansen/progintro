@@ -179,7 +179,8 @@ What does this look like for \csharp? The first rule of syntax \ref{syntax:flow:
   \label{syntax:flow:branch:switch}
 \end{syntaxfloat}
 
-% rules: break, default
+% rules: break
+The second syntax rules introduces a \keywordname{break} statement. By default, the evaluation of the matching case statement \idx{falls through}{Fall through} to the next case statement (which is then evaluates). This continues all the way through the entire switch construct. That is, the matching case statement and all following statements are evaluated in order. By considering the order, this allows one to construct some very attractive behaviors. However, in most cases this is confusing behavior, and we thus want to make sure that the evaluation doesn't fall through. We do this by inserting a \idx{\keywordname{break} statement}{break statement@\keywordname{break} statement}. Additionally, \csharp\ has a hard rule that the last ending \idx{curly brace}{Brace!curly} of the \keywordname{switch} construct must not be reachable. For now, that means adding a \keywordname{break} statement to the end of it. Later on, in section \ref{sec:exceptions}, we will introduce another \idx{exceptions}{Exception}, which is another way to get around this rule.
 
 % example
 \inputminted[linenos]{csharp}{../src/csharp/flow_branch/switch/Program.cs}
