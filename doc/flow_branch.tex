@@ -171,7 +171,7 @@ So, what would such a construct look like? What kinds of elements does it need? 
 
 \subsubsection{\csharp}
 
-What does this look like for \csharp?
+What does this look like for \csharp? The first rule of syntax \ref{syntax:flow:branch:switch} looks fairly complicated. It does get a lot less scary once you realize two things though: Firstly, there is a loop which for one of more cases mapping a concrete value (through an expression) to a statement. Secondly, after this loop there is a \textsl{default} statement that can be bypassed. That is, we \textsl{switch} on an expression, then we have a number of cases, these are potentially followed by a single default case and finally the \keywordname{switch} block is ended.
 
 \begin{syntaxfloat}
   \input{syntax/flow_branch_switch.tex}
