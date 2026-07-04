@@ -142,6 +142,7 @@ The most important mechanics for braching are the \keywordname{if} and \keywordn
 This shows exactlt what it does: An \keywordname{unless} statement takes a condition, and it does exactly the same as an \keywordname{if} statement with the negated condition. As \csharp\ does not have a \keywordname{unless} construct, we won't dig further into it.
 
 \subsection{Chaining Branches}
+\label{sec:flow:branch:chaining}
 
 % common pattern: define pattern (instead of choosing one of two paths we may want to chose one of a larger number of paths), we can implement this as a sequence of cascading if statements where the conditions are evaluated one after the other until one matches, then the statement associated with that condition is evaluated
 The \keywordname{if} construct allowed us to chose one of two paths. But sometimes we might want to choose one of three (or more) paths. We can achieve this by \idx{nesting}{Nesting} \keywordname{if} constructs. The trivial way of implementing this is to create a sequence of \idx{cascading}{if statement@\keywordname{if} statement!Cascade} \keywordname{if} statements where the conditions are evaluated one after the other until one matches (or the final \keywordname{else} branch is reached). Then the statement associated with that condition is matched.
@@ -183,11 +184,13 @@ What does this look like for \csharp? The first rule of syntax \ref{syntax:flow:
 The second syntax rules introduces a \keywordname{break} statement. By default, the evaluation of the matching case statement \idx{falls through}{Fall through} to the next case statement (which is then evaluates). This continues all the way through the entire switch construct. That is, the matching case statement and all following statements are evaluated in order. By considering the order, this allows one to construct some very attractive behaviors. However, in most cases this is confusing behavior, and we thus want to make sure that the evaluation doesn't fall through. We do this by inserting a \idx{\keywordname{break} statement}{break statement@\keywordname{break} statement}. Additionally, \csharp\ has a hard rule that the last ending \idx{curly brace}{Brace!curly} of the \keywordname{switch} construct must not be reachable. For now, that means adding a \keywordname{break} statement to the end of it. Later on, in section \ref{sec:exceptions}, we will introduce another \idx{exceptions}{Exception}, which is another way to get around this rule.
 
 % setup
+Let's revisit the example from section \ref{sec:flow:branch:chaining} on chaining branches. We can rewrite the code using a \keywordname{switch} statement like so:
 
 % example
 \inputminted[linenos]{csharp}{../src/csharp/flow_branch/switch/Program.cs}
 
 % explain
+On the surface, this transition looks like a mistake: The 13 lines of the variant based on chained branches have resulted in 19 lines in the new variant. If we remove the first two lines (which are strictly speaking not part of the control mechanism and just setup) and calculate the ratio then we get an increase of more than 50\%. As line count is a serious indicator for code complexity, this certainly isn't good. But line count isn't everything. In the new version, it is much easier to guess the intention at a glance and to get an overview of what is going on. So we have a tradeoff, and that means that there are scenarios where each solution is the preferable choice. It is up to the individual programmer to determine which is the best tool to use given the situation at hand.
 
 \subsubsection{Functional Programming}
 
