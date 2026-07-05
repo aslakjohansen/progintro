@@ -208,9 +208,11 @@ On the surface, this transition looks like a mistake: The 13 lines of the varian
 % pattern cases
 
 % setup
+Having seen a construct in one language makes it easier to read it in a different language. By translating the previous example to Elixir we get:
 
 % example
 \inputminted[linenos,firstline=3,firstnumber=1]{elixir}{../src/elixir/flow_branch/switch/switch.exs}
 
 % explain
+Once again, the syntax of Elixir is \textsl{cleaner} (as functional languages tend to be). After all, it is declarative paradigm and that means that we -- unlike in \csharp\ -- describe \textsl{what} we want to achieve rather than \textsl{how} it is achieved. With the exception of the underscore character of line nine, this code is pretty straight forward. An underscore is a variable that matches anything while not allowing you to refer to it. That last part about not being able to refer to it is relevant as Elixir generates warnings for any declared variable that isn't used \ldots\ unless it has a name that starts with an underscore.
 
