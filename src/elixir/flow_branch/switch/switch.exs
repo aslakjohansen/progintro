@@ -8,7 +8,7 @@ result =
     "S" -> "Going south ..."
     "E" -> "Going east ..."
     "W" -> "Going west ..."
-    _ -> ""
+    _ -> "I don't understand ?!?"
   end
 
 IO.puts(result)
