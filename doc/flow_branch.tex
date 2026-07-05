@@ -165,13 +165,13 @@ In line 1, the command is expressed as a \typename{char} variable. Then follows 
 \subsubsection{Elixir}
 
 % setup
-Elixir has a \textsl{conditional} control structure that fulfills the same role as a chain of \keywordname{if} statements. Yet it uses a bespoke control structure, thus reducing the mental burden of visually decoding the intend of the writer. It looks like this:
+\idx{Elixir}{Elixir programming language} has a \idx{\textsl{conditional}}{Conditional} control structure that fulfills the same role as a chain of \keywordname{if} statements. Yet it uses a bespoke \idx{control structure}{Control structure}, thus reducing the mental burden of visually decoding the intend of the writer. It looks like this:
 
 % example
 \inputminted[linenos,firstline=3,firstnumber=1]{elixir}{../src/elixir/flow_branch/chain/chain.exs}
 
 % explain
-Each of the lines five through nine contains a condition as well as an associated expression. The whole conditional evaluates to whatever the expression of the first matched condition evaluates to. Note that expressions, in Elixir, may consist of multiple statements, and that the \valuename{true} condition in line nine functions as a catch-all (aka default).
+Each of the lines five through nine contains a condition as well as an associated expression. The whole conditional evaluates to whatever the expression of the first matched condition evaluates to. Note that expressions, in Elixir, may consist of multiple statements, and that the \valuename{true} condition in line nine functions as a \idx{catch-all}{Catch-all} (aka default).
 
 \subsection{\keywordname{switch} and \keywordname{case}}
 
