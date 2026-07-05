@@ -1,0 +1,28 @@
+\begin{center}
+  \begin{tikzpicture}[x=4cm, y=-2.5cm, node distance=0 cm,outer sep = 0pt]
+    \tikzstyle{node}=[
+      draw,
+      rectangle,
+      minimum height=1cm,
+      minimum width=3cm,
+      anchor=center,
+      thick
+    ]
+    \tikzstyle{highlight}=[
+      draw=black,
+      thick,
+      fill=black!10,
+    ]
+    \tikzstyle{arrow} = [thick,->,>=stealth, draw=black]
+    
+    \node[node] (lbefore) at (1,1) {before};
+    \node[diamond, highlight] (lcondition) at (1,2) {condition};
+    \node[node, highlight] (lstatement) at (2,2) {statement};
+    \node[node, minimum width=7cm] (lafter) at (1.5,3) {after};
+    
+    \path[arrow] (lbefore) -- (lcondition);
+    \path[arrow] (lcondition) -- node [anchor=south] {true} (lstatement);
+    \path[arrow] (lcondition) -- node [anchor=east] {false} (1,2.8);
+    \path[arrow] (lstatement) -- (2,2.8);
+  ﻿﻿\end{tikzpicture}
+\end{center}

@@ -12,17 +12,28 @@ While not particularly common, choices in expressions can be a very convenient w
 \subsection{\keywordname{if} and \keywordname{else}}
 
 % intro: the structure of a conditional, its a fork in the road, you are either in the situation where the condition evaluates to true (and you go down one road) or you are in the situation where the condition evaluates to false (and you go down a different road), eventually these roads will merge, for now they will merge after the evaluation of a single statement
-As illustrated in figure \ref{fig:flow:branch:generic}, the decision on which branch to take is made based on the evaluation of a condition. That condition evaluates -- by definition -- to either \valuename{true} or \valuename{false}. As there is two possible outcomes, this represents two possible futures; a fork in the road. You are either in the situation where the condition evaluates to \valuename{true} (and you go down one road), or you are in the situation where the condition evaluates to \valuename{false} (and you go down a different road). Eventually, these roads will merge. This happens after the evaluate of a single statement.
+As illustrated in figure \ref{fig:flow:branch:if}, the decision on which branch to take is made based on the evaluation of a condition. That condition evaluates -- by definition -- to either \valuename{true} or \valuename{false}. As there is two possible outcomes, this represents two possible futures; a fork in the road. You are either in the situation where the condition evaluates to \valuename{true} (and you go down one road), or you are in the situation where the condition evaluates to \valuename{false} (and you go down a different road). Eventually, these roads will merge. This happens after the evaluate of a single statement.
 
-% TODO: Add an if equivalent where the false outcome bypasses the false statement.
+%\begin{figure}[tbp]
+%  \input{figs/flow_branch_generic.tex}
+%  \caption{Flowchart of a generic choice.}
+%  \label{fig:flow:branch:generic}
+%\end{figure}
+
 \begin{figure}[tbp]
-  \input{figs/flow_branch_generic.tex}
-  \caption{Flowchart of a generic choice.}
-  \label{fig:flow:branch:generic}
+  \input{figs/flow_branch_else.tex}
+  \caption{Flowchart of \keywordname{if-else} construct printing out bank statement.}
+  \label{fig:flow:branch:else}
 \end{figure}
 
 % the optional else: a common pattern emerges in which the else statement is empty: if this condition is met then do this, many languages allow for a construct in which the false statement is removed and instead it simply bypasses the true statement
-A common pattern emerges in which the else statement is empty: \say{if this condition is met, then do this}. Many programming languages include a construct in which the false statement is removed. Instead, it simply bypasses the true statement if the condition evaluates to \valuename{false}.
+A common pattern emerges in which the else statement is empty: \say{if this condition is met, then do this}. Many programming languages include a construct in which the false statement is removed. Instead, it simply bypasses the true statement if the condition evaluates to \valuename{false}. This is illustrated in figure \ref{fig:flow:branch:if}
+
+\begin{figure}[tbp]
+  \input{figs/flow_branch_if.tex}
+  \caption{Flowchart of \keywordname{if} construct adjusting odd numbers.}
+  \label{fig:flow:branch:if}
+\end{figure}
 
 \subsubsection{\csharp}
 
