@@ -53,6 +53,12 @@ Consider a problem where we have an integer number in one variable, and we need 
 % explain
 The first line declares a variable and initializes it to a value. This is the value that we want to print out one \idx{digit}{Digit} at a time. Then comes the \keywordname{do-while} loop. Here, the \idx{mnemonic}{Mnemonic} is that as the loop body comes before the condition in the code, it will also be \textsl{evaluated} before the condition. So, the loop body will be evaluated at least once, and it will stop evaluating once \varname{i} reaches zero. For each \idx{iteration}{Iteration}, line 4 divides \varname{i} by ten (i.e., removed the least significant digit) and updates \varname{i} to reflect this new value. Accordingly, the value of \varname{i} will decrease for each iteration and thus eventually reach zero (aka the loop \idx{exit condition}{Exit condition!Loop}). Line 3 -- which is evaluated before \varname{i} is updated -- takes \idx{modulo}{Module operator} 10 of \varname{i} (i.e., the least significant digit) and prints this to the screen. So, the loop body essentially chunks off the least significant digit and prints it out.
 
+\begin{figure}[tbp]
+  \input{figs/flow_repetition_dowhile.tex}
+  \caption{Flowchart of a \keywordname{do-while} loop.}
+  \label{fig:flow:repetition:dowhile}
+\end{figure}
+
 \subsection{Converting Between \keywordname{while} and \keywordname{do-while}}
 
 % intro: we now have two types of loops, hopefully it is intuitive when to choose one over the other, in some sense they seem very different, but we can convert one to the other
