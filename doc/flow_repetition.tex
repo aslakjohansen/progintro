@@ -40,10 +40,14 @@ On the first line, we initialize a loop variable to the first value that we want
 \subsection{\keywordname{do-while}}
 
 % highlevel concept: speaking aloud explanation, notice that the statement comes before the condition, use this as a mnemonic device for the order of evaluation: the statement is evaluated first, this gives us an at-least-once property
+The \keywordname{while} loop checked a condition and evaluated a statement. But what if we need to evaluate the statement first? We could place a copy of the statement before the loop, but -- as we have already covered -- duplicated code comes with its own share of problems. Some languages, like \csharp, deals with this by including a so-called \keywordname{do-while} loop. The semantics are exactly the same as what we have seen in the \keywordname{while} except that the evaluation order is flipped: First the statement is evaluated, and then the condition is checked.
 
 % figure: flowchart
 
 \subsubsection{\csharp}
+
+% syntax
+In \csharp, \keywordname{do-while} loops follow the second rule of syntax \ref{syntax:flow:repetition}. Notice how the statement comes before the condition. That is not by accident. This was an intentional design decision to make it more natural for humans to read. The compiler (or those writing it) wouldn't care. But let's see what using it looks like in practice \ldots
 
 % setup
 Consider a problem where we have an integer number in one variable, and we need to print out all the individual digits in order of growing significance. One reasonable solution to to express this using a \keywordname{do-while} loop. That looks like this:
