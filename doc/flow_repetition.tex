@@ -100,7 +100,7 @@ If generalized, a template can be synthesized from this pattern. We have an \idx
 \inputminted[linenos]{csharp}{../src/csharp/flow_repetition/for/Program.cs}
 
 % explain:
-Let's try to read it our loud: \say{For all \varname{i}'s starting at zero, as long as they are less than 10, in increments of one, print out that \varname{i}}. But we are getting ahead of ourselves: Our initialization statement declares a new variable called \varname{i} and initializes it to have a value of zero. This is the first thing that happens. Then the continuation condition -- that checks that \varname{i} is less than 10 -- is evaluated. The loop body prints out the value of \varname{i} and then the update statement increments the value of \varname{i}. Then, the execution jumps back to evaluating the continuation condition.
+Let's try to read it our loud: \say{For all \varname{i}'s starting at zero, as long as they are less than 10, in increments of one, print out that \varname{i}}. But we are getting ahead of ourselves: Our initialization statement declares a new variable called \varname{i} and initializes it to have a value of zero. This is the first thing that happens. Then the continuation condition -- that checks that \varname{i} is less than 10 -- is evaluated. The loop body prints out the value of \varname{i} and then the update statement increments the value of \varname{i}. Then, the execution jumps back to evaluating the continuation condition and we loop \ldots
 
 \begin{figure}[tbp]
   \input{figs/flow_repetition_for.tex}
