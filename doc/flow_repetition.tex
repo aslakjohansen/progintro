@@ -120,6 +120,7 @@ Let's try to read it our loud: \say{For all \varname{i}'s starting at zero, as l
 % problem: loops are control structures that repeat, in principle we can define the continuation condition on arbitrary complexes of logic, but that makes the code difficult to read and is rarely done, instead loops are typically used to draw the broad strokes: "we need something that repeats here", once that control logic has been set up it will churn trough each repetition (aka iteration) and we can focus on what happens *during* these iterations, on top of this we have two ways of deviating from this pattern.
 
 % break: the first such method of deviation is to *break* the loop. At any point inside the loop we can decide (often using an if statement) to end the loop prematurely, the evaluation of the loop will stop and the remainder of the loop will be skipped, this is useful if you are searching for something, once we have found it we break the loop.
+The first such method of deviation is to \textsl{break} the loop. At any point inside the loop, we can decide -- often using an \keywordname{if} statement -- to end the loop prematurely: The evaluation of the loop will stop and the remainder of the loop (rest of current and all future iterations) will be skipped. This is useful if we are searching for something: One we have found it, we break the loop.
 
 % continue: the second such method of deviation is to skip the remainder of the current iteration and *continue* at the beginning of the next, this is often used to skip special cases.
 
