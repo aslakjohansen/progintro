@@ -1,0 +1,58 @@
+\begin{center}
+  \begin{tikzpicture}[]
+    \newcommand{\height}[0]{20mm}
+    \newcommand{\width}[0]{50mm}
+    \newcommand{\dist}[0]{5mm}
+    
+    \tikzstyle{edge} = [thick,draw=black]
+    \tikzstyle{dedge} = [edge,->,>=stealth]
+    
+    \coordinate (origo) at (0mm,0cm);
+    
+    \node[rectangle,thick,anchor=south east,draw,minimum height=\height,minimum width=\width] (lhs top) at ([xshift=-\dist,yshift=\dist]origo) {
+      \begin{minipage}{\width-8mm}
+        \begin{minted}[fontsize=\scriptsize]{latex}
+while ( <condition> ) {
+  <statement>
+}
+        \end{minted}
+      \end{minipage}
+    };
+    
+    \node[rectangle,thick,anchor=south west,draw,minimum height=\height,minimum width=\width] (rhs top) at ([xshift=\dist,yshift=\dist]origo) {
+      \begin{minipage}{\width-8mm}
+        \begin{minted}[fontsize=\scriptsize]{latex}
+do {
+  <statement>
+} while ( <condition> );
+        \end{minted}
+      \end{minipage}
+    };
+    
+    \node[rectangle,thick,anchor=north east,draw,align=center,minimum height=\height,minimum width=\width] (lhs bottom) at ([xshift=-\dist,yshift=-\dist]origo) {
+      \begin{minipage}{\width-8mm}
+        \begin{minted}[fontsize=\scriptsize]{latex}
+if ( <condition> ) {
+  do {
+    <statement>
+  } while ( <condition> );
+}
+        \end{minted}
+      \end{minipage}
+    };
+    
+    \node[rectangle,thick,anchor=north west,draw,minimum height=\height,minimum width=\width] (rhs bottom) at ([xshift=\dist,yshift=-\dist]origo) {
+      \begin{minipage}{\width-8mm}
+        \begin{minted}[fontsize=\scriptsize]{latex}
+<statement>
+while ( <condition> ) {
+  <statement>
+}
+        \end{minted}
+      \end{minipage}
+    };
+    
+    \draw[dedge] (lhs top)->(lhs bottom);
+    \draw[dedge] (rhs top)->(rhs bottom);
+  \end{tikzpicture}
+\end{center}
