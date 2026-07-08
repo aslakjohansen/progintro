@@ -194,6 +194,7 @@ Let's revisit how those \idx{chained branches}{Branch!Chain of} are evaluated. O
 So, what would such a construct look like? What kinds of elements does it need? First of all, we need to know which variable we are comparing. But since we only need to know about it once, it makes sense to \idx{generalize}{Generalization} this to being an \idx{expression}{Expression}. Then, we need a list of \textsl{cases}; values to compare against and logic that needs to evaluated should we have a match. The values can be generalized to expressions and the logic to a \idx{statement}{Statement}. On top of that we need some syntax to allow the \idx{compiler}{Compiler} to \idx{parse}{Parsing} it.
 
 \subsubsection{\csharp}
+\label{sec:flow:branch:switch:cs}
 
 What does this look like for \csharp? The first rule of syntax \ref{syntax:flow:branch:switch} looks fairly complicated. It does get a lot less scary once you realize two things though: Firstly, there is a loop which for one of more cases mapping a concrete value (through an expression) to a statement. Secondly, after this loop there is a \idx{\textsl{default}}{Default!Case} statement that can be bypassed. That is, we \defi{\textsl{switch}}{switch statement@\keywordname{switch} statement} on an expression, then we have a number of cases, these are potentially followed by a single default case and finally the \keywordname{switch} block is ended.
 
