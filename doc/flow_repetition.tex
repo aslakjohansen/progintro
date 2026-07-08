@@ -172,4 +172,21 @@ To demonstrate how we can nest loops in \csharp, we will make a program that cal
 \inputminted[linenos]{csharp}{../src/csharp/flow_repetition/nesting/Program.cs}
 
 % explain
+The two loop variables are called \varname{x} and \varname{y}. The outer loop iterates over the \varname{y} variable as we need to print out a line at a time. The inner loop then iterates over the \varname{x} variable. For each combination, line 3 is evaluated. There are two things to notice here, namely (i) that \methodname{Console.Write} is used instead of \methodname{Console.WriteLine} in order to \textsl{not} break the line, and (ii) that there is a bit of \say{magic} happening here. For now, just accept that what it does is to print the result of \texttt{\varname{x}*\varname{y}} in such a way that at least four characters are printed. If the result of the multiplication does not take four characters, then space characters are prepended until it does. This way the results will align nicely. The result looks like this:
+
+\begin{verbatim}
+   1
+   2   4
+   3   6   9
+   4   8  12  16
+   5  10  15  20  25
+   6  12  18  24  30  36
+   7  14  21  28  35  42  49
+   8  16  24  32  40  48  56  64
+   9  18  27  36  45  54  63  72  81
+  10  20  30  40  50  60  70  80  90 100
+\end{verbatim}
+
+% followup
+The diagonal is achieved by making the continuation condition of the inner loop depend on the loop variable of the outer loop. Finally, the line is broken in line 5 of the code.
 
