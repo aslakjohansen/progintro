@@ -138,6 +138,7 @@ By now, it should come as no surprise that we need to add two keywords to the sy
 \end{syntaxfloat}
 
 % break setup: what is the smallest square number over n
+Square numbers are numbers that are the square of some integer. These are 1, 4, 9, 16 \ldots Imagine that we need to find the smallest square number over some number. Mathematically, the solution is $\lceil \sqrt{n} \rceil ^2$, and this is basically how one would implement it in code. That solution, however, bears little relevance to the subject at hand. Instead, we will trade efficiency for the ability to employ a \keywordname{break} statement (something you would only do for pedagogical reasons). It looks like this:
 
 % break example
 \inputminted[linenos]{csharp}{../src/csharp/flow_repetition/break/Program.cs}
