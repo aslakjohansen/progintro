@@ -144,7 +144,7 @@ By now, it should come as no surprise that we need to add two keywords to the sy
 \inputminted[linenos]{csharp}{../src/csharp/flow_repetition/break/Program.cs}
 
 % break explain
-Lines 1 and 2 are setup, and line 9 is reporting. The main job of the code is done in lines 4 through 7. Line 4 in particular might seem odd: This is a \keywordname{while}-\valuename{true} loop (aka a \idx{do-forever loop}{Loop!Do-forever}) that never \idx{exits}{Exit!Loop}. Well, not quite: When the condition on line 5 evaluates to true, we reach the \keywordname{break} statement and that \idx{forever}{Forever} ends. This happens the first time the square of the $n$ is higher than our target, and then we have the solution.
+Lines 1 and 2 are program setup, and line 9 is reporting. The main job of the code is done in lines 4 through 7. Line 4 in particular might seem odd: This is a \keywordname{while}-\valuename{true} loop (aka a \idx{do-forever loop}{Loop!Do-forever}) that never \idx{exits}{Exit!Loop}. Well, not quite: When the condition on line 5 evaluates to true, we reach the \keywordname{break} statement and that \idx{forever}{Forever} ends. This happens the first time the square of the $n$ is higher than our target, and then we have the solution.
 
 % continue setup: sum of all positive integers below 100 that aren't in the 7 table
 To come up with an example for when to use a \keywordname{continue} statement, we look to a different problem: How to sum up all positive integers below 100 that aren't in the 7 table. One solution looks like this:
