@@ -153,6 +153,7 @@ To come up with an example for when to use a \keywordname{continue} statement, w
 \inputminted[linenos]{csharp}{../src/csharp/flow_repetition/continue/Program.cs}
 
 % continue explain
+Again, the loop does all of the heavy lifting. We use a \keywordname{for} loop to iterate over all the candidates for being summed up. On line 4, we skip those that are in the 7 table. Note that since \varname{i} is an integer the division operation will be fulfilled by an integer division at assembly level. This causes some loss of precision if \varname{i} is not in the 7 table. That loss is then amplified when we multiply by 7 again, and the result is different from \varname{i}. We essentially exploit the rounding error.
 
 \subsection{Nested Loops}
 
