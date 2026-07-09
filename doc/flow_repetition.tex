@@ -49,8 +49,14 @@ On the first line, we initialize a loop variable to the first value that we want
 The \keywordname{while} loop checked a condition and evaluated a statement. But what if we need to evaluate the statement first? We could place a copy of the statement before the loop, but -- as we have already covered -- \idx{duplicated code}{Duplicate code} comes with its own share of problems. Some languages, like \csharp, deals with this by including a so-called \idx{\keywordname{do-while} loop}{do-while loop@\keywordname{do-while} loop}. The \idx{semantics}{Semantics} are exactly the same as what we have seen in the \keywordname{while} except that the evaluation order is flipped: First the statement is evaluated, and then the condition is checked.
 
 % figure: flowchart
+\begin{figure}[tbp]
+  \input{figs/flow_repetition_dowhile.tex}
+  \caption{Flowchart of a \keywordname{do-while} loop.}
+  \label{fig:flow:repetition:dowhile}
+\end{figure}
 
 \subsubsection{\csharp}
+\label{sec:flow:repetition:dowhile:cs}
 
 % syntax
 In \csharp, \keywordname{do-while} loops follow the second rule of syntax \ref{syntax:flow:repetition}. Notice how the statement comes before the condition. That is not by accident. This was an intentional design decision to make it more natural for humans to read. The \idx{compiler}{Compiler} (or those writing it) wouldn't care. But let's see what using it looks like in practice \ldots
@@ -65,9 +71,9 @@ Consider a problem where we have an integer number in one variable, and we need 
 The first line declares a variable and initializes it to a value. This is the value that we want to print out one \idx{digit}{Digit} at a time. Then comes the \keywordname{do-while} loop. Here, the \idx{mnemonic}{Mnemonic} is that as the loop body comes before the condition in the code, it will also be \textsl{evaluated} before the condition. So, the loop body will be evaluated at least once, and it will stop evaluating once \varname{i} reaches zero. For each \idx{iteration}{Iteration}, line 4 divides \varname{i} by ten (i.e., removed the least significant digit) and updates \varname{i} to reflect this new value. Accordingly, the value of \varname{i} will decrease for each iteration and thus eventually reach zero (aka the loop \idx{exit condition}{Exit condition!Loop}). Line 3 -- which is evaluated before \varname{i} is updated -- takes \idx{modulo}{Module operator} 10 of \varname{i} (i.e., the least significant digit) and prints this to the screen. So, the loop body essentially chunks off the least significant digit and prints it out.
 
 \begin{figure}[tbp]
-  \input{figs/flow_repetition_dowhile.tex}
-  \caption{Flowchart of a \keywordname{do-while} loop.}
-  \label{fig:flow:repetition:dowhile}
+  \input{figs/flow_repetition_dowhile_concrete.tex}
+  \caption{Flowchart of a concrete \keywordname{do-while} loop from section \ref{sec:flow:repetition:dowhile:cs}.}
+  \label{fig:flow:repetition:dowhile:concrete}
 \end{figure}
 
 \subsection{Converting Between \keywordname{while} and \keywordname{do-while}}

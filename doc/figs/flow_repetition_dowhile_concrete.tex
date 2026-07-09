@@ -15,14 +15,13 @@
     ]
     \tikzstyle{arrow} = [thick,->,>=stealth, draw=black]
     
-    \node[node] (before) at (1,1) {before};
-    \node[node, highlight, minimum width=5cm, align=left] (body) at (1,2) {statement};
-    \node[diamond, highlight] (condition) at (1,3) {condition};
-    \node[node] (after) at (1,4) {after};
+    \node[node] (before) at (1,1) {int i = 12345;};
+    \node[node, highlight, minimum width=5cm, align=left] (body) at (1,2) {Console.WriteLine(i\%10);\\i /= 10;};
+    \node[diamond, highlight] (condition) at (1,3) {i>0};
     
     \path[arrow] (before) -- (body);
     \path[arrow] (body) -- (condition);
     \path[arrow] (condition) -- node [pos=0.2, anchor=south] {true} ++(1.0,0) |-  (body.east);
-    \path[arrow] (condition.south) -- node [pos=0.3, anchor=east] {false} (after);
+    \path[arrow] (condition.south) -- node [pos=0.3, anchor=east] {false} (1,3.8);
   ﻿﻿\end{tikzpicture}
 \end{center}
