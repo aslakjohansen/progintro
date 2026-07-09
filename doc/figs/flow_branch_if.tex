@@ -18,11 +18,12 @@
     \node[node] (lbefore) at (1,1) {before};
     \node[diamond, highlight] (lcondition) at (1,2) {condition};
     \node[node, highlight] (lstatement) at (2,2) {statement};
-    \node[node, minimum width=7cm] (lafter) at (1.5,3) {after};
+    \node[node, minimum width=2*4cm+3cm] (lafter) at (1,3) {after};
     
     \path[arrow] (lbefore) -- (lcondition);
     \path[arrow] (lcondition) -- node [anchor=south] {true} (lstatement);
-    \path[arrow] (lcondition) -- node [anchor=east] {false} (1,2.8);
+    \path[arrow] (lcondition) -- node [anchor=south] {false} (0+3cm/2,2) -- (0,2) -- (0,2.8);
+%    \path[arrow] (lcondition) -- node [anchor=east] {false} (1,2.8);
     \path[arrow] (lstatement) -- (2,2.8);
   ﻿﻿\end{tikzpicture}
 \end{center}
