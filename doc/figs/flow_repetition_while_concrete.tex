@@ -1,5 +1,5 @@
 \begin{center}
-  \begin{tikzpicture}[x=4cm, y=-2.5cm, node distance=0 cm,outer sep = 0pt]
+  \begin{tikzpicture}[x=4cm, y=-2.2cm, node distance=0 cm,outer sep = 0pt]
     \tikzstyle{node}=[
       draw,
       rectangle,
@@ -15,14 +15,13 @@
     ]
     \tikzstyle{arrow} = [thick,->,>=stealth, draw=black]
     
-    \node[node] (before) at (1,1) {before};
-    \node[diamond, highlight] (condition) at (1,2) {condition};
-    \node[node, highlight, align=left] (body) at (1,3) {statement};
-    \node[node] (after) at (2,3) {after};
+    \node[node] (before) at (1,1) {int i = 0;};
+    \node[diamond, highlight] (condition) at (1,2) {i<10};
+    \node[node, highlight, minimum width=4cm, align=left] (body) at (1,3) {Console.WriteLine(i);\\i++;};
     
     \path[arrow] (before) -- (condition);
     \path[arrow] (condition) -- node [anchor=east] {true} (body);
-    \path[arrow] (condition) -- node [anchor=south] {false} ([xshift=16mm]condition.east) -| (after);
+    \path[arrow] (condition) -| node [anchor=south] {false} (2,2.8);
     \path[arrow] (body.west) -- ++(-0.5,0)|- (condition.west);
   ﻿﻿\end{tikzpicture}
 \end{center}

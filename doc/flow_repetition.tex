@@ -19,6 +19,11 @@ To be able to handle this type of problems, programming languages provide a new 
 The \idx{\keywordname{while} loop}{while loop@\keywordname{while} loop} is the most fundamental loop; it is the first you learn as an \idx{assembly}{Assembly programming languages} programmer, and most simple to construct in assembly language. In a \keywordname{while} loop, something is done \textsl{while} a condition holds.
 
 % figure: flowchart
+\begin{figure}[tbp]
+  \input{figs/flow_repetition_while.tex}
+  \caption{Flowchart of a \keywordname{while} loop.}
+  \label{fig:flow:repetition:while}
+\end{figure}
 
 \subsubsection{\csharp}
 
@@ -32,8 +37,8 @@ Consider a problem where we need to print out all the integer numbers below 10. 
 On the first line, we initialize a loop variable to the first value that we want to print. Then we have a loop that runs as long as \varname{i} is less than our limit. The thing that happens \textsl{while} this condition holds true is that the value of \varname{i} is printed to the screen and then it is incremented. Note that you can sort-of read it aloud. Figure \ref{fig:flow:repetition:while} shows this as a flowchart.
 
 \begin{figure}[tbp]
-  \input{figs/flow_repetition_while.tex}
-  \caption{Flowchart of a \keywordname{while} loop.}
+  \input{figs/flow_repetition_while_concrete.tex}
+  \caption{Flowchart of the repetition \keywordname{while} loop.}
   \label{fig:flow:repetition:while}
 \end{figure}
 
