@@ -22,7 +22,7 @@
     
     \path[arrow] (lbefore) -- (lcondition);
     \path[arrow] (lcondition) -- node [anchor=south] {true} (lstatement);
-    \path[arrow] (lcondition) -- node [anchor=south] {false} (0+3cm/2,2) -- (0,2) -- (0,2.8);
-    \path[arrow] (lstatement) -- (2,2.8);
+    \path[arrow] (lcondition) -- node [anchor=south] {false} (0+3cm/2,2) -- (0,2) -- ($(lafter.north west)!(0,2)!(lafter.north east)$);
+    \path[arrow] (lstatement) -- ($(lafter.north west)!(lstatement)!(lafter.north east)$);
   ﻿﻿\end{tikzpicture}
 \end{center}

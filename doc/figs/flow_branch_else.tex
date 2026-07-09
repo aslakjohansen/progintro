@@ -24,7 +24,7 @@
     \path[arrow] (rbefore) -- (rcondition);
     \path[arrow] (rcondition) -- node [anchor=south] {true} (rstatementT);
     \path[arrow] (rcondition) -- node [anchor=south] {false} (rstatementF);
-    \path[arrow] (rstatementF) -- (4,2.8);
-    \path[arrow] (rstatementT) -- (6,2.8);
+    \path[arrow] (rstatementT) -- ($(rafter.north west)!(rstatementT)!(rafter.north east)$);
+    \path[arrow] (rstatementF) -- ($(rafter.north west)!(rstatementF)!(rafter.north east)$);
   ﻿﻿\end{tikzpicture}
 \end{center}
