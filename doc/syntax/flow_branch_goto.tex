@@ -1,0 +1,25 @@
+\begin{syntax}{stmt}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence] () at ([yshift=-0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleIa) {name};
+    &
+    \node[terminal]    (ruleIb) {:};
+    &
+    \node[nonterminal] (ruleIc) {stmt};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-1*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal]    (ruleIIa) {goto};
+    &
+    \node[nonterminal] (ruleIIb) {name};
+    &
+    \node[terminal]    (ruleIIc) {;};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(end);
+  \draw[path] (begin) to[-|-] (ruleIIa)--(ruleIIb)--(ruleIIc) to[-|-] (end);
+\end{syntax}
