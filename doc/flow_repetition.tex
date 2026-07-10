@@ -212,12 +212,6 @@ Imagine two loops; one nested within the other. Inside the inner loop, there is 
 % solution: naming the loop, introduce syntax
 Luckily there are language features that we can use to avoid this. To do so, we use a \idx{label}{Label} to name the loop and use that name to specify which loop we are breaking out of. The necessary language elements have already been added in syntax \ref{syntax:flow:branch:goto}.
 
-\begin{syntaxfloat}
-  \input{syntax/flow_repetition_nested.tex}
-  \caption{Statements for breaking nested loops}
-  \label{syntax:flow:repetition:nested}
-\end{syntaxfloat}
-
 % setup
 To illustrate how to break out of an outer loop using \keywordname{goto}, we will modify the previous nested loop example to find a combination of two numbers that gives 27 when multiplied together:
 
