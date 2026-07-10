@@ -225,4 +225,5 @@ To illustrate how to break out of an outer loop using \keywordname{goto}, we wil
 \inputminted[linenos]{csharp}{../src/csharp/flow_repetition/nested_break/Program.cs}
 
 % explain
+The reporting is placed on line 13. For it to be able to name the \varname{x} and \varname{y} variables, these must be declared outside of the loop. This is done on lines 1 and 2. The also have to be initialized here in order to make the compiler happy (it is not clever enough to determine that they will have been initialized once line 13 is reached). As \varname{y} is initialized on line 2, there is no need to do so in line 4 as well. On line 6, we determine whether we have found the combination that we are looking for. If that is the case we need to break not just the inner loop, but the outer one as well. The is accomplished by jumping (using the \keywordname{goto} statement on line 7) to a label after the end of the outer loop; in this case on line 12.
 
