@@ -254,4 +254,5 @@ Traditionally, \keywordname{goto} statements we introduced to \idx{high-level la
 Line 2 is just a label. Nothing happens when it is begin evaluated. Instead, it functions as a marker. When like 6 is evaluated the execution is transferred to this marker (aka line 2). According to the condition of line 3, this will happen as long as \varname{i} is less than 10. So, lines 3 through 7 will be evaluated repeatedly as long as this condition holds. When the condition fails (aka evaluates to \valuename{false}), the loop will end and the evaluation will continue past line 7. So, in this case, the program will exit. As we start with a value of zero in line 1, the variable is of a large enough size, and it is incremented by one for each repetition, we will eventually break out of the loop.
 
 % followup
+Repetition in general, and loops in \csharp, are very important. So important that specific syntax has been added to make the code cleaner looking. The functionality that we have just implemented, you will come to know as a \keywordname{while} loop and encounter \csharp\ syntax for in section \ref{sec:flow:repetition:while}. That's in just a little bit!
 
