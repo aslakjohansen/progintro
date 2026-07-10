@@ -5,4 +5,3 @@ loop:
     i++;
     goto loop;
   }
-
