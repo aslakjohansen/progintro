@@ -1,28 +1,26 @@
-\begin{center}
-  \begin{tikzpicture}[x=4cm, y=-2.5cm, node distance=0 cm,outer sep = 0pt]
-    \tikzstyle{node}=[
-      draw,
-      rectangle,
-      minimum height=1cm,
-      minimum width=3cm,
-      anchor=center,
-      thick
-    ]
-    \tikzstyle{highlight}=[
-      draw=black,
-      thick,
-      fill=black!10,
-    ]
-    \tikzstyle{arrow} = [thick,->,>=stealth, draw=black]
-    
-    \node[node] (before) at (1,1) {before};
-    \node[diamond, highlight] (condition) at (1,2) {condition};
-    \node[node, highlight, align=left] (body) at (1,3) {statement};
-    \node[node] (after) at (2,3) {after};
-    
-    \path[arrow] (before) -- (condition);
-    \path[arrow] (condition) -- node [anchor=east] {true} (body);
-    \path[arrow] (condition) -- node [anchor=south] {false} ([xshift=16mm]condition.east) -| (after);
-    \path[arrow] (body.west) -- ++(-0.5,0)|- (condition.west);
-  ﻿﻿\end{tikzpicture}
-\end{center}
+\begin{tikzpicture}[x=4cm, y=-2.5cm, node distance=0 cm,outer sep = 0pt]
+  \tikzstyle{node}=[
+    draw,
+    rectangle,
+    minimum height=1cm,
+    minimum width=3cm,
+    anchor=center,
+    thick
+  ]
+  \tikzstyle{highlight}=[
+    draw=black,
+    thick,
+    fill=black!10,
+  ]
+  \tikzstyle{arrow} = [thick,->,>=stealth, draw=black]
+  
+  \node[node] (before) at (1,1) {before};
+  \node[diamond, highlight] (condition) at (1,2) {condition};
+  \node[node, highlight, align=left] (body) at (1,3) {statement};
+  \node[node] (after) at (2,3) {after};
+  
+  \path[arrow] (before) -- (condition);
+  \path[arrow] (condition) -- node [anchor=east] {true} (body);
+  \path[arrow] (condition) -- node [anchor=south] {false} ([xshift=16mm]condition.east) -| (after);
+  \path[arrow] (body.west) -- ++(-0.5,0)|- (condition.west);
+﻿﻿\end{tikzpicture}
