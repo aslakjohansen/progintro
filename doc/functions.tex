@@ -374,4 +374,6 @@ Just like the \funcname{map} function applies a function to each element of its 
 % function lookup in the BEAM: elixir inherits the BEAM runtime from erlang, in it function dispatch is performed at runtime using function name and number of parameters, this mechanism can be used to redefine the implementation at runtime for hot-code updates, this trades function call speed for maintainability
 \idx{Elixir}{Elixir programming language} inherits the \idx{BEAM}{BEAM runtime} runtime from \idx{Erlang}{Erlang programming language}. In it, \idx{function dispatch}{Function dispatch} is performed by lookup against a table at runtime using function name and parameter count. This indirection can be used to redefine the implementation of functions at runtime, and that ability is used to issue \defi{hot updates}{Hot update}. These are code updates to a running system. So, function call speed is traded for \idx{maintainability}{Maintainability}. This is especially important for long-running \idx{deployments}{Deployment}.
 
+\section{Case: Linked Lists}
+
 \exercises{functions}{Functions}
