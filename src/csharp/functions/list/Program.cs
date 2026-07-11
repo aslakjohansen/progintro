@@ -57,4 +57,3 @@ class IntList {
   public int payload;
   public IntList? next;
 }
-
