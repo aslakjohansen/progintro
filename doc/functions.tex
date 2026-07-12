@@ -398,6 +398,12 @@ Functions -- especially when combined with data structures -- can be used to bui
 % reusable part: index
 All functions have been prefixed \funcname{intlist\_} to avoid naming conflicts. The implementation of \funcname{intlist\_index} employs two guards. The first one on line 13 guards against having to index into a \valuename{null} reference. In this case, we return the value \valuename{-1} to indicate that something has gone wrong. In section \ref{sec:exceptions}, we will explore a better solution. On line 14 we check if the current chain link is the one we are looking for and if so, we return the payload. On line 15 we recurse: The call is repeated, only with a smaller problem (the next chain link and a smaller index).
 
+% reusable part: prepend, head and tail
+
+% reusable part: insert
+
+% reusable part: print
+
 % usage
 
 \inputminted[linenos,lastline=10]{csharp}{../src/csharp/functions/list/Program.cs}
