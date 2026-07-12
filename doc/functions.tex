@@ -404,6 +404,7 @@ The \funcname{intlist\_prepend} function simply creates a new chain link element
 % reusable part: insert
 
 % reusable part: print
+The \funcname{intlist\_print} function is fairly straight forward. Lines 49 and 51 iterate through the list (which is \valuename{null} terminated). For each iteration, the payload is printed along with a single space character. On lines 48 and 53 some visual \textsl{wrapping characters} are printed, and only the last print statement breaks the line.
 
 % usage
 Now that we have the datastructure and functionality in place, we can start writing code that actually makes use of it. Here's an example of what we can do with it:
