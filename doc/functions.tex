@@ -413,5 +413,13 @@ Now that we have the datastructure and functionality in place, we can start writ
 \inputminted[linenos,lastline=10]{csharp}{../src/csharp/functions/list/Program.cs}
 
 % printout
+Note that the line number of figure \ref{fig:fun:case:list} are offset so that they can co-exist with these lines in the same file. If we place all of these lines in one file, compile it, and then run it, that program will print out:
+
+\begin{verbatim}
+[ 0 1 2 3 4 5 6 7 8 9 10 ];
+[ 0 42 1 2 3 4 5 6 7 8 9 10 ];
+head:0
+Tail:IntList
+\end{verbatim}
 
 \exercises{functions}{Functions}
