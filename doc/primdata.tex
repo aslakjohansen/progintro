@@ -152,6 +152,7 @@ An array is a simple datastructure which contains zero or more elements of the s
 \end{alignat*}
 
 % calculation, this is why most languages agree that arrays start at zero
+Notice how the first element of the memory space is at index zero. This is why most language agrees that indices for arrays start at zero. That is, the first element is element zero. Such arrays are sad to use 0-based indexing. Other languages have decided that the first element of an array is element 1. These array are said to use 1-based indexing. For a human -- like those doing the actual programming -- 1-based indexing feels more natural: Most non-programmers will have trouble relating to a reference the 0$^\mathrm{th}$ element and yet it is quite common for programmers to do so. To downside to 1-based indexing is that the above formula doesn't work. Using it results in an off-by-one error. So, the language designers are left with a choice: Either offset the address so that it references a part of memory that is technically outside of the allocation (my one address), or add the cost of an extra subtraction operation every time the array is indexed.
 
 \subsubsection{\csharp}
 
