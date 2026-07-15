@@ -152,7 +152,7 @@ An array is a simple datastructure which contains zero or more elements of the s
 \end{alignat*}
 
 % calculation, this is why most languages agree that arrays start at zero
-Notice how the first element of the \idx{memory space}{Memory space} is at index zero. This is why most common language agrees that indices for arrays start at zero. That is, the first element is element zero. Such arrays are sad to use \idx{0-based indexing}{0-based indexing@\valuename{0}-based indexing}. Other languages have decided that the first element of an array is element 1. These array are said to use \idx{1-based indexing}{1-based indexing@\valuename{0}-based indexing}. For a \idx{human}{Human} -- like those doing the actual programming -- 1-based indexing feels more natural: Most \idx{non-programmers}{Non-programmer} will have trouble relating to a reference the 0$^\mathrm{th}$ element and yet it is quite common for programmers to do so. To downside to 1-based indexing is that the above formula doesn't work. Using it results in an \idx{off-by-one error}{Error!Off-by-one}. So, the \idx{language designers}{Language designer} are left with a choice: Either \idx{offset}{Offset} the address so that it references a part of memory that is technically outside of the allocation (by one address), or add the cost of an extra subtraction operation every time the array is \idx{indexed}{Array!Indexing operation}.
+Notice how the first element of the \idx{memory space}{Memory space} is at index zero. This is why most common language agrees that indices for arrays start at zero. That is, the first element is element zero. Such arrays are sad to use \idx{0-based indexing}{0-based indexing@\valuename{0}-based indexing}. Other languages have decided that the first element of an array is element 1. These array are said to use \idx{1-based indexing}{1-based indexing@\valuename{1}-based indexing}. For a \idx{human}{Human} -- like those doing the actual programming -- 1-based indexing feels more natural: Most \idx{non-programmers}{Non-programmer} will have trouble relating to a reference the 0$^\mathrm{th}$ element and yet it is quite common for programmers to do so. To downside to 1-based indexing is that the above formula doesn't work. Using it results in an \idx{off-by-one error}{Error!Off-by-one}. So, the \idx{language designers}{Language designer} are left with a choice: Either \idx{offset}{Offset} the address so that it references a part of memory that is technically outside of the allocation (by one address), or add the cost of an extra subtraction operation every time the array is \idx{indexed}{Array!Indexing operation}.
 
 \subsubsection{\csharp}
 
@@ -171,7 +171,7 @@ Notice how the first element of the \idx{memory space}{Memory space} is at index
 % setup
 
 %example
-\inputminted[lastline=5]{csharp}{../src/csharp/primdata/months/Program.cs}
+\inputminted[linenos,lastline=5]{csharp}{../src/csharp/primdata/months/Program.cs}
 
 % explain
 
