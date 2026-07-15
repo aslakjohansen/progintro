@@ -174,6 +174,7 @@ Notice how the first element of the \idx{memory space}{Memory space} is at index
 \inputminted[linenos,lastline=5]{csharp}{../src/csharp/primdata/months/Program.cs}
 
 % explain
+On line 1, an array of \typename{int} values is allocated and initialized to contain 12 explicit values. A variable called \varname{months} of type \typename{int[]} is declared and assigned a reference to this array. On line 3, the program uses a loop variable to go through all the valid indices of the array. Note that the loop continuation condition is expressed in terms of \propertyname{months.Length} which holds the length of the array. For each index, the program prints out the index as well as the value at this position in the array. The latter is accomplished using a lookup through the square bracket syntax from the \conceptname{expr} rule of syntax \ref{syntax:data:array}.
 
 \begin{figure}[tbp]
   \input{figs/data_array_index.tex}
