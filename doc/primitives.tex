@@ -61,6 +61,14 @@ The binary notation is convenient when we think about how the numbers are repres
 \end{figure}
 
 % signedness: two's compliment
+When representing negative numbers, the most significant bit represents $-2^{n-1}$ for a representation of $n$ bits. It essentially offsets the starting point. For $n=8$ and using \say{0b} as prefix to indicate binary, this means that
+\begin{itemize}
+  \item The value \texttt{0b10000000} is -128 (the smallest value that can be represented).
+  \item The value \texttt{0b11111111} is 0.
+  \item The value \texttt{0b01111111} is 127 (the largest value that can be represented).
+\end{itemize}
+
+This system is called \idx{two's compliment}{Two's compliment}.
 
 \subsection{\csharp}
 
