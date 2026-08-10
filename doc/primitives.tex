@@ -417,13 +417,13 @@ An explicit cast is necessary if we risk loosing data. By performing an explicit
 \subsection{Scripting Languages}
 
 % declaration of variables: in csharp variables are first declared and then used, we can declare a variable and assign it a value on the same line but the way the resulting parse tree is evaluated still dictates that the declaration is evaluated first, in python -- with its weak typing -- local variables are never declared, the moment you assign a value to a name that name becomes a variable, the following is valid python code:
-In \csharp, variables are first declared, and then used. We can declare a variable and assign it a value on the same line, but the way that the resulting parse tree is evaluated still dictates that the declaration is evaluated first. In Python -- with its weak typing -- local variables are never declared; the moment you assign a value to a name, that name becomes a variable. The following is valid python code:
+In \csharp, variables are first declared, and then used. We can \idx{declare}{Variable!Declaration} a variable and \idx{assign}{Variable!Assignment} it a value on the same line, but the way that the resulting \idx{parse tree}{Parse tree} is evaluated still dictates that the declaration is evaluated first. In \idx{Python}{Python programming language} -- with its \idx{weak typing}{Typing!Weak} -- local variables are never declared; the moment you assign a value to a name, that name becomes a variable. The following is valid python code:
 
 % example: var = 42\nprint(var)
 \inputminted[firstline=3]{python}{../src/python/primitives/nodecl/nodecl.py}
 
 % increments: python doesn't have increment and decrement operators (e.g., i++ or i+=1), this is likely to avoid the situation where the variable has not been initialized and thus does not have a value
-Python doesn't have increment and decrement oprators (e.g., as in \texttt{i++} or \texttt{i += 1}). This is likely to avoid the situation where the veriable has not been initialized and thus does not have a balue to adjust.
+Python doesn't have \idx{increment}{Operator!Increment} and \idx{decrement}{Operator!Decrement} oprators (e.g., as in \texttt{i++} or \texttt{i += 1}). This is likely to avoid the situation where the variable has not been \idx{initialized}{Variable!Initialization} and thus does not have a value to adjust.
 
 \subsection{Functional Programming}
 
