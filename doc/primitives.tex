@@ -61,6 +61,14 @@ The binary notation is convenient when we think about how the numbers are repres
 \end{figure}
 
 % signedness: two's compliment
+When representing negative numbers, the most significant bit represents $-2^{n-1}$ for a representation of $n$ bits. It essentially offsets the starting point. For $n=8$ and using \say{0b} as prefix to indicate binary, this means that
+\begin{itemize}
+  \item The value \texttt{0b10000000} is -128 (the smallest value that can be represented).
+  \item The value \texttt{0b11111111} is 0.
+  \item The value \texttt{0b01111111} is 127 (the largest value that can be represented).
+\end{itemize}
+
+This system is called \idx{two's compliment}{Two's compliment}.
 
 \subsection{\csharp}
 
@@ -121,6 +129,7 @@ Literals in general, and integer literals in particular, are expressions. That m
 \subsubsection{Operations}
 
 % set of operations
+In order to \textsl{do} anything with our integers, we need to introduce operations on them. Syntax \ref{syntax:prim:arithmetic:ops} shows the syntax for the most commonly used \idx{binary operators}{Operator!Binary} for integers. Those are mathematical operations that take two \idx{input values}{Operator!Input value} (called the \idx{operands}{Operand}) and produce one \idx{output value}{Operator!Output value}. These are all \idx{infix}{Operator!Infix} operators, meaning that the operator is placed in between the two operands. Most of these operators are obvious, but the latter two rules handle the operators for \textsl{integer} division and modulo.
 
 \begin{syntaxfloat}
   \input{syntax/prim_arithmetic_ops.tex}
@@ -128,7 +137,11 @@ Literals in general, and integer literals in particular, are expressions. That m
   \label{syntax:prim:arithmetic:ops}
 \end{syntaxfloat}
 
+% lead
+To print out the result of adding two numbers, first we need to add the two numbers, and then we need to ask the virtual machine to print out the result of that operation for us:
+
 % example
+\inputminted[]{csharp}{../src/csharp/primitives/int_op/Program.cs}
 
 \subsection{High-Level Languages}
 
@@ -139,6 +152,14 @@ In Elixir, there is only one integer type and that has an \idx{arbitrary size}{A
 Elixir code, still runs on the same hardware though. This hardware does not have instructions capable of operating on 7000 bit integers. So, instead of an integer operation being a single \idx{instruction}{Instruction}, it is an \idx{algorithm}{Algorithm} in itself. This is significantly slower. Elixir is designed for network intensive tasks, and these are even slower. So, for the tasks where one would choose Elixir, it basically doesn't matter. And that is why the designers of that language has made that choice.
 
 \subsection{Rust}
+
+From figure \ref{fig:prim:int:csharp:types} it is evident that \csharp\ lugs around some \idx{legacy}{Legacy}. Otherwise, they would not have been that inconsistent in the naming. \idx{Rust}{Rust programming language} is an example of a modern language, that -- at least when it comes to integer types -- has chosen \idx{consistency}{Consistency!In naming} over \idx{history}{History}. The equivalent table for Rust can be found in figure \ref{fig:prim:int:rust:types}. Try to compare the different \idx{naming conventions}{Convention!Naming}.
+
+\begin{figure}[tbp]
+  \input{figs/prim_int_rust_types.tex}
+  \caption{Integer types available in Rust.}
+  \label{fig:prim:int:rust:types}
+\end{figure}
 
 \section{Floating Point Numbers}
 \label{primitives:float}
@@ -396,10 +417,13 @@ An explicit cast is necessary if we risk loosing data. By performing an explicit
 \subsection{Scripting Languages}
 
 % declaration of variables: in csharp variables are first declared and then used, we can declare a variable and assign it a value on the same line but the way the resulting parse tree is evaluated still dictates that the declaration is evaluated first, in python -- with its weak typing -- local variables are never declared, the moment you assign a value to a name that name becomes a variable, the following is valid python code:
+In \csharp, variables are first declared, and then used. We can \idx{declare}{Variable!Declaration} a variable and \idx{assign}{Variable!Assignment} it a value on the same line, but the way that the resulting \idx{parse tree}{Parse tree} is evaluated still dictates that the declaration is evaluated first. In \idx{Python}{Python programming language} -- with its \idx{weak typing}{Typing!Weak} -- local variables are never declared; the moment you assign a value to a name, that name becomes a variable. The following is valid python code:
 
 % example: var = 42\nprint(var)
+\inputminted[firstline=3]{python}{../src/python/primitives/nodecl/nodecl.py}
 
 % increments: python doesn't have increment and decrement operators (e.g., i++ or i+=1), this is likely to avoid the situation where the variable has not been initialized and thus does not have a value
+Python doesn't have \idx{increment}{Operator!Increment} and \idx{decrement}{Operator!Decrement} oprators (e.g., as in \texttt{i++} or \texttt{i += 1}). This is likely to avoid the situation where the variable has not been \idx{initialized}{Variable!Initialization} and thus does not have a value to adjust.
 
 \subsection{Functional Programming}
 
