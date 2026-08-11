@@ -10,7 +10,7 @@ So far, we have worked with a strict sequence of \idx{statements}{Statement}. Al
 \end{figure}
 
 % context evolution: sequence (derived from the last statement), whichever way we go through the "track" we will only have access to the declarations from the common "ancestors"
-The individual staments are evaluated one at a time, in the context of the program state resulting from the previous statement. So, whichever way we go throught the sequence of the \say{track}, we will only have access to the declarations from the common \textsl{ancestor} statements. Those are the statements that you are guaranteed to have passed through at this point.
+The individual staments are \idx{evaluated}{Evaluation} one at a time, in the context of the program state resulting from the previous statement. So, whichever way we go throught the sequence of the \say{track}, we will only have access to the \idx{declarations}{Variable!Declaration} from the common \textsl{ancestor} statements. Those are the statements that you are guaranteed to have passed through at this point.
 
 \input{flow_expr.tex}
 \input{flow_branch.tex}
