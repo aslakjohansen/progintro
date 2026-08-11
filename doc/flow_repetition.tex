@@ -100,7 +100,26 @@ We now have two types of loops. Hopefully, it is intuitive when to choose one ov
 \end{figure}
 
 % do-while-to-while: flowchart equivalency
-But how do we know that they are equivalent?
+But how do we know that they are equivalent? This is something that we can conclude from their flowcharts. Let's look into why the \keywordname{do-while} template is equivalent to the \keywordname{while} template. Their flowcharts are listed side-by-side in figure \ref{fig:flow:repetition:conversion}.
+
+% figure: do-while to while
+\begin{figure}[tbp]
+  \newcommand{\figscale}[0]{0.8}
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \scalebox{\figscale}{\input{figs/flow_repetition_dowhile_hl.tex}}
+    \caption{\keywordname{do-while} variant.}
+    \label{fig:flow:repetition:conversion:dowhile:hl}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \scalebox{\figscale}{\input{figs/flow_repetition_while_hl.tex}}
+    \caption{\keywordname{while} variant.}
+    \label{fig:flow:repetition:conversion:while:hl}
+  \end{subfigure}
+  \caption{Flowcharts of equivalent \keywordname{do-while} and \keywordname{while} loops.}
+  \label{fig:flow:repetition:conversion}
+\end{figure}
 
 % while-to-do-while:
 Just as the flowcharts for the \keywordname{do-while} to \keywordname{while} transition turned out to be \idx{equivalent}{Equivalency!Flowchart}, so does the flowcharts for the \keywordname{while} to \keywordname{do-while} transition. The \idx{compiler}{Compiler} actually does something very similar during compilation in order to \idx{optimize}{Optimization} the generated code.
