@@ -100,6 +100,7 @@ We now have two types of loops. Hopefully, it is intuitive when to choose one ov
 \end{figure}
 
 % do-while-to-while: flowchart equivalency
+But how do we know that they are equivalent?
 
 % while-to-do-while:
 Just as the flowcharts for the \keywordname{do-while} to \keywordname{while} transition turned out to be \idx{equivalent}{Equivalency!Flowchart}, so does the flowcharts for the \keywordname{while} to \keywordname{do-while} transition. The \idx{compiler}{Compiler} actually does something very similar during compilation in order to \idx{optimize}{Optimization} the generated code.
@@ -136,7 +137,7 @@ Let's try to read it our loud: \say{For all \varname{i}'s starting at zero, as l
 \begin{figure}[tbp]
   \input{figs/flow_repetition_for.tex}
   \caption{Flowchart of a \keywordname{for} loop.}
-  \label{fig:flow:repetition:fir}
+  \label{fig:flow:repetition:for}
 \end{figure}
 
 \subsection{Control Structures}
