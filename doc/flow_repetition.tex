@@ -100,7 +100,7 @@ We now have two types of loops. Hopefully, it is intuitive when to choose one ov
 \end{figure}
 
 % do-while-to-while: flowchart equivalency
-But how do we know that they are equivalent? This is something that we can conclude from their flowcharts. Let's look into why the \keywordname{do-while} template is equivalent to the \keywordname{while} template. Their flowcharts are listed side-by-side in figure \ref{fig:flow:repetition:conversion}.
+But how do we know that they are equivalent? This is something that we can conclude from their flowcharts. Let's look into why the \keywordname{do-while} template is equivalent to the \keywordname{while} template. Their flowcharts are listed side-by-side in figure \ref{fig:flow:repetition:conversion}. The flowcharts are clearly different as the two variants have a different number of nodes. But let's try to step through them. We start in the \say{before} node, and from this we transition to a \say{statement} node followed by a \say{condition} node. This either leads us to an \say{after} node (in case of the condition evaluating to false) or (otherwise) a \say{statement} node that loops back to our \say{condition} node. This description fits both variants and includes every property that is relevant for defining how the the flowchart is followed. Accordingly, they exhibit a \idx{functional equivalence}{Equivalence!Functional}.
 
 % figure: do-while to while
 \begin{figure}[tbp]
