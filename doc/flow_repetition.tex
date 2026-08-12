@@ -143,6 +143,95 @@ If generalized, a template can be synthesized from this pattern. We have an \idx
 \subsubsection{\csharp}
 
 % TODO: figure: elements of the template: expressed with and without for construct
+\begin{figure}[tbp]
+  \vspace{6mm}
+  \newcommand{\figscale}[0]{0.8}
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \begin{minted}[escapeinside=||]{csharp}
+|\tikzmark{whilebeforeinit}|int years = 0|\tikzmark{whileafterinit}|;
+|\tikzmark{whilebeforecond}|while (years<5) {
+  interest = principal * rate;|\tikzmark{whilebeforebody}|
+  principal += interest;
+  Console.WriteLine(principal);|\tikzmark{whileafterbody}|
+  
+  years++;|\tikzmark{whileafterupdate}|
+}
+    \end{minted}
+    \caption{\keywordname{while} variant.}
+    \label{fig:flow:repetition:conversion:dowhile:hl}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \begin{minted}[escapeinside=||]{csharp}
+for (|\tikzmark{forbeforeinit}|int years=0|\tikzmark{forafterinit}| ; |\tikzmark{forbeforecond}|years<5|\tikzmark{foraftercond}| ; |\tikzmark{forbeforeupdate}|years++|\tikzmark{forafterupdate}|) {|\tikzmark{forfirsteol}|
+  |\tikzmark{forbeforebody}|interest = principal * rate;
+  principal += interest;
+  |\tikzmark{forafterbody}|Console.WriteLine(principal);
+}
+    \end{minted}
+    \vspace{12.5mm} % TODO: figure out how to do this properly
+    \caption{\keywordname{for} variant.}
+    \label{fig:flow:repetition:conversion:while:hl}
+  \end{subfigure}
+  \begin{tikzpicture}[remember picture]
+    \tikzstyle{dedge} = [overlay,thick,->,>=stealth,draw=black]
+    
+    \coordinate (lhs init a) at ([yshift=3mm]pic cs:whilebeforeinit);
+    \coordinate (lhs init b) at ([yshift=3mm]pic cs:whileafterinit);
+    \coordinate (rhs init a) at ([yshift=3mm]pic cs:forbeforeinit);
+    \coordinate (rhs init b) at ([yshift=3mm]pic cs:forafterinit);
+    \coordinate (lhs cond) at ([yshift=1mm,xshift=-1mm]pic cs:whilebeforecond);
+    \coordinate (rhs cond a) at ([yshift=3mm]pic cs:forbeforecond);
+    \coordinate (rhs cond b) at ([yshift=3mm]pic cs:foraftercond);
+    \coordinate (rhs update a) at ([yshift=3mm]pic cs:forbeforeupdate);
+    \coordinate (rhs update b) at ([yshift=3mm]pic cs:forafterupdate);
+    \coordinate (rhs body a) at ([yshift=2mm,xshift=-1mm]pic cs:forbeforebody);
+    \coordinate (rhs body b) at ([yshift=-0.5mm,xshift=-1mm]pic cs:forafterbody);
+    \coordinate (lhs body b) at ([yshift=-0.5mm,xshift=1mm]pic cs:whileafterbody);
+    \coordinate (lhs body a) at ([yshift=2mm]$(lhs body b)!(pic cs:whilebeforebody)!([yshift=1mm]lhs body b)$);
+    
+    \draw[overlay,thick] (lhs init a) -- (lhs init b);
+    \draw[overlay,thick] (rhs init a) -- (rhs init b);
+    \draw[overlay,thick] (rhs cond a) -- (rhs cond b);
+    \draw[overlay,thick] (rhs update a) -- (rhs update b);
+    \draw[overlay,thick] (rhs body a) -- (rhs body b);
+    \draw[overlay,thick] (lhs body a) -- (lhs body b);
+    
+    % init
+    \draw[dedge]
+         ($(rhs init a)!0.5!(rhs init b)$)
+      -- ([yshift=3mm]$(rhs init a)!0.5!(rhs init b)$)
+      -| ($(lhs init a)!0.5!(lhs init b)$)
+    ;
+    
+    % cond
+    \draw[dedge]
+         ($(rhs cond a)!0.5!(rhs cond b)$)
+      -- ([yshift=6mm]$(rhs cond a)!0.5!(rhs cond b)$)
+      -| ([xshift=-3mm]lhs cond)
+      -- (lhs cond)
+    ;
+    
+    % update
+    \draw[dedge]
+         ([yshift=3mm]$(pic cs:forbeforeupdate)!0.5!(pic cs:forafterupdate)$)
+      -- ([yshift=5mm]$(pic cs:forbeforeupdate)!0.5!(pic cs:forafterupdate)$)
+      -| ([xshift=3mm]pic cs:forfirsteol)
+      |- ([yshift=1mm,xshift=1mm]pic cs:whileafterupdate)
+    ;
+    
+    % body
+    \draw[dedge]
+         ($(rhs body a)!0.5!(rhs body b)$)
+      -- ([xshift=-6mm]$(rhs body a)!0.5!(rhs body b)$)
+      |- ($(lhs body a)!0.5!(lhs body b)$)
+    ;
+  \end{tikzpicture}
+  \caption{Identifying elements from a \keywordname{while} loop in a \keywordname{for} loop.}
+  \label{fig:flow:repetition:for:pattern}
+\end{figure}
 
 % setup
 We will start simple and print out all integers up until 10 using a \keywordname{for} loop:
