@@ -70,8 +70,8 @@ principal += interest;
   
   % update
   \draw[dedge]
-       ([yshift=3mm]$(pic cs:forbeforeupdate)!0.5!(pic cs:forafterupdate)$)
-    -- ([yshift=5mm]$(pic cs:forbeforeupdate)!0.5!(pic cs:forafterupdate)$)
+       ($(rhs update a)!0.5!(rhs update b)$)
+    -- ([yshift=3mm]$(rhs update a)!0.5!(rhs update b)$)
     -| ([xshift=3mm]pic cs:forfirsteol)
     |- ([yshift=1mm,xshift=1mm]pic cs:whileafterupdate)
   ;
