@@ -5,11 +5,11 @@
   \begin{minted}[escapeinside=||]{csharp}
 |\tikzmark{whilebeforeinit}|int years = 0|\tikzmark{whileafterinit}|;
 |\tikzmark{whilebeforecond}|while (years<5) {
-interest = principal * rate;|\tikzmark{whilebeforebody}|
-principal += interest;
-Console.WriteLine(principal);|\tikzmark{whileafterbody}|
+  interest = principal * rate;|\tikzmark{whilebeforebody}|
+  principal += interest;
+  Console.WriteLine(principal);|\tikzmark{whileafterbody}|
 
-years++;|\tikzmark{whileafterupdate}|
+  years++;|\tikzmark{whileafterupdate}|
 }
   \end{minted}
   \caption{\keywordname{while} variant.}
@@ -19,9 +19,9 @@ years++;|\tikzmark{whileafterupdate}|
   \centering
   \begin{minted}[escapeinside=||]{csharp}
 for (|\tikzmark{forbeforeinit}|int years=0|\tikzmark{forafterinit}| ; |\tikzmark{forbeforecond}|years<5|\tikzmark{foraftercond}| ; |\tikzmark{forbeforeupdate}|years++|\tikzmark{forafterupdate}|) {|\tikzmark{forfirsteol}|
-|\tikzmark{forbeforebody}|interest = principal * rate;
-principal += interest;
-|\tikzmark{forafterbody}|Console.WriteLine(principal);
+  |\tikzmark{forbeforebody}|interest = principal * rate;
+  principal += interest;
+  |\tikzmark{forafterbody}|Console.WriteLine(principal);
 }
   \end{minted}
   \vspace{12.5mm} % TODO: figure out how to do this properly
