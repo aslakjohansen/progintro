@@ -1,0 +1,66 @@
+\begin{center}
+  \rotatebox{90}{
+  \begin{tikzpicture}
+    \newcommand{\spacing}[0]{ 6mm }
+    
+    \tikzstyle{nt}=[
+      draw=\SyntaxNonterminalColor,
+      text=\SyntaxNonterminalColor,
+      fill=\SyntaxNonterminalColor!5,
+      minimum height=10mm,
+      anchor=north,
+      very thick,
+      align=center,
+    ]
+    \tikzstyle{t}=[
+      draw=\SyntaxTerminalColor,
+      text=\SyntaxTerminalColor,
+      fill=\SyntaxTerminalColor!5,
+      minimum height=10mm,
+      anchor=north,
+      very thick,
+      align=center,
+    ]
+    
+    \tikzstyle{edge} = [thick,->,>=stealth,draw=black,rounded corners=2mm]
+    
+    \tikzset{
+      -|-/.style={
+        to path={
+          (\tikztostart) -| ($(\tikztostart)!#1!(\tikztotarget)$) |- (\tikztotarget)
+          \tikztonodes
+        }
+      },
+      -|-/.default=0.5,
+      |-|/.style={
+        to path={
+          (\tikztostart) |- ($(\tikztostart)!#1!(\tikztotarget)$) -| (\tikztotarget)
+          \tikztonodes
+        }
+      },
+      |-|/.default=0.5,
+    }
+    
+    \node[nt] (full) at (0,0) {\textsl{stmt}\\\texttt{bool progress = alive \&\& (points > required\_points)}};
+    \node[t] (name) at ([yshift=-\spacing]full.south) {\textsl{name}\\\texttt{progress}};
+    \node[t,anchor=east] (type) at ([xshift=-\spacing]name.west) {\textsl{type}\\\texttt{bool}};
+    \node[nt,anchor=west] (expr) at ([xshift=\spacing]name.east) {\textsl{expr}\\\texttt{alive \&\& (points > required\_points)}};
+    \node[t] (pop) at ([yshift=-\spacing]expr.south) {\textsl{operator}\\\texttt{\&\&}};
+    \node[t,anchor=east] (pop answer) at ([xshift=-\spacing]pop.west) {\textsl{name}\\\texttt{alive}};
+    \node[nt,anchor=west] (pop subexpr) at ([xshift=\spacing]pop.east) {\textsl{expr}\\\texttt{(points > required\_points)}};
+    \node[t] (mop) at ([yshift=-\spacing]pop subexpr.south) {\textsl{operator}\\\texttt{>}};
+    \node[t,anchor=east] (mop answer) at ([xshift=-\spacing]mop.west) {\textsl{name}\\\texttt{points}};
+    \node[t,anchor=west] (mop subexpr) at ([xshift=\spacing]mop.east) {\textsl{name}\\\texttt{required\_points}};
+    
+    \draw[edge] (full) -- (name);
+    \draw[edge] ([xshift=-1*\spacing]full.south) to[|-|] (type.north);
+    \draw[edge] ([xshift= 1*\spacing]full.south) to[|-|] (expr.north);
+    \draw[edge] (expr) -- (pop);
+    \draw[edge] ([xshift=-1*\spacing]expr.south) to[|-|] (pop answer.north);
+    \draw[edge] ([xshift= 1*\spacing]expr.south) to[|-|] (pop subexpr.north);
+    \draw[edge] (pop subexpr) -- (mop);
+    \draw[edge] ([xshift=-1*\spacing]pop subexpr.south) to[|-|] (mop answer.north);
+    \draw[edge] ([xshift= 1*\spacing]pop subexpr.south) to[|-|] (mop subexpr.north);
+  \end{tikzpicture}
+  }
+\end{center}

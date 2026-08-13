@@ -336,6 +336,12 @@ bool progress = alive && (points > required_points);
 % explain
 Obviously, this code need the variables \varname{alive}, \varname{points} and \varname{required\_points} to be declared and of types on which the operations are defined. Given that, let us go through how the code is evaluated.
 
+\begin{figure}[tbp]
+  \input{figs/prim_bool_csharp_parsetree.tex}
+  \caption{Parse tree of code for determining whether to progress level.}
+  \label{fig:prim:bool:csharp:parsetree}
+\end{figure}
+
 \subsubsection{Lazy Evaluation}
 
 % TODO: Make it make sense at this location
