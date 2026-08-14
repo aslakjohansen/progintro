@@ -164,6 +164,63 @@ From figure \ref{fig:prim:int:csharp:types} it is evident that \csharp\ lugs aro
   \label{fig:prim:int:rust:types}
 \end{figure}
 
+\section{Local Variables}
+% TODO: move up to just after integers. Then the bool section can refer to the syntax rules.
+
+\subsection{State Transformation}
+
+\subsection{\csharp}
+
+\begin{syntaxfloat}
+  \input{syntax/prim_vars_locals.tex}
+  \caption{Local variables.}
+  \label{syntax:prim:vars:locals}
+\end{syntaxfloat}
+
+\subsection{Scripting Languages}
+
+% declaration of variables: in csharp variables are first declared and then used, we can declare a variable and assign it a value on the same line but the way the resulting parse tree is evaluated still dictates that the declaration is evaluated first, in python -- with its weak typing -- local variables are never declared, the moment you assign a value to a name that name becomes a variable, the following is valid python code:
+In \csharp, variables are first declared, and then used. We can \idx{declare}{Variable!Declaration} a variable and \idx{assign}{Variable!Assignment} it a value on the same line, but the way that the resulting \idx{parse tree}{Parse tree} is evaluated still dictates that the declaration is evaluated first. In \idx{Python}{Python programming language} -- with its \idx{weak typing}{Typing!Weak} -- local variables are never declared; the moment you assign a value to a name, that name becomes a variable. The following is valid python code:
+
+% example: var = 42\nprint(var)
+\inputminted[firstline=3]{python}{../src/python/primitives/nodecl/nodecl.py}
+
+% increments: python doesn't have increment and decrement operators (e.g., i++ or i+=1), this is likely to avoid the situation where the variable has not been initialized and thus does not have a value
+Python doesn't have \idx{increment}{Operator!Increment} and \idx{decrement}{Operator!Decrement} oprators (e.g., as in \texttt{i++} or \texttt{i += 1}). This is likely to avoid the situation where the variable has not been \idx{initialized}{Variable!Initialization} and thus does not have a value to adjust.
+
+\subsection{Functional Programming}
+
+% tuples: composite values
+
+% pattern matching
+
+\section{Naming Conventions}
+
+% def naming
+When communicating with another human, we use names to refer to things. We can do this because we have a shared vocabulary. It doesn't matter what specific names we use, as long as we agree on their meaning. The same goes for when we write source code. Here, we \idx{name}{Naming} various parts of our code so that other programmers (as well as older versions of ourselves) will \say{get} what their intended function is. As long as all parts of the code is written with a consistent understanding of what these names mean, the compiler won't care. But the specific names are key to us humans.
+
+% classes to name
+We still haven't covered much of the \csharp\ language, and thus haven't encountered a whole lot of things that need to be named. We have explicitly covered a few different kinds of primitive types and local variables. As the name suggests, there are other kinds of variables that are \textsl{not} local. We have briefly touched on \texttt{Console.WriteLine}. As we will cover in chapter \ref{sec:objects}, \texttt{Console} is something called a \idx{class}{Class}, and \texttt{WriteLine} is a \idx{static method}{Method!Static}. So, we have already touched on a number of classes of elements that we need to be able to name, and we will keep on introducing such classes. One could call this a \idx{classification scheme}{Classification scheme}.
+
+% def: naming convention
+Programming languages often comes with naming conventions. A \defi{naming convention}{Naming convention} dictates a mapping from each such class to a specific \idx{naming scheme}{Naming scheme}. That is, it defines rules for \textsl{how} to name elements belonging to these classes. By choosing different naming schemes for different classes, a naming convention can make it likely that a human -- based on the observed naming scheme -- can guess which naming class it belongs to. This acts as a hint to the programmer. Software projects often adopt the naming convention of the programming languages they use, but it is not uncommon -- for better or worse -- to see deviations.
+
+% parameters of naming conventions: 
+A name could theoretically be anything, but more often than not, we en up wanting to use a sequence of words. An yet, we are not allowed to use space characters in our names. 
+
+\begin{figure}[tbp]
+  \input{figs/prim_naming_conventions.tex}
+  \caption{Overview of select naming conventions.}
+  \label{fig:prim:naming}
+\end{figure}
+
+% best practices:
+
+\subsection{\csharp}
+
+% naming of local variables in C#
+The \csharp\ naming convention states that local variables should be named using camel case.
+
 \section{Floating Point Numbers}
 \label{primitives:float}
 
@@ -417,63 +474,6 @@ But what is behind that \textsl{lossless} term? Consider two integer types, name
 
 % an explicit cast is necessary if we risk loosing data, by casting we tell the compiler that we take on the responsibility of this risk, "trust me, bro!"
 An explicit cast is necessary if we risk loosing data. By performing an explicit cast, we tell the compiler (or really the typechecker part of it) that we take on the responsibility of the risk: Trust me, bro! And so, care should be taken.
-
-\section{Local Variables}
-% TODO: move up to just after integers. Then the bool section can refer to the syntax rules.
-
-\subsection{State Transformation}
-
-\subsection{\csharp}
-
-\begin{syntaxfloat}
-  \input{syntax/prim_vars_locals.tex}
-  \caption{Local variables.}
-  \label{syntax:prim:vars:locals}
-\end{syntaxfloat}
-
-\subsection{Scripting Languages}
-
-% declaration of variables: in csharp variables are first declared and then used, we can declare a variable and assign it a value on the same line but the way the resulting parse tree is evaluated still dictates that the declaration is evaluated first, in python -- with its weak typing -- local variables are never declared, the moment you assign a value to a name that name becomes a variable, the following is valid python code:
-In \csharp, variables are first declared, and then used. We can \idx{declare}{Variable!Declaration} a variable and \idx{assign}{Variable!Assignment} it a value on the same line, but the way that the resulting \idx{parse tree}{Parse tree} is evaluated still dictates that the declaration is evaluated first. In \idx{Python}{Python programming language} -- with its \idx{weak typing}{Typing!Weak} -- local variables are never declared; the moment you assign a value to a name, that name becomes a variable. The following is valid python code:
-
-% example: var = 42\nprint(var)
-\inputminted[firstline=3]{python}{../src/python/primitives/nodecl/nodecl.py}
-
-% increments: python doesn't have increment and decrement operators (e.g., i++ or i+=1), this is likely to avoid the situation where the variable has not been initialized and thus does not have a value
-Python doesn't have \idx{increment}{Operator!Increment} and \idx{decrement}{Operator!Decrement} oprators (e.g., as in \texttt{i++} or \texttt{i += 1}). This is likely to avoid the situation where the variable has not been \idx{initialized}{Variable!Initialization} and thus does not have a value to adjust.
-
-\subsection{Functional Programming}
-
-% tuples: composite values
-
-% pattern matching
-
-\section{Naming Conventions}
-
-% def naming
-When communicating with another human, we use names to refer to things. We can do this because we have a shared vocabulary. It doesn't matter what specific names we use, as long as we agree on their meaning. The same goes for when we write source code. Here, we \idx{name}{Naming} various parts of our code so that other programmers (as well as older versions of ourselves) will \say{get} what their intended function is. As long as all parts of the code is written with a consistent understanding of what these names mean, the compiler won't care. But the specific names are key to us humans.
-
-% classes to name
-We still haven't covered much of the \csharp\ language, and thus haven't encountered a whole lot of things that need to be named. We have explicitly covered a few different kinds of primitive types and local variables. As the name suggests, there are other kinds of variables that are \textsl{not} local. We have briefly touched on \texttt{Console.WriteLine}. As we will cover in chapter \ref{sec:objects}, \texttt{Console} is something called a \idx{class}{Class}, and \texttt{WriteLine} is a \idx{static method}{Method!Static}. So, we have already touched on a number of classes of elements that we need to be able to name, and we will keep on introducing such classes. One could call this a \idx{classification scheme}{Classification scheme}.
-
-% def: naming convention
-Programming languages often comes with naming conventions. A \defi{naming convention}{Naming convention} dictates a mapping from each such class to a specific \idx{naming scheme}{Naming scheme}. That is, it defines rules for \textsl{how} to name elements belonging to these classes. By choosing different naming schemes for different classes, a naming convention can make it likely that a human -- based on the observed naming scheme -- can guess which naming class it belongs to. This acts as a hint to the programmer. Software projects often adopt the naming convention of the programming languages they use, but it is not uncommon -- for better or worse -- to see deviations.
-
-% parameters of naming conventions: 
-A name could theoretically be anything, but more often than not, we en up wanting to use a sequence of words. An yet, we are not allowed to use space characters in our names. 
-
-\begin{figure}[tbp]
-  \input{figs/prim_naming_conventions.tex}
-  \caption{Overview of select naming conventions.}
-  \label{fig:prim:naming}
-\end{figure}
-
-% best practices:
-
-\subsection{\csharp}
-
-% naming of local variables in C#
-The \csharp\ naming convention states that local variables should be named using camel case.
 
 \section{Parsing}
 
