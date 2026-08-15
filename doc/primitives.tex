@@ -201,6 +201,7 @@ Console.WriteLine(|\tikzmark{tareaIIbefore}|triple_area|\tikzmark{tareaIIafter}|
 \begin{tikzpicture}[remember picture,overlay]
   \tikzstyle{dedge} = [overlay,thick,->,>=stealth,draw=black]
   
+  % anchorpoints
   \coordinate (side)    at ([yshift=-0.5mm]$(pic cs:sidebefore)!0.5!(pic cs:sideafter)$);
   \coordinate (sideII)  at ([yshift= 2.5mm]$(pic cs:sideIIbefore)!0.5!(pic cs:sideIIafter)$);
   \coordinate (sideIII) at ([yshift= 2.5mm]$(pic cs:sideIIIbefore)!0.5!(pic cs:sideIIIafter)$);
@@ -209,10 +210,14 @@ Console.WriteLine(|\tikzmark{tareaIIbefore}|triple_area|\tikzmark{tareaIIafter}|
   \coordinate (tarea)    at ([yshift=-0.5mm]$(pic cs:tareabefore)!0.5!(pic cs:tareaafter)$);
   \coordinate (tareaII)    at ([yshift= 2.5mm]$(pic cs:tareaIIbefore)!0.5!(pic cs:tareaIIafter)$);
   
+  % edges
   \draw[dedge] (sideII) |- ($(sideII)!0.5!(side)$) -| (side);
   \draw[dedge] (sideIII) |- ($(sideIII)!0.5!(side)$) -| (side);
   \draw[dedge] (areaII) |- ($(areaII)!0.5!(area)$) -| (area);
   \draw[dedge] (tareaII) |- ($(tareaII)!0.5!(tarea)$) -| (tarea);
+  
+  % variable liveness
+  
 \end{tikzpicture}
 \end{minipage}
 
