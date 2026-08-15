@@ -38,8 +38,29 @@
   \SyntaxWestSplit{MainWest}
   \SyntaxEastSplit{MainEast}
   
-  \node[nonterminal] (ruleIa) at ($(begin)!0.5!(end)$) {local-var};
+  \node[sequence] () at ([yshift=0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleIa) at ($(begin)!0.5!(end)$) {local-var};
+    \\
+  };
+  
+  \node[sequence] () at ([yshift=-1*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleIIa) {name};
+    &
+    \node[terminal]    (ruleIIb) {=};
+    &
+    \node[nonterminal] (ruleIIc) {expr};
+    &
+    \node[terminal]    (ruleIId) {;};
+    \\
+  };
+  
   
   \draw[path] (begin)--(ruleIa)--(end);
+  \draw[path] (begin) to[-|-] (ruleIIa)
+                           -- (ruleIIb)
+                           -- (ruleIIc)
+                           -- (ruleIId)
+                      to[-|-] (end)
+  ;
 \end{syntax}
 
