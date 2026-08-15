@@ -172,6 +172,7 @@ The operations, that we have seen so far, have been on concrete values that are 
 \subsection{State}
 
 % intro
+Variables are our first encounter with state. That is, data that resides somewhere independent of the thread of execution. Variables store state in main memory. This has the advantage of making the data directly available to our program, and the disadvantage of being lost the moment the program exits (or the machine crashes). In section \ref{io:files}, we will introduce a way of storing data on disk. That flips the advantages and disadvantages. Because of this, real programs often use a combination of the two, or store data in an external database over a network.
 
 \subsubsection{\csharp}
 
