@@ -230,11 +230,11 @@ Console.WriteLine(|\tikzmark{tareaIIbefore}|triple_area|\tikzmark{tareaIIafter}|
   \node[anchor=south] () at (xarea)  {\rotatebox{90}{\texttt{area}}};
   \node[anchor=south] () at (xtarea) {\rotatebox{90}{\texttt{triple\_area}}};
   \node[enter] (sideenter)  at ($(xside)!([yshift=1.25mm]side)!([yshift=1cm]xside)$) {};
-  \node[exit]  (sideexit)   at ($(xside)!([yshift=-1.25mm]tareaII)!([yshift=1cm]xside)$) {};
+  \node[exit]  (sideexit)   at ($(xside)!([yshift=-1.75mm]tareaII)!([yshift=1cm]xside)$) {};
   \node[enter] (areaenter) at ($(xarea)!([yshift=1.25mm]area)!([yshift=1cm]xarea)$) {};
-  \node[exit]  (areaexit)  at ($(xarea)!([yshift=-1.25mm]tareaII)!([yshift=1cm]xarea)$) {};
+  \node[exit]  (areaexit)  at ($(xarea)!([yshift=-1.75mm]tareaII)!([yshift=1cm]xarea)$) {};
   \node[enter] (tareaenter) at ($(xtarea)!([yshift=1.25mm]tarea)!([yshift=1cm]xtarea)$) {};
-  \node[exit]  (tareaexit)  at ($(xtarea)!([yshift=-1.25mm]tareaII)!([yshift=1cm]xtarea)$) {};
+  \node[exit]  (tareaexit)  at ($(xtarea)!([yshift=-1.75mm]tareaII)!([yshift=1cm]xtarea)$) {};
   \draw[edge] (sideenter) -- (sideexit);
   \draw[edge] (areaenter) -- (areaexit);
   \draw[edge] (tareaenter) -- (tareaexit);
