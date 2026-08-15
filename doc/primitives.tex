@@ -321,10 +321,10 @@ Console.WriteLine("Friend paid for book: "+|\tikzmark{boutIIIbefore}|balance|\ti
   \draw[edge] (enter) -- (exit);
   
   % state
-  \node[anchor=west] () at ($([xshift=4mm]balance)!(hline)!([xshift=4mm,yshift=1cm]balance)$) {$\mathtt{balance} \mapsto \mathtt{0}$};
-  \node[anchor=west] () at ($([xshift=4mm]balance)!(transI)!([xshift=4mm,yshift=1cm]balance)$) {$\mathtt{balance} \mapsto \mathtt{10000}$};
-  \node[anchor=west] () at ($([xshift=4mm]balance)!(transII)!([xshift=4mm,yshift=1cm]balance)$) {$\mathtt{balance} \mapsto \mathtt{9500}$};
-  \node[anchor=west] () at ($([xshift=4mm]balance)!(transIII)!([xshift=4mm,yshift=1cm]balance)$) {$\mathtt{balance} \mapsto \mathtt{10000}$};
+  \node[anchor=west] () at ($([xshift=4mm]balance)!(hline)!([xshift=4mm,yshift=1cm]balance)$) {$\{ \mathtt{balance} \mapsto \mathtt{0} \}$};
+  \node[anchor=west] () at ($([xshift=4mm]balance)!(transI)!([xshift=4mm,yshift=1cm]balance)$) {$\{ \mathtt{balance} \mapsto \mathtt{10000} \}$};
+  \node[anchor=west] () at ($([xshift=4mm]balance)!(transII)!([xshift=4mm,yshift=1cm]balance)$) {$\{ \mathtt{balance} \mapsto \mathtt{9500} \}$};
+  \node[anchor=west] () at ($([xshift=4mm]balance)!(transIII)!([xshift=4mm,yshift=1cm]balance)$) {$\{ \mathtt{balance} \mapsto \mathtt{10000} \}$};
 \end{tikzpicture}
 \end{minipage}
 
