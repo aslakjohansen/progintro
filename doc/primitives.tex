@@ -218,12 +218,17 @@ Console.WriteLine(|\tikzmark{tareaIIbefore}|triple_area|\tikzmark{tareaIIafter}|
   \coordinate (xside)  at ([yshift=3mm,xshift=5cm]pic cs:sideafter);
   \coordinate (xarea)  at ([xshift=4mm]xside);
   \coordinate (xtarea) at ([xshift=4mm]xarea);
+  \coordinate (state) at ([xshift=4mm]xtarea);
+  
+  \coordinate (transI)   at ($(sideII)!0.5!(side)$);
+  \coordinate (transII)  at ($(areaII)!0.5!(area)$);
+  \coordinate (transIII) at ($(tareaII)!0.5!(tarea)$);
   
   % edges
-  \draw[dedge] (sideII) |- ($(sideII)!0.5!(side)$) -| (side);
-  \draw[dedge] (sideIII) |- ($(sideIII)!0.5!(side)$) -| (side);
-  \draw[dedge] (areaII) |- ($(areaII)!0.5!(area)$) -| (area);
-  \draw[dedge] (tareaII) |- ($(tareaII)!0.5!(tarea)$) -| (tarea);
+  \draw[dedge] (sideII) |- (transI) -| (side);
+  \draw[dedge] (sideIII) |- (transI) -| (side);
+  \draw[dedge] (areaII) |- (transII) -| (area);
+  \draw[dedge] (tareaII) |- (transIII) -| (tarea);
   
   % variable liveness
   \node[anchor=south] () at (xside)  {\rotatebox{90}{\texttt{side}}};
@@ -238,6 +243,11 @@ Console.WriteLine(|\tikzmark{tareaIIbefore}|triple_area|\tikzmark{tareaIIafter}|
   \draw[edge] (sideenter) -- (sideexit);
   \draw[edge] (areaenter) -- (areaexit);
   \draw[edge] (tareaenter) -- (tareaexit);
+  
+  % state
+  \node[anchor=west] () at ($([xshift=4mm]state)!(transI)!([xshift=4mm,yshift=1cm]state)$) {$\{ \mathtt{side} \mapsto \mathtt{2} \}$};
+  \node[anchor=west] () at ($([xshift=4mm]state)!(transII)!([xshift=4mm,yshift=1cm]state)$) {$\{ \mathtt{side} \mapsto \mathtt{2},\mathtt{area} \mapsto \mathtt{4} \}$};
+  \node[anchor=west] () at ($([xshift=4mm]state)!(transIII)!([xshift=4mm,yshift=1cm]state)$) {$\{ \mathtt{side} \mapsto \mathtt{2}, \mathtt{area} \mapsto \mathtt{4}, \mathtt{triple\_area} \mapsto \mathtt{12} \}$};
 \end{tikzpicture}
 \end{minipage}
 
