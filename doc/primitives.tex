@@ -177,6 +177,7 @@ Variables are our first encounter with \defi{state}{State}. That is, data that r
 \subsubsection{\csharp}
 
 % intro
+To deal with local variables, we need to introduce syntax \ref{syntax:prim:vars:locals}. Variables have have to be declared before their first use. The second rule for \conceptname{local-var} shows how to do this. To apply this rule, we need a \conceptname{type} and a name, and -- as shown in the rule for \conceptname{type} in the same syntax, this really is just another name. The first rule for \conceptname{stmt} tells us that any local variable declaration is a valid statement. The second rule for \conceptname{stmt} tells us how to assign a value to a variable through a name. As it is very common to want to provide an initial value to a newly declared variable, the second rule for \conceptname{local-var} combines declaration and initialization.
 
 \begin{syntaxfloat}
   \input{syntax/prim_vars_locals.tex}
