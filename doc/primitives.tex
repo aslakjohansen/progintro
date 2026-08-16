@@ -215,6 +215,7 @@ Let's try to step through the code and use these annotations to understand what 
 \subsection{State Transformation}
 
 % intro
+That set of variable bindings that is available to us (aka in scope) isn't static. It evolves over time. We can add new variables to the scope by declaring them, and -- as we will later -- variables can also leave scope. The binding of a single variable can be updated by assigning a new value to that variable. This is what happens in the second \conceptname{stmt} rule from syntax \ref{syntax:prim:vars:locals}.
 
 \subsubsection{\csharp}
 
