@@ -229,6 +229,7 @@ To illustrate this, let's look at the evolution of the balance of a bank account
 \end{figure}
 
 % explain
+On line 1 a \typename{int} variable called \varname{balance} is declared and initialized to a value of zero. This gets reflected in the state mapping to the right. When line 3 refers to this variable, its value is looked up and concatenated with a string. The resulting string is then handed over to \methodname{Console.WriteLine} that outputs it to the screen. On line 5, \varname{balance} appears on both sides on an assignment. This is evaluated by first looking up the value of balance, then 10000 is added, and the result of that is stored in the variable (i.e., the mapping is \idx{updated}{Variable!Update}). We can see from the resulting update that this value is 10000. The same thing happens twice more; first 500 is subtracted and then 500 is added. After each operation, the mapping of \varname{balance} is updated.
 
 % TODO: Introduce (somewhere) augmented assignments
 
