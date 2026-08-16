@@ -233,8 +233,6 @@ On line 1 a \typename{int} variable called \varname{balance} is declared and ini
 
 % TODO: Introduce (somewhere) augmented assignments
 
-% TODO: Introduce (somewhere) default values
-
 \subsection{Scripting Languages}
 
 % declaration of variables: in csharp variables are first declared and then used, we can declare a variable and assign it a value on the same line but the way the resulting parse tree is evaluated still dictates that the declaration is evaluated first, in python -- with its weak typing -- local variables are never declared, the moment you assign a value to a name that name becomes a variable, the following is valid python code:
@@ -683,6 +681,8 @@ These expression statements can be thought of has having two components:
     \descitem{A Value} This is taken from the variable.
 \end{itemize}
 When the value is extracted from the variable is determined by whether the \texttt{++} or \texttt{-{}-} is located before or after the variable in the code.
+
+\section{Default Values}
 
 \section{Resolving Uncertainty}
 
