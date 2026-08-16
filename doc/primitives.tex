@@ -258,7 +258,14 @@ Console.WriteLine(|\tikzmark{tareaIIbefore}|triple_area|\tikzmark{tareaIIafter}|
 \end{tikzpicture}
 \end{minipage}
 
-% explain
+% explain: annotations
+So, what are we looking at? Four kinds of annotations have been added. These are:
+\begin{enumerate}
+  \descitem{Line numbers:} These allow us humans to reference a line through a \idx{name}{Name}.
+  \descitem{Variable bindings:} Arrows are used to indicate which definition every variable name refers to.
+  \descitem{Variable lifetime:} These are the vertical lines. For each variable we indicate when the variable goes into scope with an empty circle and when it goes out of scope through a filled circle. As long as the variable is in scope, we are allowed to refer to it.
+  \descitem{Scope:} On the right-hand side, we have written in the state of all variables that are in scope. In the next section, we will see how the values of individual variables can evolve over time.
+\end{enumerate}
 
 \subsection{State Transformation}
 
