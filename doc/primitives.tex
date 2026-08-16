@@ -215,11 +215,12 @@ Let's try to step through the code and use these annotations to understand what 
 \subsection{State Transformation}
 
 % intro
-That set of variable bindings that is available to us (aka in scope) isn't static. It evolves over time. We can add new variables to the scope by declaring them, and -- as we will later -- variables can also leave scope. The binding of a single variable can be updated by assigning a new value to that variable. This is what happens in the second \conceptname{stmt} rule from syntax \ref{syntax:prim:vars:locals}.
+That set of variable bindings that is available to us (aka in scope) isn't \idx{static}{Static}. It evolves over time. We can add new variables to the scope by declaring them, and -- as we will later -- variables can also leave scope. The binding of a single variable can be updated by assigning a new value to that variable. This is what happens in the second \conceptname{stmt} rule from syntax \ref{syntax:prim:vars:locals}.
 
 \subsubsection{\csharp}
 
 % setup
+To illustrate this, let's look at the evolution of the balance of a bank account. It starts at zero, a salary of is inserted, you pay for a friends book, and then the friend pays you back. Code for this can be found in figure \ref{fig:prim:int:csharp:state:trans}.
 
 % example % TODO: convert to "balance = balance + 10000" format
 \begin{figure}[tbp]
