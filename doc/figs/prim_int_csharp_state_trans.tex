@@ -5,15 +5,15 @@ int |\tikzmark{bdefbefore}|balance|\tikzmark{bdefafter}| = 0;
 
 Console.WriteLine("Initial balance: "+|\tikzmark{boutbefore}|balance|\tikzmark{boutafter}|);
 
-|\tikzmark{bopIbefore}|balance|\tikzmark{bopIafter}| += 10000;
+|\tikzmark{bopIbefore}|balance|\tikzmark{bopIafter}| = |\tikzmark{borgIbefore}|balance|\tikzmark{borgIafter}| + 10000;
 
 Console.WriteLine("Salary received: "+|\tikzmark{boutIbefore}|balance|\tikzmark{boutIafter}|);
 
-|\tikzmark{bopIIbefore}|balance|\tikzmark{bopIIafter}| -= 500;
+|\tikzmark{bopIIbefore}|balance|\tikzmark{bopIIafter}| = |\tikzmark{borgIIbefore}|balance|\tikzmark{borgIIafter}| - 500;
 
 Console.WriteLine("Book bought for friend: "+|\tikzmark{boutIIbefore}|balance|\tikzmark{boutIIafter}|);
 
-|\tikzmark{bopIIIbefore}|balance|\tikzmark{bopIIIafter}| += 500;
+|\tikzmark{bopIIIbefore}|balance|\tikzmark{bopIIIafter}| = |\tikzmark{borgIIIbefore}|balance|\tikzmark{borgIIIafter}| + 500;
 
 Console.WriteLine("Friend paid for book: "+|\tikzmark{boutIIIbefore}|balance|\tikzmark{boutIIIafter}|);
 \end{minted}
@@ -27,10 +27,13 @@ Console.WriteLine("Friend paid for book: "+|\tikzmark{boutIIIbefore}|balance|\ti
   \coordinate (bdef)    at ([yshift=-0.5mm]$(pic cs:bdefbefore)!0.5!(pic cs:bdefafter)$);
   \coordinate (bout)    at ([yshift= 2.5mm]$(pic cs:boutbefore)!0.5!(pic cs:boutafter)$);
   \coordinate (bopI)    at ([yshift=-0.5mm]$(pic cs:bopIbefore)!0.5!(pic cs:bopIafter)$);
+  \coordinate (borgI)   at ([yshift=-0.5mm]$(pic cs:borgIbefore)!0.5!(pic cs:borgIafter)$);
   \coordinate (boutI)   at ([yshift= 2.5mm]$(pic cs:boutIbefore)!0.5!(pic cs:boutIafter)$);
   \coordinate (bopII)   at ([yshift=-0.5mm]$(pic cs:bopIIbefore)!0.5!(pic cs:bopIIafter)$);
+  \coordinate (borgII)  at ([yshift=-0.5mm]$(pic cs:borgIIbefore)!0.5!(pic cs:borgIIafter)$);
   \coordinate (boutII)  at ([yshift= 2.5mm]$(pic cs:boutIIbefore)!0.5!(pic cs:boutIIafter)$);
   \coordinate (bopIII)  at ([yshift=-0.5mm]$(pic cs:bopIIIbefore)!0.5!(pic cs:bopIIIafter)$);
+  \coordinate (borgIII) at ([yshift=-0.5mm]$(pic cs:borgIIIbefore)!0.5!(pic cs:borgIIIafter)$);
   \coordinate (boutIII) at ([yshift= 2.5mm]$(pic cs:boutIIIbefore)!0.5!(pic cs:boutIIIafter)$);
   
   % anchorpoints: rhs
@@ -49,6 +52,9 @@ Console.WriteLine("Friend paid for book: "+|\tikzmark{boutIIIbefore}|balance|\ti
   \draw[dedge] (bopI)    |- ($(xline)!(transI)!([yshift=1cm]xline)$) |- (hline) -| (bdef);
   \draw[dedge] (bopII)   |- ($(xline)!(transII)!([yshift=1cm]xline)$) |- (hline) -| (bdef);
   \draw[dedge] (bopIII)  |- ($(xline)!(transIII)!([yshift=1cm]xline)$) |- (hline) -| (bdef);
+  \draw[dedge] (borgI)   |- ($(xline)!(transI)!([yshift=1cm]xline)$) |- (hline) -| (bdef);
+  \draw[dedge] (borgII)  |- ($(xline)!(transII)!([yshift=1cm]xline)$) |- (hline) -| (bdef);
+  \draw[dedge] (borgIII) |- ($(xline)!(transIII)!([yshift=1cm]xline)$) |- (hline) -| (bdef);
   
   % variable liveness
   \node[anchor=south] () at ([yshift=3mm-0.5mm]$(balance)!([yshift=1.25mm]bdef)!([yshift=1cm]balance)$)  {\rotatebox{90}{\texttt{balance}}};
