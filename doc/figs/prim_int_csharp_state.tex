@@ -1,0 +1,62 @@
+\begin{minipage}{\linewidth}
+\vspace{22mm}
+\begin{minted}[linenos,escapeinside=||]{csharp}
+int |\tikzmark{sidebefore}|side|\tikzmark{sideafter}| = 2;
+
+int |\tikzmark{areabefore}|area|\tikzmark{areaafter}| = |\tikzmark{sideIIbefore}|side|\tikzmark{sideIIafter}| * |\tikzmark{sideIIIbefore}|side|\tikzmark{sideIIIafter}|;
+
+int |\tikzmark{tareabefore}|triple_area|\tikzmark{tareaafter}| = 3 * |\tikzmark{areaIIbefore}|area|\tikzmark{areaIIafter}|;
+
+Console.WriteLine(|\tikzmark{tareaIIbefore}|triple_area|\tikzmark{tareaIIafter}|);
+\end{minted}
+\begin{tikzpicture}[remember picture,overlay]
+  \tikzstyle{edge} = [overlay,thick]
+  \tikzstyle{dedge} = [edge,->,>=stealth,draw=black]
+  \tikzstyle{enter} = [overlay,circle,thick,draw=black,inner sep=0.6mm]
+  \tikzstyle{exit} = [enter,fill]
+  
+  % anchorpoints: variables
+  \coordinate (side)    at ([yshift=-0.5mm]$(pic cs:sidebefore)!0.5!(pic cs:sideafter)$);
+  \coordinate (sideII)  at ([yshift= 2.5mm]$(pic cs:sideIIbefore)!0.5!(pic cs:sideIIafter)$);
+  \coordinate (sideIII) at ([yshift= 2.5mm]$(pic cs:sideIIIbefore)!0.5!(pic cs:sideIIIafter)$);
+  \coordinate (area)    at ([yshift=-0.5mm]$(pic cs:areabefore)!0.5!(pic cs:areaafter)$);
+  \coordinate (areaII)    at ([yshift= 2.5mm]$(pic cs:areaIIbefore)!0.5!(pic cs:areaIIafter)$);
+  \coordinate (tarea)    at ([yshift=-0.5mm]$(pic cs:tareabefore)!0.5!(pic cs:tareaafter)$);
+  \coordinate (tareaII)    at ([yshift= 2.5mm]$(pic cs:tareaIIbefore)!0.5!(pic cs:tareaIIafter)$);
+  
+  % anchorpoints: rhs
+  \coordinate (xside)  at ([yshift=3mm,xshift=5cm]pic cs:sideafter);
+  \coordinate (xarea)  at ([xshift=4mm]xside);
+  \coordinate (xtarea) at ([xshift=4mm]xarea);
+  \coordinate (state) at ([xshift=4mm]xtarea);
+  
+  \coordinate (transI)   at ($(sideII)!0.5!(side)$);
+  \coordinate (transII)  at ($(areaII)!0.5!(area)$);
+  \coordinate (transIII) at ($(tareaII)!0.5!(tarea)$);
+  
+  % edges
+  \draw[dedge] (sideII) |- (transI) -| (side);
+  \draw[dedge] (sideIII) |- (transI) -| (side);
+  \draw[dedge] (areaII) |- (transII) -| (area);
+  \draw[dedge] (tareaII) |- (transIII) -| (tarea);
+  
+  % variable liveness
+  \node[anchor=south] () at (xside)  {\rotatebox{90}{\texttt{side}}};
+  \node[anchor=south] () at (xarea)  {\rotatebox{90}{\texttt{area}}};
+  \node[anchor=south] () at (xtarea) {\rotatebox{90}{\texttt{triple\_area}}};
+  \node[enter] (sideenter)  at ($(xside)!([yshift=1.25mm]side)!([yshift=1cm]xside)$) {};
+  \node[exit]  (sideexit)   at ($(xside)!([yshift=-1.75mm]tareaII)!([yshift=1cm]xside)$) {};
+  \node[enter] (areaenter) at ($(xarea)!([yshift=1.25mm]area)!([yshift=1cm]xarea)$) {};
+  \node[exit]  (areaexit)  at ($(xarea)!([yshift=-1.75mm]tareaII)!([yshift=1cm]xarea)$) {};
+  \node[enter] (tareaenter) at ($(xtarea)!([yshift=1.25mm]tarea)!([yshift=1cm]xtarea)$) {};
+  \node[exit]  (tareaexit)  at ($(xtarea)!([yshift=-1.75mm]tareaII)!([yshift=1cm]xtarea)$) {};
+  \draw[edge] (sideenter) -- (sideexit);
+  \draw[edge] (areaenter) -- (areaexit);
+  \draw[edge] (tareaenter) -- (tareaexit);
+  
+  % state
+  \node[anchor=west] () at ($([xshift=4mm]state)!(transI)!([xshift=4mm,yshift=1cm]state)$) {$\{ \mathtt{side} \mapsto \mathtt{2} \}$};
+  \node[anchor=west] () at ($([xshift=4mm]state)!(transII)!([xshift=4mm,yshift=1cm]state)$) {$\{ \mathtt{side} \mapsto \mathtt{2},\mathtt{area} \mapsto \mathtt{4} \}$};
+  \node[anchor=west] () at ($([xshift=4mm]state)!(transIII)!([xshift=4mm,yshift=1cm]state)$) {$\{ \mathtt{side} \mapsto \mathtt{2}, \mathtt{area} \mapsto \mathtt{4}, \mathtt{triple\_area} \mapsto \mathtt{12} \}$};
+\end{tikzpicture}
+\end{minipage}

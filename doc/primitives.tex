@@ -192,72 +192,7 @@ To illustrate what this looks like in practice, we express the area of three squ
 \inputminted[]{csharp}{../src/csharp/primitives/state/Program.cs}
 
 % annotation step
-This is what we write and store on our \idx{filesystem}{Filesystem}, and what we ask our \idx{compiler}{Compiler} to produce \idx{executable code}{Code!Executable} from. Let's position ourselves to go through this example by annotating it:
-
-% example
-\begin{minipage}{\linewidth}
-\vspace{22mm}
-\begin{minted}[linenos,escapeinside=||]{csharp}
-int |\tikzmark{sidebefore}|side|\tikzmark{sideafter}| = 2;
-
-int |\tikzmark{areabefore}|area|\tikzmark{areaafter}| = |\tikzmark{sideIIbefore}|side|\tikzmark{sideIIafter}| * |\tikzmark{sideIIIbefore}|side|\tikzmark{sideIIIafter}|;
-
-int |\tikzmark{tareabefore}|triple_area|\tikzmark{tareaafter}| = 3 * |\tikzmark{areaIIbefore}|area|\tikzmark{areaIIafter}|;
-
-Console.WriteLine(|\tikzmark{tareaIIbefore}|triple_area|\tikzmark{tareaIIafter}|);
-\end{minted}
-\begin{tikzpicture}[remember picture,overlay]
-  \tikzstyle{edge} = [overlay,thick]
-  \tikzstyle{dedge} = [edge,->,>=stealth,draw=black]
-  \tikzstyle{enter} = [overlay,circle,thick,draw=black,inner sep=0.6mm]
-  \tikzstyle{exit} = [enter,fill]
-  
-  % anchorpoints: variables
-  \coordinate (side)    at ([yshift=-0.5mm]$(pic cs:sidebefore)!0.5!(pic cs:sideafter)$);
-  \coordinate (sideII)  at ([yshift= 2.5mm]$(pic cs:sideIIbefore)!0.5!(pic cs:sideIIafter)$);
-  \coordinate (sideIII) at ([yshift= 2.5mm]$(pic cs:sideIIIbefore)!0.5!(pic cs:sideIIIafter)$);
-  \coordinate (area)    at ([yshift=-0.5mm]$(pic cs:areabefore)!0.5!(pic cs:areaafter)$);
-  \coordinate (areaII)    at ([yshift= 2.5mm]$(pic cs:areaIIbefore)!0.5!(pic cs:areaIIafter)$);
-  \coordinate (tarea)    at ([yshift=-0.5mm]$(pic cs:tareabefore)!0.5!(pic cs:tareaafter)$);
-  \coordinate (tareaII)    at ([yshift= 2.5mm]$(pic cs:tareaIIbefore)!0.5!(pic cs:tareaIIafter)$);
-  
-  % anchorpoints: rhs
-  \coordinate (xside)  at ([yshift=3mm,xshift=5cm]pic cs:sideafter);
-  \coordinate (xarea)  at ([xshift=4mm]xside);
-  \coordinate (xtarea) at ([xshift=4mm]xarea);
-  \coordinate (state) at ([xshift=4mm]xtarea);
-  
-  \coordinate (transI)   at ($(sideII)!0.5!(side)$);
-  \coordinate (transII)  at ($(areaII)!0.5!(area)$);
-  \coordinate (transIII) at ($(tareaII)!0.5!(tarea)$);
-  
-  % edges
-  \draw[dedge] (sideII) |- (transI) -| (side);
-  \draw[dedge] (sideIII) |- (transI) -| (side);
-  \draw[dedge] (areaII) |- (transII) -| (area);
-  \draw[dedge] (tareaII) |- (transIII) -| (tarea);
-  
-  % variable liveness
-  \node[anchor=south] () at (xside)  {\rotatebox{90}{\texttt{side}}};
-  \node[anchor=south] () at (xarea)  {\rotatebox{90}{\texttt{area}}};
-  \node[anchor=south] () at (xtarea) {\rotatebox{90}{\texttt{triple\_area}}};
-  \node[enter] (sideenter)  at ($(xside)!([yshift=1.25mm]side)!([yshift=1cm]xside)$) {};
-  \node[exit]  (sideexit)   at ($(xside)!([yshift=-1.75mm]tareaII)!([yshift=1cm]xside)$) {};
-  \node[enter] (areaenter) at ($(xarea)!([yshift=1.25mm]area)!([yshift=1cm]xarea)$) {};
-  \node[exit]  (areaexit)  at ($(xarea)!([yshift=-1.75mm]tareaII)!([yshift=1cm]xarea)$) {};
-  \node[enter] (tareaenter) at ($(xtarea)!([yshift=1.25mm]tarea)!([yshift=1cm]xtarea)$) {};
-  \node[exit]  (tareaexit)  at ($(xtarea)!([yshift=-1.75mm]tareaII)!([yshift=1cm]xtarea)$) {};
-  \draw[edge] (sideenter) -- (sideexit);
-  \draw[edge] (areaenter) -- (areaexit);
-  \draw[edge] (tareaenter) -- (tareaexit);
-  
-  % state
-  \node[anchor=west] () at ($([xshift=4mm]state)!(transI)!([xshift=4mm,yshift=1cm]state)$) {$\{ \mathtt{side} \mapsto \mathtt{2} \}$};
-  \node[anchor=west] () at ($([xshift=4mm]state)!(transII)!([xshift=4mm,yshift=1cm]state)$) {$\{ \mathtt{side} \mapsto \mathtt{2},\mathtt{area} \mapsto \mathtt{4} \}$};
-  \node[anchor=west] () at ($([xshift=4mm]state)!(transIII)!([xshift=4mm,yshift=1cm]state)$) {$\{ \mathtt{side} \mapsto \mathtt{2}, \mathtt{area} \mapsto \mathtt{4}, \mathtt{triple\_area} \mapsto \mathtt{12} \}$};
-\end{tikzpicture}
-\end{minipage}
-
+This is what we write and store on our \idx{filesystem}{Filesystem}, and what we ask our \idx{compiler}{Compiler} to produce \idx{executable code}{Code!Executable} from. Let's position ourselves to go through this example by annotating it as done in figure \ref{fig:prim:int:csharp:state}.
 % explain: annotations
 So, what are we looking at? Four kinds of annotations have been added. These are:
 \begin{enumerate}
@@ -266,6 +201,13 @@ So, what are we looking at? Four kinds of annotations have been added. These are
   \descitem{Variable \defi{lifetime}{Variable!Lifetime}:} These are the vertical lines. For each variable we indicate when the variable goes into \defi{scope}{Scope} with an empty circle and when it goes out of scope through a filled circle. As long as the variable is in scope, we are allowed to refer to it.
   \descitem{Scope:} On the right-hand side, we have written in the state of all variables that are in scope. In the next section, we will see how the values of individual variables can evolve over time.
 \end{enumerate}
+
+% example
+\begin{figure}[tbp]
+  \input{figs/prim_int_csharp_state.tex}
+  \caption{Annotated state example.}
+  \label{fig:prim:int:csharp:state}
+\end{figure}
 
 % explain
 Let's try to step through the code and use these annotations to understand what is going on. On line 1, we declare a variable called \varname{side} of type \typename{int} to be initialized to a value of 2. This makes the \varname{side} variable go into scope and be mapped to the value 2. On line 3, we declare another variable called \varname{area} that is also of type \typename{int}. On the same line, this variable initialized to have the value that results from multiplying whatever the \varname{side} variable is mapped to with itself. So, upon execution, the machine will look up the value of \varname{side}, multiply it by itself, and assign the resulting value to the newly declared variable \varname{area}. As we can see from the scope, \varname{side} is declared and mapped to a value of 2. The \varname{area} variable will thus go into scope after line 3 and be mapped to 4. On line 5, something very similar happens: Yet another variable is declared and initialized to the result of multiplying 3 with the value held by the \varname{area} variable. Given the current mapping of variable names to values this yields a value of 12. The new variable is added to this mapping and -- on line 7 -- it is printed to the screen.
