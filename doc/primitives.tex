@@ -267,6 +267,9 @@ So, what are we looking at? Four kinds of annotations have been added. These are
   \descitem{Scope:} On the right-hand side, we have written in the state of all variables that are in scope. In the next section, we will see how the values of individual variables can evolve over time.
 \end{enumerate}
 
+% explain
+Let's try to step through the code and use these annotations to understand what is going on. On line 1, we declare a variable called \varname{side} of type \typename{int} to be initialized to a value of 2. This makes the \varname{side} variable go into scope and be mapped to the value 2. On line 3, we declare another variable called \varname{area} that is also of type \typename{int}. On the same line, this variable initialized to have the value that results from multiplying whatever the \varname{side} variable is mapped to with itself. So, upon execution, the machine will look up the value of \varname{side}, multiply it by itself, and assign the resulting value to the newly declared variable \varname{area}. As we can see from the scope, \varname{side} is declared and mapped to a value of 2. The \varname{area} variable will thus go into scope after line 3 and be mapped to 4. On line 5, something very similar happens: Yet another variable is declared and initialized to the result of multiplying 3 with the value held by the \varname{area} variable. Given the current mapping of variable names to values this yields a value of 12. The new variable is added to this mapping and -- on line 7 -- it is printed to the screen.
+
 \subsection{State Transformation}
 
 % intro
