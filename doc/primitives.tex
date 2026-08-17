@@ -500,6 +500,31 @@ A consequence of this is that C doesn't have a notion of a \idx{boolean}{Boolean
 
 % explanation: why is this clever (no branches gives execution speed, and it is still readable)
 
+\section{Type Conversion}
+
+% problem: when everything is typed, we might not have our data typed to give us access to the (versions of the) operations that we want
+When every expression is typed and those types determine the operands available to us, we may find ourselves in a situation where we don't have access to (the version of) the operand that we need. And so, we need to convert the type. Since the type is linked to the representation, that is really what we need to change. For a primitive type, this process is called \idx{type casting}{Casting!Of primitive type}.
+
+% execution speed: most (if not all) of these casts takes a bit of time, the representation has to change so that the observed rules of the typed operands (e.g., overflow) will apply, it's not a lot of time, in fact it is so little that we usually don't care about it at all
+Most, if not all, of these casts costs a bit of \idx{execution time}{Execution time}. The cause of this is that the representation has to change in order to guarantee that the rules of the typed operands (e.g., overflow) are observed. It is not a lot of execution time though. In fact, it is so little that we usually don't care about it at all.
+
+\subsection{\csharp}
+
+% reason[loss of data]: explicit/implicit cast, when loss of data is a risk (based purely on types and not actual data) then an explicit cast is needed
+Syntax \ref{syntax:prim:cast} introduces the practical mechanics of an \idx{explicit cast}{Cast!Explicit} in \csharp: We need an expression of one type and a different type to cast it to. If the cast is \idx{invalid}{Cast!Invalid} (i.e., not between compatible types) then the \idx{type checker}{Type!Checker} catch it and reject the code with a \idx{cast error}{Cast!Error}. An \idx{implicit cast}{Cast!Implicit} does exactly the same, but the destination type is automatically \idx{inferred}{Inference}, and (ii) it is only allowed when the type conversion is guaranteed to be \idx{lossless}{Lossless!Type conversion}. As it is done automatically, no syntax is needed.
+
+\begin{syntaxfloat}
+  \input{syntax/prim_cast.tex}
+  \caption{Casting of an expression to a different type.}
+  \label{syntax:prim:cast}
+\end{syntaxfloat}
+
+% problem: but what is behind that term (lossless)?, can you round-trip it?
+But what is behind that \textsl{lossless} term? Consider two integer types, namely \typename{int} (32 bits) and \typename{long} (64 bits). If we have an expression that evaluates to a value of type \typename{int}, then that value falls within the $0..2^{32}-1$ range. Note that the corresponding range of a \typename{long} is $0..2^{64}-1$ and thus strictly broader. That is, every single value of an \typename{int} can be converted to a \typename{long} and back again without without us having to worry about \idx{loss of data}{Loss of data}. We say that we can \idx{roundtrip}{Roundtrip!When casting} it. The same is not true if we go in the opposite direction: While some \typename{long} values can be converted to \typename{int} values and back again successfully, this is not generally the case. The value $2^{32}$, for instance, will \idx{overflow}{Overflow} into the value $0$ in \typename{int} form and it will stay $0$ when converted back to \typename{long} form. Similarly, any floating point value will naturally loose the decimals if converted to an integer format.
+
+% an explicit cast is necessary if we risk loosing data, by casting we tell the compiler that we take on the responsibility of this risk, "trust me, bro!"
+An explicit cast is necessary if we risk loosing data. By performing an explicit cast, we tell the compiler (or really the type checker part of it) that we take on the responsibility of the risk: Trust me, bro! And so, care should be taken.
+
 \section{Type Checking}
 
 % calculations on type: every value has a type, any expression over a value (or two) evaluates to another value, the tree structure of the expression determines how a complex of expressions is evaluated, but the same tree structure is handed over to the type checker, the type checker performs type checking on the program, when it gets to any primitive expression it compares input types, operand and output type, it has a set of rules of how the individual operands translates input types to output type, and it makes sure that there is a matching rule, if it cant find such a rule then it produces a type error and the compilation fails
@@ -542,31 +567,6 @@ To see this in action, we dive into how the type checker deals with the statemen
 The premise for this example is that a context exists in which three variables have been declared, namely \varname{alive} of type \typename{bool}, \varname{points} of type \typename{int} and \varname{required\_points} of type \typename{int}. The type checker starts at the \idx{leaves}{Leaf} of the tree and works its way to the \idx{root}{Root}. When it comes to the \keywordname{<} operator node, it looks up the relevant rule, and checks it. It finds rule \ref{typechecker:rule:comparison} and concludes that it is trivially fulfilled as the two \idx{child}{Node!Child} nodes have the same type. A comparison yields a \typename{bool} value, and that type is passed along to the \idx{parent}{Node!Parent} node (the set of parentheses). Next is the \keywordname{\&\&} operator. Here, the type checker looks up rule \ref{typechecker:rule:boolop} and thus verifies that both child nodes evaluate to a \typename{bool} value and marks the node as evaluating to a \typename{bool} type. Finally, it reaches the root. In reality it probably \idx{expands}{Expansion!of declaration assignment} this construct to a declaration followed by an assignment, but let's look past that. The type checker will look up rule \ref{typechecker:rule:assignment} and check that the value on the right-hand side (i.e., the \typename{bool} from the \texttt{\&\&} node) can satisfy the type of the variable on the left-hand side (i.e., the \typename{bool} from the \keywordname{progress} node). As this is the case, the type checker will conclude that the statement passes the type check. And the type checker is happy.
 
 %\subsection{Calculations on Types} % TODO: any need?
-
-\section{Type Conversion}
-
-% problem: when everything is typed, we might not have our data typed to give us access to the (versions of the) operations that we want
-When every expression is typed and those types determine the operands available to us, we may find ourselves in a situation where we don't have access to (the version of) the operand that we need. And so, we need to convert the type. Since the type is linked to the representation, that is really what we need to change. For a primitive type, this process is called \idx{type casting}{Casting!Of primitive type}.
-
-% execution speed: most (if not all) of these casts takes a bit of time, the representation has to change so that the observed rules of the typed operands (e.g., overflow) will apply, it's not a lot of time, in fact it is so little that we usually don't care about it at all
-Most, if not all, of these casts costs a bit of \idx{execution time}{Execution time}. The cause of this is that the representation has to change in order to guarantee that the rules of the typed operands (e.g., overflow) are observed. It is not a lot of execution time though. In fact, it is so little that we usually don't care about it at all.
-
-\subsection{\csharp}
-
-% reason[loss of data]: explicit/implicit cast, when loss of data is a risk (based purely on types and not actual data) then an explicit cast is needed
-Syntax \ref{syntax:prim:cast} introduces the practical mechanics of an \idx{explicit cast}{Cast!Explicit} in \csharp: We need an expression of one type and a different type to cast it to. If the cast is \idx{invalid}{Cast!Invalid} (i.e., not between compatible types) then the \idx{type checker}{Type!Checker} catch it and reject the code with a \idx{cast error}{Cast!Error}. An \idx{implicit cast}{Cast!Implicit} does exactly the same, but the destination type is automatically \idx{inferred}{Inference}, and (ii) it is only allowed when the type conversion is guaranteed to be \idx{lossless}{Lossless!Type conversion}. As it is done automatically, no syntax is needed.
-
-\begin{syntaxfloat}
-  \input{syntax/prim_cast.tex}
-  \caption{Casting of an expression to a different type.}
-  \label{syntax:prim:cast}
-\end{syntaxfloat}
-
-% problem: but what is behind that term (lossless)?, can you round-trip it?
-But what is behind that \textsl{lossless} term? Consider two integer types, namely \typename{int} (32 bits) and \typename{long} (64 bits). If we have an expression that evaluates to a value of type \typename{int}, then that value falls within the $0..2^{32}-1$ range. Note that the corresponding range of a \typename{long} is $0..2^{64}-1$ and thus strictly broader. That is, every single value of an \typename{int} can be converted to a \typename{long} and back again without without us having to worry about \idx{loss of data}{Loss of data}. We say that we can \idx{roundtrip}{Roundtrip!When casting} it. The same is not true if we go in the opposite direction: While some \typename{long} values can be converted to \typename{int} values and back again successfully, this is not generally the case. The value $2^{32}$, for instance, will \idx{overflow}{Overflow} into the value $0$ in \typename{int} form and it will stay $0$ when converted back to \typename{long} form. Similarly, any floating point value will naturally loose the decimals if converted to an integer format.
-
-% an explicit cast is necessary if we risk loosing data, by casting we tell the compiler that we take on the responsibility of this risk, "trust me, bro!"
-An explicit cast is necessary if we risk loosing data. By performing an explicit cast, we tell the compiler (or really the type checker part of it) that we take on the responsibility of the risk: Trust me, bro! And so, care should be taken.
 
 \section{Parsing}
 
