@@ -508,13 +508,13 @@ Every value has a type, and so does every expression. More specifically, every e
 % rules
 Rules include, but are not limited to:
 \begin{enumerate}
-  \item For an assignment to be valid, the right-hand side of the assignment must have a type that satisfies the type of the variable on the left-hand side. That is, either the two types are the same, or the one on the right-hand side can be implicitly cast to the one on left-hand side.
+  \item For an assignment to be valid, the \idx{right-hand side}{Right-hand side} of the assignment must have a type that \defi{satisfies}{Type!Satisfyability} the type of the variable on the \idx{left-hand side}{Left-hand side}. That is, either the two types are the same, or the one on the right-hand side can be \idx{implicitly}{Cast!Implicit} cast to the one on left-hand side.
         \\
         E.g., int i = 2.0 $\Rightarrow$ error.
   \item An arithmetic operation on two values of same type yield another value of this type.
         \\
         E.g., 1/2 $\Rightarrow$ 0.
-  \item An arithmetic operation on two different types yield a value of the most expressive type.
+  \item An arithmetic operation on two different types yield a value of the most \idx{expressive}{Expressiveness} type.
         \\
         E.g., 1.0/2 $\Rightarrow$ 0.5.
   \item Of the types on the two sides of a comparison operation, one must be able to satisfy the other.
