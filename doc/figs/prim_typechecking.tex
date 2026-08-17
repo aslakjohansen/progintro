@@ -1,12 +1,13 @@
 % example: left (tree of "bool progress = alive && (points > required_points)"), right (individual checks), arrows from right to left
 \begin{center}
   \begin{tikzpicture}[remember picture]
-    \newcommand{\spacing}[0]{ 3mm }
+    \newcommand{\spacing}[0]{ 6mm }
     
     \tikzstyle{node}=[
       rectangle,
       thick,
       anchor=center,
+      align=center,
       minimum height=\syntaxrulenodeheight,
       draw=black,
       text=black,
@@ -19,28 +20,28 @@
       fill=\SyntaxTerminalColor!5,
       font=\ttfamily,
     ]
-    \tikzstyle{dedge} = [thick,->,>=stealth,draw=black]
+    \tikzstyle{dedge} = [thick,->,>=stealth,draw=black,rounded corners=2mm]
     
     \coordinate (root) at (0,0);
     
-    \node[node] (eq) at (root) {decl-assign};
-    \node[node,anchor=north] (progress) at ([yshift=-\spacing]eq.south) {progress};
-    \node[node,anchor=east] (bool) at ([xshift=-\spacing]progress.west) {bool};
-    \node[terminal,anchor=west] (and) at ([xshift=\spacing]progress.east) {\&\&};
-    \node[terminal,anchor=north east] (alive) at ([xshift=-\spacing/2,yshift=-\spacing]and.south) {alive};
-    \node[terminal,anchor=north west] (par) at ([xshift=\spacing/2,yshift=-\spacing]and.south) {()};
-    \node[terminal,anchor=north] (lt) at ([yshift=-\spacing]par.south) {<};
-    \node[terminal,anchor=north east] (lhs) at ([xshift=-\spacing/2,yshift=-\spacing]lt.south) {points};
-    \node[terminal,anchor=north west] (rhs) at ([xshift=\spacing/2,yshift=-\spacing]lt.south) {required\_points};
+    \node[node] (eq) at (root) {decl-assign\\\keywordname{pass}};
+    \node[node,anchor=north] (progress) at ([yshift=-\spacing]eq.south) {progress\\\typename{bool}};
+    \node[node,anchor=east] (bool) at ([xshift=-\spacing]progress.west) {bool\\\typename{bool}};
+    \node[terminal,anchor=west] (and) at ([xshift=\spacing]progress.east) {\&\&\\\typename{bool}};
+    \node[terminal,anchor=north east] (alive) at ([xshift=-\spacing/2,yshift=-\spacing]and.south) {alive\\\typename{bool}};
+    \node[terminal,anchor=north west] (par) at ([xshift=\spacing/2,yshift=-\spacing]and.south) {()\\\typename{bool}};
+    \node[terminal,anchor=north] (lt) at ([yshift=-\spacing]par.south) {<\\\typename{bool}};
+    \node[terminal,anchor=north east] (lhs) at ([xshift=-\spacing/2,yshift=-\spacing]lt.south) {points\\\typename{int}};
+    \node[terminal,anchor=north west] (rhs) at ([xshift=\spacing/2,yshift=-\spacing]lt.south) {required\_points\\\typename{int}};
     
-    \draw[dedge] (eq) -- (bool);
+    \draw[dedge] ([xshift=-1*\spacing]eq.south) to[|-|] (bool.north);
     \draw[dedge] (eq) -- (progress);
-    \draw[dedge] (eq) -- (and);
-    \draw[dedge] (and) -- (alive);
-    \draw[dedge] (and) -- (par);
+    \draw[dedge] ([xshift= 1*\spacing]eq.south) to[|-|] (and.north);
+    \draw[dedge] ([xshift=-0.5*\spacing]and.south) to[|-|] (alive.north);
+    \draw[dedge] ([xshift= 0.5*\spacing]and.south) to[|-|] (par.north);
     \draw[dedge] (par) -- (lt);
-    \draw[dedge] (lt) -- (lhs);
-    \draw[dedge] (lt) -- (rhs);
+    \draw[dedge] ([xshift=-0.5*\spacing]lt.south) to[|-|] (lhs.north);
+    \draw[dedge] ([xshift= 0.5*\spacing]lt.south) to[|-|] (rhs.north);
     
   \end{tikzpicture}
 \end{center}
