@@ -3,6 +3,8 @@
   \begin{tikzpicture}[remember picture]
     \newcommand{\spacing}[0]{ 6mm }
     
+    \definecolor{commentcolor}{rgb}{0.0, 0.42, 0.24}
+    
     \tikzstyle{node}=[
       rectangle,
       thick,
@@ -20,7 +22,20 @@
       fill=\SyntaxTerminalColor!5,
       font=\ttfamily,
     ]
-    \tikzstyle{dedge} = [thick,->,>=stealth,draw=black,rounded corners=2mm]
+    \tikzstyle{comment}=[
+      trapezium,
+      trapezium left angle=60,
+      trapezium right angle=120,
+      thick,
+      anchor=center,
+      align=center,
+      minimum height=\syntaxrulenodeheight,
+      draw=commentcolor,
+      text=commentcolor,
+      fill=commentcolor!5,
+    ]
+    \tikzstyle{edge} = [thick,draw=black,rounded corners=2mm]
+    \tikzstyle{dedge} = [edge,->,>=stealth]
     
     \coordinate (root) at (0,0);
     
@@ -42,6 +57,14 @@
     \draw[dedge] (par) -- (lt);
     \draw[dedge] ([xshift=-0.5*\spacing]lt.south) to[|-|] (lhs.north);
     \draw[dedge] ([xshift= 0.5*\spacing]lt.south) to[|-|] (rhs.north);
+    
+    \node[comment,anchor=west] (eq comment) at ([xshift=3*\spacing]eq.east) {type of RHS\\satisfies type of LHS};
+    \node[comment,anchor=west] (and comment) at ([xshift=3*\spacing]and.east) {Both child types\\are \typename{bool}};
+    \node[comment,anchor=east] (lt comment) at ([xshift=-3*\spacing]lt.west) {One of child types\\satisfies the other};
+    
+    \draw[edge,draw=commentcolor] (eq) -- (eq comment);
+    \draw[edge,draw=commentcolor] (and) -- (and comment);
+    \draw[edge,draw=commentcolor] (lt) -- (lt comment);
     
   \end{tikzpicture}
 \end{center}
