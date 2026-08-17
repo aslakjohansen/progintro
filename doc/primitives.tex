@@ -528,13 +528,16 @@ Rules include, but are not limited to:
         E.g., \texttt{true\&\&2} $\Rightarrow$ error.
 \end{enumerate}
 
-% example: left (tree of "bool progress = alive && (points > required_points)"), right (individual checks), arrows from right to left
+% setup
 
+% example: left (tree of "bool progress = alive && (points > required_points)"), right (individual checks), arrows from right to left
 \begin{figure}[tbp]
   \input{figs/prim_typechecking.tex}
   \caption{Type checking of the statement \texttt{bool progress = alive \&\& (points > required\_points)}.}
   \label{fig:prim:typechecking}
 \end{figure}
+
+% explain
 
 \subsection{Calculations on Types}
 
