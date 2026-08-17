@@ -1,0 +1,27 @@
+\begin{syntax}{stmt}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[nonterminal] (ruleIa)  at \SyntaxDistribute{MainWest}{MainEast}{1}{5} {name};
+  \node[terminal]    (ruleIb)  at \SyntaxDistribute{MainWest}{MainEast}{2}{5} {+=};
+  \node[nonterminal] (ruleIc)  at \SyntaxDistribute{MainWest}{MainEast}{3}{5} {expr};
+  \node[terminal]    (ruleId)  at \SyntaxDistribute{MainWest}{MainEast}{5}{5} {;};
+  \node[nonterminal] (ruleIIa) at \SyntaxDistributeLine{MainWest}{MainEast}{1}{5}{1} {name};
+  \node[terminal]    (ruleIIb) at \SyntaxDistributeLine{MainWest}{MainEast}{2}{5}{1} {-=};
+  \node[nonterminal] (ruleIIc) at \SyntaxDistributeLine{MainWest}{MainEast}{3}{5}{1} {expr};
+  \node[nonterminal] (ruleIIIa) at \SyntaxDistributeLine{MainWest}{MainEast}{1}{5}{2} {name};
+  \node[terminal]    (ruleIIIb) at \SyntaxDistributeLine{MainWest}{MainEast}{2}{5}{2} {*=};
+  \node[nonterminal] (ruleIIIc) at \SyntaxDistributeLine{MainWest}{MainEast}{3}{5}{2} {expr};
+  \node[nonterminal] (ruleIVa) at \SyntaxDistributeLine{MainWest}{MainEast}{1}{5}{3} {name};
+  \node[terminal]    (ruleIVb) at \SyntaxDistributeLine{MainWest}{MainEast}{2}{5}{3} {/=};
+  \node[nonterminal] (ruleIVc) at \SyntaxDistributeLine{MainWest}{MainEast}{3}{5}{3} {expr};
+  \node[nonterminal] (ruleVa) at \SyntaxDistributeLine{MainWest}{MainEast}{1}{5}{4} {name};
+  \node[terminal]    (ruleVb) at \SyntaxDistributeLine{MainWest}{MainEast}{2}{5}{4} {\%=};
+  \node[nonterminal] (ruleVc) at \SyntaxDistributeLine{MainWest}{MainEast}{3}{5}{4} {expr};
+  
+  \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(ruleId)--(end);
+  \draw[path] (begin) to[-|-] (ruleIIa)--(ruleIIb)--(ruleIIc) to[-|-] (ruleId)--(end);
+  \draw[path] (begin) to[-|-] (ruleIIIa)--(ruleIIIb)--(ruleIIIc) to[-|-] (ruleId)--(end);
+  \draw[path] (begin) to[-|-] (ruleIVa)--(ruleIVb)--(ruleIVc) to[-|-] (ruleId)--(end);
+  \draw[path] (begin) to[-|-] (ruleVa)--(ruleVb)--(ruleVc) to[-|-] (ruleId)--(end);
+\end{syntax}
