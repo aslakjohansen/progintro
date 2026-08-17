@@ -508,18 +508,21 @@ Every value has a type, and so does every expression. More specifically, every e
 % rules
 Rules include, but are not limited to:
 \begin{enumerate}
+  \item For an assignment to be valid, the right-hand side of the assignment must have a type that satisfies the type of the variable on the left-hand side. That is, either the two types are the same, or the one on the right-hand side can be implicitly cast to the one on left-hand side.
+        \\
+        E.g., int i = 2.0 $\Rightarrow$ error.
   \item An arithmetic operation on two values of same type yield another value of this type.
         \\
         E.g., 1/2 $\Rightarrow$ 0.
   \item An arithmetic operation on two different types yield a value of the most expressive type.
         \\
         E.g., 1.0/2 $\Rightarrow$ 0.5.
+  \item Of the types on the two sides of a comparison operation, one must be able to satisfy the other.
+        \\
+        E.g., 1<"2" $\Rightarrow$ error.
   \item A comparison operation yield a \typename{bool} value.
         \\
         E.g., 1==2 $\Rightarrow$ false.
-  \item For an assignment to be valid, the right-hand side of the assignment must have a type that satisfies the type of the variable on the left-hand side. That is, either the two types are the same, or the one on the right-hand side can be implicitly cast to the one on left-hand side.
-        \\
-        E.g., int i = 2.0 $\Rightarrow$ error.
 \end{enumerate}
 
 % example: left (tree of "bool progress = alive && (points > required_points)"), right (individual checks), arrows from right to left
