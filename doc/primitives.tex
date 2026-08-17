@@ -508,7 +508,7 @@ Every value has a type, and so does every expression. More specifically, every e
 % rules
 Rules include, but are not limited to:
 \begin{enumerate}
-  \item For an assignment to be valid, the \idx{right-hand side}{Right-hand side} of the assignment must have a type that \defi{satisfies}{Type!Satisfyability} the type of the variable on the \idx{left-hand side}{Left-hand side}. That is, either the two types are the same, or the one on the right-hand side can be \idx{implicitly}{Cast!Implicit} cast to the one on left-hand side.
+  \item \label{typechecker:rule:assignment} For an assignment to be valid, the \idx{right-hand side}{Right-hand side} of the assignment must have a type that \defi{satisfies}{Type!Satisfyability} the type of the variable on the \idx{left-hand side}{Left-hand side}. That is, either the two types are the same, or the one on the right-hand side can be \idx{implicitly}{Cast!Implicit} cast to the one on left-hand side.
         \\
         E.g., \texttt{int i = 2.0} $\Rightarrow$ error.
   \item An arithmetic operation on two values of same type yield another value of this type.
@@ -520,10 +520,10 @@ Rules include, but are not limited to:
   \item Of the types on the two sides of a comparison operation, one must be able to satisfy the other.
         \\
         E.g., \texttt{1<"2"} $\Rightarrow$ error.
-  \item A comparison operation yield a \typename{bool} value.
+  \item \label{typechecker:rule:comparison} A comparison operation yield a \typename{bool} value.
         \\
         E.g., \texttt{1==2} $\Rightarrow$ \texttt{false}.
-  \item All input values to a boolean operator must have \typename{bool} type.
+  \item \label{typechecker:rule:boolop} All input values to a boolean operator must have \typename{bool} type.
         \\
         E.g., \texttt{true\&\&2} $\Rightarrow$ error.
 \end{enumerate}
@@ -539,7 +539,7 @@ To see this in action, we dive into how the typechecker deals with the statement
 \end{figure}
 
 % explain
-
+The premise for this example is that a context exists in which three variables have been declared, namely \varname{alive} of type \typename{bool}, \varname{points} of type \typename{int} and \varname{required\_points} of type \typename{int}. The typechecker starts at the leaves of the tree and works its way to the root. When it comes to the \keywordname{<} operator node, it looks up the relevant rule, and checks it. It finds rule \ref{typechecker:rule:comparison} and concludes that it is trivially fulfilled as the two child nodes have the same type. A comparison yields a \typename{bool} value, and that type is passed along to the parent node (the set of parentheses). Next is the \keywordname{\&\&} operator. Here, the typechecker looks up rule \ref{typechecker:rule:boolop} and thus verifies that both child nodes evaluate to a \typename{bool} value and marks the node as evaluating to a \typename{bool} type. Finally, it reaches the root. In reality it probably expands this construct to a declaration followed by an assignment, but let's look past that. The typechecker will look up rule \ref{typechecker:rule:assignment} and check that the value on the right-hand side (i.e., the \typename{bool} from the \texttt{\&\&} node) can satisfy the type of the variable on the left-hand side (i.e., the \typename{bool} from the \keywordname{progress} node). As this is the case, the typechecker will conclude that the statement passes the type check. And the typechecker is happy.
 
 \subsection{Calculations on Types}
 
