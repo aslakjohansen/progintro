@@ -147,7 +147,9 @@ Any function call can be used as a statement. When used as a statement, any retu
 % intro
 In \csharp\ (and other procedural languages), functions return a single value and the \keywordname{=} operator is used for assignments. Furthermore, functions are naturally called trough their name. Many programmers see this as set in stone, but the reality is that this is rooted in the language paradigm rather than the art of programming itself. In functional languages, for instance, none of this holds.
 
-% tuples: integral element of the language, composite values
+% tuples: integral element of the language, composite values, essentially an array where there are no restrictions across the types of the elements, so one can have a tuple containing an int and a float, in elixir that looks like this:
+
+% example
 
 % pattern matching: instead of assigning a value to a variable the = operator is doing a pattern pattern match, that includes two steps, first the structure of the right-hand side is compared to the structure on the left-hand side, if they agree then the match is successful and the second step commences, in the second step the variable names present in the pattern on the left hand side are bound to their matching values from the right-hand side, this can -- for instance -- be used to flip the contents of two variables in one line, in elixir that looks like this:
 
