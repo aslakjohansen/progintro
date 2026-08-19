@@ -1,6 +1,6 @@
 char[][] inputs = {
-  new char[] {'a', 'b', 'c'},
-  new char[] {'a', 'b', 'c', 'b', 'a'},
+  new char[] {'c', 'a', 'n', 'o', 'e'},
+  new char[] {'k', 'a', 'y', 'a', 'k'},
 };
 
 bool is_palindrome(char[] input, int left, int right) {
