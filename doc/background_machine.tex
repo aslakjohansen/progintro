@@ -52,7 +52,7 @@ Another data structure grows from the other end of the dynamic program segment i
 \subsection{Registers}
 
 % how many, naming (x0 through x31) special roles? ABI names
-RV32I has 32 registers (plus a something called a program counter that we will cover in the next section. The 32 registers are covered in figure \ref{fig:machine:regs}. They are named \regname{x0} though \regname{x31} but also have aliases named after their purpose (the ABI name). The \say{Saver} column is covered in section \ref{sec:machine:inst:choice}. The \regname{zero} register is always zero. It cannot be overwritten. We will not cover the remaining registers in detail. But for now, let's just say that they are 32 bit values that instructions can read from and write to. %TODO: What is a bit?
+RV32I has 32 registers (plus a something called a program counter that we will cover in the next section. The 32 registers are covered in figure \ref{fig:machine:regs}. They are named \regname{x0} though \regname{x31} but also have aliases named after their purpose (the ABI name). The \say{Saver} column is covered in section \ref{sec:machine:inst:choice}. The \regname{zero} register is always zero. It cannot be overwritten. We will not cover the remaining registers in detail. But for now, let's just say that they are 32 bit values that instructions can read from and write to. Let's also delay the definition of a bit until section \ref{sec:primitive:numbers}.
 
 % figure: caller saved, callee saved
 \begin{figure}[tbp]
