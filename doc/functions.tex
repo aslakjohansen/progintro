@@ -94,6 +94,7 @@ Together, these three interfaces make up a \idx{contract}{Contract}. The input a
 \subsection{Parameter Passing}
 
 % intro
+When a function that takes parameters get called, the calling side must supply a series of arguments whose types satisfy those from the matching parameters. The parameters are special variables that are only visible inside the function body. When called, these parameters are bound to the arguments (read: values) from the calling side. Figure \ref{fig:fun:parampassing} shows these bindings for a single function call.
 
 % example
 \begin{figure}[tbp]
@@ -103,6 +104,7 @@ Together, these three interfaces make up a \idx{contract}{Contract}. The input a
 \end{figure}
 
 % explain
+That function takes as parameters an \typename{int[]} and an \typename{int}. It then overrides every element of the first parameter with the value of the second. Finally it returns a reference to the first parameter. Line 2 is evaluated by first evaluating the list of arguments (those are the expressions \varname{intArr} and \valuename{1}). Then the \varname{array} and \varname{value} variables are bound to these results. Control is then transferred to the body of \funcname{fill} within a context that is populated by the parameters.
 
 \subsubsection{Pass By Value vs Pass By Reference}
 
