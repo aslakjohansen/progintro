@@ -22,6 +22,14 @@
         -- ([xshift= 0.8*\elementwidth,yshift=0*\elementheight]tmp)
       ;
     }
+    \newcommand{\newTransition}[2]{
+      \coordinate (src) at (#1);
+      \coordinate (dst) at (#2);
+      \draw[dedge]
+           ([xshift= 0.8*\elementwidth,yshift=1.5*\elementheight]src)
+        -- ([xshift=-0.8*\elementwidth,yshift=1.5*\elementheight]dst)
+      ;
+    }
     
     \definecolor{commentcolor}{rgb}{0.0, 0.42, 0.24}
     
@@ -78,5 +86,12 @@
     
     % step 5
     \newBaseline{[xshift=4*\xStep,yshift=0*\yStep]root}
+    
+    % transitions
+    \newTransition{[xshift=0*\xStep,yshift=0*\yStep]root}{[xshift=1*\xStep,yshift=0*\yStep]root}
+    \newTransition{[xshift=1*\xStep,yshift=0*\yStep]root}{[xshift=2*\xStep,yshift=0*\yStep]root}
+    \newTransition{[xshift=2*\xStep,yshift=0*\yStep]root}{[xshift=3*\xStep,yshift=0*\yStep]root}
+    \newTransition{[xshift=3*\xStep,yshift=0*\yStep]root}{[xshift=4*\xStep,yshift=0*\yStep]root}
+    
   \end{tikzpicture}
 \end{center}
