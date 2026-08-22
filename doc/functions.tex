@@ -109,10 +109,10 @@ That function takes as parameters an \typename{int[]} and an \typename{int}. It 
 \subsubsection{Pass By Value vs Pass By Reference}
 
 % pass-by-value
-The way \csharp\ does value passing is called pass by value. If a variable is provided as argument, that variable cannot be affected by the function call. Instead, a copy is transferred to the function.
+The way \csharp\ does value passing is called \defi{pass by value}{Pass by value}. If a \idx{variable}{Variable} is provided as \idx{argument}{Function!Argument}, that variable cannot be affected by the function call. Instead, a copy is transferred to the function.
 
 % pass-by-reference
-The alternative is called pass by reference. Here, variables provided as argument to the function call will not be copied. The matching parameters will instead act as aliases for those variables. Any modification done to the parameter by the function body (or any other aliased variable) will affect the variable originally provided as argument. Technically, \csharp\ does support pass by reference, but we won't cover it in this book.
+The alternative is called \defi{pass by reference}{Pass by reference}. Here, variables provided as argument to the function call will not be copied. The matching parameters will instead act as \idx{aliases}{Variable!Alias} for those variables. Any modification done to the parameter by the function body (or any other aliased variable) will affect the variable originally provided as argument. Technically, \csharp\ does support pass by reference, but we won't cover it in this book.
 
 \subsection{Returning Values}
 
