@@ -1,0 +1,31 @@
+\begin{minipage}{\linewidth}
+\vspace{22mm}
+\begin{minted}[linenos,escapeinside=||]{csharp}
+int[] intArr = new int[12];
+int[] oneArr = fill(|\tikzmark{beforedstI}|intArr|\tikzmark{afterdstI}|, |\tikzmark{beforedstII}|1|\tikzmark{afterdstII}|);
+
+int[] fill (int[] |\tikzmark{beforesrcI}|array|\tikzmark{aftersrcI}|, int |\tikzmark{beforesrcII}|value|\tikzmark{aftersrcII}|) {
+  for (int i=0 ; i<array.Length ; i++) {
+    array[i] = value;
+  }
+  
+  return array;
+}
+\end{minted}
+\begin{tikzpicture}[remember picture,overlay]
+  \tikzstyle{edge} = [overlay,thick]
+  \tikzstyle{dedge} = [edge,->,>=stealth,draw=black]
+  \tikzstyle{enter} = [overlay,circle,thick,draw=black,inner sep=0.6mm]
+  \tikzstyle{exit} = [enter,fill]
+  
+  % anchorpoints
+  \coordinate (srcI)  at ([yshift=2.5mm]$(pic cs:beforesrcI)!0.5!(pic cs:aftersrcI)$);
+  \coordinate (srcII) at ([yshift=2.5mm]$(pic cs:beforesrcII)!0.5!(pic cs:aftersrcII)$);
+  \coordinate (dstI)  at ([yshift=-0.5mm]$(pic cs:beforedstI)!0.5!(pic cs:afterdstI)$);
+  \coordinate (dstII) at ([yshift=-0.5mm]$(pic cs:beforedstII)!0.5!(pic cs:afterdstII)$);
+  
+  % edges
+  \draw[dedge] (srcI) |- ($(srcI)!0.5!(dstI)$) -| (dstI);
+  \draw[dedge] (srcII) |- ($(srcII)!0.5!(dstII)$) -| (dstII);
+\end{tikzpicture}
+\end{minipage}
