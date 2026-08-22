@@ -94,7 +94,7 @@ Together, these three interfaces make up a \idx{contract}{Contract}. The input a
 \subsection{Parameter Passing}
 
 % intro
-When a function that takes parameters get called, the calling side must supply a series of arguments whose types satisfy those from the matching parameters. The parameters are special variables that are only visible inside the function body. When called, these parameters are bound to the arguments (read: values) from the calling side. Figure \ref{fig:fun:parampassing} shows these bindings for a single function call.
+When a function that takes parameters get \idx{called}{Function!Call}, the calling side must supply a series of \idx{arguments}{Function!Argument} whose types satisfy those from the matching \defi{parameters}{Function!Parameter}. The parameters are special variables that are only visible inside the function \idx{body}{Function!Body}. When called, these parameters are \idx{bound}{Function!Parameter!Binding} to the arguments (read: values) from the calling side. Figure \ref{fig:fun:parampassing} shows these bindings for a single function call.
 
 % example
 \begin{figure}[tbp]
@@ -104,7 +104,7 @@ When a function that takes parameters get called, the calling side must supply a
 \end{figure}
 
 % explain
-That function takes as parameters an \typename{int[]} and an \typename{int}. It then overrides every element of the first parameter with the value of the second. Finally it returns a reference to the first parameter. Line 2 is evaluated by first evaluating the list of arguments (those are the expressions \varname{intArr} and \valuename{1}). Then the \varname{array} and \varname{value} variables are bound to these results. Control is then transferred to the body of \funcname{fill} within a context that is populated by the parameters.
+That function takes as parameters an \typename{int[]} and an \typename{int}. It then overrides every element of the first parameter with the value of the second. Finally it returns a \idx{reference}{Reference} to the first parameter. Line 2 is evaluated by first \idx{evaluating}{Evaluation} the list of arguments (those are the \idx{expressions}{Expression} \varname{intArr} and \valuename{1}). Then the \varname{array} and \varname{value} variables are bound to these results. \idx{Control}{Control} is then \defi{transferred}{Transfer!of control} to the body of \funcname{fill} within a context that is populated by the parameters. Transferring control means that the \idx{thread of execution}{Execution!Thread of} \say{jumps} to this location.
 
 \subsubsection{Pass By Value vs Pass By Reference}
 
