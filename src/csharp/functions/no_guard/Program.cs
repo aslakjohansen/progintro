@@ -1,14 +1,14 @@
-double slice_angle (int mouth_count) {
-  if (mouth_count>0) {
-    return 360/mouth_count;
+double slice_angle (int pcount) {
+  if (pcount>0) {
+    return 360/pcount;
   } else {
     return -1;
   }
 }
 
-for (int mouth_count=-4 ; mouth_count<5 ; mouth_count++) {
-  double angle = slice_angle(mouth_count);
+for (int pcount=-4 ; pcount<5 ; pcount++) {
+  double angle = slice_angle(pcount);
   if (angle!=-1) {
-    Console.WriteLine("Slices of "+angle+" degrees will feed "+mouth_count+" mouths");
+    Console.WriteLine("Slices of "+angle+" degrees will feed "+pcount+" mouths");
   }
 }
