@@ -1,0 +1,99 @@
+\begin{center}
+  \begin{tikzpicture}[remember picture]
+    \newcommand{\xStep}[0]{3cm}
+    \newcommand{\yStep}[0]{3cm}
+    \newcommand{\elementheight}[0]{ 6mm }
+    \newcommand{\elementwidth}[0]{ 14mm }
+    \newcommand{\newframe}[5]{
+      \coordinate (tmp) at (#2);
+      \node[very thick,draw=purple,anchor=south,minimum width=\elementwidth,minimum height=3*\elementheight]
+        (#1) at (tmp) {};
+      \node[draw=purple,anchor=south,minimum width=\elementwidth,minimum height=  \elementheight]
+        (#1 input) at ([yshift=2*\elementheight]tmp) {\texttt{#5}};
+      \node[draw=purple,anchor=south,minimum width=\elementwidth,minimum height=  \elementheight]
+        (#1 left) at ([yshift=1*\elementheight]tmp) {\texttt{#4}};
+      \node[draw=purple,anchor=south,minimum width=\elementwidth,minimum height=  \elementheight]
+        (#1 right) at ([yshift=0*\elementheight]tmp) {\texttt{#3}};
+    }
+    \newcommand{\newSmallframe}[3]{
+      \coordinate (tmp) at (#2);
+      \node[very thick,draw=purple,anchor=south,minimum width=\elementwidth,minimum height=1*\elementheight]
+        (#1) at (tmp) {};
+      \node[draw=purple,anchor=south,minimum width=\elementwidth,minimum height=  \elementheight]
+        (#1 input) at ([yshift=0*\elementheight]tmp) {\texttt{#3}};
+    }
+    \newcommand{\newBaseline}[1]{
+      \coordinate (tmp) at (#1);
+      \draw[ultra thick,draw=purple]
+           ([xshift=-0.8*\elementwidth,yshift=0*\elementheight]tmp)
+        -- ([xshift= 0.8*\elementwidth,yshift=0*\elementheight]tmp)
+      ;
+    }
+    \newcommand{\newTransition}[2]{
+      \coordinate (src) at (#1);
+      \coordinate (dst) at (#2);
+      \draw[dedge]
+           ([xshift= 0.8*\elementwidth,yshift=1.5*\elementheight]src)
+        -- ([xshift=-0.8*\elementwidth,yshift=1.5*\elementheight]dst)
+      ;
+    }
+    
+    \definecolor{commentcolor}{rgb}{0.0, 0.42, 0.24}
+    
+    \tikzstyle{node}=[
+      rectangle,
+      thick,
+      anchor=center,
+      align=center,
+      minimum height=\syntaxrulenodeheight,
+      minimum width=2cm,
+      draw=black,
+      text=black,
+      fill=black!5,
+    ]
+    \tikzstyle{terminal}=[
+      node,
+      draw=\SyntaxTerminalColor,
+      text=\SyntaxTerminalColor,
+      fill=\SyntaxTerminalColor!5,
+      font=\ttfamily,
+    ]
+    \tikzstyle{comment}=[
+      trapezium,
+      trapezium left angle=70,
+      trapezium right angle=110,
+      thick,
+      anchor=center,
+      align=center,
+      minimum height=\syntaxrulenodeheight,
+      draw=commentcolor,
+      text=commentcolor,
+      fill=commentcolor!5,
+    ]
+    \tikzstyle{edge} = [thick,draw=black,rounded corners=2mm]
+    \tikzstyle{dedge} = [edge,->,>=stealth]
+    
+    \coordinate (root) at (0,0);
+    
+    \newSmallframe{stackI}{[xshift=0*\elementwidth,yshift=0*\elementheight]root}{}
+    \newSmallframe{stackII}{[xshift=0*\elementwidth,yshift=1*\elementheight]root}{}
+    \newSmallframe{stackIII}{[xshift=0*\elementwidth,yshift=2*\elementheight]root}{}
+    \newSmallframe{stackIV}{[xshift=0*\elementwidth,yshift=3*\elementheight]root}{}
+    
+    \newSmallframe{push}{[xshift=-4*\elementwidth,yshift=5*\elementheight]root}{}
+    \newSmallframe{pop}{[xshift= 4*\elementwidth,yshift=5*\elementheight]root}{}
+    
+    \draw[dedge] (push) -| ([xshift=-\elementwidth/6]stackIV.north);
+    \draw[dedge] ([xshift=\elementwidth/6]stackIV.north) |- (pop);
+    
+    \node[align=center] ()
+      at ($(push.east)!0.5!([xshift=-\elementwidth/6,yshift=1.5*\elementheight]stackIV.north)$)
+      {push operation\\\\\textsl{(add frame)}};
+    \node[align=center] ()
+      at ($(pop.west)!0.5!([xshift=\elementwidth/6,yshift=1.5*\elementheight]stackIV.north)$)
+      {pop operation\\\\\textsl{(remove frame)}};
+    
+    \draw[dedge] ([xshift=2mm]stackIV.north east) -- ([xshift=2mm]stackI.south east);
+    \node[anchor=west] () at ([xshift=\elementwidth/2+3mm,yshift=2.*\elementheight]root) {\rotatebox{90}{age}};
+  \end{tikzpicture}
+\end{center}
