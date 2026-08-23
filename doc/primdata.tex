@@ -250,14 +250,18 @@ We can store values of any type in an array, as long as all elements have the sa
 % syntax expr: explain loop
 
 % arr-decl: explain recursion
+The more times we apply the new \conceptname{type} rule, the deeper the nesting of arrays. The support for this nesting is what necessitates the recursion in the \conceptname{arr-decl} rule of syntax \ref{syntax:data:array}. That is, a \conceptname{arr-decl} may include another \conceptname{arr-decl}. This allows us to hardcode an initial state for any level of array nesting. To declare the array in figure \ref{fig:data:array:nest:square}, we can write:
+
+% example
+\inputminted[]{csharp}{../src/csharp/primdata/array_nest_square/Program.cs}
 
 % shared nested arrays setup
-
-% setup
+Notice in figure \ref{fig:data:array:nest:square} how this ends up being a tree structure. That is always the case when the whole datastructure is declared in one go. But it doesn't have to be like that! Because these are reference types, the arrows of that figure simply denote that elements in the outer array simply contains addresses, and which (inner) arrays are present at these addresses. Let's deviate from this by defining a data structure that defines the workweek:
 
 % figure: week with different work hours for mon-thu, fri and sat-sun
 
 % example
+\inputminted[fontsize=\footnotesize]{csharp}{../src/csharp/primdata/array_nest_workweek/Program.cs}
 
 % explain
 
