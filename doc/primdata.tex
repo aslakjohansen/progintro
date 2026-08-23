@@ -256,14 +256,20 @@ The more times we apply the new \conceptname{type} rule, the deeper the nesting 
 \inputminted[]{csharp}{../src/csharp/primdata/array_nest_square/Program.cs}
 
 % shared nested arrays setup
-Notice in figure \ref{fig:data:array:nest:square} how this ends up being a tree structure. That is always the case when the whole datastructure is declared in one go. But it doesn't have to be like that! Because these are reference types, the arrows of that figure simply denote that elements in the outer array simply contains addresses, and which (inner) arrays are present at these addresses. Let's deviate from this by defining a data structure that defines the workweek:
+Notice in figure \ref{fig:data:array:nest:square} how this ends up being a tree structure. That is always the case when the whole datastructure is declared in one go. But it doesn't have to be like that! Because these are reference types, the arrows of that figure simply denote that elements in the outer array simply contains addresses, and which (inner) arrays are present at these addresses. Let's deviate from this by defining a data structure that defines the workweek of figure \ref{fig:data:array:nest:workweek}:
 
 % figure: week with different work hours for mon-thu, fri and sat-sun
+\begin{figure}[tbp]
+  \input{figs/data_array_nest_workweek.tex}
+  \caption{Modeling of a workweek.}
+  \label{fig:data:array:nest:workweek}
+\end{figure}
 
 % example
 \inputminted[fontsize=\footnotesize]{csharp}{../src/csharp/primdata/array_nest_workweek/Program.cs}
 
 % explain
+We have an outer array with one element for each of the weeks seven days. The two last entries (representing Saturday and Sunday) contains the same value, namely a reference to the \varname{weekend} array. Similarly, elements 3-6 contains the same reference to the \varname{workday} array (representing Monday through Thursday). Friday is a bit shorter, and thus gets its own array. This saves us space, but makes it more complicated to change say \ldots\ the Tuesday schedule.
 
 % setup: non-rectangular arrays
 

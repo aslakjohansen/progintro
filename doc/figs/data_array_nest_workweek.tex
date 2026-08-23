@@ -1,0 +1,111 @@
+\centering
+\begin{tikzpicture}[]
+  \newcommand{\nodesize}[0]{5mm}
+  \newcommand{\xspacing}[0]{12mm}
+  
+  \tikzstyle{node}=[
+    draw,
+    rectangle,
+    minimum height=\nodesize,
+    minimum width=\nodesize,
+    anchor=center,
+    very thick
+  ]
+  \tikzstyle{work}=[node,fill=black!50]
+  \tikzstyle{arrow} = [thick,->,>=stealth, draw=black]
+  
+  % week
+  \node[node] (outer1) at (0*\nodesize,1*\nodesize) {};
+  \node[node] (outer2) at (0*\nodesize,2*\nodesize) {};
+  \node[node] (outer3) at (0*\nodesize,3*\nodesize) {};
+  \node[node] (outer4) at (0*\nodesize,4*\nodesize) {};
+  \node[node] (outer5) at (0*\nodesize,5*\nodesize) {};
+  \node[node] (outer6) at (0*\nodesize,6*\nodesize) {};
+  \node[node] (outer7) at (0*\nodesize,7*\nodesize) {};
+  
+  % workday
+  \node[node] (workday01) at (\nodesize+\xspacing+ 0*\nodesize,5.5*\nodesize) {};
+  \node[node] (workday02) at (\nodesize+\xspacing+ 1*\nodesize,5.5*\nodesize) {};
+  \node[node] (workday03) at (\nodesize+\xspacing+ 2*\nodesize,5.5*\nodesize) {};
+  \node[node] (workday04) at (\nodesize+\xspacing+ 3*\nodesize,5.5*\nodesize) {};
+  \node[node] (workday05) at (\nodesize+\xspacing+ 4*\nodesize,5.5*\nodesize) {};
+  \node[node] (workday06) at (\nodesize+\xspacing+ 5*\nodesize,5.5*\nodesize) {};
+  \node[node] (workday07) at (\nodesize+\xspacing+ 6*\nodesize,5.5*\nodesize) {};
+  \node[node] (workday08) at (\nodesize+\xspacing+ 7*\nodesize,5.5*\nodesize) {};
+  \node[node] (workday09) at (\nodesize+\xspacing+ 8*\nodesize,5.5*\nodesize) {};
+  \node[work] (workday10) at (\nodesize+\xspacing+ 9*\nodesize,5.5*\nodesize) {};
+  \node[work] (workday11) at (\nodesize+\xspacing+10*\nodesize,5.5*\nodesize) {};
+  \node[work] (workday12) at (\nodesize+\xspacing+11*\nodesize,5.5*\nodesize) {};
+  \node[work] (workday13) at (\nodesize+\xspacing+12*\nodesize,5.5*\nodesize) {};
+  \node[work] (workday14) at (\nodesize+\xspacing+13*\nodesize,5.5*\nodesize) {};
+  \node[work] (workday15) at (\nodesize+\xspacing+14*\nodesize,5.5*\nodesize) {};
+  \node[work] (workday16) at (\nodesize+\xspacing+15*\nodesize,5.5*\nodesize) {};
+  \node[work] (workday17) at (\nodesize+\xspacing+16*\nodesize,5.5*\nodesize) {};
+  \node[node] (workday18) at (\nodesize+\xspacing+17*\nodesize,5.5*\nodesize) {};
+  \node[node] (workday19) at (\nodesize+\xspacing+18*\nodesize,5.5*\nodesize) {};
+  \node[node] (workday20) at (\nodesize+\xspacing+19*\nodesize,5.5*\nodesize) {};
+  \node[node] (workday21) at (\nodesize+\xspacing+20*\nodesize,5.5*\nodesize) {};
+  \node[node] (workday22) at (\nodesize+\xspacing+21*\nodesize,5.5*\nodesize) {};
+  \node[node] (workday23) at (\nodesize+\xspacing+22*\nodesize,5.5*\nodesize) {};
+  \node[node] (workday24) at (\nodesize+\xspacing+23*\nodesize,5.5*\nodesize) {};
+  
+  % friday
+  \node[node] (friday01) at (\nodesize+\xspacing+ 0*\nodesize,3*\nodesize) {};
+  \node[node] (friday02) at (\nodesize+\xspacing+ 1*\nodesize,3*\nodesize) {};
+  \node[node] (friday03) at (\nodesize+\xspacing+ 2*\nodesize,3*\nodesize) {};
+  \node[node] (friday04) at (\nodesize+\xspacing+ 3*\nodesize,3*\nodesize) {};
+  \node[node] (friday05) at (\nodesize+\xspacing+ 4*\nodesize,3*\nodesize) {};
+  \node[node] (friday06) at (\nodesize+\xspacing+ 5*\nodesize,3*\nodesize) {};
+  \node[node] (friday07) at (\nodesize+\xspacing+ 6*\nodesize,3*\nodesize) {};
+  \node[node] (friday08) at (\nodesize+\xspacing+ 7*\nodesize,3*\nodesize) {};
+  \node[node] (friday09) at (\nodesize+\xspacing+ 8*\nodesize,3*\nodesize) {};
+  \node[work] (friday10) at (\nodesize+\xspacing+ 9*\nodesize,3*\nodesize) {};
+  \node[work] (friday11) at (\nodesize+\xspacing+10*\nodesize,3*\nodesize) {};
+  \node[work] (friday12) at (\nodesize+\xspacing+11*\nodesize,3*\nodesize) {};
+  \node[work] (friday13) at (\nodesize+\xspacing+12*\nodesize,3*\nodesize) {};
+  \node[work] (friday14) at (\nodesize+\xspacing+13*\nodesize,3*\nodesize) {};
+  \node[work] (friday15) at (\nodesize+\xspacing+14*\nodesize,3*\nodesize) {};
+  \node[work] (friday16) at (\nodesize+\xspacing+15*\nodesize,3*\nodesize) {};
+  \node[node] (friday17) at (\nodesize+\xspacing+16*\nodesize,3*\nodesize) {};
+  \node[node] (friday18) at (\nodesize+\xspacing+17*\nodesize,3*\nodesize) {};
+  \node[node] (friday19) at (\nodesize+\xspacing+18*\nodesize,3*\nodesize) {};
+  \node[node] (friday20) at (\nodesize+\xspacing+19*\nodesize,3*\nodesize) {};
+  \node[node] (friday21) at (\nodesize+\xspacing+20*\nodesize,3*\nodesize) {};
+  \node[node] (friday22) at (\nodesize+\xspacing+21*\nodesize,3*\nodesize) {};
+  \node[node] (friday23) at (\nodesize+\xspacing+22*\nodesize,3*\nodesize) {};
+  \node[node] (friday24) at (\nodesize+\xspacing+23*\nodesize,3*\nodesize) {};
+  
+  % weekend
+  \node[node] (weekend01) at (\nodesize+\xspacing+ 0*\nodesize,1.5*\nodesize) {};
+  \node[node] (weekend02) at (\nodesize+\xspacing+ 1*\nodesize,1.5*\nodesize) {};
+  \node[node] (weekend03) at (\nodesize+\xspacing+ 2*\nodesize,1.5*\nodesize) {};
+  \node[node] (weekend04) at (\nodesize+\xspacing+ 3*\nodesize,1.5*\nodesize) {};
+  \node[node] (weekend05) at (\nodesize+\xspacing+ 4*\nodesize,1.5*\nodesize) {};
+  \node[node] (weekend06) at (\nodesize+\xspacing+ 5*\nodesize,1.5*\nodesize) {};
+  \node[node] (weekend07) at (\nodesize+\xspacing+ 6*\nodesize,1.5*\nodesize) {};
+  \node[node] (weekend08) at (\nodesize+\xspacing+ 7*\nodesize,1.5*\nodesize) {};
+  \node[node] (weekend09) at (\nodesize+\xspacing+ 8*\nodesize,1.5*\nodesize) {};
+  \node[node] (weekend10) at (\nodesize+\xspacing+ 9*\nodesize,1.5*\nodesize) {};
+  \node[node] (weekend11) at (\nodesize+\xspacing+10*\nodesize,1.5*\nodesize) {};
+  \node[node] (weekend12) at (\nodesize+\xspacing+11*\nodesize,1.5*\nodesize) {};
+  \node[node] (weekend13) at (\nodesize+\xspacing+12*\nodesize,1.5*\nodesize) {};
+  \node[node] (weekend14) at (\nodesize+\xspacing+13*\nodesize,1.5*\nodesize) {};
+  \node[node] (weekend15) at (\nodesize+\xspacing+14*\nodesize,1.5*\nodesize) {};
+  \node[node] (weekend16) at (\nodesize+\xspacing+15*\nodesize,1.5*\nodesize) {};
+  \node[node] (weekend17) at (\nodesize+\xspacing+16*\nodesize,1.5*\nodesize) {};
+  \node[node] (weekend18) at (\nodesize+\xspacing+17*\nodesize,1.5*\nodesize) {};
+  \node[node] (weekend19) at (\nodesize+\xspacing+18*\nodesize,1.5*\nodesize) {};
+  \node[node] (weekend20) at (\nodesize+\xspacing+19*\nodesize,1.5*\nodesize) {};
+  \node[node] (weekend21) at (\nodesize+\xspacing+20*\nodesize,1.5*\nodesize) {};
+  \node[node] (weekend22) at (\nodesize+\xspacing+21*\nodesize,1.5*\nodesize) {};
+  \node[node] (weekend23) at (\nodesize+\xspacing+22*\nodesize,1.5*\nodesize) {};
+  \node[node] (weekend24) at (\nodesize+\xspacing+23*\nodesize,1.5*\nodesize) {};
+  
+  \draw[arrow] (outer7.center) to[out=0,in=130] (workday01);
+  \draw[arrow] (outer6.center) to[out=0,in=160] (workday01);
+  \draw[arrow] (outer5.center) to[out=0,in=200] (workday01);
+  \draw[arrow] (outer4.center) to[out=0,in=230] (workday01);
+  \draw[arrow] (outer3.center) -- (friday01);
+  \draw[arrow] (outer2.center) to[out=0,in=160] (weekend01);
+  \draw[arrow] (outer1.center) to[out=0,in=200] (weekend01);
+﻿﻿\end{tikzpicture}
