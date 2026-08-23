@@ -247,8 +247,6 @@ We can store values of any type in an array, as long as all elements have the sa
   \label{fig:data:array:nest}
 \end{figure}
 
-% syntax expr: explain loop
-
 % arr-decl: explain recursion
 The more times we apply the new \conceptname{type} rule, the deeper the nesting of arrays. The support for this nesting is what necessitates the recursion in the \conceptname{arr-decl} rule of syntax \ref{syntax:data:array}. That is, a \conceptname{arr-decl} may include another \conceptname{arr-decl}. This allows us to hardcode an initial state for any level of array nesting. To declare the array in figure \ref{fig:data:array:nest:square}, we can write:
 
@@ -283,6 +281,8 @@ When we iterate over nested arrays, we have to start with the outermost array an
 As we know that the inner arrays have different length, we need to look up the length of the concrete array. This is what we do in the \idx{right-hand side}{Right-hand side} of the comparison of the condition in line 9.
 
 \subsubsection{Multidimensional Arrays}
+
+% syntax expr: explain loop
 
 \begin{alignat}{1}
   \left(
