@@ -157,7 +157,8 @@ Notice how the first element of the \idx{memory space}{Memory space} is at index
 
 \subsubsection{\csharp}
 
-% intro (skip expr loop and arr-decl recursion until \ref{sec:primdata:arraysOfArrays})
+% intro
+The way we write array code in \csharp\ is governed by the rules of syntax \ref{syntax:data:array}. Arrays are reference types, and so we need to use the \keywordname{new} keyword to allocate space in main memory on the heap for it. When we do so, we need to tell the compiler what type the elements have, how many dimensions the array should have, and how large the array is along each of these dimensions. This is an expression (\conceptname{expr}) that evaluates to a reference to an array type. Array types are types (\conceptname{type}) which are based on another type. For each dimension of the array, a set of square brackets are appended to the base type name. When an array is allocated this way, it is full of 0-values. The \conceptname{arr-decl} rule allows us to hardcode the contents immediately. This is only practical for small arrays.
 
 \begin{syntaxfloat}
   \input{syntax/data_array.tex}
