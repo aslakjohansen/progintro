@@ -336,7 +336,7 @@ Everywhere we can use multidimensional arrays, we can also use nested arrays. Mu
 \label{sec:primdata:sequence:list}
 
 % intro
-Like arrays, linked lists also implements sequences of data. The way they do so, however, is very different. An array is a single allocation of a contiguous region of memory. Within this region of memory, the element are laid out one after the other in order of their index. A linked list is made up of links containing a payload and a reference to the next link. The sequence is terminated by a \valuename{null} reference. These links can be scattered all around memory, and if one links reference points to an earlier link in the chain then the length of the chain is infinity (or MAXINT for whichever type you use for indexing it). Figure \ref{fig:primdata:linkedlist} illustrates a linked list with three elements; \say{a} at index 0, \say{b} at index 1 and \say{c} at index 2.
+Like arrays, \defi{linked lists}{Linked List} also implements sequences of data. The way they do so, however, is very different. An array is a single \idx{allocation}{Allocation} of a contiguous region of \idx{memory}{Memory}. Within this region of memory, the elements are laid out one after the other in order of their index. A linked list is made up of \idx{links}{Linked list!Link} containing a payload and a \idx{reference}{Reference} to the next link. The sequence is terminated by a \idx{\valuename{null}}{null@\valuename{null}} reference. These links can be scattered all around memory, and if one links reference points to an earlier link in the chain then the length of the chain is infinity (or \ref{MAXINT}{MAXINT@\textsl{MAXINT}} for whichever type you use for indexing it). Figure \ref{fig:primdata:linkedlist} illustrates a linked list with three elements; \say{a} at index 0, \say{b} at index 1 and \say{c} at index 2.
 
 \begin{figure}[tbp]
   \input{figs/primdata_linkedlist.tex}
@@ -345,10 +345,10 @@ Like arrays, linked lists also implements sequences of data. The way they do so,
 \end{figure}
 
 % head and tail
-That figure looks a bit like a snake. Let's briefly go back to the part where each link contains a payload and a reference. As you traverse a linked list you get a series of links representing shorter and shorter lists. We refer to the payload of such a link as the head, and the reference of it as the tail.
+That figure looks a bit like a snake. Let's briefly go back to the part where each link contains a payload and a reference. As you traverse a linked list you get a series of links representing shorter and shorter lists. We refer to the payload of such a link as the \defi{head}{Linked list!Head}, and the reference of it as the \defi{tail}{Linked list!Tail}.
 
 % lookup performance
-The formula from section \ref{sec:data:array} will calculate the address of an element within an array. This costs a multiplication, an addition and a memory read. Notice that this is independent of the actual index. To look up a value in a linked list, we need to follow the chain. If the value is at index $n$, then we need to perform $n$ memory reads and -- depending on implementation -- a bit more. Memory is slow compared to additions and multiplications, so looking up a single value is a lot faster in an array. Looking up all values, if implemented the right way -- is very comparable in performance though.
+The formula from section \ref{sec:data:array} will calculate the address of an element within an array. This costs a multiplication, an addition and a \idx{memory read}{Memory!Read operation}. Notice that this is independent of the actual index. To look up a value in a linked list, we need to follow the chain. If the value is at index $n$, then we need to perform $n$ memory reads and -- depending on implementation -- a bit more. Memory is slow compared to additions and multiplications, so looking up a single value is a lot faster in an array. Looking up all values, if implemented the right way -- is very comparable in \idx{performance}{Performance} though.
 
 \subsubsection{\csharp}
 
