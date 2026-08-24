@@ -1,0 +1,25 @@
+\begin{syntax}{stmt}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence] () at ([yshift=-0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[terminal]    (ruleIa) {foreach};
+    &
+    \node[terminal]    (ruleIb) {(};
+    &
+    \node[nonterminal] (ruleIc) {type};
+    &
+    \node[nonterminal] (ruleId) {name};
+    &
+    \node[terminal]    (ruleIe) {in};
+    &
+    \node[nonterminal] (ruleIf) {expr};
+    &
+    \node[terminal]    (ruleIg) {)};
+    &
+    \node[nonterminal] (ruleIh) {stmt};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(ruleId)--(ruleIe)--(ruleIf)--(ruleIg)--(ruleIh)--(end);
+\end{syntax}

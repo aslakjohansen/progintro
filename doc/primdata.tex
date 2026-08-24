@@ -383,7 +383,14 @@ iex(3)> {head, tail}
 \label{sec:primdata:sequence:foreach}
 
 % intro and setup
-\csharp\ has the concept of a collection that is widely used across the language and the .NET framework (e.g., the built-in arrays and linked lists are collections). We can iterate over any collection using a \keywordname{foreach} loop: % TODO: revisit foreach as syntactic sugar on top of IEnumerable<T>
+\csharp\ has the concept of a collection that is widely used across the language and the .NET framework (e.g., the built-in arrays and linked lists are collections). We can iterate over any collection using a \keywordname{foreach} loop. This is a new loop as described in syntax \ref{syntax:data:foreach}. It is much like a standard \keywordname{for} loop, but we don't have access to the index. Using it looks like this: % TODO: revisit foreach as syntactic sugar on top of IEnumerable<T>
+
+% syntax
+\begin{syntaxfloat}
+  \input{syntax/data_foreach.tex}
+  \caption{Statements for repetition with \keywordname{foreach}}
+  \label{syntax:data:foreach}
+\end{syntaxfloat}
 
 % example
 
