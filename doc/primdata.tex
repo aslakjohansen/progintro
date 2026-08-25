@@ -291,11 +291,15 @@ As we know that the inner arrays have different length, we need to look up the l
 % intro
 We have seen how we, be nesting arrays, can a two-dimensional datastructure; a grid if you will. Isn't that a 2d array (and thus a multidimensional array)? Not quite. It is a complex of arrays that represent a multidimensional data structure. That appears to be a fairly weak -- and perhaps even unclear -- difference. Why make the distinction? Because we have a \textsl{different} concept that is called multidimensional arrays. Let's look into how they work, and -- by extension -- how they are different.
 
+% layout of a 2d array
+
 \begin{figure}[tbp]
   \input{figs/data_2darray_layout.tex}
   \caption{The memory layout of a 2d array.}
   \label{fig:data:IIDarray:layout}
 \end{figure}
+
+% indexing
 
 \begin{alignat}{1}
   \left(
@@ -314,6 +318,8 @@ We have seen how we, be nesting arrays, can a two-dimensional datastructure; a g
   \\
   i &= \textcolor{teal}{y} \cdot width + \textcolor{teal}{x}
 \end{alignat}
+
+% indexing compared to nested array
 
 \subsubsection{\csharp}
 
