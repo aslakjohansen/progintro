@@ -726,6 +726,7 @@ When the value is extracted from the variable is determined by whether the \text
 So far, we have always combined the declaration of a variable with an assignment. But the syntax rules also allows us to just declare a variable. As we are allowed to declare it, we must also be allowed to print it to the screen. But, if just declare an \typename{int} variable and print it, which value will be printed?
 
 % answer
+It turns out that \csharp\ clears every variable on declaration to the zero-value of the type of the variable. It is called a zero value because it is the value of a representation that consists of all zero bits. This is the default value of the type. Every integral type has a default value of zero. So does every floating-point type. \typename{bool} defaults to \valuename{false}.
 
 \section{Resolving Uncertainty}
 
