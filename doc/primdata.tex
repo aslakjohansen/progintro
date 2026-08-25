@@ -463,6 +463,8 @@ Enumeration, that's a funny name. How could I possibly remember that? Well, in a
 
 \subsection{\csharp}
 
+We use syntax \ref{syntax:data:enum} for working with enums. We declare a number of names with commas in between with the \conceptname{names} rule. In the \conceptname{stmt} rule we define a typename to be able to take the form of one of these names.
+
 \begin{syntaxfloat}
   \input{syntax/data_enum.tex}
   \caption{Enums}
@@ -474,13 +476,13 @@ Enumeration, that's a funny name. How could I possibly remember that? Well, in a
 % what: a state machine is a way of structuring the flow of a program, think of it as a graph consisting of states in the form of nodes and transitions between those states in the form of edges, at any given time the machine will have one active state, each outgoing edge is associated with some event that will cause that transition to be followed, this updated the active state, upon arrival at a state some code is executed, state machine are typically used to process streams of inputs
 A \defi{state machine}{State Machines} is a way of constructing the flow of a program (or part thereof). Think of it as a \idx{graph}{Graph} consisting of states in the form of nodes and transitions between those states in the form of edges. At any given time, the machine will have on active state. Each outgoing edge is associates with some event that will cause that transition to be followed and the active state to be updated. Upon arrival at a state, some code is executed. State machines are typically used to process streams of inputs.
 
+\subsection{String Parsing Example}
+
 \begin{figure}[tbp]
   \input{figs/primdata_statemachine.tex}
   \caption{State machine for parsing strings.}
   \label{fig:primdata:statemachine}
 \end{figure}
-
-\subsection{String Parsing Example}
 
 % example intro: a common use of state machines is to parse strings, lets take a look at how that can be done
 
