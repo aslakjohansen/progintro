@@ -20,12 +20,37 @@
     \\
   };
   
+  \node[sequence,column sep=0.8cm] () at ([yshift=-1*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleIIIa) {name};
+    &
+    \node[terminal]    (ruleIIIb) {.};
+    &
+    \node[terminal]    (ruleIIIc) {GetLength};
+    &
+    \node[terminal]    (ruleIIId) {(};
+    &
+    \node[nonterminal] (ruleIIIe) {expr};
+    &
+    \node[terminal]    (ruleIIIf) {)};
+    \\
+  };
+  
   \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(ruleId)--(ruleIe)--(end);
   \draw[path] (ruleId)
             -|([xshift= 0.75*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleId.east)
             |-(                            [yshift=0.0*\syntaxruledist]ruleIIa)
             -|([xshift=-0.75*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleId.west)
             |-(ruleId);
+  \draw[path] (begin)
+            -|([xshift= 0.75*\syntaxruledist,yshift=-0.4*\syntaxruledist]begin.east)
+            |-(                             [yshift=0.0*\syntaxruledist]ruleIIIa)
+            --(                                                         ruleIIIb)
+            --(                                                         ruleIIIc)
+            --(                                                         ruleIIId)
+            --(                                                         ruleIIIe)
+            --(                                                         ruleIIIf)
+            -|([xshift=-0.75*\syntaxruledist,yshift=-0.4*\syntaxruledist]end.west)
+            |-(end);
 \end{syntax}
 
 \begin{syntax}[[xshift=22mm]concept.west]{name}
