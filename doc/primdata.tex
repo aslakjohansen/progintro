@@ -175,13 +175,7 @@ Once we have a variable referencing an array, we can refer to (aka name) a parti
 \subsubsection{Indexing}
 
 % setup
-Assuming a regular year, January will have 31 days, February will have 28 days and so on. January is always the first month, February always the second, and so on. Let's express this as an array and iterate through its contents:
-
-%example
-\inputminted[linenos,lastline=5]{csharp}{../src/csharp/primdata/months/Program.cs}
-
-% explain
-On line 1, an array of \typename{int} values is \idx{allocated}{Allocation!Array} and \idx{initialized}{Initialization!Array} to contain 12 explicit values. A variable called \varname{months} of type \typename{int[]} is \idx{declared}{Declaration!Array} and assigned a \idx{reference}{Reference} to this array. On line 3, the program uses a \idx{loop variable}{Loop variable} to go through all the valid indices of the array. Note that the loop \idx{continuation condition}{Continuation condition} is expressed in terms of \propertyname{months.Length} which holds the length of the array. For each index, the program prints out the index as well as the value at this position in the array. The latter is accomplished using a lookup through the square bracket syntax from the \conceptname{expr} rule of syntax \ref{syntax:data:array}. % TODO: something is off with this syntax: where is the indexing? are we missing a name for stmt?
+Assuming a regular year, January will have 31 days, February will have 28 days and so on. January is always the first month, February always the second, and so on. Figure \ref{fig:data:array:index} illustrates how this array will be laid out in memory. Let's express this as an array and iterate through its contents:
 
 \begin{figure}[tbp]
   \input{figs/data_array_index.tex}
@@ -189,13 +183,25 @@ On line 1, an array of \typename{int} values is \idx{allocated}{Allocation!Array
   \label{fig:data:array:index}
 \end{figure}
 
-% setup
-If we don't want to report the index then we can simplify that code with a \idx{\keywordname{foreach} loop}{foreach loop@\keywordname{foreach} loop}: % TODO: this needs to be extended to cover the first two operations. Also, should both g into the same example?
-
-% example
-\inputminted[firstline=9]{csharp}{../src/csharp/primdata/months/Program.cs}
+%example
+\inputminted[linenos,lastline=5]{csharp}{../src/csharp/primdata/months/Program.cs}
 
 % explain
+On line 1, an array of \typename{int} typed values is \idx{allocated}{Allocation!Array} and \idx{initialized}{Initialization!Array} to contain 12 explicit values. A variable called \varname{months} of type \typename{int[]} is \idx{declared}{Declaration!Array} and assigned a \idx{reference}{Reference} to this array. On line 3, the program uses a \idx{loop variable}{Loop variable} to go through all the valid indices of the array. Note that the loop \idx{continuation condition}{Continuation condition} is expressed in terms of \propertyname{months.Length} which holds the length of the array. For each index, the program prints out the index as well as the value at this position in the array. The latter is accomplished using a lookup through the square bracket syntax from the \conceptname{name} rule of syntax \ref{syntax:data:array}.
+
+% NOTE: These seem to have been covered later on
+%% setup
+%If we don't want to report the index then we can simplify that code with a \idx{\keywordname{foreach} loop}{foreach loop@\keywordname{foreach} loop}: % TODO: this needs to be extended to cover the first two operations. Also, should both g into the same example?
+%
+%% example
+%\inputminted[firstline=9]{csharp}{../src/csharp/primdata/months/Program.cs}
+%
+%% explain
+
+If we add the following code we can use indexing to modify the data structure as shown in figure \ref{fig:data:array:index}:
+
+% example
+\inputminted[firstline=9,lastline=10]{csharp}{../src/csharp/primdata/months/Program.cs}
 
 \begin{figure}[tbp]
   \input{figs/primdata_array_months.tex}
