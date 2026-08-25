@@ -28,6 +28,34 @@
             |-(ruleId);
 \end{syntax}
 
+\begin{syntax}[[xshift=22mm]concept.west]{name}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence,column sep=1.5cm] () at ([yshift=-0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal]    (ruleIb) {name};
+    &
+    \node[terminal]       (ruleIc) {[};
+    &
+    \node[nonterminal]    (ruleId) {expr};
+    &
+    \node[terminal]       (ruleIe) {]};
+    \\
+  };
+  
+  \node[sequence,column sep=1.0cm] () at ([yshift=1*\syntaxruledist]ruleId) {
+    \node[terminal]    (ruleIIa) {,};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleIb)--(ruleIc)--(ruleId)--(ruleIe)--(end);
+  \draw[path] (ruleId)
+            -|([xshift= 0.75*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleId.east)
+            |-(                            [yshift=0.0*\syntaxruledist]ruleIIa)
+            -|([xshift=-0.75*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleId.west)
+            |-(ruleId);
+\end{syntax}
+
 \begin{syntax}[[xshift=22mm]concept.west]{type}
   \SyntaxWestSplit{MainWest}
   \SyntaxEastSplit{MainEast}
