@@ -1,0 +1,56 @@
+\begin{center}
+  \begin{tikzpicture}
+    \newcommand{\spacing}[0]{ 6mm }
+    
+    \tikzstyle{nt}=[
+      draw=\SyntaxNonterminalColor,
+      text=\SyntaxNonterminalColor,
+      fill=\SyntaxNonterminalColor!5,
+      minimum height=6mm,
+      minimum width=10mm,
+      anchor=north,
+      very thick,
+      align=center,
+    ]
+    \tikzstyle{t}=[
+      draw=\SyntaxTerminalColor,
+      text=\SyntaxTerminalColor,
+      fill=\SyntaxTerminalColor!5,
+      minimum height=6mm,
+      minimum width=10mm,
+      anchor=north,
+      very thick,
+      align=center,
+    ]
+    
+    \tikzstyle{edge} = [thick,->,>=stealth,draw=black,rounded corners=2mm]
+    
+    \tikzset{
+      -|-/.style={
+        to path={
+          (\tikztostart) -| ($(\tikztostart)!#1!(\tikztotarget)$) |- (\tikztotarget)
+          \tikztonodes
+        }
+      },
+      -|-/.default=0.5,
+      |-|/.style={
+        to path={
+          (\tikztostart) |- ($(\tikztostart)!#1!(\tikztotarget)$) -| (\tikztotarget)
+          \tikztonodes
+        }
+      },
+      |-|/.default=0.5,
+    }
+    
+    \node[nt] (full) at (0,0) {$\odot$};
+    \node[nt,anchor=north east] (left) at ([xshift=-\spacing/2,yshift=-\spacing]full.south) {$\odot$};
+    \node[t,anchor=north west] (right) at ([xshift=\spacing/2,yshift=-\spacing]full.south) {$c$};
+    \node[t,anchor=north east] (leftleft) at ([xshift=-\spacing/2,yshift=-\spacing]left.south) {$a$};
+    \node[t,anchor=north west] (leftright) at ([xshift=\spacing/2,yshift=-\spacing]left.south) {$b$};
+    
+    \draw[edge] ([xshift=-1*\spacing/4]full.south) to[|-|] (left.north);
+    \draw[edge] ([xshift= 1*\spacing/4]full.south) to[|-|] (right.north);
+    \draw[edge] ([xshift=-1*\spacing/4]left.south) to[|-|] (leftleft.north);
+    \draw[edge] ([xshift= 1*\spacing/4]left.south) to[|-|] (leftright.north);
+  \end{tikzpicture}
+\end{center}
