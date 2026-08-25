@@ -25,10 +25,41 @@
   \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(ruleId)--(ruleIe)--(end);
   \draw[path] (ruleId)
             -|([xshift= 0.75*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleId.east)
-            |-(                            [yshift=0.0*\syntaxruledist]ruleIIb)
-            --(                                                        ruleIIa)
+            |-(                             [yshift=0.0*\syntaxruledist]ruleIIb)
+            --(                                                         ruleIIa)
             -|([xshift=-0.75*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleId.west)
             |-(ruleId);
+\end{syntax}
+
+\begin{syntax}[[xshift=22mm]concept.west]{name}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence,column sep=1.5cm] () at ([yshift=0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal] (ruleIIIa) {name};
+    &
+    \node[terminal]    (ruleIIIb) {[};
+    &
+    \node[nonterminal] (ruleIIIc) {expr};
+    &
+    \node[terminal]    (ruleIIId) {]};
+    \\
+  };
+  
+  \node[sequence,column sep=1.0cm] () at ([yshift=1*\syntaxruledist]ruleIIIc) {
+    \node[terminal]    (ruleIVa) {[};
+    &
+    \node[terminal]    (ruleIVb) {]};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleIIIa)--(ruleIIIb)--(ruleIIIc)--(ruleIIId)--(end);
+  \draw[path] (ruleIIIc)
+            -|([xshift= 0.75*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIIIc.east)
+            |-(                             [yshift=0.0*\syntaxruledist]ruleIVb)
+            --(                                                         ruleIVa)
+            -|([xshift=-0.75*\syntaxruledist,yshift=0.4*\syntaxruledist]ruleIIIc.west)
+            |-(ruleIIIc);
 \end{syntax}
 
 \begin{syntax}[[xshift=22mm]concept.west]{type}
