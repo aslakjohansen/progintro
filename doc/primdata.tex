@@ -292,6 +292,7 @@ As we know that the inner arrays have different length, we need to look up the l
 We have seen how we, be nesting arrays, can a two-dimensional datastructure; a grid if you will. Isn't that a 2d array (and thus a multidimensional array)? Not quite. It is a complex of arrays that represent a multidimensional data structure. That appears to be a fairly weak -- and perhaps even unclear -- difference. Why make the distinction? Because we have a \textsl{different} concept that is called multidimensional arrays. Let's look into how they work, and -- by extension -- how they are different.
 
 % layout of a 2d array
+From the outside multidimensional arrays are very similar to nested arrays. You provide an index per \say{dimension} and then you get a value that you can read or write. But the way the data are laid out in memory is quite different. Remember from figure \ref{fig:data:array:nest:square} How a rectangular nested array is laid out: The outer array contains references to the inner. Figure \ref{fig:data:IIDarray:layout} shows how a three row by four column multidimensional array is laid out in memory. Notice the complete lack of references? Those references are what allows for jagged arrays and shared inner arrays.
 
 \begin{figure}[tbp]
   \input{figs/data_2darray_layout.tex}
@@ -300,8 +301,10 @@ We have seen how we, be nesting arrays, can a two-dimensional datastructure; a g
 \end{figure}
 
 % indexing
+But following references takes time. For each dimension of a nested array we have to follow one reference in addition to the formula from section \ref{sec:data:array}. In a 2d (multidimensional) array, the formula is:
 
 \begin{alignat}{1}
+  \label{f:data:marray:i}
   \left(
     \begin{array}{c}
       x \\
@@ -316,10 +319,15 @@ We have seen how we, be nesting arrays, can a two-dimensional datastructure; a g
     \end{array}
   \right)
   \\
+  \label{f:data:marray:xy}
   i &= \textcolor{teal}{y} \cdot width + \textcolor{teal}{x}
 \end{alignat}
 
+% followup
+This is in essence a mapping between the 2d integral coordinate system and a normal single-dimensional array! Given an index $i$ in the normal array, the corresponding $x$ and $y$ positions can be calculated according to formula \ref{f:data:marray:i}. More importantly, given an $x$ and a $y$ coordinate, the corresponding $i$ coordinate can be calculated according to formula \ref{f:data:marray:xy}.
+
 % indexing compared to nested array
+That is an addition and a multiplication. Two cheap (in terms of evaluation time) operations. There are no references to follow (except for the one to the hosting array). These formulas gain complexity as we increase the number of dimensions, but no more that the corresponding cheap operations from the nested array variant. In summary, representing $n$ dimensional data using nested arrays will require us to follow $n$ references to reach an element, but representing it using a multidimensional array will only require us to follow $1$ reference. In theory, for $n=1$ both the representation and the evaluation speed are exactly the same.
 
 \subsubsection{\csharp}
 
