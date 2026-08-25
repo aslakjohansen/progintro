@@ -28,6 +28,11 @@ So, types where a variable is mapped to hold values in register(s) are called \i
 
 \section{Nullability}
 
+% backstory
+On a traditional machine, the lowest addresses have specific purposes, and most programs are not allowed to access them. Address zero specifically is an address what we should never try to read. Because of this, it has become convention to use this address to indicate an invalid value. This could be for uninitialized references or simply to indicate that something isn't present. It has become so common that many languages have introduced a keyword to represent this address and thus make it easier to spot. In \csharp\ that keyword is \defi{\valuename{NULL}}{NULL@\directivename{NULL} reference}, and in some other languages it is \defi{\valuename{nil}}{nil@\directivename{nil} reference}. All reference types in \csharp can be set to \valuename{NULL}. Following such a reference will cause an exception to be thrown and -- if uncaught -- crash the virtual machine. More on exceptions in section \ref{sec:exceptions}. For now, just don't follow them. As it turns out, that is easier said than done.
+
+
+
 \section{Structured Data}
 \label{sec:primdata:struct}
 
