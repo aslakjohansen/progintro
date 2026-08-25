@@ -1,3 +1,20 @@
+\begin{syntax}[[xshift=24mm]concept.west]{expr}
+  \SyntaxWestSplit{MainWest}
+  \SyntaxEastSplit{MainEast}
+  
+  \node[sequence] () at ([yshift=-0*\syntaxruledist]$(begin)!0.5!(end)$) {
+    \node[nonterminal]    (ruleIa) {name};
+    &
+    \node[terminal]       (ruleIb) {.};
+    &
+    \node[nonterminal]    (ruleIc) {name};
+    \\
+  };
+  
+  \draw[path] (begin)--(ruleIa)--(ruleIb)--(ruleIc)--(end);
+\end{syntax}
+
+
 \begin{syntax}[[xshift=24mm]concept.west]{names}
   \SyntaxWestSplit{MainWest}
   \SyntaxEastSplit{MainEast}

@@ -471,6 +471,16 @@ We use syntax \ref{syntax:data:enum} for working with enums. We declare a number
   \label{syntax:data:enum}
 \end{syntaxfloat}
 
+Declaring an enum looks like this:
+
+\inputminted[firstline=8]{csharp}{../src/csharp/primdata/suit/Program.cs}
+
+And working with it like this:
+
+\inputminted[linenos,lastline=6]{csharp}{../src/csharp/primdata/suit/Program.cs}
+
+The dot or period operator on line 1 tells the system to look up the \varname{Heart} that is defined within \typename{Suit}.
+
 \subsection{State Machines}
 
 % what: a state machine is a way of structuring the flow of a program, think of it as a graph consisting of states in the form of nodes and transitions between those states in the form of edges, at any given time the machine will have one active state, each outgoing edge is associated with some event that will cause that transition to be followed, this updated the active state, upon arrival at a state some code is executed, state machine are typically used to process streams of inputs
