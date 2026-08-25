@@ -488,13 +488,16 @@ A \defi{state machine}{State Machines} is a way of constructing the flow of a pr
 
 \subsection{String Parsing Example}
 
+% example intro: a common use of state machines is to parse strings, lets take a look at how that can be done
+A common use of state machines is the parse strings. Let's take a look at how that can be done. In our case, we actually just want to categorize strings as either representing a floating point number (that contain a single period and digits), an integer (that are all digits) or strings (that are everything else under the sky). Figure \ref{fig:primdata:statemachine} represents the state machine visually. We start in the \say{Unknown} state and then proces one character at a time. Depending on whether the first character is a period, a digit or anything else we will transition to either \say{Float}, \say{Integer} or \say{String}. For each character we transition according to an edge in the graph.
+
 \begin{figure}[tbp]
   \input{figs/primdata_statemachine.tex}
   \caption{State machine for parsing strings.}
   \label{fig:primdata:statemachine}
 \end{figure}
 
-% example intro: a common use of state machines is to parse strings, lets take a look at how that can be done
+Unfortunately, \csharp\ is too complicated a language for us to cover the implementation in detail. It it perfectly fine to not understand everything that is going on. If you feel up for it, have a look at figure \ref{fig:primdata:stringparsing}.
 
 % figure: example of string parsing
 \begin{figure}[tbp]
