@@ -1,4 +1,11 @@
-Category get_category (string input) {
+string[] inputs = new string[] {
+  "10.h",
+  "10.7",
+  "10",
+  "Hello, world"
+};
+
+foreach (string input in inputs) {
   Category state = Category.Unknown;
   
   foreach (char c in input) {
@@ -32,19 +39,7 @@ Category get_category (string input) {
     }
   }
   
-  return state;
-}
-
-string[] inputs = new string[] {
-  "10.h",
-  "10.7",
-  "10",
-  "Hello, world"
-};
-
-foreach (string input in inputs) {
-  Category category = get_category(input);
-  Console.WriteLine(category);
+  Console.WriteLine(state);
 }
 
 enum Category {
