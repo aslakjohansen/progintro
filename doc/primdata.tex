@@ -461,6 +461,14 @@ Enumeration, that's a funny name. How could I possibly remember that? Well, in a
 
 % playing card suit example % TODO: this is language specific, so where do I put it?
 
+\subsection{\csharp}
+
+\begin{syntaxfloat}
+  \input{syntax/data_enum.tex}
+  \caption{Enums}
+  \label{syntax:data:enum}
+\end{syntaxfloat}
+
 \subsection{State Machines}
 
 % what: a state machine is a way of structuring the flow of a program, think of it as a graph consisting of states in the form of nodes and transitions between those states in the form of edges, at any given time the machine will have one active state, each outgoing edge is associated with some event that will cause that transition to be followed, this updated the active state, upon arrival at a state some code is executed, state machine are typically used to process streams of inputs
@@ -491,13 +499,5 @@ A \defi{state machine}{State Machines} is a way of constructing the flow of a pr
 %% observation: a variable only references an array
 %
 %% solution: Wrap the array in a struct
-
-\subsection{\csharp}
-
-\begin{syntaxfloat}
-  \input{syntax/data_enum.tex}
-  \caption{Enums}
-  \label{syntax:data:enum}
-\end{syntaxfloat}
 
 \exercises{primdata}{Basic Datastructures}
