@@ -187,8 +187,10 @@ Actually, this is what happens on the right-hand side of this assignment. In thi
 \inputminted[firstline=3]{csharp}{../src/csharp/primdata/array_alloc/Program.cs}
 
 % setup: allocation and initialization
+Allocating an array like this inserts zero-values at all elements. This is also why we -- according to the first rule for \conceptname{expr} in syntax \ref{syntax:data:array} -- must give the length of the first dimension while we cannot give the lengths of any more nested dimensions. That needs to be done manually in code, as we will see examples of later. Instead, let's go back to the \varname{months} example. After allocation, all elements have the zero-value of their type. As their type is \typename{int}, their zero value is 0. But we might also want to to initialize the arrays elements to concrete values. That can be done using the \conceptname{arr-decl} rule of syntax \ref{syntax:data:array}:
 
-% explain
+% example
+\inputminted[lastline=1]{csharp}{../src/csharp/primdata/months/Program.cs}
 
 % choosing
 As we have seen, there are two ways of initializing an array: Either it is explicit (we provide the concrete values), or it is implicit (and the \idx{default}{Default value} -- \idx{zero}{Zero value} -- value on the enclosed type is used). The implicit form can be followed by a series of a statements that assign individual values. In short, there are a number of ways to skin this \idx{cat}{Cat}. Someone went through the \idx{effort}{Effort} of adding more than one way of doing this. That usually doesn't happen without a reason. So, when should you use one over the other? Generally, the order is:
