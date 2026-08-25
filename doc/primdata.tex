@@ -175,11 +175,16 @@ Once we have a variable referencing an array, we can refer to (aka name) a parti
 \subsubsection{Allocation}
 
 % setup: allocation
-Before doing something with an array, we need to create it. While programmers often use the term \say{create}, it is now particularly well defined. Before we can do anything with an array, we need to allocate space on the heap for it. This is just a range of memory addresses that then be come earmarked for us to use as an array. In \csharp\ allocation is accomplished using the \keywordname{new}, and for arrays specifically, it's the \conceptname{expr} rule from syntax \ref{syntax:data:array} that matter.
+Before doing something with an array, we need to create it. While programmers often use the term \say{create}, it is now particularly well defined. Before we can do anything with an array, we need to allocate space on the heap for it. This is just a range of memory addresses that then be come earmarked for us to use as an array. In \csharp\ allocation is accomplished using the \keywordname{new}, and for arrays specifically, it's the \conceptname{expr} rule from syntax \ref{syntax:data:array} that matter. For now, you can disregard the loop at the end. Let's say that we want to allocate space for an array with 12 \typename{int} elements:
 
 % example
+\inputminted[lastline=1]{csharp}{../src/csharp/primdata/array_alloc/Program.cs}
 
 % explain
+Actually, this is what happens on the right-hand side of this assignment. In this example, we have taken the liberty of declaring a variable called \varname{months} and assigning a reference to our newly created array to it. Notice how the type of the variable is \typename{int[]} (without a length) but the allocation refers to \typename{int[12]} (including length). The length is necessary for the allocation as it is critical for determining how much memory to allocate. The length of the array -- in \csharp\ -- is written into the allocated memory as a property. For now, it can be accessed as \texttt{\varname{months}.\propertyname{Length}}. We will revisit the concept in section \ref{sec:property}. We can ask how long the array that we have just allocated is:
+
+% example
+\inputminted[firstline=3]{csharp}{../src/csharp/primdata/array_alloc/Program.cs}
 
 % setup: allocation and initialization
 
