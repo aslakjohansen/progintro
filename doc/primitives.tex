@@ -251,6 +251,9 @@ Looking at lines 5, 9 and 13 we observe a pattern: A variable is adjusted accord
 balance += 10000;
 \end{minted}
 
+% special case
+By far, the most frequent use of this is to increment, or decrement, by one. It is so frequent that a \texttt{++} and a \texttt{--} operator has been added. To increment \varname{balance} by one we can simply write \texttt{\varname{balance}++} and to decrement it by one we can write \texttt{\varname{balance}--}. But more on this in section \ref{sec:primitive:stmtVSexpr}.
+
 \subsection{Scripting Languages}
 
 % declaration of variables: in csharp variables are first declared and then used, we can declare a variable and assign it a value on the same line but the way the resulting parse tree is evaluated still dictates that the declaration is evaluated first, in python -- with its weak typing -- local variables are never declared, the moment you assign a value to a name that name becomes a variable, the following is valid python code:
@@ -642,6 +645,7 @@ When this happens, we use parentheses to force a specific interpretation. Novice
 \end{caution}
 
 \section{Statements vs Expressions}
+\label{sec:primitive:stmtVSexpr}
 
 A language can be said to be defined through three layers:
 \begin{enumerate}
