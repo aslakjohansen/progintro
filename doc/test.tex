@@ -31,6 +31,10 @@ To ensure \idx{correctness}{Correctness}, we must verify that all possible input
 But, what if the \idx{parameter}{Parameter} was a 64 bit or -- gods forbid -- a 128 bit integer? A 128 bit integer value can take on $2^{128}=3.4 \cdot 10^{38}$ different values. This is by almost all \idx{metrics}{Metric} a very large number. How large a number? There are $3.34 \cdot 10^{38}$ \idx{electrons}{Electron particle} in a cubic kilometer of \idx{water}{Water}. So, if we are able to store every test case in a single electron -- something not allowed by our current understanding of \idx{physics}{Physics} -- then we will need approx $1km^2$ of water simply to store these test cases. If we instead have two such integers as parameters, then we would need $2^{128 \cdot 2}$ electrons to store all the test cases, and this is dangerously close to the number of electrons in the known \idx{universe}{Universe}. This \idx{approach}{Approach} clearly does not \idx{scale}{Scalability}.
 
 \section{Boundary Cases}
+
+% leadup
+As it is intractable to test all cases, we need a different approach; one that trades completeness for test execution efficiency. In short, we need to pick a limited subset of the possible inputs, and test these. But which subset do we pick? We could randomly select $n$ inputs and test these. But how do we pick one $n$ over another? If or \funcname{incr} function works correctly for an input of 12 why wouldn't it also work for a value of 13?
+
 \subsection{Equivalence Partitions}
 
 \section{Unit Testing}
