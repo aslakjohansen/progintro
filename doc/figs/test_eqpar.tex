@@ -1,0 +1,63 @@
+\begin{center}
+  \begin{tikzpicture}[]
+    \newcommand{\evenY}{0mm}
+    \newcommand{\oddY}{-20mm}
+    \newcommand{\centerX}{0mm}
+    \newcommand{\cellWidth}{12mm}
+    \newcommand{\undecidedColor}{black}
+    \newcommand{\beforeColor}{teal}
+    \newcommand{\afterColor}{purple}
+    \newcommand{\bgcolor}{white}
+    \newcommand{\calcX}[2]{\centerX-#2/2*\cellWidth+#1*\cellWidth}
+    
+    % id, color, x, rowstride, y
+    \newcommand{\cell}[5]{
+      \node[cell,draw=\bgcolor!60!#2,fill=\bgcolor!60!#2] (#1) at (\calcX{#3}{#4}, #5) {};
+    }
+    \newcommand{\eccell}[5]{
+      \node[cell,draw=#2,fill=\bgcolor!60!#2] (#1) at (\calcX{#3}{#4}, #5) {};
+    }
+    
+    \tikzstyle{epline} = [
+      overlay,
+      very thick,
+    ]
+    \tikzstyle{ep} = [
+      anchor=north,
+    ]
+    \tikzstyle{cell} = [
+      overlay,
+      very thick,
+      anchor=center,
+      minimum width=\cellWidth-1mm,
+      minimum height=2mm,
+    ]
+    
+    \eccell{evenI}{\beforeColor}{0}{8}{\evenY}
+    \cell{evenII}{\beforeColor}{1}{8}{\evenY}
+    \cell{evenIII}{\beforeColor}{2}{8}{\evenY}
+    \eccell{evenIV}{\beforeColor}{3}{8}{\evenY}
+    \eccell{evenV}{\afterColor}{4}{8}{\evenY}
+    \cell{evenVI}{\afterColor}{5}{8}{\evenY}
+    \cell{evenVII}{\afterColor}{6}{8}{\evenY}
+    \eccell{evenIIX}{\afterColor}{7}{8}{\evenY}
+    
+    \eccell{oddI}{\beforeColor}{0}{7}{\oddY}
+    \cell{oddII}{\beforeColor}{1}{7}{\oddY}
+    \eccell{oddIII}{\beforeColor}{2}{7}{\oddY}
+    \eccell{oddIV}{\afterColor}{3}{7}{\oddY}
+    \cell{oddV}{\afterColor}{4}{7}{\oddY}
+    \cell{oddVI}{\afterColor}{5}{7}{\oddY}
+    \eccell{oddVII}{\afterColor}{6}{7}{\oddY}
+    
+    \draw[epline] ([yshift=-2mm]evenI.south west) -- ([yshift=-2mm]evenIV.south east);
+    \node[ep] () at ([xshift=1.5*\cellWidth,yshift=-3mm]evenI.south) {\small \textsl{Equivalence Partition A}};
+    \draw[epline] ([yshift=-2mm]evenV.south west) -- ([yshift=-2mm]evenIIX.south east);
+    \node[ep] () at ([xshift=1.5*\cellWidth,yshift=-3mm]evenV.south) {\small \textsl{Equivalence Partition B}};
+    
+    \draw[epline] ([yshift=-2mm]oddI.south west) -- ([yshift=-2mm]oddIII.south east);
+    \node[ep] () at ([xshift=1*\cellWidth,yshift=-3mm]oddI.south) {\small \textsl{Equivalence Partition A}};
+    \draw[epline] ([yshift=-2mm]oddIV.south west) -- ([yshift=-2mm]oddVII.south east);
+    \node[ep] () at ([xshift=1.5*\cellWidth,yshift=-3mm]oddIV.south) {\small \textsl{Equivalence Partition B}};
+  \end{tikzpicture}
+\end{center}
