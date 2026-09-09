@@ -9,6 +9,7 @@ SECONDARY_TARGETS = $(patsubst %.tex,%.pdf,$(wildcard *.tex))
 
 AUTOGEN_DEPS = \
 	hlsections.tex \
+	figs/dynamic/test-integration.tex \
 	exercises/answers.tex \
 
 
@@ -31,6 +32,12 @@ mrproper: clean
 hlsections.tex: ../bin/generate-hl-sections.exs
 	../bin/generate-hl-sections.exs > hlsections.tex
 
+
+figs/dynamic:
+	mkdir figs/dynamic
+
+figs/dynamic/test-integration.tex: ../bin/generate-test-integration.exs ../var/test_integration.graphml figs/dynamic
+	../bin/generate-test-integration.exs ../var/test_integration.graphml n15-n17-n16-n18,n24-n23-n22-n25,n26-n29-n31-n27,n8-n9-n13-n10-n11-n4,n2-n1-n5-n6-n7,n21-n20-n19 figs/dynamic/test-integration.tex
 
 exercises:
 	mkdir exercises
