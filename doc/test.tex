@@ -67,6 +67,9 @@ Let's dig a bit deeper into this by imagining a function that takes an \typename
 
 \inputminted[lastline=5]{csharp}{../src/csharp/test/zero_first_half/Program.cs}
 
+% equivalence partitions
+On the surface, this implementation seems reasonable, but how can we verify that it’s actually error-free? Without testing all possible input data, that is. Let's return to the \say{overwrite all values ​​at indices below half the length} part of the specification. This tells us that there are two partitions of indices: Those that need to be overwritten, and those that need to remain untouched. As all cases of a partitions needs to be treated the same way, we refer to them as equivalence partitions. Each of these partitions represent a range with boundary cases. Specifically, it is very easy to make a mistake defining the condition used to differentiate between those partition: Is that a \texttt{<} or a \texttt{<=}? You will likely have to think about it, and when you read the code you probably just assumed that the details we correct as the overall intend seemed correct. Figure \ref{fig:test:eqpar} illustrates the boundary cases of the equivalence partitions given concrete examples of arrays of both even and odd sizes.
+
 % figure: array split
 \begin{figure}[tbp]
   \input{figs/test_eqpar.tex}
