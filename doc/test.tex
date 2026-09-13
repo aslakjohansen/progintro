@@ -9,8 +9,21 @@ Six million components that need to work together. That certainly is a lot of co
 \section{Purpose}
 
 % why we test
-Given the sheer complexity of software systems and the lack of obvious indicators of faults, the need for dealing with faults is different in nature. For starters, testing -- the act of checking whether some functionality behaves as specified -- is done entirely before the product is shipped. 
+Given the sheer complexity of software systems and the lack of obvious indicators of faults, the need for dealing with faults is different in nature. For starters, testing -- the act of checking whether some functionality behaves as specified -- is done entirely before the product is shipped.
 
+% test case
+Testing is performed by evaluating so-called test cases. These are concrete scenarios that are well-described in terms of the intended outcome. That scenario usually covers a small subset of functionality. While it may not be packaged as such, that functionality has the interface of a function. To activate that \say{function}:
+\begin{enumerate}
+  \item The evaluation happens in a context with well-defined state. This must first be setup.
+  \item The function needs concrete values. The combination of this and the context is the scenario.
+  \item After evaluation of the function, we observe both the return value and the the context (which may have been transformed).
+\end{enumerate}
+
+% choosing test cases
+The test cases are chosen in such a way that they cover the factors that influence the function and test that the effects that they produce match our perception of what is correct behavior. A well-designed test case is one whose results provide valuable insight into the quality and behavior of the code.
+
+% test suites
+As we rarely use software in as narrow situations as can be covered in a single test case, there is a need for a collection of test cases; a test suite. A test suite should be comprehensive enough to provide the evidence needed to argue that the code is probably (relatively) correct. When we run a test suite, it will tell us which test cases pass, and which fail. By looking at how that changes after a modification of our codebase, we can reason about which bugs this update fixed and whether it introduced new ones. That, of course, is only true to the granularity and correctness of our test suite.
 
 
 \section{Test Types}
