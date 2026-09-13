@@ -62,6 +62,10 @@ As it is \idx{intractable}{Tractability} to test all cases, we need a different 
 
 \subsection{Equivalence Partitions}
 
+Let's dig a bit deeper into this by imagining a function that takes an \typename{int[]} parameter. This function should overwrite all values ​​at indices below half the length with 0 values. The implementation could look like this:
+
+\inputminted[lastline=5]{csharp}{../src/csharp/test/zero_first_half/Program.cs}
+
 % figure: array split
 \begin{figure}[tbp]
   \input{figs/test_eqpar.tex}
