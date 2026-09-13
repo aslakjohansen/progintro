@@ -30,16 +30,17 @@ As we rarely use software in as narrow situations as can be covered in a single 
 % intro
 
 \begin{itemize}
-  \descitem{Unit Testing} 
-  \descitem{Integration Testing} 
-  \descitem{System Testing} 
-  \descitem{Acceptance Testing} 
+  \descitem{Unit Testing:} Code is divided into small units and test them individually. Within the object-oriented paradigm, there is typically a one-to-one mapping between methods and the context in which they are called (the unit). Typically we group them by class. Each method is thus tested “independently” of the others, and this is typically done by performing a number of specific, well-defined tests. However, since classes often depend on each other, unit testing alone is usually not
+sufficient. That is why we perform:
+  \descitem{Integration Testing:} After verifying that the individual units work independently, it’s time to ensure that the interfaces between them function correctly. Here, one will typically -- for reasons of clarity -- choose to consider a subsystem at a time. Figure \ref{fig:test:integration} illustrates what such subsystem coverage could look like.
+  \descitem{System Testing:} When all subsystems are tested to be correct, a system test is performed. This is like an integration test but focuses on the entire system rather than specific subsystems. This allows us to catch errors that first appear when examining behavior between the (integration)test subsystems or when all subsystems work together.
+  \descitem{Acceptance Testing} the final test against the customer's requirements and/or program specification that determines whether the product can be delivered. The focus is often on the final functional and non-functional requirements, and these relate to the system as a whole. This type of testing is independent of the implementation. Correctness is typically assumed.
 \end{itemize}
 
 % figure: array split
 \begin{figure}[tbp]
   \input{figs/dynamic/test-integration.tex}
-  \caption{Integration test example.}
+  \caption{Integration test of subsystems and how they cover the codebase.}
   \label{fig:test:integration}
 \end{figure}
 
