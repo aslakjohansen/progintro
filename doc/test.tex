@@ -1,7 +1,7 @@
 \chapter{Testing}
 
 % intro: Boeing 747
-A longs time ago, \idx{Boeing}{Boeing} was known for making products of exceptional engineering and quality. The best example of this is likely the \idx{Boeing 747}{Boeing 747}; the original \say{Jumbo Jet}. This airplane was such a leap forward that the media hailed it as a revolutionary engineering achievement. Test pilots remarked that it -- despite its massive size -- \say{landed itself}. It contained 274km of \idx{wires}{Wire} and was made up of six million physical \idx{components}{Component}. And the truely remarkable thing was that it worked \idx{reliably}{Reliability}.
+A longs time ago, \idx{Boeing}{Boeing} was known for making products of exceptional engineering and quality. The best example of this is likely the \idx{Boeing 747}{Boeing 747}; the original \say{Jumbo Jet}. This \idx{airplane}{Airplane} was such a leap forward that the media hailed it as a revolutionary engineering achievement. Test pilots remarked that it -- despite its massive size -- \say{landed itself}. It contained 274km of \idx{wires}{Wire} and was made up of six million physical \idx{components}{Component}. And the truely remarkable thing was that it worked \idx{reliably}{Reliability}.
 
 % complexity compared to software
 Six million components that need to work together. That certainly is a lot of complexity. But, if we look past the fact that these components still need to work together as they \idx{age}{Aging}, these are actually quite small numbers compared to what we see in software. Not that this can ever be an apples-to-apples comparison. Unlike software, airplane parts degrade over time. On the other hand, when an airplane component is degraded or faulty, it will often be easy to detect visually. Bugs in software exists precisely because they have avoided detection.
@@ -9,22 +9,21 @@ Six million components that need to work together. That certainly is a lot of co
 \section{Purpose}
 
 % why we test
-Given the sheer complexity of software systems and the lack of obvious indicators of faults, the need for dealing with faults is different in nature. For starters, testing -- the act of checking whether some functionality behaves as specified -- is done entirely before the product is shipped.
+Given the sheer \idx{complexity}{Complexity} of software systems and the lack of obvious \idx{indicators}{Indicator} of \idx{faults}{Fault}, the need for dealing with faults is different in nature. For starters, testing -- the act of checking whether some functionality behaves as \idx{specified}{Specification} -- is done entirely before the product is \idx{shipped}{Shipping!Of product}.
 
 % test case
-Testing is performed by evaluating so-called test cases. These are concrete scenarios that are well-described in terms of the intended outcome. That scenario usually covers a small subset of functionality. While it may not be packaged as such, that functionality has the interface of a function. To activate that \say{function}:
+\idx{Testing}{Testing} is performed by evaluating so-called \defi{test cases}{Test case}. These are concrete \idx{scenarios}{Scenario} that are well-described in terms of the intended \idx{outcome}{Outcome}. That scenario usually covers a small subset of \idx{functionality}{Functionality}. While it may not be \idx{packaged}{Packaging} as such, that functionality has the \idx{interface}{Interface!Of functionality} of a function. To activate that \say{function}:
 \begin{enumerate}
-  \item The evaluation happens in a context with well-defined state. This must first be setup.
-  \item The function needs concrete values. The combination of this and the context is the scenario.
-  \item After evaluation of the function, we observe both the return value and the the context (which may have been transformed).
+  \item The \idx{evaluation}{Evaluation} happens in a \idx{context}{Context} with well-defined \idx{state}{State}. This must first be \idx{setup}{Setup}.
+  \item The function needs concrete \idx{values}{Value}. The combination of this and the context is the scenario.
+  \item After evaluation of the function, we observe both the \idx{return value}{Return value} and the the context (which may have been \idx{transformed}{Transformation}).
 \end{enumerate}
 
 % choosing test cases
-The test cases are chosen in such a way that they cover the factors that influence the function and test that the effects that they produce match our perception of what is correct behavior. A well-designed test case is one whose results provide valuable insight into the quality and behavior of the code.
+The test cases are chosen in such a way that they \idx{cover}{Coverage} the factors that influence the function and test that the \idx{effects}{Effect} that they produce match our perception of what is correct \idx{behavior}{Behavior!Of functionality}. A well-designed test case is one whose results provide valuable insight into the \idx{quality}{Quality} and behavior of the code.
 
 % test suites
-As we rarely use software in as narrow situations as can be covered in a single test case, there is a need for a collection of test cases; a test suite. A test suite should be comprehensive enough to provide the evidence needed to argue that the code is probably (relatively) correct. When we run a test suite, it will tell us which test cases pass, and which fail. By looking at how that changes after a modification of our codebase, we can reason about which bugs this update fixed and whether it introduced new ones. That, of course, is only true to the granularity and correctness of our test suite.
-
+As we rarely use software in as narrow situations as can be covered in a single test case, there is a need for a collection of test cases; a \defi{test suite}{Test suite}. A test suite should be comprehensive enough to provide the \idx{evidence}{Evidence} needed to argue that the code is probably (relatively) \idx{correct}{Correctness}. When we \idx{run}{Test suite!Running} a test suite, it will tell us which test cases \idx{pass}{Test case!Passing}, and which \idx{fail}{Test case!Failing}. By looking at how that changes after a \idx{modification}{Modification} of our \idx{codebase}{Codebase}, we can reason about which \idx{bugs}{Bug} this update \idx{fixed}{Bug!Fix of} and whether it \idx{introduced}{Bug!Introduction of} new ones. That, of course, is only true to the \idx{granularity}{Granularity} and correctness of our test suite.
 
 \section{Test Types}
 \subsection{Unit Testing}
