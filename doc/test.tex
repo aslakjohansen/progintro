@@ -58,7 +58,7 @@ But, what if the \idx{parameter}{Parameter} was a 64 bit or -- gods forbid -- a 
 \section{Boundary Cases}
 
 % leadup
-As it is intractable to test all cases, we need a different approach; one that trades completeness for test execution efficiency. In short, we need to pick a limited subset of the possible inputs, and test these. But which subset do we pick? We could randomly select $n$ inputs and test these. But how do we pick one $n$ over another? If or \funcname{incr} function works correctly for an input of 12 why wouldn't it also work for a value of 13?
+As it is intractable to test all cases, we need a different approach; one that trades completeness for test execution efficiency. In short, we need to pick a limited subset of the possible inputs, and test these. But which subset do we pick? We could randomly select $n$ inputs and test these. But how do we pick one $n$ over another? If or \funcname{incr} function works correctly for an input of 12 why wouldn't it also work for a value of 13? We have no reason to suspect that \funcname{incr} behaves differently on an input of 12 than it does on an input of 13. Given that the type of the input is an integer, with this class of types comes the the possibility of an overflow and an underflow. As deviate from our normal perception of arithmetic operations, it is common for bugs to be linked to them. These happens at the two ends (aka bounds) of the range that can be represented, and because of that we refer to them as boundary cases (or edge cases). We could potentially add zero to these as it can be difficult to reason about the outcome of dividing by zero.
 
 \subsection{Equivalence Partitions}
 
