@@ -103,6 +103,10 @@ Unlike \csharp, Elixir has strong support for examples in documentation. Wheneve
 
 \section{Formal Verification}
 
+Testing every single scenario is a hopeless endeavor. Formal verification offers an alternative: Instead of executing parts of our code to experimentally evaluate how it behaves, we can analyze the program statically and, based on this, draw conclusions about which guarantees we can provide. A static analysis is an analysis that is performed without evaluating the execution of the code.
+
+This process is considerably more difficult. To simplify it, we often create a (hopefully) equivalent model of our code that is easier to analyze. However, in doing so we also introduce the possibility of additional errors. In safety-critical systems, however, this trade-off is often considered worthwhile.
+
 \section{Performance Evaluation}
 
 \exercises{test}{Testing}
