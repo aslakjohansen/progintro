@@ -86,7 +86,7 @@ On the surface, this implementation seems reasonable, but how can we verify that
 \subsection{Elixir}
 
 % intro: like csharp elixir has a build-in code documentation system where information is extracted from specialized comments
-Like \csharp, Elixir has a built-in documentation system. In \csharp, the documentation is embedded as XML code behind triple-slash comments. In Elixir, it is Markdown-based and embedded through a mechanism called docstrings. Figure \ref{fig:test:elixir:docstring} shows what this looks like.
+Like \csharp, \idx{Elixir}{Elixir programming language} has a built-in \idx{documentation}{Documentation} system. In \csharp, the documentation is embedded as \idx{XML}{XML} code behind triple-slash \idx{comments}{Comments}. In Elixir, it is \idx{Markdown}{Markdown}-based and embedded through a mechanism called \idx{docstrings}{Docstring}. Figure \ref{fig:test:elixir:docstring} shows what this looks like.
 
 % figure: docstring example
 \begin{figure}[tbp]
@@ -96,7 +96,7 @@ Like \csharp, Elixir has a built-in documentation system. In \csharp, the docume
 \end{figure}
 
 % unlike csharp the system in elixir has strong support for examples
-Unline \csharp, Elixir has string support for examples in documentation. Whenever the documentation for a module is being generated from the docstrings, the examples are verified. This gives the guarantee that if the documentation builds cleanly then the examples are correct. In the example from figure \ref{fig:test:elixir:docstring}, the build system will tell us that 1 out of 5 doctests fail, and then tell us what the actual result of the failing one is. This gives us all the information we need to resolve the issue.
+Unlike \csharp, Elixir has strong support for examples in documentation. Whenever the documentation for a module is being generated from the docstrings, the examples are \idx{verified}{Verification}. This gives the \idx{guarantee}{Guarantee} that if the documentation builds \idx{cleanly}{Clean!Build} then the examples are correct. In the example from figure \ref{fig:test:elixir:docstring}, the build system will tell us that 1 out of 5 \idx{doctests}{Doctest} fail, and then tell us what the actual result of the failing one is. This gives us all the information we need to \idx{resolve}{Resolution} the issue.
 
 % unit testing
 \textbf{Note:} While this can be seen as a small unit test suite, it is really intended for documentation only. Elixir also has real unit testing support.
