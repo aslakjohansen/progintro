@@ -85,7 +85,15 @@ On the surface, this implementation seems reasonable, but how can we verify that
 
 \subsection{Elixir}
 
-% like csharp elixir has a build-in code documentation system where information is extracted from specialized comments
+% intro: like csharp elixir has a build-in code documentation system where information is extracted from specialized comments
+Like \csharp, Elixir has a built-in documentation system. In \csharp, the documentation is embedded as XML code behind triple-slash comments. In Elixir, it is Markdown-based and embedded through a mechanism called docstrings. Figure \ref{fig:test:elixir:docstring} shows what this looks like.
+
+% figure: docstring example
+\begin{figure}[tbp]
+  \inputminted[ignorelexererrors=true]{elixir}{../src/elixir/test/docstring/Math.ex}
+  \caption{Docstrings in Elixir code.}
+  \label{fig:test:elixir:docstring}
+\end{figure}
 
 % unlike csharp the system in elixir has strong support for examples
 
