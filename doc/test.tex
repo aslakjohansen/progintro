@@ -96,7 +96,10 @@ Like \csharp, Elixir has a built-in documentation system. In \csharp, the docume
 \end{figure}
 
 % unlike csharp the system in elixir has strong support for examples
-Unline \csharp, Elixir has string support for examples in documentation. Whenever the documentation for a module is being generated from the docstrings, the examples are verified. This gives the guarantee that if the documentation builds cleanly then the examples are correct.
+Unline \csharp, Elixir has string support for examples in documentation. Whenever the documentation for a module is being generated from the docstrings, the examples are verified. This gives the guarantee that if the documentation builds cleanly then the examples are correct. In the example from figure \ref{fig:test:elixir:docstring}, the build system will tell us that 1 out of 5 doctests fail, and then tell us what the actual result of the failing one is. This gives us all the information we need to resolve the issue.
+
+% unit testing
+\textbf{Note:} While this can be seen as a small unit test suite, it is really intended for documentation only. Elixir also has real unit testing support.
 
 \section{Formal Verification}
 
