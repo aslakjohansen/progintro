@@ -78,6 +78,7 @@ On the surface, this implementation seems reasonable, but how can we verify that
 \end{figure}
 
 % testing
+We intend every element of an equivalence partition to be treated the same way. So, when we test them, we can get away with testing that one element is treated correctly and that the boundaries are correct. In practice, this ends up as us testing the boundary elements of each equivalence partition. In the previous example, this would include the first element, the last element and the two center elements for both even and odd sized inputs. This gives us a total of 6 test cases.
 
 \section{Unit Testing}
 
