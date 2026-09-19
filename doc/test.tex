@@ -83,7 +83,21 @@ We intend every element of an equivalence partition to be treated the same way. 
 \section{Unit Testing}
 
 % concept
-The basic idea behind unit testing is that you treat the individual components of your code as isolated pieces of functionality. In object-oriented programming, these components are our objects, and these objects offer services through methods. We make sure to specify how we intend them to act under various conditions and then we meticulously test whether these specifications hold.
+The basic idea behind unit testing is that you treat the individual components of your code as isolated pieces of functionality. In object-oriented programming, these components are our objects, and these objects offer services through methods. These are our units. We make sure to specify how we intend them to act under various conditions and then we meticulously test whether these specifications hold.
+
+% mapping to tests
+Ideally, these conditions are mapped to classes of conditions and each of these is the tested. First, these conditions have to be established. That involves setting up state and preparing the parameters for the method. The method is then called (and thus performs its service) and it returns a value. That value, and the state around it, is the outcome of the scenario. That outcome is inspected through assertions. Assertions are special statements designed to affirm certain properties about the outcome of evaluating this scenario:
+\begin{enumerate}
+  \item We have all the input conditions locked down.
+  \item We have evaluated the method.
+  \item The specifications states that these things should happen.
+  \item We check that they do by making assertions about the output state.
+\end{enumerate}
+If an assertion fails, then we not only know that the implementation does not adhere to the specification, but also how it doesn't. After such a test, there is often some teardown code that undoes the setup phase so that the next unit can be tested.
+
+% safety in numbers
+
+% idealism
 
 \subsection{Assertions}
 \subsection{Setup and Teardown}
