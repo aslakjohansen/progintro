@@ -99,11 +99,9 @@ If an assertion fails, then we not only know that the implementation does not ad
 This way, we can often end up with tens of tests per class. A testing framework will organize the test for us and summarize the results: This many tests passed, this many failed. For each failed test it will report which assertions failed, and what the mismatch was.
 
 % frequency of execution
-All tests should pass on committed code. Ideally, one will run all the tests before committing any change. This will reveal whether a bug has been introduced intro the existing code. Knowing which tests in which classes have gone from passing to failing can be a useful aid in determining the nature and location of the introduced bug. However, the test suite has a tendency to become very large, and take longer to execute than what developers care to spend. One solution is to do all development on feature branches so that bugs introduced during day-to-day feature development doesn't affect people working on other parts of the codebase. The verification of test adherence is then postponed to the moment when the branch is merged back. Another solution is to have complicated code analysis tools determined which subset of the codebase could be affected by the change, and only run the relevant tests.
+All tests should pass on committed code. Ideally, one will run all the tests before committing any change. This will reveal whether a bug has been introduced intro the existing code. Knowing which tests in which classes have gone from passing to failing can be a useful aid in determining the nature and location of the introduced bug. However, the test suite has a tendency to become very large, and take longer to execute than what developers care to spend. One solution is to do all development on feature branches so that bugs introduced during day-to-day feature development doesn't affect people working on other parts of the codebase. The verification of test adherence is then postponed to the moment when the branch is merged back in. Another solution is to have complicated code analysis tools determined which subset of the codebase could be affected by the change, and only run the relevant tests.
 
-\subsection{Assertions}
-\subsection{Setup and Teardown}
-\subsection{Coverage Rate}
+% coverage rate
 
 \subsection{\csharp}
 
