@@ -1,0 +1,23 @@
+~ $ cd /tmp ; mkdir repo ; cd repo
+/tmp/repo $ dotnet new console -o Codebase
+The template "Console App" was created successfully.
+
+Processing post-creation actions...
+Restoring /tmp/repo/Codebase/Codebase.csproj:
+  Determining projects to restore...
+  Restored /tmp/repo/Codebase/Codebase.csproj (in 153 ms).
+Restore succeeded.
+
+
+/tmp/repo $ dotnet new nunit -o UnitTests
+The template "NUnit 3 Test Project" was created successfully.
+
+Processing post-creation actions...
+Restoring /tmp/repo/UnitTests/UnitTests.csproj:
+  Determining projects to restore...
+  Restored /tmp/repo/UnitTests/UnitTests.csproj (in 1,4 sec).
+Restore succeeded.
+
+
+/tmp/repo $ cd UnitTests ; dotnet add reference ../Codebase/Codebase.csproj
+Reference `..\Codebase\Codebase.csproj` added to the project.
