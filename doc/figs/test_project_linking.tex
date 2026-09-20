@@ -1,0 +1,41 @@
+\begin{center}
+  \begin{tikzpicture}[]
+    \newcommand{\spacing}[0]{6mm}
+    \newcommand{\projectWidth}[0]{50mm}
+    \newcommand{\projectHeight}[0]{28mm}
+    \newcommand{\bgcolor}{white}
+    
+    \tikzstyle{arrow} = [thick,->,>=stealth, draw=black]
+    \tikzstyle{box} = [rectangle,thick,draw=black]
+    \tikzstyle{project} = [
+      box,
+      fill=black!5!\bgcolor,
+      draw=\bgcolor!5!black,
+      minimum height=\projectHeight,
+      minimum width=\projectWidth,
+      text width=\projectWidth,
+    ]
+    \tikzstyle{file} = [
+      box,
+      fill=black!10!\bgcolor,
+      draw=\bgcolor!10!black,
+      minimum height=(\projectHeight-3*\spacing)/2,
+      minimum width=\projectWidth-2*\spacing,
+      text width=\projectWidth-2*\spacing
+    ]
+    
+    \coordinate (origin) at (0,0);
+    
+    \node[project,anchor=east] (codeproject) at ([xshift=-\spacing] origin) {};
+    \node[anchor=south west] () at (codeproject.north west) {\small \filename{Codebase}};
+    \node[file,anchor=south] (codecs)  at ([yshift= \spacing/2] codeproject) {\filename{Program.cs}};
+    \node[file,anchor=north] (codeprj) at ([yshift=-\spacing/2] codeproject) {\filename{Codebase.csproj}};
+    
+    \node[project,anchor=west] (testproject) at ([xshift= \spacing] origin) {};
+    \node[anchor=south west] () at (testproject.north west) {\small \filename{UnitTests}};
+    \node[file,anchor=south] (testcs)  at ([yshift= \spacing/2] testproject) {\filename{UnitTest1.cs}};
+    \node[file,anchor=north] (testprj) at ([yshift=-\spacing/2] testproject) {\filename{UnitTests.csproj}};
+    
+    \draw[arrow] (testprj) -- (codeprj);
+  \end{tikzpicture}
+\end{center}
