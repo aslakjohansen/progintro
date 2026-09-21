@@ -141,7 +141,7 @@ Figure \ref{fig:test:project:linking} illustrates what this linking looks like o
 % manual linking
 Note that all of this, and the linking in particular, are operations that work on the filesystem. We could have written that highlighted line by hand instead of instructing the \texttt{dotnet} command to create it for us. The resulting state on the filesystem would be exactly the same.
 
-\subsubsection{Assertions}
+\subsubsection{Writing Test Cases}
 
 % main codebase functionality to test
 Now that we have what is essentially two empty projects, let's add a bit of functionality to the \filename{Codebase} project. One of the simplest methods to test is a function that takes two parameters and returns the result of adding them together:
@@ -154,6 +154,7 @@ To test this class, we add a matching class in the \filename{UnitTest} project. 
 \inputminted[highlightlines={11}, highlightcolor=yellow]{csharp}{../src/csharp/test/linking/UnitTests/UtilTest.cs}
 
 % assertion explanation
+There can be multiple tests and each test can have multiple assertions. It is fairly easy to guess what the intention of this assertion is; namely that the return value from calling \methodname{Util.Add} with values 1 and 2 should be equal to 4. This attempt at mimicking human language is often costly in terms of visibility into how this functions behind the scenes. Sometimes we care, and sometimes we don't. My guess -- without having looked into it -- is that the \methodname{Is.EqualTo} method produces some object that is capable of comparing two values for equality; much like an object of a class that implements the \interfacename{IComparable} interface.
 
 \subsubsection{Running Tests}
 
