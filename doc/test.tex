@@ -115,7 +115,7 @@ In order to be able to run test code, we need a new entry point into the code ba
 \subsubsection{Linking Projects}
 
 % what do we need to do to link two projects?
-How do we link two projects? Figure \ref{fig:test:project:linking:establish} shows the commands involved in creating a project for the main codebase, creating the project for the test code, and linking the the latter codebase to the former. If you are adding testing to an existing project, then you should skip the command on line 2 creating the main codebase. The \texttt{-o Codebase} parameter, by the way, tells the \texttt{dotnet} program to create a new directory called \filename{Codebase} and then create the empty project in this directory rather than in the current directory.
+How do we \idx{link}{Projects!Linking of} two \idx{projects}{Project}? Figure \ref{fig:test:project:linking:establish} shows the \idx{commands}{Command} involved in creating a project for the main \idx{codebase}{Codebase}, creating the project for the test code, and linking the the latter codebase to the former. If you are adding testing to an existing project, then you should skip the command on line 2 creating the main codebase. The \texttt{-o Codebase} \idx{parameter}{Parameter}, by the way, tells the \texttt{dotnet} program to create a new \idx{directory}{Directory} called \filename{Codebase} and then create the empty project in this directory rather than in the \idx{current working directory}{Current working directory}.
 
 \begin{figure}[tbp]
   \inputminted[linenos]{shell-session}{../src/csharp/test/linking/establish.txt}
@@ -130,7 +130,7 @@ How do we link two projects? Figure \ref{fig:test:project:linking:establish} sho
 \end{figure}
 
 % outcome
-Figure \ref{fig:test:project:linking} illustrates what this linking looks like on the filesystem. More specifically, the contents of \filename{UnitTests.csproj} can be seen in figure \ref{fig:test:project:linking:reference}. The reference was added on the highlighted line. This path uses backslashes to separate directories independently of which operating system you are on.
+Figure \ref{fig:test:project:linking} illustrates what this linking looks like on the \idx{filesystem}{Filesystem}. More specifically, the contents of \filename{UnitTests.csproj} can be seen in figure \ref{fig:test:project:linking:reference}. The \idx{reference}{Reference!Abstract} was added on the highlighted line. This path uses \idx{backslashes}{Backslash} to separate directories independently of which \idx{operating system}{Operating system} you are on.
 
 \begin{figure}[tbp]
   \inputminted[highlightlines={25}, highlightcolor=yellow]{csharp}{../src/csharp/test/linking/UnitTests/UnitTests.csproj}
