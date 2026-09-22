@@ -159,6 +159,7 @@ There can be multiple tests and each test can have multiple assertions. It is fa
 \subsubsection{Running Tests}
 
 % intro
+Let's run the test suite and see what happens:
 
 % running
 \begin{minted}[fontsize=\scriptsize, highlightlines={11-14,23}, highlightcolor=yellow]{console}
@@ -188,6 +189,7 @@ Failed!  - Failed:     1, Passed:     0, Skipped:     0, Total:     1, Duration:
 \end{minted}
 
 % interpreting
+The last line is just a summary. It tells us that one test failed, and none passed. Details about the failed one are available a few lines higher up. A value of 4 is expected by the result of evaluating \texttt{\methodname{Util.Add}(1,2)} resulted in a value of 3. As the test is an \methodname{Is.EqualTo} and those are not equal to teach other, the test failed. On closer inspection, we note that it is, in this case, the assertion that is buggy.
 
 \subsubsection{Assertion Suite}
 
