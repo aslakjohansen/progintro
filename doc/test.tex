@@ -196,6 +196,22 @@ The last line is just a summary. It tells us that one test failed, and none pass
 % intro
 
 % overview
+\begin{figure}[tbp]
+  \centering
+  \begin{tabular}{ll}
+    \emph{Constraint} & \emph{Description} \\
+    \texttt{Is.GreaterThan(\valuename{value})} & Is $>$ some specific value \\
+    \texttt{Is.GreaterThanOrEqualTo(\valuename{value})} & Is $\geq$ specific value \\
+    \texttt{Is.EqualTo(\valuename{value})} & Has a specific value \\
+    \texttt{Is.LessThanOrEqualTo(\valuename{value})} & Is $\leq$ specific value \\
+    \texttt{Is.LessThan(\valuename{value})} & Is $<$ some specific value \\
+    \texttt{Is.Not.Null} & Has a non-\valuename{null} value \\
+    \texttt{Throws.Nothing} & Does not throw exception \\
+    \texttt{Throws.TypeOf<\typename{type}>()} & Throws exception of specific type \\
+  \end{tabular}
+  \caption{Select assertions from the Nunit 3 framework.}
+  \label{fig:test:unit:assertions}
+\end{figure}
 
 \subsubsection{Setup and Teardown}
 
