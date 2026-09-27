@@ -1,0 +1,59 @@
+\begin{center}
+  \begin{tikzpicture}[remember picture]
+    \newcommand{\spacing}[0]{ 2mm }
+    \newcommand{\longspacing}[0]{ 24mm }
+    \newcommand{\yspacing}[0]{ 8mm }
+    
+    \newcommand{\happyY}[0]{ 0mm }
+    \newcommand{\unhappyY}[0]{ -\yspacing }
+    
+    
+    \tikzstyle{node}=[
+      circle,
+      anchor=center,
+      align=center,
+      fill=black,
+      inner sep=0.6mm,
+    ]
+    \tikzstyle{edge} = [very thick,draw=black,rounded corners=2mm]
+    \tikzstyle{dedge} = [edge,->,>=stealth]
+    \tikzstyle{happyedge} = [edge,draw=black]
+    \tikzstyle{unhappyedge} = [edge,draw=red]
+    
+    \coordinate (start)    at (-1*\longspacing,\happyY);
+    \coordinate (checkI)   at ( 0*\longspacing,\happyY);
+    \coordinate (checkII)  at ( 1*\longspacing,\happyY);
+    \coordinate (checkIII) at ( 2*\longspacing,\happyY);
+    \coordinate (checkIV)  at ( 3*\longspacing,\happyY);
+    \coordinate (happyend)   at ( 4*\longspacing,\happyY);
+    \coordinate (unhappyend) at ( 4*\longspacing,\unhappyY);
+    \node[node] () at (checkI) {};
+    \node[node] () at (checkII) {};
+    \node[node] () at (checkIII) {};
+    \node[node] () at (checkIV) {};
+    \node[anchor=south] () at ([yshift=\spacing]checkI.north)   {\rotatebox{90}{Check 1}};
+    \node[anchor=south] () at ([yshift=\spacing]checkII.north)  {\rotatebox{90}{Check 2}};
+    \node[anchor=south] () at ([yshift=\spacing]checkIII.north) {\rotatebox{90}{Check 3}};
+    \node[anchor=south] () at ([yshift=\spacing]checkIV.north)  {\rotatebox{90}{Check 4}};
+    \node[anchor=west] () at ([xshift=\spacing]happyend.east)   {Happy end};
+    \node[anchor=west] () at ([xshift=\spacing]unhappyend.east) {Unhappy end};
+    
+    \draw[unhappyedge] (checkI)
+      to[out=0,in=180] ([yshift=-\yspacing]$(checkI)!0.5!(checkII)$)
+                    -- (unhappyend);
+    \draw[unhappyedge] (checkII)
+      to[out=0,in=180] ([yshift=-\yspacing]$(checkII)!0.5!(checkIII)$)
+                    -- (unhappyend);
+    \draw[unhappyedge] (checkIII)
+      to[out=0,in=180] ([yshift=-\yspacing]$(checkIII)!0.5!(checkIV)$)
+                    -- (unhappyend);
+    \draw[unhappyedge] (checkIV)
+      to[out=0,in=180] ([yshift=-\yspacing]$(checkIV)!0.5!(happyend)$)
+                    -- (unhappyend);
+    \draw[happyedge] (start) -- (checkI);
+    \draw[happyedge] (checkI) -- (checkII);
+    \draw[happyedge] (checkII) -- (checkIII);
+    \draw[happyedge] (checkIII) -- (checkIV);
+    \draw[happyedge] (checkIV) -- (happyend);
+  \end{tikzpicture}
+\end{center}
