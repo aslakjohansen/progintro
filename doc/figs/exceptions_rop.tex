@@ -31,12 +31,12 @@
     \node[node] () at (checkII) {};
     \node[node] () at (checkIII) {};
     \node[node] () at (checkIV) {};
-    \node[anchor=south] () at ([yshift=\spacing]checkI.north)   {\rotatebox{90}{Check 1}};
-    \node[anchor=south] () at ([yshift=\spacing]checkII.north)  {\rotatebox{90}{Check 2}};
-    \node[anchor=south] () at ([yshift=\spacing]checkIII.north) {\rotatebox{90}{Check 3}};
-    \node[anchor=south] () at ([yshift=\spacing]checkIV.north)  {\rotatebox{90}{Check 4}};
-    \node[anchor=west] () at ([xshift=\spacing]happyend.east)   {Happy end};
-    \node[anchor=west] () at ([xshift=\spacing]unhappyend.east) {Unhappy end};
+    \node[anchor=south] () at ([yshift=\spacing]checkI.north)   {\rotatebox{90}{Operation 1}};
+    \node[anchor=south] () at ([yshift=\spacing]checkII.north)  {\rotatebox{90}{Operation 2}};
+    \node[anchor=south] () at ([yshift=\spacing]checkIII.north) {\rotatebox{90}{Operation 3}};
+    \node[anchor=south] () at ([yshift=\spacing]checkIV.north)  {\rotatebox{90}{Operation 4}};
+    \node[anchor=west] () at ([xshift=\spacing]happyend.east)   {Happy track};
+    \node[anchor=west] () at ([xshift=\spacing]unhappyend.east) {Error track};
     
     \draw[unhappyedge] (checkI)
       to[out=0,in=180] ([yshift=-\yspacing]$(checkI)!0.5!(checkII)$)
