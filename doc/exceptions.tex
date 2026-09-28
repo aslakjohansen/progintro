@@ -229,6 +229,7 @@ The \idx{\keywordname{defer}}{defer@\keywordname{defer} statement} line will mak
 \section{Railway-Oriented Programming}
 
 % intro
+Many of the operations used in modern software engineering can fail. A user input may not be valid, authorization may fail, a file that we want to read from may not exist, a network connection may be down, and the list goes on \ldots\ We often encounter a pattern where we need to perform a sequence of such operations. We often see implementations where the logic for the happy path -- where everything goes well is interspersed with the logic for dealing with the error situations. That is, the logic plane is mixed with the error handling plane. This clutters the code and makes it hard to reason about the happy path. Railway-oriented programming (ROP) breaks with this approach by keeping the two planes separately. As illustrated in figure \ref{fig:exceptions:rop}, this involves diverging in all errors to a separate error track that can be dealt with somewhere else. Exceptions can be employed to implement ROP.
 
 % figure
 \begin{figure}[tbp]
