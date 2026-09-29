@@ -104,6 +104,14 @@ All tests should pass on \idx{committed}{Code!Committed} code. Ideally, one will
 % coverage rate
 This is a lot of unit tests though. In fact, the test code will often take up more lines than the code that has to be tested. While the test code is usually trivial in terms of logic, a flawed test can easily result in flawed code. It takes real time to write a full test suite with unit tests that cover all functionality. So much time, in fact, that it is rarely seen. Instead, developers will try to evaluate which functionality would benefit the most from being covered by unit tests, and if a some functionality is found to be faulty, then that is typically seen as an opportunity to write unit tests for it as a method to find the bug. Over time the test suite grows. Automated tools can determine how large a percentage of the lines of the codebase are covered by unit tests. This is the \defi{coverage}{Coverage!Of test suite} of the test suite. It is by no means a perfect \idx{metric}{Metric}, but it is a good starting point.
 
+\subsection{Positive and Negative Testing}
+
+% positive testing
+
+% negative testing
+
+% railway oriented programming as a differentiator
+
 \subsection{\csharp}
 
 % intro
@@ -190,14 +198,6 @@ Failed!  - Failed:     1, Passed:     0, Skipped:     0, Total:     1, Duration:
 
 % interpreting
 The last line is just a summary. It tells us that one test failed, and none passed. Details about the failed one are available a few lines higher up. A value of 4 is expected by the result of evaluating \texttt{\methodname{Util.Add}(1,2)} resulted in a value of 3. As the test is an \methodname{Is.EqualTo} and those are not equal to teach other, the test failed. On closer inspection, we note that it is, in this case, the assertion that is buggy.
-
-\subsubsection{Positive and Negative Testing}
-
-% positive testing
-
-% negative testing
-
-% railway oriented programming as a differentiator
 
 \subsubsection{Assertion Suite}
 
