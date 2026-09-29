@@ -112,10 +112,10 @@ Usually, the \idx{requirements}{Requirement} of the overall software product is 
 % scenarios
 Lets list a few scenarios:
 \begin{enumerate}
-  \item A method as the responsibility of converting a string received from user input to an age. The idea is that the user should type in \say{\texttt{12}}, but someone writes \say{\texttt{twelve}}, or \ldots\ worse yet \ldots\ \say{\texttt{Marvin}}. The first can easily be parsed, but the last one certainly can't.
-  \item A method is supposed to return the length of an array that it receives as parameter. It is supposed to get a reference to that array as a parameter, but references can (often) be \valuename{NULL}. Which value should the method return on \valuename{NULL}?
-  \item A method takes a filename as parameter, and returns the timestamp of the last modification to that file. What should it do if the file doesn't exist?
-  \item A method takes a URL as parameter, downloads the file and returns that file as a string. What should it do if the network connection is down?
+  \item A method as the \idx{responsibility}{Responsibility} of converting a string received from \idx{user input}{User input} to an age. The idea is that the user should type in \say{\texttt{12}}, but someone writes \say{\texttt{twelve}}, or \ldots\ worse yet \ldots\ \say{\texttt{Marvin}}. The first can easily be \idx{parsed}{Parsing}, but the last one certainly can't.
+  \item A method is supposed to return the length of an \idx{array}{Array} that it receives as \idx{parameter}{Parameter}. It is supposed to get a reference to that array as a parameter, but references can (often) be \idx{\valuename{NULL}}{NULL@\directivename{NULL} reference}. Which value should the method return on \valuename{NULL}?
+  \item A method takes a \idx{filename}{Filename} as parameter, and returns the \idx{timestamp}{Timestamp} of the last \idx{modification}{File!Time of modification} to that file. What should it do if the file doesn't \idx{exist}{File!Existance}?
+  \item A method takes a \idx{URL}{URL} as parameter, \idx{downloads}{Download} the file and returns that file as a string. What should it do if the \idx{network connection}{Network connection} is down?
 \end{enumerate}
 
 % negative testing
