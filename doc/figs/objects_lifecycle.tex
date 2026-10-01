@@ -14,6 +14,7 @@
       \newcommand{\gcoffsetD}{7.5cm}
       \newcommand{\reachabledelay}{3mm}
       \newcommand{\syncspacing}{0.7mm}
+      \newcommand{\yspacingfactor}{0.6}
       
       \tikzstyle{timeline} = [ultra thick,->,>=stealth, draw=black, draw=black!20]
       \tikzstyle{timeentry} = [ultra thick,>=stealth, draw=black, draw=black!80]
@@ -21,12 +22,12 @@
       
       \tikzstyle{syncline} = [thin, dotted, draw=black!40]
       
-      \coordinate (mallocorigin) at (0, 1);
-      \coordinate (constructororigin) at (0, 2);
-      \coordinate (gcorigin) at (0, 3);
-      \coordinate (execorigin) at (0, 4);
-      \coordinate (reachableorigin) at (0, 5);
-      \coordinate (allocatedorigin) at (0, 6);
+      \coordinate (mallocorigin)      at (0, 1*\yspacingfactor);
+      \coordinate (constructororigin) at (0, 2*\yspacingfactor);
+      \coordinate (gcorigin)          at (0, 3*\yspacingfactor);
+      \coordinate (execorigin)        at (0, 4*\yspacingfactor);
+      \coordinate (reachableorigin)   at (0, 5*\yspacingfactor);
+      \coordinate (allocatedorigin)   at (0, 6*\yspacingfactor);
       
       % memory allocation
       \draw[timeline] (mallocorigin) -- ([xshift=\timelinewidth] mallocorigin);
