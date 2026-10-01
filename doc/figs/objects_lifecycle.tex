@@ -1,96 +1,94 @@
 \begin{center}
-%  \begin{adjustbox}{trim=0cm 0 0mm 0mm} 
-    \begin{tikzpicture}[x=1cm, y=-1cm,remember picture]
-      \newcommand{\timelinewidth}{9cm}
-      \newcommand{\actorspacing}{2mm}
-      \newcommand{\malloctime}{8mm}
-      \newcommand{\mallocoffset}{2mm}
-      \newcommand{\constructortime}{2mm}
-      \newcommand{\constructoroffset}{10mm}
-      \newcommand{\gctime}{4mm}
-      \newcommand{\gcoffsetA}{1.5cm}
-      \newcommand{\gcoffsetB}{3.5cm}
-      \newcommand{\gcoffsetC}{5.5cm}
-      \newcommand{\gcoffsetD}{7.5cm}
-      \newcommand{\reachabledelay}{3mm}
-      \newcommand{\syncspacing}{0.7mm}
-      \newcommand{\yspacingfactor}{0.6}
-      
-      \tikzstyle{timeline} = [ultra thick,->,>=stealth, draw=black, draw=black!20]
-      \tikzstyle{timeentry} = [ultra thick,>=stealth, draw=black, draw=black!80]
-      \tikzstyle{actor} = [anchor=east]
-      
-      \tikzstyle{syncline} = [thin, dotted, draw=black!40]
-      
-      \coordinate (mallocorigin)      at (0, 1*\yspacingfactor);
-      \coordinate (constructororigin) at (0, 2*\yspacingfactor);
-      \coordinate (gcorigin)          at (0, 3*\yspacingfactor);
-      \coordinate (execorigin)        at (0, 4*\yspacingfactor);
-      \coordinate (reachableorigin)   at (0, 5*\yspacingfactor);
-      \coordinate (allocatedorigin)   at (0, 6*\yspacingfactor);
-      
-      % memory allocation
-      \draw[timeline] (mallocorigin) -- ([xshift=\timelinewidth] mallocorigin);
-      \node[actor] (mallocactor) at ([xshift=-\actorspacing] mallocorigin) {Memory Allocator};
-      \draw[timeentry] ([xshift=\mallocoffset] mallocorigin) -- ([xshift=\mallocoffset+\malloctime] mallocorigin);
-      
-      % constructor
-      \draw[timeline] (constructororigin) -- ([xshift=\timelinewidth] constructororigin);
-      \node[actor] (constructoractor) at ([xshift=-\actorspacing] constructororigin) {Constructor};
-      \draw[timeentry] ([xshift=\constructoroffset] constructororigin) -- ([xshift=\constructoroffset+\constructortime] constructororigin);
-      
-      % code
-      \draw[syncline] ([xshift=\mallocoffset,yshift=2*\actorspacing] mallocorigin) -- ([xshift=\mallocoffset,yshift=\syncspacing] mallocorigin);
-      \draw[syncline] ([xshift=\constructoroffset+\constructortime,yshift=2*\actorspacing] mallocorigin) -- ([xshift=\constructoroffset+\constructortime,yshift=\syncspacing] constructororigin);
-      \draw[decorate,decoration={brace, amplitude=10pt, raise=2*\actorspacing}] ([xshift=\mallocoffset] mallocorigin) to node[black,midway,above=2*\actorspacing+10pt] {\mintinline{csharp}{new Point(2.0, 3.0)}} ([xshift=\constructoroffset+\constructortime] mallocorigin);
-      
-      % garbage collection
-      \draw[timeline] (gcorigin) -- ([xshift=\timelinewidth] gcorigin);
-      \node[actor] (gcactor) at ([xshift=-\actorspacing] gcorigin) {Garbage Collector};
-      \draw[timeentry] ([xshift=\gcoffsetA] gcorigin) -- ([xshift=\gcoffsetA+\gctime] gcorigin);
-      \draw[timeentry] ([xshift=\gcoffsetB] gcorigin) -- ([xshift=\gcoffsetB+\gctime] gcorigin);
-      \draw[timeentry] ([xshift=\gcoffsetC] gcorigin) -- ([xshift=\gcoffsetC+\gctime] gcorigin);
-      \draw[timeentry] ([xshift=\gcoffsetD] gcorigin) -- ([xshift=\gcoffsetD+\gctime] gcorigin);
-      
-      % exec
-      {
-        \draw[syncline] ([xshift=\gcoffsetA,yshift=-\syncspacing] gcorigin) -- ([xshift=\gcoffsetA,yshift=\syncspacing] execorigin);
-        \draw[syncline] ([xshift=\gcoffsetA+\gctime,yshift=-\syncspacing] gcorigin) -- ([xshift=\gcoffsetA+\gctime,yshift=\syncspacing] execorigin);
-      }
-      {
-        \draw[syncline] ([xshift=\gcoffsetB,yshift=-\syncspacing] gcorigin) -- ([xshift=\gcoffsetB,yshift=\syncspacing] execorigin);
-        \draw[syncline] ([xshift=\gcoffsetB+\gctime,yshift=-\syncspacing] gcorigin) -- ([xshift=\gcoffsetB+\gctime,yshift=\syncspacing] execorigin);
-      }
-      {
-        \draw[syncline] ([xshift=\gcoffsetC,yshift=-\syncspacing] gcorigin) -- ([xshift=\gcoffsetC,yshift=\syncspacing] execorigin);
-        \draw[syncline] ([xshift=\gcoffsetC+\gctime,yshift=-\syncspacing] gcorigin) -- ([xshift=\gcoffsetC+\gctime,yshift=\syncspacing] execorigin);
-      }
-      {
-        \draw[syncline] ([xshift=\gcoffsetD,yshift=-\syncspacing] gcorigin) -- ([xshift=\gcoffsetD,yshift=\syncspacing] execorigin);
-        \draw[syncline] ([xshift=\gcoffsetD+\gctime,yshift=-\syncspacing] gcorigin) -- ([xshift=\gcoffsetD+\gctime,yshift=\syncspacing] execorigin);
-      }
-      \draw[timeline] (execorigin) -- ([xshift=\timelinewidth] execorigin);
-      \node[actor] (execactor) at ([xshift=-\actorspacing] execorigin) {Normal Execution};
-      \draw[timeentry] ([xshift=0cm] execorigin) -- ([xshift=\gcoffsetA] execorigin);
-      \draw[timeentry] ([xshift=\gcoffsetA+\gctime] execorigin) -- ([xshift=\gcoffsetB] execorigin);
-      \draw[timeentry] ([xshift=\gcoffsetB+\gctime] execorigin) -- ([xshift=\gcoffsetC] execorigin);
-      \draw[timeentry] ([xshift=\gcoffsetC+\gctime] execorigin) -- ([xshift=\gcoffsetD] execorigin);
-      \draw[timeentry,->] ([xshift=\gcoffsetD+\gctime] execorigin) -- ([xshift=\timelinewidth] execorigin);
-      
-      % reachable
-      \draw[syncline] ([xshift=\constructoroffset,yshift=-\syncspacing] mallocorigin) -- ([xshift=\constructoroffset,yshift=\syncspacing] reachableorigin);
-      \draw[syncline] ([xshift=\gcoffsetC+\gctime+\reachabledelay,yshift=-\syncspacing] execorigin) -- ([xshift=\gcoffsetC+\gctime+\reachabledelay,yshift=\syncspacing] reachableorigin);
-      \node[actor] (reachableactor) at ([xshift=-\actorspacing] reachableorigin) {Reachable};
-      \draw[timeentry, draw=green!50!black] ([xshift=\constructoroffset] reachableorigin) -- ([xshift=\gcoffsetC+\gctime+\reachabledelay] reachableorigin);
-      
-      % deallocation
-      \draw[timeentry, draw=red!80] ([xshift=\gcoffsetD] gcorigin) -- ([xshift=\gcoffsetD+\gctime] gcorigin);
-      
-      % allocation
-      \draw[syncline] ([xshift=\constructoroffset,yshift=-\syncspacing] reachableorigin) -- ([xshift=\constructoroffset,yshift=\syncspacing] allocatedorigin);
-      \draw[syncline] ([xshift=\gcoffsetD+\gctime,yshift=-\syncspacing] execorigin) -- ([xshift=\gcoffsetD+\gctime,yshift=\syncspacing] allocatedorigin);
-      \node[actor] (allocatedactor) at ([xshift=-\actorspacing] allocatedorigin) {Allocation};
-      \draw[timeentry, draw=blue!90!black] ([xshift=\constructoroffset] allocatedorigin) -- ([xshift=\gcoffsetD+\gctime] allocatedorigin);
-    \end{tikzpicture}
-%  \end{adjustbox}
+  \begin{tikzpicture}[x=1cm, y=-1cm,remember picture]
+    \newcommand{\timelinewidth}{9cm}
+    \newcommand{\actorspacing}{2mm}
+    \newcommand{\malloctime}{8mm}
+    \newcommand{\mallocoffset}{2mm}
+    \newcommand{\constructortime}{2mm}
+    \newcommand{\constructoroffset}{10mm}
+    \newcommand{\gctime}{4mm}
+    \newcommand{\gcoffsetA}{1.5cm}
+    \newcommand{\gcoffsetB}{3.5cm}
+    \newcommand{\gcoffsetC}{5.5cm}
+    \newcommand{\gcoffsetD}{7.5cm}
+    \newcommand{\reachabledelay}{3mm}
+    \newcommand{\syncspacing}{0.7mm}
+    \newcommand{\yspacingfactor}{0.6}
+    
+    \tikzstyle{timeline} = [ultra thick,->,>=stealth, draw=black, draw=black!20]
+    \tikzstyle{timeentry} = [ultra thick,>=stealth, draw=black, draw=black!80]
+    \tikzstyle{actor} = [anchor=east]
+    
+    \tikzstyle{syncline} = [thin, dotted, draw=black!40]
+    
+    \coordinate (mallocorigin)      at (0, 1*\yspacingfactor);
+    \coordinate (constructororigin) at (0, 2*\yspacingfactor);
+    \coordinate (gcorigin)          at (0, 3*\yspacingfactor);
+    \coordinate (execorigin)        at (0, 4*\yspacingfactor);
+    \coordinate (reachableorigin)   at (0, 5*\yspacingfactor);
+    \coordinate (allocatedorigin)   at (0, 6*\yspacingfactor);
+    
+    % memory allocation
+    \draw[timeline] (mallocorigin) -- ([xshift=\timelinewidth] mallocorigin);
+    \node[actor] (mallocactor) at ([xshift=-\actorspacing] mallocorigin) {Memory Allocator};
+    \draw[timeentry] ([xshift=\mallocoffset] mallocorigin) -- ([xshift=\mallocoffset+\malloctime] mallocorigin);
+    
+    % constructor
+    \draw[timeline] (constructororigin) -- ([xshift=\timelinewidth] constructororigin);
+    \node[actor] (constructoractor) at ([xshift=-\actorspacing] constructororigin) {Constructor};
+    \draw[timeentry] ([xshift=\constructoroffset] constructororigin) -- ([xshift=\constructoroffset+\constructortime] constructororigin);
+    
+    % code
+    \draw[syncline] ([xshift=\mallocoffset,yshift=2*\actorspacing] mallocorigin) -- ([xshift=\mallocoffset,yshift=\syncspacing] mallocorigin);
+    \draw[syncline] ([xshift=\constructoroffset+\constructortime,yshift=2*\actorspacing] mallocorigin) -- ([xshift=\constructoroffset+\constructortime,yshift=\syncspacing] constructororigin);
+    \draw[decorate,decoration={brace, amplitude=10pt, raise=2*\actorspacing}] ([xshift=\mallocoffset] mallocorigin) to node[black,midway,above=2*\actorspacing+10pt] {\mintinline{csharp}{new Point(2.0, 3.0)}} ([xshift=\constructoroffset+\constructortime] mallocorigin);
+    
+    % garbage collection
+    \draw[timeline] (gcorigin) -- ([xshift=\timelinewidth] gcorigin);
+    \node[actor] (gcactor) at ([xshift=-\actorspacing] gcorigin) {Garbage Collector};
+    \draw[timeentry] ([xshift=\gcoffsetA] gcorigin) -- ([xshift=\gcoffsetA+\gctime] gcorigin);
+    \draw[timeentry] ([xshift=\gcoffsetB] gcorigin) -- ([xshift=\gcoffsetB+\gctime] gcorigin);
+    \draw[timeentry] ([xshift=\gcoffsetC] gcorigin) -- ([xshift=\gcoffsetC+\gctime] gcorigin);
+    \draw[timeentry] ([xshift=\gcoffsetD] gcorigin) -- ([xshift=\gcoffsetD+\gctime] gcorigin);
+    
+    % exec
+    {
+      \draw[syncline] ([xshift=\gcoffsetA,yshift=-\syncspacing] gcorigin) -- ([xshift=\gcoffsetA,yshift=\syncspacing] execorigin);
+      \draw[syncline] ([xshift=\gcoffsetA+\gctime,yshift=-\syncspacing] gcorigin) -- ([xshift=\gcoffsetA+\gctime,yshift=\syncspacing] execorigin);
+    }
+    {
+      \draw[syncline] ([xshift=\gcoffsetB,yshift=-\syncspacing] gcorigin) -- ([xshift=\gcoffsetB,yshift=\syncspacing] execorigin);
+      \draw[syncline] ([xshift=\gcoffsetB+\gctime,yshift=-\syncspacing] gcorigin) -- ([xshift=\gcoffsetB+\gctime,yshift=\syncspacing] execorigin);
+    }
+    {
+      \draw[syncline] ([xshift=\gcoffsetC,yshift=-\syncspacing] gcorigin) -- ([xshift=\gcoffsetC,yshift=\syncspacing] execorigin);
+      \draw[syncline] ([xshift=\gcoffsetC+\gctime,yshift=-\syncspacing] gcorigin) -- ([xshift=\gcoffsetC+\gctime,yshift=\syncspacing] execorigin);
+    }
+    {
+      \draw[syncline] ([xshift=\gcoffsetD,yshift=-\syncspacing] gcorigin) -- ([xshift=\gcoffsetD,yshift=\syncspacing] execorigin);
+      \draw[syncline] ([xshift=\gcoffsetD+\gctime,yshift=-\syncspacing] gcorigin) -- ([xshift=\gcoffsetD+\gctime,yshift=\syncspacing] execorigin);
+    }
+    \draw[timeline] (execorigin) -- ([xshift=\timelinewidth] execorigin);
+    \node[actor] (execactor) at ([xshift=-\actorspacing] execorigin) {Normal Execution};
+    \draw[timeentry] ([xshift=0cm] execorigin) -- ([xshift=\gcoffsetA] execorigin);
+    \draw[timeentry] ([xshift=\gcoffsetA+\gctime] execorigin) -- ([xshift=\gcoffsetB] execorigin);
+    \draw[timeentry] ([xshift=\gcoffsetB+\gctime] execorigin) -- ([xshift=\gcoffsetC] execorigin);
+    \draw[timeentry] ([xshift=\gcoffsetC+\gctime] execorigin) -- ([xshift=\gcoffsetD] execorigin);
+    \draw[timeentry,->] ([xshift=\gcoffsetD+\gctime] execorigin) -- ([xshift=\timelinewidth] execorigin);
+    
+    % reachable
+    \draw[syncline] ([xshift=\constructoroffset,yshift=-\syncspacing] mallocorigin) -- ([xshift=\constructoroffset,yshift=\syncspacing] reachableorigin);
+    \draw[syncline] ([xshift=\gcoffsetC+\gctime+\reachabledelay,yshift=-\syncspacing] execorigin) -- ([xshift=\gcoffsetC+\gctime+\reachabledelay,yshift=\syncspacing] reachableorigin);
+    \node[actor] (reachableactor) at ([xshift=-\actorspacing] reachableorigin) {Reachable};
+    \draw[timeentry, draw=green!50!black] ([xshift=\constructoroffset] reachableorigin) -- ([xshift=\gcoffsetC+\gctime+\reachabledelay] reachableorigin);
+    
+    % deallocation
+    \draw[timeentry, draw=red!80] ([xshift=\gcoffsetD] gcorigin) -- ([xshift=\gcoffsetD+\gctime] gcorigin);
+    
+    % allocation
+    \draw[syncline] ([xshift=\constructoroffset,yshift=-\syncspacing] reachableorigin) -- ([xshift=\constructoroffset,yshift=\syncspacing] allocatedorigin);
+    \draw[syncline] ([xshift=\gcoffsetD+\gctime,yshift=-\syncspacing] execorigin) -- ([xshift=\gcoffsetD+\gctime,yshift=\syncspacing] allocatedorigin);
+    \node[actor] (allocatedactor) at ([xshift=-\actorspacing] allocatedorigin) {Allocation};
+    \draw[timeentry, draw=blue!90!black] ([xshift=\constructoroffset] allocatedorigin) -- ([xshift=\gcoffsetD+\gctime] allocatedorigin);
+  \end{tikzpicture}
 \end{center}
