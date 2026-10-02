@@ -41,7 +41,7 @@
     % code
     \draw[syncline] ([xshift=\mallocoffset,yshift=2*\actorspacing] mallocorigin) -- ([xshift=\mallocoffset,yshift=\syncspacing] mallocorigin);
     \draw[syncline] ([xshift=\constructoroffset+\constructortime,yshift=2*\actorspacing] mallocorigin) -- ([xshift=\constructoroffset+\constructortime,yshift=\syncspacing] constructororigin);
-    \draw[decorate,decoration={brace, amplitude=10pt, raise=2*\actorspacing}] ([xshift=\mallocoffset] mallocorigin) to node[black,midway,above=2*\actorspacing+10pt] {\mintinline{csharp}{new Point(2.0, 3.0)}} ([xshift=\constructoroffset+\constructortime] mallocorigin);
+    \draw[decorate,decoration={calligraphic brace, amplitude=5pt, raise=2*\actorspacing}] ([xshift=\mallocoffset] mallocorigin) to node[black,midway,above=2*\actorspacing+10pt] {\mintinline{csharp}{new Point(2.0, 3.0)}} ([xshift=\constructoroffset+\constructortime] mallocorigin);
     
     % garbage collection
     \draw[timeline] (gcorigin) -- ([xshift=\timelinewidth] gcorigin);
