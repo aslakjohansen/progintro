@@ -118,7 +118,7 @@ Let's list a few scenarios:
   \item A method takes a \idx{URL}{URL} as parameter, \idx{downloads}{Download} the file and returns that file as a string. What should it do if the \idx{network connection}{Network connection} is down?
 \end{enumerate}
 
-% negative testing: in each of these cases there are outside involvement that does not fit the intended usecase, there is no clear specification of how the method should handle it, but certain outcomes clearly more attractive than others, for instance a typo in a user input probably shouldn't be able to crash the program
+% negative testing: in each of these cases there are outside involvement that does not fit the intended usecase, there is no clear specification of how the method should handle it, but certain outcomes clearly more attractive than others, for instance a typo in a user input probably shouldn't be able to crash the program, an experienced developer would generally chose abstractions that circumvent these problems, but not all code is written be experienced developers and we test the software because we don't trust that everything has been done right
 
 % railway oriented programming as a differentiator
 In essence, and in terms of \idx{railway-oriented programming}{Railway-oriented programming}, positive testing deals with the behavior on the \idx{happy path}{Happy path}, and negative testing deals with the behavior on the \idx{error track}{Error track}. We need the positive tests to verify that what we expect to happen does happen, and use the negative tests to build \idx{evidence}{Evidence} in acceptable behavior given bad circumstances.
