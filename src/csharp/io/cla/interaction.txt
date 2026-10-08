@@ -1,0 +1,5 @@
+aslak@gaia:/tmp/cla$ dotnet run There are 12 months
+Arg #0: There
+Arg #1: are
+Arg #2: 12
+Arg #3: months
