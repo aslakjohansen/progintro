@@ -1,0 +1,8 @@
+aslak@gaia:/tmp/env$ dotnet run
+The following environment variables are defined:
+- 'DESKTOP_SESSION': 'gnome'
+- 'HOME': '/home/aslak'
+- 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh'
+- 'DISPLAY': ':1'
+- 'COLORTERM': 'truecolor'
+...
