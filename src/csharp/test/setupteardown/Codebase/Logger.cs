@@ -1,4 +1,4 @@
-class Logger {
+public class Logger {
   string filename;
   
   public Logger (string filename) {
