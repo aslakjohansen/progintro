@@ -10,27 +10,27 @@ public class LoggerTest
   }
   
   [SetUp]
-  public void Setup()
+  public void SetUp ()
   {
     System.IO.File.WriteAllText(filename, "");
     logger = new Logger(filename);
   }
   
   [TearDown]
-  public void Teardown()
+  public void TearDown ()
   {
     System.IO.File.Delete(filename);
   }
   
   [Test]
-  public void TestEmpty()
+  public void TestEmpty ()
   {
     logger.Append("");
     Assert.That(ReadFile(), Is.EqualTo(""));
   }
   
   [Test]
-  public void TestSingleCharacter()
+  public void TestSingleCharacter ()
   {
     logger.Append("a");
     Assert.That(ReadFile(), Is.EqualTo("a"));
