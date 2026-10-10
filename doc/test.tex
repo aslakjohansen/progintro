@@ -236,7 +236,7 @@ We have seen one assertion so far; namely \methodname{Is.EqualTo}. The Nunit 3 f
 
 \subsubsection{Setup and Teardown}
 
-% problem
+% problem: many of the methods that we want to test have side-effects - they change state that belongs somewhere outside of the method, in the general case every time we run a method we risk changing state that it relies on, if so running the test twice will give different results, this state external to the method *is* an input, and we need to ensure that it is initialized before each test, we refer to this as the setup phase, for bookkeeping purposes in the general case that setup phase needs a matching teardown phase during which all the state that has been constructed is dismantled, often this is not necessary but to keep things tidy it is necessary to have this ability.
 
 % intro: let's say that you have written a class (Logger) with a single 'append' method, it takes two strings as parameters (a filename some line) and append the line to the contents to the file named by filename, to test this we should construct a test suite with a case for each combination of a number of different lines and a number of different file contents, the test cases will be evaluated in sequence - one after the other, we need to make sure that -- when executed -- each test case has the correct starting point, after all after having appended a character to a file the contents of the file has changed, so we need to make sure that ...
 
