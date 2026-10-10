@@ -27,6 +27,9 @@ public class LoggerTest
   {
     logger.Append("");
     Assert.That(ReadFile(), Is.EqualTo(""));
+    logger.Append("a");
+    logger.Append("");
+    Assert.That(ReadFile(), Is.EqualTo("a"));
   }
   
   [Test]
