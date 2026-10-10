@@ -242,6 +242,12 @@ Many of the methods that we want to thest have \idx{side-effects}{Side-effect}; 
 % intro: let's say that you have written a class (Logger) with a single 'append' method, it takes two strings as parameters (a filename some line) and append the line to the contents to the file named by filename, to test this we should construct a test suite with a case for each combination of a number of different lines and a number of different file contents, the test cases will be evaluated in sequence - one after the other, we need to make sure that -- when executed -- each test case has the correct starting point, after all after having appended a character to a file the contents of the file has changed, so we need to make sure that ...
 
 % example
+\begin{figure}[tbp]
+  \inputminted[highlightlines={12-17,19-23}, highlightcolor=yellow]{csharp}{../src/csharp/test/setupteardown/UnitTests/LoggerTest.cs}
+  \caption{Unit test with setup and teardown.}
+  \label{fig:test:project:setupteardown:example}
+\end{figure}
+
 
 % transition
 
