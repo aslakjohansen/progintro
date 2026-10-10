@@ -10,7 +10,7 @@ public class LoggerTest
   }
   
   [SetUp]
-  public void Init()
+  public void Setup()
   {
     System.IO.File.WriteAllText(filename, "");
     logger = new Logger(filename);
