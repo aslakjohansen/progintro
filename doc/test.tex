@@ -80,6 +80,15 @@ On the surface, this implementation seems reasonable, but how can we verify that
 % testing
 We intend every element of an equivalence partition to be treated the same way. So, when we test them, we can get away with testing that one element is treated correctly and that the boundaries are correct. In practice, this ends up as us testing the boundary elements of each equivalence partition. In the previous example, this would include the first element, the last element and the two center elements for both even and odd sized inputs. This gives us a total of 6 \idx{test cases}{Test!Case}.
 
+\subsection{Box Color}
+
+The analysis that leads to the discovery of boundary cases can be based on different levels of insights into the implementation of the functionality. The more we know about the implementation of the functionality, the closer we can link each test to the actual implementation. The flip side of tying the test to the implementation is that one has to remember to update the tests along with the implementation. Also, it is a lot of work. This tradeoff gives rise to testing based on three degrees of insight linking:
+\begin{enumerate}
+  \descitem{Black box testing:} The boundary cases are determined based on the interface of the functionality alone.
+  \descitem{White box testing:} The boundary cases are determined based on full knowledge of the implementation.
+  \descitem{Grey box testing:} The boundary cases are determined based on incomplete knowledge of the implementation. This covers any non-extreme position.
+\end{enumerate}
+
 \section{Unit Testing}
 
 % concept
