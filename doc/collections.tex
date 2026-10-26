@@ -43,12 +43,20 @@ Things were simple when we worked with months. We always had 12 of them. But the
 
 \section{Sets}
 
+% def
+
 % figure hash sets
 \begin{figure}[tbp]
   \input{figs/collections_hash_set.tex}
   \caption{Organization of a hash set.}
   \label{fig:collections:hash:set}
 \end{figure}
+
+\subsection{Hashing}
+
+Hashing is a process whereby a function is applied to a piece of memory (e.g., an object) in order to produce a hash code. That hash code is essentially an integer. Ideally, any change in the object will change the resulting hash code.
+
+\subsection{Organization}
 
 \subsection{Set Operations}
 
@@ -100,12 +108,6 @@ The most common implementation of a map is that of a hash table. Here, keys are 
   \caption{Organization of a hash table.}
   \label{fig:collections:hash:table}
 \end{figure}
-
-\subsubsection{Hashing}
-
-Hashing is a process whereby a function is applied to a piece of memory (e.g., an object) in order to produce a hash code. That hash code is essentially an integer. Ideally, any change in the object will change the resulting hash code.
-
-\subsubsection{Organization}
 
 \subsection{\csharp}
 \subsection{Elixir}
