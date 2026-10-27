@@ -49,7 +49,7 @@ Borrowing from \idx{mathematics}{Mathematics}, a \defi{set}{Set} is a \idx{colle
 \subsection{Hash Sets}
 
 % organization
-A hashset is a specific implementation of a set. Figure \ref{fig:collections:hash:set} illustrates how it is organized. As there can be a large (practically infinite) number of objects to be placed in a set, it is not feasible to simply enumerate all potential objects and use this as an index into an array. An array is being used, but it is far too small. Objects are mapped to indices in this array, but as the number of potential objects outnumber the indices there will be objects that are mapped to the same index. To resolve this, a secondary mechanism is put into use. Each entry of the array references a list of all the objects that are in the set and map to this index. Before adding an object to this list, one has to make sure that it is not already there.
+A \defi{hashset}{Hash set} is a specific implementation of a set. Figure \ref{fig:collections:hash:set} illustrates how it is organized. As there can be a large (practically infinite) number of objects to be placed in a set, it is not \idx{feasible}{Feasibility} to simply \idx{enumerate}{Enumerate} all potential objects and use this as an index into an array. An array \textsl{is} being used, but it is far too small. Objects are mapped to indices in this array, but as the number of potential objects outnumber the indices there will be objects that are \idx{mapped}{Mapping} to the same index. To \idx{resolve}{Resolving} this, a secondary mechanism is put into use: each entry of the array references a list of all the objects that are in the set and map to this index. Before adding an object to this list, one has to make sure that it is not already there.
 
 % figure hash sets
 \begin{figure}[tbp]
@@ -60,7 +60,7 @@ A hashset is a specific implementation of a set. Figure \ref{fig:collections:has
 
 \subsubsection{Hashing}
 
-Hashing is a process whereby a function is applied to a piece of memory (e.g., an object) in order to produce a hash code. That hash code is essentially an integer. Ideally, any change in the object will change the resulting hash code.
+\defi{Hashing}{Hashing} is a process whereby a function is applied to a piece of memory (e.g., an object) in order to produce a hash code. That \defi{hash code}{Hash code} is essentially an integer. Ideally, any change in the object will change the resulting hash code.
 
 \subsection{Lookup Cost}
 
@@ -69,10 +69,10 @@ Hashing is a process whereby a function is applied to a piece of memory (e.g., a
 \subsection{Bounded Enumerable Values}
 
 % how this special case fits into a bitvector
-Remember that premise that meant that multiple objects would have to map to the same index of the array? That premise often doesn't hold. If our objects are continuously enumerable and bounded in number, then there is another implementation that is much more efficient. It is called a bitvector, and it is simply a sequence of bits. If a bit is set (aka, it has the true value) then the object that uniquely maps to the index of this bit in the set. If the number of potential objects is 201, then we need $201$ bits or $\lceil 201 \rceil = 26$ bytes to represent this bitvector. Modern processors implement bitwise boolean instructions that match each of the common set operations.
+Remember that \defi{premise}{Premise} that meant that multiple objects would have to map to the same index of the array? That premise often doesn't hold. If our objects are continuously \idx{enumerable}{Enumerability} and \idx{bounded}{Boundedness} in number, then there is another implementation that is much more \idx{efficient}{efficient}. It is called a \defi{bitvector}{Bitvector}, and it is simply a sequence of bits. If a bit is set (aka, it has the true value) then the object that uniquely maps to the index of this bit in the set. If the number of potential objects is 201, then we need $201$ bits or $\lceil 201 \rceil = 26$ bytes to represent this bitvector. Modern processors implement \idx{bitwise boolean instructions}{Instruction!Boolean!Bitwise} that match each of the common \idx{set operations}{Set!Operation on}.
 
 % pros
-This implementation is much more compact in terms of space, and a lookup only costs us a single memory access instruction and no function calls.
+This implementation is much more \idx{compact}{Compactness} in terms of space, and a lookup only costs us a single \idx{memory access}{Memory access} instruction and no \idx{function calls}{Function!Call}.
 
 \subsection{\csharp}
 
