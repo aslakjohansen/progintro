@@ -62,11 +62,15 @@ A hashset is a specific implementation of a set. Figure \ref{fig:collections:has
 
 Hashing is a process whereby a function is applied to a piece of memory (e.g., an object) in order to produce a hash code. That hash code is essentially an integer. Ideally, any change in the object will change the resulting hash code.
 
-\subsubsection{Set Operations}
+\subsection{Set Operations}
 
 \subsection{Bounded Enumerable Values}
 
-% how this special case fits into a bitvector, pros of that
+% how this special case fits into a bitvector
+Remember that premise that meant that multiple objects would have to map to the same index of the array? That premise often doesn't hold. If our objects are continuously enumerable and bounded in number, then there is another implementation that is much more efficient. It is called a bitvector, and it is simply a sequence of bits. If a bit is set (aka, it has the true value) then the object that uniquely maps to the index of this bit in the set. If the number of potential objects is 201, then we need $201$ bits or $\lceil 201 \rceil = 26$ bytes to represent this bitvector. Modern processors implement bitwise boolean instructions that match each of the common set operations.
+
+% pros
+This implementation is much more compact in terms of space, and a lookup only costs us a single memory access instruction and no function calls.
 
 \subsection{\csharp}
 
