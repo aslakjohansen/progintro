@@ -74,6 +74,9 @@ In order to perform a lookup (i.e., to see whether an object is in the set) the 
   \descitem{Bucket Lookup} That bucket acts as the root of a linked list that we have to search through. For each element in the list (until we find our match or reach the end) we need to do a comparison to check whether this this object is equal to the one we are looking for. If the bucket contains $n$ objects then this will cost us $n$ memory accesses and $n$ function calls to functions that can determine equality.
 \end{itemize}
 
+% consequences
+So, the main cost is determined by the size of the buckets. That size can be reduced by choosing a larger array. But a larger array will more frequently be wasted. So, we have a classical tradeoff; at one end we have a single bucket and a lookup may end up costing 1 memory access and one function call to determine equality per element in the set, and at the other end we have a guarantee of one bucket per element with a lookup cost of one memory access and a size that consumes all of your memory. Neither end is attractive, so the tradeoff needs to be resolved by balancing the positives and the negatives. Luckily, other people have done this for us.
+
 % how does insertion and removal cost differ
 
 \subsection{Set Operations}
