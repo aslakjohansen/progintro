@@ -67,18 +67,18 @@ A \defi{hashset}{Hash set} is a specific implementation of a set. Figure \ref{fi
 \subsection{Operational Cost}
 
 % lookup cost
-In order to perform a lookup (i.e., to see whether an object is in the set) the following operations need to be performed:
+In order to perform a \idx{lookup}{Lookup} (i.e., to see whether an object is in the set) the following operations need to be performed:
 \begin{itemize}
-  \descitem{Hashing} The object needs to be hashed into an integer. This typically involved looping over every byte of the object. This is, however, something that we have control over.
-  \descitem{Array Lookup} That integer is then used as an index into the array. This gives us the correct bucket and costs us 1 addition and 1 memory access.
-  \descitem{Bucket Lookup} That bucket acts as the root of a linked list that we have to search through. For each element in the list (until we find our match or reach the end) we need to do a comparison to check whether this this object is equal to the one we are looking for. If the bucket contains $n$ objects then this will cost us $n$ memory accesses and $n$ function calls to functions that can determine equality.
+  \descitem{Hashing} The object needs to be \idx{hashed}{Hashing} into an integer. This typically involved looping over every byte of the object. This is, however, something that we have control over.
+  \descitem{Array Lookup} That integer is then used as an index into the array. This gives us the correct \idx{bucket}{Bucket} and costs us 1 \idx{addition}{Operation!Addition} and 1 \idx{memory access}{Operation!Memory access}.
+  \descitem{Bucket Lookup} That bucket acts as the root of a \idx{linked list}{Linked list} that we have to \idx{search}{Search} through. For each element in the list (until we find our match or reach the end) we need to do a \idx{comparison}{Operation!Comparison} to check whether this object is equal to the one we are looking for. If the bucket contains $n$ objects then this will cost us $n$ memory accesses and $n$ \idx{function calls}{Operation!Function call} to functions that can determine \idx{equality}{Equality}.
 \end{itemize}
 
 % consequences
-So, the main cost is determined by the size of the buckets. That size can be reduced by choosing a larger array. But a larger array will more frequently be wasted. So, we have a classical tradeoff; at one end we have a single bucket and a lookup may end up costing 1 memory access and one function call to determine equality per element in the set, and at the other end we have a guarantee of one bucket per element with a lookup cost of one memory access and a size that consumes all of your memory. Neither end is attractive, so the tradeoff needs to be resolved by balancing the positives and the negatives. Luckily, other people have done this for us.
+So, the main cost is determined by the size of the buckets. That size can be reduced by choosing a larger array. But a larger array will more frequently be wasted. So, we have a classical \idx{tradeoff}{Tradeoff}; at one end we have a single bucket and a lookup may end up costing 1 memory access and one function call to determine equality per element in the set, and at the other end we have a \idx{guarantee}{Guarantee} of one bucket per element with a lookup cost of one memory access and a size that consumes all of your memory. Neither end is attractive, so the tradeoff needs to be resolved by balancing the positives and the negatives. Luckily, other people have done this for us.
 
 % how does add and removal cost differ
-An add operation makes sure that an element is in a set. To do that it needs to hash the object to find the right bucket, and then look through the list of the bucket until it finds either a match or the end of the list. In the latter case it needs to add the object. A removal operation essentially works in the same way, but it removes on match and does nothing at the end of the list.
+An \idx{add operation}{Set!Add operation} makes sure that an element is in a set. To do that it needs to hash the object to find the right bucket, and then look through the list of the bucket until it finds either a match or the end of the list. In the latter case it needs to add the object. A \idx{removal operation}{Set!Remove operation} essentially works in the same way, but it removes on match and does nothing at the end of the list.
 
 \subsection{Set Operations}
 
