@@ -67,6 +67,12 @@ A \defi{hashset}{Hash set} is a specific implementation of a set. Figure \ref{fi
 \subsection{Operational Cost}
 
 % lookup cost
+In order to perform a lookup (i.e., to see whether an object is in the set) the following operations need to be performed:
+\begin{itemize}
+  \descitem{Hashing} The object needs to be hashed into an integer. This typically involved looping over every byte of the object. This is, however, something that we have control over.
+  \descitem{Array Lookup} That integer is then used as an index into the array. This gives us the correct bucket and costs us 1 addition and 1 memory access.
+  \descitem{Bucket Lookup} That bucket acts as the root of a linked list that we have to search through. For each element in the list (until we find our match or reach the end) we need to do a comparison to check whether this this object is equal to the one we are looking for. If the bucket contains $n$ objects then this will cost us $n$ memory accesses and $n$ function calls to functions that can determine equality.
+\end{itemize}
 
 % how does insertion and removal cost differ
 
