@@ -144,7 +144,7 @@ Maps are also called \idx{associative arrays}{Associative array}, and \idx{dicti
 \subsection{Hash Tables}
 
 % intro
-The most common implementation of a map is that of a hash table. Here, keys are hashed to an integer which is then used as an index into an array that references a linked list of a key+value combination. This is essentially the same setup as a hash set except that the linked lists contain both keys and values. Figure \ref{fig:collections:hash:table} illustrates this concept. The key has the exact same function as the object reference in the hash set but the common operation is to look up the value associated with a key. That is, find the location of the key and then return the the value stored in the same chain link.
+The most common implementation of a map is that of a \defi{hash table}{Hash table}. Here, keys are hashed to an integer which is then used as an index into an \idx{array}{Array} that references a \idx{linked list}{Linked list} of a key+value combination. This is essentially the same setup as a hash set except that the linked lists contain both keys and values. Figure \ref{fig:collections:hash:table} illustrates this concept. The \idx{key}{Map!Key} has the exact same function as the object reference in the hash set but the common operation is to look up the \idx{value}{Map!Value} associated with a key. That is, find the location of the key and then return the the value stored in the same \idx{chain link}{Linked list!Chain link}.
 
 % figure: hash tables
 \begin{figure}[tbp]
