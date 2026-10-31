@@ -1,0 +1,27 @@
+\begin{center}
+  \begin{tikzpicture}[remember picture]
+    \begin{umlinterface}{ISet}{ISet<T>}{anchor=north,minimum width=58mm}{0,0}{0}{8}
+      \publicMethod{0}{bool}{Add}{T}
+      \publicMethod{1}{void}{Clear}{}
+      \publicMethod{2}{bool}{Contains}{T}
+      \publicMethod{3}{bool}{IsSubsetOf}{IEnumerable}
+      \publicMethod{4}{bool}{IsSupersetOf}{IEnumerable}
+      \publicMethod{5}{bool}{Overlaps}{IEnumerable}
+      \publicMethod{6}{void}{IntersectWith}{IEnumerable}
+      \publicMethod{7}{void}{UnionWith}{IEnumerable}
+    \end{umlinterface}
+    
+    \begin{umlclass}{HashSet}{HashSet<T>}{anchor=north,minimum width=58mm}{[yshift=-1cm]ISet.south}{0}{0}
+    \end{umlclass}
+    
+    \begin{umlclass}{Object}{Object}{anchor=west,minimum width=42mm}{[xshift=2cm]HashSet.east}{0}{2}
+      \publicMethod{0}{bool}{Equals}{Object?}
+      \publicMethod{1}{int}{GetHashCode}{}
+    \end{umlclass}
+    
+    \draw[knows] (HashSet)
+              -- (Object);
+    \draw[implements] (HashSet)
+                   -- (ISet);
+  \end{tikzpicture}
+\end{center}
