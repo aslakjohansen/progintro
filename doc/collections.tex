@@ -158,6 +158,8 @@ The most common implementation of a map is that of a \defi{hash table}{Hash tabl
 
 \section{The Hidden Contract}
 
+% problem
+Note how both hash sets and hash tables rely on the \methodname{Equals} and \methodname{GetHashCode} methods? Let's explore the consequences of having two objects -- lets call them $o_1$ and $o_2$ -- for which \methodname{Equals} return \valuename{true} and \methodname{GetHashCode} return different values. In this case we risk the two objects being mapped to different buckets in the underlying array. If we have inserted $o_1$ into a hash set, then it will appear as if $o_2$ isn't there. This happens because that check will look for an object that satisfies the \methodname{Equals} check within the wrong bucket. The situation is similar in a hash table.
 
 
 \exercises{collections}{Collections}
