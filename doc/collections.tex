@@ -161,5 +161,7 @@ The most common implementation of a map is that of a \defi{hash table}{Hash tabl
 % problem
 Note how both hash sets and hash tables rely on the \methodname{Equals} and \methodname{GetHashCode} methods? Let's explore the consequences of having two objects -- lets call them $o_1$ and $o_2$ -- for which \methodname{Equals} return \valuename{true} and \methodname{GetHashCode} return different values. In this case we risk the two objects being mapped to different buckets in the underlying array. If we have inserted $o_1$ into a hash set, then it will appear as if $o_2$ isn't there. This happens because that check will look for an object that satisfies the \methodname{Equals} check within the wrong bucket. The situation is similar in a hash table.
 
+% corollary
+Because of this, if you override \methodname{Equals} and intend to at one point place objects of this type in a hash set or use it as a key in a hash map, it is critical to also override \methodname{GetHashCode}. Because you never know how your class is going to be used in the future, it is considered bad practice to not also override \methodname{GetHashCode}. Because of this, the \csharp\ compiler will emit a warning if \methodname{Equals} is overridden but \methodname{GetHashCode} is not. This is a hidden contract, and violating it leads to silent runtime failures.
 
 \exercises{collections}{Collections}
