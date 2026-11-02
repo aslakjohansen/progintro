@@ -1,0 +1,60 @@
+\begin{center}
+  \begin{tikzpicture}[remember picture]
+    \newcommand{\spacing}[0]{6mm}
+    \newcommand{\width}[0]{28mm}
+    
+    \tikzset{
+      -|-/.style={
+        to path={
+          (\tikztostart) -| ($(\tikztostart)!#1!(\tikztotarget)$) |- (\tikztotarget)
+          \tikztonodes
+        }
+      },
+      -|-/.default=0.5,
+      |-|/.style={
+        to path={
+          (\tikztostart) |- ($(\tikztostart)!#1!(\tikztotarget)$) -| (\tikztotarget)
+          \tikztonodes
+        }
+      },
+      |-|/.default=0.5,
+    }
+    
+    \begin{umlinterface}{IEnumerable}{IEnumerable<T>}{anchor=north,minimum width=\width}{0,0}{0}{0}
+    \end{umlinterface}
+    \begin{umlinterface}{ICollection}{ICollection<T>}{anchor=north,minimum width=\width}{[yshift=-\spacing]IEnumerable.south}{0}{0}
+    \end{umlinterface}
+    
+    \begin{umlinterface}{ILinkedList}{ILinkedList<T>}{anchor=north east,minimum width=\width}{[yshift=-2*\spacing,xshift=-\spacing/2]ICollection.south}{0}{0}
+    \end{umlinterface}
+    \begin{umlinterface}{IDictionary}{IDictionary<T>}{anchor=north west,minimum width=\width}{[yshift=-2*\spacing,xshift=\spacing/2]ICollection.south}{0}{0}
+    \end{umlinterface}
+    
+    \begin{umlinterface}{IList}{IList<T>}{anchor=north east,minimum width=\width}{[xshift=-\spacing]ILinkedList.north west}{0}{0}
+    \end{umlinterface}
+    \begin{umlinterface}{ISet}{ISet<T>}{anchor=north west,minimum width=\width}{[xshift=\spacing]IDictionary.north east}{0}{0}
+    \end{umlinterface}
+    
+    \begin{umlclass}{List}{List<T>}{anchor=north,minimum width=\width}{[yshift=-\spacing]IList.south}{0}{0}
+    \end{umlclass}
+    \begin{umlclass}{LinkedList}{LinkedList<T>}{anchor=north,minimum width=\width}{[yshift=-\spacing]ILinkedList.south}{0}{0}
+    \end{umlclass}
+    \begin{umlclass}{Dictionary}{Dictionary<T>}{anchor=north,minimum width=\width}{[yshift=-\spacing]IDictionary.south}{0}{0}
+    \end{umlclass}
+    \begin{umlclass}{HashSet}{HashSet<T>}{anchor=north,minimum width=\width}{[yshift=-\spacing]ISet.south}{0}{0}
+    \end{umlclass}
+    
+    \draw[implements] (ICollection) -- (IEnumerable);
+    \draw[implements] (List) -- (IList);
+    \draw[implements] (LinkedList) -- (ILinkedList);
+    \draw[implements] (Dictionary) -- (IDictionary);
+    \draw[implements] (HashSet) -- (ISet);
+    
+    \draw[implements] (IList) |- (ICollection);
+    \draw[implements] (ISet) |- (ICollection);
+    
+    \draw[implements] (ILinkedList.north) to[|-|] ([xshift=-\spacing]ICollection.south);
+    \draw[implements] (IDictionary.north) to[|-|] ([xshift= \spacing]ICollection.south);
+    
+  \end{tikzpicture}
+\end{center}
