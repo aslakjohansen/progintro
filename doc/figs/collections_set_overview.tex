@@ -1,6 +1,6 @@
 \begin{center}
   \begin{tikzpicture}[remember picture]
-    \begin{umlinterface}{ISet}{ISet<T>}{anchor=north,minimum width=58mm}{0,0}{0}{8}
+    \begin{umlinterface}{ISet}{ISet<T>}{anchor=north,minimum width=58mm}{0,0}{0}{9}
       \publicMethod{0}{bool}{Add}{T}
       \publicMethod{1}{void}{Clear}{}
       \publicMethod{2}{bool}{Contains}{T}
@@ -9,6 +9,7 @@
       \publicMethod{5}{bool}{Overlaps}{IEnumerable}
       \publicMethod{6}{void}{IntersectWith}{IEnumerable}
       \publicMethod{7}{void}{UnionWith}{IEnumerable}
+      \publicMethod{8}{void}{ExceptWith}{IEnumerable}
     \end{umlinterface}
     
     \begin{umlclass}{HashSet}{HashSet<T>}{anchor=north,minimum width=58mm}{[yshift=-1cm]ISet.south}{0}{0}

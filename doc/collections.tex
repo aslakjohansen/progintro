@@ -86,7 +86,7 @@ An \idx{add operation}{Set!Add operation} makes sure that an element is in a set
 A number of operations are defined on sets. There is a 1-to-1 match between set operations and boolean operations. The most common set operations -- as illustrated in figure \ref{fig:collections:set:ops} are:
 
 \begin{itemize}
-  \descitem{Intersection:}  The \defi{intersection}{Set!Intersection} of two sets ($A \cap B$) contains the elements that are in both the $A$ and $B$ sets. This corresponds to the boolean AND operation.
+  \descitem{Intersection:} The \defi{intersection}{Set!Intersection} of two sets ($A \cap B$) contains the elements that are in both the $A$ and $B$ sets. This corresponds to the boolean AND operation.
   \descitem{Union:} The \defi{union}{Set!Union} of two sets ($A \cup B$) contains all element that is in at least one of the $A$ and $B$ sets. This corresponds to the boolean OR operation.
   \descitem{Difference:} The \defi{difference}{Set!Difference} of two sets ($A \backslash B$) contains the elements from the $A$ set that are not in the $B$ set. This corresponds to a combination of the boolean AND and NOT operations.
 \end{itemize}
@@ -96,6 +96,14 @@ A number of operations are defined on sets. There is a 1-to-1 match between set 
   \caption{Operations on sets.}
   \label{fig:collections:set:ops}
 \end{figure}
+
+On top of this, there are a few set-relational operations:
+
+\begin{itemize}
+  \descitem{Superset test:} A set $A$ is a superset of another set $B$ ($A \supseteq B$) if and only if all elements of $B$ are in $A$.
+  \descitem{Subset test:} A set $A$ is a subset of another set $B$ ($A \subseteq B$) if and only if all elements of $A$ are in $B$.
+  \descitem{Overlap test:} There is an overlap between sets $A$ and $B$ if their intersection is non-empty ($A \cap B \neq \emptyset$).
+\end{itemize}
 
 \subsection{Bounded Enumerable Values}
 
@@ -116,6 +124,14 @@ It is time to look into how sets are implemented in \csharp. Here, the \defi{\in
   \caption{Overview of relations.}
   \label{fig:collections:set:overview}
 \end{figure}
+
+% operator run-through
+The instance methods fall into three categories:
+\begin{enumerate}
+  \descitem{Single element operations:} The \methodname{Add} methods makes sure that an object is in a set. It returns whether it had to be added. The \methodname{Clear} method removes all objects from a set. The \methodname{Contains} method tests whether an object is in the set.
+  \descitem{Inter-collection test operations:} The \methodname{IsSubsetOf}, \methodname{IsSupersetOf} and \methodname{Overlaps} methods tests whether the object the method is called on is a subset of, a superset of or has overlap with another set. The parameter to these methods is an \interfacename{IEnumerable}. As covered in section \ref{sec:collections:framework}, \interfacename{ISet} implements \interfacename{IEnumerable}. Accordingly, sets can be compared not only with sets, but with a larger number of collections.
+  \descitem{Inter-collection operations:} The \methodname{IntersectionWith}, \methodname{UnionWith} and \methodname{ExceptWith} methods calculates the intersection, union and difference with another collection.
+\end{enumerate}
 
 % destructive operations: what it means?, why destructive?
 
@@ -174,5 +190,8 @@ Note how both \idx{hash sets}{Hash set} and \idx{hash tables}{Hash table} rely o
 
 % corollary
 Because of this, if you \idx{override}{Override} \methodname{Equals} and intend to at one point place objects of this type in a hash set or use it as a key in a hash map, it is \idx{critical}{Criticality} to also override \methodname{GetHashCode}. Because you never know how your class is going to be used in the future, it is considered \idx{bad practice}{Practice!Bad} to not also override \methodname{GetHashCode}. Because of this, the \csharp\ \idx{compiler}{Compiler} will \idx{emit}{Emitting!Warning} a \idx{warning}{Warning} if \methodname{Equals} is overridden but \methodname{GetHashCode} is not. This is a \idx{hidden contract}{Contract!Hidden}, and \idx{violating}{Violation} it leads to \idx{silent}{Silent failure} \idx{runtime}{Runtime} \idx{failures}{Failure}.
+
+\section{Collection Framwork}
+\label{sec:collections:framework}
 
 \exercises{collections}{Collections}
