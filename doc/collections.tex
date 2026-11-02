@@ -134,6 +134,7 @@ The instance methods fall into three categories:
 \end{enumerate}
 
 % destructive operations: what it means?, why destructive?
+The inter-collection operations are destructive. This means that they modify the object that the methods are called on. In other words, the result of the operation is written to the first operand. This can be confusing, but there are good reasons behind this choice. By reusing the first operand, no new set has to be constructed and -- if the first operand is no longer needed, no old set has to be destroyed. This is a design choice that favors execution speed over programmers convenience. Higher-level languages will often make the opposite choice as we will see is the case with Python.
 
 \subsection{Python}
 
