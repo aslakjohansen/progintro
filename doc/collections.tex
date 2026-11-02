@@ -100,9 +100,9 @@ A number of operations are defined on sets. There is a 1-to-1 match between set 
 On top of this, there are a few set-relational operations:
 
 \begin{itemize}
-  \descitem{Superset test:} A set $A$ is a superset of another set $B$ ($A \supseteq B$) if and only if all elements of $B$ are in $A$.
-  \descitem{Subset test:} A set $A$ is a subset of another set $B$ ($A \subseteq B$) if and only if all elements of $A$ are in $B$.
-  \descitem{Overlap test:} There is an overlap between sets $A$ and $B$ if their intersection is non-empty ($A \cap B \neq \emptyset$).
+  \descitem{Superset test:} A set $A$ is a \defi{superset}{Superset} of another set $B$ ($A \supseteq B$) if and only if all elements of $B$ are in $A$.
+  \descitem{Subset test:} A set $A$ is a \defi{subset}{Subset} of another set $B$ ($A \subseteq B$) if and only if all elements of $A$ are in $B$.
+  \descitem{Overlap test:} There is an overlap between sets $A$ and $B$ if their \idx{intersection}{Intersection} is non-empty ($A \cap B \neq \emptyset$).
 \end{itemize}
 
 \subsection{Bounded Enumerable Values}
@@ -129,12 +129,12 @@ It is time to look into how sets are implemented in \csharp. Here, the \defi{\in
 The instance methods fall into three categories:
 \begin{enumerate}
   \descitem{Single element operations:} The \methodname{Add} methods makes sure that an object is in a set. It returns whether it had to be added. The \methodname{Clear} method removes all objects from a set. The \methodname{Contains} method tests whether an object is in the set.
-  \descitem{Inter-collection test operations:} The \methodname{IsSubsetOf}, \methodname{IsSupersetOf} and \methodname{Overlaps} methods tests whether the object the method is called on is a subset of, a superset of or has overlap with another set. The parameter to these methods is an \interfacename{IEnumerable}. As covered in section \ref{sec:collections:framework}, \interfacename{ISet} implements \interfacename{IEnumerable}. Accordingly, sets can be compared not only with sets, but with a larger number of collections.
+  \descitem{Inter-collection test operations:} The \methodname{IsSubsetOf}, \methodname{IsSupersetOf} and \methodname{Overlaps} methods tests whether the object the method is called on is a subset of, a superset of or has overlap with another set. The parameter to these methods is an \interfacename{IEnumerable}. As covered in section \ref{sec:collections:framework}, \interfacename{ISet} implements \interfacename{IEnumerable}. Accordingly, sets can be compared not only with sets, but with a larger number of \idx{collections}{Collection}.
   \descitem{Inter-collection operations:} The \methodname{IntersectionWith}, \methodname{UnionWith} and \methodname{ExceptWith} methods calculates the intersection, union and difference with another collection.
 \end{enumerate}
 
 % destructive operations: what it means?, why destructive?
-The inter-collection operations are destructive. This means that they modify the object that the methods are called on. In other words, the result of the operation is written to the first operand. This can be confusing, but there are good reasons behind this choice. By reusing the first operand, no new set has to be constructed and -- if the first operand is no longer needed, no old set has to be destroyed. This is a design choice that favors execution speed over programmers convenience. Higher-level languages will often make the opposite choice as we will see is the case with Python.
+The inter-collection operations are \defi{destructive}{Operation!Destructive}. This means that they modify the object that the methods are called on. In other words, the result of the operation is written to the first operand. This can be confusing, but there are good reasons behind this choice. By reusing the first operand, no new set has to be constructed and -- if the first operand is no longer needed, no old set has to be destroyed. In this \idx{tradeoff}{Tradeoff}, a design choice has been made that favors \idx{execution speed}{Execution speed} over programmers \idx{convenience}{Convenience}. \idx{Higher-level languages}{Programming language!High-level} will often make the opposite choice as we will see is the case with \idx{Python}{Python programming language}.
 
 \subsection{Python}
 
