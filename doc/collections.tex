@@ -49,6 +49,7 @@ Things were simple when we worked with months. We always had 12 of them. But the
 Borrowing from \idx{mathematics}{Mathematics}, a \defi{set}{Set} is a \idx{collection}{Collection} of \idx{distinct}{Distinct} objects. What matters is that any object is either in the set or not in the set. There is no notion of how many times an object is in the set; it either is or is not in it.
 
 \subsection{Hash Sets}
+\label{sec:collections:hashset}
 
 % organization
 A \defi{hashset}{Hash set} is a specific implementation of a set. Figure \ref{fig:collections:hash:set} illustrates how it is organized. As there can be a large (practically infinite) number of objects to be placed in a set, it is not \idx{feasible}{Feasibility} to simply \idx{enumerate}{Enumerate} all potential objects and use this as an index into an array. An array \textsl{is} being used, but it is far too small. Objects are mapped to indices in this array, but as the number of potential objects outnumber the indices there will be objects that are \idx{mapped}{Mapping} to the same index. That position in the array is also called a \defi{bucket}{Bucket}, and multiple objects may end up in the same one. To \idx{resolve}{Resolving} this conflict, a secondary mechanism is put into use: each entry of the array references a list of all the objects that are in the set and map to this index. Before adding an object to this list, one has to make sure that it is not already there.
@@ -107,7 +108,9 @@ This implementation is much more \idx{compact}{Compactness} in terms of space, a
 \subsection{\csharp}
 
 % interface+class combo (ISet<T> + HashSet<T>)
+It is time to look into how sets are implemented in \csharp. Here, the \interfacename{ISet<T>} interface defines the functional interface to a set. The most common class to implement this interface is \classname{HashSet<T>}. It uses a hash set to for the representation as described in section \ref{sec:collections:hashset}. In doing so, it relies on the \methodname{Equals} and \methodname{GetHashCode} methods that are defined on the \classname{Object} class and thus available to be called on all objects. This is illustrates in the UML diagram of figure \ref{fig:collections:set:overview}.
 
+% figure
 \begin{figure}[tbp]
   \input{figs/collections_set_overview.tex}
   \caption{Overview of relations.}
