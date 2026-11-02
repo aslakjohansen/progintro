@@ -108,7 +108,7 @@ This implementation is much more \idx{compact}{Compactness} in terms of space, a
 \subsection{\csharp}
 
 % interface+class combo (ISet<T> + HashSet<T>)
-It is time to look into how sets are implemented in \csharp. Here, the \interfacename{ISet<T>} interface defines the functional interface to a set. The most common class to implement this interface is \classname{HashSet<T>}. It uses a hash set to for the representation as described in section \ref{sec:collections:hashset}. In doing so, it relies on the \methodname{Equals} and \methodname{GetHashCode} methods that are defined on the \classname{Object} class and thus available to be called on all objects. This is illustrates in the UML diagram of figure \ref{fig:collections:set:overview}.
+It is time to look into how sets are implemented in \csharp. Here, the \defi{\interfacename{ISet<T>}}{ISet<T>@\texttt{ISet<T>} interface} interface defines the functional interface to a set. The most common class to implement this interface is \defi{\classname{HashSet<T>}}{HashSet<T>@\texttt{HashSet<T>} class}. It uses a hash set to for the representation as described in section \ref{sec:collections:hashset}. In doing so, it relies on the \methodname{Equals} and \methodname{GetHashCode} methods that are defined on the \classname{Object} class and thus available to be called on all objects. This is illustrates in the \idx{UML}{UML} diagram of figure \ref{fig:collections:set:overview}.
 
 % figure
 \begin{figure}[tbp]
