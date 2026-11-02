@@ -1,0 +1,6 @@
+#!/usr/bin/env python
+
+s1 = set([1,2,3,4,5,6,7,8,9,10])
+s2 = set([1,3,5,7,9,11,13,15,17])
+s3 = s1.intersection(s2)
+print(str(len(s1))+" "+str(len(s2))+" "+str(len(s3)))
