@@ -1,4 +1,4 @@
-public class Matrix
+class Matrix
 {
   public int       Width;  // number of columns
   public int       Height; // number of rows
