@@ -150,9 +150,10 @@ In \idx{Python}{Python programming language}, set operations are \defi{non-destr
 
 \inputminted[]{pycon}{../src/python/collections/sets/repl_version.txt}
 
-%\subsection{Elixir}
-%
+\subsection{Elixir}
+
 %% it is based on erlang maps which are tree structures. A 'put operation will generate a new root and reuse as much as possible. This can be accomplished because the datastructure is immutable
+In \idx{Elixir}{Elixir programming language}, all types of data are immutable. Sets are based on maps which are implemented as tree structures. Adding an element to such a tree set will generate a new root, and reuse as much of the existing structure as possible. This effectively creates a new set while reusing most of the space used for the original.
 
 \section{Maps}
 \label{collections:maps}
