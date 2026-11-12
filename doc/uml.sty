@@ -4,6 +4,7 @@
 
 % packages and TikZ libraries
 \usetikzlibrary{arrows}
+\usetikzlibrary{calc}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% styling
@@ -241,5 +242,28 @@
   \node[anchor=center,text=black] (#1name) at ([yshift=\@scale*(-\@subHeaderHeight*2/3-\@headerHeight/2+0.5mm)]#1.north) {\scalebox{\@scale}{\large{#2}}};
 }
 {
+}
+
+% args:
+% - 1: id prefix
+% - 2: package name
+% - 3: corner 1
+% - 4: corner 2
+\newenvironment{umlpackage}[4]
+{
+  \def\storedprefix{#1}
+  \def\storedpackage{#2}
+  \def\storedcornerI{#3}
+  \def\storedcornerII{#4}
+}
+{
+  \coordinate (center) at ($(\storedcornerI)!0.5!(\storedcornerII)$);
+  \path let \p1=(\storedcornerI), \p2=(\storedcornerII) in
+    node[
+      node,
+      minimum width={6*\@border+abs(\x2-\x1)},
+      minimum height={6*\@border+abs(\y2-\y1)},
+    ] (\storedprefix) at (center) {};
+  \node[node, anchor=south west] (\storedprefix label) at ([yshift=-0.8pt]\storedprefix.north west) {\storedpackage};
 }
 

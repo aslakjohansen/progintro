@@ -67,4 +67,46 @@
   \end{tikzpicture}
 \end{center}
 
+\newpage
+
+\begin{center}
+  \begin{tikzpicture}[remember picture]
+    \begin{umlclass}{EnrollmentUI}{EnrollmentUI}{anchor=west,minimum width=70mm}{0,0}{0}{1}
+      \publicMethod{0}{bool}{RequestEnrollment}{Student, Course}
+    \end{umlclass}
+      
+    \begin{umlclass}{EnrollmentService}{EnrollmentService}{anchor=north,minimum width=70mm}{[yshift=-2cm]EnrollmentUI.south}{0}{3}
+      \publicMethod{0}{bool}{Enroll}{Student, Course}
+      \privateMethod{1}{bool}{CheckEligibility}{Student, Course}
+      \privateMethod{2}{bool}{CheckSeatAvailability}{Course}
+    \end{umlclass}
+    
+    \begin{umlclass}{EnrollmentRepository}{EnrollmentRepository}{anchor=west,minimum width=70mm}{[xshift=2cm]EnrollmentService.east}{0}{3}
+      \publicMethod{0}{Student[]}{GetStudents}{}
+      \publicMethod{1}{Course[]}{GetCourses}{}
+      \publicMethod{2}{void}{SaveEnrollment}{Student, Course}
+    \end{umlclass}
+    
+    \begin{umlclass}{Student}{Student}{anchor=north,minimum width=20mm}{[xshift=-2cm,yshift=-2cm]EnrollmentService.south}{0}{0}
+    \end{umlclass}
+    \begin{umlclass}{Course}{Course}{anchor=north,minimum width=20mm}{[xshift= 2cm,yshift=-2cm]EnrollmentService.south}{0}{0}
+    \end{umlclass}
+    
+    \draw[knows] (EnrollmentUI) -- (EnrollmentService);
+    \draw[knows] (EnrollmentService) -- (EnrollmentRepository);
+    \draw[knows] ([xshift=-2cm]EnrollmentService.south) -- (Student.north);
+    \draw[knows] ([xshift=2cm]EnrollmentService.south) -- (Course.north);
+    
+    \begin{umlpackage}{Presentation Layer}{Presentation Layer}{EnrollmentUI.north west}{EnrollmentUI.south east}
+    \end{umlpackage}
+    
+    \coordinate (SECorner) at ($(EnrollmentService.north east)!(Course.south east)!(EnrollmentService.south east)$);
+    \begin{umlpackage}{Domain Layer}{Domain Layer}{EnrollmentService.north west}{SECorner}
+    \end{umlpackage}
+    
+    \begin{umlpackage}{Data Access Layer}{Data Access Layer}{EnrollmentRepository.north west}{EnrollmentRepository.south east}
+    \end{umlpackage}
+  \end{tikzpicture}
+\end{center}
+
 \end{document}
