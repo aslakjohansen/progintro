@@ -69,7 +69,9 @@
 
 \newpage
 
+\hspace{5mm}
 \begin{center}
+\rotatebox{90}{
   \begin{tikzpicture}[remember picture]
     \begin{umlclass}{EnrollmentUI}{EnrollmentUI}{anchor=west,minimum width=70mm}{0,0}{0}{1}
       \publicMethod{0}{bool}{RequestEnrollment}{Student, Course}
@@ -87,15 +89,25 @@
       \publicMethod{2}{void}{SaveEnrollment}{Student, Course}
     \end{umlclass}
     
-    \begin{umlclass}{Student}{Student}{anchor=north,minimum width=20mm}{[xshift=-2cm,yshift=-2cm]EnrollmentService.south}{0}{0}
+    \begin{umlclass}{Student}{Student}{anchor=north,minimum width=20mm}{[xshift=-2cm,yshift=-1cm]EnrollmentService.south}{0}{0}
     \end{umlclass}
-    \begin{umlclass}{Course}{Course}{anchor=north,minimum width=20mm}{[xshift= 2cm,yshift=-2cm]EnrollmentService.south}{0}{0}
+    \begin{umlclass}{Course}{Course}{anchor=north,minimum width=20mm}{[xshift= 2cm,yshift=-1cm]EnrollmentService.south}{0}{0}
     \end{umlclass}
     
-    \draw[knows] (EnrollmentUI) -- (EnrollmentService);
-    \draw[knows] (EnrollmentService) -- (EnrollmentRepository);
-    \draw[knows] ([xshift=-2cm]EnrollmentService.south) -- (Student.north);
-    \draw[knows] ([xshift=2cm]EnrollmentService.south) -- (Course.north);
+    \draw[knows] (EnrollmentUI)
+      -- node[black,midway,right=4pt] {\scalebox{0.7}{\textsl{\textcolor{purple}{request enrollment}}}}
+      (EnrollmentService);
+    \draw[knows] (EnrollmentService)
+      -- node[black,midway,above=4pt] {\rotatebox{90}{\scalebox{0.7}{\textsl{\textcolor{purple}{loads and saves data}}}}}
+      (EnrollmentRepository);
+    \draw[knows] ([xshift=-2cm]EnrollmentService.south)
+      -- node[black,midway,right=4pt] {\scalebox{0.7}{\textsl{\textcolor{purple}{checks eligibility}}}}
+      (Student.north);
+    \draw[knows] ([xshift=2cm]EnrollmentService.south)
+      -- node[black,midway,right=4pt,align=left] {
+        \vspace{-2mm}\scalebox{0.7}{\textsl{\textcolor{purple}{checks}}}\\\vspace{-2mm}\scalebox{0.7}{\textsl{\textcolor{purple}{availability}}}\\\vspace{-2mm}
+      }
+      (Course.north);
     
     \begin{umlpackage}{Presentation Layer}{Presentation Layer}{EnrollmentUI.north west}{EnrollmentUI.south east}
     \end{umlpackage}
@@ -107,6 +119,7 @@
     \begin{umlpackage}{Data Access Layer}{Data Access Layer}{EnrollmentRepository.north west}{EnrollmentRepository.south east}
     \end{umlpackage}
   \end{tikzpicture}
+}
 \end{center}
 
 \end{document}
