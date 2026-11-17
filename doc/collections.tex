@@ -207,7 +207,7 @@ Note how both \idx{hash sets}{Hash set} and \idx{hash tables}{Hash table} rely o
 % corollary
 Because of this, if you \idx{override}{Override} \methodname{Equals} and intend to at one point place objects of this type in a hash set or use it as a key in a hash map, it is \idx{critical}{Criticality} to also override \methodname{GetHashCode}. Because you never know how your class is going to be used in the future, it is considered \idx{bad practice}{Practice!Bad} to not also override \methodname{GetHashCode}. Because of this, the \csharp\ \idx{compiler}{Compiler} will \idx{emit}{Emitting!Warning} a \idx{warning}{Warning} if \methodname{Equals} is overridden but \methodname{GetHashCode} is not. This is a \idx{hidden contract}{Contract!Hidden}, and \idx{violating}{Violation} it leads to \idx{silent}{Silent failure} \idx{runtime}{Runtime} \idx{failures}{Failure}.
 
-\section{Choosing a Datastructure}
+\section{Picking the Right Datastructure}
 
 \begin{inspiration}{\idx{Larry Wall}{Wall, Larry}\cite{linearscans1992}}
   \quoted{Doing linear scans over an associative array is like trying to club someone to death with a loaded Uzi.}
