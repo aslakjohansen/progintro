@@ -1,19 +1,19 @@
 \textbf{Subtask 1}
 
-Implement in \csharp\ a class for this UML diagram.
+Implement in \csharp\ a class for this UML diagram:
 
 \begin{center}
-    \begin{tikzpicture}
-      \begin{class}[text width=6cm]{Person}{0,0}
-        \attribute{- name: String}
-        \attribute{- age: int}
-        \attribute{- cpr: String}
-        \operation{+ GetName(): String}
-        \operation{+ GetAge(): int}
-        \operation{+ GetCpr(): String}
-        \operation{+ ToString(): String}
-      \end{class}
-    \end{tikzpicture}
+  \begin{tikzpicture}[remember picture]
+    \begin{umlclass}{Person}{Person}{anchor=north,minimum width=4cm}{0,0}{3}{4}
+      \privateField{0}{name}{String}
+      \privateField{1}{age}{int}
+      \privateField{2}{cpr}{String}
+      \publicMethod{0}{String}{GetName}{}
+      \publicMethod{1}{int}{GetAge}{}
+      \publicMethod{2}{String}{GetCpr}{}
+      \publicMethod{3}{String}{ToString}{}
+    \end{umlclass}
+  \end{tikzpicture}
 \end{center}
 
 \textbf{Note:} The \varname{cpr} field refers to a Danish social security number format called CPR.
