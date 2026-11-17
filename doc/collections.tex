@@ -213,6 +213,12 @@ Because of this, if you \idx{override}{Override} \methodname{Equals} and intend 
 As a novice programmer you will likely find it a confusing task to choose the right datastructure. There are two main factors at interplay here; namely (i) that you likely don't have a good understanding of what each of these collections offer you yet, and (ii) that you likely often don't have a clear grasp of the problem that you are trying to solve with this data structure. The interplay between these is that you need some understanding of the tools available to you to mentally decompose a problem into a complex of tool applications. When you have a good understanding of these datastructures and a bit of experience then it becomes much easier to spot where each of them might fit into a solution. What remains is the exercise of solving the puzzle of finding a combination which together solves the problem.
 
 % array
+You already know what an array is. If it fits then it is the right solution. But what does it mean for it to \say{fit}? It means that all of the following qualities can be checked:
+\begin{enumerate}
+  \item{Static Size} The number of elements is fixed throughout the lifecycle of the data structure.
+  \item{No Collection Need} There is no need to access functionality that is defined within the \texttt{Collections} framework.
+  \item{Use} The use is limited to indexed reads and writes as well as iteration over (principally) all elements.
+\end{enumerate}
 
 % list vs linkedlist
 
