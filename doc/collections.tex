@@ -234,6 +234,7 @@ You already know what an array is. If it fits then it is the right solution. But
 \end{enumerate}
 
 % list vs linkedlist
+Let's say that it turns out that what you need is not an array. We will leave sets and maps for now, and assume that what you need is \say{array shaped}. Then you have a choice of a \classname{List} and a \classname{LinkedList}. How you resolve that choice comes down to typical use case rather than functionality. If the typical use case is dominated by you inserting and removing elements -- particularly near the beginning of the sequence or at least in order -- then you should consider a \classname{LinkedList}. Otherwise, the \classname{LinkedList} is a clear winner. If in doubt, err on the side of the \classname{LinkedList}.
 
 \begin{inspiration}{\idx{Larry Wall}{Wall, Larry}\cite{linearscans1992}}
   \quoted{Doing linear scans over an associative array is like trying to club someone to death with a loaded Uzi.}
