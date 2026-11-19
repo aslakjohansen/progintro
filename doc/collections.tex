@@ -223,24 +223,24 @@ Because of this, if you \idx{override}{Override} \methodname{Equals} and intend 
 \section{Picking the Right Data Structure}
 
 % intro (why it is hard)
-As a novice programmer you will likely find it a confusing task to choose the right data structure. There are two main factors at interplay here; namely (i) that you likely don't have a good understanding of what each of these collections offer you yet, and (ii) that you likely often don't have a clear grasp of the problem that you are trying to solve with this data structure. The interplay between these is that you need some understanding of the tools available to you to mentally decompose a problem into a complex of tool applications. When you have a good understanding of these data structures and a bit of experience then it becomes much easier to spot where each of them might fit into a solution. What remains is the exercise of solving the puzzle of finding a combination which together solves the problem.
+As a \idx{novice programmer}{Programmer!Novice} you will likely find it a confusing task to choose the right \idx{data structure}{Data structure}. There are two main factors at interplay here; namely (i) that you likely don't have a good understanding of what each of these collections offer you yet, and (ii) that you likely often don't have a clear grasp of the problem that you are trying to solve with this data structure. The interplay between these is that you need some understanding of the tools available to you to mentally \idx{decompose}{Problem!Decomposition} a problem into a complex of tool \idx{applications}{Application!Of tool}. When you have a good understanding of these data structures and a bit of experience then it becomes much easier to spot where each of them might fit into a solution. What remains is the exercise of solving the puzzle of finding a combination which together solves the problem.
 
 % array
-You already know what an array is. If it fits then it is the right solution. But what does it mean for it to \say{fit}? It means that all of the following qualities can be checked:
+You already know what an \idx{array}{Array} is. If it fits then it is the right solution. But what does it mean for it to \say{fit}? It means that all of the following qualities can be checked:
 \begin{enumerate}
-  \item{Static Size} The number of elements is fixed throughout the lifecycle of the data structure.
+  \item{Static Size} The number of elements is fixed throughout the \idx{lifecycle}{Data!Lifecycle} of the data structure.
   \item{No Collection Need} There is no need to access functionality that is defined within the \texttt{Collections} framework.
-  \item{Use} The use is limited to indexed reads and writes as well as iteration over (principally) all elements.
+  \item{Use} The use is limited to indexed \idx{reads}{Indexed data!Read operation} and \idx{writes}{Indexed data!Write operation} as well as \idx{iteration}{Iteration} over (principally) all elements.
 \end{enumerate}
 
 % list vs linkedlist
-Let's say that it turns out that what you need is not an array. We will leave sets and maps for now, and assume that what you need is \say{array shaped}. Then you have a choice of a \classname{List} and a \classname{LinkedList}. How you resolve that choice comes down to typical use case rather than functionality. If the typical use case is dominated by you inserting and removing elements -- particularly near the beginning of the sequence or at least in order -- then you should consider a \classname{LinkedList}. Otherwise, the \classname{LinkedList} is a clear winner. If in doubt, err on the side of the \classname{LinkedList}.
+Let's say that it turns out that what you need is not an array. We will leave sets and maps for now, and assume that what you need is \say{array shaped}. Then you have a choice of a \classname{List} and a \classname{LinkedList}. How you resolve that choice comes down to typical \idx{use case}{Use case} rather than functionality. If the typical use case is dominated by you \idx{inserting}{Insert operation} and \idx{removing}{Remove operation} elements -- particularly near the beginning of the sequence or at least \idx{in order}{In order processing} -- then you should consider a \classname{LinkedList}. Otherwise, the \classname{LinkedList} is a clear winner. If in doubt, err on the side of the \classname{LinkedList}.
 
 \begin{inspiration}{\idx{Larry Wall}{Wall, Larry}\cite{linearscans1992}}
   \quoted{Doing linear scans over an associative array is like trying to club someone to death with a loaded Uzi.}
 \end{inspiration}
 
 % vs map
-A map (aka associative array) is a whole different animal. There is no meaningful order. While you can see it as a \classname{List} that is indexed by objects rather than integers, a perhaps better analogy is that it is a lookup construct; you can look up what is associated to a particular object. So, if you wish to \textsl{translate} between two sets of objects, then a map is your data structure. But there are more efficient options available if you want to iterate over (aka doing a linear scan) all the associations, keys or values. Those options include arrays, dynamic arrays and linked lists.
+A \idx{map}{Map} (aka associative array) is a whole different animal. There is no meaningful order. While you can see it as a \classname{List} that is indexed by objects rather than integers, a perhaps better analogy is that it is a lookup construct; you can look up what is associated to a particular object. So, if you wish to \textsl{translate} between two sets of objects, then a map is your data structure. But there are more efficient options available if you want to iterate over (aka doing a \idx{linear scan}{Linear scan}) all the associations, keys or values. Those options include arrays, dynamic arrays and linked lists.
 
 \exercises{collections}{Collections}
